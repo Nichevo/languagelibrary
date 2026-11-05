@@ -16,9 +16,6 @@ from __future__ import annotations
 
 import argparse
 import bz2
-import csv
-import io
-import sys
 import tarfile
 import urllib.request
 from collections import defaultdict
@@ -35,11 +32,13 @@ FILES = {
 }
 MAX_HANZI = 16  # short, everyday sentences only
 NATIVE = "5"
-csv.field_size_limit(sys.maxsize)
 
 
 def _rows(text: str):
-    return csv.reader(io.StringIO(text), delimiter="\t", quoting=csv.QUOTE_NONE)
+    # Plain split: the exports are unquoted, and some fields contain a stray \r.
+    for line in text.split("\n"):
+        if line:
+            yield line.rstrip("\r").split("\t")
 
 
 def read_bz2(path: Path) -> str:
