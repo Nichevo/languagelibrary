@@ -1,7 +1,7 @@
 # Build report
 
 Built 2026-11-05 from HSK levels new-1 plus the curated phrase list.
-Kept **544** entries, dropped **1**, flagged **153**.
+Kept **616** entries, dropped **1**, flagged **167**.
 
 ## Dropped (not shown in the app)
 
@@ -162,3 +162,17 @@ Kept **544** entries, dropped **1**, flagged **153**.
 - 打包: has characters with more than one reading (打); listen to its audio
 - 火车站: has characters with more than one reading (车); listen to its audio
 - 出租车: has characters with more than one reading (车); listen to its audio
+- 漂亮: has characters with more than one reading (漂); listen to its audio
+- 亲爱: has characters with more than one reading (亲); listen to its audio
+- 舍不得: has characters with more than one reading (得舍); listen to its audio
+- 约会: has characters with more than one reading (会约); listen to its audio
+- 一见钟情: has characters with more than one reading (见); listen to its audio
+- 永远: has characters with more than one reading (远); listen to its audio
+- 结婚: has characters with more than one reading (结); listen to its audio
+- 还好: has characters with more than one reading (好还); listen to its audio
+- 挺好: has characters with more than one reading (好); listen to its audio
+- 担心: has characters with more than one reading (担); listen to its audio
+- 保重: has characters with more than one reading (重); listen to its audio
+- 卡布奇诺: has characters with more than one reading (卡奇); listen to its audio
+- 好喝: has characters with more than one reading (喝好); listen to its audio
+- 结账: has characters with more than one reading (结); listen to its audio

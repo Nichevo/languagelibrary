@@ -93,6 +93,7 @@ String topicLabel(String t) => switch (t) {
       'food' => 'Food',
       'travel' => 'Travel',
       'family' => 'Family',
+      'love' => 'Love',
       'numbers' => 'Numbers',
       _ => t,
     };
