@@ -70,7 +70,7 @@ void main() {
       for (final e in lib.entries) {
         expect(e.meanings, isNotEmpty, reason: e.simplified);
         expect(e.syllables, isNotEmpty, reason: e.simplified);
-        expect(e.sources, contains('CC-CEDICT'), reason: e.simplified);
+        if (!e.isSentence) expect(e.sources, contains('CC-CEDICT'), reason: e.simplified);
       }
     });
 
@@ -93,6 +93,13 @@ void main() {
       expect(lib.search('', topic: 'numbers').map((e) => e.simplified), containsAll(['一', '二', '十']));
     expect(lib.search('', topic: 'love').map((e) => e.simplified), containsAll(['漂亮', '可爱', '怎么样', '晚安']));
     expect(lib.search('', topic: 'food').map((e) => e.simplified), containsAll(['咖啡', '拿铁']));
+    final sentences = lib.search('', topic: Library.sentencesFilter);
+    expect(sentences, isNotEmpty);
+    expect(sentences.every((e) => e.isSentence && e.sources.first.startsWith('Tatoeba #')), isTrue);
+    expect(lib.search('coffee').map((e) => e.simplified), contains('我要一杯咖啡。'));
+    final coffee = lib.entries.firstWhere((e) => e.simplified == '咖啡');
+    expect(coffee.examples, isNotEmpty);
+    expect(coffee.examples.first.credit.first, startsWith('Tatoeba #'));
     });
 
     test('tone change note for 你好', () {

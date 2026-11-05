@@ -18,6 +18,9 @@ class Library {
 
   static const topics = ['everyday', 'food', 'travel', 'family', 'love', 'numbers'];
 
+  /// Pass as the topic to search only the phrasebook sentences.
+  static const sentencesFilter = 'sentences';
+
   static Future<Library> load([AssetBundle? bundle]) async {
     final b = bundle ?? rootBundle;
     final data = jsonDecode(await b.loadString('assets/data/library.json'))
@@ -43,7 +46,11 @@ class Library {
   List<Entry> search(String query, {String? topic}) {
     final q = query.trim().toLowerCase();
     Iterable<Entry> pool = entries;
-    if (topic != null) pool = pool.where((e) => e.topics.contains(topic));
+    if (topic == sentencesFilter) {
+      pool = pool.where((e) => e.isSentence);
+    } else if (topic != null) {
+      pool = pool.where((e) => e.topics.contains(topic));
+    }
     if (q.isEmpty) return pool.toList();
 
     final qPinyin = stripTones(q).replaceAll(' ', '').replaceAll('v', 'ü');

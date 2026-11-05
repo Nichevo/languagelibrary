@@ -1,11 +1,15 @@
 # Build report
 
 Built 2026-11-05 from HSK levels new-1 plus the curated phrase list.
-Kept **616** entries, dropped **1**, flagged **167**.
+Kept **697** entries, dropped **3**, flagged **167**.
+81 phrasebook sentences; 528 words have example sentences.
+Sentences come from Tatoeba (native Mandarin speakers only); see tools/sentences.py.
 
 ## Dropped (not shown in the app)
 
 - 车上: CC-CEDICT does not agree: list says [che1 shang4], CC-CEDICT has [no entry]
+- 最近过得好吗？: 得 has more than one reading (de2, de5, dei3)
+- 今晚月色真美。: 今 is not a word in the checked lists
 
 ## Flagged (kept, but check the audio by ear)
 

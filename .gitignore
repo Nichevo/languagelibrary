@@ -8,3 +8,4 @@ tools/audio_samples/
 *.json.key
 service-account*.json
 credentials*.json
+build/

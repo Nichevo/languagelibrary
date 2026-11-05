@@ -121,4 +121,32 @@ void main() {
     expect(find.text('你好'), findsOneWidget);
     expect(find.text('谢谢'), findsNothing);
   });
+
+  testWidgets('sentences: filter, open one, see example sentences on a word', (tester) async {
+    SharedPreferences.setMockInitialValues({});
+    final store = await UserStore.open();
+    await tester.pumpWidget(appForTest(loadRealLibrary(), store));
+
+    await tester.tap(find.widgetWithText(ChoiceChip, 'Sentences'));
+    await tester.pumpAndSettle();
+    await tester.enterText(find.byType(TextField), 'coffee');
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('我要一杯咖啡。').first);
+    await tester.pumpAndSettle();
+    expect(find.textContaining('yì bēi', findRichText: true), findsOneWidget); // 一 tone change
+    final credit = find.textContaining('Tatoeba #');
+    await tester.scrollUntilVisible(credit, 300, scrollable: find.byType(Scrollable).last);
+    expect(credit, findsOneWidget);
+    await tester.pageBack();
+    await tester.pumpAndSettle();
+
+    await tester.tap(find.widgetWithText(ChoiceChip, 'All'));
+    await tester.enterText(find.byType(TextField), 'kafei');
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('咖啡').first);
+    await tester.pumpAndSettle();
+    final heading = find.text('Example sentences');
+    await tester.scrollUntilVisible(heading, 300, scrollable: find.byType(Scrollable).last);
+    expect(heading, findsOneWidget);
+  });
 }

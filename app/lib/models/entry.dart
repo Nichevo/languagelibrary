@@ -17,6 +17,8 @@ class Entry {
     required this.polyphonic,
     required this.sources,
     this.related = const [],
+    this.kind = 'word',
+    this.examples = const [],
   });
 
   final String id;
@@ -39,6 +41,13 @@ class Entry {
 
   /// Other entries worth a look, each with a plain-English reason.
   final List<RelatedLink> related;
+
+  /// 'word' (from HSK or the phrase list) or 'sentence' (a Tatoeba phrasebook sentence).
+  final String kind;
+  bool get isSentence => kind == 'sentence';
+
+  /// Short Tatoeba sentences that use this word.
+  final List<Example> examples;
 
   /// Short English summary for lists and flashcards.
   String get gloss => meanings.take(3).join('; ');
@@ -77,8 +86,23 @@ class Entry {
         for (final r in (j['related'] as List?) ?? const [])
           RelatedLink(r['id'] as String, r['why'] as String),
       ],
+      kind: j['kind'] as String? ?? 'word',
+      examples: [
+        for (final x in (j['examples'] as List?) ?? const [])
+          Example(x['zh'] as String, x['pinyin'] as String, x['en'] as String,
+              List<String>.from(x['credit'] as List)),
+      ],
     );
   }
+}
+
+/// A Tatoeba sentence shown under a word, with who wrote it.
+class Example {
+  const Example(this.zh, this.pinyin, this.en, this.credit);
+  final String zh;
+  final String pinyin;
+  final String en;
+  final List<String> credit;
 }
 
 class RelatedLink {

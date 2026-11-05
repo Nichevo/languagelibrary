@@ -56,6 +56,15 @@ class PinyinText extends StatelessWidget {
   Widget build(BuildContext context) {
     final b = Theme.of(context).brightness;
     final spans = <TextSpan>[];
+    final words = entry.pinyin.split(' ');
+    if (entry.isSentence && words.length == entry.syllables.length) {
+      // Sentences keep their capital letter and punctuation.
+      for (var i = 0; i < words.length; i++) {
+        if (i > 0) spans.add(const TextSpan(text: ' '));
+        spans.add(TextSpan(text: words[i], style: TextStyle(color: toneColor(entry.syllables[i].tone, b))));
+      }
+      return Text.rich(TextSpan(children: spans, style: style), textAlign: textAlign);
+    }
     for (final s in entry.syllables) {
       final isErhua = s.pinyin == 'r';
       if (spans.isNotEmpty && !isErhua) spans.add(const TextSpan(text: ' '));

@@ -37,6 +37,7 @@ from datetime import date
 from pathlib import Path
 
 from tools import pinyin as py
+from tools import sentences
 
 ROOT = Path(__file__).resolve().parent.parent
 SOURCES = Path(__file__).resolve().parent / "sources"
@@ -375,13 +376,13 @@ def add_related(entries: list[dict]) -> None:
         e["related"] = links
 
 
-def write_outputs(entries, dropped, flagged, levels, cedict_note: str):
+def write_outputs(entries, dropped, flagged, levels, cedict_note: str, sentence_note: str = ""):
     OUT_JSON.parent.mkdir(parents=True, exist_ok=True)
     data = {
         "version": 1,
         "built": date.today().isoformat(),
         "levels": levels,
-        "sources": {"cedict": cedict_note},
+        "sources": {"cedict": cedict_note, **({"tatoeba": "tools/sources/tatoeba_cmn_eng.tsv"} if sentence_note else {})},
         "entries": entries,
     }
     OUT_JSON.write_text(json.dumps(data, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
@@ -391,6 +392,7 @@ def write_outputs(entries, dropped, flagged, levels, cedict_note: str):
         "",
         f"Built {date.today().isoformat()} from HSK levels {', '.join(levels)} plus the curated phrase list.",
         f"Kept **{len(entries)}** entries, dropped **{len(dropped)}**, flagged **{len(flagged)}**.",
+        *([sentence_note, "Sentences come from Tatoeba (native Mandarin speakers only); see tools/sentences.py."] if sentence_note else []),
         "",
         "## Dropped (not shown in the app)",
         "",
@@ -413,8 +415,19 @@ def main(argv=None):
     note = Path(args.cedict).name if args.cedict else CEDICT_URL
     hsk = load_hsk(args.hsk)
     entries, dropped, flagged = build(cedict, hsk, load_phrases(), args.levels)
-    write_outputs(entries, dropped, flagged, args.levels, note)
+    pairs = sentences.load_pairs()
+    sentence_note = ""
+    if pairs:
+        reader = sentences.Reader(cedict, entries, hsk)
+        with_examples = sentences.add_examples(reader, pairs, entries)
+        book, book_dropped = sentences.phrasebook_entries(reader, pairs, sentences.load_phrasebook(), entries)
+        entries += book
+        dropped += book_dropped
+        sentence_note = f"{len(book)} phrasebook sentences; {with_examples} words have example sentences."
+    write_outputs(entries, dropped, flagged, args.levels, note, sentence_note)
     print(f"kept {len(entries)}, dropped {len(dropped)}, flagged {len(flagged)} -> {OUT_JSON.relative_to(ROOT)}")
+    if sentence_note:
+        print(sentence_note)
 
 
 if __name__ == "__main__":

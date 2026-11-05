@@ -72,6 +72,16 @@ agree on its characters and pinyin, every syllable is a real Mandarin syllable, 
 CC-CEDICT has a real meaning for it. Everything dropped or flagged is listed in
 `tools/build_report.md`.
 
+### Sentences
+
+`tools/sources/tatoeba_cmn_eng.tsv` holds native-speaker Mandarin sentences with
+English translations from Tatoeba. To refresh it, run the **Fetch Tatoeba sentences**
+workflow in the Actions tab (it commits the new file), or `python3 -m tools.fetch_tatoeba`
+on a machine that can reach tatoeba.org. The phrasebook is the list of Tatoeba
+numbers in `tools/sources/sentences.tsv`; add a number there to add a sentence.
+The build fills in the pinyin and leaves out, with a reason in the report, any
+sentence it can't read with certainty.
+
 ## Making the voices (one time, on your computer)
 
 Needs the Google Cloud setup from the plan: a project, billing linked, a US$1 budget
