@@ -23,6 +23,14 @@ class AboutScreen extends StatelessWidget {
           'where CC-CEDICT and the HSK list agree.',
     ),
     (
+      'Tatoeba',
+      'Creative Commons Attribution 2.0 France (CC BY 2.0 FR)',
+      'https://tatoeba.org',
+      'Phrasebook and example sentences, in Chinese and English. Only sentences added by people '
+          'who list Mandarin as their native language are used, and each one shows its Tatoeba '
+          'number and who wrote it. Licence: https://creativecommons.org/licenses/by/2.0/fr/',
+    ),
+    (
       'Voices',
       'Google Cloud Text-to-Speech',
       'https://cloud.google.com/text-to-speech',

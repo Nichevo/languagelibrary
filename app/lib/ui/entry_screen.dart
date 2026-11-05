@@ -43,9 +43,15 @@ class EntryScreen extends StatelessWidget {
           children: [
             Center(
               child: Text(entry.simplified,
-                  style: theme.textTheme.displayLarge?.copyWith(fontWeight: FontWeight.w600)),
+                  textAlign: TextAlign.center,
+                  style: (entry.isSentence ? theme.textTheme.headlineLarge : theme.textTheme.displayLarge)
+                      ?.copyWith(fontWeight: FontWeight.w600)),
             ),
-            Center(child: PinyinText(entry, style: theme.textTheme.headlineSmall)),
+            Center(
+              child: PinyinText(entry,
+                  textAlign: TextAlign.center,
+                  style: entry.isSentence ? theme.textTheme.titleLarge : theme.textTheme.headlineSmall),
+            ),
             const SizedBox(height: 8),
             Center(
               child: Text(entry.gloss,
@@ -138,13 +144,44 @@ class EntryScreen extends StatelessWidget {
                   child: Text('•  $m'),
                 ),
             ]),
+            if (entry.examples.isNotEmpty)
+              section('Example sentences', [
+                for (final x in entry.examples)
+                  Padding(
+                    padding: const EdgeInsets.only(top: 4),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        IconButton(
+                          tooltip: 'Play',
+                          icon: const Icon(Icons.volume_up_outlined),
+                          onPressed: () => scope.speaker.speakText(x.zh, slow: store.slowAudio),
+                        ),
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(x.zh, style: theme.textTheme.titleMedium),
+                              Text(x.pinyin, style: theme.textTheme.bodySmall),
+                              Text(x.en),
+                              Text(x.credit.join(' · '),
+                                  style: theme.textTheme.labelSmall?.copyWith(color: theme.hintColor)),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                Text('Read by your phone\'s Chinese voice.', style: theme.textTheme.bodySmall),
+              ]),
             if (entry.classifiers.isNotEmpty)
               section('Measure word', [
                 Text(entry.classifiers.map((c) => '${c.hanzi} ${c.pinyin}').join(',  ')),
               ]),
             if (related.isNotEmpty)
               section('Related words and phrases', [
-                Text('Tap one to open it, or star it here.', style: theme.textTheme.bodySmall),
+                Text(entry.isSentence ? 'Words in this sentence. Tap one to open it, or star it here.' : 'Tap one to open it, or star it here.',
+                    style: theme.textTheme.bodySmall),
                 for (final (r, e) in related)
                   Padding(
                     padding: const EdgeInsets.only(top: 4),

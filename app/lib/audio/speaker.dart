@@ -34,6 +34,15 @@ class Speaker {
     await tts.speak(e.simplified);
   }
 
+  /// Read any Chinese text with the phone's voice (used for example sentences).
+  Future<void> speakText(String text, {bool slow = false}) async {
+    await _player.stop();
+    final tts = _tts ??= FlutterTts();
+    await tts.setLanguage('zh-CN');
+    await tts.setSpeechRate(slow ? 0.3 : 0.45);
+    await tts.speak(text);
+  }
+
   Future<void> dispose() async {
     await _player.dispose();
     await _tts?.stop();

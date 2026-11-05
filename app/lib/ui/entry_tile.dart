@@ -14,6 +14,7 @@ class EntryTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    if (entry.isSentence) return _sentence(context, theme);
     return InkWell(
       onTap: () => Navigator.of(context).push(
         MaterialPageRoute(builder: (_) => EntryScreen(entry)),
@@ -49,4 +50,28 @@ class EntryTile extends StatelessWidget {
       ),
     );
   }
+
+  Widget _sentence(BuildContext context, ThemeData theme) => InkWell(
+        onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => EntryScreen(entry))),
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(16, 10, 4, 10),
+          child: Row(
+            children: [
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(entry.simplified, style: theme.textTheme.titleLarge),
+                    PinyinText(entry, style: theme.textTheme.bodySmall),
+                    Text(entry.gloss),
+                    if (trailingNote != null) ...[const SizedBox(height: 4), trailingNote!],
+                  ],
+                ),
+              ),
+              DifficultyBadge(entry.id),
+              StarButton(entry),
+            ],
+          ),
+        ),
+      );
 }

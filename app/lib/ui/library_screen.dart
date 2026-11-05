@@ -42,6 +42,7 @@ class _LibraryScreenState extends State<LibraryScreen> {
               padding: const EdgeInsets.symmetric(horizontal: 12),
               children: [
                 _chip('All', null),
+                _chip('Sentences', Library.sentencesFilter),
                 for (final t in Library.topics) _chip(topicLabel(t), t),
               ],
             ),

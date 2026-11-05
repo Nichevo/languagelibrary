@@ -103,7 +103,15 @@ def list_voices(tts_mod) -> list:
     return sorted(voices, key=lambda v: v.name)
 
 
-def synthesize(tts_mod, client, hanzi: str, numbered: str, voice: str, encoding) -> bytes:
+def synthesize(tts_mod, client, hanzi: str, numbered: str | None, voice: str, encoding) -> bytes:
+    """With `numbered`, the voice is told the exact pinyin. Sentences pass None and are read as written."""
+    if numbered is None:
+        req = tts_mod.SynthesizeSpeechRequest(
+            input=tts_mod.SynthesisInput(text=hanzi),
+            voice=tts_mod.VoiceSelectionParams(language_code=LANG, name=voice),
+            audio_config=tts_mod.AudioConfig(audio_encoding=encoding, sample_rate_hertz=24000),
+        )
+        return client.synthesize_speech(request=req).audio_content
     pron = tts_mod.CustomPronunciations(pronunciations=[
         tts_mod.CustomPronunciationParams(
             phrase=hanzi,
@@ -180,10 +188,11 @@ def cmd_generate(tts_mod, speech_mod, entries, female: str, male: str, force: bo
             clip_key = f"{e['id']}_{key}"
             if not force and (AUDIO_DIR / file).exists() and clip_key in manifest["clips"]:
                 continue
-            mp3 = synthesize(tts_mod, tts, e["simplified"], e["pinyinNumbered"], voice, tts_mod.AudioEncoding.MP3)
-            wav = synthesize(tts_mod, tts, e["simplified"], e["pinyinNumbered"], voice, tts_mod.AudioEncoding.LINEAR16)
+            pinyin_hint = None if e.get("kind") == "sentence" else e["pinyinNumbered"]
+            mp3 = synthesize(tts_mod, tts, e["simplified"], pinyin_hint, voice, tts_mod.AudioEncoding.MP3)
+            wav = synthesize(tts_mod, tts, e["simplified"], pinyin_hint, voice, tts_mod.AudioEncoding.LINEAR16)
             heard = transcribe(speech_mod, stt, wav)
-            verdict = judge(e["simplified"], e["pinyinNumbered"], heard, readings)
+            verdict = judge(strip_punct(e["simplified"]), e["pinyinNumbered"], heard, readings)
             (AUDIO_DIR / file).write_bytes(mp3)
             manifest["clips"][clip_key] = {"file": file, "heard": heard, "check": verdict}
         if n % 25 == 0:

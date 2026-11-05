@@ -28,9 +28,17 @@ choices in `tools/sources/readings.tsv`, the phrase list in
   the everyday one. The meaning shown always comes from the CC-CEDICT entry for
   that exact reading.
 
+- [Tatoeba](https://tatoeba.org) sentences, licensed
+  [CC BY 2.0 FR](https://creativecommons.org/licenses/by/2.0/fr/). Used for the
+  phrasebook sentences and the example sentences under each word. Only Mandarin
+  sentences added by people whose Tatoeba profile lists Mandarin as their native
+  language are used, each with one English translation. Every sentence keeps its
+  Tatoeba number and both contributors' usernames, shown in the app under Source.
+  Pinyin for these sentences is not from Tatoeba: `tools/sentences.py` looks each
+  word up in the library and the HSK list (confirmed by CC-CEDICT) and leaves out
+  any sentence with a word it can't read one way only.
+
 ## Planned sources (not used yet)
 
-- [Tatoeba](https://tatoeba.org) example sentences (CC BY 2.0 FR), phase 2. Each
-  sentence will keep its Tatoeba ID and contributor username.
 - [Hanzi Writer](https://github.com/chanind/hanzi-writer) stroke order (code MIT,
   data Arphic Public License), phase 3.
