@@ -1,0 +1,31 @@
+name: Fetch Tatoeba sentences
+
+# Downloads the Tatoeba exports (tatoeba.org is blocked on some build machines),
+# keeps the native-speaker Mandarin-English pairs and commits
+# tools/sources/tatoeba_cmn_eng.tsv to the branch it ran on.
+on:
+  workflow_dispatch:
+  push:
+    branches: [tatoeba-sentences]
+    paths: [tools/fetch_tatoeba.py, .github/workflows/fetch-tatoeba.yml]
+
+permissions:
+  contents: write
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m unittest tools.tests.test_tatoeba -v
+      - run: python -m tools.fetch_tatoeba
+      - name: Commit the sentence list
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add tools/sources/tatoeba_cmn_eng.tsv
+          git diff --cached --quiet || git commit -m "Update Tatoeba sentence pairs"
+          git push
