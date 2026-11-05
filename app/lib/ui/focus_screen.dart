@@ -17,6 +17,7 @@ class FocusScreen extends StatefulWidget {
 
 class _FocusScreenState extends State<FocusScreen> {
   String? _list; // null = all starred
+  Difficulty? _level; // null = any score
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +31,8 @@ class _FocusScreenState extends State<FocusScreen> {
         const sched = Scheduler();
         final entries = [
           for (final id in store.idsIn(_list).reversed)
-            if (scope.library.byId[id] != null) scope.library.byId[id]!,
+            if (scope.library.byId[id] != null && (_level == null || store.difficulty[id] == _level))
+              scope.library.byId[id]!,
         ];
         int dueFor(String id) =>
             Direction.values.where((d) => sched.isDue(store.card(id, d), now)).length;
@@ -54,7 +56,7 @@ class _FocusScreenState extends State<FocusScreen> {
                 padding: const EdgeInsets.fromLTRB(16, 0, 16, 4),
                 child: Align(
                   alignment: Alignment.centerLeft,
-                  child: Text('${entries.length} words · $dueCards cards due',
+                  child: Text('${entries.length} ${entries.length == 1 ? 'word' : 'words'} · $dueCards cards due',
                       style: Theme.of(context).textTheme.bodySmall),
                 ),
               ),
@@ -83,13 +85,33 @@ class _FocusScreenState extends State<FocusScreen> {
                   ],
                 ),
               ),
+              SizedBox(
+                height: 44,
+                child: ListView(
+                  scrollDirection: Axis.horizontal,
+                  padding: const EdgeInsets.symmetric(horizontal: 12),
+                  children: [
+                    for (final d in Difficulty.values.reversed)
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 4),
+                        child: FilterChip(
+                          label: Text(d.label),
+                          selected: _level == d,
+                          onSelected: (on) => setState(() => _level = on ? d : null),
+                        ),
+                      ),
+                  ],
+                ),
+              ),
               Expanded(
                 child: entries.isEmpty
                     ? Center(
                         child: Padding(
                           padding: const EdgeInsets.all(32),
                           child: Text(
-                            _list == null
+                            _level != null
+                                ? 'No words here scored ${_level!.label}. Score a word from its page.'
+                                : _list == null
                                 ? 'Star words in the Library to add them here.'
                                 : 'Add words to "$_list" from a word\'s page.',
                             textAlign: TextAlign.center,
@@ -123,7 +145,7 @@ class _FocusScreenState extends State<FocusScreen> {
                       icon: const Icon(Icons.style),
                       label: Text(dueCards > 0 ? 'Study $dueCards due cards' : 'Nothing due · study anyway'),
                       onPressed: () => Navigator.of(context).push(MaterialPageRoute(
-                        builder: (_) => PracticeScreen(list: _list, includeNotDue: dueCards == 0),
+                        builder: (_) => PracticeScreen(list: _list, level: _level, includeNotDue: dueCards == 0),
                       )),
                     ),
                   ),

@@ -97,3 +97,37 @@ String topicLabel(String t) => switch (t) {
       'numbers' => 'Numbers',
       _ => t,
     };
+
+/// Small "Hard" / "OK" / "Easy" tag for a word the learner has scored.
+class DifficultyBadge extends StatelessWidget {
+  const DifficultyBadge(this.id, {super.key});
+
+  final String id;
+
+  @override
+  Widget build(BuildContext context) {
+    final store = AppScope.of(context).store;
+    return ListenableBuilder(
+      listenable: store,
+      builder: (context, _) {
+        final d = store.difficulty[id];
+        if (d == null) return const SizedBox.shrink();
+        final scheme = Theme.of(context).colorScheme;
+        final color = switch (d) {
+          Difficulty.hard => scheme.error,
+          Difficulty.ok => scheme.tertiary,
+          Difficulty.easy => scheme.primary,
+        };
+        return Container(
+          margin: const EdgeInsets.only(left: 4),
+          padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+          decoration: BoxDecoration(
+            border: Border.all(color: color),
+            borderRadius: BorderRadius.circular(8),
+          ),
+          child: Text(d.label, style: TextStyle(fontSize: 11, color: color)),
+        );
+      },
+    );
+  }
+}

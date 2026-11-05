@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../data/user_store.dart';
 import '../models/entry.dart';
 import 'common.dart';
 import 'entry_tile.dart';
@@ -74,6 +75,24 @@ class EntryScreen extends StatelessWidget {
                 const Text('Slow'),
                 Switch(value: store.slowAudio, onChanged: store.setSlowAudio),
               ],
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 4, bottom: 8),
+              child: Column(
+                children: [
+                  Text('How hard is this for you?', style: theme.textTheme.bodySmall),
+                  const SizedBox(height: 4),
+                  SegmentedButton<Difficulty>(
+                    emptySelectionAllowed: true,
+                    showSelectedIcon: false,
+                    segments: [
+                      for (final d in Difficulty.values) ButtonSegment(value: d, label: Text(d.label)),
+                    ],
+                    selected: {?store.difficulty[entry.id]},
+                    onSelectionChanged: (s) => store.setDifficulty(entry.id, s.isEmpty ? null : s.first),
+                  ),
+                ],
+              ),
             ),
             if (!studio)
               Text(
