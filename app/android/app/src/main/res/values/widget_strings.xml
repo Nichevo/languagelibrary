@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="widget_wotd_name">Word of the day</string>
+    <string name="widget_wotd_desc">A new word every day, with pinyin and English</string>
+    <string name="widget_due_name">Cards due</string>
+    <string name="widget_due_desc">How many flashcards are due today. Tap to practise.</string>
+    <string name="widget_focus_name">Focus card</string>
+    <string name="widget_focus_desc">A word from your Focus list. Tap to see the answer.</string>
+</resources>

@@ -37,10 +37,25 @@ class UserStore extends ChangeNotifier {
   bool slowAudio = false;
   bool femaleVoice = true;
 
+  /// Colour each character by its tone, like the pinyin.
+  bool toneHanzi = true;
+
+  /// Daily reminder when cards are due, at [reminderMinutes] after midnight.
+  bool reminderOn = false;
+  int reminderMinutes = 20 * 60;
+
   void _load() {
     final raw = _prefs.getString(_key);
     if (raw == null) return;
-    final j = jsonDecode(raw) as Map<String, dynamic>;
+    _apply(jsonDecode(raw) as Map<String, dynamic>);
+  }
+
+  void _apply(Map<String, dynamic> j) {
+    starred.clear();
+    lists.clear();
+    cards.clear();
+    reported.clear();
+    difficulty.clear();
     starred.addAll(List<String>.from(j['starred'] as List? ?? const []));
     (j['lists'] as Map? ?? const {}).forEach((k, v) => lists[k as String] = List<String>.from(v as List));
     (j['cards'] as Map? ?? const {})
@@ -53,13 +68,12 @@ class UserStore extends ChangeNotifier {
     cardFront = j['cardFront'] as String? ?? cardFront;
     slowAudio = j['slowAudio'] as bool? ?? slowAudio;
     femaleVoice = j['femaleVoice'] as bool? ?? femaleVoice;
+    toneHanzi = j['toneHanzi'] as bool? ?? toneHanzi;
+    reminderOn = j['reminderOn'] as bool? ?? reminderOn;
+    reminderMinutes = j['reminderMinutes'] as int? ?? reminderMinutes;
   }
 
-  Future<void> _save() async {
-    notifyListeners();
-    await _prefs.setString(
-      _key,
-      jsonEncode({
+  Map<String, dynamic> _toJson() => {
         'starred': starred,
         'lists': lists,
         'cards': cards.map((k, v) => MapEntry(k, v.toJson())),
@@ -68,8 +82,54 @@ class UserStore extends ChangeNotifier {
         'cardFront': cardFront,
         'slowAudio': slowAudio,
         'femaleVoice': femaleVoice,
-      }),
-    );
+        'toneHanzi': toneHanzi,
+        'reminderOn': reminderOn,
+        'reminderMinutes': reminderMinutes,
+      };
+
+  static const backupFormat = 'language-library-backup';
+
+  /// Everything above as one file, for a backup.
+  String exportBackup(DateTime now) => const JsonEncoder.withIndent(' ').convert({
+        'format': backupFormat,
+        'version': 1,
+        'saved': now.toIso8601String(),
+        'data': _toJson(),
+      });
+
+  /// Replaces everything with a backup made by [exportBackup].
+  /// Throws [FormatException] if the file is not one, and changes nothing then.
+  Future<void> importBackup(String text) async {
+    final Object? j;
+    try {
+      j = jsonDecode(text);
+    } on FormatException {
+      throw const FormatException('This file is not a Language Library backup.');
+    }
+    if (j is! Map<String, dynamic> || j['format'] != backupFormat || j['data'] is! Map<String, dynamic>) {
+      throw const FormatException('This file is not a Language Library backup.');
+    }
+    final data = j['data'] as Map<String, dynamic>;
+    // Check it reads cleanly before touching the current data.
+    UserStore._check(data);
+    _apply(data);
+    await _save();
+  }
+
+  static void _check(Map<String, dynamic> data) {
+    try {
+      List<String>.from(data['starred'] as List? ?? const []);
+      (data['lists'] as Map? ?? const {}).forEach((k, v) => List<String>.from(v as List));
+      (data['cards'] as Map? ?? const {}).forEach((k, v) => CardState.fromJson(v as Map<String, dynamic>));
+      (data['reported'] as Map? ?? const {}).forEach((k, v) => v as String);
+    } catch (_) {
+      throw const FormatException('This backup file is damaged, so nothing was restored.');
+    }
+  }
+
+  Future<void> _save() async {
+    notifyListeners();
+    await _prefs.setString(_key, jsonEncode(_toJson()));
   }
 
   bool isStarred(String id) => starred.contains(id);
@@ -145,6 +205,17 @@ class UserStore extends ChangeNotifier {
 
   Future<void> setSlowAudio(bool v) {
     slowAudio = v;
+    return _save();
+  }
+
+  Future<void> setToneHanzi(bool v) {
+    toneHanzi = v;
+    return _save();
+  }
+
+  Future<void> setReminder({required bool on, int? minutes}) {
+    reminderOn = on;
+    reminderMinutes = minutes ?? reminderMinutes;
     return _save();
   }
 

@@ -42,7 +42,7 @@ class EntryScreen extends StatelessWidget {
           padding: const EdgeInsets.fromLTRB(20, 0, 20, 32),
           children: [
             Center(
-              child: Text(entry.simplified,
+              child: HanziText(entry,
                   textAlign: TextAlign.center,
                   style: (entry.isSentence ? theme.textTheme.headlineLarge : theme.textTheme.displayLarge)
                       ?.copyWith(fontWeight: FontWeight.w600)),
@@ -78,7 +78,7 @@ class EntryScreen extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Text('Slow'),
+                const Text('Slow (0.75×)'),
                 Switch(value: store.slowAudio, onChanged: store.setSlowAudio),
               ],
             ),
