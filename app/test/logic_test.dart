@@ -91,6 +91,8 @@ void main() {
       expect(food, isNotEmpty);
       expect(food.every((e) => e.topics.contains('food')), isTrue);
       expect(lib.search('', topic: 'numbers').map((e) => e.simplified), containsAll(['一', '二', '十']));
+    expect(lib.search('', topic: 'love').map((e) => e.simplified), containsAll(['漂亮', '可爱', '怎么样', '晚安']));
+    expect(lib.search('', topic: 'food').map((e) => e.simplified), containsAll(['咖啡', '拿铁']));
     });
 
     test('tone change note for 你好', () {

@@ -87,4 +87,38 @@ void main() {
     expect(find.text('本'), findsWidgets);
     expect(find.text('Female voice'), findsOneWidget);
   });
+
+  testWidgets('score a word and filter the Focus list by it', (tester) async {
+    SharedPreferences.setMockInitialValues({});
+    final store = await UserStore.open();
+    final lib = loadRealLibrary();
+    await tester.pumpWidget(appForTest(lib, store));
+
+    for (final (pinyin, hanzi, score) in [('nihao', '你好', 'Hard'), ('xie4xie', '谢谢', 'Easy')]) {
+      await tester.enterText(find.byType(TextField), pinyin);
+      await tester.pumpAndSettle();
+      await tester.tap(find.text(hanzi).first);
+      await tester.pumpAndSettle();
+      await tester.tap(find.descendant(of: find.byType(AppBar), matching: find.byIcon(Icons.star_border)));
+      await tester.tap(find.descendant(of: find.byType(SegmentedButton<Difficulty>), matching: find.text(score)));
+      await tester.pumpAndSettle();
+      await tester.pageBack();
+      await tester.pumpAndSettle();
+    }
+    final nihao = lib.entries.firstWhere((e) => e.simplified == '你好');
+    expect(store.difficulty[nihao.id], Difficulty.hard);
+
+    // Survives a restart.
+    final again = await UserStore.open();
+    expect(again.difficulty[nihao.id], Difficulty.hard);
+
+    await tester.tap(find.text('Focus'));
+    await tester.pumpAndSettle();
+    expect(find.textContaining('2 words'), findsOneWidget);
+    await tester.tap(find.widgetWithText(FilterChip, 'Hard'));
+    await tester.pumpAndSettle();
+    expect(find.textContaining('1 word ·'), findsOneWidget);
+    expect(find.text('你好'), findsOneWidget);
+    expect(find.text('谢谢'), findsNothing);
+  });
 }

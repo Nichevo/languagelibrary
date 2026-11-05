@@ -16,7 +16,7 @@ class Library {
   /// `id_f` / `id_m` -> file name under assets/audio/.
   final Map<String, String> audioFiles;
 
-  static const topics = ['everyday', 'food', 'travel', 'family', 'numbers'];
+  static const topics = ['everyday', 'food', 'travel', 'family', 'love', 'numbers'];
 
   static Future<Library> load([AssetBundle? bundle]) async {
     final b = bundle ?? rootBundle;

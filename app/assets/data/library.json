@@ -205,6 +205,10 @@
      "why": "Also means \"correct\""
     },
     {
+     "id": "eead626a16",
+     "why": "Also means \"correct\""
+    },
+    {
      "id": "fe58ff6a6a",
      "why": "Also means \"right\""
     },
@@ -327,6 +331,10 @@
     },
     {
      "id": "7945ae40c5",
+     "why": "Contains 在"
+    },
+    {
+     "id": "f300b0f62f",
      "why": "Contains 在"
     }
    ]
@@ -1151,6 +1159,10 @@
     {
      "id": "6915311674",
      "why": "Contains 会"
+    },
+    {
+     "id": "943198a867",
+     "why": "Contains 会"
     }
    ]
   },
@@ -1257,6 +1269,10 @@
      "why": "Also means \"correct\""
     },
     {
+     "id": "eead626a16",
+     "why": "Also means \"correct\""
+    },
+    {
      "id": "87abfa3e02",
      "why": "Also means \"for\""
     },
@@ -1270,6 +1286,14 @@
     },
     {
      "id": "028cb0dd98",
+     "why": "Contains 对"
+    },
+    {
+     "id": "dc0505a394",
+     "why": "Contains 对"
+    },
+    {
+     "id": "8834ae7078",
      "why": "Contains 对"
     }
    ]
@@ -1578,6 +1602,10 @@
     {
      "id": "cc8aee5165",
      "why": "Contains 还"
+    },
+    {
+     "id": "5aaf2be645",
+     "why": "Contains 还"
     }
    ]
   },
@@ -1637,6 +1665,10 @@
     },
     {
      "id": "e2eb357548",
+     "why": "Contains 还"
+    },
+    {
+     "id": "5aaf2be645",
      "why": "Contains 还"
     }
    ]
@@ -1820,7 +1852,8 @@
    "hsk": 1,
    "frequency": 44,
    "topics": [
-    "everyday"
+    "everyday",
+    "love"
    ],
    "pronunciation": {
     "syllables": [
@@ -1841,9 +1874,15 @@
    "notes": [],
    "sources": [
     "HSK",
-    "CC-CEDICT"
+    "CC-CEDICT",
+    "Curated phrase list"
    ],
-   "related": []
+   "related": [
+    {
+     "id": "81acdc80a7",
+     "why": "Contains 想"
+    }
+   ]
   },
   {
    "id": "215acdf431",
@@ -2266,6 +2305,10 @@
     {
      "id": "b90fc42440",
      "why": "Also means \"to write\""
+    },
+    {
+     "id": "572401f2e3",
+     "why": "Contains 做"
     }
    ]
   },
@@ -2905,6 +2948,10 @@
     },
     {
      "id": "f34c48117d",
+     "why": "Contains 真"
+    },
+    {
+     "id": "e5b97ea832",
      "why": "Contains 真"
     }
    ]
@@ -3897,6 +3944,10 @@
     {
      "id": "aebb96a6f5",
      "why": "Also means \"to walk\""
+    },
+    {
+     "id": "726db1b5ff",
+     "why": "Contains 走"
     }
    ]
   },
@@ -4466,7 +4517,8 @@
    "hsk": 1,
    "frequency": 130,
    "topics": [
-    "everyday"
+    "everyday",
+    "love"
    ],
    "pronunciation": {
     "syllables": [
@@ -4487,7 +4539,8 @@
    "notes": [],
    "sources": [
     "HSK",
-    "CC-CEDICT"
+    "CC-CEDICT",
+    "Curated phrase list"
    ],
    "related": [
     {
@@ -4497,6 +4550,18 @@
     {
      "id": "aa57930e69",
      "why": "Also means \"to be fond of\""
+    },
+    {
+     "id": "0c945f7001",
+     "why": "Contains 爱"
+    },
+    {
+     "id": "dc23b3bff0",
+     "why": "Contains 爱"
+    },
+    {
+     "id": "932c94a0fa",
+     "why": "Contains 爱"
     }
    ]
   },
@@ -4697,7 +4762,8 @@
    "hsk": 1,
    "frequency": 139,
    "topics": [
-    "everyday"
+    "everyday",
+    "love"
    ],
    "pronunciation": {
     "syllables": [
@@ -4727,7 +4793,8 @@
    "notes": [],
    "sources": [
     "HSK",
-    "CC-CEDICT"
+    "CC-CEDICT",
+    "Curated phrase list"
    ],
    "related": [
     {
@@ -5124,6 +5191,10 @@
     {
      "id": "e2eb357548",
      "why": "Also uses 还"
+    },
+    {
+     "id": "5aaf2be645",
+     "why": "Also uses 还"
     }
    ]
   },
@@ -5407,6 +5478,10 @@
     {
      "id": "cc8aee5165",
      "why": "Also uses 还"
+    },
+    {
+     "id": "5aaf2be645",
+     "why": "Also uses 还"
     }
    ]
   },
@@ -5522,6 +5597,10 @@
     {
      "id": "3efefdec42",
      "why": "Also uses 得"
+    },
+    {
+     "id": "cae8e58cc0",
+     "why": "Also uses 得"
     }
    ]
   },
@@ -5629,7 +5708,8 @@
    "hsk": 1,
    "frequency": 172,
    "topics": [
-    "everyday"
+    "everyday",
+    "love"
    ],
    "pronunciation": {
     "syllables": [
@@ -5661,9 +5741,14 @@
    "notes": [],
    "sources": [
     "HSK",
-    "CC-CEDICT"
+    "CC-CEDICT",
+    "Curated phrase list"
    ],
    "related": [
+    {
+     "id": "f300b0f62f",
+     "why": "Also means \"together\""
+    },
     {
      "id": "803a69d29d",
      "why": "Part of 一起"
@@ -5751,6 +5836,10 @@
     },
     {
      "id": "41d8419766",
+     "why": "Also uses 起"
+    },
+    {
+     "id": "f300b0f62f",
      "why": "Also uses 起"
     },
     {
@@ -6294,6 +6383,10 @@
     },
     {
      "id": "883011e3ea",
+     "why": "Contains 手"
+    },
+    {
+     "id": "db6835e584",
      "why": "Contains 手"
     }
    ]
@@ -7200,6 +7293,10 @@
     {
      "id": "e919cb2925",
      "why": "Part of 重要"
+    },
+    {
+     "id": "d948937d00",
+     "why": "Also uses 重"
     }
    ]
   },
@@ -7650,6 +7747,14 @@
     {
      "id": "89549bcd2f",
      "why": "Contains 老"
+    },
+    {
+     "id": "83f84de63d",
+     "why": "Contains 老"
+    },
+    {
+     "id": "721c4544ef",
+     "why": "Contains 老"
     }
    ]
   },
@@ -7868,6 +7973,10 @@
     {
      "id": "bd2fd8fcbb",
      "why": "Contains 放"
+    },
+    {
+     "id": "251a654784",
+     "why": "Contains 放"
     }
    ]
   },
@@ -7993,6 +8102,10 @@
     {
      "id": "782a0ca72c",
      "why": "Also means \"to hold\""
+    },
+    {
+     "id": "ee9fe53973",
+     "why": "Contains 拿"
     }
    ]
   },
@@ -8203,6 +8316,10 @@
     },
     {
      "id": "3efefdec42",
+     "why": "Also uses 得"
+    },
+    {
+     "id": "cae8e58cc0",
      "why": "Also uses 得"
     },
     {
@@ -8996,6 +9113,10 @@
     {
      "id": "f4303ae310",
      "why": "Also uses 女"
+    },
+    {
+     "id": "d81fb9631e",
+     "why": "Also uses 女"
     }
    ]
   },
@@ -9719,7 +9840,12 @@
     "HSK",
     "CC-CEDICT"
    ],
-   "related": []
+   "related": [
+    {
+     "id": "d8c1dfdcdb",
+     "why": "Contains 喝"
+    }
+   ]
   },
   {
    "id": "fb1573ce5c",
@@ -10036,6 +10162,10 @@
     },
     {
      "id": "649329e62e",
+     "why": "Contains 早"
+    },
+    {
+     "id": "02c0da4d8b",
      "why": "Contains 早"
     }
    ]
@@ -10682,6 +10812,10 @@
     {
      "id": "94a3c37f15",
      "why": "Contains 块"
+    },
+    {
+     "id": "57524d47fc",
+     "why": "Contains 块"
     }
    ]
   },
@@ -11314,6 +11448,10 @@
     {
      "id": "028cb0dd98",
      "why": "Also means \"wrong\""
+    },
+    {
+     "id": "eead626a16",
+     "why": "Contains 错"
     }
    ]
   },
@@ -11740,6 +11878,7 @@
    "frequency": 554,
    "topics": [
     "family",
+    "love",
     "travel"
    ],
    "pronunciation": {
@@ -11770,7 +11909,8 @@
    "notes": [],
    "sources": [
     "HSK",
-    "CC-CEDICT"
+    "CC-CEDICT",
+    "Curated phrase list"
    ],
    "related": [
     {
@@ -11891,6 +12031,10 @@
     },
     {
      "id": "8c66382f45",
+     "why": "Also uses 天"
+    },
+    {
+     "id": "dc0505a394",
      "why": "Also uses 天"
     }
    ]
@@ -12394,6 +12538,10 @@
     {
      "id": "d7d5326fe3",
      "why": "Contains 重"
+    },
+    {
+     "id": "d948937d00",
+     "why": "Contains 重"
     }
    ]
   },
@@ -12463,6 +12611,10 @@
     },
     {
      "id": "f34c48117d",
+     "why": "Also uses 真"
+    },
+    {
+     "id": "e5b97ea832",
      "why": "Also uses 真"
     }
    ]
@@ -12562,7 +12714,12 @@
     "HSK",
     "CC-CEDICT"
    ],
-   "related": []
+   "related": [
+    {
+     "id": "1e5fd1aef2",
+     "why": "Contains 远"
+    }
+   ]
   },
   {
    "id": "41e3fb1b5d",
@@ -12982,6 +13139,10 @@
     },
     {
      "id": "e03fdcd4e5",
+     "why": "Also uses 得"
+    },
+    {
+     "id": "cae8e58cc0",
      "why": "Also uses 得"
     }
    ]
@@ -14017,6 +14178,14 @@
     {
      "id": "89549bcd2f",
      "why": "Also uses 老"
+    },
+    {
+     "id": "83f84de63d",
+     "why": "Also uses 老"
+    },
+    {
+     "id": "721c4544ef",
+     "why": "Also uses 老"
     }
    ]
   },
@@ -14719,6 +14888,10 @@
      "why": "Also uses 手"
     },
     {
+     "id": "db6835e584",
+     "why": "Also uses 手"
+    },
+    {
      "id": "d4f331bc96",
      "why": "Also uses 机"
     },
@@ -14752,7 +14925,8 @@
    "hsk": 1,
    "frequency": 859,
    "topics": [
-    "everyday"
+    "everyday",
+    "love"
    ],
    "pronunciation": {
     "syllables": [
@@ -14773,7 +14947,8 @@
    "notes": [],
    "sources": [
     "HSK",
-    "CC-CEDICT"
+    "CC-CEDICT",
+    "Curated phrase list"
    ],
    "related": [
     {
@@ -14897,6 +15072,10 @@
     },
     {
      "id": "1664b31e4a",
+     "why": "Also uses 见"
+    },
+    {
+     "id": "26ef48a0df",
      "why": "Also uses 见"
     },
     {
@@ -15057,6 +15236,10 @@
     },
     {
      "id": "f4303ae310",
+     "why": "Also uses 女"
+    },
+    {
+     "id": "d81fb9631e",
      "why": "Also uses 女"
     }
    ]
@@ -15371,7 +15554,8 @@
    "hsk": 1,
    "frequency": 920,
    "topics": [
-    "everyday"
+    "everyday",
+    "love"
    ],
    "pronunciation": {
     "syllables": [
@@ -15401,9 +15585,14 @@
    "notes": [],
    "sources": [
     "HSK",
-    "CC-CEDICT"
+    "CC-CEDICT",
+    "Curated phrase list"
    ],
    "related": [
+    {
+     "id": "c5c8ca7233",
+     "why": "Also means \"happy\""
+    },
     {
      "id": "fb248135b6",
      "why": "Part of 高兴"
@@ -15756,6 +15945,7 @@
    "hsk": 1,
    "frequency": 944,
    "topics": [
+    "love",
     "travel"
    ],
    "pronunciation": {
@@ -15786,7 +15976,8 @@
    "notes": [],
    "sources": [
     "HSK",
-    "CC-CEDICT"
+    "CC-CEDICT",
+    "Curated phrase list"
    ],
    "related": [
     {
@@ -16581,6 +16772,10 @@
     {
      "id": "93ab06996e",
      "why": "Also uses 真"
+    },
+    {
+     "id": "e5b97ea832",
+     "why": "Also uses 真"
     }
    ]
   },
@@ -17009,6 +17204,10 @@
      "why": "Also uses 早"
     },
     {
+     "id": "02c0da4d8b",
+     "why": "Also uses 早"
+    },
+    {
      "id": "03ed9c9d5d",
      "why": "Also uses 上"
     },
@@ -17022,10 +17221,6 @@
     },
     {
      "id": "03c2a6a290",
-     "why": "Also uses 上"
-    },
-    {
-     "id": "7f67244aa4",
      "why": "Also uses 上"
     }
    ]
@@ -17246,6 +17441,10 @@
     {
      "id": "3619426872",
      "why": "Contains 哥"
+    },
+    {
+     "id": "463f7ab727",
+     "why": "Contains 哥"
     }
    ]
   },
@@ -17457,7 +17656,8 @@
    "hsk": 1,
    "frequency": 1197,
    "topics": [
-    "everyday"
+    "everyday",
+    "love"
    ],
    "pronunciation": {
     "syllables": [
@@ -17478,7 +17678,8 @@
    "notes": [],
    "sources": [
     "HSK",
-    "CC-CEDICT"
+    "CC-CEDICT",
+    "Curated phrase list"
    ],
    "related": []
   },
@@ -17565,6 +17766,10 @@
     },
     {
      "id": "6915311674",
+     "why": "Also uses 开"
+    },
+    {
+     "id": "72e2040929",
      "why": "Also uses 开"
     }
    ]
@@ -17800,7 +18005,8 @@
    "hsk": 1,
    "frequency": 1225,
    "topics": [
-    "everyday"
+    "everyday",
+    "love"
    ],
    "pronunciation": {
     "syllables": [
@@ -17830,7 +18036,8 @@
    "notes": [],
    "sources": [
     "HSK",
-    "CC-CEDICT"
+    "CC-CEDICT",
+    "Curated phrase list"
    ],
    "related": []
   },
@@ -18440,7 +18647,8 @@
    "hsk": 1,
    "frequency": 1415,
    "topics": [
-    "food"
+    "food",
+    "love"
    ],
    "pronunciation": {
     "syllables": [
@@ -18470,7 +18678,8 @@
    "notes": [],
    "sources": [
     "HSK",
-    "CC-CEDICT"
+    "CC-CEDICT",
+    "Curated phrase list"
    ],
    "related": [
     {
@@ -18758,7 +18967,8 @@
    "hsk": 1,
    "frequency": 1477,
    "topics": [
-    "food"
+    "food",
+    "love"
    ],
    "pronunciation": {
     "syllables": [
@@ -18779,7 +18989,8 @@
    "notes": [],
    "sources": [
     "HSK",
-    "CC-CEDICT"
+    "CC-CEDICT",
+    "Curated phrase list"
    ],
    "related": []
   },
@@ -18829,6 +19040,10 @@
     },
     {
      "id": "3204f0fecb",
+     "why": "Also means \"right\""
+    },
+    {
+     "id": "eead626a16",
      "why": "Also means \"right\""
     },
     {
@@ -19702,7 +19917,8 @@
    "hsk": 1,
    "frequency": 1577,
    "topics": [
-    "everyday"
+    "everyday",
+    "love"
    ],
    "pronunciation": {
     "syllables": [
@@ -19762,6 +19978,14 @@
      "why": "Also uses 对"
     },
     {
+     "id": "dc0505a394",
+     "why": "Also uses 对"
+    },
+    {
+     "id": "8834ae7078",
+     "why": "Also uses 对"
+    },
+    {
      "id": "d0dd89e9ae",
      "why": "Also uses 起"
     },
@@ -19771,6 +19995,10 @@
     },
     {
      "id": "87e79e162d",
+     "why": "Also uses 起"
+    },
+    {
+     "id": "f300b0f62f",
      "why": "Also uses 起"
     }
    ]
@@ -19913,6 +20141,10 @@
     {
      "id": "1c056b7395",
      "why": "Part of 哥哥"
+    },
+    {
+     "id": "463f7ab727",
+     "why": "Also uses 哥"
     }
    ]
   },
@@ -20182,11 +20414,11 @@
      "why": "Also uses 天"
     },
     {
-     "id": "2dde68e0cb",
-     "why": "Also uses 气"
+     "id": "dc0505a394",
+     "why": "Also uses 天"
     },
     {
-     "id": "b9eba6f39a",
+     "id": "2dde68e0cb",
      "why": "Also uses 气"
     }
    ]
@@ -20901,7 +21133,8 @@
    "hsk": 1,
    "frequency": 1876,
    "topics": [
-    "everyday"
+    "everyday",
+    "love"
    ],
    "pronunciation": {
     "syllables": [
@@ -20931,7 +21164,8 @@
    "notes": [],
    "sources": [
     "HSK",
-    "CC-CEDICT"
+    "CC-CEDICT",
+    "Curated phrase list"
    ],
    "related": [
     {
@@ -20955,6 +21189,10 @@
      "why": "Also uses 见"
     },
     {
+     "id": "26ef48a0df",
+     "why": "Also uses 见"
+    },
+    {
      "id": "5524e7d419",
      "why": "Also uses 见"
     },
@@ -20968,10 +21206,6 @@
     },
     {
      "id": "ed0389f270",
-     "why": "Also uses 面"
-    },
-    {
-     "id": "2715e87e09",
      "why": "Also uses 面"
     }
    ]
@@ -20991,7 +21225,8 @@
    "hsk": 1,
    "frequency": 1877,
    "topics": [
-    "everyday"
+    "everyday",
+    "love"
    ],
    "pronunciation": {
     "syllables": [
@@ -21021,7 +21256,8 @@
    "notes": [],
    "sources": [
     "HSK",
-    "CC-CEDICT"
+    "CC-CEDICT",
+    "Curated phrase list"
    ],
    "related": [
     {
@@ -21217,6 +21453,10 @@
      "why": "Also uses 女"
     },
     {
+     "id": "d81fb9631e",
+     "why": "Also uses 女"
+    },
+    {
      "id": "025faf401b",
      "why": "Also uses 生"
     },
@@ -21230,10 +21470,6 @@
     },
     {
      "id": "6636d5c545",
-     "why": "Also uses 生"
-    },
-    {
-     "id": "2dde68e0cb",
      "why": "Also uses 生"
     }
    ]
@@ -21288,6 +21524,10 @@
     {
      "id": "6e0aaea248",
      "why": "Its measure word"
+    },
+    {
+     "id": "21d49aa0af",
+     "why": "Contains 茶"
     }
    ]
   },
@@ -21673,7 +21913,8 @@
    "hsk": 1,
    "frequency": 2113,
    "topics": [
-    "everyday"
+    "everyday",
+    "love"
    ],
    "pronunciation": {
     "syllables": [
@@ -21703,7 +21944,8 @@
    "notes": [],
    "sources": [
     "HSK",
-    "CC-CEDICT"
+    "CC-CEDICT",
+    "Curated phrase list"
    ],
    "related": [
     {
@@ -22001,6 +22243,10 @@
     },
     {
      "id": "6915311674",
+     "why": "Also uses 会"
+    },
+    {
+     "id": "943198a867",
      "why": "Also uses 会"
     }
    ]
@@ -22503,6 +22749,14 @@
     },
     {
      "id": "cd4699bece",
+     "why": "Also uses 老"
+    },
+    {
+     "id": "83f84de63d",
+     "why": "Also uses 老"
+    },
+    {
+     "id": "721c4544ef",
      "why": "Also uses 老"
     }
    ]
@@ -23084,6 +23338,10 @@
    ],
    "related": [
     {
+     "id": "d8c1dfdcdb",
+     "why": "Also means \"tasty\""
+    },
+    {
      "id": "631b2a9d50",
      "why": "Part of 好吃"
     },
@@ -23117,10 +23375,6 @@
     },
     {
      "id": "d0e307e453",
-     "why": "Also uses 好"
-    },
-    {
-     "id": "a8d69a4194",
      "why": "Also uses 好"
     }
    ]
@@ -23190,6 +23444,10 @@
     },
     {
      "id": "1664b31e4a",
+     "why": "Also uses 见"
+    },
+    {
+     "id": "26ef48a0df",
      "why": "Also uses 见"
     },
     {
@@ -23515,6 +23773,14 @@
     {
      "id": "41d8419766",
      "why": "Also uses 对"
+    },
+    {
+     "id": "dc0505a394",
+     "why": "Also uses 对"
+    },
+    {
+     "id": "8834ae7078",
+     "why": "Also uses 对"
     }
    ]
   },
@@ -23617,7 +23883,8 @@
    "hsk": 1,
    "frequency": 2645,
    "topics": [
-    "everyday"
+    "everyday",
+    "love"
    ],
    "pronunciation": {
     "syllables": [
@@ -23647,7 +23914,8 @@
    "notes": [],
    "sources": [
     "HSK",
-    "CC-CEDICT"
+    "CC-CEDICT",
+    "Curated phrase list"
    ],
    "related": [
     {
@@ -23668,6 +23936,10 @@
     },
     {
      "id": "41d8419766",
+     "why": "Also uses 起"
+    },
+    {
+     "id": "f300b0f62f",
      "why": "Also uses 起"
     }
    ]
@@ -23809,6 +24081,10 @@
      "why": "Also uses 开"
     },
     {
+     "id": "72e2040929",
+     "why": "Also uses 开"
+    },
+    {
      "id": "21471316ae",
      "why": "Also uses 车"
     },
@@ -23822,10 +24098,6 @@
     },
     {
      "id": "0f4595b97a",
-     "why": "Also uses 车"
-    },
-    {
-     "id": "81f7670dbf",
      "why": "Also uses 车"
     }
    ]
@@ -23967,6 +24239,10 @@
     },
     {
      "id": "a5ff5f539e",
+     "why": "Contains 奶"
+    },
+    {
+     "id": "21d49aa0af",
      "why": "Contains 奶"
     }
    ]
@@ -24447,6 +24723,10 @@
     {
      "id": "a5ff5f539e",
      "why": "Also uses 奶"
+    },
+    {
+     "id": "21d49aa0af",
+     "why": "Also uses 奶"
     }
    ]
   },
@@ -24839,6 +25119,10 @@
     {
      "id": "c45de9dac2",
      "why": "Also uses 奶"
+    },
+    {
+     "id": "21d49aa0af",
+     "why": "Also uses 奶"
     }
    ]
   },
@@ -24855,7 +25139,8 @@
    "hsk": 1,
    "frequency": 3004,
    "topics": [
-    "family"
+    "family",
+    "love"
    ],
    "pronunciation": {
     "syllables": [
@@ -24894,9 +25179,14 @@
    "notes": [],
    "sources": [
     "HSK",
-    "CC-CEDICT"
+    "CC-CEDICT",
+    "Curated phrase list"
    ],
    "related": [
+    {
+     "id": "8834ae7078",
+     "why": "Also means \"girlfriend\""
+    },
     {
      "id": "50b7ee29db",
      "why": "Part of 女朋友"
@@ -24918,6 +25208,10 @@
      "why": "Also uses 女"
     },
     {
+     "id": "d81fb9631e",
+     "why": "Also uses 女"
+    },
+    {
      "id": "26b3272d3d",
      "why": "Also uses 朋"
     },
@@ -24928,10 +25222,6 @@
     {
      "id": "2178f43ab5",
      "why": "Also uses 朋"
-    },
-    {
-     "id": "0ac9de8648",
-     "why": "Also uses 友"
     }
    ]
   },
@@ -25155,7 +25445,7 @@
      "why": "Also uses 见"
     },
     {
-     "id": "5524e7d419",
+     "id": "26ef48a0df",
      "why": "Also uses 见"
     }
    ]
@@ -25258,7 +25548,8 @@
    "hsk": 1,
    "frequency": 3176,
    "topics": [
-    "family"
+    "family",
+    "love"
    ],
    "pronunciation": {
     "syllables": [
@@ -25297,9 +25588,14 @@
    "notes": [],
    "sources": [
     "HSK",
-    "CC-CEDICT"
+    "CC-CEDICT",
+    "Curated phrase list"
    ],
    "related": [
+    {
+     "id": "8834ae7078",
+     "why": "Also means \"boyfriend\""
+    },
     {
      "id": "58355fe7af",
      "why": "Part of 男朋友"
@@ -25348,6 +25644,7 @@
    "hsk": 1,
    "frequency": 3207,
    "topics": [
+    "love",
     "travel"
    ],
    "pronunciation": {
@@ -25378,7 +25675,8 @@
    "notes": [],
    "sources": [
     "HSK",
-    "CC-CEDICT"
+    "CC-CEDICT",
+    "Curated phrase list"
    ],
    "related": [
     {
@@ -25483,6 +25781,10 @@
     {
      "id": "161b2bf07c",
      "why": "Part of 水果"
+    },
+    {
+     "id": "9fcdd41153",
+     "why": "Also uses 果"
     }
    ]
   },
@@ -25756,6 +26058,10 @@
     {
      "id": "3c5babecee",
      "why": "Its measure word"
+    },
+    {
+     "id": "e58a6d6e71",
+     "why": "Also uses 蛋"
     }
    ]
   },
@@ -25772,7 +26078,8 @@
    "hsk": 1,
    "frequency": 3541,
    "topics": [
-    "everyday"
+    "everyday",
+    "love"
    ],
    "pronunciation": {
     "syllables": [
@@ -26462,7 +26769,8 @@
    "hsk": 1,
    "frequency": 3794,
    "topics": [
-    "food"
+    "food",
+    "love"
    ],
    "pronunciation": {
     "syllables": [
@@ -26492,7 +26800,8 @@
    "notes": [],
    "sources": [
     "HSK",
-    "CC-CEDICT"
+    "CC-CEDICT",
+    "Curated phrase list"
    ],
    "related": [
     {
@@ -26795,6 +27104,10 @@
      "why": "Also uses 开"
     },
     {
+     "id": "72e2040929",
+     "why": "Also uses 开"
+    },
+    {
      "id": "0b3c9b0f52",
      "why": "Also uses 玩"
     },
@@ -26875,6 +27188,10 @@
     },
     {
      "id": "152eb7b4e4",
+     "why": "Also uses 外"
+    },
+    {
+     "id": "1b7635018b",
      "why": "Also uses 外"
     }
    ]
@@ -27551,6 +27868,10 @@
      "why": "Also uses 外"
     },
     {
+     "id": "1b7635018b",
+     "why": "Also uses 外"
+    },
+    {
      "id": "5a38b8d802",
      "why": "Also uses 国"
     }
@@ -27800,7 +28121,15 @@
      "why": "Also uses 开"
     },
     {
+     "id": "72e2040929",
+     "why": "Also uses 开"
+    },
+    {
      "id": "c9a09dd2c3",
+     "why": "Also uses 会"
+    },
+    {
+     "id": "943198a867",
      "why": "Also uses 会"
     }
    ]
@@ -28137,6 +28466,10 @@
     {
      "id": "bc63640739",
      "why": "Part of 走路"
+    },
+    {
+     "id": "726db1b5ff",
+     "why": "Also uses 走"
     },
     {
      "id": "7f67244aa4",
@@ -28486,28 +28819,28 @@
      "why": "Part of 爱好"
     },
     {
-     "id": "861e44c8be",
-     "why": "Also uses 好"
+     "id": "0c945f7001",
+     "why": "Also uses 爱"
     },
     {
-     "id": "1a5b021c80",
-     "why": "Also uses 好"
+     "id": "dc23b3bff0",
+     "why": "Also uses 爱"
     },
     {
-     "id": "9510a6a4ff",
-     "why": "Also uses 好"
+     "id": "932c94a0fa",
+     "why": "Also uses 爱"
     },
     {
-     "id": "4a869fda21",
-     "why": "Also uses 好"
+     "id": "6542a7f6ea",
+     "why": "Also uses 爱"
     },
     {
-     "id": "6b94f63415",
-     "why": "Also uses 好"
+     "id": "b4feeb85ee",
+     "why": "Also uses 爱"
     },
     {
-     "id": "1d54df8343",
-     "why": "Also uses 好"
+     "id": "1301b60b33",
+     "why": "Also uses 爱"
     }
    ]
   },
@@ -29461,6 +29794,10 @@
      "why": "Also uses 放"
     },
     {
+     "id": "251a654784",
+     "why": "Also uses 放"
+    },
+    {
      "id": "a3b19baa40",
      "why": "Also uses 假"
     }
@@ -29835,6 +30172,10 @@
      "why": "Also uses 早"
     },
     {
+     "id": "02c0da4d8b",
+     "why": "Also uses 早"
+    },
+    {
      "id": "e9a1b88bfb",
      "why": "Also uses 饭"
     },
@@ -29848,10 +30189,6 @@
     },
     {
      "id": "23a383ad35",
-     "why": "Also uses 饭"
-    },
-    {
-     "id": "444d0b7b7c",
      "why": "Also uses 饭"
     }
    ]
@@ -30083,6 +30420,10 @@
      "why": "Also uses 放"
     },
     {
+     "id": "251a654784",
+     "why": "Also uses 放"
+    },
+    {
      "id": "fb1573ce5c",
      "why": "Also uses 学"
     },
@@ -30104,10 +30445,6 @@
     },
     {
      "id": "508cb07d10",
-     "why": "Also uses 学"
-    },
-    {
-     "id": "08eb4fbc3d",
      "why": "Also uses 学"
     }
    ]
@@ -30920,6 +31257,10 @@
      "why": "Also uses 手"
     },
     {
+     "id": "db6835e584",
+     "why": "Also uses 手"
+    },
+    {
      "id": "27e9e80a2b",
      "why": "Also uses 间"
     },
@@ -31322,6 +31663,10 @@
     {
      "id": "152eb7b4e4",
      "why": "Also uses 外"
+    },
+    {
+     "id": "1b7635018b",
+     "why": "Also uses 外"
     }
    ]
   },
@@ -31487,6 +31832,10 @@
     {
      "id": "c74f6c4196",
      "why": "Part of 一块儿"
+    },
+    {
+     "id": "57524d47fc",
+     "why": "Also uses 块"
     }
    ]
   },
@@ -31763,6 +32112,10 @@
      "why": "Also uses 外"
     },
     {
+     "id": "1b7635018b",
+     "why": "Also uses 外"
+    },
+    {
      "id": "06c01acab7",
      "why": "Also uses 边"
     },
@@ -31780,10 +32133,6 @@
     },
     {
      "id": "353a158071",
-     "why": "Also uses 边"
-    },
-    {
-     "id": "f96549437f",
      "why": "Also uses 边"
     }
    ]
@@ -32914,6 +33263,10 @@
     },
     {
      "id": "f1e7ec364f",
+     "why": "Also uses 女"
+    },
+    {
+     "id": "d81fb9631e",
      "why": "Also uses 女"
     },
     {
@@ -34264,6 +34617,115 @@
    ]
   },
   {
+   "id": "26ef48a0df",
+   "simplified": "一见钟情",
+   "traditional": "一見鍾情",
+   "pinyin": "yī jiàn zhōng qíng",
+   "pinyinNumbered": "yi1 jian4 zhong1 qing2",
+   "meanings": [
+    "to fall in love at first sight (idiom)"
+   ],
+   "classifiers": [],
+   "hsk": null,
+   "frequency": null,
+   "topics": [
+    "love",
+    "numbers"
+   ],
+   "pronunciation": {
+    "syllables": [
+     {
+      "hanzi": "一",
+      "pinyin": "yī",
+      "initial": "y",
+      "final": "i",
+      "tone": 1,
+      "toneName": "1st tone: high and level",
+      "spokenTone": 2
+     },
+     {
+      "hanzi": "见",
+      "pinyin": "jiàn",
+      "initial": "j",
+      "final": "ian",
+      "tone": 4,
+      "toneName": "4th tone: sharp fall",
+      "spokenTone": 4
+     },
+     {
+      "hanzi": "钟",
+      "pinyin": "zhōng",
+      "initial": "zh",
+      "final": "ong",
+      "tone": 1,
+      "toneName": "1st tone: high and level",
+      "spokenTone": 1
+     },
+     {
+      "hanzi": "情",
+      "pinyin": "qíng",
+      "initial": "q",
+      "final": "ing",
+      "tone": 2,
+      "toneName": "2nd tone: rising",
+      "spokenTone": 2
+     }
+    ],
+    "spoken": "yí jiàn zhōng qíng",
+    "notes": [
+     "一 changes to yí before a 4th tone"
+    ]
+   },
+   "polyphonic": true,
+   "notes": [],
+   "sources": [
+    "Curated phrase list",
+    "CC-CEDICT"
+   ],
+   "related": [
+    {
+     "id": "803a69d29d",
+     "why": "Part of 一见钟情"
+    },
+    {
+     "id": "047fa96212",
+     "why": "Part of 一见钟情"
+    },
+    {
+     "id": "aa92fe8daa",
+     "why": "Also uses 见"
+    },
+    {
+     "id": "84b721c2b8",
+     "why": "Also uses 见"
+    },
+    {
+     "id": "a7c4d660fd",
+     "why": "Also uses 见"
+    },
+    {
+     "id": "1664b31e4a",
+     "why": "Also uses 见"
+    },
+    {
+     "id": "5524e7d419",
+     "why": "Also uses 见"
+    },
+    {
+     "id": "c5af5c5933",
+     "why": "Also uses 情"
+    },
+    {
+     "id": "4e12d766a7",
+     "why": "Also uses 情"
+    },
+    {
+     "id": "b4bb35fabf",
+     "why": "Also uses 情"
+    }
+   ]
+  },
+  {
    "id": "77f74c2973",
    "simplified": "一路平安",
    "traditional": "一路平安",
@@ -34277,6 +34739,7 @@
    "hsk": null,
    "frequency": null,
    "topics": [
+    "love",
     "travel"
    ],
    "pronunciation": {
@@ -34357,6 +34820,10 @@
     {
      "id": "89dbbbb64d",
      "why": "Also uses 路"
+    },
+    {
+     "id": "02c0da4d8b",
+     "why": "Also uses 安"
     },
     {
      "id": "871606f32d",
@@ -34461,6 +34928,73 @@
     {
      "id": "89dbbbb64d",
      "why": "Also uses 路"
+    }
+   ]
+  },
+  {
+   "id": "32a2ca9be4",
+   "simplified": "一辈子",
+   "traditional": "一輩子",
+   "pinyin": "yī bèi zi",
+   "pinyinNumbered": "yi1 bei4 zi5",
+   "meanings": [
+    "(for) a lifetime"
+   ],
+   "classifiers": [],
+   "hsk": null,
+   "frequency": null,
+   "topics": [
+    "love"
+   ],
+   "pronunciation": {
+    "syllables": [
+     {
+      "hanzi": "一",
+      "pinyin": "yī",
+      "initial": "y",
+      "final": "i",
+      "tone": 1,
+      "toneName": "1st tone: high and level",
+      "spokenTone": 2
+     },
+     {
+      "hanzi": "辈",
+      "pinyin": "bèi",
+      "initial": "b",
+      "final": "ei",
+      "tone": 4,
+      "toneName": "4th tone: sharp fall",
+      "spokenTone": 4
+     },
+     {
+      "hanzi": "子",
+      "pinyin": "zi",
+      "initial": "z",
+      "final": "i",
+      "tone": 5,
+      "toneName": "neutral tone: light and short",
+      "spokenTone": 5
+     }
+    ],
+    "spoken": "yí bèi zi",
+    "notes": [
+     "一 changes to yí before a 4th tone"
+    ]
+   },
+   "polyphonic": false,
+   "notes": [],
+   "sources": [
+    "Curated phrase list",
+    "CC-CEDICT"
+   ],
+   "related": [
+    {
+     "id": "803a69d29d",
+     "why": "Part of 一辈子"
+    },
+    {
+     "id": "c5cb9cc424",
+     "why": "Part of 一辈子"
     }
    ]
   },
@@ -34725,6 +35259,80 @@
    ]
   },
   {
+   "id": "eead626a16",
+   "simplified": "不错",
+   "traditional": "不錯",
+   "pinyin": "bù cuò",
+   "pinyinNumbered": "bu4 cuo4",
+   "meanings": [
+    "correct",
+    "right",
+    "not bad",
+    "pretty good"
+   ],
+   "classifiers": [],
+   "hsk": null,
+   "frequency": null,
+   "topics": [
+    "love",
+    "travel"
+   ],
+   "pronunciation": {
+    "syllables": [
+     {
+      "hanzi": "不",
+      "pinyin": "bù",
+      "initial": "b",
+      "final": "u",
+      "tone": 4,
+      "toneName": "4th tone: sharp fall",
+      "spokenTone": 2
+     },
+     {
+      "hanzi": "错",
+      "pinyin": "cuò",
+      "initial": "c",
+      "final": "uo",
+      "tone": 4,
+      "toneName": "4th tone: sharp fall",
+      "spokenTone": 4
+     }
+    ],
+    "spoken": "bú cuò",
+    "notes": [
+     "不 changes to bú before a 4th tone"
+    ]
+   },
+   "polyphonic": false,
+   "notes": [],
+   "sources": [
+    "Curated phrase list",
+    "CC-CEDICT"
+   ],
+   "related": [
+    {
+     "id": "69577dc601",
+     "why": "Also means \"correct\""
+    },
+    {
+     "id": "3204f0fecb",
+     "why": "Also means \"correct\""
+    },
+    {
+     "id": "fe58ff6a6a",
+     "why": "Also means \"right\""
+    },
+    {
+     "id": "7461c217a2",
+     "why": "Part of 不错"
+    },
+    {
+     "id": "5bfb13ea89",
+     "why": "Part of 不错"
+    }
+   ]
+  },
+  {
    "id": "020ed72287",
    "simplified": "为什么",
    "traditional": "為什麼",
@@ -34851,6 +35459,88 @@
     {
      "id": "fc3611e760",
      "why": "Also uses 单"
+    }
+   ]
+  },
+  {
+   "id": "0c945f7001",
+   "simplified": "亲爱",
+   "traditional": "親愛",
+   "pinyin": "qīn ài",
+   "pinyinNumbered": "qin1 ai4",
+   "meanings": [
+    "dear",
+    "beloved",
+    "darling"
+   ],
+   "classifiers": [],
+   "hsk": null,
+   "frequency": null,
+   "topics": [
+    "love"
+   ],
+   "pronunciation": {
+    "syllables": [
+     {
+      "hanzi": "亲",
+      "pinyin": "qīn",
+      "initial": "q",
+      "final": "in",
+      "tone": 1,
+      "toneName": "1st tone: high and level",
+      "spokenTone": 1
+     },
+     {
+      "hanzi": "爱",
+      "pinyin": "ài",
+      "initial": "",
+      "final": "ai",
+      "tone": 4,
+      "toneName": "4th tone: sharp fall",
+      "spokenTone": 4
+     }
+    ],
+    "spoken": null,
+    "notes": []
+   },
+   "polyphonic": true,
+   "notes": [],
+   "sources": [
+    "Curated phrase list",
+    "CC-CEDICT"
+   ],
+   "related": [
+    {
+     "id": "932c94a0fa",
+     "why": "Also means \"beloved\""
+    },
+    {
+     "id": "8856ecb40a",
+     "why": "Part of 亲爱"
+    },
+    {
+     "id": "aa57930e69",
+     "why": "Also uses 爱"
+    },
+    {
+     "id": "dc23b3bff0",
+     "why": "Also uses 爱"
+    },
+    {
+     "id": "6542a7f6ea",
+     "why": "Also uses 爱"
+    },
+    {
+     "id": "b4feeb85ee",
+     "why": "Also uses 爱"
+    },
+    {
+     "id": "1301b60b33",
+     "why": "Also uses 爱"
+    },
+    {
+     "id": "15cf064efb",
+     "why": "Also uses 爱"
     }
    ]
   },
@@ -35048,6 +35738,237 @@
     {
      "id": "a8d69a4194",
      "why": "Also uses 好"
+    }
+   ]
+  },
+  {
+   "id": "d948937d00",
+   "simplified": "保重",
+   "traditional": "保重",
+   "pinyin": "bǎo zhòng",
+   "pinyinNumbered": "bao3 zhong4",
+   "meanings": [
+    "to take care of oneself"
+   ],
+   "classifiers": [],
+   "hsk": null,
+   "frequency": null,
+   "topics": [
+    "love"
+   ],
+   "pronunciation": {
+    "syllables": [
+     {
+      "hanzi": "保",
+      "pinyin": "bǎo",
+      "initial": "b",
+      "final": "ao",
+      "tone": 3,
+      "toneName": "3rd tone: low dip",
+      "spokenTone": 3
+     },
+     {
+      "hanzi": "重",
+      "pinyin": "zhòng",
+      "initial": "zh",
+      "final": "ong",
+      "tone": 4,
+      "toneName": "4th tone: sharp fall",
+      "spokenTone": 4
+     }
+    ],
+    "spoken": null,
+    "notes": []
+   },
+   "polyphonic": true,
+   "notes": [],
+   "sources": [
+    "Curated phrase list",
+    "CC-CEDICT"
+   ],
+   "related": [
+    {
+     "id": "2d6abdeed4",
+     "why": "Part of 保重"
+    },
+    {
+     "id": "d7d5326fe3",
+     "why": "Also uses 重"
+    }
+   ]
+  },
+  {
+   "id": "572401f2e3",
+   "simplified": "做梦",
+   "traditional": "做夢",
+   "pinyin": "zuò mèng",
+   "pinyinNumbered": "zuo4 meng4",
+   "meanings": [
+    "to dream",
+    "to have a dream",
+    "fig. illusion",
+    "fantasy",
+    "pipe dream"
+   ],
+   "classifiers": [],
+   "hsk": null,
+   "frequency": null,
+   "topics": [
+    "love"
+   ],
+   "pronunciation": {
+    "syllables": [
+     {
+      "hanzi": "做",
+      "pinyin": "zuò",
+      "initial": "z",
+      "final": "uo",
+      "tone": 4,
+      "toneName": "4th tone: sharp fall",
+      "spokenTone": 4
+     },
+     {
+      "hanzi": "梦",
+      "pinyin": "mèng",
+      "initial": "m",
+      "final": "eng",
+      "tone": 4,
+      "toneName": "4th tone: sharp fall",
+      "spokenTone": 4
+     }
+    ],
+    "spoken": null,
+    "notes": []
+   },
+   "polyphonic": false,
+   "notes": [],
+   "sources": [
+    "Curated phrase list",
+    "CC-CEDICT"
+   ],
+   "related": [
+    {
+     "id": "356bd1dc65",
+     "why": "Part of 做梦"
+    }
+   ]
+  },
+  {
+   "id": "d28966bd7b",
+   "simplified": "冰",
+   "traditional": "冰",
+   "pinyin": "bīng",
+   "pinyinNumbered": "bing1",
+   "meanings": [
+    "ice",
+    "to chill sth",
+    "(of an object or substance) to feel cold",
+    "(of a person) cold",
+    "unfriendly",
+    "(slang) methamphetamine"
+   ],
+   "classifiers": [
+    {
+     "hanzi": "块",
+     "pinyin": "kuài"
+    }
+   ],
+   "hsk": null,
+   "frequency": null,
+   "topics": [
+    "family",
+    "food"
+   ],
+   "pronunciation": {
+    "syllables": [
+     {
+      "hanzi": "冰",
+      "pinyin": "bīng",
+      "initial": "b",
+      "final": "ing",
+      "tone": 1,
+      "toneName": "1st tone: high and level",
+      "spokenTone": 1
+     }
+    ],
+    "spoken": null,
+    "notes": []
+   },
+   "polyphonic": false,
+   "notes": [],
+   "sources": [
+    "Curated phrase list",
+    "CC-CEDICT"
+   ],
+   "related": [
+    {
+     "id": "c74f6c4196",
+     "why": "Its measure word"
+    },
+    {
+     "id": "57524d47fc",
+     "why": "Contains 冰"
+    }
+   ]
+  },
+  {
+   "id": "57524d47fc",
+   "simplified": "冰块",
+   "traditional": "冰塊",
+   "pinyin": "bīng kuài",
+   "pinyinNumbered": "bing1 kuai4",
+   "meanings": [
+    "ice cube",
+    "ice chunk"
+   ],
+   "classifiers": [],
+   "hsk": null,
+   "frequency": null,
+   "topics": [
+    "food"
+   ],
+   "pronunciation": {
+    "syllables": [
+     {
+      "hanzi": "冰",
+      "pinyin": "bīng",
+      "initial": "b",
+      "final": "ing",
+      "tone": 1,
+      "toneName": "1st tone: high and level",
+      "spokenTone": 1
+     },
+     {
+      "hanzi": "块",
+      "pinyin": "kuài",
+      "initial": "k",
+      "final": "uai",
+      "tone": 4,
+      "toneName": "4th tone: sharp fall",
+      "spokenTone": 4
+     }
+    ],
+    "spoken": null,
+    "notes": []
+   },
+   "polyphonic": false,
+   "notes": [],
+   "sources": [
+    "Curated phrase list",
+    "CC-CEDICT"
+   ],
+   "related": [
+    {
+     "id": "d28966bd7b",
+     "why": "Part of 冰块"
+    },
+    {
+     "id": "c74f6c4196",
+     "why": "Part of 冰块"
+    },
+    {
+     "id": "94a3c37f15",
+     "why": "Also uses 块"
     }
    ]
   },
@@ -35391,6 +36312,162 @@
    ]
   },
   {
+   "id": "1b72f5d766",
+   "simplified": "加",
+   "traditional": "加",
+   "pinyin": "jiā",
+   "pinyinNumbered": "jia1",
+   "meanings": [
+    "Canada (abbr. for 加拿大[Jia1 na2 da4])",
+    "to add",
+    "(math.) plus",
+    "to increase; to augment",
+    "(used before a disyllabic verb, often after an adverb like 不[bu4], 大[da4], 稍[shao1] etc, to indicate that the action applies to sth previously mentioned, as in 稍加改良[shao1 jia1 gai3 liang2] \"make some minor improvements to (it)\")"
+   ],
+   "classifiers": [],
+   "hsk": null,
+   "frequency": null,
+   "topics": [
+    "food"
+   ],
+   "pronunciation": {
+    "syllables": [
+     {
+      "hanzi": "加",
+      "pinyin": "jiā",
+      "initial": "j",
+      "final": "ia",
+      "tone": 1,
+      "toneName": "1st tone: high and level",
+      "spokenTone": 1
+     }
+    ],
+    "spoken": null,
+    "notes": []
+   },
+   "polyphonic": false,
+   "notes": [],
+   "sources": [
+    "Curated phrase list",
+    "CC-CEDICT"
+   ],
+   "related": []
+  },
+  {
+   "id": "479c5b7158",
+   "simplified": "卡布奇诺",
+   "traditional": "卡布奇諾",
+   "pinyin": "kǎ bù qí nuò",
+   "pinyinNumbered": "ka3 bu4 qi2 nuo4",
+   "meanings": [
+    "cappuccino (loanword)"
+   ],
+   "classifiers": [],
+   "hsk": null,
+   "frequency": null,
+   "topics": [
+    "food"
+   ],
+   "pronunciation": {
+    "syllables": [
+     {
+      "hanzi": "卡",
+      "pinyin": "kǎ",
+      "initial": "k",
+      "final": "a",
+      "tone": 3,
+      "toneName": "3rd tone: low dip",
+      "spokenTone": 3
+     },
+     {
+      "hanzi": "布",
+      "pinyin": "bù",
+      "initial": "b",
+      "final": "u",
+      "tone": 4,
+      "toneName": "4th tone: sharp fall",
+      "spokenTone": 4
+     },
+     {
+      "hanzi": "奇",
+      "pinyin": "qí",
+      "initial": "q",
+      "final": "i",
+      "tone": 2,
+      "toneName": "2nd tone: rising",
+      "spokenTone": 2
+     },
+     {
+      "hanzi": "诺",
+      "pinyin": "nuò",
+      "initial": "n",
+      "final": "uo",
+      "tone": 4,
+      "toneName": "4th tone: sharp fall",
+      "spokenTone": 4
+     }
+    ],
+    "spoken": null,
+    "notes": []
+   },
+   "polyphonic": true,
+   "notes": [],
+   "sources": [
+    "Curated phrase list",
+    "CC-CEDICT"
+   ],
+   "related": []
+  },
+  {
+   "id": "f7d8ef7ac5",
+   "simplified": "原谅",
+   "traditional": "原諒",
+   "pinyin": "yuán liàng",
+   "pinyinNumbered": "yuan2 liang4",
+   "meanings": [
+    "to excuse",
+    "to forgive",
+    "to pardon"
+   ],
+   "classifiers": [],
+   "hsk": null,
+   "frequency": null,
+   "topics": [
+    "love"
+   ],
+   "pronunciation": {
+    "syllables": [
+     {
+      "hanzi": "原",
+      "pinyin": "yuán",
+      "initial": "y",
+      "final": "uan",
+      "tone": 2,
+      "toneName": "2nd tone: rising",
+      "spokenTone": 2
+     },
+     {
+      "hanzi": "谅",
+      "pinyin": "liàng",
+      "initial": "l",
+      "final": "iang",
+      "tone": 4,
+      "toneName": "4th tone: sharp fall",
+      "spokenTone": 4
+     }
+    ],
+    "spoken": null,
+    "notes": []
+   },
+   "polyphonic": false,
+   "notes": [],
+   "sources": [
+    "Curated phrase list",
+    "CC-CEDICT"
+   ],
+   "related": []
+  },
+  {
    "id": "7613d2c4c0",
    "simplified": "可以",
    "traditional": "可以",
@@ -35450,6 +36527,96 @@
     {
      "id": "15a614eef5",
      "why": "Also means \"can\""
+    },
+    {
+     "id": "dc23b3bff0",
+     "why": "Also uses 可"
+    }
+   ]
+  },
+  {
+   "id": "dc23b3bff0",
+   "simplified": "可爱",
+   "traditional": "可愛",
+   "pinyin": "kě ài",
+   "pinyinNumbered": "ke3 ai4",
+   "meanings": [
+    "adorable",
+    "cute",
+    "lovely"
+   ],
+   "classifiers": [],
+   "hsk": null,
+   "frequency": null,
+   "topics": [
+    "love"
+   ],
+   "pronunciation": {
+    "syllables": [
+     {
+      "hanzi": "可",
+      "pinyin": "kě",
+      "initial": "k",
+      "final": "e",
+      "tone": 3,
+      "toneName": "3rd tone: low dip",
+      "spokenTone": 3
+     },
+     {
+      "hanzi": "爱",
+      "pinyin": "ài",
+      "initial": "",
+      "final": "ai",
+      "tone": 4,
+      "toneName": "4th tone: sharp fall",
+      "spokenTone": 4
+     }
+    ],
+    "spoken": null,
+    "notes": []
+   },
+   "polyphonic": false,
+   "notes": [],
+   "sources": [
+    "Curated phrase list",
+    "CC-CEDICT"
+   ],
+   "related": [
+    {
+     "id": "8856ecb40a",
+     "why": "Part of 可爱"
+    },
+    {
+     "id": "7613d2c4c0",
+     "why": "Also uses 可"
+    },
+    {
+     "id": "aa57930e69",
+     "why": "Also uses 爱"
+    },
+    {
+     "id": "0c945f7001",
+     "why": "Also uses 爱"
+    },
+    {
+     "id": "932c94a0fa",
+     "why": "Also uses 爱"
+    },
+    {
+     "id": "6542a7f6ea",
+     "why": "Also uses 爱"
+    },
+    {
+     "id": "b4feeb85ee",
+     "why": "Also uses 爱"
+    },
+    {
+     "id": "1301b60b33",
+     "why": "Also uses 爱"
+    },
+    {
+     "id": "15cf064efb",
+     "why": "Also uses 爱"
     }
    ]
   },
@@ -35618,6 +36785,293 @@
    ]
   },
   {
+   "id": "71a8d3df55",
+   "simplified": "吸管",
+   "traditional": "吸管",
+   "pinyin": "xī guǎn",
+   "pinyinNumbered": "xi1 guan3",
+   "meanings": [
+    "(drinking) straw",
+    "pipette",
+    "eyedropper",
+    "snorkel"
+   ],
+   "classifiers": [
+    {
+     "hanzi": "支",
+     "pinyin": "zhī"
+    }
+   ],
+   "hsk": null,
+   "frequency": null,
+   "topics": [
+    "food"
+   ],
+   "pronunciation": {
+    "syllables": [
+     {
+      "hanzi": "吸",
+      "pinyin": "xī",
+      "initial": "x",
+      "final": "i",
+      "tone": 1,
+      "toneName": "1st tone: high and level",
+      "spokenTone": 1
+     },
+     {
+      "hanzi": "管",
+      "pinyin": "guǎn",
+      "initial": "g",
+      "final": "uan",
+      "tone": 3,
+      "toneName": "3rd tone: low dip",
+      "spokenTone": 3
+     }
+    ],
+    "spoken": null,
+    "notes": []
+   },
+   "polyphonic": false,
+   "notes": [],
+   "sources": [
+    "Curated phrase list",
+    "CC-CEDICT"
+   ],
+   "related": []
+  },
+  {
+   "id": "40f341243f",
+   "simplified": "吻",
+   "traditional": "吻",
+   "pinyin": "wěn",
+   "pinyinNumbered": "wen3",
+   "meanings": [
+    "kiss",
+    "to kiss",
+    "mouth"
+   ],
+   "classifiers": [],
+   "hsk": null,
+   "frequency": null,
+   "topics": [
+    "love"
+   ],
+   "pronunciation": {
+    "syllables": [
+     {
+      "hanzi": "吻",
+      "pinyin": "wěn",
+      "initial": "w",
+      "final": "en",
+      "tone": 3,
+      "toneName": "3rd tone: low dip",
+      "spokenTone": 3
+     }
+    ],
+    "spoken": null,
+    "notes": []
+   },
+   "polyphonic": false,
+   "notes": [],
+   "sources": [
+    "Curated phrase list",
+    "CC-CEDICT"
+   ],
+   "related": []
+  },
+  {
+   "id": "e0aaef34f6",
+   "simplified": "咖啡",
+   "traditional": "咖啡",
+   "pinyin": "kā fēi",
+   "pinyinNumbered": "ka1 fei1",
+   "meanings": [
+    "(loanword) coffee"
+   ],
+   "classifiers": [
+    {
+     "hanzi": "杯",
+     "pinyin": "bēi"
+    }
+   ],
+   "hsk": null,
+   "frequency": null,
+   "topics": [
+    "food"
+   ],
+   "pronunciation": {
+    "syllables": [
+     {
+      "hanzi": "咖",
+      "pinyin": "kā",
+      "initial": "k",
+      "final": "a",
+      "tone": 1,
+      "toneName": "1st tone: high and level",
+      "spokenTone": 1
+     },
+     {
+      "hanzi": "啡",
+      "pinyin": "fēi",
+      "initial": "f",
+      "final": "ei",
+      "tone": 1,
+      "toneName": "1st tone: high and level",
+      "spokenTone": 1
+     }
+    ],
+    "spoken": null,
+    "notes": []
+   },
+   "polyphonic": false,
+   "notes": [],
+   "sources": [
+    "Curated phrase list",
+    "CC-CEDICT"
+   ],
+   "related": [
+    {
+     "id": "6e0aaea248",
+     "why": "Its measure word"
+    },
+    {
+     "id": "23383b0d24",
+     "why": "Contains 咖啡"
+    }
+   ]
+  },
+  {
+   "id": "8121a6ee8c",
+   "simplified": "困",
+   "traditional": "困",
+   "pinyin": "kùn",
+   "pinyinNumbered": "kun4",
+   "meanings": [
+    "to trap",
+    "to surround",
+    "hard-pressed",
+    "stranded",
+    "destitute",
+    "sleepy",
+    "tired"
+   ],
+   "classifiers": [],
+   "hsk": null,
+   "frequency": null,
+   "topics": [
+    "love"
+   ],
+   "pronunciation": {
+    "syllables": [
+     {
+      "hanzi": "困",
+      "pinyin": "kùn",
+      "initial": "k",
+      "final": "un",
+      "tone": 4,
+      "toneName": "4th tone: sharp fall",
+      "spokenTone": 4
+     }
+    ],
+    "spoken": null,
+    "notes": []
+   },
+   "polyphonic": false,
+   "notes": [],
+   "sources": [
+    "Curated phrase list",
+    "CC-CEDICT"
+   ],
+   "related": []
+  },
+  {
+   "id": "f300b0f62f",
+   "simplified": "在一起",
+   "traditional": "在一起",
+   "pinyin": "zài yī qǐ",
+   "pinyinNumbered": "zai4 yi1 qi3",
+   "meanings": [
+    "together"
+   ],
+   "classifiers": [],
+   "hsk": null,
+   "frequency": null,
+   "topics": [
+    "love"
+   ],
+   "pronunciation": {
+    "syllables": [
+     {
+      "hanzi": "在",
+      "pinyin": "zài",
+      "initial": "z",
+      "final": "ai",
+      "tone": 4,
+      "toneName": "4th tone: sharp fall",
+      "spokenTone": 4
+     },
+     {
+      "hanzi": "一",
+      "pinyin": "yī",
+      "initial": "y",
+      "final": "i",
+      "tone": 1,
+      "toneName": "1st tone: high and level",
+      "spokenTone": 4
+     },
+     {
+      "hanzi": "起",
+      "pinyin": "qǐ",
+      "initial": "q",
+      "final": "i",
+      "tone": 3,
+      "toneName": "3rd tone: low dip",
+      "spokenTone": 3
+     }
+    ],
+    "spoken": "zài yì qǐ",
+    "notes": [
+     "一 changes to yì before a 1st, 2nd or 3rd tone"
+    ]
+   },
+   "polyphonic": false,
+   "notes": [],
+   "sources": [
+    "Curated phrase list",
+    "CC-CEDICT"
+   ],
+   "related": [
+    {
+     "id": "d0dd89e9ae",
+     "why": "Also means \"together\""
+    },
+    {
+     "id": "acc495124e",
+     "why": "Part of 在一起"
+    },
+    {
+     "id": "803a69d29d",
+     "why": "Part of 在一起"
+    },
+    {
+     "id": "192ef2838b",
+     "why": "Part of 在一起"
+    },
+    {
+     "id": "7683298e43",
+     "why": "Also uses 起"
+    },
+    {
+     "id": "41d8419766",
+     "why": "Also uses 起"
+    },
+    {
+     "id": "87e79e162d",
+     "why": "Also uses 起"
+    }
+   ]
+  },
+  {
    "id": "4cef2db4e2",
    "simplified": "地铁站",
    "traditional": "地鐵站",
@@ -35697,12 +37151,87 @@
      "why": "Also uses 地"
     },
     {
+     "id": "ee9fe53973",
+     "why": "Also uses 铁"
+    },
+    {
      "id": "48ceea5147",
      "why": "Also uses 站"
     },
     {
      "id": "23ecddf64e",
      "why": "Also uses 站"
+    }
+   ]
+  },
+  {
+   "id": "1b7635018b",
+   "simplified": "外卖",
+   "traditional": "外賣",
+   "pinyin": "wài mài",
+   "pinyinNumbered": "wai4 mai4",
+   "meanings": [
+    "(of a restaurant) to provide a takeout or home delivery meal",
+    "takeout (business)",
+    "takeout (meal)"
+   ],
+   "classifiers": [],
+   "hsk": null,
+   "frequency": null,
+   "topics": [
+    "family",
+    "food"
+   ],
+   "pronunciation": {
+    "syllables": [
+     {
+      "hanzi": "外",
+      "pinyin": "wài",
+      "initial": "w",
+      "final": "ai",
+      "tone": 4,
+      "toneName": "4th tone: sharp fall",
+      "spokenTone": 4
+     },
+     {
+      "hanzi": "卖",
+      "pinyin": "mài",
+      "initial": "m",
+      "final": "ai",
+      "tone": 4,
+      "toneName": "4th tone: sharp fall",
+      "spokenTone": 4
+     }
+    ],
+    "spoken": null,
+    "notes": []
+   },
+   "polyphonic": false,
+   "notes": [],
+   "sources": [
+    "Curated phrase list",
+    "CC-CEDICT"
+   ],
+   "related": [
+    {
+     "id": "1928751e94",
+     "why": "Part of 外卖"
+    },
+    {
+     "id": "e10bbcc088",
+     "why": "Also uses 外"
+    },
+    {
+     "id": "82bd017127",
+     "why": "Also uses 外"
+    },
+    {
+     "id": "a30cc75404",
+     "why": "Also uses 外"
+    },
+    {
+     "id": "152eb7b4e4",
+     "why": "Also uses 外"
     }
    ]
   },
@@ -35771,6 +37300,114 @@
    ]
   },
   {
+   "id": "dc0505a394",
+   "simplified": "天生一对",
+   "traditional": "天生一對",
+   "pinyin": "tiān shēng yī duì",
+   "pinyinNumbered": "tian1 sheng1 yi1 dui4",
+   "meanings": [
+    "a match made in heaven; a perfect couple"
+   ],
+   "classifiers": [],
+   "hsk": null,
+   "frequency": null,
+   "topics": [
+    "love"
+   ],
+   "pronunciation": {
+    "syllables": [
+     {
+      "hanzi": "天",
+      "pinyin": "tiān",
+      "initial": "t",
+      "final": "ian",
+      "tone": 1,
+      "toneName": "1st tone: high and level",
+      "spokenTone": 1
+     },
+     {
+      "hanzi": "生",
+      "pinyin": "shēng",
+      "initial": "sh",
+      "final": "eng",
+      "tone": 1,
+      "toneName": "1st tone: high and level",
+      "spokenTone": 1
+     },
+     {
+      "hanzi": "一",
+      "pinyin": "yī",
+      "initial": "y",
+      "final": "i",
+      "tone": 1,
+      "toneName": "1st tone: high and level",
+      "spokenTone": 2
+     },
+     {
+      "hanzi": "对",
+      "pinyin": "duì",
+      "initial": "d",
+      "final": "ui",
+      "tone": 4,
+      "toneName": "4th tone: sharp fall",
+      "spokenTone": 4
+     }
+    ],
+    "spoken": "tiān shēng yí duì",
+    "notes": [
+     "一 changes to yí before a 4th tone"
+    ]
+   },
+   "polyphonic": false,
+   "notes": [],
+   "sources": [
+    "Curated phrase list",
+    "CC-CEDICT"
+   ],
+   "related": [
+    {
+     "id": "be344f9240",
+     "why": "Part of 天生一对"
+    },
+    {
+     "id": "803a69d29d",
+     "why": "Part of 天生一对"
+    },
+    {
+     "id": "3204f0fecb",
+     "why": "Part of 天生一对"
+    },
+    {
+     "id": "144993166d",
+     "why": "Also uses 天"
+    },
+    {
+     "id": "5b5440ea1b",
+     "why": "Also uses 天"
+    },
+    {
+     "id": "cef991ea15",
+     "why": "Also uses 天"
+    },
+    {
+     "id": "79fff07734",
+     "why": "Also uses 天"
+    },
+    {
+     "id": "f17caceeb8",
+     "why": "Also uses 天"
+    },
+    {
+     "id": "5c5eff3953",
+     "why": "Also uses 天"
+    },
+    {
+     "id": "8ef9a5f4b3",
+     "why": "Also uses 天"
+    }
+   ]
+  },
+  {
    "id": "a8d69a4194",
    "simplified": "太好了",
    "traditional": "太好了",
@@ -35826,6 +37463,10 @@
    ],
    "related": [
     {
+     "id": "8de4406895",
+     "why": "Also means \"very good\""
+    },
+    {
      "id": "578c75a3de",
      "why": "Part of 太好了"
     },
@@ -35860,10 +37501,70 @@
     {
      "id": "6b94f63415",
      "why": "Also uses 好"
+    }
+   ]
+  },
+  {
+   "id": "21d49aa0af",
+   "simplified": "奶茶",
+   "traditional": "奶茶",
+   "pinyin": "nǎi chá",
+   "pinyinNumbered": "nai3 cha2",
+   "meanings": [
+    "milk tea"
+   ],
+   "classifiers": [],
+   "hsk": null,
+   "frequency": null,
+   "topics": [
+    "food"
+   ],
+   "pronunciation": {
+    "syllables": [
+     {
+      "hanzi": "奶",
+      "pinyin": "nǎi",
+      "initial": "n",
+      "final": "ai",
+      "tone": 3,
+      "toneName": "3rd tone: low dip",
+      "spokenTone": 3
+     },
+     {
+      "hanzi": "茶",
+      "pinyin": "chá",
+      "initial": "ch",
+      "final": "a",
+      "tone": 2,
+      "toneName": "2nd tone: rising",
+      "spokenTone": 2
+     }
+    ],
+    "spoken": null,
+    "notes": []
+   },
+   "polyphonic": false,
+   "notes": [],
+   "sources": [
+    "Curated phrase list",
+    "CC-CEDICT"
+   ],
+   "related": [
+    {
+     "id": "19b580f694",
+     "why": "Part of 奶茶"
     },
     {
-     "id": "1d54df8343",
-     "why": "Also uses 好"
+     "id": "da190c72d1",
+     "why": "Part of 奶茶"
+    },
+    {
+     "id": "c45de9dac2",
+     "why": "Also uses 奶"
+    },
+    {
+     "id": "a5ff5f539e",
+     "why": "Also uses 奶"
     }
    ]
   },
@@ -35977,6 +37678,350 @@
    ]
   },
   {
+   "id": "d8c1dfdcdb",
+   "simplified": "好喝",
+   "traditional": "好喝",
+   "pinyin": "hǎo hē",
+   "pinyinNumbered": "hao3 he1",
+   "meanings": [
+    "tasty (drinks)"
+   ],
+   "classifiers": [],
+   "hsk": null,
+   "frequency": null,
+   "topics": [
+    "food"
+   ],
+   "pronunciation": {
+    "syllables": [
+     {
+      "hanzi": "好",
+      "pinyin": "hǎo",
+      "initial": "h",
+      "final": "ao",
+      "tone": 3,
+      "toneName": "3rd tone: low dip",
+      "spokenTone": 3
+     },
+     {
+      "hanzi": "喝",
+      "pinyin": "hē",
+      "initial": "h",
+      "final": "e",
+      "tone": 1,
+      "toneName": "1st tone: high and level",
+      "spokenTone": 1
+     }
+    ],
+    "spoken": null,
+    "notes": []
+   },
+   "polyphonic": true,
+   "notes": [],
+   "sources": [
+    "Curated phrase list",
+    "CC-CEDICT"
+   ],
+   "related": [
+    {
+     "id": "9510a6a4ff",
+     "why": "Also means \"tasty\""
+    },
+    {
+     "id": "631b2a9d50",
+     "why": "Part of 好喝"
+    },
+    {
+     "id": "55aa51625e",
+     "why": "Part of 好喝"
+    },
+    {
+     "id": "861e44c8be",
+     "why": "Also uses 好"
+    },
+    {
+     "id": "1a5b021c80",
+     "why": "Also uses 好"
+    },
+    {
+     "id": "4a869fda21",
+     "why": "Also uses 好"
+    },
+    {
+     "id": "aa57930e69",
+     "why": "Also uses 好"
+    },
+    {
+     "id": "6b94f63415",
+     "why": "Also uses 好"
+    },
+    {
+     "id": "1d54df8343",
+     "why": "Also uses 好"
+    },
+    {
+     "id": "d0e307e453",
+     "why": "Also uses 好"
+    }
+   ]
+  },
+  {
+   "id": "07ffcad33a",
+   "simplified": "婚礼",
+   "traditional": "婚禮",
+   "pinyin": "hūn lǐ",
+   "pinyinNumbered": "hun1 li3",
+   "meanings": [
+    "wedding ceremony",
+    "wedding"
+   ],
+   "classifiers": [
+    {
+     "hanzi": "场",
+     "pinyin": "chǎng"
+    }
+   ],
+   "hsk": null,
+   "frequency": null,
+   "topics": [
+    "love"
+   ],
+   "pronunciation": {
+    "syllables": [
+     {
+      "hanzi": "婚",
+      "pinyin": "hūn",
+      "initial": "h",
+      "final": "un",
+      "tone": 1,
+      "toneName": "1st tone: high and level",
+      "spokenTone": 1
+     },
+     {
+      "hanzi": "礼",
+      "pinyin": "lǐ",
+      "initial": "l",
+      "final": "i",
+      "tone": 3,
+      "toneName": "3rd tone: low dip",
+      "spokenTone": 3
+     }
+    ],
+    "spoken": null,
+    "notes": []
+   },
+   "polyphonic": false,
+   "notes": [],
+   "sources": [
+    "Curated phrase list",
+    "CC-CEDICT"
+   ],
+   "related": [
+    {
+     "id": "c39d56767a",
+     "why": "Also uses 婚"
+    },
+    {
+     "id": "5274796d19",
+     "why": "Also uses 婚"
+    }
+   ]
+  },
+  {
+   "id": "00a9f30c94",
+   "simplified": "宝宝",
+   "traditional": "寶寶",
+   "pinyin": "bǎo bao",
+   "pinyinNumbered": "bao3 bao5",
+   "meanings": [
+    "darling; baby"
+   ],
+   "classifiers": [],
+   "hsk": null,
+   "frequency": null,
+   "topics": [
+    "family",
+    "love"
+   ],
+   "pronunciation": {
+    "syllables": [
+     {
+      "hanzi": "宝",
+      "pinyin": "bǎo",
+      "initial": "b",
+      "final": "ao",
+      "tone": 3,
+      "toneName": "3rd tone: low dip",
+      "spokenTone": 3
+     },
+     {
+      "hanzi": "宝",
+      "pinyin": "bao",
+      "initial": "b",
+      "final": "ao",
+      "tone": 5,
+      "toneName": "neutral tone: light and short",
+      "spokenTone": 5
+     }
+    ],
+    "spoken": null,
+    "notes": []
+   },
+   "polyphonic": false,
+   "notes": [],
+   "sources": [
+    "Curated phrase list",
+    "CC-CEDICT"
+   ],
+   "related": [
+    {
+     "id": "e905576659",
+     "why": "Also uses 宝"
+    }
+   ]
+  },
+  {
+   "id": "e905576659",
+   "simplified": "宝贝",
+   "traditional": "寶貝",
+   "pinyin": "bǎo bèi",
+   "pinyinNumbered": "bao3 bei4",
+   "meanings": [
+    "treasured object",
+    "treasure",
+    "darling",
+    "baby",
+    "cowry",
+    "good-for-nothing or queer character"
+   ],
+   "classifiers": [],
+   "hsk": null,
+   "frequency": null,
+   "topics": [
+    "family",
+    "love"
+   ],
+   "pronunciation": {
+    "syllables": [
+     {
+      "hanzi": "宝",
+      "pinyin": "bǎo",
+      "initial": "b",
+      "final": "ao",
+      "tone": 3,
+      "toneName": "3rd tone: low dip",
+      "spokenTone": 3
+     },
+     {
+      "hanzi": "贝",
+      "pinyin": "bèi",
+      "initial": "b",
+      "final": "ei",
+      "tone": 4,
+      "toneName": "4th tone: sharp fall",
+      "spokenTone": 4
+     }
+    ],
+    "spoken": null,
+    "notes": []
+   },
+   "polyphonic": false,
+   "notes": [],
+   "sources": [
+    "Curated phrase list",
+    "CC-CEDICT"
+   ],
+   "related": [
+    {
+     "id": "00a9f30c94",
+     "why": "Also uses 宝"
+    }
+   ]
+  },
+  {
+   "id": "8834ae7078",
+   "simplified": "对象",
+   "traditional": "對象",
+   "pinyin": "duì xiàng",
+   "pinyinNumbered": "dui4 xiang4",
+   "meanings": [
+    "target; object",
+    "partner; boyfriend; girlfriend"
+   ],
+   "classifiers": [
+    {
+     "hanzi": "个",
+     "pinyin": "gè"
+    }
+   ],
+   "hsk": null,
+   "frequency": null,
+   "topics": [
+    "family",
+    "love"
+   ],
+   "pronunciation": {
+    "syllables": [
+     {
+      "hanzi": "对",
+      "pinyin": "duì",
+      "initial": "d",
+      "final": "ui",
+      "tone": 4,
+      "toneName": "4th tone: sharp fall",
+      "spokenTone": 4
+     },
+     {
+      "hanzi": "象",
+      "pinyin": "xiàng",
+      "initial": "x",
+      "final": "iang",
+      "tone": 4,
+      "toneName": "4th tone: sharp fall",
+      "spokenTone": 4
+     }
+    ],
+    "spoken": null,
+    "notes": []
+   },
+   "polyphonic": false,
+   "notes": [],
+   "sources": [
+    "Curated phrase list",
+    "CC-CEDICT"
+   ],
+   "related": [
+    {
+     "id": "3c5babecee",
+     "why": "Its measure word"
+    },
+    {
+     "id": "942dfec49a",
+     "why": "Also means \"boyfriend\""
+    },
+    {
+     "id": "f1e7ec364f",
+     "why": "Also means \"girlfriend\""
+    },
+    {
+     "id": "3204f0fecb",
+     "why": "Part of 对象"
+    },
+    {
+     "id": "41d8419766",
+     "why": "Also uses 对"
+    },
+    {
+     "id": "028cb0dd98",
+     "why": "Also uses 对"
+    },
+    {
+     "id": "dc0505a394",
+     "why": "Also uses 对"
+    }
+   ]
+  },
+  {
    "id": "fc79cd6993",
    "simplified": "小心",
    "traditional": "小心",
@@ -35990,7 +38035,8 @@
    "hsk": null,
    "frequency": null,
    "topics": [
-    "everyday"
+    "everyday",
+    "love"
    ],
    "pronunciation": {
     "syllables": [
@@ -36050,6 +38096,183 @@
     {
      "id": "1d2b98f859",
      "why": "Also uses 小"
+    },
+    {
+     "id": "72e2040929",
+     "why": "Also uses 心"
+    },
+    {
+     "id": "c5af5c5933",
+     "why": "Also uses 心"
+    },
+    {
+     "id": "932c94a0fa",
+     "why": "Also uses 心"
+    }
+   ]
+  },
+  {
+   "id": "8bbc1a6979",
+   "simplified": "帅",
+   "traditional": "帥",
+   "pinyin": "shuài",
+   "pinyinNumbered": "shuai4",
+   "meanings": [
+    "(bound form) commander-in-chief",
+    "(bound form) to lead; to command",
+    "handsome; graceful; dashing; elegant",
+    "(coll.) cool!; sweet!",
+    "(Chinese chess) general (on the red side, equivalent to a king in Western chess)"
+   ],
+   "classifiers": [],
+   "hsk": null,
+   "frequency": null,
+   "topics": [
+    "love"
+   ],
+   "pronunciation": {
+    "syllables": [
+     {
+      "hanzi": "帅",
+      "pinyin": "shuài",
+      "initial": "sh",
+      "final": "uai",
+      "tone": 4,
+      "toneName": "4th tone: sharp fall",
+      "spokenTone": 4
+     }
+    ],
+    "spoken": null,
+    "notes": []
+   },
+   "polyphonic": false,
+   "notes": [],
+   "sources": [
+    "Curated phrase list",
+    "CC-CEDICT"
+   ],
+   "related": [
+    {
+     "id": "463f7ab727",
+     "why": "Contains 帅"
+    }
+   ]
+  },
+  {
+   "id": "463f7ab727",
+   "simplified": "帅哥",
+   "traditional": "帥哥",
+   "pinyin": "shuài gē",
+   "pinyinNumbered": "shuai4 ge1",
+   "meanings": [
+    "handsome guy",
+    "lady-killer",
+    "handsome (form of address)"
+   ],
+   "classifiers": [],
+   "hsk": null,
+   "frequency": null,
+   "topics": [
+    "love"
+   ],
+   "pronunciation": {
+    "syllables": [
+     {
+      "hanzi": "帅",
+      "pinyin": "shuài",
+      "initial": "sh",
+      "final": "uai",
+      "tone": 4,
+      "toneName": "4th tone: sharp fall",
+      "spokenTone": 4
+     },
+     {
+      "hanzi": "哥",
+      "pinyin": "gē",
+      "initial": "g",
+      "final": "e",
+      "tone": 1,
+      "toneName": "1st tone: high and level",
+      "spokenTone": 1
+     }
+    ],
+    "spoken": null,
+    "notes": []
+   },
+   "polyphonic": false,
+   "notes": [],
+   "sources": [
+    "Curated phrase list",
+    "CC-CEDICT"
+   ],
+   "related": [
+    {
+     "id": "8bbc1a6979",
+     "why": "Part of 帅哥"
+    },
+    {
+     "id": "1c056b7395",
+     "why": "Part of 帅哥"
+    },
+    {
+     "id": "3619426872",
+     "why": "Also uses 哥"
+    }
+   ]
+  },
+  {
+   "id": "726db1b5ff",
+   "simplified": "带走",
+   "traditional": "帶走",
+   "pinyin": "dài zǒu",
+   "pinyinNumbered": "dai4 zou3",
+   "meanings": [
+    "to carry; to take away"
+   ],
+   "classifiers": [],
+   "hsk": null,
+   "frequency": null,
+   "topics": [
+    "food"
+   ],
+   "pronunciation": {
+    "syllables": [
+     {
+      "hanzi": "带",
+      "pinyin": "dài",
+      "initial": "d",
+      "final": "ai",
+      "tone": 4,
+      "toneName": "4th tone: sharp fall",
+      "spokenTone": 4
+     },
+     {
+      "hanzi": "走",
+      "pinyin": "zǒu",
+      "initial": "z",
+      "final": "ou",
+      "tone": 3,
+      "toneName": "3rd tone: low dip",
+      "spokenTone": 3
+     }
+    ],
+    "spoken": null,
+    "notes": []
+   },
+   "polyphonic": false,
+   "notes": [],
+   "sources": [
+    "Curated phrase list",
+    "CC-CEDICT"
+   ],
+   "related": [
+    {
+     "id": "d2b0c2dba9",
+     "why": "Part of 带走"
+    },
+    {
+     "id": "aebb96a6f5",
+     "why": "Also uses 走"
     }
    ]
   },
@@ -36130,6 +38353,98 @@
    ]
   },
   {
+   "id": "72e2040929",
+   "simplified": "开心",
+   "traditional": "開心",
+   "pinyin": "kāi xīn",
+   "pinyinNumbered": "kai1 xin1",
+   "meanings": [
+    "to feel happy",
+    "to rejoice",
+    "to have a great time",
+    "to make fun of sb"
+   ],
+   "classifiers": [],
+   "hsk": null,
+   "frequency": null,
+   "topics": [
+    "love",
+    "numbers"
+   ],
+   "pronunciation": {
+    "syllables": [
+     {
+      "hanzi": "开",
+      "pinyin": "kāi",
+      "initial": "k",
+      "final": "ai",
+      "tone": 1,
+      "toneName": "1st tone: high and level",
+      "spokenTone": 1
+     },
+     {
+      "hanzi": "心",
+      "pinyin": "xīn",
+      "initial": "x",
+      "final": "in",
+      "tone": 1,
+      "toneName": "1st tone: high and level",
+      "spokenTone": 1
+     }
+    ],
+    "spoken": null,
+    "notes": []
+   },
+   "polyphonic": false,
+   "notes": [],
+   "sources": [
+    "Curated phrase list",
+    "CC-CEDICT"
+   ],
+   "related": [
+    {
+     "id": "24d50b262f",
+     "why": "Part of 开心"
+    },
+    {
+     "id": "6e71d5327a",
+     "why": "Also uses 开"
+    },
+    {
+     "id": "5b00a4f9cf",
+     "why": "Also uses 开"
+    },
+    {
+     "id": "4b8989d600",
+     "why": "Also uses 开"
+    },
+    {
+     "id": "6915311674",
+     "why": "Also uses 开"
+    },
+    {
+     "id": "fc79cd6993",
+     "why": "Also uses 心"
+    },
+    {
+     "id": "c5af5c5933",
+     "why": "Also uses 心"
+    },
+    {
+     "id": "932c94a0fa",
+     "why": "Also uses 心"
+    },
+    {
+     "id": "b8d5990927",
+     "why": "Also uses 心"
+    },
+    {
+     "id": "251a654784",
+     "why": "Also uses 心"
+    }
+   ]
+  },
+  {
    "id": "f3aadd67da",
    "simplified": "当然",
    "traditional": "當然",
@@ -36179,6 +38494,187 @@
     "CC-CEDICT"
    ],
    "related": []
+  },
+  {
+   "id": "c5af5c5933",
+   "simplified": "心情",
+   "traditional": "心情",
+   "pinyin": "xīn qíng",
+   "pinyinNumbered": "xin1 qing2",
+   "meanings": [
+    "mood; frame of mind"
+   ],
+   "classifiers": [
+    {
+     "hanzi": "个",
+     "pinyin": "gè"
+    }
+   ],
+   "hsk": null,
+   "frequency": null,
+   "topics": [
+    "love"
+   ],
+   "pronunciation": {
+    "syllables": [
+     {
+      "hanzi": "心",
+      "pinyin": "xīn",
+      "initial": "x",
+      "final": "in",
+      "tone": 1,
+      "toneName": "1st tone: high and level",
+      "spokenTone": 1
+     },
+     {
+      "hanzi": "情",
+      "pinyin": "qíng",
+      "initial": "q",
+      "final": "ing",
+      "tone": 2,
+      "toneName": "2nd tone: rising",
+      "spokenTone": 2
+     }
+    ],
+    "spoken": null,
+    "notes": []
+   },
+   "polyphonic": false,
+   "notes": [],
+   "sources": [
+    "Curated phrase list",
+    "CC-CEDICT"
+   ],
+   "related": [
+    {
+     "id": "3c5babecee",
+     "why": "Its measure word"
+    },
+    {
+     "id": "fc79cd6993",
+     "why": "Also uses 心"
+    },
+    {
+     "id": "72e2040929",
+     "why": "Also uses 心"
+    },
+    {
+     "id": "932c94a0fa",
+     "why": "Also uses 心"
+    },
+    {
+     "id": "b8d5990927",
+     "why": "Also uses 心"
+    },
+    {
+     "id": "251a654784",
+     "why": "Also uses 心"
+    },
+    {
+     "id": "26ef48a0df",
+     "why": "Also uses 情"
+    },
+    {
+     "id": "4e12d766a7",
+     "why": "Also uses 情"
+    },
+    {
+     "id": "b4bb35fabf",
+     "why": "Also uses 情"
+    },
+    {
+     "id": "1301b60b33",
+     "why": "Also uses 情"
+    }
+   ]
+  },
+  {
+   "id": "932c94a0fa",
+   "simplified": "心爱",
+   "traditional": "心愛",
+   "pinyin": "xīn ài",
+   "pinyinNumbered": "xin1 ai4",
+   "meanings": [
+    "beloved"
+   ],
+   "classifiers": [],
+   "hsk": null,
+   "frequency": null,
+   "topics": [
+    "love"
+   ],
+   "pronunciation": {
+    "syllables": [
+     {
+      "hanzi": "心",
+      "pinyin": "xīn",
+      "initial": "x",
+      "final": "in",
+      "tone": 1,
+      "toneName": "1st tone: high and level",
+      "spokenTone": 1
+     },
+     {
+      "hanzi": "爱",
+      "pinyin": "ài",
+      "initial": "",
+      "final": "ai",
+      "tone": 4,
+      "toneName": "4th tone: sharp fall",
+      "spokenTone": 4
+     }
+    ],
+    "spoken": null,
+    "notes": []
+   },
+   "polyphonic": false,
+   "notes": [],
+   "sources": [
+    "Curated phrase list",
+    "CC-CEDICT"
+   ],
+   "related": [
+    {
+     "id": "0c945f7001",
+     "why": "Also means \"beloved\""
+    },
+    {
+     "id": "8856ecb40a",
+     "why": "Part of 心爱"
+    },
+    {
+     "id": "fc79cd6993",
+     "why": "Also uses 心"
+    },
+    {
+     "id": "72e2040929",
+     "why": "Also uses 心"
+    },
+    {
+     "id": "c5af5c5933",
+     "why": "Also uses 心"
+    },
+    {
+     "id": "b8d5990927",
+     "why": "Also uses 心"
+    },
+    {
+     "id": "251a654784",
+     "why": "Also uses 心"
+    },
+    {
+     "id": "aa57930e69",
+     "why": "Also uses 爱"
+    },
+    {
+     "id": "dc23b3bff0",
+     "why": "Also uses 爱"
+    },
+    {
+     "id": "6542a7f6ea",
+     "why": "Also uses 爱"
+    }
+   ]
   },
   {
    "id": "38d945e3ec",
@@ -36267,7 +38763,8 @@
    "hsk": null,
    "frequency": null,
    "topics": [
-    "everyday"
+    "everyday",
+    "love"
    ],
    "pronunciation": {
     "syllables": [
@@ -36320,6 +38817,203 @@
     {
      "id": "bc0a3c9de6",
      "why": "Also uses 样"
+    }
+   ]
+  },
+  {
+   "id": "4e12d766a7",
+   "simplified": "情人节",
+   "traditional": "情人節",
+   "pinyin": "Qíng rén jié",
+   "pinyinNumbered": "qing2 ren2 jie2",
+   "meanings": [
+    "Valentine's Day"
+   ],
+   "classifiers": [],
+   "hsk": null,
+   "frequency": null,
+   "topics": [
+    "love",
+    "numbers"
+   ],
+   "pronunciation": {
+    "syllables": [
+     {
+      "hanzi": "情",
+      "pinyin": "Qíng",
+      "initial": "q",
+      "final": "ing",
+      "tone": 2,
+      "toneName": "2nd tone: rising",
+      "spokenTone": 2
+     },
+     {
+      "hanzi": "人",
+      "pinyin": "rén",
+      "initial": "r",
+      "final": "en",
+      "tone": 2,
+      "toneName": "2nd tone: rising",
+      "spokenTone": 2
+     },
+     {
+      "hanzi": "节",
+      "pinyin": "jié",
+      "initial": "j",
+      "final": "ie",
+      "tone": 2,
+      "toneName": "2nd tone: rising",
+      "spokenTone": 2
+     }
+    ],
+    "spoken": null,
+    "notes": []
+   },
+   "polyphonic": false,
+   "notes": [],
+   "sources": [
+    "Curated phrase list",
+    "CC-CEDICT"
+   ],
+   "related": [
+    {
+     "id": "472d7c13ed",
+     "why": "Part of 情人节"
+    },
+    {
+     "id": "26ef48a0df",
+     "why": "Also uses 情"
+    },
+    {
+     "id": "c5af5c5933",
+     "why": "Also uses 情"
+    },
+    {
+     "id": "b4bb35fabf",
+     "why": "Also uses 情"
+    },
+    {
+     "id": "1301b60b33",
+     "why": "Also uses 情"
+    }
+   ]
+  },
+  {
+   "id": "b4bb35fabf",
+   "simplified": "情侣",
+   "traditional": "情侶",
+   "pinyin": "qíng lǚ",
+   "pinyinNumbered": "qing2 lü3",
+   "meanings": [
+    "sweethearts",
+    "lovers"
+   ],
+   "classifiers": [],
+   "hsk": null,
+   "frequency": null,
+   "topics": [
+    "love"
+   ],
+   "pronunciation": {
+    "syllables": [
+     {
+      "hanzi": "情",
+      "pinyin": "qíng",
+      "initial": "q",
+      "final": "ing",
+      "tone": 2,
+      "toneName": "2nd tone: rising",
+      "spokenTone": 2
+     },
+     {
+      "hanzi": "侣",
+      "pinyin": "lǚ",
+      "initial": "l",
+      "final": "ü",
+      "tone": 3,
+      "toneName": "3rd tone: low dip",
+      "spokenTone": 3
+     }
+    ],
+    "spoken": null,
+    "notes": []
+   },
+   "polyphonic": false,
+   "notes": [],
+   "sources": [
+    "Curated phrase list",
+    "CC-CEDICT"
+   ],
+   "related": [
+    {
+     "id": "26ef48a0df",
+     "why": "Also uses 情"
+    },
+    {
+     "id": "c5af5c5933",
+     "why": "Also uses 情"
+    },
+    {
+     "id": "4e12d766a7",
+     "why": "Also uses 情"
+    },
+    {
+     "id": "1301b60b33",
+     "why": "Also uses 情"
+    }
+   ]
+  },
+  {
+   "id": "81acdc80a7",
+   "simplified": "想念",
+   "traditional": "想念",
+   "pinyin": "xiǎng niàn",
+   "pinyinNumbered": "xiang3 nian4",
+   "meanings": [
+    "to miss",
+    "to remember with longing",
+    "to long to see again"
+   ],
+   "classifiers": [],
+   "hsk": null,
+   "frequency": null,
+   "topics": [
+    "love"
+   ],
+   "pronunciation": {
+    "syllables": [
+     {
+      "hanzi": "想",
+      "pinyin": "xiǎng",
+      "initial": "x",
+      "final": "iang",
+      "tone": 3,
+      "toneName": "3rd tone: low dip",
+      "spokenTone": 3
+     },
+     {
+      "hanzi": "念",
+      "pinyin": "niàn",
+      "initial": "n",
+      "final": "ian",
+      "tone": 4,
+      "toneName": "4th tone: sharp fall",
+      "spokenTone": 4
+     }
+    ],
+    "spoken": null,
+    "notes": []
+   },
+   "polyphonic": false,
+   "notes": [],
+   "sources": [
+    "Curated phrase list",
+    "CC-CEDICT"
+   ],
+   "related": [
+    {
+     "id": "09f6080cf6",
+     "why": "Part of 想念"
     }
    ]
   },
@@ -36396,6 +39090,53 @@
      "why": "Also uses 吃"
     }
    ]
+  },
+  {
+   "id": "7b5f110e4f",
+   "simplified": "戒指",
+   "traditional": "戒指",
+   "pinyin": "jiè zhi",
+   "pinyinNumbered": "jie4 zhi5",
+   "meanings": [
+    "(finger) ring"
+   ],
+   "classifiers": [],
+   "hsk": null,
+   "frequency": null,
+   "topics": [
+    "love"
+   ],
+   "pronunciation": {
+    "syllables": [
+     {
+      "hanzi": "戒",
+      "pinyin": "jiè",
+      "initial": "j",
+      "final": "ie",
+      "tone": 4,
+      "toneName": "4th tone: sharp fall",
+      "spokenTone": 4
+     },
+     {
+      "hanzi": "指",
+      "pinyin": "zhi",
+      "initial": "zh",
+      "final": "i",
+      "tone": 5,
+      "toneName": "neutral tone: light and short",
+      "spokenTone": 5
+     }
+    ],
+    "spoken": null,
+    "notes": []
+   },
+   "polyphonic": false,
+   "notes": [],
+   "sources": [
+    "Curated phrase list",
+    "CC-CEDICT"
+   ],
+   "related": []
   },
   {
    "id": "ffbafee206",
@@ -36549,6 +39290,477 @@
     {
      "id": "3c5babecee",
      "why": "Its measure word"
+    }
+   ]
+  },
+  {
+   "id": "246ddaf751",
+   "simplified": "抱抱",
+   "traditional": "抱抱",
+   "pinyin": "bào bào",
+   "pinyinNumbered": "bao4 bao4",
+   "meanings": [
+    "to hug; to give a cuddle"
+   ],
+   "classifiers": [],
+   "hsk": null,
+   "frequency": null,
+   "topics": [
+    "love"
+   ],
+   "pronunciation": {
+    "syllables": [
+     {
+      "hanzi": "抱",
+      "pinyin": "bào",
+      "initial": "b",
+      "final": "ao",
+      "tone": 4,
+      "toneName": "4th tone: sharp fall",
+      "spokenTone": 4
+     },
+     {
+      "hanzi": "抱",
+      "pinyin": "bào",
+      "initial": "b",
+      "final": "ao",
+      "tone": 4,
+      "toneName": "4th tone: sharp fall",
+      "spokenTone": 4
+     }
+    ],
+    "spoken": null,
+    "notes": []
+   },
+   "polyphonic": false,
+   "notes": [],
+   "sources": [
+    "Curated phrase list",
+    "CC-CEDICT"
+   ],
+   "related": [
+    {
+     "id": "d8f5666822",
+     "why": "Also means \"to hug\""
+    },
+    {
+     "id": "7976aa5e8b",
+     "why": "Also uses 抱"
+    }
+   ]
+  },
+  {
+   "id": "7976aa5e8b",
+   "simplified": "抱歉",
+   "traditional": "抱歉",
+   "pinyin": "bào qiàn",
+   "pinyinNumbered": "bao4 qian4",
+   "meanings": [
+    "to be sorry",
+    "to feel apologetic",
+    "sorry!"
+   ],
+   "classifiers": [],
+   "hsk": null,
+   "frequency": null,
+   "topics": [
+    "love"
+   ],
+   "pronunciation": {
+    "syllables": [
+     {
+      "hanzi": "抱",
+      "pinyin": "bào",
+      "initial": "b",
+      "final": "ao",
+      "tone": 4,
+      "toneName": "4th tone: sharp fall",
+      "spokenTone": 4
+     },
+     {
+      "hanzi": "歉",
+      "pinyin": "qiàn",
+      "initial": "q",
+      "final": "ian",
+      "tone": 4,
+      "toneName": "4th tone: sharp fall",
+      "spokenTone": 4
+     }
+    ],
+    "spoken": null,
+    "notes": []
+   },
+   "polyphonic": false,
+   "notes": [],
+   "sources": [
+    "Curated phrase list",
+    "CC-CEDICT"
+   ],
+   "related": [
+    {
+     "id": "246ddaf751",
+     "why": "Also uses 抱"
+    },
+    {
+     "id": "d8f5666822",
+     "why": "Also uses 抱"
+    }
+   ]
+  },
+  {
+   "id": "b8d5990927",
+   "simplified": "担心",
+   "traditional": "擔心",
+   "pinyin": "dān xīn",
+   "pinyinNumbered": "dan1 xin1",
+   "meanings": [
+    "anxious",
+    "worried",
+    "uneasy",
+    "to worry",
+    "to be anxious"
+   ],
+   "classifiers": [],
+   "hsk": null,
+   "frequency": null,
+   "topics": [
+    "love"
+   ],
+   "pronunciation": {
+    "syllables": [
+     {
+      "hanzi": "担",
+      "pinyin": "dān",
+      "initial": "d",
+      "final": "an",
+      "tone": 1,
+      "toneName": "1st tone: high and level",
+      "spokenTone": 1
+     },
+     {
+      "hanzi": "心",
+      "pinyin": "xīn",
+      "initial": "x",
+      "final": "in",
+      "tone": 1,
+      "toneName": "1st tone: high and level",
+      "spokenTone": 1
+     }
+    ],
+    "spoken": null,
+    "notes": []
+   },
+   "polyphonic": true,
+   "notes": [],
+   "sources": [
+    "Curated phrase list",
+    "CC-CEDICT"
+   ],
+   "related": [
+    {
+     "id": "fc79cd6993",
+     "why": "Also uses 心"
+    },
+    {
+     "id": "72e2040929",
+     "why": "Also uses 心"
+    },
+    {
+     "id": "c5af5c5933",
+     "why": "Also uses 心"
+    },
+    {
+     "id": "932c94a0fa",
+     "why": "Also uses 心"
+    },
+    {
+     "id": "251a654784",
+     "why": "Also uses 心"
+    }
+   ]
+  },
+  {
+   "id": "d8f5666822",
+   "simplified": "拥抱",
+   "traditional": "擁抱",
+   "pinyin": "yōng bào",
+   "pinyinNumbered": "yong1 bao4",
+   "meanings": [
+    "to embrace",
+    "to hug"
+   ],
+   "classifiers": [],
+   "hsk": null,
+   "frequency": null,
+   "topics": [
+    "love"
+   ],
+   "pronunciation": {
+    "syllables": [
+     {
+      "hanzi": "拥",
+      "pinyin": "yōng",
+      "initial": "y",
+      "final": "ong",
+      "tone": 1,
+      "toneName": "1st tone: high and level",
+      "spokenTone": 1
+     },
+     {
+      "hanzi": "抱",
+      "pinyin": "bào",
+      "initial": "b",
+      "final": "ao",
+      "tone": 4,
+      "toneName": "4th tone: sharp fall",
+      "spokenTone": 4
+     }
+    ],
+    "spoken": null,
+    "notes": []
+   },
+   "polyphonic": false,
+   "notes": [],
+   "sources": [
+    "Curated phrase list",
+    "CC-CEDICT"
+   ],
+   "related": [
+    {
+     "id": "246ddaf751",
+     "why": "Also means \"to hug\""
+    },
+    {
+     "id": "7976aa5e8b",
+     "why": "Also uses 抱"
+    }
+   ]
+  },
+  {
+   "id": "ee9fe53973",
+   "simplified": "拿铁",
+   "traditional": "拿鐵",
+   "pinyin": "ná tiě",
+   "pinyinNumbered": "na2 tie3",
+   "meanings": [
+    "latte (loanword)"
+   ],
+   "classifiers": [],
+   "hsk": null,
+   "frequency": null,
+   "topics": [
+    "food"
+   ],
+   "pronunciation": {
+    "syllables": [
+     {
+      "hanzi": "拿",
+      "pinyin": "ná",
+      "initial": "n",
+      "final": "a",
+      "tone": 2,
+      "toneName": "2nd tone: rising",
+      "spokenTone": 2
+     },
+     {
+      "hanzi": "铁",
+      "pinyin": "tiě",
+      "initial": "t",
+      "final": "ie",
+      "tone": 3,
+      "toneName": "3rd tone: low dip",
+      "spokenTone": 3
+     }
+    ],
+    "spoken": null,
+    "notes": []
+   },
+   "polyphonic": false,
+   "notes": [],
+   "sources": [
+    "Curated phrase list",
+    "CC-CEDICT"
+   ],
+   "related": [
+    {
+     "id": "04729019d2",
+     "why": "Part of 拿铁"
+    },
+    {
+     "id": "4cef2db4e2",
+     "why": "Also uses 铁"
+    }
+   ]
+  },
+  {
+   "id": "8de4406895",
+   "simplified": "挺好",
+   "traditional": "挺好",
+   "pinyin": "tǐng hǎo",
+   "pinyinNumbered": "ting3 hao3",
+   "meanings": [
+    "very good"
+   ],
+   "classifiers": [],
+   "hsk": null,
+   "frequency": null,
+   "topics": [
+    "love"
+   ],
+   "pronunciation": {
+    "syllables": [
+     {
+      "hanzi": "挺",
+      "pinyin": "tǐng",
+      "initial": "t",
+      "final": "ing",
+      "tone": 3,
+      "toneName": "3rd tone: low dip",
+      "spokenTone": 2
+     },
+     {
+      "hanzi": "好",
+      "pinyin": "hǎo",
+      "initial": "h",
+      "final": "ao",
+      "tone": 3,
+      "toneName": "3rd tone: low dip",
+      "spokenTone": 3
+     }
+    ],
+    "spoken": "tíng hǎo",
+    "notes": [
+     "Two 3rd tones in a row: the first is said as a 2nd tone"
+    ]
+   },
+   "polyphonic": true,
+   "notes": [],
+   "sources": [
+    "Curated phrase list",
+    "CC-CEDICT"
+   ],
+   "related": [
+    {
+     "id": "a8d69a4194",
+     "why": "Also means \"very good\""
+    },
+    {
+     "id": "631b2a9d50",
+     "why": "Part of 挺好"
+    },
+    {
+     "id": "861e44c8be",
+     "why": "Also uses 好"
+    },
+    {
+     "id": "1a5b021c80",
+     "why": "Also uses 好"
+    },
+    {
+     "id": "9510a6a4ff",
+     "why": "Also uses 好"
+    },
+    {
+     "id": "4a869fda21",
+     "why": "Also uses 好"
+    },
+    {
+     "id": "aa57930e69",
+     "why": "Also uses 好"
+    },
+    {
+     "id": "6b94f63415",
+     "why": "Also uses 好"
+    },
+    {
+     "id": "1d54df8343",
+     "why": "Also uses 好"
+    },
+    {
+     "id": "d0e307e453",
+     "why": "Also uses 好"
+    }
+   ]
+  },
+  {
+   "id": "251a654784",
+   "simplified": "放心",
+   "traditional": "放心",
+   "pinyin": "fàng xīn",
+   "pinyinNumbered": "fang4 xin1",
+   "meanings": [
+    "to feel relieved",
+    "to feel reassured",
+    "to be at ease"
+   ],
+   "classifiers": [],
+   "hsk": null,
+   "frequency": null,
+   "topics": [
+    "love"
+   ],
+   "pronunciation": {
+    "syllables": [
+     {
+      "hanzi": "放",
+      "pinyin": "fàng",
+      "initial": "f",
+      "final": "ang",
+      "tone": 4,
+      "toneName": "4th tone: sharp fall",
+      "spokenTone": 4
+     },
+     {
+      "hanzi": "心",
+      "pinyin": "xīn",
+      "initial": "x",
+      "final": "in",
+      "tone": 1,
+      "toneName": "1st tone: high and level",
+      "spokenTone": 1
+     }
+    ],
+    "spoken": null,
+    "notes": []
+   },
+   "polyphonic": false,
+   "notes": [],
+   "sources": [
+    "Curated phrase list",
+    "CC-CEDICT"
+   ],
+   "related": [
+    {
+     "id": "a1aba28de0",
+     "why": "Part of 放心"
+    },
+    {
+     "id": "099d1ecc14",
+     "why": "Also uses 放"
+    },
+    {
+     "id": "bd2fd8fcbb",
+     "why": "Also uses 放"
+    },
+    {
+     "id": "fc79cd6993",
+     "why": "Also uses 心"
+    },
+    {
+     "id": "72e2040929",
+     "why": "Also uses 心"
+    },
+    {
+     "id": "c5af5c5933",
+     "why": "Also uses 心"
+    },
+    {
+     "id": "932c94a0fa",
+     "why": "Also uses 心"
+    },
+    {
+     "id": "b8d5990927",
+     "why": "Also uses 心"
     }
    ]
   },
@@ -36711,6 +39923,10 @@
    ],
    "related": [
     {
+     "id": "02c0da4d8b",
+     "why": "Also means \"good morning!\""
+    },
+    {
      "id": "db3147541a",
      "why": "Part of 早上好"
     },
@@ -36745,10 +39961,78 @@
     {
      "id": "03c2a6a290",
      "why": "Also uses 上"
+    }
+   ]
+  },
+  {
+   "id": "02c0da4d8b",
+   "simplified": "早安",
+   "traditional": "早安",
+   "pinyin": "zǎo ān",
+   "pinyinNumbered": "zao3 an1",
+   "meanings": [
+    "Good morning!"
+   ],
+   "classifiers": [],
+   "hsk": null,
+   "frequency": null,
+   "topics": [
+    "love"
+   ],
+   "pronunciation": {
+    "syllables": [
+     {
+      "hanzi": "早",
+      "pinyin": "zǎo",
+      "initial": "z",
+      "final": "ao",
+      "tone": 3,
+      "toneName": "3rd tone: low dip",
+      "spokenTone": 3
+     },
+     {
+      "hanzi": "安",
+      "pinyin": "ān",
+      "initial": "",
+      "final": "an",
+      "tone": 1,
+      "toneName": "1st tone: high and level",
+      "spokenTone": 1
+     }
+    ],
+    "spoken": null,
+    "notes": []
+   },
+   "polyphonic": false,
+   "notes": [],
+   "sources": [
+    "Curated phrase list",
+    "CC-CEDICT"
+   ],
+   "related": [
+    {
+     "id": "649329e62e",
+     "why": "Also means \"good morning!\""
     },
     {
-     "id": "7f67244aa4",
-     "why": "Also uses 上"
+     "id": "db3147541a",
+     "why": "Part of 早安"
+    },
+    {
+     "id": "eef45ba229",
+     "why": "Also uses 早"
+    },
+    {
+     "id": "05ba591635",
+     "why": "Also uses 早"
+    },
+    {
+     "id": "77f74c2973",
+     "why": "Also uses 安"
+    },
+    {
+     "id": "871606f32d",
+     "why": "Also uses 安"
     }
    ]
   },
@@ -36920,7 +40204,8 @@
    "hsk": null,
    "frequency": null,
    "topics": [
-    "everyday"
+    "everyday",
+    "love"
    ],
    "pronunciation": {
     "syllables": [
@@ -36971,6 +40256,10 @@
     },
     {
      "id": "77f74c2973",
+     "why": "Also uses 安"
+    },
+    {
+     "id": "02c0da4d8b",
      "why": "Also uses 安"
     }
    ]
@@ -37053,6 +40342,58 @@
    ]
   },
   {
+   "id": "9fcdd41153",
+   "simplified": "果汁",
+   "traditional": "果汁",
+   "pinyin": "guǒ zhī",
+   "pinyinNumbered": "guo3 zhi1",
+   "meanings": [
+    "fruit juice"
+   ],
+   "classifiers": [],
+   "hsk": null,
+   "frequency": null,
+   "topics": [
+    "food"
+   ],
+   "pronunciation": {
+    "syllables": [
+     {
+      "hanzi": "果",
+      "pinyin": "guǒ",
+      "initial": "g",
+      "final": "uo",
+      "tone": 3,
+      "toneName": "3rd tone: low dip",
+      "spokenTone": 3
+     },
+     {
+      "hanzi": "汁",
+      "pinyin": "zhī",
+      "initial": "zh",
+      "final": "i",
+      "tone": 1,
+      "toneName": "1st tone: high and level",
+      "spokenTone": 1
+     }
+    ],
+    "spoken": null,
+    "notes": []
+   },
+   "polyphonic": false,
+   "notes": [],
+   "sources": [
+    "Curated phrase list",
+    "CC-CEDICT"
+   ],
+   "related": [
+    {
+     "id": "b9456b966c",
+     "why": "Also uses 果"
+    }
+   ]
+  },
+  {
    "id": "a9050f60d2",
    "simplified": "欢迎光临",
    "traditional": "歡迎光臨",
@@ -37120,6 +40461,117 @@
     {
      "id": "0f9bb2a8d6",
      "why": "Also uses 欢"
+    }
+   ]
+  },
+  {
+   "id": "1e5fd1aef2",
+   "simplified": "永远",
+   "traditional": "永遠",
+   "pinyin": "yǒng yuǎn",
+   "pinyinNumbered": "yong3 yuan3",
+   "meanings": [
+    "forever",
+    "eternal"
+   ],
+   "classifiers": [],
+   "hsk": null,
+   "frequency": null,
+   "topics": [
+    "love"
+   ],
+   "pronunciation": {
+    "syllables": [
+     {
+      "hanzi": "永",
+      "pinyin": "yǒng",
+      "initial": "y",
+      "final": "ong",
+      "tone": 3,
+      "toneName": "3rd tone: low dip",
+      "spokenTone": 2
+     },
+     {
+      "hanzi": "远",
+      "pinyin": "yuǎn",
+      "initial": "y",
+      "final": "uan",
+      "tone": 3,
+      "toneName": "3rd tone: low dip",
+      "spokenTone": 3
+     }
+    ],
+    "spoken": "yóng yuǎn",
+    "notes": [
+     "Two 3rd tones in a row: the first is said as a 2nd tone"
+    ]
+   },
+   "polyphonic": true,
+   "notes": [],
+   "sources": [
+    "Curated phrase list",
+    "CC-CEDICT"
+   ],
+   "related": [
+    {
+     "id": "aec78d0fb5",
+     "why": "Part of 永远"
+    }
+   ]
+  },
+  {
+   "id": "c39d56767a",
+   "simplified": "求婚",
+   "traditional": "求婚",
+   "pinyin": "qiú hūn",
+   "pinyinNumbered": "qiu2 hun1",
+   "meanings": [
+    "to propose marriage"
+   ],
+   "classifiers": [],
+   "hsk": null,
+   "frequency": null,
+   "topics": [
+    "love"
+   ],
+   "pronunciation": {
+    "syllables": [
+     {
+      "hanzi": "求",
+      "pinyin": "qiú",
+      "initial": "q",
+      "final": "iu",
+      "tone": 2,
+      "toneName": "2nd tone: rising",
+      "spokenTone": 2
+     },
+     {
+      "hanzi": "婚",
+      "pinyin": "hūn",
+      "initial": "h",
+      "final": "un",
+      "tone": 1,
+      "toneName": "1st tone: high and level",
+      "spokenTone": 1
+     }
+    ],
+    "spoken": null,
+    "notes": []
+   },
+   "polyphonic": false,
+   "notes": [],
+   "sources": [
+    "Curated phrase list",
+    "CC-CEDICT"
+   ],
+   "related": [
+    {
+     "id": "07ffcad33a",
+     "why": "Also uses 婚"
+    },
+    {
+     "id": "5274796d19",
+     "why": "Also uses 婚"
     }
    ]
   },
@@ -37295,6 +40747,158 @@
    ]
   },
   {
+   "id": "c264f9c7bc",
+   "simplified": "浪漫",
+   "traditional": "浪漫",
+   "pinyin": "làng màn",
+   "pinyinNumbered": "lang4 man4",
+   "meanings": [
+    "romantic"
+   ],
+   "classifiers": [],
+   "hsk": null,
+   "frequency": null,
+   "topics": [
+    "love"
+   ],
+   "pronunciation": {
+    "syllables": [
+     {
+      "hanzi": "浪",
+      "pinyin": "làng",
+      "initial": "l",
+      "final": "ang",
+      "tone": 4,
+      "toneName": "4th tone: sharp fall",
+      "spokenTone": 4
+     },
+     {
+      "hanzi": "漫",
+      "pinyin": "màn",
+      "initial": "m",
+      "final": "an",
+      "tone": 4,
+      "toneName": "4th tone: sharp fall",
+      "spokenTone": 4
+     }
+    ],
+    "spoken": null,
+    "notes": []
+   },
+   "polyphonic": false,
+   "notes": [],
+   "sources": [
+    "Curated phrase list",
+    "CC-CEDICT"
+   ],
+   "related": []
+  },
+  {
+   "id": "073d571305",
+   "simplified": "温柔",
+   "traditional": "溫柔",
+   "pinyin": "wēn róu",
+   "pinyinNumbered": "wen1 rou2",
+   "meanings": [
+    "gentle and soft; tender; sweet (commonly used to describe a girl or woman)"
+   ],
+   "classifiers": [],
+   "hsk": null,
+   "frequency": null,
+   "topics": [
+    "family",
+    "love"
+   ],
+   "pronunciation": {
+    "syllables": [
+     {
+      "hanzi": "温",
+      "pinyin": "wēn",
+      "initial": "w",
+      "final": "en",
+      "tone": 1,
+      "toneName": "1st tone: high and level",
+      "spokenTone": 1
+     },
+     {
+      "hanzi": "柔",
+      "pinyin": "róu",
+      "initial": "r",
+      "final": "ou",
+      "tone": 2,
+      "toneName": "2nd tone: rising",
+      "spokenTone": 2
+     }
+    ],
+    "spoken": null,
+    "notes": []
+   },
+   "polyphonic": false,
+   "notes": [],
+   "sources": [
+    "Curated phrase list",
+    "CC-CEDICT"
+   ],
+   "related": [
+    {
+     "id": "c5c8ca7233",
+     "why": "Also means \"sweet\""
+    }
+   ]
+  },
+  {
+   "id": "350376fbc0",
+   "simplified": "漂亮",
+   "traditional": "漂亮",
+   "pinyin": "piào liang",
+   "pinyinNumbered": "piao4 liang5",
+   "meanings": [
+    "pretty; beautiful"
+   ],
+   "classifiers": [],
+   "hsk": null,
+   "frequency": null,
+   "topics": [
+    "love"
+   ],
+   "pronunciation": {
+    "syllables": [
+     {
+      "hanzi": "漂",
+      "pinyin": "piào",
+      "initial": "p",
+      "final": "iao",
+      "tone": 4,
+      "toneName": "4th tone: sharp fall",
+      "spokenTone": 4
+     },
+     {
+      "hanzi": "亮",
+      "pinyin": "liang",
+      "initial": "l",
+      "final": "iang",
+      "tone": 5,
+      "toneName": "neutral tone: light and short",
+      "spokenTone": 5
+     }
+    ],
+    "spoken": null,
+    "notes": []
+   },
+   "polyphonic": true,
+   "notes": [],
+   "sources": [
+    "Curated phrase list",
+    "CC-CEDICT"
+   ],
+   "related": [
+    {
+     "id": "4ae57ef88f",
+     "why": "Also means \"beautiful\""
+    }
+   ]
+  },
+  {
    "id": "23ecddf64e",
    "simplified": "火车站",
    "traditional": "火車站",
@@ -37464,6 +41068,399 @@
    ]
   },
   {
+   "id": "6542a7f6ea",
+   "simplified": "爱上",
+   "traditional": "愛上",
+   "pinyin": "ài shàng",
+   "pinyinNumbered": "ai4 shang4",
+   "meanings": [
+    "to fall in love with",
+    "to be in love with"
+   ],
+   "classifiers": [],
+   "hsk": null,
+   "frequency": null,
+   "topics": [
+    "love"
+   ],
+   "pronunciation": {
+    "syllables": [
+     {
+      "hanzi": "爱",
+      "pinyin": "ài",
+      "initial": "",
+      "final": "ai",
+      "tone": 4,
+      "toneName": "4th tone: sharp fall",
+      "spokenTone": 4
+     },
+     {
+      "hanzi": "上",
+      "pinyin": "shàng",
+      "initial": "sh",
+      "final": "ang",
+      "tone": 4,
+      "toneName": "4th tone: sharp fall",
+      "spokenTone": 4
+     }
+    ],
+    "spoken": null,
+    "notes": []
+   },
+   "polyphonic": false,
+   "notes": [],
+   "sources": [
+    "Curated phrase list",
+    "CC-CEDICT"
+   ],
+   "related": [
+    {
+     "id": "8856ecb40a",
+     "why": "Part of 爱上"
+    },
+    {
+     "id": "c012667bdf",
+     "why": "Part of 爱上"
+    },
+    {
+     "id": "aa57930e69",
+     "why": "Also uses 爱"
+    },
+    {
+     "id": "0c945f7001",
+     "why": "Also uses 爱"
+    },
+    {
+     "id": "dc23b3bff0",
+     "why": "Also uses 爱"
+    },
+    {
+     "id": "932c94a0fa",
+     "why": "Also uses 爱"
+    },
+    {
+     "id": "b4feeb85ee",
+     "why": "Also uses 爱"
+    },
+    {
+     "id": "1301b60b33",
+     "why": "Also uses 爱"
+    },
+    {
+     "id": "15cf064efb",
+     "why": "Also uses 爱"
+    },
+    {
+     "id": "03ed9c9d5d",
+     "why": "Also uses 上"
+    }
+   ]
+  },
+  {
+   "id": "b4feeb85ee",
+   "simplified": "爱人",
+   "traditional": "愛人",
+   "pinyin": "ài ren",
+   "pinyinNumbered": "ai4 ren5",
+   "meanings": [
+    "spouse (PRC)",
+    "lover (non-PRC)"
+   ],
+   "classifiers": [
+    {
+     "hanzi": "个",
+     "pinyin": "gè"
+    }
+   ],
+   "hsk": null,
+   "frequency": null,
+   "topics": [
+    "love"
+   ],
+   "pronunciation": {
+    "syllables": [
+     {
+      "hanzi": "爱",
+      "pinyin": "ài",
+      "initial": "",
+      "final": "ai",
+      "tone": 4,
+      "toneName": "4th tone: sharp fall",
+      "spokenTone": 4
+     },
+     {
+      "hanzi": "人",
+      "pinyin": "ren",
+      "initial": "r",
+      "final": "en",
+      "tone": 5,
+      "toneName": "neutral tone: light and short",
+      "spokenTone": 5
+     }
+    ],
+    "spoken": null,
+    "notes": []
+   },
+   "polyphonic": false,
+   "notes": [],
+   "sources": [
+    "Curated phrase list",
+    "CC-CEDICT"
+   ],
+   "related": [
+    {
+     "id": "3c5babecee",
+     "why": "Its measure word"
+    },
+    {
+     "id": "8856ecb40a",
+     "why": "Part of 爱人"
+    },
+    {
+     "id": "472d7c13ed",
+     "why": "Part of 爱人"
+    },
+    {
+     "id": "aa57930e69",
+     "why": "Also uses 爱"
+    },
+    {
+     "id": "0c945f7001",
+     "why": "Also uses 爱"
+    },
+    {
+     "id": "dc23b3bff0",
+     "why": "Also uses 爱"
+    },
+    {
+     "id": "932c94a0fa",
+     "why": "Also uses 爱"
+    },
+    {
+     "id": "6542a7f6ea",
+     "why": "Also uses 爱"
+    },
+    {
+     "id": "1301b60b33",
+     "why": "Also uses 爱"
+    },
+    {
+     "id": "15cf064efb",
+     "why": "Also uses 爱"
+    }
+   ]
+  },
+  {
+   "id": "1301b60b33",
+   "simplified": "爱情",
+   "traditional": "愛情",
+   "pinyin": "ài qíng",
+   "pinyinNumbered": "ai4 qing2",
+   "meanings": [
+    "romance; love (romantic)"
+   ],
+   "classifiers": [
+    {
+     "hanzi": "份",
+     "pinyin": "fèn"
+    }
+   ],
+   "hsk": null,
+   "frequency": null,
+   "topics": [
+    "love"
+   ],
+   "pronunciation": {
+    "syllables": [
+     {
+      "hanzi": "爱",
+      "pinyin": "ài",
+      "initial": "",
+      "final": "ai",
+      "tone": 4,
+      "toneName": "4th tone: sharp fall",
+      "spokenTone": 4
+     },
+     {
+      "hanzi": "情",
+      "pinyin": "qíng",
+      "initial": "q",
+      "final": "ing",
+      "tone": 2,
+      "toneName": "2nd tone: rising",
+      "spokenTone": 2
+     }
+    ],
+    "spoken": null,
+    "notes": []
+   },
+   "polyphonic": false,
+   "notes": [],
+   "sources": [
+    "Curated phrase list",
+    "CC-CEDICT"
+   ],
+   "related": [
+    {
+     "id": "8856ecb40a",
+     "why": "Part of 爱情"
+    },
+    {
+     "id": "aa57930e69",
+     "why": "Also uses 爱"
+    },
+    {
+     "id": "0c945f7001",
+     "why": "Also uses 爱"
+    },
+    {
+     "id": "dc23b3bff0",
+     "why": "Also uses 爱"
+    },
+    {
+     "id": "932c94a0fa",
+     "why": "Also uses 爱"
+    },
+    {
+     "id": "6542a7f6ea",
+     "why": "Also uses 爱"
+    },
+    {
+     "id": "b4feeb85ee",
+     "why": "Also uses 爱"
+    },
+    {
+     "id": "15cf064efb",
+     "why": "Also uses 爱"
+    },
+    {
+     "id": "26ef48a0df",
+     "why": "Also uses 情"
+    },
+    {
+     "id": "c5af5c5933",
+     "why": "Also uses 情"
+    }
+   ]
+  },
+  {
+   "id": "db6835e584",
+   "simplified": "牵手",
+   "traditional": "牽手",
+   "pinyin": "qiān shǒu",
+   "pinyinNumbered": "qian1 shou3",
+   "meanings": [
+    "to hold hands"
+   ],
+   "classifiers": [],
+   "hsk": null,
+   "frequency": null,
+   "topics": [
+    "love"
+   ],
+   "pronunciation": {
+    "syllables": [
+     {
+      "hanzi": "牵",
+      "pinyin": "qiān",
+      "initial": "q",
+      "final": "ian",
+      "tone": 1,
+      "toneName": "1st tone: high and level",
+      "spokenTone": 1
+     },
+     {
+      "hanzi": "手",
+      "pinyin": "shǒu",
+      "initial": "sh",
+      "final": "ou",
+      "tone": 3,
+      "toneName": "3rd tone: low dip",
+      "spokenTone": 3
+     }
+    ],
+    "spoken": null,
+    "notes": []
+   },
+   "polyphonic": false,
+   "notes": [],
+   "sources": [
+    "Curated phrase list",
+    "CC-CEDICT"
+   ],
+   "related": [
+    {
+     "id": "782a0ca72c",
+     "why": "Part of 牵手"
+    },
+    {
+     "id": "318e50831a",
+     "why": "Also uses 手"
+    },
+    {
+     "id": "883011e3ea",
+     "why": "Also uses 手"
+    }
+   ]
+  },
+  {
+   "id": "c5c8ca7233",
+   "simplified": "甜蜜",
+   "traditional": "甜蜜",
+   "pinyin": "tián mì",
+   "pinyinNumbered": "tian2 mi4",
+   "meanings": [
+    "sweet",
+    "happy"
+   ],
+   "classifiers": [],
+   "hsk": null,
+   "frequency": null,
+   "topics": [
+    "love"
+   ],
+   "pronunciation": {
+    "syllables": [
+     {
+      "hanzi": "甜",
+      "pinyin": "tián",
+      "initial": "t",
+      "final": "ian",
+      "tone": 2,
+      "toneName": "2nd tone: rising",
+      "spokenTone": 2
+     },
+     {
+      "hanzi": "蜜",
+      "pinyin": "mì",
+      "initial": "m",
+      "final": "i",
+      "tone": 4,
+      "toneName": "4th tone: sharp fall",
+      "spokenTone": 4
+     }
+    ],
+    "spoken": null,
+    "notes": []
+   },
+   "polyphonic": false,
+   "notes": [],
+   "sources": [
+    "Curated phrase list",
+    "CC-CEDICT"
+   ],
+   "related": [
+    {
+     "id": "eed0a4e170",
+     "why": "Also means \"happy\""
+    },
+    {
+     "id": "073d571305",
+     "why": "Also means \"sweet\""
+    }
+   ]
+  },
+  {
    "id": "8cf3d20091",
    "simplified": "生日快乐",
    "traditional": "生日快樂",
@@ -37570,6 +41567,68 @@
    ]
   },
   {
+   "id": "e5b97ea832",
+   "simplified": "真棒",
+   "traditional": "真棒",
+   "pinyin": "zhēn bàng",
+   "pinyinNumbered": "zhen1 bang4",
+   "meanings": [
+    "super!",
+    "really great",
+    "wonderful"
+   ],
+   "classifiers": [],
+   "hsk": null,
+   "frequency": null,
+   "topics": [
+    "love"
+   ],
+   "pronunciation": {
+    "syllables": [
+     {
+      "hanzi": "真",
+      "pinyin": "zhēn",
+      "initial": "zh",
+      "final": "en",
+      "tone": 1,
+      "toneName": "1st tone: high and level",
+      "spokenTone": 1
+     },
+     {
+      "hanzi": "棒",
+      "pinyin": "bàng",
+      "initial": "b",
+      "final": "ang",
+      "tone": 4,
+      "toneName": "4th tone: sharp fall",
+      "spokenTone": 4
+     }
+    ],
+    "spoken": null,
+    "notes": []
+   },
+   "polyphonic": false,
+   "notes": [],
+   "sources": [
+    "Curated phrase list",
+    "CC-CEDICT"
+   ],
+   "related": [
+    {
+     "id": "27bae4f287",
+     "why": "Part of 真棒"
+    },
+    {
+     "id": "93ab06996e",
+     "why": "Also uses 真"
+    },
+    {
+     "id": "f34c48117d",
+     "why": "Also uses 真"
+    }
+   ]
+  },
+  {
    "id": "177795ac53",
    "simplified": "等一下",
    "traditional": "等一下",
@@ -37671,6 +41730,757 @@
    ]
   },
   {
+   "id": "29223f08cd",
+   "simplified": "糖",
+   "traditional": "糖",
+   "pinyin": "táng",
+   "pinyinNumbered": "tang2",
+   "meanings": [
+    "sugar",
+    "sweets",
+    "candy"
+   ],
+   "classifiers": [
+    {
+     "hanzi": "颗",
+     "pinyin": "kē"
+    },
+    {
+     "hanzi": "块",
+     "pinyin": "kuài"
+    }
+   ],
+   "hsk": null,
+   "frequency": null,
+   "topics": [
+    "food"
+   ],
+   "pronunciation": {
+    "syllables": [
+     {
+      "hanzi": "糖",
+      "pinyin": "táng",
+      "initial": "t",
+      "final": "ang",
+      "tone": 2,
+      "toneName": "2nd tone: rising",
+      "spokenTone": 2
+     }
+    ],
+    "spoken": null,
+    "notes": []
+   },
+   "polyphonic": false,
+   "notes": [],
+   "sources": [
+    "Curated phrase list",
+    "CC-CEDICT"
+   ],
+   "related": [
+    {
+     "id": "c74f6c4196",
+     "why": "Its measure word"
+    }
+   ]
+  },
+  {
+   "id": "943198a867",
+   "simplified": "约会",
+   "traditional": "約會",
+   "pinyin": "yuē huì",
+   "pinyinNumbered": "yue1 hui4",
+   "meanings": [
+    "appointment",
+    "engagement",
+    "date",
+    "to arrange to meet"
+   ],
+   "classifiers": [
+    {
+     "hanzi": "次",
+     "pinyin": "cì"
+    },
+    {
+     "hanzi": "个",
+     "pinyin": "gè"
+    }
+   ],
+   "hsk": null,
+   "frequency": null,
+   "topics": [
+    "love",
+    "numbers"
+   ],
+   "pronunciation": {
+    "syllables": [
+     {
+      "hanzi": "约",
+      "pinyin": "yuē",
+      "initial": "y",
+      "final": "ue",
+      "tone": 1,
+      "toneName": "1st tone: high and level",
+      "spokenTone": 1
+     },
+     {
+      "hanzi": "会",
+      "pinyin": "huì",
+      "initial": "h",
+      "final": "ui",
+      "tone": 4,
+      "toneName": "4th tone: sharp fall",
+      "spokenTone": 4
+     }
+    ],
+    "spoken": null,
+    "notes": []
+   },
+   "polyphonic": true,
+   "notes": [],
+   "sources": [
+    "Curated phrase list",
+    "CC-CEDICT"
+   ],
+   "related": [
+    {
+     "id": "f0bf74b6f2",
+     "why": "Its measure word"
+    },
+    {
+     "id": "3c5babecee",
+     "why": "Its measure word"
+    },
+    {
+     "id": "4271bfefbf",
+     "why": "Part of 约会"
+    },
+    {
+     "id": "c9a09dd2c3",
+     "why": "Also uses 会"
+    },
+    {
+     "id": "6915311674",
+     "why": "Also uses 会"
+    }
+   ]
+  },
+  {
+   "id": "5274796d19",
+   "simplified": "结婚",
+   "traditional": "結婚",
+   "pinyin": "jié hūn",
+   "pinyinNumbered": "jie2 hun1",
+   "meanings": [
+    "to marry",
+    "to get married"
+   ],
+   "classifiers": [
+    {
+     "hanzi": "次",
+     "pinyin": "cì"
+    }
+   ],
+   "hsk": null,
+   "frequency": null,
+   "topics": [
+    "love"
+   ],
+   "pronunciation": {
+    "syllables": [
+     {
+      "hanzi": "结",
+      "pinyin": "jié",
+      "initial": "j",
+      "final": "ie",
+      "tone": 2,
+      "toneName": "2nd tone: rising",
+      "spokenTone": 2
+     },
+     {
+      "hanzi": "婚",
+      "pinyin": "hūn",
+      "initial": "h",
+      "final": "un",
+      "tone": 1,
+      "toneName": "1st tone: high and level",
+      "spokenTone": 1
+     }
+    ],
+    "spoken": null,
+    "notes": []
+   },
+   "polyphonic": true,
+   "notes": [],
+   "sources": [
+    "Curated phrase list",
+    "CC-CEDICT"
+   ],
+   "related": [
+    {
+     "id": "f0bf74b6f2",
+     "why": "Its measure word"
+    },
+    {
+     "id": "4d264e1d89",
+     "why": "Also uses 结"
+    },
+    {
+     "id": "07ffcad33a",
+     "why": "Also uses 婚"
+    },
+    {
+     "id": "c39d56767a",
+     "why": "Also uses 婚"
+    }
+   ]
+  },
+  {
+   "id": "4d264e1d89",
+   "simplified": "结账",
+   "traditional": "結賬",
+   "pinyin": "jié zhàng",
+   "pinyinNumbered": "jie2 zhang4",
+   "meanings": [
+    "to settle accounts; to pay the bill"
+   ],
+   "classifiers": [],
+   "hsk": null,
+   "frequency": null,
+   "topics": [
+    "food"
+   ],
+   "pronunciation": {
+    "syllables": [
+     {
+      "hanzi": "结",
+      "pinyin": "jié",
+      "initial": "j",
+      "final": "ie",
+      "tone": 2,
+      "toneName": "2nd tone: rising",
+      "spokenTone": 2
+     },
+     {
+      "hanzi": "账",
+      "pinyin": "zhàng",
+      "initial": "zh",
+      "final": "ang",
+      "tone": 4,
+      "toneName": "4th tone: sharp fall",
+      "spokenTone": 4
+     }
+    ],
+    "spoken": null,
+    "notes": []
+   },
+   "polyphonic": true,
+   "notes": [],
+   "sources": [
+    "Curated phrase list",
+    "CC-CEDICT"
+   ],
+   "related": [
+    {
+     "id": "5274796d19",
+     "why": "Also uses 结"
+    }
+   ]
+  },
+  {
+   "id": "54ef314910",
+   "simplified": "美",
+   "traditional": "美",
+   "pinyin": "měi",
+   "pinyinNumbered": "mei3",
+   "meanings": [
+    "(bound form) the Americas (abbr. for 美洲[Mei3 zhou1])",
+    "(bound form) USA (abbr. for 美國|美国[Mei3 guo2])",
+    "beautiful",
+    "very satisfactory; good",
+    "to beautify",
+    "to be pleased with oneself"
+   ],
+   "classifiers": [],
+   "hsk": null,
+   "frequency": null,
+   "topics": [
+    "love"
+   ],
+   "pronunciation": {
+    "syllables": [
+     {
+      "hanzi": "美",
+      "pinyin": "měi",
+      "initial": "m",
+      "final": "ei",
+      "tone": 3,
+      "toneName": "3rd tone: low dip",
+      "spokenTone": 3
+     }
+    ],
+    "spoken": null,
+    "notes": []
+   },
+   "polyphonic": false,
+   "notes": [],
+   "sources": [
+    "Curated phrase list",
+    "CC-CEDICT"
+   ],
+   "related": [
+    {
+     "id": "4ae57ef88f",
+     "why": "Contains 美"
+    },
+    {
+     "id": "d81fb9631e",
+     "why": "Contains 美"
+    },
+    {
+     "id": "23383b0d24",
+     "why": "Contains 美"
+    }
+   ]
+  },
+  {
+   "id": "4ae57ef88f",
+   "simplified": "美丽",
+   "traditional": "美麗",
+   "pinyin": "měi lì",
+   "pinyinNumbered": "mei3 li4",
+   "meanings": [
+    "beautiful"
+   ],
+   "classifiers": [],
+   "hsk": null,
+   "frequency": null,
+   "topics": [
+    "love"
+   ],
+   "pronunciation": {
+    "syllables": [
+     {
+      "hanzi": "美",
+      "pinyin": "měi",
+      "initial": "m",
+      "final": "ei",
+      "tone": 3,
+      "toneName": "3rd tone: low dip",
+      "spokenTone": 3
+     },
+     {
+      "hanzi": "丽",
+      "pinyin": "lì",
+      "initial": "l",
+      "final": "i",
+      "tone": 4,
+      "toneName": "4th tone: sharp fall",
+      "spokenTone": 4
+     }
+    ],
+    "spoken": null,
+    "notes": []
+   },
+   "polyphonic": false,
+   "notes": [],
+   "sources": [
+    "Curated phrase list",
+    "CC-CEDICT"
+   ],
+   "related": [
+    {
+     "id": "350376fbc0",
+     "why": "Also means \"beautiful\""
+    },
+    {
+     "id": "54ef314910",
+     "why": "Part of 美丽"
+    },
+    {
+     "id": "d81fb9631e",
+     "why": "Also uses 美"
+    },
+    {
+     "id": "23383b0d24",
+     "why": "Also uses 美"
+    }
+   ]
+  },
+  {
+   "id": "d81fb9631e",
+   "simplified": "美女",
+   "traditional": "美女",
+   "pinyin": "měi nǚ",
+   "pinyinNumbered": "mei3 nü3",
+   "meanings": [
+    "beautiful woman"
+   ],
+   "classifiers": [],
+   "hsk": null,
+   "frequency": null,
+   "topics": [
+    "family",
+    "love"
+   ],
+   "pronunciation": {
+    "syllables": [
+     {
+      "hanzi": "美",
+      "pinyin": "měi",
+      "initial": "m",
+      "final": "ei",
+      "tone": 3,
+      "toneName": "3rd tone: low dip",
+      "spokenTone": 2
+     },
+     {
+      "hanzi": "女",
+      "pinyin": "nǚ",
+      "initial": "n",
+      "final": "ü",
+      "tone": 3,
+      "toneName": "3rd tone: low dip",
+      "spokenTone": 3
+     }
+    ],
+    "spoken": "méi nǚ",
+    "notes": [
+     "Two 3rd tones in a row: the first is said as a 2nd tone"
+    ]
+   },
+   "polyphonic": false,
+   "notes": [],
+   "sources": [
+    "Curated phrase list",
+    "CC-CEDICT"
+   ],
+   "related": [
+    {
+     "id": "54ef314910",
+     "why": "Part of 美女"
+    },
+    {
+     "id": "50b7ee29db",
+     "why": "Part of 美女"
+    },
+    {
+     "id": "4ae57ef88f",
+     "why": "Also uses 美"
+    },
+    {
+     "id": "23383b0d24",
+     "why": "Also uses 美"
+    },
+    {
+     "id": "22d23ad12a",
+     "why": "Also uses 女"
+    },
+    {
+     "id": "75f7e79603",
+     "why": "Also uses 女"
+    },
+    {
+     "id": "35e762978c",
+     "why": "Also uses 女"
+    },
+    {
+     "id": "f1e7ec364f",
+     "why": "Also uses 女"
+    },
+    {
+     "id": "f4303ae310",
+     "why": "Also uses 女"
+    }
+   ]
+  },
+  {
+   "id": "23383b0d24",
+   "simplified": "美式咖啡",
+   "traditional": "美式咖啡",
+   "pinyin": "Měi shì kā fēi",
+   "pinyinNumbered": "mei3 shi4 ka1 fei1",
+   "meanings": [
+    "caffè americano"
+   ],
+   "classifiers": [],
+   "hsk": null,
+   "frequency": null,
+   "topics": [
+    "food"
+   ],
+   "pronunciation": {
+    "syllables": [
+     {
+      "hanzi": "美",
+      "pinyin": "Měi",
+      "initial": "m",
+      "final": "ei",
+      "tone": 3,
+      "toneName": "3rd tone: low dip",
+      "spokenTone": 3
+     },
+     {
+      "hanzi": "式",
+      "pinyin": "shì",
+      "initial": "sh",
+      "final": "i",
+      "tone": 4,
+      "toneName": "4th tone: sharp fall",
+      "spokenTone": 4
+     },
+     {
+      "hanzi": "咖",
+      "pinyin": "kā",
+      "initial": "k",
+      "final": "a",
+      "tone": 1,
+      "toneName": "1st tone: high and level",
+      "spokenTone": 1
+     },
+     {
+      "hanzi": "啡",
+      "pinyin": "fēi",
+      "initial": "f",
+      "final": "ei",
+      "tone": 1,
+      "toneName": "1st tone: high and level",
+      "spokenTone": 1
+     }
+    ],
+    "spoken": null,
+    "notes": []
+   },
+   "polyphonic": false,
+   "notes": [],
+   "sources": [
+    "Curated phrase list",
+    "CC-CEDICT"
+   ],
+   "related": [
+    {
+     "id": "54ef314910",
+     "why": "Part of 美式咖啡"
+    },
+    {
+     "id": "4ae57ef88f",
+     "why": "Also uses 美"
+    },
+    {
+     "id": "d81fb9631e",
+     "why": "Also uses 美"
+    },
+    {
+     "id": "e0aaef34f6",
+     "why": "Also uses 咖"
+    }
+   ]
+  },
+  {
+   "id": "83f84de63d",
+   "simplified": "老公",
+   "traditional": "老公",
+   "pinyin": "lǎo gōng",
+   "pinyinNumbered": "lao3 gong1",
+   "meanings": [
+    "(coll.) husband"
+   ],
+   "classifiers": [],
+   "hsk": null,
+   "frequency": null,
+   "topics": [
+    "family",
+    "love"
+   ],
+   "pronunciation": {
+    "syllables": [
+     {
+      "hanzi": "老",
+      "pinyin": "lǎo",
+      "initial": "l",
+      "final": "ao",
+      "tone": 3,
+      "toneName": "3rd tone: low dip",
+      "spokenTone": 3
+     },
+     {
+      "hanzi": "公",
+      "pinyin": "gōng",
+      "initial": "g",
+      "final": "ong",
+      "tone": 1,
+      "toneName": "1st tone: high and level",
+      "spokenTone": 1
+     }
+    ],
+    "spoken": null,
+    "notes": []
+   },
+   "polyphonic": false,
+   "notes": [],
+   "sources": [
+    "Curated phrase list",
+    "CC-CEDICT"
+   ],
+   "related": [
+    {
+     "id": "5f48fcb839",
+     "why": "Part of 老公"
+    },
+    {
+     "id": "cd4699bece",
+     "why": "Also uses 老"
+    },
+    {
+     "id": "89549bcd2f",
+     "why": "Also uses 老"
+    },
+    {
+     "id": "721c4544ef",
+     "why": "Also uses 老"
+    }
+   ]
+  },
+  {
+   "id": "721c4544ef",
+   "simplified": "老婆",
+   "traditional": "老婆",
+   "pinyin": "lǎo pó",
+   "pinyinNumbered": "lao3 po2",
+   "meanings": [
+    "(coll.) wife"
+   ],
+   "classifiers": [],
+   "hsk": null,
+   "frequency": null,
+   "topics": [
+    "family",
+    "love"
+   ],
+   "pronunciation": {
+    "syllables": [
+     {
+      "hanzi": "老",
+      "pinyin": "lǎo",
+      "initial": "l",
+      "final": "ao",
+      "tone": 3,
+      "toneName": "3rd tone: low dip",
+      "spokenTone": 3
+     },
+     {
+      "hanzi": "婆",
+      "pinyin": "pó",
+      "initial": "p",
+      "final": "o",
+      "tone": 2,
+      "toneName": "2nd tone: rising",
+      "spokenTone": 2
+     }
+    ],
+    "spoken": null,
+    "notes": []
+   },
+   "polyphonic": false,
+   "notes": [],
+   "sources": [
+    "Curated phrase list",
+    "CC-CEDICT"
+   ],
+   "related": [
+    {
+     "id": "5f48fcb839",
+     "why": "Part of 老婆"
+    },
+    {
+     "id": "cd4699bece",
+     "why": "Also uses 老"
+    },
+    {
+     "id": "89549bcd2f",
+     "why": "Also uses 老"
+    },
+    {
+     "id": "83f84de63d",
+     "why": "Also uses 老"
+    }
+   ]
+  },
+  {
+   "id": "cae8e58cc0",
+   "simplified": "舍不得",
+   "traditional": "捨不得",
+   "pinyin": "shě bu de",
+   "pinyinNumbered": "she3 bu5 de5",
+   "meanings": [
+    "to hate to do sth",
+    "to hate to part with",
+    "to begrudge"
+   ],
+   "classifiers": [],
+   "hsk": null,
+   "frequency": null,
+   "topics": [
+    "love"
+   ],
+   "pronunciation": {
+    "syllables": [
+     {
+      "hanzi": "舍",
+      "pinyin": "shě",
+      "initial": "sh",
+      "final": "e",
+      "tone": 3,
+      "toneName": "3rd tone: low dip",
+      "spokenTone": 3
+     },
+     {
+      "hanzi": "不",
+      "pinyin": "bu",
+      "initial": "b",
+      "final": "u",
+      "tone": 5,
+      "toneName": "neutral tone: light and short",
+      "spokenTone": 5
+     },
+     {
+      "hanzi": "得",
+      "pinyin": "de",
+      "initial": "d",
+      "final": "e",
+      "tone": 5,
+      "toneName": "neutral tone: light and short",
+      "spokenTone": 5
+     }
+    ],
+    "spoken": null,
+    "notes": []
+   },
+   "polyphonic": true,
+   "notes": [],
+   "sources": [
+    "Curated phrase list",
+    "CC-CEDICT"
+   ],
+   "related": [
+    {
+     "id": "7461c217a2",
+     "why": "Part of 舍不得"
+    },
+    {
+     "id": "e8a4b38b09",
+     "why": "Also uses 得"
+    },
+    {
+     "id": "e03fdcd4e5",
+     "why": "Also uses 得"
+    },
+    {
+     "id": "3efefdec42",
+     "why": "Also uses 得"
+    }
+   ]
+  },
+  {
    "id": "fc3611e760",
    "simplified": "菜单",
    "traditional": "菜單",
@@ -37740,6 +42550,355 @@
    ]
   },
   {
+   "id": "e58a6d6e71",
+   "simplified": "蛋糕",
+   "traditional": "蛋糕",
+   "pinyin": "dàn gāo",
+   "pinyinNumbered": "dan4 gao1",
+   "meanings": [
+    "cake"
+   ],
+   "classifiers": [
+    {
+     "hanzi": "块",
+     "pinyin": "kuài"
+    },
+    {
+     "hanzi": "个",
+     "pinyin": "gè"
+    }
+   ],
+   "hsk": null,
+   "frequency": null,
+   "topics": [
+    "food"
+   ],
+   "pronunciation": {
+    "syllables": [
+     {
+      "hanzi": "蛋",
+      "pinyin": "dàn",
+      "initial": "d",
+      "final": "an",
+      "tone": 4,
+      "toneName": "4th tone: sharp fall",
+      "spokenTone": 4
+     },
+     {
+      "hanzi": "糕",
+      "pinyin": "gāo",
+      "initial": "g",
+      "final": "ao",
+      "tone": 1,
+      "toneName": "1st tone: high and level",
+      "spokenTone": 1
+     }
+    ],
+    "spoken": null,
+    "notes": []
+   },
+   "polyphonic": false,
+   "notes": [],
+   "sources": [
+    "Curated phrase list",
+    "CC-CEDICT"
+   ],
+   "related": [
+    {
+     "id": "c74f6c4196",
+     "why": "Its measure word"
+    },
+    {
+     "id": "3c5babecee",
+     "why": "Its measure word"
+    },
+    {
+     "id": "2642963a1d",
+     "why": "Also uses 蛋"
+    }
+   ]
+  },
+  {
+   "id": "15cf064efb",
+   "simplified": "谈恋爱",
+   "traditional": "談戀愛",
+   "pinyin": "tán liàn ài",
+   "pinyinNumbered": "tan2 lian4 ai4",
+   "meanings": [
+    "to be in a romantic relationship; to go steady; to be dating"
+   ],
+   "classifiers": [],
+   "hsk": null,
+   "frequency": null,
+   "topics": [
+    "love",
+    "travel"
+   ],
+   "pronunciation": {
+    "syllables": [
+     {
+      "hanzi": "谈",
+      "pinyin": "tán",
+      "initial": "t",
+      "final": "an",
+      "tone": 2,
+      "toneName": "2nd tone: rising",
+      "spokenTone": 2
+     },
+     {
+      "hanzi": "恋",
+      "pinyin": "liàn",
+      "initial": "l",
+      "final": "ian",
+      "tone": 4,
+      "toneName": "4th tone: sharp fall",
+      "spokenTone": 4
+     },
+     {
+      "hanzi": "爱",
+      "pinyin": "ài",
+      "initial": "",
+      "final": "ai",
+      "tone": 4,
+      "toneName": "4th tone: sharp fall",
+      "spokenTone": 4
+     }
+    ],
+    "spoken": null,
+    "notes": []
+   },
+   "polyphonic": false,
+   "notes": [],
+   "sources": [
+    "Curated phrase list",
+    "CC-CEDICT"
+   ],
+   "related": [
+    {
+     "id": "8856ecb40a",
+     "why": "Part of 谈恋爱"
+    },
+    {
+     "id": "aa57930e69",
+     "why": "Also uses 爱"
+    },
+    {
+     "id": "0c945f7001",
+     "why": "Also uses 爱"
+    },
+    {
+     "id": "dc23b3bff0",
+     "why": "Also uses 爱"
+    },
+    {
+     "id": "932c94a0fa",
+     "why": "Also uses 爱"
+    },
+    {
+     "id": "6542a7f6ea",
+     "why": "Also uses 爱"
+    },
+    {
+     "id": "b4feeb85ee",
+     "why": "Also uses 爱"
+    },
+    {
+     "id": "1301b60b33",
+     "why": "Also uses 爱"
+    }
+   ]
+  },
+  {
+   "id": "6355968c60",
+   "simplified": "豆浆",
+   "traditional": "豆漿",
+   "pinyin": "dòu jiāng",
+   "pinyinNumbered": "dou4 jiang1",
+   "meanings": [
+    "soy milk"
+   ],
+   "classifiers": [],
+   "hsk": null,
+   "frequency": null,
+   "topics": [
+    "food"
+   ],
+   "pronunciation": {
+    "syllables": [
+     {
+      "hanzi": "豆",
+      "pinyin": "dòu",
+      "initial": "d",
+      "final": "ou",
+      "tone": 4,
+      "toneName": "4th tone: sharp fall",
+      "spokenTone": 4
+     },
+     {
+      "hanzi": "浆",
+      "pinyin": "jiāng",
+      "initial": "j",
+      "final": "iang",
+      "tone": 1,
+      "toneName": "1st tone: high and level",
+      "spokenTone": 1
+     }
+    ],
+    "spoken": null,
+    "notes": []
+   },
+   "polyphonic": false,
+   "notes": [],
+   "sources": [
+    "Curated phrase list",
+    "CC-CEDICT"
+   ],
+   "related": []
+  },
+  {
+   "id": "bdbec3169b",
+   "simplified": "辛苦",
+   "traditional": "辛苦",
+   "pinyin": "xīn kǔ",
+   "pinyinNumbered": "xin1 ku3",
+   "meanings": [
+    "exhausting",
+    "hard",
+    "tough",
+    "arduous",
+    "to work hard",
+    "to go to a lot of trouble",
+    "hardship(s)"
+   ],
+   "classifiers": [],
+   "hsk": null,
+   "frequency": null,
+   "topics": [
+    "love",
+    "travel"
+   ],
+   "pronunciation": {
+    "syllables": [
+     {
+      "hanzi": "辛",
+      "pinyin": "xīn",
+      "initial": "x",
+      "final": "in",
+      "tone": 1,
+      "toneName": "1st tone: high and level",
+      "spokenTone": 1
+     },
+     {
+      "hanzi": "苦",
+      "pinyin": "kǔ",
+      "initial": "k",
+      "final": "u",
+      "tone": 3,
+      "toneName": "3rd tone: low dip",
+      "spokenTone": 3
+     }
+    ],
+    "spoken": null,
+    "notes": []
+   },
+   "polyphonic": false,
+   "notes": [],
+   "sources": [
+    "Curated phrase list",
+    "CC-CEDICT"
+   ],
+   "related": []
+  },
+  {
+   "id": "5aaf2be645",
+   "simplified": "还好",
+   "traditional": "還好",
+   "pinyin": "hái hǎo",
+   "pinyinNumbered": "hai2 hao3",
+   "meanings": [
+    "not bad; pretty good",
+    "fortunately; luckily"
+   ],
+   "classifiers": [],
+   "hsk": null,
+   "frequency": null,
+   "topics": [
+    "love"
+   ],
+   "pronunciation": {
+    "syllables": [
+     {
+      "hanzi": "还",
+      "pinyin": "hái",
+      "initial": "h",
+      "final": "ai",
+      "tone": 2,
+      "toneName": "2nd tone: rising",
+      "spokenTone": 2
+     },
+     {
+      "hanzi": "好",
+      "pinyin": "hǎo",
+      "initial": "h",
+      "final": "ao",
+      "tone": 3,
+      "toneName": "3rd tone: low dip",
+      "spokenTone": 3
+     }
+    ],
+    "spoken": null,
+    "notes": []
+   },
+   "polyphonic": true,
+   "notes": [],
+   "sources": [
+    "Curated phrase list",
+    "CC-CEDICT"
+   ],
+   "related": [
+    {
+     "id": "1b3e12d4f7",
+     "why": "Part of 还好"
+    },
+    {
+     "id": "c40e6acadf",
+     "why": "Part of 还好"
+    },
+    {
+     "id": "631b2a9d50",
+     "why": "Part of 还好"
+    },
+    {
+     "id": "cc8aee5165",
+     "why": "Also uses 还"
+    },
+    {
+     "id": "e2eb357548",
+     "why": "Also uses 还"
+    },
+    {
+     "id": "861e44c8be",
+     "why": "Also uses 好"
+    },
+    {
+     "id": "1a5b021c80",
+     "why": "Also uses 好"
+    },
+    {
+     "id": "9510a6a4ff",
+     "why": "Also uses 好"
+    },
+    {
+     "id": "4a869fda21",
+     "why": "Also uses 好"
+    },
+    {
+     "id": "aa57930e69",
+     "why": "Also uses 好"
+    }
+   ]
+  },
+  {
    "id": "7a55dfeb96",
    "simplified": "附近",
    "traditional": "附近",
@@ -37774,6 +42933,46 @@
       "tone": 4,
       "toneName": "4th tone: sharp fall",
       "spokenTone": 4
+     }
+    ],
+    "spoken": null,
+    "notes": []
+   },
+   "polyphonic": false,
+   "notes": [],
+   "sources": [
+    "Curated phrase list",
+    "CC-CEDICT"
+   ],
+   "related": []
+  },
+  {
+   "id": "758fcfa9d4",
+   "simplified": "陪",
+   "traditional": "陪",
+   "pinyin": "péi",
+   "pinyinNumbered": "pei2",
+   "meanings": [
+    "to accompany",
+    "to keep sb company",
+    "to assist"
+   ],
+   "classifiers": [],
+   "hsk": null,
+   "frequency": null,
+   "topics": [
+    "love"
+   ],
+   "pronunciation": {
+    "syllables": [
+     {
+      "hanzi": "陪",
+      "pinyin": "péi",
+      "initial": "p",
+      "final": "ei",
+      "tone": 2,
+      "toneName": "2nd tone: rising",
+      "spokenTone": 2
      }
     ],
     "spoken": null,

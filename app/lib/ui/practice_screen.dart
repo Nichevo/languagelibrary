@@ -43,10 +43,13 @@ List<PracticeCard> buildQueue({
 }
 
 class PracticeScreen extends StatefulWidget {
-  const PracticeScreen({super.key, this.list, this.includeNotDue = false});
+  const PracticeScreen({super.key, this.list, this.level, this.includeNotDue = false});
 
   /// Custom list to practise, or null for all starred words.
   final String? list;
+
+  /// Only words the learner scored this hard, or null for all of them.
+  final Difficulty? level;
   final bool includeNotDue;
 
   @override
@@ -66,7 +69,9 @@ class _PracticeScreenState extends State<PracticeScreen> {
     final scope = AppScope.of(context);
     final entries = [
       for (final id in scope.store.idsIn(widget.list))
-        if (scope.library.byId[id] != null) scope.library.byId[id]!,
+        if (scope.library.byId[id] != null &&
+            (widget.level == null || scope.store.difficulty[id] == widget.level))
+          scope.library.byId[id]!,
     ];
     _queue = buildQueue(
       entries: entries,

@@ -42,6 +42,7 @@ class EntryTile extends StatelessWidget {
                 ],
               ),
             ),
+            DifficultyBadge(entry.id),
             StarButton(entry),
           ],
         ),
