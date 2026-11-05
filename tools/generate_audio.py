@@ -178,7 +178,7 @@ def cmd_generate(tts_mod, speech_mod, entries, female: str, male: str, force: bo
     stt = speech_mod.SpeechClient()
     readings = char_readings_from_library(entries)
     AUDIO_DIR.mkdir(parents=True, exist_ok=True)
-    manifest = json.loads(MANIFEST.read_text()) if MANIFEST.exists() and not force else {"voices": {}, "clips": {}}
+    manifest = json.loads(MANIFEST.read_text(encoding="utf-8")) if MANIFEST.exists() and not force else {"voices": {}, "clips": {}}
     manifest["voices"] = {"female": female, "male": male}
 
     todo = entries[:limit] if limit else entries
@@ -187,6 +187,8 @@ def cmd_generate(tts_mod, speech_mod, entries, female: str, male: str, force: bo
             file = f"{e['id']}_{key}.mp3"
             clip_key = f"{e['id']}_{key}"
             if not force and (AUDIO_DIR / file).exists() and clip_key in manifest["clips"]:
+                # The app shows how much space the audio takes, from these sizes.
+                manifest["clips"][clip_key]["bytes"] = (AUDIO_DIR / file).stat().st_size
                 continue
             pinyin_hint = None if e.get("kind") == "sentence" else e["pinyinNumbered"]
             mp3 = synthesize(tts_mod, tts, e["simplified"], pinyin_hint, voice, tts_mod.AudioEncoding.MP3)
@@ -194,11 +196,11 @@ def cmd_generate(tts_mod, speech_mod, entries, female: str, male: str, force: bo
             heard = transcribe(speech_mod, stt, wav)
             verdict = judge(strip_punct(e["simplified"]), e["pinyinNumbered"], heard, readings)
             (AUDIO_DIR / file).write_bytes(mp3)
-            manifest["clips"][clip_key] = {"file": file, "heard": heard, "check": verdict}
+            manifest["clips"][clip_key] = {"file": file, "bytes": len(mp3), "heard": heard, "check": verdict}
         if n % 25 == 0:
             print(f"{n}/{len(todo)} entries done")
-            MANIFEST.write_text(json.dumps(manifest, ensure_ascii=False, indent=1))
-    MANIFEST.write_text(json.dumps(manifest, ensure_ascii=False, indent=1))
+            MANIFEST.write_text(json.dumps(manifest, ensure_ascii=False, indent=1), encoding="utf-8")
+    MANIFEST.write_text(json.dumps(manifest, ensure_ascii=False, indent=1), encoding="utf-8")
     write_report(entries, manifest)
 
 

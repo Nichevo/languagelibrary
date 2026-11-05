@@ -1,0 +1,12 @@
+# Conda environment for making the voices on your own computer.
+#   conda env create -f tools/environment.yml
+#   conda env update -f tools/environment.yml --prune
+# (windows\make-voices.bat and windows\update.bat do this for you.)
+name: languagelibrary
+channels:
+  - conda-forge
+dependencies:
+  - python=3.12
+  - pip
+  - pip:
+      - -r requirements-audio.txt

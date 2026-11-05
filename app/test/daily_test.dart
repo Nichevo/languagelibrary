@@ -1,5 +1,8 @@
+import 'dart:io';
+
 import 'package:flutter_test/flutter_test.dart';
 import 'package:language_library/data/daily.dart';
+import 'package:language_library/data/storage.dart';
 import 'package:language_library/data/user_store.dart';
 import 'package:language_library/srs/scheduler.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -68,5 +71,18 @@ void main() {
     expect(fresh.reminderMinutes, 7 * 60 + 30);
     final again = await UserStore.open();
     expect(again.starred, [id]);
+  });
+
+  test('storage use adds up each part of the library', () async {
+    TestWidgetsFlutterBinding.ensureInitialized();
+    final parts = await libraryStorage();
+    final byName = {for (final p in parts) p.label: p};
+    expect(byName.keys, containsAll(['Words and phrases', 'Phrasebook sentences', 'Example sentences', 'Recorded audio']));
+    final libraryFile = File('assets/data/library.json').lengthSync();
+    final split = ['Words and phrases', 'Phrasebook sentences', 'Example sentences']
+        .fold<int>(0, (n, k) => n + byName[k]!.bytes);
+    expect((split - libraryFile).abs(), lessThan(5));
+    expect(formatBytes(1536), '1.5 KB');
+    expect(formatBytes(3 * 1024 * 1024), '3.0 MB');
   });
 }

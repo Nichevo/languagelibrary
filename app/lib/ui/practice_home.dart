@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 
 import '../srs/scheduler.dart';
+import '../data/storage.dart';
 import 'about_screen.dart';
 import 'common.dart';
 import 'practice_screen.dart';
@@ -53,6 +54,26 @@ class PracticeHome extends StatelessWidget {
               for (final name in store.lists.keys) listTile(name, name),
               const Divider(),
               const ListTile(title: Text('Settings')),
+              ListTile(
+                title: const Text('Cards per session'),
+                subtitle: const Text('Picked at random, cards that are due first'),
+                trailing: DropdownButton<int>(
+                  value: store.sessionSize,
+                  onChanged: (v) => store.setSessionSize(v!),
+                  items: [
+                    for (final n in const [10, 20, 30, 50, 100]) DropdownMenuItem(value: n, child: Text('$n')),
+                    if (!const [0, 10, 20, 30, 50, 100].contains(store.sessionSize))
+                      DropdownMenuItem(value: store.sessionSize, child: Text('${store.sessionSize}')),
+                    const DropdownMenuItem(value: 0, child: Text('All')),
+                  ],
+                ),
+              ),
+              SwitchListTile(
+                title: const Text('Mix in related words'),
+                subtitle: const Text('About one in five cards is a word related to one you are practising'),
+                value: store.mixRelated,
+                onChanged: store.setMixRelated,
+              ),
               ListTile(
                 title: const Text('Chinese side of the card shows'),
                 trailing: DropdownButton<String>(
@@ -130,6 +151,8 @@ class PracticeHome extends StatelessWidget {
                 onTap: () => _restore(context),
               ),
               const Divider(),
+              const StorageSection(),
+              const Divider(),
               ListTile(
                 leading: const Icon(Icons.info_outline),
                 title: const Text('About, sources and credits'),
@@ -173,5 +196,67 @@ class PracticeHome extends StatelessWidget {
     } on FormatException catch (e) {
       if (context.mounted) _say(context, e.message);
     }
+  }
+}
+
+/// How much space each part of the library takes on the phone.
+class StorageSection extends StatefulWidget {
+  const StorageSection({super.key});
+
+  @override
+  State<StorageSection> createState() => _StorageSectionState();
+}
+
+class _StorageSectionState extends State<StorageSection> {
+  Future<List<StoragePart>>? _parts;
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    _parts ??= libraryStorage();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    return FutureBuilder<List<StoragePart>>(
+      future: _parts,
+      builder: (context, snap) {
+        final parts = snap.data == null
+            ? null
+            : ([...snap.data!, progressStorage(AppScope.of(context).store)]..sort((a, b) => b.bytes.compareTo(a.bytes)));
+        final total = parts?.fold<int>(0, (n, p) => n + p.bytes) ?? 0;
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            ListTile(
+              title: const Text('Space on this phone'),
+              subtitle: Text(parts == null
+                  ? (snap.hasError ? 'Could not measure' : 'Measuring...')
+                  : '${formatBytes(total)} of library data and progress. The app itself takes more on top.'),
+            ),
+            for (final p in parts ?? const <StoragePart>[])
+              Padding(
+                padding: const EdgeInsets.fromLTRB(16, 0, 16, 10),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      children: [
+                        Expanded(child: Text(p.label, style: theme.textTheme.bodyLarge)),
+                        Text(formatBytes(p.bytes), style: theme.textTheme.bodyMedium),
+                      ],
+                    ),
+                    const SizedBox(height: 4),
+                    LinearProgressIndicator(value: total == 0 ? 0 : p.bytes / total),
+                    const SizedBox(height: 2),
+                    Text(p.detail, style: theme.textTheme.bodySmall),
+                  ],
+                ),
+              ),
+          ],
+        );
+      },
+    );
   }
 }

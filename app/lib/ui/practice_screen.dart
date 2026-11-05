@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 import '../data/user_store.dart';
@@ -7,20 +9,31 @@ import 'common.dart';
 
 /// One flashcard to show: an entry in one direction.
 class PracticeCard {
-  const PracticeCard(this.entry, this.direction);
+  const PracticeCard(this.entry, this.direction, {this.relatedTo});
   final Entry entry;
   final Direction direction;
+
+  /// Set when this is a related word mixed in from outside the list.
+  final Entry? relatedTo;
 }
 
-/// Builds the session queue: due cards first, both directions, a cap on new cards.
+/// Builds the session queue: due cards first, then new ones (at most [maxNew]),
+/// then, with [includeNotDue], the rest. With [limit] above 0, picks that many at
+/// random, still due cards first. With [related] above 0, mixes in up to that many
+/// related words that are not in [entries], from [library].
 List<PracticeCard> buildQueue({
   required List<Entry> entries,
   required UserStore store,
   required DateTime now,
   bool includeNotDue = false,
   int maxNew = 20,
+  int limit = 0,
+  int related = 0,
+  Map<String, Entry> library = const {},
+  Random? random,
 }) {
   const sched = Scheduler();
+  final rnd = random ?? Random();
   final due = <PracticeCard>[];
   final fresh = <PracticeCard>[];
   final rest = <PracticeCard>[];
@@ -36,10 +49,53 @@ List<PracticeCard> buildQueue({
       }
     }
   }
-  due.sort((a, b) => store.card(a.entry.id, a.direction)!.due.compareTo(store.card(b.entry.id, b.direction)!.due));
+  if (limit > 0) {
+    due.shuffle(rnd);
+    fresh.shuffle(rnd);
+    rest.shuffle(rnd);
+  } else {
+    due.sort((a, b) => store.card(a.entry.id, a.direction)!.due.compareTo(store.card(b.entry.id, b.direction)!.due));
+  }
   // Learn Chinese -> English first; the reverse card of a new word comes after it.
-  fresh.sort((a, b) => a.direction.index.compareTo(b.direction.index));
-  return [...due, ...fresh.take(maxNew), ...rest];
+  final freshFirst = [
+    for (final d in Direction.values) ...fresh.where((c) => c.direction == d),
+  ];
+  var queue = [...due, ...freshFirst.take(maxNew), ...rest];
+  if (limit > 0 && queue.length > limit) queue = queue.sublist(0, limit);
+  if (limit > 0) {
+    queue.shuffle(rnd);
+    // Still see a word's Chinese side before its English side.
+    final firstAt = <String, int>{};
+    for (var i = 0; i < queue.length; i++) {
+      final at = firstAt[queue[i].entry.id];
+      if (at == null) {
+        firstAt[queue[i].entry.id] = i;
+      } else if (queue[i].direction == Direction.zhToEn) {
+        final t = queue[at];
+        queue[at] = queue[i];
+        queue[i] = t;
+      }
+    }
+  }
+
+  if (related > 0 && queue.isNotEmpty) {
+    final inList = {for (final e in entries) e.id};
+    final seen = <String>{};
+    final options = <PracticeCard>[];
+    for (final c in queue) {
+      for (final r in c.entry.related) {
+        final e = library[r.id];
+        if (e == null || inList.contains(r.id) || !seen.add(r.id)) continue;
+        options.add(PracticeCard(e, Direction.zhToEn, relatedTo: c.entry));
+      }
+    }
+    options.shuffle(rnd);
+    for (final c in options.take(related)) {
+      // Never first, so the session opens with one of the learner's own words.
+      queue.insert(1 + rnd.nextInt(queue.length), c);
+    }
+  }
+  return queue;
 }
 
 class PracticeScreen extends StatefulWidget {
@@ -73,19 +129,29 @@ class _PracticeScreenState extends State<PracticeScreen> {
             (widget.level == null || scope.store.difficulty[id] == widget.level))
           scope.library.byId[id]!,
     ];
+    final size = scope.store.sessionSize;
     _queue = buildQueue(
       entries: entries,
       store: scope.store,
       now: DateTime.now(),
       includeNotDue: widget.includeNotDue,
+      limit: size,
+      // About one related word for every five cards.
+      related: scope.store.mixRelated ? max(1, (size == 0 ? entries.length * 2 : size) ~/ 5) : 0,
+      library: scope.library.byId,
     );
+    _shownAt = DateTime.now();
   }
+
+  DateTime _shownAt = DateTime.now();
 
   void _rate(Rating r) {
     final scope = AppScope.of(context);
     final card = _queue!.removeAt(0);
-    final next = _sched.review(scope.store.card(card.entry.id, card.direction), r, DateTime.now());
-    scope.store.saveCard(card.entry.id, card.direction, next);
+    final now = DateTime.now();
+    final next = _sched.review(scope.store.card(card.entry.id, card.direction), r, now);
+    scope.store.recordReview(card.entry.id, card.direction, next, r, now.difference(_shownAt), now);
+    _shownAt = now;
     if (r == Rating.again) {
       // See it again a few cards later in this session.
       _queue!.insert(_queue!.length < 3 ? _queue!.length : 3, card);
@@ -130,7 +196,8 @@ class _PracticeScreenState extends State<PracticeScreen> {
                 ),
               ),
             )
-          : _buildCard(context, queue.first, queue.length),
+          // Keeps the buttons above the phone's own navigation bar.
+          : SafeArea(top: false, child: _buildCard(context, queue.first, queue.length)),
     );
   }
 
@@ -185,13 +252,35 @@ class _PracticeScreenState extends State<PracticeScreen> {
     ];
 
     return Padding(
-      padding: const EdgeInsets.all(16),
+      padding: const EdgeInsets.fromLTRB(16, 16, 16, 24),
       child: Column(
         children: [
           Text(
             '${zhFront ? 'Chinese → English' : 'English → Chinese'} · $left left',
             style: theme.textTheme.bodySmall,
           ),
+          if (card.relatedTo case final from?)
+            Padding(
+              padding: const EdgeInsets.only(top: 8),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Flexible(
+                    child: Text('Related word, from ${from.simplified}',
+                        style: theme.textTheme.labelLarge, overflow: TextOverflow.ellipsis),
+                  ),
+                  const SizedBox(width: 4),
+                  ListenableBuilder(
+                    listenable: store,
+                    builder: (context, _) => TextButton.icon(
+                      icon: Icon(store.isStarred(e.id) ? Icons.star : Icons.star_outline),
+                      label: Text(store.isStarred(e.id) ? 'In Focus' : 'Add to Focus'),
+                      onPressed: () => store.toggleStar(e.id),
+                    ),
+                  ),
+                ],
+              ),
+            ),
           const SizedBox(height: 8),
           Expanded(
             child: GestureDetector(

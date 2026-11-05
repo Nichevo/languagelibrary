@@ -3,6 +3,8 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:language_library/data/user_store.dart';
 import 'package:language_library/device/device.dart';
 import 'package:language_library/main.dart';
+import 'package:language_library/srs/scheduler.dart';
+import 'package:language_library/ui/practice_home.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'logic_test.dart' show loadRealLibrary;
@@ -209,5 +211,35 @@ void main() {
     await tester.pumpAndSettle();
     expect(find.text('Female voice'), findsOneWidget);
     expect(find.textContaining('kā', findRichText: true), findsWidgets);
+  });
+
+  testWidgets('progress tab and storage use', (tester) async {
+    SharedPreferences.setMockInitialValues({});
+    final store = await UserStore.open();
+    final lib = loadRealLibrary();
+    tester.view.physicalSize = const Size(1080, 2340); // a phone screen
+    tester.view.devicePixelRatio = 2.75;
+    addTearDown(tester.view.reset);
+    await tester.pumpWidget(appForTest(lib, store));
+    final w = lib.entries.first;
+    await store.toggleStar(w.id);
+    final now = DateTime.now();
+    await store.recordReview(
+        w.id, Direction.zhToEn, const Scheduler().review(null, Rating.good, now), Rating.good,
+        const Duration(seconds: 90), now);
+
+    await tester.tap(find.text('Progress'));
+    await tester.pumpAndSettle();
+    expect(find.text('Cards answered'), findsOneWidget);
+    expect(find.text('1 min'), findsWidgets);
+    expect(find.text('Cards by status'), findsOneWidget);
+
+    await tester.tap(find.text('Practice'));
+    await tester.pumpAndSettle();
+    final list = find.descendant(of: find.byType(PracticeHome), matching: find.byType(Scrollable)).first;
+    await tester.drag(list, const Offset(0, -3000));
+    await tester.pumpAndSettle();
+    // The sizes themselves are checked in daily_test.dart.
+    expect(find.text('Space on this phone'), findsOneWidget);
   });
 }
