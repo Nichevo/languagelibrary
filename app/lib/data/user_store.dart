@@ -44,6 +44,18 @@ class UserStore extends ChangeNotifier {
   bool reminderOn = false;
   int reminderMinutes = 20 * 60;
 
+  /// Most cards in one practice session, picked at random; 0 means all of them.
+  int sessionSize = 20;
+
+  /// Mix a few related words the learner has not starred into each session.
+  bool mixRelated = false;
+
+  /// Every flashcard answer, oldest first, for the statistics screen.
+  final List<Review> reviews = [];
+
+  /// Day ('2026-11-05') -> how the starred cards stood at the end of that day.
+  final Map<String, Snapshot> snapshots = {};
+
   void _load() {
     final raw = _prefs.getString(_key);
     if (raw == null) return;
@@ -56,6 +68,8 @@ class UserStore extends ChangeNotifier {
     cards.clear();
     reported.clear();
     difficulty.clear();
+    reviews.clear();
+    snapshots.clear();
     starred.addAll(List<String>.from(j['starred'] as List? ?? const []));
     (j['lists'] as Map? ?? const {}).forEach((k, v) => lists[k as String] = List<String>.from(v as List));
     (j['cards'] as Map? ?? const {})
@@ -71,6 +85,12 @@ class UserStore extends ChangeNotifier {
     toneHanzi = j['toneHanzi'] as bool? ?? toneHanzi;
     reminderOn = j['reminderOn'] as bool? ?? reminderOn;
     reminderMinutes = j['reminderMinutes'] as int? ?? reminderMinutes;
+    sessionSize = j['sessionSize'] as int? ?? sessionSize;
+    mixRelated = j['mixRelated'] as bool? ?? mixRelated;
+    for (final r in j['reviews'] as List? ?? const []) {
+      reviews.add(Review.fromJson(r as List));
+    }
+    (j['snapshots'] as Map? ?? const {}).forEach((k, v) => snapshots[k as String] = Snapshot.fromJson(v as List));
   }
 
   Map<String, dynamic> _toJson() => {
@@ -85,6 +105,10 @@ class UserStore extends ChangeNotifier {
         'toneHanzi': toneHanzi,
         'reminderOn': reminderOn,
         'reminderMinutes': reminderMinutes,
+        'sessionSize': sessionSize,
+        'mixRelated': mixRelated,
+        'reviews': [for (final r in reviews) r.toJson()],
+        'snapshots': snapshots.map((k, v) => MapEntry(k, v.toJson())),
       };
 
   static const backupFormat = 'language-library-backup';
@@ -122,15 +146,23 @@ class UserStore extends ChangeNotifier {
       (data['lists'] as Map? ?? const {}).forEach((k, v) => List<String>.from(v as List));
       (data['cards'] as Map? ?? const {}).forEach((k, v) => CardState.fromJson(v as Map<String, dynamic>));
       (data['reported'] as Map? ?? const {}).forEach((k, v) => v as String);
+      for (final r in data['reviews'] as List? ?? const []) {
+        Review.fromJson(r as List);
+      }
+      (data['snapshots'] as Map? ?? const {}).forEach((k, v) => Snapshot.fromJson(v as List));
     } catch (_) {
       throw const FormatException('This backup file is damaged, so nothing was restored.');
     }
   }
 
   Future<void> _save() async {
+    _snapshot(DateTime.now());
     notifyListeners();
     await _prefs.setString(_key, jsonEncode(_toJson()));
   }
+
+  /// About how much space the learner's own data takes on the phone.
+  int get sizeBytes => utf8.encode(jsonEncode(_toJson())).length;
 
   bool isStarred(String id) => starred.contains(id);
 
@@ -175,6 +207,41 @@ class UserStore extends ChangeNotifier {
 
   Future<void> saveCard(String id, Direction d, CardState state) {
     cards[cardKey(id, d)] = state;
+    return _save();
+  }
+
+  /// Saves a flashcard answer and logs it, with [spent] time on the card.
+  Future<void> recordReview(String id, Direction d, CardState state, Rating rating, Duration spent, DateTime now) {
+    final isNew = card(id, d) == null;
+    cards[cardKey(id, d)] = state;
+    reviews.add(Review(now, spent > maxSpent ? maxSpent : spent, rating, isNew));
+    if (reviews.length > maxReviews) reviews.removeRange(0, reviews.length - maxReviews);
+    return _save();
+  }
+
+  /// Time on one card counts up to this, so a phone left on the table doesn't add hours.
+  static const maxSpent = Duration(minutes: 1);
+  static const maxReviews = 50000;
+
+  /// Records today's card counts, so the statistics can show change over time.
+  void _snapshot(DateTime now) {
+    final counts = List.filled(CardStatus.values.length, 0);
+    for (final id in starred) {
+      for (final d in Direction.values) {
+        counts[CardStatus.of(card(id, d)).index]++;
+      }
+    }
+    final k = '${now.year.toString().padLeft(4, '0')}-${now.month.toString().padLeft(2, '0')}-${now.day.toString().padLeft(2, '0')}';
+    snapshots[k] = Snapshot(starred.length, counts);
+  }
+
+  Future<void> setSessionSize(int v) {
+    sessionSize = v;
+    return _save();
+  }
+
+  Future<void> setMixRelated(bool v) {
+    mixRelated = v;
     return _save();
   }
 
@@ -233,4 +300,60 @@ enum Difficulty {
 
   const Difficulty(this.label);
   final String label;
+}
+
+/// One flashcard answer.
+class Review {
+  const Review(this.at, this.spent, this.rating, this.isNew);
+  final DateTime at;
+  final Duration spent;
+  final Rating rating;
+
+  /// The first time this card was ever answered.
+  final bool isNew;
+
+  List<Object> toJson() => [at.millisecondsSinceEpoch ~/ 1000, spent.inMilliseconds, rating.index, isNew ? 1 : 0];
+
+  factory Review.fromJson(List j) => Review(
+        DateTime.fromMillisecondsSinceEpoch((j[0] as int) * 1000),
+        Duration(milliseconds: j[1] as int),
+        Rating.values[j[2] as int],
+        j.length > 3 && j[3] == 1,
+      );
+}
+
+/// How well a flashcard is known, from how long until it comes back.
+enum CardStatus {
+  fresh('New', 'Not practised yet'),
+  learning('Learning', 'Back within a week'),
+  familiar('Familiar', 'Back in 1 to 3 weeks'),
+  strong('Strong', 'Back in 3 weeks or more');
+
+  const CardStatus(this.label, this.meaning);
+  final String label;
+  final String meaning;
+
+  static CardStatus of(CardState? c) {
+    if (c == null) return fresh;
+    if (c.intervalDays < 7) return learning;
+    if (c.intervalDays < 21) return familiar;
+    return strong;
+  }
+}
+
+/// Starred words and cards by [CardStatus] at the end of one day.
+class Snapshot {
+  const Snapshot(this.starred, this.byStatus);
+  final int starred;
+  final List<int> byStatus;
+
+  List<int> toJson() => [starred, ...byStatus];
+
+  factory Snapshot.fromJson(List j) {
+    final counts = [for (var i = 1; i < j.length; i++) j[i] as int];
+    while (counts.length < CardStatus.values.length) {
+      counts.add(0);
+    }
+    return Snapshot(j[0] as int, counts.sublist(0, CardStatus.values.length));
+  }
 }

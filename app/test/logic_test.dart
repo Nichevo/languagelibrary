@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
+import 'dart:math';
 
 import 'package:flutter_test/flutter_test.dart';
 import 'package:language_library/data/library.dart';
@@ -133,6 +134,65 @@ void main() {
       await store.saveCard(w.id, Direction.zhToEn, const Scheduler().review(null, Rating.good, now));
       final q = buildQueue(entries: [w], store: store, now: now);
       expect(q.map((c) => c.direction), [Direction.enToZh]);
+    });
+
+    test('a session size picks that many at random, due cards first, Chinese side first', () async {
+      final words = lib.entries.where((e) => !e.isSentence).take(30).toList();
+      final now = DateTime(2026, 11, 5, 9);
+      // Five words with a due Chinese card.
+      for (final w in words.take(5)) {
+        await store.saveCard(w.id, Direction.zhToEn, const Scheduler().review(null, Rating.again, now));
+      }
+      final later = now.add(const Duration(hours: 1));
+      final a = buildQueue(entries: words, store: store, now: later, limit: 10, random: Random(1));
+      final b = buildQueue(entries: words, store: store, now: later, limit: 10, random: Random(2));
+      expect(a.length, 10);
+      expect(a.where((c) => store.card(c.entry.id, c.direction) != null).length, 5);
+      expect(a.map((c) => '${c.entry.id}${c.direction}'), isNot(b.map((c) => '${c.entry.id}${c.direction}')));
+      for (final q in [a, b]) {
+        for (final w in words) {
+          final zh = q.indexWhere((c) => c.entry == w && c.direction == Direction.zhToEn);
+          final en = q.indexWhere((c) => c.entry == w && c.direction == Direction.enToZh);
+          if (zh >= 0 && en >= 0) expect(zh, lessThan(en));
+        }
+      }
+    });
+
+    test('related words are mixed in from outside the list, never first', () async {
+      final w = lib.entries.firstWhere((e) => e.related.length >= 2);
+      final q = buildQueue(
+        entries: [w],
+        store: store,
+        now: DateTime.now(),
+        related: 2,
+        library: lib.byId,
+        random: Random(3),
+      );
+      expect(q.length, 4);
+      expect(q.first.relatedTo, isNull);
+      final extra = q.where((c) => c.relatedTo != null).toList();
+      expect(extra.length, 2);
+      expect(extra.every((c) => c.relatedTo == w && c.entry != w), isTrue);
+    });
+
+    test('answers are logged with time, capped at a minute, and counted by day', () async {
+      final w = lib.entries.first;
+      final now = DateTime(2026, 11, 5, 9);
+      await store.toggleStar(w.id);
+      final c = const Scheduler().review(null, Rating.good, now);
+      await store.recordReview(w.id, Direction.zhToEn, c, Rating.good, const Duration(seconds: 8), now);
+      await store.recordReview(w.id, Direction.enToZh, c, Rating.easy, const Duration(minutes: 30), now);
+      expect(store.reviews.map((r) => r.spent.inSeconds), [8, 60]);
+      expect(store.reviews.first.isNew, isTrue);
+      final snap = store.snapshots.values.last;
+      expect(snap.starred, 1);
+      expect(snap.byStatus[CardStatus.learning.index], 2);
+
+      final again = await UserStore.open();
+      expect(again.reviews.length, 2);
+      expect(again.reviews.last.rating, Rating.easy);
+      expect(CardStatus.of(null), CardStatus.fresh);
+      expect(CardStatus.of(CardState(reps: 3, intervalDays: 25, ease: 2.5, due: now)), CardStatus.strong);
     });
 
     test('lists and stars persist', () async {

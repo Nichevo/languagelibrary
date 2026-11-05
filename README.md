@@ -84,6 +84,23 @@ sentence it can't read with certainty.
 
 ## Making the voices (one time, on your computer)
 
+### On Windows, the easy way
+
+Needs [Git](https://git-scm.com/download/win), Miniconda or Anaconda, and the
+[Google Cloud CLI](https://cloud.google.com/sdk/docs/install#windows), plus the Google
+Cloud project described below.
+
+1. Get the project once, from a command prompt:
+   `git clone https://github.com/Nichevo/languagelibrary D:\LanguageLibrary`
+2. Double-click `windows\make-voices.bat`. The first time it creates the
+   `languagelibrary` conda environment, signs you in to Google Cloud, makes voice
+   samples for you to pick from, then makes every clip and checks it. It sends the
+   clips to GitHub on a new branch and opens the page to make the pull request.
+3. Double-click `windows\update.bat` whenever there are changes, to get them. It also
+   updates the conda environment and offers to make voices for any new words.
+
+### By hand
+
 Needs the Google Cloud setup from the plan: a project, billing linked, a US$1 budget
 alert, the **Cloud Text-to-Speech API** and **Cloud Speech-to-Text API** enabled, and
 the [gcloud CLI](https://cloud.google.com/sdk/docs/install) signed in:

@@ -15,6 +15,7 @@ import 'ui/entry_screen.dart';
 import 'ui/focus_screen.dart';
 import 'ui/library_screen.dart';
 import 'ui/practice_home.dart';
+import 'ui/stats_screen.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -153,7 +154,7 @@ class _HomeShellState extends State<HomeShell> {
       if (e != null) Navigator.of(context).push(MaterialPageRoute(builder: (_) => EntryScreen(e)));
       return;
     }
-    final tab = const {'library': 0, 'focus': 1, 'practice': 2}[place];
+    final tab = const {'library': 0, 'focus': 1, 'practice': 2, 'progress': 3}[place];
     if (tab != null) setState(() => _tab = tab);
   }
 
@@ -162,7 +163,7 @@ class _HomeShellState extends State<HomeShell> {
     return Scaffold(
       body: IndexedStack(
         index: _tab,
-        children: const [LibraryScreen(), FocusScreen(), PracticeHome()],
+        children: const [LibraryScreen(), FocusScreen(), PracticeHome(), StatsScreen()],
       ),
       bottomNavigationBar: NavigationBar(
         selectedIndex: _tab,
@@ -171,6 +172,7 @@ class _HomeShellState extends State<HomeShell> {
           NavigationDestination(icon: Icon(Icons.menu_book_outlined), label: 'Library'),
           NavigationDestination(icon: Icon(Icons.star_outline), label: 'Focus'),
           NavigationDestination(icon: Icon(Icons.style_outlined), label: 'Practice'),
+          NavigationDestination(icon: Icon(Icons.insights_outlined), label: 'Progress'),
         ],
       ),
     );
