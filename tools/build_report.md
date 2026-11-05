@@ -1,86 +1,386 @@
 # Build report
 
-Built 2026-11-05 from HSK levels new-1 plus the curated phrase list.
-Kept **697** entries, dropped **3**, flagged **167**.
-81 phrasebook sentences; 528 words have example sentences.
+Built 2026-11-05 from HSK levels new-1, new-2, new-3 plus the curated phrase list.
+Kept **2266** entries, dropped **81**, flagged **587**.
+81 phrasebook sentences; 1575 words have example sentences.
 Sentences come from Tatoeba (native Mandarin speakers only); see tools/sentences.py.
 
 ## Dropped (not shown in the app)
 
+- 啊: several readings (a1, a2, a3, a4, a5) and none chosen in readings.tsv
+- 把: several readings (ba3, ba4) and none chosen in readings.tsv
+- 板: several readings (ban3, pan4) and none chosen in readings.tsv
+- 背: several readings (bei1, bei4) and none chosen in readings.tsv
+- 本事: several readings (ben3 shi4, ben3 shi5) and none chosen in readings.tsv
+- 边: several readings (bian1, bian5) and none chosen in readings.tsv
+- 便宜: several readings (bian4 yi2, pian2 yi5) and none chosen in readings.tsv
+- 不太: CC-CEDICT does not agree: list says [bu4 tai4], CC-CEDICT has [no entry]
+- 不一会儿: pinyin could not be read (not a numbered pinyin syllable: 'yīhuǐr5')
+- 厂: several readings (chang3, han3) and none chosen in readings.tsv
+- 场: several readings (chang2, chang3) and none chosen in readings.tsv
+- 朝: several readings (chao2, zhao1) and none chosen in readings.tsv
 - 车上: CC-CEDICT does not agree: list says [che1 shang4], CC-CEDICT has [no entry]
+- 称: several readings (chen4, cheng1, cheng4) and none chosen in readings.tsv
+- 传: several readings (chuan2, zhuan4) and none chosen in readings.tsv
+- 大夫: several readings (da4 fu1, dai4 fu5) and none chosen in readings.tsv
+- 当: several readings (dang1, dang4) and none chosen in readings.tsv
+- 当时: several readings (dang1 shi2, dang4 shi2) and none chosen in readings.tsv
+- 倒: several readings (dao3, dao4) and none chosen in readings.tsv
+- 得: several readings (de2, de5, dei3) and none chosen in readings.tsv
+- 调: several readings (diao4, tiao2) and none chosen in readings.tsv
+- 度: several readings (du4, duo2) and none chosen in readings.tsv
+- 发: several readings (fa1, fa4) and none chosen in readings.tsv
+- 放到: CC-CEDICT does not agree: list says [fang4 dao4], CC-CEDICT has [no entry]
+- 高中: several readings (gao1 zhong1, gao1 zhong4) and none chosen in readings.tsv
+- 更: several readings (geng1, geng4) and none chosen in readings.tsv
+- 工夫: several readings (gong1 fu1, gong1 fu5) and none chosen in readings.tsv
+- 故事: several readings (gu4 shi4, gu4 shi5) and none chosen in readings.tsv
+- 过去: several readings (guo4 qu4, guo4 qu5) and none chosen in readings.tsv
+- 好处: several readings (hao3 chu3, hao3 chu5) and none chosen in readings.tsv
+- 好事: several readings (hao3 shi4, hao4 shi4) and none chosen in readings.tsv
+- 合: several readings (ge3, he2) and none chosen in readings.tsv
+- 假: several readings (jia3, jia4) and none chosen in readings.tsv
+- 见过: pinyin could not be read (not a numbered pinyin syllable: 'jiànguò5')
+- 角: several readings (jiao3, jue2) and none chosen in readings.tsv
+- 脚: several readings (jiao3, jue2) and none chosen in readings.tsv
+- 教学: several readings (jiao1 xue2, jiao4 xue2) and none chosen in readings.tsv
+- 结果: several readings (jie1 guo3, jie2 guo3) and none chosen in readings.tsv
+- 结实: several readings (jie1 shi2, jie1 shi5) and none chosen in readings.tsv
+- 尽量: several readings (jin3 liang4, jin4 liang4) and none chosen in readings.tsv
+- 精神: several readings (jing1 shen2, jing1 shen5) and none chosen in readings.tsv
+- 卡: several readings (ka3, qia3) and none chosen in readings.tsv
+- 空: several readings (kong1, kong4) and none chosen in readings.tsv
+- 乐: several readings (le4, yue4) and none chosen in readings.tsv
+- 离: several readings (chi1, li2) and none chosen in readings.tsv
+- 凉: several readings (liang2, liang4) and none chosen in readings.tsv
+- 能不能: pinyin could not be read (not a numbered pinyin syllable: 'bùnéng5')
+- 鸟: several readings (diao3, niao3) and none chosen in readings.tsv
+- 弄: several readings (long4, nong4) and none chosen in readings.tsv
+- 胖: several readings (pan2, pang4) and none chosen in readings.tsv
+- 片: several readings (pian1, pian4) and none chosen in readings.tsv
+- 骑: several readings (ji4, qi2) and none chosen in readings.tsv
+- 强: several readings (jiang4, qiang2, qiang3) and none chosen in readings.tsv
+- 亲: several readings (qin1, qing4) and none chosen in readings.tsv
+- 生意: several readings (sheng1 yi4, sheng1 yi5) and none chosen in readings.tsv
+- 省: several readings (sheng3, xing3) and none chosen in readings.tsv
+- 属: several readings (shu3, zhu3) and none chosen in readings.tsv
+- 数: several readings (shu3, shu4, shuo4) and none chosen in readings.tsv
+- 送到: CC-CEDICT does not agree: list says [song4 dao4], CC-CEDICT has [no entry]
+- 所长: several readings (suo3 chang2, suo3 zhang3) and none chosen in readings.tsv
+- 汤: several readings (shang1, tang1) and none chosen in readings.tsv
+- 通: several readings (tong1, tong4) and none chosen in readings.tsv
+- 头: several readings (tou2, tou5) and none chosen in readings.tsv
+- 为: several readings (wei2, wei4) and none chosen in readings.tsv
+- 喂: several readings (wei2, wei4) and none chosen in readings.tsv
+- 系: several readings (ji4, xi4) and none chosen in readings.tsv
+- 笑话儿: pinyin could not be read (not a numbered pinyin syllable: 'xiàohuar5')
+- 姓名: CC-CEDICT only lists it as a variant or cross-reference
+- 有空儿: pinyin could not be read (not a numbered pinyin syllable: 'yǒukòngr5')
+- 约: several readings (yao1, yue1) and none chosen in readings.tsv
+- 脏: several readings (zang1, zang4) and none chosen in readings.tsv
+- 占: several readings (zhan1, zhan4) and none chosen in readings.tsv
+- 长: several readings (chang2, zhang3) and none chosen in readings.tsv
+- 这时候: pinyin could not be read (not a numbered pinyin syllable: 'shíhòu5')
+- 只: several readings (zhi1, zhi3) and none chosen in readings.tsv
+- 种: several readings (zhong3, zhong4) and none chosen in readings.tsv
+- 重点: several readings (chong2 dian3, zhong4 dian3) and none chosen in readings.tsv
+- 转: several readings (zhuan3, zhuan4) and none chosen in readings.tsv
+- 追: several readings (dui1, zhui1) and none chosen in readings.tsv
 - 最近过得好吗？: 得 has more than one reading (de2, de5, dei3)
 - 今晚月色真美。: 今 is not a word in the checked lists
 
 ## Flagged (kept, but check the audio by ear)
 
 - 爱好: has characters with more than one reading (好); listen to its audio
+- 把握: has characters with more than one reading (把); listen to its audio
 - 吧: has characters with more than one reading (吧); listen to its audio
+- 白色: has characters with more than one reading (色); listen to its audio
+- 班长: has characters with more than one reading (长); listen to its audio
+- 背后: has characters with more than one reading (背); listen to its audio
+- 比如说: has characters with more than one reading (说); listen to its audio
+- 必要: has characters with more than one reading (要); listen to its audio
+- 变为: has characters with more than one reading (为); listen to its audio
 - 别: has characters with more than one reading (别); listen to its audio
 - 别的: has characters with more than one reading (别的); listen to its audio
 - 别人: has characters with more than one reading (别); listen to its audio
+- 不得不: has characters with more than one reading (得); listen to its audio
+- 不好意思: has characters with more than one reading (好); listen to its audio
+- 不少: has characters with more than one reading (少); listen to its audio
+- 不行: has characters with more than one reading (行); listen to its audio
+- 不要: has characters with more than one reading (要); listen to its audio
+- 部分: has characters with more than one reading (分); listen to its audio
+- 部长: has characters with more than one reading (长); listen to its audio
+- 彩色: has characters with more than one reading (色); listen to its audio
+- 参观: has characters with more than one reading (参观); listen to its audio
+- 参加: has characters with more than one reading (参); listen to its audio
+- 曾经: has characters with more than one reading (曾); listen to its audio
 - 差: has characters with more than one reading (差); listen to its audio
+- 差不多: has characters with more than one reading (差); listen to its audio
+- 常见: has characters with more than one reading (见); listen to its audio
+- 场合: has characters with more than one reading (合场); listen to its audio
+- 场所: has characters with more than one reading (场); listen to its audio
 - 车: has characters with more than one reading (车); listen to its audio
+- 车辆: has characters with more than one reading (车); listen to its audio
 - 车票: has characters with more than one reading (车); listen to its audio
 - 车站: has characters with more than one reading (车); listen to its audio
+- 衬衣: has characters with more than one reading (衣); listen to its audio
+- 称为: has characters with more than one reading (为称); listen to its audio
+- 成为: has characters with more than one reading (为); listen to its audio
+- 成长: has characters with more than one reading (长); listen to its audio
+- 程度: has characters with more than one reading (度); listen to its audio
+- 出发: has characters with more than one reading (发); listen to its audio
+- 出租车: has characters with more than one reading (车); listen to its audio
+- 初中: has characters with more than one reading (中); listen to its audio
+- 除了: has characters with more than one reading (了); listen to its audio
+- 处理: has characters with more than one reading (处); listen to its audio
+- 传播: has characters with more than one reading (传); listen to its audio
+- 传来: has characters with more than one reading (传); listen to its audio
+- 传说: has characters with more than one reading (传说); listen to its audio
+- 创新: has characters with more than one reading (创); listen to its audio
+- 创业: has characters with more than one reading (创); listen to its audio
+- 创造: has characters with more than one reading (创); listen to its audio
+- 创作: has characters with more than one reading (作创); listen to its audio
+- 词语: has characters with more than one reading (语); listen to its audio
+- 答应: has characters with more than one reading (应答); listen to its audio
 - 打: has characters with more than one reading (打); listen to its audio
 - 打车: has characters with more than one reading (打车); listen to its audio
 - 打电话: has characters with more than one reading (打); listen to its audio
+- 打工: has characters with more than one reading (打); listen to its audio
 - 打开: has characters with more than one reading (打); listen to its audio
+- 打破: has characters with more than one reading (打); listen to its audio
 - 打球: has characters with more than one reading (打); listen to its audio
+- 打算: has characters with more than one reading (打); listen to its audio
+- 打听: has characters with more than one reading (听打); listen to its audio
+- 打印: has characters with more than one reading (打); listen to its audio
+- 大部分: has characters with more than one reading (分); listen to its audio
+- 大多数: has characters with more than one reading (数); listen to its audio
+- 大量: has characters with more than one reading (量); listen to its audio
+- 大衣: has characters with more than one reading (衣); listen to its audio
+- 大约: has characters with more than one reading (约); listen to its audio
+- 当初: has characters with more than one reading (当); listen to its audio
+- 当地: has characters with more than one reading (当); listen to its audio
+- 当然: has characters with more than one reading (当); listen to its audio
+- 当中: has characters with more than one reading (中当); listen to its audio
+- 到处: has characters with more than one reading (处); listen to its audio
 - 的: has characters with more than one reading (的); listen to its audio
+- 的话: has characters with more than one reading (的); listen to its audio
+- 得出: has characters with more than one reading (得); listen to its audio
 - 得到: has characters with more than one reading (得); listen to its audio
+- 得分: has characters with more than one reading (分得); listen to its audio
+- 等待: has characters with more than one reading (待); listen to its audio
+- 调查: has characters with more than one reading (调); listen to its audio
+- 调整: has characters with more than one reading (调); listen to its audio
+- 东南: has characters with more than one reading (南); listen to its audio
+- 懂得: has characters with more than one reading (得); listen to its audio
 - 动作: has characters with more than one reading (作); listen to its audio
 - 都: has characters with more than one reading (都); listen to its audio
 - 读: has characters with more than one reading (读); listen to its audio
 - 读书: has characters with more than one reading (读); listen to its audio
+- 读音: has characters with more than one reading (读); listen to its audio
+- 读者: has characters with more than one reading (读); listen to its audio
+- 短处: has characters with more than one reading (处); listen to its audio
+- 队长: has characters with more than one reading (长); listen to its audio
+- 对待: has characters with more than one reading (待); listen to its audio
 - 多少: has characters with more than one reading (少); listen to its audio
+- 多数: has characters with more than one reading (数); listen to its audio
+- 发表: has characters with more than one reading (发); listen to its audio
+- 发出: has characters with more than one reading (发); listen to its audio
+- 发达: has characters with more than one reading (发); listen to its audio
+- 发动: has characters with more than one reading (发); listen to its audio
+- 发明: has characters with more than one reading (发); listen to its audio
+- 发生: has characters with more than one reading (发); listen to its audio
+- 发送: has characters with more than one reading (发); listen to its audio
+- 发现: has characters with more than one reading (发); listen to its audio
+- 发言: has characters with more than one reading (发); listen to its audio
+- 发展: has characters with more than one reading (发); listen to its audio
+- 反应: has characters with more than one reading (应); listen to its audio
+- 反正: has characters with more than one reading (正); listen to its audio
 - 房间: has characters with more than one reading (间); listen to its audio
 - 放假: has characters with more than one reading (假); listen to its audio
+- 飞行: has characters with more than one reading (行); listen to its audio
 - 分: has characters with more than one reading (分); listen to its audio
+- 分别: has characters with more than one reading (分别); listen to its audio
+- 分开: has characters with more than one reading (分); listen to its audio
+- 分配: has characters with more than one reading (分); listen to its audio
+- 分数: has characters with more than one reading (分数); listen to its audio
+- 分钟: has characters with more than one reading (分); listen to its audio
+- 分组: has characters with more than one reading (分); listen to its audio
+- 否定: has characters with more than one reading (否); listen to its audio
+- 否认: has characters with more than one reading (否); listen to its audio
+- 服务: has characters with more than one reading (服); listen to its audio
+- 服务员: has characters with more than one reading (服); listen to its audio
+- 服装: has characters with more than one reading (服); listen to its audio
+- 父亲: has characters with more than one reading (亲); listen to its audio
+- 感觉: has characters with more than one reading (觉); listen to its audio
 - 干: has characters with more than one reading (干); listen to its audio
 - 干: has characters with more than one reading (干); listen to its audio
+- 干杯: has characters with more than one reading (干); listen to its audio
+- 干活儿: has characters with more than one reading (干); listen to its audio
 - 干净: has characters with more than one reading (干); listen to its audio
 - 干什么: has characters with more than one reading (什干); listen to its audio
 - 高兴: has characters with more than one reading (兴); listen to its audio
+- 告别: has characters with more than one reading (别); listen to its audio
+- 各种: has characters with more than one reading (种); listen to its audio
 - 给: has characters with more than one reading (给); listen to its audio
+- 更加: has characters with more than one reading (更); listen to its audio
+- 工厂: has characters with more than one reading (厂); listen to its audio
 - 工作: has characters with more than one reading (作); listen to its audio
+- 公共汽车: has characters with more than one reading (车); listen to its audio
+- 公交车: has characters with more than one reading (车); listen to its audio
+- 功夫: has characters with more than one reading (夫); listen to its audio
+- 关系: has characters with more than one reading (系); listen to its audio
+- 观察: has characters with more than one reading (观); listen to its audio
+- 观点: has characters with more than one reading (观); listen to its audio
+- 观看: has characters with more than one reading (看观); listen to its audio
+- 观念: has characters with more than one reading (观); listen to its audio
+- 观众: has characters with more than one reading (观); listen to its audio
+- 广播: has characters with more than one reading (广); listen to its audio
+- 广场: has characters with more than one reading (场广); listen to its audio
+- 广大: has characters with more than one reading (广); listen to its audio
+- 广告: has characters with more than one reading (广); listen to its audio
+- 哈哈: has characters with more than one reading (哈); listen to its audio
 - 还: has characters with more than one reading (还); listen to its audio
 - 还: has characters with more than one reading (还); listen to its audio
 - 还是: has characters with more than one reading (还); listen to its audio
 - 还有: has characters with more than one reading (还); listen to its audio
 - 好: has characters with more than one reading (好); listen to its audio
 - 好吃: has characters with more than one reading (好); listen to its audio
+- 好多: has characters with more than one reading (好); listen to its audio
+- 好好: has characters with more than one reading (好); listen to its audio
+- 好久: has characters with more than one reading (好); listen to its audio
 - 好看: has characters with more than one reading (好看); listen to its audio
+- 好奇: has characters with more than one reading (奇好); listen to its audio
+- 好人: has characters with more than one reading (好); listen to its audio
 - 好听: has characters with more than one reading (听好); listen to its audio
 - 好玩儿: has characters with more than one reading (好); listen to its audio
+- 好像: has characters with more than one reading (好); listen to its audio
 - 号: has characters with more than one reading (号); listen to its audio
 - 喝: has characters with more than one reading (喝); listen to its audio
+- 合法: has characters with more than one reading (合); listen to its audio
+- 合格: has characters with more than one reading (合); listen to its audio
+- 合理: has characters with more than one reading (合); listen to its audio
+- 合适: has characters with more than one reading (合); listen to its audio
+- 合作: has characters with more than one reading (作合); listen to its audio
 - 和: has characters with more than one reading (和); listen to its audio
+- 和平: has characters with more than one reading (和); listen to its audio
+- 黑板: has characters with more than one reading (板); listen to its audio
+- 黑色: has characters with more than one reading (色); listen to its audio
+- 红色: has characters with more than one reading (色); listen to its audio
+- 互相: has characters with more than one reading (相); listen to its audio
+- 划船: has characters with more than one reading (划); listen to its audio
+- 坏处: has characters with more than one reading (处); listen to its audio
+- 欢乐: has characters with more than one reading (乐); listen to its audio
+- 黄色: has characters with more than one reading (色); listen to its audio
 - 回答: has characters with more than one reading (答); listen to its audio
 - 会: has characters with more than one reading (会); listen to its audio
+- 会议: has characters with more than one reading (会); listen to its audio
+- 会员: has characters with more than one reading (会); listen to its audio
 - 火车: has characters with more than one reading (车); listen to its audio
 - 机场: has characters with more than one reading (场); listen to its audio
+- 机会: has characters with more than one reading (会); listen to its audio
+- 极了: has characters with more than one reading (了); listen to its audio
+- 集体: has characters with more than one reading (体); listen to its audio
+- 集中: has characters with more than one reading (中); listen to its audio
 - 几: has characters with more than one reading (几); listen to its audio
+- 计划: has characters with more than one reading (划); listen to its audio
 - 记得: has characters with more than one reading (得); listen to its audio
+- 技术: has characters with more than one reading (术); listen to its audio
+- 加强: has characters with more than one reading (强); listen to its audio
+- 家属: has characters with more than one reading (属); listen to its audio
+- 家长: has characters with more than one reading (长); listen to its audio
+- 假期: has characters with more than one reading (假); listen to its audio
+- 价格: has characters with more than one reading (价); listen to its audio
+- 价钱: has characters with more than one reading (价); listen to its audio
+- 价值: has characters with more than one reading (价); listen to its audio
+- 坚强: has characters with more than one reading (强); listen to its audio
 - 间: has characters with more than one reading (间); listen to its audio
 - 见: has characters with more than one reading (见); listen to its audio
+- 见到: has characters with more than one reading (见); listen to its audio
 - 见面: has characters with more than one reading (见); listen to its audio
+- 将近: has characters with more than one reading (将); listen to its audio
+- 将来: has characters with more than one reading (将); listen to its audio
+- 交给: has characters with more than one reading (给); listen to its audio
+- 交通: has characters with more than one reading (通); listen to its audio
+- 角度: has characters with more than one reading (度角); listen to its audio
+- 叫作: has characters with more than one reading (作); listen to its audio
 - 教: has characters with more than one reading (教); listen to its audio
+- 教材: has characters with more than one reading (教); listen to its audio
+- 教练: has characters with more than one reading (教); listen to its audio
+- 教师: has characters with more than one reading (教); listen to its audio
+- 教室: has characters with more than one reading (教); listen to its audio
 - 教学楼: has characters with more than one reading (教); listen to its audio
+- 教育: has characters with more than one reading (教); listen to its audio
+- 接待: has characters with more than one reading (待); listen to its audio
+- 接着: has characters with more than one reading (着); listen to its audio
+- 节约: has characters with more than one reading (约); listen to its audio
+- 结合: has characters with more than one reading (合结); listen to its audio
+- 结婚: has characters with more than one reading (结); listen to its audio
+- 结束: has characters with more than one reading (结); listen to its audio
+- 解决: has characters with more than one reading (解); listen to its audio
+- 解开: has characters with more than one reading (解); listen to its audio
+- 进行: has characters with more than one reading (行); listen to its audio
+- 景色: has characters with more than one reading (色); listen to its audio
+- 就要: has characters with more than one reading (要); listen to its audio
+- 举行: has characters with more than one reading (行); listen to its audio
+- 具体: has characters with more than one reading (体); listen to its audio
+- 剧场: has characters with more than one reading (场); listen to its audio
+- 据说: has characters with more than one reading (说); listen to its audio
 - 觉得: has characters with more than one reading (得觉); listen to its audio
 - 开车: has characters with more than one reading (车); listen to its audio
+- 开发: has characters with more than one reading (发); listen to its audio
 - 开会: has characters with more than one reading (会); listen to its audio
 - 看: has characters with more than one reading (看); listen to its audio
 - 看病: has characters with more than one reading (看); listen to its audio
 - 看到: has characters with more than one reading (看); listen to its audio
+- 看法: has characters with more than one reading (看); listen to its audio
 - 看见: has characters with more than one reading (看见); listen to its audio
+- 看起来: has characters with more than one reading (看); listen to its audio
+- 看上去: has characters with more than one reading (看); listen to its audio
+- 可乐: has characters with more than one reading (乐); listen to its audio
+- 克服: has characters with more than one reading (服); listen to its audio
+- 客观: has characters with more than one reading (观); listen to its audio
+- 空调: has characters with more than one reading (空调); listen to its audio
+- 空儿: has characters with more than one reading (空); listen to its audio
+- 空气: has characters with more than one reading (空); listen to its audio
+- 快乐: has characters with more than one reading (乐); listen to its audio
+- 快要: has characters with more than one reading (要); listen to its audio
+- 困难: has characters with more than one reading (难); listen to its audio
+- 拉: has characters with more than one reading (拉); listen to its audio
+- 蓝色: has characters with more than one reading (色); listen to its audio
+- 老板: has characters with more than one reading (板); listen to its audio
+- 乐队: has characters with more than one reading (乐); listen to its audio
+- 乐观: has characters with more than one reading (乐观); listen to its audio
 - 了: has characters with more than one reading (了); listen to its audio
 - 累: has characters with more than one reading (累); listen to its audio
+- 离婚: has characters with more than one reading (离); listen to its audio
+- 离开: has characters with more than one reading (离); listen to its audio
+- 理发: has characters with more than one reading (发); listen to its audio
+- 理解: has characters with more than one reading (解); listen to its audio
+- 力量: has characters with more than one reading (量); listen to its audio
+- 联合: has characters with more than one reading (合); listen to its audio
+- 联系: has characters with more than one reading (系); listen to its audio
+- 凉快: has characters with more than one reading (凉); listen to its audio
+- 凉水: has characters with more than one reading (凉); listen to its audio
+- 流行: has characters with more than one reading (行); listen to its audio
+- 旅行: has characters with more than one reading (行); listen to its audio
+- 旅行社: has characters with more than one reading (行); listen to its audio
+- 绿色: has characters with more than one reading (色); listen to its audio
+- 落后: has characters with more than one reading (落); listen to its audio
+- 满足: has characters with more than one reading (足); listen to its audio
 - 没: has characters with more than one reading (没); listen to its audio
 - 没关系: has characters with more than one reading (没系); listen to its audio
 - 没什么: has characters with more than one reading (什没); listen to its audio
 - 没事儿: has characters with more than one reading (没); listen to its audio
+- 没用: has characters with more than one reading (没); listen to its audio
 - 没有: has characters with more than one reading (没); listen to its audio
+- 媒体: has characters with more than one reading (体); listen to its audio
+- 美好: has characters with more than one reading (好); listen to its audio
+- 美食: has characters with more than one reading (食); listen to its audio
+- 美术: has characters with more than one reading (术); listen to its audio
+- 民间: has characters with more than one reading (间); listen to its audio
+- 名称: has characters with more than one reading (称); listen to its audio
+- 母亲: has characters with more than one reading (亲); listen to its audio
+- 目的: has characters with more than one reading (的); listen to its audio
 - 哪: has characters with more than one reading (哪); listen to its audio
 - 哪儿: has characters with more than one reading (哪); listen to its audio
 - 哪里: has characters with more than one reading (哪); listen to its audio
@@ -88,93 +388,291 @@ Sentences come from Tatoeba (native Mandarin speakers only); see tools/sentences
 - 那: has characters with more than one reading (那); listen to its audio
 - 那边: has characters with more than one reading (那); listen to its audio
 - 那儿: has characters with more than one reading (那); listen to its audio
+- 那会儿: has characters with more than one reading (会那); listen to its audio
 - 那里: has characters with more than one reading (那); listen to its audio
+- 那么: has characters with more than one reading (那); listen to its audio
+- 那时: has characters with more than one reading (那); listen to its audio
+- 那时候: has characters with more than one reading (那); listen to its audio
 - 那些: has characters with more than one reading (那); listen to its audio
+- 那样: has characters with more than one reading (那); listen to its audio
 - 南: has characters with more than one reading (南); listen to its audio
 - 南边: has characters with more than one reading (南); listen to its audio
+- 南部: has characters with more than one reading (南); listen to its audio
+- 南方: has characters with more than one reading (南); listen to its audio
 - 难: has characters with more than one reading (难); listen to its audio
+- 难道: has characters with more than one reading (难); listen to its audio
+- 难度: has characters with more than one reading (度难); listen to its audio
+- 难过: has characters with more than one reading (难); listen to its audio
+- 难看: has characters with more than one reading (看难); listen to its audio
+- 难受: has characters with more than one reading (难); listen to its audio
+- 难题: has characters with more than one reading (难); listen to its audio
+- 难听: has characters with more than one reading (听难); listen to its audio
+- 暖和: has characters with more than one reading (和); listen to its audio
 - 跑: has characters with more than one reading (跑); listen to its audio
+- 跑步: has characters with more than one reading (跑); listen to its audio
+- 配合: has characters with more than one reading (合); listen to its audio
+- 碰见: has characters with more than one reading (见); listen to its audio
+- 票价: has characters with more than one reading (价); listen to its audio
+- 漂亮: has characters with more than one reading (漂); listen to its audio
+- 评价: has characters with more than one reading (价); listen to its audio
+- 普通: has characters with more than one reading (通); listen to its audio
+- 普通话: has characters with more than one reading (通); listen to its audio
+- 其中: has characters with more than one reading (中); listen to its audio
+- 奇怪: has characters with more than one reading (奇); listen to its audio
+- 骑车: has characters with more than one reading (车骑); listen to its audio
 - 汽车: has characters with more than one reading (车); listen to its audio
+- 强大: has characters with more than one reading (强); listen to its audio
+- 强调: has characters with more than one reading (强调); listen to its audio
+- 强烈: has characters with more than one reading (强); listen to its audio
+- 亲切: has characters with more than one reading (亲切); listen to its audio
+- 亲人: has characters with more than one reading (亲); listen to its audio
+- 亲自: has characters with more than one reading (亲); listen to its audio
+- 青少年: has characters with more than one reading (少); listen to its audio
 - 请假: has characters with more than one reading (假); listen to its audio
+- 请教: has characters with more than one reading (教); listen to its audio
+- 球场: has characters with more than one reading (场); listen to its audio
+- 区别: has characters with more than one reading (别); listen to its audio
+- 取得: has characters with more than one reading (得); listen to its audio
+- 全场: has characters with more than one reading (场); listen to its audio
+- 全体: has characters with more than one reading (体); listen to its audio
+- 缺少: has characters with more than one reading (少); listen to its audio
+- 人数: has characters with more than one reading (数); listen to its audio
+- 认得: has characters with more than one reading (得); listen to its audio
 - 认识: has characters with more than one reading (识); listen to its audio
+- 认为: has characters with more than one reading (为); listen to its audio
+- 散步: has characters with more than one reading (散); listen to its audio
+- 沙发: has characters with more than one reading (发沙); listen to its audio
+- 沙子: has characters with more than one reading (沙); listen to its audio
 - 商场: has characters with more than one reading (场); listen to its audio
+- 商量: has characters with more than one reading (量); listen to its audio
 - 上车: has characters with more than one reading (车); listen to its audio
+- 上衣: has characters with more than one reading (衣); listen to its audio
 - 少: has characters with more than one reading (少); listen to its audio
+- 少年: has characters with more than one reading (少); listen to its audio
+- 少数: has characters with more than one reading (少数); listen to its audio
+- 社会: has characters with more than one reading (会); listen to its audio
 - 身体: has characters with more than one reading (体); listen to its audio
 - 什么: has characters with more than one reading (什); listen to its audio
+- 什么样: has characters with more than one reading (什); listen to its audio
+- 生长: has characters with more than one reading (长); listen to its audio
+- 十分: has characters with more than one reading (分); listen to its audio
+- 石头: has characters with more than one reading (石); listen to its audio
+- 石油: has characters with more than one reading (石); listen to its audio
 - 时间: has characters with more than one reading (间); listen to its audio
+- 实行: has characters with more than one reading (行); listen to its audio
+- 食品: has characters with more than one reading (食); listen to its audio
+- 食物: has characters with more than one reading (食); listen to its audio
+- 市场: has characters with more than one reading (场); listen to its audio
+- 市长: has characters with more than one reading (长); listen to its audio
+- 适合: has characters with more than one reading (合); listen to its audio
+- 适应: has characters with more than one reading (应); listen to its audio
+- 收看: has characters with more than one reading (看); listen to its audio
+- 收听: has characters with more than one reading (听); listen to its audio
+- 首都: has characters with more than one reading (都); listen to its audio
+- 舒服: has characters with more than one reading (服); listen to its audio
+- 属于: has characters with more than one reading (属); listen to its audio
+- 数量: has characters with more than one reading (数量); listen to its audio
+- 数字: has characters with more than one reading (数); listen to its audio
 - 睡觉: has characters with more than one reading (觉); listen to its audio
 - 说: has characters with more than one reading (说); listen to its audio
 - 说话: has characters with more than one reading (说); listen to its audio
+- 说明: has characters with more than one reading (说); listen to its audio
+- 送给: has characters with more than one reading (给); listen to its audio
+- 速度: has characters with more than one reading (度); listen to its audio
+- 态度: has characters with more than one reading (度); listen to its audio
+- 特别: has characters with more than one reading (别); listen to its audio
+- 特色: has characters with more than one reading (色); listen to its audio
+- 体会: has characters with more than one reading (会体); listen to its audio
+- 体现: has characters with more than one reading (体); listen to its audio
+- 体验: has characters with more than one reading (体); listen to its audio
+- 体育: has characters with more than one reading (体); listen to its audio
+- 体育场: has characters with more than one reading (体场); listen to its audio
+- 体育馆: has characters with more than one reading (体); listen to its audio
+- 天空: has characters with more than one reading (空); listen to its audio
+- 跳远: has characters with more than one reading (远); listen to its audio
 - 听: has characters with more than one reading (听); listen to its audio
 - 听到: has characters with more than one reading (听); listen to its audio
 - 听见: has characters with more than one reading (听见); listen to its audio
+- 听讲: has characters with more than one reading (听); listen to its audio
+- 听力: has characters with more than one reading (听); listen to its audio
+- 听说: has characters with more than one reading (听说); listen to its audio
 - 听写: has characters with more than one reading (听); listen to its audio
+- 听众: has characters with more than one reading (听); listen to its audio
+- 停车: has characters with more than one reading (车); listen to its audio
+- 停车场: has characters with more than one reading (场车); listen to its audio
+- 挺好: has characters with more than one reading (好); listen to its audio
+- 通常: has characters with more than one reading (通); listen to its audio
+- 通过: has characters with more than one reading (通); listen to its audio
+- 通信: has characters with more than one reading (通); listen to its audio
+- 通知: has characters with more than one reading (通); listen to its audio
+- 头发: has characters with more than one reading (发); listen to its audio
+- 图片: has characters with more than one reading (片); listen to its audio
+- 团结: has characters with more than one reading (结); listen to its audio
+- 团体: has characters with more than one reading (体); listen to its audio
+- 推广: has characters with more than one reading (广); listen to its audio
 - 外语: has characters with more than one reading (语); listen to its audio
+- 晚会: has characters with more than one reading (会); listen to its audio
+- 卫生间: has characters with more than one reading (间); listen to its audio
+- 为了: has characters with more than one reading (为了); listen to its audio
+- 为什么: has characters with more than one reading (为什); listen to its audio
+- 温度: has characters with more than one reading (度); listen to its audio
+- 武术: has characters with more than one reading (术); listen to its audio
 - 洗手间: has characters with more than one reading (间); listen to its audio
+- 洗衣机: has characters with more than one reading (衣); listen to its audio
+- 西南: has characters with more than one reading (南); listen to its audio
 - 下车: has characters with more than one reading (车); listen to its audio
 - 下雨: has characters with more than one reading (雨); listen to its audio
+- 显得: has characters with more than one reading (得); listen to its audio
+- 现场: has characters with more than one reading (场); listen to its audio
+- 相比: has characters with more than one reading (相); listen to its audio
+- 相当: has characters with more than one reading (当相); listen to its audio
+- 相关: has characters with more than one reading (相); listen to its audio
+- 相互: has characters with more than one reading (相); listen to its audio
+- 相机: has characters with more than one reading (相); listen to its audio
+- 相似: has characters with more than one reading (相); listen to its audio
+- 相同: has characters with more than one reading (相); listen to its audio
+- 相信: has characters with more than one reading (相); listen to its audio
+- 小说: has characters with more than one reading (说); listen to its audio
+- 校园: has characters with more than one reading (校); listen to its audio
+- 校长: has characters with more than one reading (校长); listen to its audio
+- 写作: has characters with more than one reading (作); listen to its audio
+- 心中: has characters with more than one reading (中); listen to its audio
+- 信号: has characters with more than one reading (号); listen to its audio
+- 信用卡: has characters with more than one reading (卡); listen to its audio
 - 行: has characters with more than one reading (行); listen to its audio
+- 行动: has characters with more than one reading (行); listen to its audio
+- 行李: has characters with more than one reading (行); listen to its audio
+- 行人: has characters with more than one reading (行); listen to its audio
+- 行为: has characters with more than one reading (为行); listen to its audio
+- 性别: has characters with more than one reading (别); listen to its audio
+- 休假: has characters with more than one reading (假); listen to its audio
+- 需要: has characters with more than one reading (要); listen to its audio
+- 宣传: has characters with more than one reading (传); listen to its audio
 - 学校: has characters with more than one reading (校); listen to its audio
+- 颜色: has characters with more than one reading (色); listen to its audio
+- 演唱会: has characters with more than one reading (会); listen to its audio
+- 药片: has characters with more than one reading (片); listen to its audio
 - 要: has characters with more than one reading (要); listen to its audio
+- 要求: has characters with more than one reading (要); listen to its audio
+- 要是: has characters with more than one reading (要); listen to its audio
 - 页: has characters with more than one reading (页); listen to its audio
+- 一部分: has characters with more than one reading (分); listen to its audio
 - 一会儿: has characters with more than one reading (会); listen to its audio
+- 一切: has characters with more than one reading (切); listen to its audio
 - 衣服: has characters with more than one reading (服衣); listen to its audio
+- 衣架: has characters with more than one reading (衣); listen to its audio
+- 以为: has characters with more than one reading (为); listen to its audio
+- 艺术: has characters with more than one reading (术); listen to its audio
+- 意见: has characters with more than one reading (见); listen to its audio
+- 因为: has characters with more than one reading (为); listen to its audio
+- 音乐: has characters with more than one reading (乐); listen to its audio
+- 音乐会: has characters with more than one reading (乐会); listen to its audio
+- 银行: has characters with more than one reading (行); listen to its audio
+- 银行卡: has characters with more than one reading (卡行); listen to its audio
+- 应当: has characters with more than one reading (应当); listen to its audio
+- 应该: has characters with more than one reading (应); listen to its audio
+- 应用: has characters with more than one reading (应); listen to its audio
+- 影片: has characters with more than one reading (片); listen to its audio
+- 永远: has characters with more than one reading (远); listen to its audio
 - 有的: has characters with more than one reading (的); listen to its audio
+- 有的是: has characters with more than one reading (的); listen to its audio
+- 友好: has characters with more than one reading (好); listen to its audio
 - 雨: has characters with more than one reading (雨); listen to its audio
+- 语言: has characters with more than one reading (语); listen to its audio
 - 远: has characters with more than one reading (远); listen to its audio
+- 院长: has characters with more than one reading (长); listen to its audio
 - 再见: has characters with more than one reading (见); listen to its audio
+- 增长: has characters with more than one reading (长); listen to its audio
+- 长处: has characters with more than one reading (处长); listen to its audio
+- 长大: has characters with more than one reading (长); listen to its audio
+- 长期: has characters with more than one reading (长); listen to its audio
+- 照片: has characters with more than one reading (片); listen to its audio
+- 照相: has characters with more than one reading (相); listen to its audio
 - 这: has characters with more than one reading (这); listen to its audio
 - 这边: has characters with more than one reading (这); listen to its audio
 - 这儿: has characters with more than one reading (这); listen to its audio
 - 这里: has characters with more than one reading (这); listen to its audio
+- 这么: has characters with more than one reading (这); listen to its audio
+- 这时: has characters with more than one reading (这); listen to its audio
 - 这些: has characters with more than one reading (这); listen to its audio
+- 这样: has characters with more than one reading (这); listen to its audio
 - 着: has characters with more than one reading (着); listen to its audio
 - 真的: has characters with more than one reading (的); listen to its audio
+- 真正: has characters with more than one reading (正); listen to its audio
+- 整体: has characters with more than one reading (体); listen to its audio
 - 正: has characters with more than one reading (正); listen to its audio
+- 正常: has characters with more than one reading (正); listen to its audio
+- 正好: has characters with more than one reading (好正); listen to its audio
+- 正确: has characters with more than one reading (正); listen to its audio
+- 正式: has characters with more than one reading (正); listen to its audio
+- 正是: has characters with more than one reading (正); listen to its audio
 - 正在: has characters with more than one reading (正); listen to its audio
 - 知识: has characters with more than one reading (识); listen to its audio
+- 值得: has characters with more than one reading (得); listen to its audio
+- 只好: has characters with more than one reading (只好); listen to its audio
+- 只能: has characters with more than one reading (只); listen to its audio
+- 只是: has characters with more than one reading (只); listen to its audio
+- 只要: has characters with more than one reading (只要); listen to its audio
+- 只有: has characters with more than one reading (只); listen to its audio
+- 至少: has characters with more than one reading (少); listen to its audio
+- 制度: has characters with more than one reading (度); listen to its audio
+- 制作: has characters with more than one reading (作); listen to its audio
 - 中: has characters with more than one reading (中); listen to its audio
+- 中部: has characters with more than one reading (中); listen to its audio
+- 中餐: has characters with more than one reading (中); listen to its audio
+- 中级: has characters with more than one reading (中); listen to its audio
 - 中间: has characters with more than one reading (中间); listen to its audio
+- 中年: has characters with more than one reading (中); listen to its audio
 - 中午: has characters with more than one reading (中); listen to its audio
+- 中小学: has characters with more than one reading (中); listen to its audio
+- 中心: has characters with more than one reading (中); listen to its audio
 - 中学: has characters with more than one reading (中); listen to its audio
 - 中学生: has characters with more than one reading (中); listen to its audio
+- 种子: has characters with more than one reading (种); listen to its audio
 - 重: has characters with more than one reading (重); listen to its audio
+- 重大: has characters with more than one reading (重); listen to its audio
+- 重复: has characters with more than one reading (重); listen to its audio
+- 重视: has characters with more than one reading (重); listen to its audio
+- 重新: has characters with more than one reading (重); listen to its audio
 - 重要: has characters with more than one reading (要重); listen to its audio
+- 主要: has characters with more than one reading (要); listen to its audio
+- 转变: has characters with more than one reading (转); listen to its audio
+- 自觉: has characters with more than one reading (觉); listen to its audio
+- 自行车: has characters with more than one reading (行车); listen to its audio
+- 总结: has characters with more than one reading (结); listen to its audio
+- 足够: has characters with more than one reading (足); listen to its audio
+- 足球: has characters with more than one reading (足); listen to its audio
+- 组合: has characters with more than one reading (合); listen to its audio
+- 组长: has characters with more than one reading (长); listen to its audio
 - 最好: has characters with more than one reading (好); listen to its audio
+- 作家: has characters with more than one reading (作); listen to its audio
+- 作品: has characters with more than one reading (作); listen to its audio
+- 作文: has characters with more than one reading (作); listen to its audio
+- 作业: has characters with more than one reading (作); listen to its audio
+- 作用: has characters with more than one reading (作); listen to its audio
+- 作者: has characters with more than one reading (作); listen to its audio
 - 你好: has characters with more than one reading (好); listen to its audio
 - 别客气: has characters with more than one reading (别); listen to its audio
-- 不好意思: has characters with more than one reading (好); listen to its audio
 - 好久不见: has characters with more than one reading (好见); listen to its audio
 - 早上好: has characters with more than one reading (好); listen to its audio
 - 晚上好: has characters with more than one reading (好); listen to its audio
 - 没问题: has characters with more than one reading (没); listen to its audio
 - 没事: has characters with more than one reading (没); listen to its audio
 - 太好了: has characters with more than one reading (了好); listen to its audio
-- 当然: has characters with more than one reading (当); listen to its audio
-- 不行: has characters with more than one reading (行); listen to its audio
 - 是的: has characters with more than one reading (的); listen to its audio
 - 怎么了: has characters with more than one reading (了); listen to its audio
-- 为什么: has characters with more than one reading (为什); listen to its audio
 - 什么时候: has characters with more than one reading (什); listen to its audio
 - 几点: has characters with more than one reading (几); listen to its audio
 - 听不懂: has characters with more than one reading (听); listen to its audio
 - 生日快乐: has characters with more than one reading (乐); listen to its audio
 - 新年快乐: has characters with more than one reading (乐); listen to its audio
-- 干杯: has characters with more than one reading (干); listen to its audio
-- 服务员: has characters with more than one reading (服); listen to its audio
 - 打包: has characters with more than one reading (打); listen to its audio
 - 火车站: has characters with more than one reading (车); listen to its audio
-- 出租车: has characters with more than one reading (车); listen to its audio
-- 漂亮: has characters with more than one reading (漂); listen to its audio
 - 亲爱: has characters with more than one reading (亲); listen to its audio
 - 舍不得: has characters with more than one reading (得舍); listen to its audio
 - 约会: has characters with more than one reading (会约); listen to its audio
 - 一见钟情: has characters with more than one reading (见); listen to its audio
-- 永远: has characters with more than one reading (远); listen to its audio
-- 结婚: has characters with more than one reading (结); listen to its audio
 - 还好: has characters with more than one reading (好还); listen to its audio
-- 挺好: has characters with more than one reading (好); listen to its audio
 - 担心: has characters with more than one reading (担); listen to its audio
 - 保重: has characters with more than one reading (重); listen to its audio
 - 卡布奇诺: has characters with more than one reading (卡奇); listen to its audio

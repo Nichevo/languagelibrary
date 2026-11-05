@@ -6,7 +6,7 @@ flashcards with spaced repetition.
 
 ## What's in phase 1
 
-- **Library**: about 540 entries (HSK 3.0 level 1 plus everyday phrases), searchable by
+- **Library**: about 2,270 entries (HSK 3.0 levels 1 to 3 plus everyday phrases and sentences), searchable by
   English, pinyin (with or without tones) or hanzi, with topic filters: Everyday,
   Food, Travel, Family, Numbers.
 - **Word page**: big hanzi, tone-coloured pinyin, meanings, measure words, female
@@ -63,8 +63,8 @@ then `cd app && flutter run` with the phone plugged in.
 ## Rebuilding the word data
 
 ```
-python3 -m tools.build_data                  # HSK level 1 + phrases
-python3 -m tools.build_data --levels new-1 new-2   # add HSK level 2
+python3 -m tools.build_data                  # HSK levels 1-3 + phrases
+python3 -m tools.build_data --levels new-1 new-2 new-3 new-4   # add HSK level 4
 ```
 
 The script downloads the HSK list and CC-CEDICT. A word is kept only if both sources
@@ -118,7 +118,7 @@ python3 -m tools.generate_audio --female VOICE-NAME --male VOICE-NAME
 
 Each clip is made with its exact pinyin, then played back through speech
 recognition. Anything that came back different is listed in `tools/audio_report.md`
-for you to listen to. About 540 entries × 2 voices uses a few thousand characters,
+for you to listen to. About 2,270 entries × 2 voices uses roughly 10,000 characters,
 far inside Google's free monthly allowance. Commit the new files in
 `app/assets/audio/` and the app uses them automatically; until then it falls back to
 the phone's own Chinese voice.

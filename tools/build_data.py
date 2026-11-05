@@ -47,8 +47,8 @@ OUT_REPORT = Path(__file__).resolve().parent / "build_report.md"
 HSK_URL = "https://raw.githubusercontent.com/drkameleon/complete-hsk-vocabulary/main/complete.json"
 CEDICT_URL = "https://www.mdbg.net/chinese/export/cedict/cedict_1_0_ts_utf-8_mdbg.zip"
 
-# Starter set: HSK 3.0 level 1 plus the curated phrases. Raise later with --levels.
-DEFAULT_LEVELS = ["new-1"]
+# HSK 3.0 levels 1 to 3 plus the curated phrases. Change with --levels.
+DEFAULT_LEVELS = ["new-1", "new-2", "new-3"]
 
 _CEDICT_LINE = re.compile(r"^(\S+) (\S+) \[([^\]]+)\] /(.*)/\s*$")
 _ERHUA = re.compile(r"^erhua variant of (?:[^|\[]+\|)?([^\[]+)\[([^\]]+)\]")
@@ -408,7 +408,7 @@ def main(argv=None):
     ap.add_argument("--cedict", help="local CC-CEDICT file (default: download from MDBG)")
     ap.add_argument("--hsk", help="local complete.json (default: download)")
     ap.add_argument("--levels", nargs="+", default=DEFAULT_LEVELS,
-                    help="HSK levels to include, e.g. new-1 new-2 (default: new-1)")
+                    help="HSK levels to include, e.g. new-1 new-2 (default: new-1 new-2 new-3)")
     args = ap.parse_args(argv)
 
     cedict = load_cedict(args.cedict)
