@@ -67,7 +67,7 @@ void main() {
     final lib = loadRealLibrary();
 
     test('starter set is a sensible size and every entry is complete', () {
-      expect(lib.entries.length, inInclusiveRange(400, 800));
+      expect(lib.entries.length, inInclusiveRange(2000, 2600));
       for (final e in lib.entries) {
         expect(e.meanings, isNotEmpty, reason: e.simplified);
         expect(e.syllables, isNotEmpty, reason: e.simplified);

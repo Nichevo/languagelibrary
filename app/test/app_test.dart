@@ -70,7 +70,7 @@ void main() {
     final heading = find.text('Related words and phrases');
     await tester.scrollUntilVisible(heading, 300, scrollable: find.byType(Scrollable).last);
     await tester.pumpAndSettle();
-    final measure = find.text('Its measure word');
+    final measure = find.text('Its measure word').first;
     await tester.scrollUntilVisible(measure, 200, scrollable: find.byType(Scrollable).last);
     await tester.pumpAndSettle();
 
