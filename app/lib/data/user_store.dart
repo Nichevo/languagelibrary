@@ -29,6 +29,9 @@ class UserStore extends ChangeNotifier {
   /// Entry id -> what looked wrong.
   final Map<String, String> reported = {};
 
+  /// Entry id -> how hard the learner says the word is for them.
+  final Map<String, Difficulty> difficulty = {};
+
   /// What the front of a Chinese-to-English card shows: hanzi, pinyin or audio.
   String cardFront = 'hanzi';
   bool slowAudio = false;
@@ -43,6 +46,10 @@ class UserStore extends ChangeNotifier {
     (j['cards'] as Map? ?? const {})
         .forEach((k, v) => cards[k as String] = CardState.fromJson(v as Map<String, dynamic>));
     (j['reported'] as Map? ?? const {}).forEach((k, v) => reported[k as String] = v as String);
+    (j['difficulty'] as Map? ?? const {}).forEach((k, v) {
+      final d = Difficulty.values.asNameMap()[v];
+      if (d != null) difficulty[k as String] = d;
+    });
     cardFront = j['cardFront'] as String? ?? cardFront;
     slowAudio = j['slowAudio'] as bool? ?? slowAudio;
     femaleVoice = j['femaleVoice'] as bool? ?? femaleVoice;
@@ -57,6 +64,7 @@ class UserStore extends ChangeNotifier {
         'lists': lists,
         'cards': cards.map((k, v) => MapEntry(k, v.toJson())),
         'reported': reported,
+        'difficulty': difficulty.map((k, v) => MapEntry(k, v.name)),
         'cardFront': cardFront,
         'slowAudio': slowAudio,
         'femaleVoice': femaleVoice,
@@ -120,6 +128,16 @@ class UserStore extends ChangeNotifier {
     return _save();
   }
 
+  /// Pass null to clear the score.
+  Future<void> setDifficulty(String id, Difficulty? d) {
+    if (d == null) {
+      difficulty.remove(id);
+    } else {
+      difficulty[id] = d;
+    }
+    return _save();
+  }
+
   Future<void> setCardFront(String v) {
     cardFront = v;
     return _save();
@@ -134,4 +152,14 @@ class UserStore extends ChangeNotifier {
     femaleVoice = v;
     return _save();
   }
+}
+
+/// The learner's own score for a word, separate from flashcard scheduling.
+enum Difficulty {
+  easy('Easy'),
+  ok('OK'),
+  hard('Hard');
+
+  const Difficulty(this.label);
+  final String label;
 }
