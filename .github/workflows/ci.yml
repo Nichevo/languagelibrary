@@ -19,6 +19,8 @@ jobs:
 
   app:
     runs-on: ubuntu-latest
+    env:
+      HAS_SIGNING_KEY: ${{ secrets.ANDROID_KEYSTORE_BASE64 != '' }}
     defaults:
       run:
         working-directory: app
@@ -35,10 +37,26 @@ jobs:
       - run: flutter pub get
       - run: flutter analyze
       - run: flutter test
-      - name: Build Android app (debug, installable on your phone)
-        run: flutter build apk --debug
+      - name: Set up release signing key
+        env:
+          KEYSTORE_BASE64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+          KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
+        if: env.HAS_SIGNING_KEY == 'true'
+        run: |
+          echo "$KEYSTORE_BASE64" | base64 --decode > android/release.jks
+          {
+            echo "storeFile=release.jks"
+            echo "storePassword=$KEYSTORE_PASSWORD"
+            echo "keyAlias=release"
+            echo "keyPassword=$KEYSTORE_PASSWORD"
+          } > android/key.properties
+      - name: Build Android app
+        run: flutter build apk --release --build-number=${{ github.run_number }}
+      - name: Check how the app is signed
+        run: |
+          if [ -f android/key.properties ]; then echo "Signed with the release key"; else echo "::warning::No signing secrets set, so this APK uses a throwaway debug key. Updates will not install over it."; fi
       - uses: actions/upload-artifact@v4
         with:
-          name: language-library-debug-apk
-          path: app/build/app/outputs/flutter-apk/app-debug.apk
+          name: language-library-apk
+          path: app/build/app/outputs/flutter-apk/app-release.apk
           retention-days: 30

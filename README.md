@@ -31,9 +31,31 @@ tools/               Python scripts that build the data and audio
 
 ## Installing on your phone
 
-Every push builds a debug APK on GitHub Actions. Open the latest **CI** run on the
-Actions tab, download **language-library-debug-apk**, unzip it, copy
-`app-debug.apk` to the phone and open it (allow "install unknown apps" when asked).
+Every push builds the app on GitHub Actions. Open the latest **CI** run on the
+Actions tab, download **language-library-apk**, unzip it, copy `app-release.apk`
+to the phone and open it.
+
+Android's Play Protect will warn that it doesn't recognise the app, because it
+isn't from the Play Store. Tap **More details → Install anyway**. If that option
+isn't shown: Play Store → profile picture → Play Protect → gear → turn off
+**Scan apps with Play Protect**, install, then turn it back on.
+
+### One-time: the signing key
+
+Android only installs an update over the old app if both are signed with the same
+key. Without it you would have to uninstall (and lose your stars and progress)
+for every update. To set it up once:
+
+1. Actions tab → **Create signing key (run once)** → **Run workflow**.
+2. When it finishes, download **signing-key-keep-private** from the run and unzip it.
+3. Repo **Settings → Secrets and variables → Actions → New repository secret**, twice:
+   - `ANDROID_KEYSTORE_BASE64`: paste the contents of `ANDROID_KEYSTORE_BASE64.txt`
+   - `ANDROID_KEYSTORE_PASSWORD`: paste the contents of `ANDROID_KEYSTORE_PASSWORD.txt`
+4. Keep the unzipped folder somewhere safe (a password manager is ideal), then
+   delete the download from the workflow run.
+
+From then on every build is signed with that key. The first signed build needs one
+uninstall of any older test build; after that, updates install over the top.
 
 To build yourself: install [Flutter](https://docs.flutter.dev/get-started/install),
 then `cd app && flutter run` with the phone plugged in.
