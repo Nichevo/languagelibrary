@@ -47,6 +47,9 @@ class UserStore extends ChangeNotifier {
   /// Most cards in one practice session, picked at random; 0 means all of them.
   int sessionSize = 20;
 
+  /// How the Practice tab practises: 'cards', 'listen' or 'type'.
+  String practiceMode = 'cards';
+
   /// Mix a few related words the learner has not starred into each session.
   bool mixRelated = false;
 
@@ -87,6 +90,7 @@ class UserStore extends ChangeNotifier {
     reminderMinutes = j['reminderMinutes'] as int? ?? reminderMinutes;
     sessionSize = j['sessionSize'] as int? ?? sessionSize;
     mixRelated = j['mixRelated'] as bool? ?? mixRelated;
+    practiceMode = j['practiceMode'] as String? ?? practiceMode;
     for (final r in j['reviews'] as List? ?? const []) {
       reviews.add(Review.fromJson(r as List));
     }
@@ -107,6 +111,7 @@ class UserStore extends ChangeNotifier {
         'reminderMinutes': reminderMinutes,
         'sessionSize': sessionSize,
         'mixRelated': mixRelated,
+        'practiceMode': practiceMode,
         'reviews': [for (final r in reviews) r.toJson()],
         'snapshots': snapshots.map((k, v) => MapEntry(k, v.toJson())),
       };
@@ -219,6 +224,13 @@ class UserStore extends ChangeNotifier {
     return _save();
   }
 
+  /// Logs a listening or typing answer, which doesn't change when cards come back.
+  Future<void> logAnswer(Rating rating, Duration spent, DateTime now) {
+    reviews.add(Review(now, spent > maxSpent ? maxSpent : spent, rating, false));
+    if (reviews.length > maxReviews) reviews.removeRange(0, reviews.length - maxReviews);
+    return _save();
+  }
+
   /// Time on one card counts up to this, so a phone left on the table doesn't add hours.
   static const maxSpent = Duration(minutes: 1);
   static const maxReviews = 50000;
@@ -237,6 +249,11 @@ class UserStore extends ChangeNotifier {
 
   Future<void> setSessionSize(int v) {
     sessionSize = v;
+    return _save();
+  }
+
+  Future<void> setPracticeMode(String v) {
+    practiceMode = v;
     return _save();
   }
 
