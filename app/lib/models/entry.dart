@@ -16,6 +16,7 @@ class Entry {
     required this.notes,
     required this.polyphonic,
     required this.sources,
+    this.related = const [],
   });
 
   final String id;
@@ -35,6 +36,9 @@ class Entry {
   final List<String> notes;
   final bool polyphonic;
   final List<String> sources;
+
+  /// Other entries worth a look, each with a plain-English reason.
+  final List<RelatedLink> related;
 
   /// Short English summary for lists and flashcards.
   String get gloss => meanings.take(3).join('; ');
@@ -69,8 +73,18 @@ class Entry {
       notes: List<String>.from((j['notes'] as List?) ?? const []),
       polyphonic: j['polyphonic'] as bool? ?? false,
       sources: List<String>.from(j['sources'] as List),
+      related: [
+        for (final r in (j['related'] as List?) ?? const [])
+          RelatedLink(r['id'] as String, r['why'] as String),
+      ],
     );
   }
+}
+
+class RelatedLink {
+  const RelatedLink(this.id, this.why);
+  final String id;
+  final String why;
 }
 
 class Classifier {
