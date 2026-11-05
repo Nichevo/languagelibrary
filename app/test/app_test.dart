@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:language_library/data/user_store.dart';
+import 'package:language_library/device/device.dart';
 import 'package:language_library/main.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -148,5 +149,65 @@ void main() {
     final heading = find.text('Example sentences');
     await tester.scrollUntilVisible(heading, 300, scrollable: find.byType(Scrollable).last);
     expect(heading, findsOneWidget);
+  });
+
+  testWidgets('settings: reminder, tone colours, backup and restore', (tester) async {
+    SharedPreferences.setMockInitialValues({});
+    final store = await UserStore.open();
+    final device = NoDevice();
+    final lib = loadRealLibrary();
+    tester.view.physicalSize = const Size(800, 1800);
+    tester.view.devicePixelRatio = 1;
+    addTearDown(tester.view.reset);
+    await tester.pumpWidget(appForTest(lib, store, device: device));
+    await store.toggleStar(lib.entries.first.id);
+
+    await tester.tap(find.text('Practice'));
+    await tester.pumpAndSettle();
+    final list = find.byType(Scrollable).last;
+    await tester.scrollUntilVisible(find.text('Daily reminder'), 200, scrollable: list);
+    await tester.tap(find.text('Daily reminder'));
+    await tester.pumpAndSettle();
+    expect(store.reminderOn, isTrue);
+    expect(find.text('Reminder time'), findsOneWidget);
+    await tester.tap(find.text('Colour characters by tone'));
+    await tester.pumpAndSettle();
+    expect(store.toneHanzi, isFalse);
+
+    await tester.scrollUntilVisible(find.text('Back up to a file'), 200, scrollable: list);
+    await tester.tap(find.text('Back up to a file'));
+    await tester.pumpAndSettle();
+    expect(device.saved.keys.single, startsWith('language-library-backup-'));
+    expect(find.textContaining('Saved language-library-backup-'), findsOneWidget);
+
+    // Restore that file after unstarring.
+    device.nextOpen = device.saved.values.single;
+    await store.toggleStar(lib.entries.first.id);
+    expect(store.starred, isEmpty);
+    await tester.tap(find.text('Restore from a file'));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('Restore'));
+    await tester.pumpAndSettle();
+    expect(store.starred, [lib.entries.first.id]);
+    expect(find.text('Restored 1 starred word.'), findsOneWidget);
+  });
+
+  testWidgets('opening from a widget goes to the right place', (tester) async {
+    SharedPreferences.setMockInitialValues({});
+    final store = await UserStore.open();
+    final device = NoDevice();
+    final lib = loadRealLibrary();
+    await tester.pumpWidget(appForTest(lib, store, device: device));
+    expect(find.text('Word of the day'), findsOneWidget);
+
+    device.open('practice');
+    await tester.pumpAndSettle();
+    expect(find.text('All starred words'), findsOneWidget);
+
+    final coffee = lib.entries.firstWhere((e) => e.simplified == '咖啡');
+    device.open('entry/${coffee.id}');
+    await tester.pumpAndSettle();
+    expect(find.text('Female voice'), findsOneWidget);
+    expect(find.textContaining('kā', findRichText: true), findsWidgets);
   });
 }

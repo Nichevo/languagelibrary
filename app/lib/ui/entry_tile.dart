@@ -28,7 +28,7 @@ class EntryTile extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(entry.simplified, style: theme.textTheme.titleLarge),
+                  HanziText(entry, style: theme.textTheme.titleLarge),
                   PinyinText(entry, style: theme.textTheme.bodySmall),
                 ],
               ),
@@ -61,7 +61,7 @@ class EntryTile extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(entry.simplified, style: theme.textTheme.titleLarge),
+                    HanziText(entry, style: theme.textTheme.titleLarge),
                     PinyinText(entry, style: theme.textTheme.bodySmall),
                     Text(entry.gloss),
                     if (trailingNote != null) ...[const SizedBox(height: 4), trailingNote!],

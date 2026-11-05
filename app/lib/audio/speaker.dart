@@ -13,7 +13,7 @@ class Speaker {
   final AudioPlayer _player = AudioPlayer();
   FlutterTts? _tts;
 
-  static const slowSpeed = 0.7;
+  static const slowSpeed = 0.75;
 
   bool hasStudioAudio(Entry e) =>
       library.audioFor(e, female: true) != null || library.audioFor(e, female: false) != null;
@@ -30,7 +30,7 @@ class Speaker {
     }
     final tts = _tts ??= FlutterTts();
     await tts.setLanguage('zh-CN');
-    await tts.setSpeechRate(slow ? 0.3 : 0.45);
+    await tts.setSpeechRate(slow ? 0.34 : 0.45);
     await tts.speak(e.simplified);
   }
 
@@ -39,7 +39,7 @@ class Speaker {
     await _player.stop();
     final tts = _tts ??= FlutterTts();
     await tts.setLanguage('zh-CN');
-    await tts.setSpeechRate(slow ? 0.3 : 0.45);
+    await tts.setSpeechRate(slow ? 0.34 : 0.45);
     await tts.speak(text);
   }
 

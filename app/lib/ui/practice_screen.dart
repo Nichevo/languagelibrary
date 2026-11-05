@@ -150,7 +150,7 @@ class _PracticeScreenState extends State<PracticeScreen> {
       front = switch (store.cardFront) {
         'pinyin' => PinyinText(e, style: theme.textTheme.displaySmall, textAlign: TextAlign.center),
         'audio' => IconButton.filledTonal(iconSize: 48, icon: const Icon(Icons.volume_up), onPressed: play),
-        _ => Text(e.simplified,
+        _ => HanziText(e,
             style: e.isSentence ? theme.textTheme.headlineMedium : theme.textTheme.displayMedium,
             textAlign: TextAlign.center),
       };
@@ -160,7 +160,7 @@ class _PracticeScreenState extends State<PracticeScreen> {
 
     final back = <Widget>[
       if (!zhFront || store.cardFront != 'hanzi')
-        Text(e.simplified,
+        HanziText(e,
             style: e.isSentence ? theme.textTheme.headlineSmall : theme.textTheme.displaySmall,
             textAlign: TextAlign.center),
       if (!zhFront || store.cardFront != 'pinyin')

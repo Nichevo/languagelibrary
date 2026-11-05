@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../audio/speaker.dart';
 import '../data/library.dart';
 import '../data/user_store.dart';
+import '../device/device.dart';
 import '../models/entry.dart';
 
 /// Gives every screen the library, the learner's data and the speaker.
@@ -12,19 +13,21 @@ class AppScope extends InheritedWidget {
     required this.library,
     required this.store,
     required this.speaker,
+    required this.device,
     required super.child,
   });
 
   final Library library;
   final UserStore store;
   final Speaker speaker;
+  final Device device;
 
   static AppScope of(BuildContext context) =>
       context.dependOnInheritedWidgetOfExactType<AppScope>()!;
 
   @override
   bool updateShouldNotify(AppScope old) =>
-      library != old.library || store != old.store || speaker != old.speaker;
+      library != old.library || store != old.store || speaker != old.speaker || device != old.device;
 }
 
 /// The same colour for a tone everywhere in the app, so tones become visual.
@@ -41,6 +44,38 @@ Color toneColor(int tone, Brightness b) {
       return dark ? const Color(0xFFCE93D8) : const Color(0xFF7B1FA2);
     default:
       return dark ? const Color(0xFFBDBDBD) : const Color(0xFF616161);
+  }
+}
+
+/// Characters, each in its syllable's tone colour (unless turned off in Settings).
+class HanziText extends StatelessWidget {
+  const HanziText(this.entry, {super.key, this.style, this.textAlign});
+
+  final Entry entry;
+  final TextStyle? style;
+  final TextAlign? textAlign;
+
+  @override
+  Widget build(BuildContext context) {
+    final store = AppScope.of(context).store;
+    return ListenableBuilder(
+      listenable: store,
+      builder: (context, _) {
+        if (!store.toneHanzi) return Text(entry.simplified, style: style, textAlign: textAlign);
+        final b = Theme.of(context).brightness;
+        final spans = <TextSpan>[];
+        var i = 0;
+        for (final ch in entry.simplified.split('')) {
+          if (i < entry.syllables.length && entry.syllables[i].hanzi == ch) {
+            spans.add(TextSpan(text: ch, style: TextStyle(color: toneColor(entry.syllables[i].tone, b))));
+            i++;
+          } else {
+            spans.add(TextSpan(text: ch));
+          }
+        }
+        return Text.rich(TextSpan(children: spans, style: style), textAlign: textAlign);
+      },
+    );
   }
 }
 

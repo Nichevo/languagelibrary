@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 
+import '../data/daily.dart';
 import '../data/library.dart';
+import '../models/entry.dart';
 import 'common.dart';
+import 'entry_screen.dart';
 import 'entry_tile.dart';
 
 class LibraryScreen extends StatefulWidget {
@@ -55,11 +58,15 @@ class _LibraryScreenState extends State<LibraryScreen> {
             ),
           ),
           Expanded(
-            child: ListView.separated(
-              itemCount: results.length,
-              separatorBuilder: (_, _) => const Divider(height: 1),
-              itemBuilder: (_, i) => EntryTile(results[i]),
-            ),
+            child: Builder(builder: (context) {
+              final today = _query.isEmpty && _topic == null ? wordOfTheDay(library, DateTime.now()) : null;
+              final extra = today == null ? 0 : 1;
+              return ListView.separated(
+                itemCount: results.length + extra,
+                separatorBuilder: (_, i) => i < extra ? const SizedBox(height: 4) : const Divider(height: 1),
+                itemBuilder: (_, i) => i < extra ? _WordOfTheDay(today!) : EntryTile(results[i - extra]),
+              );
+            }),
           ),
         ],
       ),
@@ -74,4 +81,46 @@ class _LibraryScreenState extends State<LibraryScreen> {
           onSelected: (_) => setState(() => _topic = topic),
         ),
       );
+}
+
+class _WordOfTheDay extends StatelessWidget {
+  const _WordOfTheDay(this.entry);
+
+  final Entry entry;
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(12, 0, 12, 4),
+      child: Card(
+        margin: EdgeInsets.zero,
+        color: theme.colorScheme.secondaryContainer,
+        clipBehavior: Clip.antiAlias,
+        child: InkWell(
+          onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => EntryScreen(entry))),
+          child: Padding(
+            padding: const EdgeInsets.fromLTRB(16, 10, 4, 10),
+            child: Row(
+              children: [
+                HanziText(entry, style: theme.textTheme.headlineMedium?.copyWith(fontWeight: FontWeight.w600)),
+                const SizedBox(width: 16),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text('Word of the day', style: theme.textTheme.labelSmall),
+                      PinyinText(entry, style: theme.textTheme.titleSmall),
+                      Text(entry.gloss, maxLines: 2, overflow: TextOverflow.ellipsis),
+                    ],
+                  ),
+                ),
+                StarButton(entry),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
 }
