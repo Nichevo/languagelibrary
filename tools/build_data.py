@@ -302,7 +302,77 @@ def build(cedict: list[dict], hsk: list[dict], phrases, levels: list[str]):
         make(hz, pin, "Curated phrase list", None, None, extra_topic=topic)
 
     ordered = sorted(entries.values(), key=lambda e: (e["hsk"] or 99, e["frequency"] or 10**9, e["simplified"]))
+    add_related(ordered)
     return ordered, dropped, flagged
+
+
+# Very common characters that link too many unrelated words to be useful on their own.
+_COMMON_CHARS = set("一不了的是有人大子儿么个们这那在我你他她它")
+_PAREN = re.compile(r"\([^)]*\)")
+MAX_RELATED = 10
+
+
+def _meaning_keys(e: dict) -> set[str]:
+    """The main senses (first two glosses), lower-cased without bracketed notes.
+
+    Only main senses are compared, so rare senses (用 "(honorific) to eat")
+    don't link unrelated everyday words."""
+    keys = set()
+    for g in e["meanings"][:2]:
+        for part in g.split(";"):
+            k = _PAREN.sub("", part).strip().lower()
+            if len(k) >= 3:
+                keys.add(k)
+    return keys
+
+
+def add_related(entries: list[dict]) -> None:
+    """Link entries to others in the library, using only facts from the data:
+    same characters with another reading, the measure word, shared meanings,
+    and shared characters. Each link says why, in plain English."""
+    by_simp: dict[str, list[dict]] = defaultdict(list)
+    by_meaning: dict[str, list[dict]] = defaultdict(list)
+    for e in entries:
+        by_simp[e["simplified"]].append(e)
+        for k in _meaning_keys(e):
+            by_meaning[k].append(e)
+
+    for e in entries:
+        links: list[dict] = []
+        seen = {e["id"]}
+
+        def add(other: dict, why: str) -> None:
+            if other["id"] not in seen and len(links) < MAX_RELATED:
+                seen.add(other["id"])
+                links.append({"id": other["id"], "why": why})
+
+        simp = e["simplified"]
+        for o in by_simp[simp]:
+            add(o, "Same characters, different reading")
+        for c in e["classifiers"]:
+            for o in by_simp.get(c["hanzi"], []):
+                if o["pinyin"] == c["pinyin"]:
+                    add(o, "Its measure word")
+        for k in sorted(_meaning_keys(e)):
+            for o in by_meaning[k]:
+                add(o, f"Also means \"{k}\"")
+        # longer words and phrases that contain this one
+        containing = [o for o in entries if o["simplified"] != simp and simp in o["simplified"]]
+        for o in containing[:4]:
+            add(o, f"Contains {simp}")
+        # the parts this word is made of
+        if len(simp) > 1:
+            for ch in simp:
+                for o in by_simp.get(ch, []):
+                    add(o, f"Part of {simp}")
+        # other words sharing a less common character
+        for ch in simp:
+            if ch in _COMMON_CHARS or len(simp) == 1:
+                continue
+            for o in entries:
+                if ch in o["simplified"] and o["simplified"] != simp and len(o["simplified"]) > 1:
+                    add(o, f"Also uses {ch}")
+        e["related"] = links
 
 
 def write_outputs(entries, dropped, flagged, levels, cedict_note: str):

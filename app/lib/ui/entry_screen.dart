@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../models/entry.dart';
 import 'common.dart';
+import 'entry_tile.dart';
 
 class EntryScreen extends StatelessWidget {
   const EntryScreen(this.entry, {super.key});
@@ -15,6 +16,10 @@ class EntryScreen extends StatelessWidget {
     final theme = Theme.of(context);
     final b = theme.brightness;
     final studio = scope.speaker.hasStudioAudio(entry);
+    final related = [
+      for (final r in entry.related)
+        if (scope.library.byId[r.id] case final e?) (r, e),
+    ];
 
     Widget section(String title, List<Widget> children) => Padding(
           padding: const EdgeInsets.only(top: 20),
@@ -117,6 +122,22 @@ class EntryScreen extends StatelessWidget {
             if (entry.classifiers.isNotEmpty)
               section('Measure word', [
                 Text(entry.classifiers.map((c) => '${c.hanzi} ${c.pinyin}').join(',  ')),
+              ]),
+            if (related.isNotEmpty)
+              section('Related words and phrases', [
+                Text('Tap one to open it, or star it here.', style: theme.textTheme.bodySmall),
+                for (final (r, e) in related)
+                  Padding(
+                    padding: const EdgeInsets.only(top: 4),
+                    child: Card(
+                      margin: EdgeInsets.zero,
+                      clipBehavior: Clip.antiAlias,
+                      child: EntryTile(
+                        e,
+                        trailingNote: Text(r.why, style: theme.textTheme.bodySmall),
+                      ),
+                    ),
+                  ),
               ]),
             section('Source', [
               Text(entry.sources.toSet().join(' · '), style: theme.textTheme.bodySmall),

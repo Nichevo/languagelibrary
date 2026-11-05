@@ -71,6 +71,22 @@ class Build(unittest.TestCase):
         self.assertEqual([e["simplified"] for e in entries], ["你好"])
         self.assertEqual(dropped[0][0], "我爱你")
 
+    def test_related_links_come_from_the_data(self):
+        entries, _, _ = self.run_build(
+            [hsk_word("还", "hai2", "huan2"), hsk_word("书", "shu1"), hsk_word("一点儿", "yi1 dian3 r5")],
+            [("你好", "ni3 hao3", "everyday")],
+        )
+        by = {(e["simplified"], e["pinyin"]): e for e in entries}
+        ids = {e["id"]: e["simplified"] for e in entries}
+        hai = by[("还", "hái")]
+        self.assertEqual([(ids[r["id"]], r["why"]) for r in hai["related"]],
+                         [("还", "Same characters, different reading")])
+        # nothing links to itself, and every link points at a real entry
+        for e in entries:
+            for r in e["related"]:
+                self.assertNotEqual(r["id"], e["id"])
+                self.assertIn(r["id"], ids)
+
 
 if __name__ == "__main__":
     unittest.main()
