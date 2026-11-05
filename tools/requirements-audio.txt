@@ -1,0 +1,3 @@
+# Only needed for tools/generate_audio.py (run on your own computer).
+google-cloud-texttospeech>=2.38,<3
+google-cloud-speech>=2.41,<3

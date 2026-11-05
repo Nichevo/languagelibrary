@@ -1,0 +1,9 @@
+# Topic tags. A word gets a topic if any English meaning contains one of the
+# keywords (whole word, case-insensitive), or if its hanzi is listed under "hanzi".
+# Tags only help filtering; they are never shown as facts about the word.
+# topic<TAB>keywords|hanzi<TAB>comma-separated values
+food	keywords	eat,food,meal,rice,noodles,tea,coffee,milk,water,drink,fruit,apple,vegetable,vegetables,meat,egg,eggs,breakfast,lunch,dinner,restaurant,dish,dishes,cup,bowl,hungry,thirsty,tasty,delicious,cook,menu,beer,wine,juice,bread,sugar,salt,chopsticks,fish
+travel	keywords	airport,airplane,plane,train,station,bus,taxi,car,ticket,hotel,road,street,left,right,east,west,south,north,map,travel,trip,go,come,arrive,leave,return,far,near,where,here,there,city,country,passport,bicycle,subway,walk,drive,fly,room,shop,store,hospital,school,park,toilet
+family	keywords	father,mother,dad,mom,mum,son,daughter,brother,sister,elder,younger,child,children,kid,family,husband,wife,grandfather,grandmother,grandpa,grandma,uncle,aunt,parents,home,friend,boyfriend,girlfriend,baby,birthday,man,woman,person,people
+numbers	hanzi	零,〇,一,二,三,四,五,六,七,八,九,十,百,千,万,两,半,几,第,点,分,块,元,毛,号,月,日,年,星期,天,今天,明天,昨天,现在,时候,时间,小时,分钟,岁,多少,个
+numbers	keywords	number,zero,one,two,three,four,five,six,seven,eight,nine,ten,hundred,thousand,ten thousand,first,second,half,o'clock,minute,hour,day,week,month,year,date,time,age,money,price,yuan,how many,how much
