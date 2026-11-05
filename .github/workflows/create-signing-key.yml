@@ -1,0 +1,30 @@
+name: Create signing key (run once)
+
+# Makes the Android release signing key on GitHub's servers, so nothing needs
+# installing on your computer. Download the result, add the two values as
+# repository secrets, then delete the run's download. See README.md.
+on:
+  workflow_dispatch:
+
+jobs:
+  key:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+      - name: Make the key
+        run: |
+          mkdir out
+          PW=$(openssl rand -base64 24 | tr -d '/+=')
+          keytool -genkeypair -keystore out/release.jks -storetype PKCS12 -alias release \
+            -keyalg RSA -keysize 4096 -validity 10000 \
+            -storepass "$PW" -keypass "$PW" -dname "CN=Language Library"
+          base64 -w0 out/release.jks > out/ANDROID_KEYSTORE_BASE64.txt
+          echo -n "$PW" > out/ANDROID_KEYSTORE_PASSWORD.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: signing-key-keep-private
+          path: out/
+          retention-days: 1
