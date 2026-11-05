@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import '../srs/scheduler.dart';
 import '../data/storage.dart';
 import 'about_screen.dart';
+import 'drill_screen.dart';
 import 'common.dart';
 import 'practice_screen.dart';
 
@@ -39,16 +40,37 @@ class PracticeHome extends StatelessWidget {
               trailing: const Icon(Icons.chevron_right),
               enabled: count > 0,
               onTap: () => Navigator.of(context).push(MaterialPageRoute(
-                builder: (_) => PracticeScreen(list: list, includeNotDue: d == 0),
+                builder: (_) => switch (store.practiceMode) {
+                  'listen' => DrillScreen(drill: Drill.listen, list: list),
+                  'type' => DrillScreen(drill: Drill.type, list: list),
+                  _ => PracticeScreen(list: list, includeNotDue: d == 0),
+                },
               )),
             );
           }
 
           return ListView(
             children: [
-              const Padding(
-                padding: EdgeInsets.fromLTRB(16, 8, 16, 4),
-                child: Text('Each word has two cards: Chinese → English and English → Chinese.'),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(16, 12, 16, 4),
+                child: SegmentedButton<String>(
+                  segments: const [
+                    ButtonSegment(value: 'cards', icon: Icon(Icons.style_outlined), label: Text('Cards')),
+                    ButtonSegment(value: 'listen', icon: Icon(Icons.hearing), label: Text('Listen')),
+                    ButtonSegment(value: 'type', icon: Icon(Icons.keyboard), label: Text('Type')),
+                  ],
+                  selected: {store.practiceMode},
+                  showSelectedIcon: false,
+                  onSelectionChanged: (s) => store.setPracticeMode(s.single),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(16, 8, 16, 4),
+                child: Text(switch (store.practiceMode) {
+                  'listen' => 'Hear a word and pick which one it is. It doesn\'t change your flashcard schedule.',
+                  'type' => 'See a word and type its pinyin. It doesn\'t change your flashcard schedule.',
+                  _ => 'Each word has two cards: Chinese → English and English → Chinese.',
+                }),
               ),
               listTile('All starred words', null),
               for (final name in store.lists.keys) listTile(name, name),
