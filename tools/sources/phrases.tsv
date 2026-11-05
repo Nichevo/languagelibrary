@@ -1,0 +1,62 @@
+# Everyday phrases for the starter set.
+# Each line: simplified<TAB>numbered pinyin<TAB>topic
+# Every phrase MUST exist in CC-CEDICT with exactly this pinyin, or the build drops it.
+# Full sentences (like "How much is it?") come later from Tatoeba, written by native speakers.
+你好	ni3 hao3	everyday
+谢谢	xie4 xie5	everyday
+不客气	bu4 ke4 qi5	everyday
+不用谢	bu4 yong4 xie4	everyday
+别客气	bie2 ke4 qi5	everyday
+对不起	dui4 bu5 qi3	everyday
+没关系	mei2 guan1 xi5	everyday
+不好意思	bu4 hao3 yi4 si5	everyday
+再见	zai4 jian4	everyday
+请问	qing3 wen4	everyday
+好久不见	hao3 jiu3 bu5 jian4	everyday
+早上好	zao3 shang5 hao3	everyday
+晚上好	wan3 shang4 hao3	everyday
+晚安	wan3 an1	everyday
+没问题	mei2 wen4 ti2	everyday
+没事	mei2 shi4	everyday
+太好了	tai4 hao3 le5	everyday
+当然	dang1 ran2	everyday
+可以	ke3 yi3	everyday
+不行	bu4 xing2	everyday
+不对	bu4 dui4	everyday
+是的	shi4 de5	everyday
+怎么样	zen3 me5 yang4	everyday
+怎么了	zen3 me5 le5	everyday
+为什么	wei4 shen2 me5	everyday
+什么时候	shen2 me5 shi2 hou5	everyday
+几点	ji3 dian3	numbers
+多少	duo1 shao5	numbers
+多大	duo1 da4	numbers
+听不懂	ting1 bu5 dong3	everyday
+等一下	deng3 yi1 xia4	everyday
+小心	xiao3 xin1	everyday
+请进	qing3 jin4	everyday
+请坐	qing3 zuo4	everyday
+生日快乐	sheng1 ri4 kuai4 le4	family
+新年快乐	xin1 nian2 kuai4 le4	family
+一路平安	yi1 lu4 ping2 an1	travel
+一路顺风	yi1 lu4 shun4 feng1	travel
+欢迎光临	huan1 ying2 guang1 lin2	food
+好吃	hao3 chi1	food
+干杯	gan1 bei1	food
+慢慢吃	man4 man4 chi1	food
+点菜	dian3 cai4	food
+菜单	cai4 dan1	food
+服务员	fu2 wu4 yuan2	food
+买单	mai3 dan1	food
+打包	da3 bao1	food
+洗手间	xi3 shou3 jian1	travel
+火车站	huo3 che1 zhan4	travel
+地铁站	di4 tie3 zhan4	travel
+机场	ji1 chang3	travel
+出租车	chu1 zu1 che1	travel
+护照	hu4 zhao4	travel
+左边	zuo3 bian5	travel
+右边	you4 bian5	travel
+前面	qian2 mian4	travel
+后面	hou4 mian5	travel
+附近	fu4 jin4	travel

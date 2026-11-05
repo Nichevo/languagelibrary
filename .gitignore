@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+.venv/
+venv/
+# voice samples for picking a voice (big, not needed in the app)
+tools/audio_samples/
+# Google Cloud credentials must never be committed
+*.json.key
+service-account*.json
+credentials*.json

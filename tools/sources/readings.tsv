@@ -1,0 +1,60 @@
+# Which reading to teach for words that CC-CEDICT gives several readings for.
+# The HSK dataset lists every dictionary reading, so we pick the everyday one(s).
+# Each reading must still exist in CC-CEDICT; its meaning always comes from that
+# same CC-CEDICT entry, so pinyin and meaning can never be mismatched.
+# Two readings on one line = two separate entries (e.g. 还 hái "still", huán "to return").
+# simplified<TAB>reading[,reading]
+吧	ba5
+别	bie2
+差	cha4
+车	che1
+出来	chu1 lai2
+打	da3
+地	di4
+地方	di4 fang5
+的	de5
+东西	dong1 xi5
+都	dou1
+读	du2
+多少	duo1 shao5
+分	fen1
+干	gan1,gan4
+告诉	gao4 su5
+给	gei3
+过	guo4
+还	hai2,huan2
+好	hao3
+好吃	hao3 chi1
+号	hao4
+喝	he1
+和	he2
+会	hui4
+几	ji3
+间	jian1
+见	jian4
+教	jiao1
+看	kan4
+了	le5
+累	lei4
+吗	ma5
+没	mei2
+哪	na3
+那	na4
+难	nan2
+呢	ne5
+女人	nü3 ren2
+跑	pao3
+起来	qi3 lai5
+少	shao3
+说	shuo1
+听	ting1
+行	xing2
+要	yao4
+页	ye4
+雨	yu3
+远	yuan3
+着	zhe5
+正	zheng4
+中	zhong1
+重	zhong4
+子	zi5
