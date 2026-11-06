@@ -117,8 +117,10 @@ python3 -m tools.generate_audio --female VOICE-NAME --male VOICE-NAME
 ```
 
 Each clip is made with its exact pinyin, then played back through speech
-recognition. Anything that came back different is listed in `tools/audio_report.md`
-for you to listen to. About 2,270 entries × 2 voices uses roughly 10,000 characters,
+recognition. `--recheck` tries again for any that failed (all of the recogniser's
+guesses, a slower recording, and for single-reading words a recording without the
+pinyin hint). A clip that still can't be confirmed is listed in `tools/audio_report.md`
+and **not played in the app**; the phone's own voice says that word instead. About 2,270 entries × 2 voices uses roughly 10,000 characters,
 far inside Google's free monthly allowance. Commit the new files in
 `app/assets/audio/` and the app uses them automatically; until then it falls back to
 the phone's own Chinese voice.

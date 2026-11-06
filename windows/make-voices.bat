@@ -77,7 +77,11 @@ echo.
 echo Making clips with %FEMALE% and %MALE%. Words that already have clips are skipped.
 python -m tools.generate_audio --female %FEMALE% --male %MALE%
 if errorlevel 1 goto :end
-start "" "tools\audio_report.md"
+echo.
+echo Checking again, a few different ways, any clip speech recognition couldn't confirm.
+echo Clips that still can't be confirmed are left out of the app, which uses the phone's voice for them.
+python -m tools.generate_audio --recheck --female %FEMALE% --male %MALE%
+if errorlevel 1 goto :end
 
 rem ---- send them to GitHub on their own branch, for review like any other change
 git add app/assets/audio tools/audio_report.md

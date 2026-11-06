@@ -42,3 +42,27 @@ class Request(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class RecheckTest(unittest.TestCase):
+    def test_any_alternative_can_pass(self):
+        self.assertEqual(ga.judge_any("你好", "ni3 hao3", ["你号", "你好"], READINGS), "exact")
+        self.assertEqual(ga.judge_any("你好", "ni3 hao3", [], READINGS), "mismatch")
+
+    def test_cedict_readings_catch_same_sounds_the_library_lacks(self):
+        readings = ga.load_char_readings()
+        self.assertIn("ya", readings["呀"])
+        self.assertEqual(ga.judge("压", "ya1", "呀", readings), "sounds-same")
+        self.assertEqual(ga.judge("搬", "ban1", "单", readings), "mismatch")
+
+    def test_rejudge_only_ever_improves(self):
+        entries = [{"id": "a", "simplified": "压", "pinyinNumbered": "ya1"},
+                   {"id": "b", "simplified": "搬", "pinyinNumbered": "ban1"}]
+        manifest = {"clips": {
+            "a_f": {"file": "a_f.mp3", "heard": "呀", "check": "mismatch"},
+            "b_f": {"file": "b_f.mp3", "heard": "单", "also": ["搬"], "check": "mismatch"},
+        }}
+        self.assertEqual(ga.rejudge(entries, manifest, ga.load_char_readings()), 2)
+        self.assertEqual(manifest["clips"]["a_f"]["check"], "sounds-same")
+        self.assertEqual(manifest["clips"]["b_f"]["check"], "exact")
+

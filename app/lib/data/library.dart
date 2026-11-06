@@ -33,7 +33,12 @@ class Library {
       final manifest = jsonDecode(await b.loadString('assets/audio/manifest.json'))
           as Map<String, dynamic>;
       final clips = (manifest['clips'] as Map?) ?? const {};
-      clips.forEach((key, value) => audio[key as String] = (value as Map)['file'] as String);
+      clips.forEach((key, value) {
+        // A clip that speech recognition couldn't confirm is never played; the
+        // phone's own voice says that word instead (see tools/audio_report.md).
+        if ((value as Map)['check'] == 'mismatch') return;
+        audio[key as String] = value['file'] as String;
+      });
     } catch (_) {
       // No studio audio made yet: the app falls back to the phone's own voice.
     }
