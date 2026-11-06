@@ -22,9 +22,18 @@ call conda activate languagelibrary
 if errorlevel 1 goto :end
 
 rem ---- Google Cloud sign-in
+rem gcloud is installed into the conda environment (google-cloud-sdk from conda-forge).
+rem It is not in tools\environment.yml so that the rest still sets up if conda-forge lacks it.
 where gcloud >nul 2>&1
 if errorlevel 1 (
-  echo The Google Cloud CLI is not installed. Install it from the page that opens,
+  echo Adding the Google Cloud tools to the conda environment. This takes a few minutes, once.
+  call conda install -y -n languagelibrary -c conda-forge google-cloud-sdk
+  call conda deactivate
+  call conda activate languagelibrary
+)
+where gcloud >nul 2>&1
+if errorlevel 1 (
+  echo The Google Cloud tools could not be found. Install them from the page that opens,
   echo then close this window and run this again.
   start "" https://cloud.google.com/sdk/docs/install#windows
   goto :end

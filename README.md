@@ -86,9 +86,9 @@ sentence it can't read with certainty.
 
 ### On Windows, the easy way
 
-Needs [Git](https://git-scm.com/download/win), Miniconda or Anaconda, and the
-[Google Cloud CLI](https://cloud.google.com/sdk/docs/install#windows), plus the Google
-Cloud project described below.
+Needs [Git](https://git-scm.com/download/win) and Miniconda or Anaconda, plus the
+Google Cloud project described below. The Google Cloud command-line tools are added to
+the conda environment automatically.
 
 1. Get the project once, from a command prompt:
    `git clone https://github.com/Nichevo/languagelibrary D:\LanguageLibrary`
