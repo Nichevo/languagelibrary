@@ -102,7 +102,7 @@ class EntryScreen extends StatelessWidget {
             ),
             if (!studio)
               Text(
-                'Studio audio not made yet, so this uses your phone\'s Chinese voice for both buttons.',
+                'No checked recording for this word yet, so it uses your phone\'s Chinese voice.',
                 textAlign: TextAlign.center,
                 style: theme.textTheme.bodySmall,
               ),
