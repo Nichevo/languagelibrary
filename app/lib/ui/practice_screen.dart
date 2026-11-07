@@ -113,8 +113,25 @@ class PracticeScreen extends StatefulWidget {
   State<PracticeScreen> createState() => _PracticeScreenState();
 }
 
+/// The card-front settings that change from card to card, and what they pick from.
+const mixedFronts = {
+  'mix': ['hanzi', 'pinyin'],
+  'mixAll': ['hanzi', 'pinyin', 'audio'],
+};
+
+/// What the front of a Chinese-to-English [card] shows: 'hanzi', 'pinyin' or
+/// 'audio'. With a mixed [setting], each card picks one at random, the same
+/// pick for the whole session (so revealing the answer doesn't change it).
+String frontFor(String setting, PracticeCard card, int seed) {
+  final options = mixedFronts[setting];
+  if (options == null) return setting;
+  final key = Object.hash(card.entry.id, card.direction, seed);
+  return options[Random(key).nextInt(options.length)];
+}
+
 class _PracticeScreenState extends State<PracticeScreen> {
   static const _sched = Scheduler();
+  final int _seed = Random().nextInt(1 << 30);
   List<PracticeCard>? _queue;
   int _done = 0;
   bool _revealed = false;
@@ -182,6 +199,8 @@ class _PracticeScreenState extends State<PracticeScreen> {
               PopupMenuItem(value: 'hanzi', child: Text('Chinese cards show hanzi')),
               PopupMenuItem(value: 'pinyin', child: Text('Chinese cards show pinyin')),
               PopupMenuItem(value: 'audio', child: Text('Chinese cards are audio only')),
+              PopupMenuItem(value: 'mix', child: Text('Mix hanzi and pinyin')),
+              PopupMenuItem(value: 'mixAll', child: Text('Mix hanzi, pinyin and audio')),
             ],
           ),
         ],
@@ -210,12 +229,13 @@ class _PracticeScreenState extends State<PracticeScreen> {
     final now = DateTime.now();
     final state = store.card(e.id, card.direction);
     final zhFront = card.direction == Direction.zhToEn;
+    final shows = frontFor(store.cardFront, card, _seed);
 
     void play() => scope.speaker.play(e, female: store.femaleVoice, slow: store.slowAudio);
 
     Widget front;
     if (zhFront) {
-      front = switch (store.cardFront) {
+      front = switch (shows) {
         'pinyin' => PinyinText(e, style: theme.textTheme.displaySmall, textAlign: TextAlign.center),
         'audio' => IconButton.filledTonal(iconSize: 48, icon: const Icon(Icons.volume_up), onPressed: play),
         _ => HanziText(e,
@@ -227,11 +247,11 @@ class _PracticeScreenState extends State<PracticeScreen> {
     }
 
     final back = <Widget>[
-      if (!zhFront || store.cardFront != 'hanzi')
+      if (!zhFront || shows != 'hanzi')
         HanziText(e,
             style: e.isSentence ? theme.textTheme.headlineSmall : theme.textTheme.displaySmall,
             textAlign: TextAlign.center),
-      if (!zhFront || store.cardFront != 'pinyin')
+      if (!zhFront || shows != 'pinyin')
         PinyinText(e, style: theme.textTheme.headlineSmall, textAlign: TextAlign.center),
       if (zhFront) Text(e.gloss, style: theme.textTheme.titleMedium, textAlign: TextAlign.center),
       const SizedBox(height: 8),

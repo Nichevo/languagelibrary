@@ -33,7 +33,8 @@ class UserStore extends ChangeNotifier {
   /// Entry id -> how hard the learner says the word is for them.
   final Map<String, Difficulty> difficulty = {};
 
-  /// What the front of a Chinese-to-English card shows: hanzi, pinyin or audio.
+  /// What the front of a Chinese-to-English card shows: hanzi, pinyin, audio,
+  /// or a mix ('mix' = hanzi or pinyin, 'mixAll' = any of the three).
   String cardFront = 'hanzi';
   bool slowAudio = false;
   bool femaleVoice = true;
@@ -48,8 +49,11 @@ class UserStore extends ChangeNotifier {
   /// Most cards in one practice session, picked at random; 0 means all of them.
   int sessionSize = 20;
 
-  /// How the Practice tab practises: 'cards', 'listen' or 'type'.
+  /// How the Practice tab practises: 'cards', 'listen' (multiple choice) or 'type'.
   String practiceMode = 'cards';
+
+  /// Which multiple-choice question: see `Choice` in drill_screen.dart ('mix' varies).
+  String choiceKind = 'listen';
 
   /// Mix a few related words the learner has not starred into each session.
   bool mixRelated = false;
@@ -117,6 +121,7 @@ class UserStore extends ChangeNotifier {
         ..addAll(l.cast<int>());
     }
     showSentences = j['showSentences'] as bool? ?? showSentences;
+    choiceKind = j['choiceKind'] as String? ?? choiceKind;
     for (final r in j['reviews'] as List? ?? const []) {
       reviews.add(Review.fromJson(r as List));
     }
@@ -140,6 +145,7 @@ class UserStore extends ChangeNotifier {
         'practiceMode': practiceMode,
         'levels': (levels.toList()..sort()),
         'showSentences': showSentences,
+        'choiceKind': choiceKind,
         'reviews': [for (final r in reviews) r.toJson()],
         'snapshots': snapshots.map((k, v) => MapEntry(k, v.toJson())),
       };
@@ -248,14 +254,15 @@ class UserStore extends ChangeNotifier {
   Future<void> recordReview(String id, Direction d, CardState state, Rating rating, Duration spent, DateTime now) {
     final isNew = card(id, d) == null;
     cards[cardKey(id, d)] = state;
-    reviews.add(Review(now, spent > maxSpent ? maxSpent : spent, rating, isNew));
+    reviews.add(Review(now, spent > maxSpent ? maxSpent : spent, rating, isNew, id: id));
     if (reviews.length > maxReviews) reviews.removeRange(0, reviews.length - maxReviews);
     return _save();
   }
 
-  /// Logs a listening or typing answer, which doesn't change when cards come back.
-  Future<void> logAnswer(Rating rating, Duration spent, DateTime now) {
-    reviews.add(Review(now, spent > maxSpent ? maxSpent : spent, rating, false));
+  /// Logs a multiple-choice or typing answer, which doesn't change when cards
+  /// come back. [method] is how it was practised (see [Review.method]).
+  Future<void> logAnswer(Rating rating, Duration spent, DateTime now, {required String method, String? id}) {
+    reviews.add(Review(now, spent > maxSpent ? maxSpent : spent, rating, false, method: method, id: id));
     if (reviews.length > maxReviews) reviews.removeRange(0, reviews.length - maxReviews);
     return _save();
   }
@@ -278,6 +285,11 @@ class UserStore extends ChangeNotifier {
 
   Future<void> setSessionSize(int v) {
     sessionSize = v;
+    return _save();
+  }
+
+  Future<void> setChoiceKind(String v) {
+    choiceKind = v;
     return _save();
   }
 
@@ -360,7 +372,7 @@ enum Difficulty {
 
 /// One flashcard answer.
 class Review {
-  const Review(this.at, this.spent, this.rating, this.isNew);
+  const Review(this.at, this.spent, this.rating, this.isNew, {this.method = 'cards', this.id});
   final DateTime at;
   final Duration spent;
   final Rating rating;
@@ -368,13 +380,31 @@ class Review {
   /// The first time this card was ever answered.
   final bool isNew;
 
-  List<Object> toJson() => [at.millisecondsSinceEpoch ~/ 1000, spent.inMilliseconds, rating.index, isNew ? 1 : 0];
+  /// How it was practised: 'cards', 'type', or a multiple-choice kind
+  /// ('listen', 'meaning', 'reverse', 'pinyin'). Answers saved before this was
+  /// recorded count as 'cards'.
+  final String method;
+
+  /// The word answered, when known (answers saved before it was recorded have none).
+  final String? id;
+
+  bool get right => rating != Rating.again;
+
+  List<Object> toJson() => [
+        at.millisecondsSinceEpoch ~/ 1000,
+        spent.inMilliseconds,
+        rating.index,
+        isNew ? 1 : 0,
+        if (id != null || method != 'cards') ...[method, ?id],
+      ];
 
   factory Review.fromJson(List j) => Review(
         DateTime.fromMillisecondsSinceEpoch((j[0] as int) * 1000),
         Duration(milliseconds: j[1] as int),
         Rating.values[j[2] as int],
         j.length > 3 && j[3] == 1,
+        method: j.length > 4 ? j[4] as String : 'cards',
+        id: j.length > 5 ? j[5] as String : null,
       );
 }
 

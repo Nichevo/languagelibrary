@@ -57,7 +57,7 @@ class PracticeHome extends StatelessWidget {
                 child: SegmentedButton<String>(
                   segments: const [
                     ButtonSegment(value: 'cards', icon: Icon(Icons.style_outlined), label: Text('Cards')),
-                    ButtonSegment(value: 'listen', icon: Icon(Icons.hearing), label: Text('Listen')),
+                    ButtonSegment(value: 'listen', icon: Icon(Icons.checklist), label: Text('Choose')),
                     ButtonSegment(value: 'type', icon: Icon(Icons.keyboard), label: Text('Type')),
                   ],
                   selected: {store.practiceMode},
@@ -68,11 +68,25 @@ class PracticeHome extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.fromLTRB(16, 8, 16, 4),
                 child: Text(switch (store.practiceMode) {
-                  'listen' => 'Hear a word and pick which one it is. It doesn\'t change your flashcard schedule.',
+                  'listen' => 'Pick the right answer from four. It doesn\'t change your flashcard schedule.',
                   'type' => 'See a word and type its pinyin. It doesn\'t change your flashcard schedule.',
                   _ => 'Each word has two cards: Chinese → English and English → Chinese.',
                 }),
               ),
+              if (store.practiceMode == 'listen')
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(16, 8, 16, 4),
+                  child: DropdownButtonFormField<String>(
+                    initialValue: Choice.fromSetting(store.choiceKind) == null ? 'mix' : store.choiceKind,
+                    isExpanded: true,
+                    decoration: const InputDecoration(labelText: 'Question', border: OutlineInputBorder(), isDense: true),
+                    onChanged: (v) => store.setChoiceKind(v!),
+                    items: [
+                      for (final c in Choice.values) DropdownMenuItem(value: c.name, child: Text(c.label)),
+                      const DropdownMenuItem(value: 'mix', child: Text('Mix them up')),
+                    ],
+                  ),
+                ),
               listTile('All starred words', null),
               for (final name in store.lists.keys) listTile(name, name),
               const Divider(),
@@ -105,6 +119,7 @@ class PracticeHome extends StatelessWidget {
               ),
               ListTile(
                 title: const Text('Chinese side of the card shows'),
+                subtitle: store.cardFront.startsWith('mix') ? const Text('Changes from card to card') : null,
                 trailing: DropdownButton<String>(
                   value: store.cardFront,
                   onChanged: (v) => store.setCardFront(v!),
@@ -112,6 +127,8 @@ class PracticeHome extends StatelessWidget {
                     DropdownMenuItem(value: 'hanzi', child: Text('Hanzi')),
                     DropdownMenuItem(value: 'pinyin', child: Text('Pinyin')),
                     DropdownMenuItem(value: 'audio', child: Text('Audio only')),
+                    DropdownMenuItem(value: 'mix', child: Text('Mix hanzi + pinyin')),
+                    DropdownMenuItem(value: 'mixAll', child: Text('Mix all three')),
                   ],
                 ),
               ),
