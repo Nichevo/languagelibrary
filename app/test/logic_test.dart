@@ -4,6 +4,7 @@ import 'dart:math';
 
 import 'package:flutter_test/flutter_test.dart';
 import 'package:language_library/data/library.dart';
+import 'package:language_library/data/daily.dart';
 import 'package:language_library/data/user_store.dart';
 import 'package:language_library/models/entry.dart';
 import 'package:language_library/srs/scheduler.dart';
@@ -67,7 +68,8 @@ void main() {
     final lib = loadRealLibrary();
 
     test('starter set is a sensible size and every entry is complete', () {
-      expect(lib.entries.length, inInclusiveRange(2000, 2600));
+      expect(lib.entries.length, inInclusiveRange(4800, 5800));
+      expect(lib.levels, [1, 2, 3, 4, 5, 6]);
       for (final e in lib.entries) {
         expect(e.meanings, isNotEmpty, reason: e.simplified);
         expect(e.syllables, isNotEmpty, reason: e.simplified);
@@ -193,6 +195,35 @@ void main() {
       expect(again.reviews.last.rating, Rating.easy);
       expect(CardStatus.of(null), CardStatus.fresh);
       expect(CardStatus.of(CardState(reps: 3, intervalDays: 25, ease: 2.5, due: now)), CardStatus.strong);
+    });
+
+    test('levels switched off stay out of search, word of the day and related words', () async {
+      expect(store.levels, {1, 2, 3});
+      final shown = lib.search('', shown: store.shows);
+      expect(shown.where((e) => !e.curated && (e.hsk ?? 0) > 3), isEmpty);
+      expect(shown.length, lessThan(lib.entries.length));
+      // Hand-picked topic words show even when their HSK level is off.
+      final hug = lib.entries.firstWhere((e) => e.simplified == '拥抱');
+      expect(hug.hsk, 5);
+      expect(store.shows(hug), isTrue);
+      for (var d = 1; d <= 60; d++) {
+        final w = wordOfTheDay(lib, DateTime(2026, 11, 1).add(Duration(days: d)), shown: store.shows)!;
+        expect(w.curated || (w.hsk ?? 0) <= 3, isTrue, reason: w.simplified);
+      }
+
+      final hard = lib.entries.firstWhere((e) => e.hsk == 6 && !e.curated);
+      expect(store.shows(hard), isFalse);
+      await store.toggleStar(hard.id);
+      expect(store.shows(hard), isTrue, reason: 'starred words always show');
+      await store.toggleStar(hard.id);
+
+      await store.setLevelShown(6, true);
+      await store.setShowSentences(false);
+      final again = await UserStore.open();
+      expect(again.levels, {1, 2, 3, 6});
+      expect(again.shows(hard), isTrue);
+      expect(again.showSentences, isFalse);
+      expect(lib.search('', shown: again.shows).where((e) => e.isSentence), isEmpty);
     });
 
     test('lists and stars persist', () async {

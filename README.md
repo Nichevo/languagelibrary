@@ -6,7 +6,8 @@ flashcards with spaced repetition.
 
 ## What's in phase 1
 
-- **Library**: about 2,270 entries (HSK 3.0 levels 1 to 3 plus everyday phrases and sentences), searchable by
+- **Library**: about 5,250 entries (HSK 3.0 levels 1 to 6 plus everyday phrases and sentences). Levels 4 to 6
+  start switched off; turn them on in Practice → Settings → Levels and content. Searchable by
   English, pinyin (with or without tones) or hanzi, with topic filters: Everyday,
   Food, Travel, Family, Numbers.
 - **Word page**: big hanzi, tone-coloured pinyin, meanings, measure words, female
@@ -63,8 +64,8 @@ then `cd app && flutter run` with the phone plugged in.
 ## Rebuilding the word data
 
 ```
-python3 -m tools.build_data                  # HSK levels 1-3 + phrases
-python3 -m tools.build_data --levels new-1 new-2 new-3 new-4   # add HSK level 4
+python3 -m tools.build_data                  # HSK levels 1-6 + phrases
+python3 -m tools.build_data --levels new-1 new-2 new-3   # only levels 1-3
 ```
 
 The script downloads the HSK list and CC-CEDICT. A word is kept only if both sources

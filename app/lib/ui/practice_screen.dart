@@ -20,7 +20,8 @@ class PracticeCard {
 /// Builds the session queue: due cards first, then new ones (at most [maxNew]),
 /// then, with [includeNotDue], the rest. With [limit] above 0, picks that many at
 /// random, still due cards first. With [related] above 0, mixes in up to that many
-/// related words that are not in [entries], from [library].
+/// related words that are not in [entries], from [library], leaving out levels
+/// switched off in Settings.
 List<PracticeCard> buildQueue({
   required List<Entry> entries,
   required UserStore store,
@@ -85,7 +86,7 @@ List<PracticeCard> buildQueue({
     for (final c in queue) {
       for (final r in c.entry.related) {
         final e = library[r.id];
-        if (e == null || inList.contains(r.id) || !seen.add(r.id)) continue;
+        if (e == null || !store.shows(e) || inList.contains(r.id) || !seen.add(r.id)) continue;
         options.add(PracticeCard(e, Direction.zhToEn, relatedTo: c.entry));
       }
     }

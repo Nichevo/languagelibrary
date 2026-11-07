@@ -16,6 +16,9 @@ class Library {
   /// `id_f` / `id_m` -> file name under assets/audio/.
   final Map<String, String> audioFiles;
 
+  /// The HSK levels in the data, lowest first.
+  late final List<int> levels = ({for (final e in entries) ?e.hsk}.toList()..sort());
+
   static const topics = ['everyday', 'food', 'travel', 'family', 'love', 'numbers'];
 
   /// Pass as the topic to search only the phrasebook sentences.
@@ -48,9 +51,10 @@ class Library {
   String? audioFor(Entry e, {required bool female}) => audioFiles['${e.id}_${female ? 'f' : 'm'}'];
 
   /// Search by hanzi, pinyin (with or without tones, spaces or numbers) or English.
-  List<Entry> search(String query, {String? topic}) {
+  /// [shown] limits the results to the content switched on in Settings.
+  List<Entry> search(String query, {String? topic, bool Function(Entry)? shown}) {
     final q = query.trim().toLowerCase();
-    Iterable<Entry> pool = entries;
+    Iterable<Entry> pool = shown == null ? entries : entries.where(shown);
     if (topic == sentencesFilter) {
       pool = pool.where((e) => e.isSentence);
     } else if (topic != null) {

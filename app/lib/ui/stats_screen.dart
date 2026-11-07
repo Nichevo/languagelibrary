@@ -74,8 +74,10 @@ class StatsView extends StatelessWidget {
       ratings[r.rating.index]++;
     }
 
-    final words = library.entries.where((e) => !e.isSentence).length;
-    final sentences = library.entries.length - words;
+    // Only the levels switched on in Settings, so the bars aren't swamped.
+    final entries = library.entries.where(store.shows).toList();
+    final words = entries.where((e) => !e.isSentence).length;
+    final sentences = entries.length - words;
     final starredSet = store.starred.toSet();
 
     Widget section(String title, List<Widget> children, {String? note}) => Padding(
@@ -157,10 +159,10 @@ class StatsView extends StatelessWidget {
           ),
         ]),
         section('Library and Focus', [
-          _Ratio('Whole library', store.starred.length, library.entries.length, theme.colorScheme.primary),
-          _Ratio('Words and phrases', library.entries.where((e) => !e.isSentence && starredSet.contains(e.id)).length,
+          _Ratio('Whole library', store.starred.length, entries.length, theme.colorScheme.primary),
+          _Ratio('Words and phrases', entries.where((e) => !e.isSentence && starredSet.contains(e.id)).length,
               words, theme.colorScheme.primary),
-          _Ratio('Sentences', library.entries.where((e) => e.isSentence && starredSet.contains(e.id)).length,
+          _Ratio('Sentences', entries.where((e) => e.isSentence && starredSet.contains(e.id)).length,
               sentences, theme.colorScheme.primary),
           const SizedBox(height: 4),
           Text('By topic', style: theme.textTheme.labelLarge),
@@ -168,8 +170,8 @@ class StatsView extends StatelessWidget {
           for (final t in Library.topics)
             _Ratio(
               topicLabel(t),
-              library.entries.where((e) => e.topics.contains(t) && starredSet.contains(e.id)).length,
-              library.entries.where((e) => e.topics.contains(t)).length,
+              entries.where((e) => e.topics.contains(t) && starredSet.contains(e.id)).length,
+              entries.where((e) => e.topics.contains(t)).length,
               theme.colorScheme.secondary,
             ),
         ]),

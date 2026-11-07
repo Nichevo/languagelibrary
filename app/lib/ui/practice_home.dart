@@ -7,6 +7,7 @@ import '../data/storage.dart';
 import 'about_screen.dart';
 import 'drill_screen.dart';
 import 'common.dart';
+import 'content_screen.dart';
 import 'practice_screen.dart';
 
 /// The Practice tab: pick what to study, plus settings and credits.
@@ -76,6 +77,12 @@ class PracticeHome extends StatelessWidget {
               for (final name in store.lists.keys) listTile(name, name),
               const Divider(),
               const ListTile(title: Text('Settings')),
+              ListTile(
+                title: const Text('Levels and content'),
+                subtitle: Text(_contentSummary(store.levels, store.showSentences)),
+                trailing: const Icon(Icons.chevron_right),
+                onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const ContentScreen())),
+              ),
               ListTile(
                 title: const Text('Cards per session'),
                 subtitle: const Text('Picked at random, cards that are due first'),
@@ -281,4 +288,20 @@ class _StorageSectionState extends State<StorageSection> {
       },
     );
   }
+}
+
+/// "HSK 1–3 and the phrasebook", for the Settings row.
+String _contentSummary(Set<int> levels, bool sentences) {
+  final l = levels.toList()..sort();
+  final parts = <String>[];
+  for (var i = 0; i < l.length; i++) {
+    var j = i;
+    while (j + 1 < l.length && l[j + 1] == l[j] + 1) {
+      j++;
+    }
+    parts.add(i == j ? '${l[i]}' : '${l[i]}–${l[j]}');
+    i = j;
+  }
+  final hsk = parts.isEmpty ? 'No HSK levels' : 'HSK ${parts.join(', ')}';
+  return sentences ? '$hsk and the phrasebook' : hsk;
 }

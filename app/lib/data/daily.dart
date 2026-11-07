@@ -9,9 +9,10 @@ DateTime dayOf(DateTime t) => DateTime(t.year, t.month, t.day);
 String dayKey(DateTime t) =>
     '${t.year.toString().padLeft(4, '0')}-${t.month.toString().padLeft(2, '0')}-${t.day.toString().padLeft(2, '0')}';
 
-/// The same word all day, a different one each day, from the words (not sentences).
-Entry? wordOfTheDay(Library library, DateTime day) {
-  final words = [for (final e in library.entries) if (!e.isSentence) e];
+/// The same word all day, a different one each day, from the words (not
+/// sentences) that [shown] allows.
+Entry? wordOfTheDay(Library library, DateTime day, {bool Function(Entry)? shown}) {
+  final words = [for (final e in library.entries) if (!e.isSentence && (shown == null || shown(e))) e];
   if (words.isEmpty) return null;
   final days = dayOf(day).difference(DateTime(2024)).inDays;
   // A large prime step walks through the whole list before repeating.

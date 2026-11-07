@@ -153,6 +153,25 @@ void main() {
     expect(heading, findsOneWidget);
   });
 
+  testWidgets('levels and content: switch a level on', (tester) async {
+    SharedPreferences.setMockInitialValues({});
+    final store = await UserStore.open();
+    await tester.pumpWidget(appForTest(loadRealLibrary(), store));
+    await tester.tap(find.text('Practice'));
+    await tester.pumpAndSettle();
+    expect(find.text('HSK 1–3 and the phrasebook'), findsOneWidget);
+    await tester.tap(find.text('Levels and content'));
+    await tester.pumpAndSettle();
+    final hsk4 = find.widgetWithText(SwitchListTile, 'HSK 4');
+    expect(tester.widget<SwitchListTile>(hsk4).value, isFalse);
+    await tester.tap(hsk4);
+    await tester.pumpAndSettle();
+    expect(store.levels, {1, 2, 3, 4});
+    await tester.pageBack();
+    await tester.pumpAndSettle();
+    expect(find.text('HSK 1–4 and the phrasebook'), findsOneWidget);
+  });
+
   testWidgets('settings: reminder, tone colours, backup and restore', (tester) async {
     SharedPreferences.setMockInitialValues({});
     final store = await UserStore.open();
