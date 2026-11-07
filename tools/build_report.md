@@ -1,8 +1,8 @@
 # Build report
 
 Built 2026-11-07 from HSK levels new-1, new-2, new-3, new-4, new-5, new-6 plus the curated phrase list.
-Kept **5254** entries, dropped **201**, flagged **1323**.
-81 phrasebook sentences; 2747 words have example sentences.
+Kept **5622** entries, dropped **201**, flagged **1323**.
+449 phrasebook sentences; 2747 words have example sentences.
 Sentences come from Tatoeba (native Mandarin speakers only); see tools/sentences.py.
 
 ## Dropped (not shown in the app)

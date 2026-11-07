@@ -6,7 +6,7 @@ flashcards with spaced repetition.
 
 ## What's in phase 1
 
-- **Library**: about 5,250 entries (HSK 3.0 levels 1 to 6 plus everyday phrases and sentences). Levels 4 to 6
+- **Library**: about 5,600 entries (HSK 3.0 levels 1 to 6, everyday phrases and 449 phrasebook sentences). Levels 4 to 6
   start switched off; turn them on in Practice → Settings → Levels and content. Searchable by
   English, pinyin (with or without tones) or hanzi, with topic filters: Everyday,
   Food, Travel, Family, Numbers.
