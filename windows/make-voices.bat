@@ -83,8 +83,18 @@ echo Clips that still can't be confirmed are left out of the app, which uses the
 python -m tools.generate_audio --recheck --female %FEMALE% --male %MALE%
 if errorlevel 1 goto :end
 
+rem ---- HSK 7 to 9: voiced now while there is cloud credit, kept out of the app (extra\hsk7-9)
+if exist "extra\hsk7-9\library.json" (
+  echo.
+  echo Now the HSK 7 to 9 words. They stay out of the app until you want them.
+  python -m tools.generate_audio --set hsk7-9 --female %FEMALE% --male %MALE%
+  if errorlevel 1 goto :end
+  python -m tools.generate_audio --set hsk7-9 --recheck --female %FEMALE% --male %MALE%
+  if errorlevel 1 goto :end
+)
+
 rem ---- send them to GitHub on their own branch, for review like any other change
-git add app/assets/audio tools/audio_report.md
+git add app/assets/audio tools/audio_report.md extra
 git diff --cached --quiet
 if not errorlevel 1 (
   echo No new clips to send.

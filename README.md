@@ -95,7 +95,8 @@ the conda environment automatically.
    `git clone https://github.com/Nichevo/languagelibrary D:\LanguageLibrary`
 2. Double-click `windows\make-voices.bat`. The first time it creates the
    `languagelibrary` conda environment, signs you in to Google Cloud, makes voice
-   samples for you to pick from, then makes every clip and checks it. It sends the
+   samples for you to pick from, then makes every clip and checks it. It also voices
+   the HSK 7 to 9 words in `extra/hsk7-9/`, which are kept out of the app for now. It sends the
    clips to GitHub on a new branch and opens the page to make the pull request.
 3. Double-click `windows\update.bat` whenever there are changes, to get them. It also
    updates the conda environment and offers to make voices for any new words.
