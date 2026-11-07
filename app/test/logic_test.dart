@@ -226,6 +226,18 @@ void main() {
       expect(lib.search('', shown: again.shows).where((e) => e.isSentence), isEmpty);
     });
 
+    test('mixed card fronts vary between cards but stay put for one card', () {
+      final cards = [for (final e in lib.entries.take(40)) PracticeCard(e, Direction.zhToEn)];
+      expect(frontFor('pinyin', cards.first, 1), 'pinyin');
+      final mix = {for (final c in cards) frontFor('mix', c, 7)};
+      expect(mix, {'hanzi', 'pinyin'});
+      final all = {for (final c in cards) frontFor('mixAll', c, 7)};
+      expect(all, {'hanzi', 'pinyin', 'audio'});
+      for (final c in cards) {
+        expect(frontFor('mixAll', c, 7), frontFor('mixAll', c, 7));
+      }
+    });
+
     test('lists and stars persist', () async {
       final w = lib.entries.first;
       await store.createList('Restaurant');

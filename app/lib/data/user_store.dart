@@ -33,7 +33,8 @@ class UserStore extends ChangeNotifier {
   /// Entry id -> how hard the learner says the word is for them.
   final Map<String, Difficulty> difficulty = {};
 
-  /// What the front of a Chinese-to-English card shows: hanzi, pinyin or audio.
+  /// What the front of a Chinese-to-English card shows: hanzi, pinyin, audio,
+  /// or a mix ('mix' = hanzi or pinyin, 'mixAll' = any of the three).
   String cardFront = 'hanzi';
   bool slowAudio = false;
   bool femaleVoice = true;
@@ -48,8 +49,11 @@ class UserStore extends ChangeNotifier {
   /// Most cards in one practice session, picked at random; 0 means all of them.
   int sessionSize = 20;
 
-  /// How the Practice tab practises: 'cards', 'listen' or 'type'.
+  /// How the Practice tab practises: 'cards', 'listen' (multiple choice) or 'type'.
   String practiceMode = 'cards';
+
+  /// Which multiple-choice question: see `Choice` in drill_screen.dart ('mix' varies).
+  String choiceKind = 'listen';
 
   /// Mix a few related words the learner has not starred into each session.
   bool mixRelated = false;
@@ -117,6 +121,7 @@ class UserStore extends ChangeNotifier {
         ..addAll(l.cast<int>());
     }
     showSentences = j['showSentences'] as bool? ?? showSentences;
+    choiceKind = j['choiceKind'] as String? ?? choiceKind;
     for (final r in j['reviews'] as List? ?? const []) {
       reviews.add(Review.fromJson(r as List));
     }
@@ -140,6 +145,7 @@ class UserStore extends ChangeNotifier {
         'practiceMode': practiceMode,
         'levels': (levels.toList()..sort()),
         'showSentences': showSentences,
+        'choiceKind': choiceKind,
         'reviews': [for (final r in reviews) r.toJson()],
         'snapshots': snapshots.map((k, v) => MapEntry(k, v.toJson())),
       };
@@ -278,6 +284,11 @@ class UserStore extends ChangeNotifier {
 
   Future<void> setSessionSize(int v) {
     sessionSize = v;
+    return _save();
+  }
+
+  Future<void> setChoiceKind(String v) {
+    choiceKind = v;
     return _save();
   }
 

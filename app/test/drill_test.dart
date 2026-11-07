@@ -41,6 +41,14 @@ void main() {
     }
   });
 
+  test('pinyin choices are real words, same sounds with other tones first', () {
+    final mai = lib.entries.firstWhere((e) => e.simplified == '买');
+    final others = pinyinDistractors(mai, lib.entries, 3, Random(1));
+    expect(others.length, 3);
+    expect(others.map((e) => e.pinyin), isNot(contains(mai.pinyin)));
+    expect(stripTones(normalizePinyin(others.first.pinyin)), 'mai');
+  });
+
   testWidgets('type the pinyin, then listen and pick', (tester) async {
     SharedPreferences.setMockInitialValues({});
     final store = await UserStore.open();
@@ -69,7 +77,7 @@ void main() {
     await tester.pageBack();
     await tester.pumpAndSettle();
 
-    await tester.tap(find.text('Listen'));
+    await tester.tap(find.text('Choose'));
     await tester.pumpAndSettle();
     await tester.tap(find.text('All starred words'));
     await tester.pumpAndSettle();
@@ -78,5 +86,33 @@ void main() {
     await tester.pumpAndSettle();
     expect(find.text('Right!'), findsOneWidget);
     expect(store.reviews.length, 2);
+    await tester.pageBack();
+    await tester.pumpAndSettle();
+
+    // See the word, pick its meaning.
+    await tester.tap(find.text('Hear it, pick the word'));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('See it, pick the meaning').last);
+    await tester.pumpAndSettle();
+    expect(store.choiceKind, 'meaning');
+    await tester.tap(find.text('All starred words'));
+    await tester.pumpAndSettle();
+    expect(find.text('What does it mean?'), findsOneWidget);
+    await tester.tap(find.text(nihao.gloss));
+    await tester.pumpAndSettle();
+    expect(find.text('Right!'), findsOneWidget);
+    await tester.pageBack();
+    await tester.pumpAndSettle();
+
+    // See the word, pick its pinyin.
+    await store.setChoiceKind('pinyin');
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('All starred words'));
+    await tester.pumpAndSettle();
+    expect(find.text('How is it said?'), findsOneWidget);
+    await tester.tap(find.text(nihao.pinyin));
+    await tester.pumpAndSettle();
+    expect(find.text('Right!'), findsOneWidget);
+    expect(store.reviews.length, 4);
   });
 }
