@@ -18,15 +18,27 @@
   },
   "0efe5c02dd_f": {
    "file": "0efe5c02dd_f.mp3",
-   "bytes": 4992,
-   "heard": "Play",
-   "check": "mismatch"
+   "bytes": 3456,
+   "heard": "了",
+   "check": "exact",
+   "also": [
+    "乐",
+    "LA",
+    "辣",
+    "落"
+   ]
   },
   "0efe5c02dd_m": {
    "file": "0efe5c02dd_m.mp3",
-   "bytes": 3264,
-   "heard": "love",
-   "check": "mismatch"
+   "bytes": 3936,
+   "heard": "老",
+   "check": "exact",
+   "also": [
+    "love",
+    "LA",
+    "了",
+    "辣"
+   ]
   },
   "e2cf20315d_f": {
    "file": "e2cf20315d_f.mp3",
@@ -43,8 +55,14 @@
   "69577dc601_f": {
    "file": "69577dc601_f.mp3",
    "bytes": 3744,
-   "heard": "解",
-   "check": "mismatch"
+   "heard": "是",
+   "check": "exact",
+   "also": [
+    "市",
+    "视",
+    "事",
+    "拾"
+   ]
   },
   "69577dc601_m": {
    "file": "69577dc601_m.mp3",
@@ -79,8 +97,14 @@
   "7461c217a2_f": {
    "file": "7461c217a2_f.mp3",
    "bytes": 4416,
-   "heard": "不杂",
-   "check": "mismatch"
+   "heard": "不",
+   "check": "exact",
+   "also": [
+    "布",
+    "步",
+    "部",
+    "卜"
+   ]
   },
   "7461c217a2_m": {
    "file": "7461c217a2_m.mp3",
@@ -145,8 +169,14 @@
   "3c5babecee_m": {
    "file": "3c5babecee_m.mp3",
    "bytes": 4416,
-   "heard": "gas",
-   "check": "mismatch"
+   "heard": "个",
+   "check": "exact",
+   "also": [
+    "格",
+    "各",
+    "铬",
+    "硌"
+   ]
   },
   "472d7c13ed_f": {
    "file": "472d7c13ed_f.mp3",
@@ -224,13 +254,13 @@
    "file": "803a69d29d_f.mp3",
    "bytes": 4512,
    "heard": "1",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "803a69d29d_m": {
    "file": "803a69d29d_m.mp3",
    "bytes": 3264,
    "heard": "1",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "0ba85ea946_f": {
    "file": "0ba85ea946_f.mp3",
@@ -276,9 +306,15 @@
   },
   "3204f0fecb_m": {
    "file": "3204f0fecb_m.mp3",
-   "bytes": 3264,
-   "heard": "做",
-   "check": "mismatch"
+   "bytes": 5856,
+   "heard": "对",
+   "check": "exact",
+   "also": [
+    "这位",
+    "各位",
+    "喂喂",
+    "窦唯"
+   ]
   },
   "c012667bdf_f": {
    "file": "c012667bdf_f.mp3",
@@ -288,9 +324,15 @@
   },
   "c012667bdf_m": {
    "file": "c012667bdf_m.mp3",
-   "bytes": 3744,
-   "heard": "像",
-   "check": "mismatch"
+   "bytes": 4224,
+   "heard": "上",
+   "check": "exact",
+   "also": [
+    "赏",
+    "晌",
+    "尚",
+    "上午"
+   ]
   },
   "5ae1111f29_f": {
    "file": "5ae1111f29_f.mp3",
@@ -384,9 +426,15 @@
   },
   "da655e3840_m": {
    "file": "da655e3840_m.mp3",
-   "bytes": 3744,
-   "heard": "做",
-   "check": "mismatch"
+   "bytes": 6144,
+   "heard": "这",
+   "check": "exact",
+   "also": [
+    "着",
+    "浙",
+    "蔗",
+    "做"
+   ]
   },
   "09f6080cf6_f": {
    "file": "09f6080cf6_f.mp3",
@@ -506,7 +554,7 @@
    "file": "c3415b72fb_m.mp3",
    "bytes": 3072,
    "heard": "8",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "ad2e0f420b_f": {
    "file": "ad2e0f420b_f.mp3",
@@ -565,8 +613,14 @@
   "ec9eca9ca9_m": {
    "file": "ec9eca9ca9_m.mp3",
    "bytes": 5376,
-   "heard": "想",
-   "check": "mismatch"
+   "heard": "下",
+   "check": "exact",
+   "also": [
+    "夏",
+    "想",
+    "厦",
+    "吓"
+   ]
   },
   "762bb25933_f": {
    "file": "762bb25933_f.mp3",
@@ -595,8 +649,14 @@
   "b03dc908af_f": {
    "file": "b03dc908af_f.mp3",
    "bytes": 3744,
-   "heard": "你",
-   "check": "mismatch"
+   "heard": "李",
+   "check": "exact",
+   "also": [
+    "礼",
+    "丽",
+    "里",
+    "Lee"
+   ]
   },
   "b03dc908af_m": {
    "file": "b03dc908af_m.mp3",
@@ -607,8 +667,14 @@
   "27bae4f287_f": {
    "file": "27bae4f287_f.mp3",
    "bytes": 4416,
-   "heard": "gin",
-   "check": "mismatch"
+   "heard": "真",
+   "check": "exact",
+   "also": [
+    "甄",
+    "臻",
+    "珍",
+    "针"
+   ]
   },
   "27bae4f287_m": {
    "file": "27bae4f287_m.mp3",
@@ -637,8 +703,14 @@
   "d1e25d0f7c_m": {
    "file": "d1e25d0f7c_m.mp3",
    "bytes": 4224,
-   "heard": "棉",
-   "check": "mismatch"
+   "heard": "年",
+   "check": "exact",
+   "also": [
+    "棉",
+    "绵",
+    "粘",
+    "眠"
+   ]
   },
   "503119d18b_f": {
    "file": "503119d18b_f.mp3",
@@ -650,7 +722,7 @@
    "file": "503119d18b_m.mp3",
    "bytes": 4032,
    "heard": "雍",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "d95472b54f_f": {
    "file": "d95472b54f_f.mp3",
@@ -697,8 +769,11 @@
   "be344f9240_m": {
    "file": "be344f9240_m.mp3",
    "bytes": 3936,
-   "heard": "PM",
-   "check": "mismatch"
+   "heard": "天",
+   "check": "exact",
+   "also": [
+    "添"
+   ]
   },
   "bd8b5ddbfe_f": {
    "file": "bd8b5ddbfe_f.mp3",
@@ -715,20 +790,38 @@
   "eccf7255a4_f": {
    "file": "eccf7255a4_f.mp3",
    "bytes": 5472,
-   "heard": "猪",
-   "check": "mismatch"
+   "heard": "出",
+   "check": "exact",
+   "also": [
+    "初",
+    "书",
+    "粗",
+    "舒"
+   ]
   },
   "eccf7255a4_m": {
    "file": "eccf7255a4_m.mp3",
    "bytes": 5376,
-   "heard": "猪",
-   "check": "mismatch"
+   "heard": "出",
+   "check": "exact",
+   "also": [
+    "初",
+    "书",
+    "粗",
+    "出租"
+   ]
   },
   "578c75a3de_f": {
    "file": "578c75a3de_f.mp3",
    "bytes": 5184,
-   "heard": "Hi",
-   "check": "mismatch"
+   "heard": "太",
+   "check": "exact",
+   "also": [
+    "Hi",
+    "泰",
+    "钛",
+    "Thai"
+   ]
   },
   "578c75a3de_m": {
    "file": "578c75a3de_m.mp3",
@@ -762,15 +855,27 @@
   },
   "cf5bb4c375_f": {
    "file": "cf5bb4c375_f.mp3",
-   "bytes": 2976,
-   "heard": "那",
-   "check": "mismatch"
+   "bytes": 4224,
+   "heard": "no",
+   "check": "exact",
+   "also": [
+    "那",
+    "能",
+    "呢",
+    "loewe"
+   ]
   },
   "cf5bb4c375_m": {
    "file": "cf5bb4c375_m.mp3",
    "bytes": 3264,
    "heard": "那",
-   "check": "mismatch"
+   "check": "exact",
+   "also": [
+    "呢",
+    "哪",
+    "讷",
+    "no"
+   ]
   },
   "f0bf74b6f2_f": {
    "file": "f0bf74b6f2_f.mp3",
@@ -780,9 +885,15 @@
   },
   "f0bf74b6f2_m": {
    "file": "f0bf74b6f2_m.mp3",
-   "bytes": 3264,
-   "heard": "4",
-   "check": "mismatch"
+   "bytes": 3552,
+   "heard": "次",
+   "check": "exact",
+   "also": [
+    "4",
+    "四",
+    "刺",
+    "赐"
+   ]
   },
   "63c28c3cb7_f": {
    "file": "63c28c3cb7_f.mp3",
@@ -812,13 +923,25 @@
    "file": "c0fe4433e0_f.mp3",
    "bytes": 6624,
    "heard": "徐后",
-   "check": "mismatch"
+   "check": "exact",
+   "also": [
+    "徐厚",
+    "许后",
+    "时候",
+    "须后"
+   ]
   },
   "c0fe4433e0_m": {
    "file": "c0fe4433e0_m.mp3",
    "bytes": 5856,
-   "heard": "学后",
-   "check": "mismatch"
+   "heard": "时候",
+   "check": "exact",
+   "also": [
+    "学后",
+    "徐后",
+    "徐厚",
+    "之后"
+   ]
   },
   "d2b0c2dba9_f": {
    "file": "d2b0c2dba9_f.mp3",
@@ -853,20 +976,38 @@
   "cf54bb1733_m": {
    "file": "cf54bb1733_m.mp3",
    "bytes": 3744,
-   "heard": "雪",
-   "check": "mismatch"
+   "heard": "去",
+   "check": "sounds-same",
+   "also": [
+    "是",
+    "旭",
+    "序",
+    "续"
+   ]
   },
   "bc3ec074da_f": {
    "file": "bc3ec074da_f.mp3",
    "bytes": 5184,
-   "heard": "好",
-   "check": "mismatch"
+   "heard": "home",
+   "check": "exact",
+   "also": [
+    "后",
+    "侯",
+    "厚",
+    "候"
+   ]
   },
   "bc3ec074da_m": {
    "file": "bc3ec074da_m.mp3",
    "bytes": 3744,
-   "heard": "和",
-   "check": "mismatch"
+   "heard": "call",
+   "check": "exact",
+   "also": [
+    "home",
+    "Chrome",
+    "后",
+    "侯"
+   ]
   },
   "b7047a64cb_f": {
    "file": "b7047a64cb_f.mp3",
@@ -901,8 +1042,14 @@
   "25027598e2_m": {
    "file": "25027598e2_m.mp3",
    "bytes": 5472,
-   "heard": "简",
-   "check": "mismatch"
+   "heard": "钱",
+   "check": "exact",
+   "also": [
+    "前",
+    "黔",
+    "潜",
+    "钳"
+   ]
   },
   "27e9e80a2b_f": {
    "file": "27e9e80a2b_f.mp3",
@@ -944,13 +1091,25 @@
    "file": "b05ad778d2_f.mp3",
    "bytes": 3744,
    "heard": "d",
-   "check": "mismatch"
+   "check": "exact",
+   "also": [
+    "的",
+    "第",
+    "地",
+    "第1"
+   ]
   },
   "b05ad778d2_m": {
    "file": "b05ad778d2_m.mp3",
    "bytes": 3264,
-   "heard": "别",
-   "check": "mismatch"
+   "heard": "d",
+   "check": "exact",
+   "also": [
+    "的",
+    "B",
+    "第",
+    "地"
+   ]
   },
   "46e7a1956d_f": {
    "file": "46e7a1956d_f.mp3",
@@ -967,8 +1126,14 @@
   "08da58b0ae_f": {
    "file": "08da58b0ae_f.mp3",
    "bytes": 4512,
-   "heard": "更",
-   "check": "mismatch"
+   "heard": "跟",
+   "check": "exact",
+   "also": [
+    "根",
+    "更",
+    "庚",
+    "真"
+   ]
   },
   "08da58b0ae_m": {
    "file": "08da58b0ae_m.mp3",
@@ -1040,13 +1205,13 @@
    "file": "42f177256f_f.mp3",
    "bytes": 5184,
    "heard": "会",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "42f177256f_m": {
    "file": "42f177256f_m.mp3",
    "bytes": 4032,
    "heard": "会",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "3053215147_f": {
    "file": "3053215147_f.mp3",
@@ -1100,7 +1265,7 @@
    "file": "df7daca426_f.mp3",
    "bytes": 5184,
    "heard": "华",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "df7daca426_m": {
    "file": "df7daca426_m.mp3",
@@ -1112,7 +1277,7 @@
    "file": "e2eb357548_f.mp3",
    "bytes": 4704,
    "heard": "海狮",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "e2eb357548_m": {
    "file": "e2eb357548_m.mp3",
@@ -1189,32 +1354,38 @@
   "192ef2838b_m": {
    "file": "192ef2838b_m.mp3",
    "bytes": 3744,
-   "heard": "吉",
-   "check": "mismatch"
+   "heard": "鸡",
+   "check": "sounds-same",
+   "also": [
+    "7",
+    "七",
+    "奇",
+    "机"
+   ]
   },
   "925dddcd4c_f": {
    "file": "925dddcd4c_f.mp3",
    "bytes": 3936,
    "heard": "给",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "925dddcd4c_m": {
    "file": "925dddcd4c_m.mp3",
    "bytes": 4896,
    "heard": "吉",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "047fa96212_f": {
    "file": "047fa96212_f.mp3",
    "bytes": 3744,
    "heard": "剑",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "047fa96212_m": {
    "file": "047fa96212_m.mp3",
    "bytes": 3744,
    "heard": "剑",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "03a1c43621_f": {
    "file": "03a1c43621_f.mp3",
@@ -1304,13 +1475,13 @@
    "file": "d4565fc1ed_f.mp3",
    "bytes": 4224,
    "heard": "脚",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "d4565fc1ed_m": {
    "file": "d4565fc1ed_m.mp3",
    "bytes": 3936,
    "heard": "脚",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "c9d9a2479b_f": {
    "file": "c9d9a2479b_f.mp3",
@@ -1376,7 +1547,7 @@
    "file": "7aee080aaa_f.mp3",
    "bytes": 4416,
    "heard": "笨",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "7aee080aaa_m": {
    "file": "7aee080aaa_m.mp3",
@@ -1393,8 +1564,14 @@
   "6b698ce83d_m": {
    "file": "6b698ce83d_m.mp3",
    "bytes": 3936,
-   "heard": "虫",
-   "check": "mismatch"
+   "heard": "回",
+   "check": "exact",
+   "also": [
+    "茴",
+    "葵",
+    "奎",
+    "喂"
+   ]
   },
   "87d3786fec_f": {
    "file": "87d3786fec_f.mp3",
@@ -1412,13 +1589,13 @@
    "file": "17e4fa174f_f.mp3",
    "bytes": 5376,
    "heard": "3",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "17e4fa174f_m": {
    "file": "17e4fa174f_m.mp3",
    "bytes": 5376,
    "heard": "3",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "bc0a3c9de6_f": {
    "file": "bc0a3c9de6_f.mp3",
@@ -1543,8 +1720,14 @@
   "452f73e60f_f": {
    "file": "452f73e60f_f.mp3",
    "bytes": 5184,
-   "heard": "新",
-   "check": "mismatch"
+   "heard": "行",
+   "check": "exact",
+   "also": [
+    "形",
+    "型",
+    "邢",
+    "刑"
+   ]
   },
   "452f73e60f_m": {
    "file": "452f73e60f_m.mp3",
@@ -1561,8 +1744,14 @@
   "d91cfd6dd0_m": {
    "file": "d91cfd6dd0_m.mp3",
    "bytes": 3936,
-   "heard": "home",
-   "check": "mismatch"
+   "heard": "好",
+   "check": "exact",
+   "also": [
+    "How",
+    "号",
+    "浩",
+    "豪"
+   ]
   },
   "1840576373_f": {
    "file": "1840576373_f.mp3",
@@ -1628,13 +1817,19 @@
    "file": "2fa8d7da07_f.mp3",
    "bytes": 5184,
    "heard": "郑",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "2fa8d7da07_m": {
    "file": "2fa8d7da07_m.mp3",
    "bytes": 4416,
-   "heard": "gem",
-   "check": "mismatch"
+   "heard": "郑",
+   "check": "exact",
+   "also": [
+    "正",
+    "证",
+    "政",
+    "症"
+   ]
   },
   "da9298ef4f_f": {
    "file": "da9298ef4f_f.mp3",
@@ -1699,14 +1894,26 @@
   "39bce13718_f": {
    "file": "39bce13718_f.mp3",
    "bytes": 3744,
-   "heard": "静",
-   "check": "mismatch"
+   "heard": "进",
+   "check": "exact",
+   "also": [
+    "静",
+    "禁",
+    "晋",
+    "靖"
+   ]
   },
   "39bce13718_m": {
    "file": "39bce13718_m.mp3",
    "bytes": 3744,
-   "heard": "静",
-   "check": "mismatch"
+   "heard": "金",
+   "check": "sounds-same",
+   "also": [
+    "精",
+    "惊",
+    "京",
+    "经"
+   ]
   },
   "b90fc42440_f": {
    "file": "b90fc42440_f.mp3",
@@ -1718,7 +1925,7 @@
    "file": "b90fc42440_m.mp3",
    "bytes": 4416,
    "heard": "解",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "5a38b8d802_f": {
    "file": "5a38b8d802_f.mp3",
@@ -1741,8 +1948,14 @@
   "a77c3ac890_m": {
    "file": "a77c3ac890_m.mp3",
    "bytes": 3936,
-   "heard": "明",
-   "check": "mismatch"
+   "heard": "您",
+   "check": "exact",
+   "also": [
+    "宁",
+    "林",
+    "0",
+    "临"
+   ]
   },
   "534f92d739_f": {
    "file": "534f92d739_f.mp3",
@@ -1772,13 +1985,13 @@
    "file": "a64d778d35_f.mp3",
    "bytes": 2784,
    "heard": "宋",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "a64d778d35_m": {
    "file": "a64d778d35_m.mp3",
    "bytes": 3744,
    "heard": "宋",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "8217e5adca_f": {
    "file": "8217e5adca_f.mp3",
@@ -1789,20 +2002,38 @@
   "8217e5adca_m": {
    "file": "8217e5adca_m.mp3",
    "bytes": 5376,
-   "heard": "风",
-   "check": "mismatch"
+   "heard": "分",
+   "check": "exact",
+   "also": [
+    "风",
+    "芬",
+    "酚",
+    "纷"
+   ]
   },
   "68bc6eaf3a_f": {
    "file": "68bc6eaf3a_f.mp3",
    "bytes": 3264,
-   "heard": "想",
-   "check": "mismatch"
+   "heard": "笑",
+   "check": "exact",
+   "also": [
+    "肖",
+    "孝",
+    "校",
+    "效"
+   ]
   },
   "68bc6eaf3a_m": {
    "file": "68bc6eaf3a_m.mp3",
    "bytes": 5472,
-   "heard": "线呢",
-   "check": "mismatch"
+   "heard": "笑",
+   "check": "exact",
+   "also": [
+    "肖",
+    "孝",
+    "小",
+    "校"
+   ]
   },
   "22d23ad12a_f": {
    "file": "22d23ad12a_f.mp3",
@@ -1849,8 +2080,14 @@
   "28576fce1b_m": {
    "file": "28576fce1b_m.mp3",
    "bytes": 3744,
-   "heard": "当",
-   "check": "mismatch"
+   "heard": "帮",
+   "check": "exact",
+   "also": [
+    "彭",
+    "邦",
+    "浜",
+    "帮我"
+   ]
   },
   "500b5aba70_f": {
    "file": "500b5aba70_f.mp3",
@@ -1880,25 +2117,49 @@
    "file": "0a682edf8d_f.mp3",
    "bytes": 4704,
    "heard": "赞",
-   "check": "mismatch"
+   "check": "exact",
+   "also": [
+    "战",
+    "站",
+    "栈",
+    "单"
+   ]
   },
   "0a682edf8d_m": {
    "file": "0a682edf8d_m.mp3",
    "bytes": 4032,
    "heard": "赞",
-   "check": "mismatch"
+   "check": "exact",
+   "also": [
+    "战",
+    "站",
+    "栈",
+    "占"
+   ]
   },
   "bc63640739_f": {
    "file": "bc63640739_f.mp3",
    "bytes": 3744,
    "heard": "6",
-   "check": "mismatch"
+   "check": "exact",
+   "also": [
+    "鲁",
+    "绿",
+    "路",
+    "六"
+   ]
   },
   "bc63640739_m": {
    "file": "bc63640739_m.mp3",
    "bytes": 3456,
    "heard": "6",
-   "check": "mismatch"
+   "check": "exact",
+   "also": [
+    "绿",
+    "路",
+    "六",
+    "陆"
+   ]
   },
   "b8deae5016_f": {
    "file": "b8deae5016_f.mp3",
@@ -1940,13 +2201,13 @@
    "file": "55aa51625e_f.mp3",
    "bytes": 5184,
    "heard": "呵",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "55aa51625e_m": {
    "file": "55aa51625e_m.mp3",
    "bytes": 3936,
    "heard": "呵",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "fb1573ce5c_f": {
    "file": "fb1573ce5c_f.mp3",
@@ -1964,13 +2225,13 @@
    "file": "c3ba6668c4_f.mp3",
    "bytes": 3936,
    "heard": "川",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "c3ba6668c4_m": {
    "file": "c3ba6668c4_m.mp3",
    "bytes": 3936,
    "heard": "川",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "52dd59b172_f": {
    "file": "52dd59b172_f.mp3",
@@ -1994,7 +2255,7 @@
    "file": "dc0c267e57_m.mp3",
    "bytes": 5184,
    "heard": "华",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "db3147541a_f": {
    "file": "db3147541a_f.mp3",
@@ -2010,9 +2271,15 @@
   },
   "0c2c2edbde_f": {
    "file": "0c2c2edbde_f.mp3",
-   "bytes": 3744,
-   "heard": "蛮",
-   "check": "mismatch"
+   "bytes": 5472,
+   "heard": "门",
+   "check": "exact",
+   "also": [
+    "们",
+    "汶",
+    "闷",
+    "文"
+   ]
   },
   "0c2c2edbde_m": {
    "file": "0c2c2edbde_m.mp3",
@@ -2029,8 +2296,14 @@
   "03ed9c9d5d_m": {
    "file": "03ed9c9d5d_m.mp3",
    "bytes": 6144,
-   "heard": "先下",
-   "check": "mismatch"
+   "heard": "身上",
+   "check": "exact",
+   "also": [
+    "参上",
+    "欣赏",
+    "心上",
+    "先上"
+   ]
   },
   "17247e789f_f": {
    "file": "17247e789f_f.mp3",
@@ -2072,13 +2345,19 @@
    "file": "aca0f40b03_f.mp3",
    "bytes": 4224,
    "heard": "说",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "aca0f40b03_m": {
    "file": "aca0f40b03_m.mp3",
    "bytes": 3936,
    "heard": "雪",
-   "check": "mismatch"
+   "check": "sounds-same",
+   "also": [
+    "水",
+    "解",
+    "谢",
+    "说"
+   ]
   },
   "5b5440ea1b_f": {
    "file": "5b5440ea1b_f.mp3",
@@ -2108,37 +2387,49 @@
    "file": "e6f30e2a2d_f.mp3",
    "bytes": 3744,
    "heard": "4",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "e6f30e2a2d_m": {
    "file": "e6f30e2a2d_m.mp3",
    "bytes": 3744,
    "heard": "4",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "c74f6c4196_f": {
    "file": "c74f6c4196_f.mp3",
    "bytes": 3744,
    "heard": "会",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "c74f6c4196_m": {
    "file": "c74f6c4196_m.mp3",
    "bytes": 3552,
    "heard": "会",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "1928751e94_f": {
    "file": "1928751e94_f.mp3",
    "bytes": 5376,
    "heard": "喂",
-   "check": "mismatch"
+   "check": "exact",
+   "also": [
+    "外",
+    "y",
+    "why",
+    "哇"
+   ]
   },
   "1928751e94_m": {
    "file": "1928751e94_m.mp3",
    "bytes": 3456,
    "heard": "喂",
-   "check": "mismatch"
+   "check": "exact",
+   "also": [
+    "外",
+    "y",
+    "why",
+    "vie"
+   ]
   },
   "b20e82ce1a_f": {
    "file": "b20e82ce1a_f.mp3",
@@ -2228,13 +2519,13 @@
    "file": "9e2f70e7c6_f.mp3",
    "bytes": 5472,
    "heard": "第2",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "9e2f70e7c6_m": {
    "file": "9e2f70e7c6_m.mp3",
    "bytes": 3936,
    "heard": "第2",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "5bfb13ea89_f": {
    "file": "5bfb13ea89_f.mp3",
@@ -2252,13 +2543,25 @@
    "file": "d61961c717_f.mp3",
    "bytes": 3264,
    "heard": "小",
-   "check": "mismatch"
+   "check": "exact",
+   "also": [
+    "想",
+    "少",
+    "笑",
+    "肖"
+   ]
   },
   "d61961c717_m": {
    "file": "d61961c717_m.mp3",
    "bytes": 4032,
    "heard": "手",
-   "check": "mismatch"
+   "check": "exact",
+   "also": [
+    "韶",
+    "少",
+    "勺",
+    "芍"
+   ]
   },
   "ed893e8798_f": {
    "file": "ed893e8798_f.mp3",
@@ -2311,8 +2614,14 @@
   "1b6866ca70_f": {
    "file": "1b6866ca70_f.mp3",
    "bytes": 5952,
-   "heard": "男",
-   "check": "mismatch"
+   "heard": "那",
+   "check": "exact",
+   "also": [
+    "哪",
+    "呐",
+    "娜",
+    "钠"
+   ]
   },
   "1b6866ca70_m": {
    "file": "1b6866ca70_m.mp3",
@@ -2330,7 +2639,13 @@
    "file": "4c8a20f42c_m.mp3",
    "bytes": 5184,
    "heard": "好",
-   "check": "mismatch"
+   "check": "exact",
+   "also": [
+    "跑",
+    "炮",
+    "草",
+    "泡"
+   ]
   },
   "95e2191f40_f": {
    "file": "95e2191f40_f.mp3",
@@ -2384,13 +2699,13 @@
    "file": "c03a96a883_f.mp3",
    "bytes": 5376,
    "heard": "5",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "c03a96a883_m": {
    "file": "c03a96a883_m.mp3",
    "bytes": 3744,
    "heard": "5",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "025faf401b_f": {
    "file": "025faf401b_f.mp3",
@@ -2449,8 +2764,14 @@
   "2d6abdeed4_m": {
    "file": "2d6abdeed4_m.mp3",
    "bytes": 4416,
-   "heard": "猪",
-   "check": "mismatch"
+   "heard": "Zoom",
+   "check": "sounds-same",
+   "also": [
+    "中",
+    "Chrome",
+    "做",
+    "John"
+   ]
   },
   "93ab06996e_f": {
    "file": "93ab06996e_f.mp3",
@@ -2497,8 +2818,13 @@
   "41e3fb1b5d_m": {
    "file": "41e3fb1b5d_m.mp3",
    "bytes": 4416,
-   "heard": "开",
-   "check": "mismatch"
+   "heard": "call",
+   "check": "sounds-same",
+   "also": [
+    "kol",
+    "靠",
+    "扣"
+   ]
   },
   "b3d937c9a3_f": {
    "file": "b3d937c9a3_f.mp3",
@@ -2756,13 +3082,13 @@
    "file": "dcd031da15_f.mp3",
    "bytes": 3456,
    "heard": "6",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "dcd031da15_m": {
    "file": "dcd031da15_m.mp3",
    "bytes": 5184,
    "heard": "6",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "10444a8614_f": {
    "file": "10444a8614_f.mp3",
@@ -2894,7 +3220,13 @@
    "file": "1aef5ae028_m.mp3",
    "bytes": 4224,
    "heard": "10",
-   "check": "mismatch"
+   "check": "exact",
+   "also": [
+    "时",
+    "石",
+    "十",
+    "什"
+   ]
   },
   "aa92fe8daa_f": {
    "file": "aa92fe8daa_f.mp3",
@@ -2971,8 +3303,14 @@
   "fcc9da4a12_f": {
    "file": "fcc9da4a12_f.mp3",
    "bytes": 3264,
-   "heard": "4",
-   "check": "mismatch"
+   "heard": "子",
+   "check": "exact",
+   "also": [
+    "字",
+    "自",
+    "渍",
+    "恣"
+   ]
   },
   "fcc9da4a12_m": {
    "file": "fcc9da4a12_m.mp3",
@@ -3037,8 +3375,14 @@
   "dc485774cf_m": {
    "file": "dc485774cf_m.mp3",
    "bytes": 3744,
-   "heard": "解",
-   "check": "mismatch"
+   "heard": "是",
+   "check": "sounds-same",
+   "also": [
+    "市",
+    "视",
+    "事",
+    "拾"
+   ]
   },
   "036934e705_f": {
    "file": "036934e705_f.mp3",
@@ -3097,8 +3441,14 @@
   "6482efbc9c_m": {
    "file": "6482efbc9c_m.mp3",
    "bytes": 3744,
-   "heard": "she",
-   "check": "mismatch"
+   "heard": "西",
+   "check": "exact",
+   "also": [
+    "c",
+    "诶",
+    "息",
+    "sea"
+   ]
   },
   "401ee7e2eb_f": {
    "file": "401ee7e2eb_f.mp3",
@@ -3128,13 +3478,25 @@
    "file": "8ce6b51ea3_f.mp3",
    "bytes": 4224,
    "heard": "d",
-   "check": "mismatch"
+   "check": "exact",
+   "also": [
+    "的",
+    "第",
+    "地",
+    "第1"
+   ]
   },
   "8ce6b51ea3_m": {
    "file": "8ce6b51ea3_m.mp3",
    "bytes": 3456,
    "heard": "d",
-   "check": "mismatch"
+   "check": "exact",
+   "also": [
+    "的",
+    "第",
+    "地",
+    "B"
+   ]
   },
   "ff1cf4d6dc_f": {
    "file": "ff1cf4d6dc_f.mp3",
@@ -3200,19 +3562,25 @@
    "file": "48525c8a36_f.mp3",
    "bytes": 5184,
    "heard": "王",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "48525c8a36_m": {
    "file": "48525c8a36_m.mp3",
    "bytes": 4032,
    "heard": "王",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "f34c48117d_f": {
    "file": "f34c48117d_f.mp3",
    "bytes": 5664,
-   "heard": "鉴真",
-   "check": "mismatch"
+   "heard": "竞争",
+   "check": "exact",
+   "also": [
+    "进针",
+    "认真",
+    "靓正",
+    "应征"
+   ]
   },
   "f34c48117d_m": {
    "file": "f34c48117d_m.mp3",
@@ -3380,7 +3748,7 @@
    "file": "10b3f6a1e5_f.mp3",
    "bytes": 4224,
    "heard": "回曲",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "10b3f6a1e5_m": {
    "file": "10b3f6a1e5_m.mp3",
@@ -3391,8 +3759,14 @@
   "40866b8ba2_f": {
    "file": "40866b8ba2_f.mp3",
    "bytes": 4032,
-   "heard": "Play",
-   "check": "mismatch"
+   "heard": "累",
+   "check": "exact",
+   "also": [
+    "lay",
+    "类",
+    "泪",
+    "勒"
+   ]
   },
   "40866b8ba2_m": {
    "file": "40866b8ba2_m.mp3",
@@ -3505,8 +3879,14 @@
   "2a29145140_m": {
    "file": "2a29145140_m.mp3",
    "bytes": 4416,
-   "heard": "写",
-   "check": "mismatch"
+   "heard": "习",
+   "check": "exact",
+   "also": [
+    "席",
+    "喜",
+    "洗",
+    "囍"
+   ]
   },
   "8058a6439b_f": {
    "file": "8058a6439b_f.mp3",
@@ -3560,13 +3940,13 @@
    "file": "aad8c6bbaf_f.mp3",
    "bytes": 3264,
    "heard": "8",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "aad8c6bbaf_m": {
    "file": "aad8c6bbaf_m.mp3",
    "bytes": 3552,
    "heard": "8",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "031a13f23e_f": {
    "file": "031a13f23e_f.mp3",
@@ -3608,13 +3988,25 @@
    "file": "13434fc80a_f.mp3",
    "bytes": 4032,
    "heard": "7",
-   "check": "mismatch"
+   "check": "exact",
+   "also": [
+    "七",
+    "期",
+    "妻",
+    "鸡"
+   ]
   },
   "13434fc80a_m": {
    "file": "13434fc80a_m.mp3",
    "bytes": 5376,
-   "heard": "鸡",
-   "check": "mismatch"
+   "heard": "7",
+   "check": "exact",
+   "also": [
+    "七",
+    "期",
+    "妻",
+    "漆"
+   ]
   },
   "9f9c8a3570_f": {
    "file": "9f9c8a3570_f.mp3",
@@ -3644,13 +4036,19 @@
    "file": "ddf9363c84_f.mp3",
    "bytes": 3936,
    "heard": "二",
-   "check": "mismatch"
+   "check": "exact",
+   "also": [
+    "2",
+    "呃",
+    "儿",
+    "饿"
+   ]
   },
   "ddf9363c84_m": {
    "file": "ddf9363c84_m.mp3",
    "bytes": 3936,
    "heard": "哦",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "fe58ff6a6a_f": {
    "file": "fe58ff6a6a_f.mp3",
@@ -3805,8 +4203,14 @@
   "32f318f5a1_m": {
    "file": "32f318f5a1_m.mp3",
    "bytes": 4992,
-   "heard": "小贱",
-   "check": "mismatch"
+   "heard": "小结",
+   "check": "exact",
+   "also": [
+    "小节",
+    "小姐",
+    "小街",
+    "小杰"
+   ]
   },
   "41d8419766_f": {
    "file": "41d8419766_f.mp3",
@@ -3956,7 +4360,7 @@
    "file": "3657dc1e3e_f.mp3",
    "bytes": 6624,
    "heard": "童雪",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "3657dc1e3e_m": {
    "file": "3657dc1e3e_m.mp3",
@@ -4076,7 +4480,7 @@
    "file": "9e0e48d4d3_f.mp3",
    "bytes": 3264,
    "heard": "玉",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "9e0e48d4d3_m": {
    "file": "9e0e48d4d3_m.mp3",
@@ -4088,7 +4492,12 @@
    "file": "1c0c81457f_f.mp3",
    "bytes": 5856,
    "heard": "星期一",
-   "check": "mismatch"
+   "check": "exact",
+   "also": [
+    "星期",
+    "星期五",
+    "新期"
+   ]
   },
   "1c0c81457f_m": {
    "file": "1c0c81457f_m.mp3",
@@ -4112,13 +4521,13 @@
    "file": "abd9b667a3_f.mp3",
    "bytes": 5184,
    "heard": "9",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "abd9b667a3_m": {
    "file": "abd9b667a3_m.mp3",
    "bytes": 4416,
    "heard": "9",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "633c7e53a1_f": {
    "file": "633c7e53a1_f.mp3",
@@ -4244,7 +4653,7 @@
    "file": "508cb07d10_f.mp3",
    "bytes": 4032,
    "heard": "血缘",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "508cb07d10_m": {
    "file": "508cb07d10_m.mp3",
@@ -4297,8 +4706,14 @@
   "edafbd512a_m": {
    "file": "edafbd512a_m.mp3",
    "bytes": 4224,
-   "heard": "亮点",
-   "check": "mismatch"
+   "heard": "那边",
+   "check": "exact",
+   "also": [
+    "南边",
+    "哪边",
+    "那片",
+    "那篇"
+   ]
   },
   "6161bb2388_f": {
    "file": "6161bb2388_f.mp3",
@@ -4309,8 +4724,14 @@
   "6161bb2388_m": {
    "file": "6161bb2388_m.mp3",
    "bytes": 3936,
-   "heard": "BD",
-   "check": "mismatch"
+   "heard": "弟弟",
+   "check": "exact",
+   "also": [
+    "DD",
+    "didi",
+    "CD",
+    "地的"
+   ]
   },
   "62e3c44e91_f": {
    "file": "62e3c44e91_f.mp3",
@@ -4532,13 +4953,13 @@
    "file": "251f6b21cf_f.mp3",
    "bytes": 6624,
    "heard": "尝尝",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "251f6b21cf_m": {
    "file": "251f6b21cf_m.mp3",
    "bytes": 6816,
    "heard": "尝尝",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "f76d72e49d_f": {
    "file": "f76d72e49d_f.mp3",
@@ -4844,13 +5265,13 @@
    "file": "bd5fa9cf0f_f.mp3",
    "bytes": 4416,
    "heard": "0",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "bd5fa9cf0f_m": {
    "file": "bd5fa9cf0f_m.mp3",
    "bytes": 5856,
    "heard": "0",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "19c979fa9c_f": {
    "file": "19c979fa9c_f.mp3",
@@ -4963,8 +5384,9 @@
   "5cbe6be3e5_f": {
    "file": "5cbe6be3e5_f.mp3",
    "bytes": 5184,
-   "heard": "去7",
-   "check": "mismatch"
+   "heard": "日期",
+   "check": "exact",
+   "also": []
   },
   "5cbe6be3e5_m": {
    "file": "5cbe6be3e5_m.mp3",
@@ -5341,8 +5763,14 @@
   "89dbbbb64d_m": {
    "file": "89dbbbb64d_m.mp3",
    "bytes": 4704,
-   "heard": "入口",
-   "check": "mismatch"
+   "heard": "路口",
+   "check": "exact",
+   "also": [
+    "入口",
+    "禄口",
+    "六口",
+    "渌口"
+   ]
   },
   "2ef37278b0_f": {
    "file": "2ef37278b0_f.mp3",
@@ -5360,13 +5788,25 @@
    "file": "296f588151_f.mp3",
    "bytes": 4224,
    "heard": "d",
-   "check": "mismatch"
+   "check": "sounds-same",
+   "also": [
+    "的",
+    "第",
+    "地",
+    "B"
+   ]
   },
   "296f588151_m": {
    "file": "296f588151_m.mp3",
    "bytes": 3264,
    "heard": "d",
-   "check": "mismatch"
+   "check": "sounds-same",
+   "also": [
+    "的",
+    "第",
+    "地",
+    "第1"
+   ]
   },
   "e96c476456_f": {
    "file": "e96c476456_f.mp3",
@@ -5396,13 +5836,13 @@
    "file": "5872701816_f.mp3",
    "bytes": 6144,
    "heard": "1点",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "5872701816_m": {
    "file": "5872701816_m.mp3",
    "bytes": 4512,
    "heard": "1点",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "66861390a4_f": {
    "file": "66861390a4_f.mp3",
@@ -5624,13 +6064,13 @@
    "file": "94a3c37f15_f.mp3",
    "bytes": 4032,
    "heard": "1块",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "94a3c37f15_m": {
    "file": "94a3c37f15_m.mp3",
    "bytes": 4704,
    "heard": "1块",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "455031ef1e_f": {
    "file": "455031ef1e_f.mp3",
@@ -5665,8 +6105,14 @@
   "152eb7b4e4_m": {
    "file": "152eb7b4e4_m.mp3",
    "bytes": 5856,
-   "heard": "外面",
-   "check": "mismatch"
+   "heard": "外边",
+   "check": "exact",
+   "also": [
+    "外面",
+    "外编",
+    "外变",
+    "外便"
+   ]
   },
   "d1d6b71f80_f": {
    "file": "d1d6b71f80_f.mp3",
@@ -5737,8 +6183,14 @@
   "a53f81958e_m": {
    "file": "a53f81958e_m.mp3",
    "bytes": 4896,
-   "heard": "相片",
-   "check": "mismatch"
+   "heard": "上变",
+   "check": "exact",
+   "also": [
+    "上边",
+    "上遍",
+    "上便",
+    "赏遍"
+   ]
   },
   "a695515a34_f": {
    "file": "a695515a34_f.mp3",
@@ -5762,7 +6214,13 @@
    "file": "2188c5e009_m.mp3",
    "bytes": 4512,
    "heard": "东店",
-   "check": "mismatch"
+   "check": "sounds-same",
+   "also": [
+    "东便",
+    "东电",
+    "东淀",
+    "东变"
+   ]
   },
   "577e67db31_f": {
    "file": "577e67db31_f.mp3",
@@ -5792,7 +6250,7 @@
    "file": "1b6a2994d0_f.mp3",
    "bytes": 5664,
    "heard": "难辨",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "1b6a2994d0_m": {
    "file": "1b6a2994d0_m.mp3",
@@ -5822,7 +6280,12 @@
    "file": "f4303ae310_m.mp3",
    "bytes": 4416,
    "heard": "你还",
-   "check": "mismatch"
+   "check": "sounds-same",
+   "also": [
+    "女孩",
+    "你孩",
+    "你咳"
+   ]
   },
   "851ab4d170_f": {
    "file": "851ab4d170_f.mp3",
@@ -5857,8 +6320,14 @@
   "3f6d978fed_m": {
    "file": "3f6d978fed_m.mp3",
    "bytes": 4992,
-   "heard": "仅仅",
-   "check": "mismatch"
+   "heard": "请进",
+   "check": "exact",
+   "also": [
+    "仅仅",
+    "警进",
+    "挺进",
+    "尽尽"
+   ]
   },
   "6b94f63415_f": {
    "file": "6b94f63415_f.mp3",
@@ -5876,13 +6345,25 @@
    "file": "c4cbec116b_f.mp3",
    "bytes": 6144,
    "heard": "前面",
-   "check": "mismatch"
+   "check": "sounds-same",
+   "also": [
+    "前便",
+    "钱便",
+    "前变",
+    "钱变"
+   ]
   },
   "c4cbec116b_m": {
    "file": "c4cbec116b_m.mp3",
-   "bytes": 5184,
-   "heard": "简编",
-   "check": "mismatch"
+   "bytes": 5856,
+   "heard": "前边",
+   "check": "exact",
+   "also": [
+    "前编",
+    "简编",
+    "田边",
+    "延边"
+   ]
   },
   "1d2b98f859_f": {
    "file": "1d2b98f859_f.mp3",
@@ -5965,8 +6446,11 @@
   "9ab1820e5a_m": {
    "file": "9ab1820e5a_m.mp3",
    "bytes": 5856,
-   "heard": "精血",
-   "check": "mismatch"
+   "heard": "听写",
+   "check": "exact",
+   "also": [
+    "听血"
+   ]
   },
   "1de2f22edb_f": {
    "file": "1de2f22edb_f.mp3",
@@ -6007,8 +6491,11 @@
   "2cb22bccaa_f": {
    "file": "2cb22bccaa_f.mp3",
    "bytes": 6144,
-   "heard": "面条啊",
-   "check": "mismatch"
+   "heard": "面条儿",
+   "check": "exact",
+   "also": [
+    "面条啊"
+   ]
   },
   "2cb22bccaa_m": {
    "file": "2cb22bccaa_m.mp3",
@@ -6037,8 +6524,14 @@
   "6dcf1b83ac_m": {
    "file": "6dcf1b83ac_m.mp3",
    "bytes": 4224,
-   "heard": "干",
-   "check": "mismatch"
+   "heard": "但",
+   "check": "exact",
+   "also": [
+    "石",
+    "干",
+    "蛋",
+    "赞"
+   ]
   },
   "53a7179c1e_f": {
    "file": "53a7179c1e_f.mp3",
@@ -6061,8 +6554,9 @@
   "7613d2c4c0_m": {
    "file": "7613d2c4c0_m.mp3",
    "bytes": 4224,
-   "heard": "t",
-   "check": "mismatch"
+   "heard": "可以",
+   "check": "exact",
+   "also": []
   },
   "ccc74542e0_f": {
    "file": "ccc74542e0_f.mp3",
@@ -6259,8 +6753,13 @@
   "c9cba24d80_f": {
    "file": "c9cba24d80_f.mp3",
    "bytes": 3936,
-   "heard": "愿为",
-   "check": "mismatch"
+   "heard": "任伟",
+   "check": "exact",
+   "also": [
+    "认为",
+    "任委",
+    "任伪"
+   ]
   },
   "c9cba24d80_m": {
    "file": "c9cba24d80_m.mp3",
@@ -6284,25 +6783,25 @@
    "file": "2982181b56_f.mp3",
    "bytes": 5472,
    "heard": "喂",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "2982181b56_m": {
    "file": "2982181b56_m.mp3",
    "bytes": 3456,
    "heard": "喂",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "7d4cde0042_f": {
    "file": "7d4cde0042_f.mp3",
    "bytes": 4896,
    "heard": "大",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "7d4cde0042_m": {
    "file": "7d4cde0042_m.mp3",
    "bytes": 3456,
    "heard": "大",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "fe62ef066f_f": {
    "file": "fe62ef066f_f.mp3",
@@ -6344,7 +6843,7 @@
    "file": "821caf6d50_f.mp3",
    "bytes": 6624,
    "heard": "移植",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "821caf6d50_m": {
    "file": "821caf6d50_m.mp3",
@@ -6481,8 +6980,14 @@
   "88c4a0699e_m": {
    "file": "88c4a0699e_m.mp3",
    "bytes": 4032,
-   "heard": "陈伟",
-   "check": "mismatch"
+   "heard": "成为",
+   "check": "exact",
+   "also": [
+    "陈维",
+    "程维",
+    "程为",
+    "陈为"
+   ]
   },
   "9bf9ab755f_f": {
    "file": "9bf9ab755f_f.mp3",
@@ -6536,13 +7041,13 @@
    "file": "ea6c0a50d3_f.mp3",
    "bytes": 4896,
    "heard": "剑",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "ea6c0a50d3_m": {
    "file": "ea6c0a50d3_m.mp3",
    "bytes": 3552,
    "heard": "剑",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "020ed72287_f": {
    "file": "020ed72287_f.mp3",
@@ -6584,13 +7089,13 @@
    "file": "169fcdd9c4_f.mp3",
    "bytes": 3264,
    "heard": "初见",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "169fcdd9c4_m": {
    "file": "169fcdd9c4_m.mp3",
    "bytes": 5664,
    "heard": "初见",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "229cfe5970_f": {
    "file": "229cfe5970_f.mp3",
@@ -6781,8 +7286,14 @@
   "05a2dbfde5_m": {
    "file": "05a2dbfde5_m.mp3",
    "bytes": 3744,
-   "heard": "性",
-   "check": "mismatch"
+   "heard": "线",
+   "check": "exact",
+   "also": [
+    "信",
+    "现",
+    "见",
+    "性"
+   ]
   },
   "0aa5913217_f": {
    "file": "0aa5913217_f.mp3",
@@ -6799,8 +7310,14 @@
   "524cb9f58d_f": {
    "file": "524cb9f58d_f.mp3",
    "bytes": 3744,
-   "heard": "间",
-   "check": "mismatch"
+   "heard": "结",
+   "check": "exact",
+   "also": [
+    "节",
+    "接",
+    "街",
+    "揭"
+   ]
   },
   "524cb9f58d_m": {
    "file": "524cb9f58d_m.mp3",
@@ -7189,8 +7706,14 @@
   "570454906c_m": {
    "file": "570454906c_m.mp3",
    "bytes": 3936,
-   "heard": "星",
-   "check": "mismatch"
+   "heard": "生",
+   "check": "exact",
+   "also": [
+    "升",
+    "声",
+    "笙",
+    "牲"
+   ]
   },
   "5b68ce386d_f": {
    "file": "5b68ce386d_f.mp3",
@@ -7244,13 +7767,13 @@
    "file": "906ec909c5_f.mp3",
    "bytes": 5472,
    "heard": "祖",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "906ec909c5_m": {
    "file": "906ec909c5_m.mp3",
    "bytes": 4032,
    "heard": "祖",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "e79c840e02_f": {
    "file": "e79c840e02_f.mp3",
@@ -7261,8 +7784,12 @@
   "e79c840e02_m": {
    "file": "e79c840e02_m.mp3",
    "bytes": 6144,
-   "heard": "结节",
-   "check": "mismatch"
+   "heard": "直接",
+   "check": "exact",
+   "also": [
+    "执结",
+    "职阶"
+   ]
   },
   "3cb2fd0f2c_f": {
    "file": "3cb2fd0f2c_f.mp3",
@@ -7274,7 +7801,13 @@
    "file": "3cb2fd0f2c_m.mp3",
    "bytes": 4992,
    "heard": "my",
-   "check": "mismatch"
+   "check": "exact",
+   "also": [
+    "卖",
+    "麦",
+    "迈",
+    "脉"
+   ]
   },
   "351f039195_f": {
    "file": "351f039195_f.mp3",
@@ -7286,19 +7819,25 @@
    "file": "351f039195_m.mp3",
    "bytes": 4416,
    "heard": "玄",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "41c6671ff0_f": {
    "file": "41c6671ff0_f.mp3",
    "bytes": 4896,
    "heard": "去",
-   "check": "mismatch"
+   "check": "sounds-same",
+   "also": [
+    "剧",
+    "据",
+    "巨",
+    "聚"
+   ]
   },
   "41c6671ff0_m": {
    "file": "41c6671ff0_m.mp3",
    "bytes": 3744,
    "heard": "车",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "b1907289f3_f": {
    "file": "b1907289f3_f.mp3",
@@ -7442,7 +7981,11 @@
    "file": "3320a2bef0_m.mp3",
    "bytes": 3936,
    "heard": "call",
-   "check": "mismatch"
+   "check": "exact",
+   "also": [
+    "靠",
+    "cao"
+   ]
   },
   "2ce043850b_f": {
    "file": "2ce043850b_f.mp3",
@@ -7472,13 +8015,20 @@
    "file": "b6450fa41e_f.mp3",
    "bytes": 5184,
    "heard": "写右",
-   "check": "mismatch"
+   "check": "exact",
+   "also": [
+    "血又",
+    "色诱",
+    "使用",
+    "写幼"
+   ]
   },
   "b6450fa41e_m": {
    "file": "b6450fa41e_m.mp3",
    "bytes": 6144,
-   "heard": "写用",
-   "check": "mismatch"
+   "heard": "使用",
+   "check": "exact",
+   "also": []
   },
   "6668a93cf0_f": {
    "file": "6668a93cf0_f.mp3",
@@ -7519,20 +8069,38 @@
   "40fc64845e_f": {
    "file": "40fc64845e_f.mp3",
    "bytes": 4896,
-   "heard": "中兴",
-   "check": "mismatch"
+   "heard": "中心",
+   "check": "exact",
+   "also": [
+    "中芯",
+    "衷心",
+    "忠心",
+    "中新"
+   ]
   },
   "40fc64845e_m": {
    "file": "40fc64845e_m.mp3",
    "bytes": 6144,
    "heard": "中兴",
-   "check": "mismatch"
+   "check": "exact",
+   "also": [
+    "中星",
+    "钟星",
+    "钟兴",
+    "中心"
+   ]
   },
   "d97974b55e_f": {
    "file": "d97974b55e_f.mp3",
    "bytes": 3744,
    "heard": "你",
-   "check": "mismatch"
+   "check": "exact",
+   "also": [
+    "米",
+    "咪",
+    "靡",
+    "me"
+   ]
   },
   "d97974b55e_m": {
    "file": "d97974b55e_m.mp3",
@@ -7567,14 +8135,20 @@
   "abcc5e0bc5_f": {
    "file": "abcc5e0bc5_f.mp3",
    "bytes": 3744,
-   "heard": "读",
-   "check": "mismatch"
+   "heard": "动",
+   "check": "sounds-same",
+   "also": [
+    "洞",
+    "冻",
+    "董",
+    "栋"
+   ]
   },
   "abcc5e0bc5_m": {
    "file": "abcc5e0bc5_m.mp3",
    "bytes": 5472,
    "heard": "董",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "12773b8729_f": {
    "file": "12773b8729_f.mp3",
@@ -7616,13 +8190,13 @@
    "file": "920aeffa26_f.mp3",
    "bytes": 3744,
    "heard": "蒜",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "920aeffa26_m": {
    "file": "920aeffa26_m.mp3",
    "bytes": 4032,
    "heard": "蒜",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "3dd2be6f41_f": {
    "file": "3dd2be6f41_f.mp3",
@@ -7652,13 +8226,13 @@
    "file": "3187e32bf6_f.mp3",
    "bytes": 4416,
    "heard": "刘",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "3187e32bf6_m": {
    "file": "3187e32bf6_m.mp3",
    "bytes": 4512,
    "heard": "刘",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "9c27e09e37_f": {
    "file": "9c27e09e37_f.mp3",
@@ -7736,13 +8310,13 @@
    "file": "2aa6be020d_f.mp3",
    "bytes": 5376,
    "heard": "嘿",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "2aa6be020d_m": {
    "file": "2aa6be020d_m.mp3",
    "bytes": 5856,
    "heard": "嘿",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "f3c90325b1_f": {
    "file": "f3c90325b1_f.mp3",
@@ -7795,8 +8369,14 @@
   "c020b933d8_f": {
    "file": "c020b933d8_f.mp3",
    "bytes": 6144,
-   "heard": "请",
-   "check": "mismatch"
+   "heard": "挺",
+   "check": "exact",
+   "also": [
+    "町",
+    "艇",
+    "警",
+    "铤"
+   ]
   },
   "c020b933d8_m": {
    "file": "c020b933d8_m.mp3",
@@ -7844,13 +8424,13 @@
    "file": "062903fe27_f.mp3",
    "bytes": 3264,
    "heard": "庄",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "062903fe27_m": {
    "file": "062903fe27_m.mp3",
    "bytes": 4032,
    "heard": "庄",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "959ebd20d4_f": {
    "file": "959ebd20d4_f.mp3",
@@ -8000,13 +8580,13 @@
    "file": "ed340409c7_f.mp3",
    "bytes": 5184,
    "heard": "9",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "ed340409c7_m": {
    "file": "ed340409c7_m.mp3",
    "bytes": 3744,
    "heard": "9",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "7162fbc27d_f": {
    "file": "7162fbc27d_f.mp3",
@@ -8120,7 +8700,13 @@
    "file": "589d6e60af_f.mp3",
    "bytes": 3744,
    "heard": "静",
-   "check": "mismatch"
+   "check": "sounds-same",
+   "also": [
+    "进",
+    "禁",
+    "晋",
+    "靖"
+   ]
   },
   "589d6e60af_m": {
    "file": "589d6e60af_m.mp3",
@@ -8149,8 +8735,14 @@
   "7c71e4dd6f_m": {
    "file": "7c71e4dd6f_m.mp3",
    "bytes": 4224,
-   "heard": "书",
-   "check": "mismatch"
+   "heard": "收",
+   "check": "exact",
+   "also": [
+    "搜",
+    "Show",
+    "周",
+    "粥"
+   ]
   },
   "1fd4e70f1d_f": {
    "file": "1fd4e70f1d_f.mp3",
@@ -8203,8 +8795,14 @@
   "a9202d2a83_f": {
    "file": "a9202d2a83_f.mp3",
    "bytes": 4992,
-   "heard": "家能",
-   "check": "mismatch"
+   "heard": "智能",
+   "check": "exact",
+   "also": [
+    "技能",
+    "去能",
+    "只能",
+    "巨能"
+   ]
   },
   "a9202d2a83_m": {
    "file": "a9202d2a83_m.mp3",
@@ -8216,13 +8814,13 @@
    "file": "1329edf880_f.mp3",
    "bytes": 3264,
    "heard": "酷",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "1329edf880_m": {
    "file": "1329edf880_m.mp3",
    "bytes": 5376,
    "heard": "酷",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "763e7bcefc_f": {
    "file": "763e7bcefc_f.mp3",
@@ -8234,7 +8832,13 @@
    "file": "763e7bcefc_m.mp3",
    "bytes": 4032,
    "heard": "Park",
-   "check": "mismatch"
+   "check": "exact",
+   "also": [
+    "part",
+    "怕",
+    "帕",
+    "parse"
+   ]
   },
   "350376fbc0_f": {
    "file": "350376fbc0_f.mp3",
@@ -8629,20 +9233,38 @@
   "5d4c1a0362_m": {
    "file": "5d4c1a0362_m.mp3",
    "bytes": 4896,
-   "heard": "Hi",
-   "check": "mismatch"
+   "heard": "海",
+   "check": "exact",
+   "also": [
+    "Hi",
+    "踩",
+    "还",
+    "喂"
+   ]
   },
   "3e6db1845e_f": {
    "file": "3e6db1845e_f.mp3",
    "bytes": 6144,
    "heard": "10分",
-   "check": "mismatch"
+   "check": "exact",
+   "also": [
+    "十分",
+    "时分",
+    "洗分",
+    "细分"
+   ]
   },
   "3e6db1845e_m": {
    "file": "3e6db1845e_m.mp3",
    "bytes": 4416,
    "heard": "10分",
-   "check": "mismatch"
+   "check": "exact",
+   "also": [
+    "十分",
+    "时分",
+    "学分",
+    "徐芬"
+   ]
   },
   "66fe46bc4b_f": {
    "file": "66fe46bc4b_f.mp3",
@@ -8684,13 +9306,13 @@
    "file": "a1a95143ed_f.mp3",
    "bytes": 4032,
    "heard": "华",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "a1a95143ed_m": {
    "file": "a1a95143ed_m.mp3",
    "bytes": 3744,
    "heard": "华",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "e39039e531_f": {
    "file": "e39039e531_f.mp3",
@@ -8828,13 +9450,25 @@
    "file": "306b5c46e9_f.mp3",
    "bytes": 3744,
    "heard": "go",
-   "check": "mismatch"
+   "check": "sounds-same",
+   "also": [
+    "狗",
+    "ngo",
+    "勾",
+    "购"
+   ]
   },
   "306b5c46e9_m": {
    "file": "306b5c46e9_m.mp3",
    "bytes": 3456,
    "heard": "go",
-   "check": "mismatch"
+   "check": "exact",
+   "also": [
+    "ngo",
+    "勾",
+    "购",
+    "够"
+   ]
   },
   "657ca14aee_f": {
    "file": "657ca14aee_f.mp3",
@@ -8864,7 +9498,13 @@
    "file": "d57c4118a7_f.mp3",
    "bytes": 4704,
    "heard": "台",
-   "check": "mismatch"
+   "check": "exact",
+   "also": [
+    "牌",
+    "排",
+    "白",
+    "俳"
+   ]
   },
   "d57c4118a7_m": {
    "file": "d57c4118a7_m.mp3",
@@ -8875,8 +9515,14 @@
   "617a9c3f51_f": {
    "file": "617a9c3f51_f.mp3",
    "bytes": 4032,
-   "heard": "女",
-   "check": "mismatch"
+   "heard": "鱼",
+   "check": "exact",
+   "also": [
+    "于",
+    "余",
+    "虞",
+    "渝"
+   ]
   },
   "617a9c3f51_m": {
    "file": "617a9c3f51_m.mp3",
@@ -8918,7 +9564,7 @@
    "file": "ddd5d19d19_m.mp3",
    "bytes": 5472,
    "heard": "杰",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "626406a05c_f": {
    "file": "626406a05c_f.mp3",
@@ -8935,14 +9581,26 @@
   "c0121956cb_f": {
    "file": "c0121956cb_f.mp3",
    "bytes": 4224,
-   "heard": "玉子",
-   "check": "mismatch"
+   "heard": "日子",
+   "check": "exact",
+   "also": [
+    "谷子",
+    "椅子",
+    "玉子",
+    "与子"
+   ]
   },
   "c0121956cb_m": {
    "file": "c0121956cb_m.mp3",
    "bytes": 4416,
-   "heard": "柿子",
-   "check": "mismatch"
+   "heard": "椅子",
+   "check": "exact",
+   "also": [
+    "日子",
+    "一子",
+    "玉子",
+    "与子"
+   ]
   },
   "e7621ab167_f": {
    "file": "e7621ab167_f.mp3",
@@ -8964,9 +9622,15 @@
   },
   "1e5159470b_m": {
    "file": "1e5159470b_m.mp3",
-   "bytes": 4032,
+   "bytes": 5856,
    "heard": "成",
-   "check": "mismatch"
+   "check": "sounds-same",
+   "also": [
+    "曾",
+    "程",
+    "盛",
+    "城"
+   ]
   },
   "a26039545b_f": {
    "file": "a26039545b_f.mp3",
@@ -9020,13 +9684,19 @@
    "file": "6733f7a919_f.mp3",
    "bytes": 3744,
    "heard": "B",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "6733f7a919_m": {
    "file": "6733f7a919_m.mp3",
    "bytes": 3744,
-   "heard": "鼻子",
-   "check": "mismatch"
+   "heard": "比",
+   "check": "exact",
+   "also": [
+    "笔",
+    "鼻",
+    "B",
+    "彼"
+   ]
   },
   "7f0f754c98_f": {
    "file": "7f0f754c98_f.mp3",
@@ -9068,13 +9738,13 @@
    "file": "e7ad5c4b6e_f.mp3",
    "bytes": 6144,
    "heard": "墓地",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "e7ad5c4b6e_m": {
    "file": "e7ad5c4b6e_m.mp3",
    "bytes": 4416,
    "heard": "墓地",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "d26ab80e50_f": {
    "file": "d26ab80e50_f.mp3",
@@ -9176,13 +9846,13 @@
    "file": "fc74b4707e_f.mp3",
    "bytes": 5184,
    "heard": "刘",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "fc74b4707e_m": {
    "file": "fc74b4707e_m.mp3",
    "bytes": 5472,
    "heard": "刘",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "0ec8b0a0dc_f": {
    "file": "0ec8b0a0dc_f.mp3",
@@ -9212,7 +9882,7 @@
    "file": "4605b7cbb9_f.mp3",
    "bytes": 3936,
    "heard": "痒",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "4605b7cbb9_m": {
    "file": "4605b7cbb9_m.mp3",
@@ -9254,7 +9924,13 @@
    "file": "3645812f4c_m.mp3",
    "bytes": 4704,
    "heard": "电",
-   "check": "mismatch"
+   "check": "sounds-same",
+   "also": [
+    "店",
+    "变",
+    "便",
+    "垫"
+   ]
   },
   "4448513e51_f": {
    "file": "4448513e51_f.mp3",
@@ -9416,13 +10092,13 @@
    "file": "adb1af478e_f.mp3",
    "bytes": 4416,
    "heard": "吉",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "adb1af478e_m": {
    "file": "adb1af478e_m.mp3",
    "bytes": 3552,
    "heard": "吉",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "2a15aac490_f": {
    "file": "2a15aac490_f.mp3",
@@ -9464,13 +10140,25 @@
    "file": "3bff7cc0b7_f.mp3",
    "bytes": 4032,
    "heard": "家",
-   "check": "mismatch"
+   "check": "exact",
+   "also": [
+    "解",
+    "借",
+    "价",
+    "介"
+   ]
   },
   "3bff7cc0b7_m": {
    "file": "3bff7cc0b7_m.mp3",
    "bytes": 4416,
    "heard": "家",
-   "check": "mismatch"
+   "check": "exact",
+   "also": [
+    "解",
+    "借",
+    "姐",
+    "价"
+   ]
   },
   "7cfd0a583b_f": {
    "file": "7cfd0a583b_f.mp3",
@@ -9536,13 +10224,25 @@
    "file": "d11f7ac270_f.mp3",
    "bytes": 4896,
    "heard": "呵",
-   "check": "mismatch"
+   "check": "exact",
+   "also": [
+    "柯",
+    "科",
+    "珂",
+    "磕"
+   ]
   },
   "d11f7ac270_m": {
    "file": "d11f7ac270_m.mp3",
    "bytes": 4224,
    "heard": "呵",
-   "check": "mismatch"
+   "check": "exact",
+   "also": [
+    "柯",
+    "科",
+    "歌",
+    "可"
+   ]
   },
   "24daf71649_f": {
    "file": "24daf71649_f.mp3",
@@ -9601,8 +10301,14 @@
   "dac992832b_m": {
    "file": "dac992832b_m.mp3",
    "bytes": 5472,
-   "heard": "解",
-   "check": "mismatch"
+   "heard": "纸",
+   "check": "exact",
+   "also": [
+    "指",
+    "杰",
+    "结",
+    "截"
+   ]
   },
   "9f54645e30_f": {
    "file": "9f54645e30_f.mp3",
@@ -9632,19 +10338,31 @@
    "file": "b6b8508603_f.mp3",
    "bytes": 6144,
    "heard": "吉",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "b6b8508603_m": {
    "file": "b6b8508603_m.mp3",
    "bytes": 3744,
-   "heard": "金",
-   "check": "mismatch"
+   "heard": "吉",
+   "check": "exact",
+   "also": [
+    "即",
+    "急",
+    "辑",
+    "集"
+   ]
   },
   "6f20880c56_f": {
    "file": "6f20880c56_f.mp3",
    "bytes": 5376,
-   "heard": "康",
-   "check": "mismatch"
+   "heard": "疼",
+   "check": "exact",
+   "also": [
+    "藤",
+    "滕",
+    "腾",
+    "桶"
+   ]
   },
   "6f20880c56_m": {
    "file": "6f20880c56_m.mp3",
@@ -9745,8 +10463,14 @@
   "983dfd7978_m": {
    "file": "983dfd7978_m.mp3",
    "bytes": 4032,
-   "heard": "PN",
-   "check": "mismatch"
+   "heard": "PM",
+   "check": "sounds-same",
+   "also": [
+    "片",
+    "天",
+    "PN",
+    "偏"
+   ]
   },
   "d8fdd2f49a_f": {
    "file": "d8fdd2f49a_f.mp3",
@@ -9830,7 +10554,13 @@
    "file": "dbf45dddc2_m.mp3",
    "bytes": 3936,
    "heard": "间",
-   "check": "mismatch"
+   "check": "sounds-same",
+   "also": [
+    "肩",
+    "浅",
+    "煎",
+    "奸"
+   ]
   },
   "08ae6288e8_f": {
    "file": "08ae6288e8_f.mp3",
@@ -9913,8 +10643,14 @@
   "81ed49cf7d_m": {
    "file": "81ed49cf7d_m.mp3",
    "bytes": 3744,
-   "heard": "精",
-   "check": "mismatch"
+   "heard": "清",
+   "check": "exact",
+   "also": [
+    "青",
+    "轻",
+    "请",
+    "卿"
+   ]
   },
   "c59dd6a7b9_f": {
    "file": "c59dd6a7b9_f.mp3",
@@ -9972,9 +10708,15 @@
   },
   "310589fa56_m": {
    "file": "310589fa56_m.mp3",
-   "bytes": 4032,
-   "heard": "tree",
-   "check": "mismatch"
+   "bytes": 4512,
+   "heard": "追",
+   "check": "exact",
+   "also": [
+    "锥",
+    "吹",
+    "衰",
+    "崔"
+   ]
   },
   "d1731a1a75_f": {
    "file": "d1731a1a75_f.mp3",
@@ -10016,13 +10758,25 @@
    "file": "30f172e348_f.mp3",
    "bytes": 5184,
    "heard": "多吗",
-   "check": "mismatch"
+   "check": "exact",
+   "also": [
+    "多么",
+    "多嘛",
+    "多玛",
+    "播吗"
+   ]
   },
   "30f172e348_m": {
    "file": "30f172e348_m.mp3",
    "bytes": 4032,
    "heard": "多吗",
-   "check": "mismatch"
+   "check": "exact",
+   "also": [
+    "多玛",
+    "多么",
+    "落马",
+    "多码"
+   ]
   },
   "efa376e00e_f": {
    "file": "efa376e00e_f.mp3",
@@ -10104,9 +10858,15 @@
   },
   "2a0c64038d_m": {
    "file": "2a0c64038d_m.mp3",
-   "bytes": 4512,
-   "heard": "学系",
-   "check": "mismatch"
+   "bytes": 4992,
+   "heard": "实际",
+   "check": "exact",
+   "also": [
+    "10计",
+    "时计",
+    "识记",
+    "史记"
+   ]
   },
   "4b8bb353c7_f": {
    "file": "4b8bb353c7_f.mp3",
@@ -10224,9 +10984,15 @@
   },
   "7dab15773a_m": {
    "file": "7dab15773a_m.mp3",
-   "bytes": 3744,
-   "heard": "time",
-   "check": "mismatch"
+   "bytes": 4512,
+   "heard": "喊",
+   "check": "exact",
+   "also": [
+    "汉",
+    "罕",
+    "汗",
+    "反"
+   ]
   },
   "b1fca9310c_f": {
    "file": "b1fca9310c_f.mp3",
@@ -10304,7 +11070,7 @@
    "file": "2be4a7c3d3_f.mp3",
    "bytes": 4512,
    "heard": "畜生",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "2be4a7c3d3_m": {
    "file": "2be4a7c3d3_m.mp3",
@@ -10339,8 +11105,9 @@
   "d599bc5f6e_f": {
    "file": "d599bc5f6e_f.mp3",
    "bytes": 5664,
-   "heard": "打印",
-   "check": "mismatch"
+   "heard": "答应",
+   "check": "exact",
+   "also": []
   },
   "d599bc5f6e_m": {
    "file": "d599bc5f6e_m.mp3",
@@ -10447,8 +11214,14 @@
   "a12c2a5cc3_f": {
    "file": "a12c2a5cc3_f.mp3",
    "bytes": 5856,
-   "heard": "早秋",
-   "check": "mismatch"
+   "heard": "早就",
+   "check": "exact",
+   "also": [
+    "造就",
+    "找舅",
+    "找旧",
+    "找就"
+   ]
   },
   "a12c2a5cc3_m": {
    "file": "a12c2a5cc3_m.mp3",
@@ -10532,13 +11305,19 @@
    "file": "878887b384_f.mp3",
    "bytes": 5184,
    "heard": "菊",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "878887b384_m": {
    "file": "878887b384_m.mp3",
-   "bytes": 4032,
-   "heard": "鸡",
-   "check": "mismatch"
+   "bytes": 6432,
+   "heard": "菊",
+   "check": "sounds-same",
+   "also": [
+    "局",
+    "莒",
+    "橘",
+    "桔"
+   ]
   },
   "7c4515e60e_f": {
    "file": "7c4515e60e_f.mp3",
@@ -10562,7 +11341,13 @@
    "file": "89835e5e4d_m.mp3",
    "bytes": 5184,
    "heard": "猪",
-   "check": "mismatch"
+   "check": "exact",
+   "also": [
+    "租",
+    "朱",
+    "珠",
+    "诸"
+   ]
   },
   "2e52228b45_f": {
    "file": "2e52228b45_f.mp3",
@@ -10736,13 +11521,25 @@
    "file": "b4e940f288_f.mp3",
    "bytes": 4704,
    "heard": "gui",
-   "check": "mismatch"
+   "check": "exact",
+   "also": [
+    "故意",
+    "顾意",
+    "故一",
+    "顾义"
+   ]
   },
   "b4e940f288_m": {
    "file": "b4e940f288_m.mp3",
    "bytes": 4416,
    "heard": "gui",
-   "check": "mismatch"
+   "check": "exact",
+   "also": [
+    "故意",
+    "顾意",
+    "故一",
+    "顾义"
+   ]
   },
   "a7393fa9ae_f": {
    "file": "a7393fa9ae_f.mp3",
@@ -10778,7 +11575,13 @@
    "file": "251a654784_m.mp3",
    "bytes": 4704,
    "heard": "放星",
-   "check": "mismatch"
+   "check": "exact",
+   "also": [
+    "放心",
+    "放兴",
+    "方兴",
+    "放新"
+   ]
   },
   "dcf0585e39_f": {
    "file": "dcf0585e39_f.mp3",
@@ -10796,13 +11599,13 @@
    "file": "e5256af893_f.mp3",
    "bytes": 5376,
    "heard": "虎",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "e5256af893_m": {
    "file": "e5256af893_m.mp3",
    "bytes": 4032,
    "heard": "和",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "957cfc8110_f": {
    "file": "957cfc8110_f.mp3",
@@ -10820,13 +11623,13 @@
    "file": "3b72bde4da_f.mp3",
    "bytes": 4416,
    "heard": "苑",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "3b72bde4da_m": {
    "file": "3b72bde4da_m.mp3",
    "bytes": 5184,
    "heard": "苑",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "3d6718d933_f": {
    "file": "3d6718d933_f.mp3",
@@ -11030,7 +11833,13 @@
    "file": "d6d13bcc0e_m.mp3",
    "bytes": 3936,
    "heard": "皮",
-   "check": "mismatch"
+   "check": "exact",
+   "also": [
+    "提",
+    "题",
+    "脾",
+    "啤"
+   ]
   },
   "90220cf651_f": {
    "file": "90220cf651_f.mp3",
@@ -11191,8 +12000,9 @@
   "e1155101a5_f": {
    "file": "e1155101a5_f.mp3",
    "bytes": 5184,
-   "heard": "正确",
-   "check": "mismatch"
+   "heard": "准确",
+   "check": "exact",
+   "also": []
   },
   "e1155101a5_m": {
    "file": "e1155101a5_m.mp3",
@@ -11432,7 +12242,7 @@
    "file": "0e1bd47c1a_f.mp3",
    "bytes": 4032,
    "heard": "鼠",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "0e1bd47c1a_m": {
    "file": "0e1bd47c1a_m.mp3",
@@ -11552,25 +12362,37 @@
    "file": "25ff545f55_f.mp3",
    "bytes": 4416,
    "heard": "1",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "25ff545f55_m": {
    "file": "25ff545f55_m.mp3",
    "bytes": 3456,
    "heard": "1",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "76c8c0aa9e_f": {
    "file": "76c8c0aa9e_f.mp3",
    "bytes": 5184,
-   "heard": "的话",
-   "check": "mismatch"
+   "heard": "对话",
+   "check": "exact",
+   "also": [
+    "对华",
+    "对划",
+    "对画",
+    "对化"
+   ]
   },
   "76c8c0aa9e_m": {
    "file": "76c8c0aa9e_m.mp3",
    "bytes": 4704,
-   "heard": "笔画",
-   "check": "mismatch"
+   "heard": "对话",
+   "check": "exact",
+   "also": [
+    "对华",
+    "对划",
+    "对画",
+    "对化"
+   ]
   },
   "9ce16b85fd_f": {
    "file": "9ce16b85fd_f.mp3",
@@ -11611,8 +12433,13 @@
   "32f1e4be8f_f": {
    "file": "32f1e4be8f_f.mp3",
    "bytes": 6144,
-   "heard": "今年",
-   "check": "mismatch"
+   "heard": "青年",
+   "check": "exact",
+   "also": [
+    "清廉",
+    "青莲",
+    "清年"
+   ]
   },
   "32f1e4be8f_m": {
    "file": "32f1e4be8f_m.mp3",
@@ -11797,8 +12624,14 @@
   "ee902b5eb6_m": {
    "file": "ee902b5eb6_m.mp3",
    "bytes": 4416,
-   "heard": "中学",
-   "check": "mismatch"
+   "heard": "重视",
+   "check": "exact",
+   "also": [
+    "中式",
+    "重试",
+    "中视",
+    "重拾"
+   ]
   },
   "89a32d1562_f": {
    "file": "89a32d1562_f.mp3",
@@ -11833,8 +12666,14 @@
   "4dc73f47be_m": {
    "file": "4dc73f47be_m.mp3",
    "bytes": 5376,
-   "heard": "届时",
-   "check": "mismatch"
+   "heard": "这时",
+   "check": "exact",
+   "also": [
+    "着实",
+    "这什",
+    "这10",
+    "这实"
+   ]
   },
   "660a9f53a1_f": {
    "file": "660a9f53a1_f.mp3",
@@ -11864,7 +12703,13 @@
    "file": "9d5e185ed4_f.mp3",
    "bytes": 4896,
    "heard": "信",
-   "check": "mismatch"
+   "check": "exact",
+   "also": [
+    "性",
+    "兴",
+    "姓",
+    "杏"
+   ]
   },
   "9d5e185ed4_m": {
    "file": "9d5e185ed4_m.mp3",
@@ -12080,13 +12925,25 @@
    "file": "2c03427ff0_f.mp3",
    "bytes": 4704,
    "heard": "应",
-   "check": "mismatch"
+   "check": "exact",
+   "also": [
+    "因",
+    "英",
+    "阴",
+    "音"
+   ]
   },
   "2c03427ff0_m": {
    "file": "2c03427ff0_m.mp3",
-   "bytes": 3456,
+   "bytes": 4224,
    "heard": "应",
-   "check": "mismatch"
+   "check": "exact",
+   "also": [
+    "英",
+    "因",
+    "阴",
+    "音"
+   ]
   },
   "03697607c1_f": {
    "file": "03697607c1_f.mp3",
@@ -12104,7 +12961,13 @@
    "file": "1f13769e10_f.mp3",
    "bytes": 6816,
    "heard": "品尝",
-   "check": "mismatch"
+   "check": "exact",
+   "also": [
+    "平常",
+    "平场",
+    "冯长",
+    "平长"
+   ]
   },
   "1f13769e10_m": {
    "file": "1f13769e10_m.mp3",
@@ -12499,14 +13362,23 @@
   "d2726ac104_f": {
    "file": "d2726ac104_f.mp3",
    "bytes": 5472,
-   "heard": "多元",
-   "check": "mismatch"
+   "heard": "多云",
+   "check": "exact",
+   "also": [
+    "多员",
+    "都匀"
+   ]
   },
   "d2726ac104_m": {
    "file": "d2726ac104_m.mp3",
    "bytes": 4512,
-   "heard": "多元",
-   "check": "mismatch"
+   "heard": "多云",
+   "check": "exact",
+   "also": [
+    "多员",
+    "都匀",
+    "多元"
+   ]
   },
   "fc2baa6b83_f": {
    "file": "fc2baa6b83_f.mp3",
@@ -12524,13 +13396,13 @@
    "file": "eda09f9d0d_f.mp3",
    "bytes": 6624,
    "heard": "栗子",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "eda09f9d0d_m": {
    "file": "eda09f9d0d_m.mp3",
    "bytes": 4416,
    "heard": "栗子",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "cb53ce9037_f": {
    "file": "cb53ce9037_f.mp3",
@@ -12596,7 +13468,13 @@
    "file": "149b34f6e6_f.mp3",
    "bytes": 4896,
    "heard": "小树",
-   "check": "mismatch"
+   "check": "exact",
+   "also": [
+    "小数",
+    "少数",
+    "手术",
+    "小叔"
+   ]
   },
   "149b34f6e6_m": {
    "file": "149b34f6e6_m.mp3",
@@ -12750,9 +13628,15 @@
   },
   "d898fa074d_f": {
    "file": "d898fa074d_f.mp3",
-   "bytes": 6336,
-   "heard": "立刻",
-   "check": "mismatch"
+   "bytes": 7296,
+   "heard": "旅客",
+   "check": "exact",
+   "also": [
+    "吕克",
+    "吕可",
+    "绿可",
+    "吕客"
+   ]
   },
   "d898fa074d_m": {
    "file": "d898fa074d_m.mp3",
@@ -12824,13 +13708,20 @@
    "file": "9ea86b440f_f.mp3",
    "bytes": 5184,
    "heard": "学习",
-   "check": "mismatch"
+   "check": "exact",
+   "also": [
+    "实习"
+   ]
   },
   "9ea86b440f_m": {
    "file": "9ea86b440f_m.mp3",
    "bytes": 7104,
    "heard": "学习",
-   "check": "mismatch"
+   "check": "exact",
+   "also": [
+    "实习",
+    "10席"
+   ]
   },
   "5f627a8b15_f": {
    "file": "5f627a8b15_f.mp3",
@@ -13147,8 +14038,12 @@
   "9d30a11d0e_f": {
    "file": "9d30a11d0e_f.mp3",
    "bytes": 4224,
-   "heard": "出演",
-   "check": "mismatch"
+   "heard": "出院",
+   "check": "exact",
+   "also": [
+    "书院",
+    "初院"
+   ]
   },
   "9d30a11d0e_m": {
    "file": "9d30a11d0e_m.mp3",
@@ -13393,8 +14288,14 @@
   "d7bc2ff327_m": {
    "file": "d7bc2ff327_m.mp3",
    "bytes": 4032,
-   "heard": "秦",
-   "check": "mismatch"
+   "heard": "行",
+   "check": "exact",
+   "also": [
+    "请",
+    "情",
+    "停",
+    "晴"
+   ]
   },
   "3341584c37_f": {
    "file": "3341584c37_f.mp3",
@@ -13423,14 +14324,26 @@
   "d8ea513996_f": {
    "file": "d8ea513996_f.mp3",
    "bytes": 4032,
-   "heard": "李涛",
-   "check": "mismatch"
+   "heard": "里头",
+   "check": "exact",
+   "also": [
+    "李涛",
+    "理头",
+    "里通",
+    "李通"
+   ]
   },
   "d8ea513996_m": {
    "file": "d8ea513996_m.mp3",
    "bytes": 4416,
-   "heard": "李涛",
-   "check": "mismatch"
+   "heard": "里头",
+   "check": "exact",
+   "also": [
+    "理头",
+    "李头",
+    "你头",
+    "你投"
+   ]
   },
   "1a4401569e_f": {
    "file": "1a4401569e_f.mp3",
@@ -13447,8 +14360,11 @@
   "96f2d94ed6_f": {
    "file": "96f2d94ed6_f.mp3",
    "bytes": 5664,
-   "heard": "预报",
-   "check": "mismatch"
+   "heard": "日报",
+   "check": "exact",
+   "also": [
+    "预报"
+   ]
   },
   "96f2d94ed6_m": {
    "file": "96f2d94ed6_m.mp3",
@@ -13717,8 +14633,12 @@
   "848c8e6e08_m": {
    "file": "848c8e6e08_m.mp3",
    "bytes": 2976,
-   "heard": "4点",
-   "check": "mismatch"
+   "heard": "字典",
+   "check": "exact",
+   "also": [
+    "4点",
+    "自点"
+   ]
   },
   "b98982320d_f": {
    "file": "b98982320d_f.mp3",
@@ -13765,8 +14685,14 @@
   "d77e842065_m": {
    "file": "d77e842065_m.mp3",
    "bytes": 5856,
-   "heard": "临夏",
-   "check": "mismatch"
+   "heard": "零下",
+   "check": "exact",
+   "also": [
+    "令下",
+    "岭下",
+    "宁夏",
+    "临夏"
+   ]
   },
   "889914f73c_f": {
    "file": "889914f73c_f.mp3",
@@ -13916,13 +14842,13 @@
    "file": "2a5715f6e6_f.mp3",
    "bytes": 4416,
    "heard": "琉璃",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "2a5715f6e6_m": {
    "file": "2a5715f6e6_m.mp3",
    "bytes": 4416,
    "heard": "琉璃",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "7f59758775_f": {
    "file": "7f59758775_f.mp3",
@@ -13970,7 +14896,11 @@
    "file": "4b7805838e_m.mp3",
    "bytes": 4896,
    "heard": "南京",
-   "check": "mismatch"
+   "check": "exact",
+   "also": [
+    "难听",
+    "蓝鲸"
+   ]
   },
   "b73493d2a2_f": {
    "file": "b73493d2a2_f.mp3",
@@ -14006,19 +14936,37 @@
    "file": "3d1094b485_m.mp3",
    "bytes": 4992,
    "heard": "减年",
-   "check": "mismatch"
+   "check": "exact",
+   "also": [
+    "前年",
+    "简年",
+    "检年",
+    "剪黏"
+   ]
   },
   "2b68ea9537_f": {
    "file": "2b68ea9537_f.mp3",
    "bytes": 3264,
    "heard": "10点",
-   "check": "mismatch"
+   "check": "exact",
+   "also": [
+    "词典",
+    "辞典",
+    "十点",
+    "时点"
+   ]
   },
   "2b68ea9537_m": {
    "file": "2b68ea9537_m.mp3",
    "bytes": 5856,
    "heard": "10点",
-   "check": "mismatch"
+   "check": "exact",
+   "also": [
+    "词典",
+    "十点",
+    "辞典",
+    "时点"
+   ]
   },
   "97d1eb28d9_f": {
    "file": "97d1eb28d9_f.mp3",
@@ -14059,8 +15007,14 @@
   "4bbc5e79f8_f": {
    "file": "4bbc5e79f8_f.mp3",
    "bytes": 6336,
-   "heard": "2块",
-   "check": "mismatch"
+   "heard": "凉快",
+   "check": "exact",
+   "also": [
+    "2块",
+    "两会",
+    "量块",
+    "梁会"
+   ]
   },
   "4bbc5e79f8_m": {
    "file": "4bbc5e79f8_m.mp3",
@@ -14072,7 +15026,13 @@
    "file": "e7d87194d8_f.mp3",
    "bytes": 4704,
    "heard": "五岁",
-   "check": "mismatch"
+   "check": "sounds-same",
+   "also": [
+    "补税",
+    "武说",
+    "五说",
+    "不说"
+   ]
   },
   "e7d87194d8_m": {
    "file": "e7d87194d8_m.mp3",
@@ -14096,13 +15056,25 @@
    "file": "b6b739c7c4_f.mp3",
    "bytes": 5376,
    "heard": "英杰",
-   "check": "mismatch"
+   "check": "exact",
+   "also": [
+    "音节",
+    "应节",
+    "尹杰",
+    "硬结"
+   ]
   },
   "b6b739c7c4_m": {
    "file": "b6b739c7c4_m.mp3",
-   "bytes": 6144,
+   "bytes": 7104,
    "heard": "英杰",
-   "check": "mismatch"
+   "check": "exact",
+   "also": [
+    "音节",
+    "英姐",
+    "应价",
+    "应节"
+   ]
   },
   "636d774a4e_f": {
    "file": "636d774a4e_f.mp3",
@@ -14149,20 +15121,38 @@
   "f4de24738b_m": {
    "file": "f4de24738b_m.mp3",
    "bytes": 5952,
-   "heard": "明天",
-   "check": "mismatch"
+   "heard": "阴天",
+   "check": "exact",
+   "also": [
+    "今天",
+    "应天",
+    "因天",
+    "尹天"
+   ]
   },
   "1e6032d411_f": {
    "file": "1e6032d411_f.mp3",
    "bytes": 4704,
-   "heard": "C1",
-   "check": "mismatch"
+   "heard": "西医",
+   "check": "exact",
+   "also": [
+    "711",
+    "71",
+    "C1",
+    "西一"
+   ]
   },
   "1e6032d411_m": {
    "file": "1e6032d411_m.mp3",
-   "bytes": 4896,
-   "heard": "C1",
-   "check": "mismatch"
+   "bytes": 7584,
+   "heard": "新衣",
+   "check": "sounds-same",
+   "also": [
+    "C1",
+    "新一",
+    "11",
+    "洗衣"
+   ]
   },
   "7544a9467a_f": {
    "file": "7544a9467a_f.mp3",
@@ -14257,8 +15247,14 @@
   "fb38d87df8_m": {
    "file": "fb38d87df8_m.mp3",
    "bytes": 4992,
-   "heard": "生子",
-   "check": "mismatch"
+   "heard": "香慈",
+   "check": "exact",
+   "also": [
+    "生词",
+    "相辞",
+    "湘瓷",
+    "生祠"
+   ]
   },
   "a031e3158d_f": {
    "file": "a031e3158d_f.mp3",
@@ -14268,9 +15264,15 @@
   },
   "a031e3158d_m": {
    "file": "a031e3158d_m.mp3",
-   "bytes": 3744,
-   "heard": "call",
-   "check": "mismatch"
+   "bytes": 4416,
+   "heard": "花儿",
+   "check": "exact",
+   "also": [
+    "画儿",
+    "话儿",
+    "华尔",
+    "华儿"
+   ]
   },
   "a921918670_f": {
    "file": "a921918670_f.mp3",
@@ -14396,13 +15398,25 @@
    "file": "f747ce0136_f.mp3",
    "bytes": 3456,
    "heard": "10",
-   "check": "mismatch"
+   "check": "exact",
+   "also": [
+    "使",
+    "时",
+    "徐",
+    "屎"
+   ]
   },
   "f747ce0136_m": {
    "file": "f747ce0136_m.mp3",
    "bytes": 4032,
    "heard": "10",
-   "check": "mismatch"
+   "check": "exact",
+   "also": [
+    "时",
+    "石",
+    "十",
+    "什"
+   ]
   },
   "6f8ea29db6_f": {
    "file": "6f8ea29db6_f.mp3",
@@ -14443,20 +15457,26 @@
   "fcef6f761b_f": {
    "file": "fcef6f761b_f.mp3",
    "bytes": 5376,
-   "heard": "说",
-   "check": "mismatch"
+   "heard": "锁",
+   "check": "exact",
+   "also": [
+    "索",
+    "所",
+    "所以",
+    "琐"
+   ]
   },
   "fcef6f761b_m": {
    "file": "fcef6f761b_m.mp3",
    "bytes": 5184,
    "heard": "锁",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "0c14adef1c_f": {
    "file": "0c14adef1c_f.mp3",
    "bytes": 5952,
    "heard": "4",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "0c14adef1c_m": {
    "file": "0c14adef1c_m.mp3",
@@ -14569,14 +15589,20 @@
   "265f9acd9d_m": {
    "file": "265f9acd9d_m.mp3",
    "bytes": 3936,
-   "heard": "星",
-   "check": "mismatch"
+   "heard": "先",
+   "check": "sounds-same",
+   "also": [
+    "仙",
+    "鲜",
+    "新",
+    "间"
+   ]
   },
   "219a4ac83d_f": {
    "file": "219a4ac83d_f.mp3",
    "bytes": 4032,
    "heard": "1",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "219a4ac83d_m": {
    "file": "219a4ac83d_m.mp3",
@@ -14612,7 +15638,11 @@
    "file": "60d6eaf0dc_f.mp3",
    "bytes": 5376,
    "heard": "那",
-   "check": "mismatch"
+   "check": "exact",
+   "also": [
+    "内",
+    "哪"
+   ]
   },
   "60d6eaf0dc_m": {
    "file": "60d6eaf0dc_m.mp3",
@@ -14732,25 +15762,49 @@
    "file": "f0cfb99be4_f.mp3",
    "bytes": 3264,
    "heard": "Show",
-   "check": "mismatch"
+   "check": "exact",
+   "also": [
+    "寿",
+    "受",
+    "售",
+    "瘦"
+   ]
   },
   "f0cfb99be4_m": {
    "file": "f0cfb99be4_m.mp3",
    "bytes": 5472,
-   "heard": "Show",
-   "check": "mismatch"
+   "heard": "寿",
+   "check": "exact",
+   "also": [
+    "Show",
+    "受",
+    "售",
+    "瘦"
+   ]
   },
   "8b21ee19a6_f": {
    "file": "8b21ee19a6_f.mp3",
-   "bytes": 4416,
-   "heard": "解",
-   "check": "mismatch"
+   "bytes": 3456,
+   "heard": "是",
+   "check": "sounds-same",
+   "also": [
+    "许",
+    "雪",
+    "喜",
+    "洗"
+   ]
   },
   "8b21ee19a6_m": {
    "file": "8b21ee19a6_m.mp3",
-   "bytes": 4032,
+   "bytes": 6336,
    "heard": "雪",
-   "check": "mismatch"
+   "check": "exact",
+   "also": [
+    "写",
+    "是",
+    "血",
+    "使"
+   ]
   },
   "26cff4cdd2_f": {
    "file": "26cff4cdd2_f.mp3",
@@ -14839,8 +15893,9 @@
   "418338cc02_f": {
    "file": "418338cc02_f.mp3",
    "bytes": 6816,
-   "heard": "群攻",
-   "check": "mismatch"
+   "heard": "成功",
+   "check": "exact",
+   "also": []
   },
   "418338cc02_m": {
    "file": "418338cc02_m.mp3",
@@ -14936,13 +15991,19 @@
    "file": "cb0d137302_f.mp3",
    "bytes": 5664,
    "heard": "冠",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "cb0d137302_m": {
    "file": "cb0d137302_m.mp3",
    "bytes": 5184,
    "heard": "滚",
-   "check": "mismatch"
+   "check": "exact",
+   "also": [
+    "管",
+    "丨",
+    "馆",
+    "莞"
+   ]
   },
   "302a7f9e16_f": {
    "file": "302a7f9e16_f.mp3",
@@ -15044,7 +16105,13 @@
    "file": "98f2f52399_f.mp3",
    "bytes": 6624,
    "heard": "程序",
-   "check": "mismatch"
+   "check": "exact",
+   "also": [
+    "城市",
+    "陈旭",
+    "陈序",
+    "晨旭"
+   ]
   },
   "98f2f52399_m": {
    "file": "98f2f52399_m.mp3",
@@ -15164,13 +16231,19 @@
    "file": "3760e657ee_f.mp3",
    "bytes": 4416,
    "heard": "曲",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "3760e657ee_m": {
    "file": "3760e657ee_m.mp3",
    "bytes": 3552,
-   "heard": "切",
-   "check": "mismatch"
+   "heard": "7",
+   "check": "sounds-same",
+   "also": [
+    "七",
+    "去",
+    "期",
+    "鸡"
+   ]
   },
   "c632088363_f": {
    "file": "c632088363_f.mp3",
@@ -15204,9 +16277,15 @@
   },
   "0bd347b781_m": {
    "file": "0bd347b781_m.mp3",
-   "bytes": 5664,
-   "heard": "雪",
-   "check": "mismatch"
+   "bytes": 4704,
+   "heard": "值",
+   "check": "sounds-same",
+   "also": [
+    "执",
+    "直",
+    "职",
+    "植"
+   ]
   },
   "a1fba55d86_f": {
    "file": "a1fba55d86_f.mp3",
@@ -15295,14 +16374,26 @@
   "bfcef440d8_f": {
    "file": "bfcef440d8_f.mp3",
    "bytes": 4896,
-   "heard": "热舞",
-   "check": "mismatch"
+   "heard": "任务",
+   "check": "exact",
+   "also": [
+    "任武",
+    "任五",
+    "任伍",
+    "任舞"
+   ]
   },
   "bfcef440d8_m": {
    "file": "bfcef440d8_m.mp3",
    "bytes": 4224,
-   "heard": "剑舞",
-   "check": "mismatch"
+   "heard": "院务",
+   "check": "exact",
+   "also": [
+    "任务",
+    "艳舞",
+    "缘物",
+    "缘舞"
+   ]
   },
   "cce051b7bb_f": {
    "file": "cce051b7bb_f.mp3",
@@ -15361,20 +16452,26 @@
   "1ed257f7de_m": {
    "file": "1ed257f7de_m.mp3",
    "bytes": 5664,
-   "heard": "圆圆",
-   "check": "mismatch"
+   "heard": "任远",
+   "check": "exact",
+   "also": [
+    "远远",
+    "人远",
+    "仁远",
+    "人员"
+   ]
   },
   "2eef61b72c_f": {
    "file": "2eef61b72c_f.mp3",
    "bytes": 2304,
    "heard": "暗",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "2eef61b72c_m": {
    "file": "2eef61b72c_m.mp3",
    "bytes": 3456,
    "heard": "暗",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "b63dae1479_f": {
    "file": "b63dae1479_f.mp3",
@@ -15440,13 +16537,19 @@
    "file": "ecb8b7eafd_f.mp3",
    "bytes": 5664,
    "heard": "汤",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "ecb8b7eafd_m": {
    "file": "ecb8b7eafd_m.mp3",
    "bytes": 3744,
-   "heard": "香",
-   "check": "mismatch"
+   "heard": "汤",
+   "check": "exact",
+   "also": [
+    "商",
+    "双",
+    "伤",
+    "殇"
+   ]
   },
   "dd3c552283_f": {
    "file": "dd3c552283_f.mp3",
@@ -15536,13 +16639,25 @@
    "file": "ee37c61eb7_f.mp3",
    "bytes": 4416,
    "heard": "Hi",
-   "check": "mismatch"
+   "check": "exact",
+   "also": [
+    "太",
+    "派",
+    "泰",
+    "pie"
+   ]
   },
   "ee37c61eb7_m": {
    "file": "ee37c61eb7_m.mp3",
    "bytes": 4032,
    "heard": "Hi",
-   "check": "mismatch"
+   "check": "exact",
+   "also": [
+    "太",
+    "派",
+    "泰",
+    "钛"
+   ]
   },
   "d6422a15f3_f": {
    "file": "d6422a15f3_f.mp3",
@@ -15553,8 +16668,11 @@
   "d6422a15f3_m": {
    "file": "d6422a15f3_m.mp3",
    "bytes": 5376,
-   "heard": "阿豪",
-   "check": "mismatch"
+   "heard": "好好",
+   "check": "exact",
+   "also": [
+    "好好好"
+   ]
   },
   "9870b7d5b4_f": {
    "file": "9870b7d5b4_f.mp3",
@@ -15595,8 +16713,14 @@
   "a96c08c848_f": {
    "file": "a96c08c848_f.mp3",
    "bytes": 2592,
-   "heard": "新",
-   "check": "mismatch"
+   "heard": "信",
+   "check": "exact",
+   "also": [
+    "性",
+    "兴",
+    "姓",
+    "芯"
+   ]
   },
   "a96c08c848_m": {
    "file": "a96c08c848_m.mp3",
@@ -15656,25 +16780,32 @@
    "file": "f70035e49b_f.mp3",
    "bytes": 5856,
    "heard": "11",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "f70035e49b_m": {
    "file": "f70035e49b_m.mp3",
    "bytes": 4032,
    "heard": "11",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "9f94709824_f": {
    "file": "9f94709824_f.mp3",
    "bytes": 6624,
-   "heard": "付清",
-   "check": "mismatch"
+   "heard": "父亲",
+   "check": "exact",
+   "also": []
   },
   "9f94709824_m": {
    "file": "9f94709824_m.mp3",
    "bytes": 4224,
    "heard": "付清",
-   "check": "mismatch"
+   "check": "exact",
+   "also": [
+    "父亲",
+    "负卿",
+    "付青",
+    "复清"
+   ]
   },
   "9a6c16b146_f": {
    "file": "9a6c16b146_f.mp3",
@@ -15698,7 +16829,13 @@
    "file": "7c532d0128_m.mp3",
    "bytes": 3744,
    "heard": "精",
-   "check": "mismatch"
+   "check": "exact",
+   "also": [
+    "惊",
+    "京",
+    "经",
+    "金"
+   ]
   },
   "d6c5da8ccb_f": {
    "file": "d6c5da8ccb_f.mp3",
@@ -15770,7 +16907,13 @@
    "file": "3e08d9d4d2_m.mp3",
    "bytes": 3264,
    "heard": "你",
-   "check": "mismatch"
+   "check": "sounds-same",
+   "also": [
+    "李",
+    "丽",
+    "Lee",
+    "利"
+   ]
   },
   "09dac49ecd_f": {
    "file": "09dac49ecd_f.mp3",
@@ -15788,13 +16931,13 @@
    "file": "93e7ce6488_f.mp3",
    "bytes": 5664,
    "heard": "谭",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "93e7ce6488_m": {
    "file": "93e7ce6488_m.mp3",
    "bytes": 4032,
    "heard": "谭",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "db434f81a7_f": {
    "file": "db434f81a7_f.mp3",
@@ -15949,14 +17092,26 @@
   "341f6b51f8_m": {
    "file": "341f6b51f8_m.mp3",
    "bytes": 3744,
-   "heard": "猫",
-   "check": "mismatch"
+   "heard": "某",
+   "check": "exact",
+   "also": [
+    "猫",
+    "毛",
+    "缪",
+    "谋"
+   ]
   },
   "7cea982a98_f": {
    "file": "7cea982a98_f.mp3",
-   "bytes": 3552,
+   "bytes": 5184,
    "heard": "车",
-   "check": "mismatch"
+   "check": "exact",
+   "also": [
+    "知",
+    "只",
+    "氏",
+    "支"
+   ]
   },
   "7cea982a98_m": {
    "file": "7cea982a98_m.mp3",
@@ -15968,13 +17123,25 @@
    "file": "544b4a6a51_f.mp3",
    "bytes": 4416,
    "heard": "谁",
-   "check": "mismatch"
+   "check": "exact",
+   "also": [
+    "随",
+    "遂",
+    "隋",
+    "绥"
+   ]
   },
   "544b4a6a51_m": {
    "file": "544b4a6a51_m.mp3",
    "bytes": 3744,
    "heard": "谁",
-   "check": "mismatch"
+   "check": "exact",
+   "also": [
+    "随",
+    "遂",
+    "隋",
+    "水"
+   ]
   },
   "59a4c1f07b_f": {
    "file": "59a4c1f07b_f.mp3",
@@ -16051,8 +17218,14 @@
   "34392c9a2b_f": {
    "file": "34392c9a2b_f.mp3",
    "bytes": 5184,
-   "heard": "银",
-   "check": "mismatch"
+   "heard": "赢",
+   "check": "exact",
+   "also": [
+    "银",
+    "营",
+    "盈",
+    "萤"
+   ]
   },
   "34392c9a2b_m": {
    "file": "34392c9a2b_m.mp3",
@@ -16106,7 +17279,13 @@
    "file": "4a2aebf970_m.mp3",
    "bytes": 4512,
    "heard": "世界",
-   "check": "mismatch"
+   "check": "exact",
+   "also": [
+    "事件",
+    "世间",
+    "市价",
+    "视界"
+   ]
   },
   "5d0c732e47_f": {
    "file": "5d0c732e47_f.mp3",
@@ -16136,13 +17315,13 @@
    "file": "0441488327_f.mp3",
    "bytes": 4224,
    "heard": "鱿鱼",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "0441488327_m": {
    "file": "0441488327_m.mp3",
    "bytes": 5856,
    "heard": "鱿鱼",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "5274796d19_f": {
    "file": "5274796d19_f.mp3",
@@ -16172,7 +17351,7 @@
    "file": "4efb2ae7f2_f.mp3",
    "bytes": 6144,
    "heard": "统一",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "4efb2ae7f2_m": {
    "file": "4efb2ae7f2_m.mp3",
@@ -16218,9 +17397,15 @@
   },
   "7fa699e63d_f": {
    "file": "7fa699e63d_f.mp3",
-   "bytes": 5376,
-   "heard": "生",
-   "check": "mismatch"
+   "bytes": 3456,
+   "heard": "深",
+   "check": "exact",
+   "also": [
+    "身",
+    "申",
+    "参",
+    "伸"
+   ]
   },
   "7fa699e63d_m": {
    "file": "7fa699e63d_m.mp3",
@@ -16244,7 +17429,7 @@
    "file": "0e135b4f2b_f.mp3",
    "bytes": 4032,
    "heard": "玄兽",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "0e135b4f2b_m": {
    "file": "0e135b4f2b_m.mp3",
@@ -16290,15 +17475,27 @@
   },
   "5949014318_f": {
    "file": "5949014318_f.mp3",
-   "bytes": 6144,
-   "heard": "觉得",
-   "check": "mismatch"
+   "bytes": 6336,
+   "heard": "奇的",
+   "check": "exact",
+   "also": [
+    "其德",
+    "值得",
+    "齐德",
+    "其的"
+   ]
   },
   "5949014318_m": {
    "file": "5949014318_m.mp3",
    "bytes": 5856,
-   "heard": "觉得",
-   "check": "mismatch"
+   "heard": "值得",
+   "check": "exact",
+   "also": [
+    "局的",
+    "直的",
+    "值的",
+    "橘的"
+   ]
   },
   "d2f99dc851_f": {
    "file": "d2f99dc851_f.mp3",
@@ -16363,14 +17560,26 @@
   "1202735887_f": {
    "file": "1202735887_f.mp3",
    "bytes": 6624,
-   "heard": "谢谢",
-   "check": "mismatch"
+   "heard": "计时",
+   "check": "exact",
+   "also": [
+    "40",
+    "事实",
+    "适时",
+    "细石"
+   ]
   },
   "1202735887_m": {
    "file": "1202735887_m.mp3",
    "bytes": 4992,
    "heard": "谢谢",
-   "check": "mismatch"
+   "check": "exact",
+   "also": [
+    "事实",
+    "40",
+    "泄泻",
+    "适时"
+   ]
   },
   "1c8f0982dd_f": {
    "file": "1c8f0982dd_f.mp3",
@@ -16430,13 +17639,25 @@
    "file": "4df2ff1dbd_m.mp3",
    "bytes": 3744,
    "heard": "Play",
-   "check": "mismatch"
+   "check": "exact",
+   "also": [
+    "累",
+    "lay",
+    "类",
+    "泪"
+   ]
   },
   "8f398d1752_f": {
    "file": "8f398d1752_f.mp3",
    "bytes": 4992,
-   "heard": "票",
-   "check": "mismatch"
+   "heard": "跳",
+   "check": "exact",
+   "also": [
+    "眺",
+    "票",
+    "跳舞",
+    "漂"
+   ]
   },
   "8f398d1752_m": {
    "file": "8f398d1752_m.mp3",
@@ -16448,13 +17669,13 @@
    "file": "09ec2756f4_f.mp3",
    "bytes": 4992,
    "heard": "9",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "09ec2756f4_m": {
    "file": "09ec2756f4_m.mp3",
    "bytes": 3936,
    "heard": "9",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "79c2ea823a_f": {
    "file": "79c2ea823a_f.mp3",
@@ -16532,7 +17753,7 @@
    "file": "8e04227c3c_f.mp3",
    "bytes": 5472,
    "heard": "假肢",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "8e04227c3c_m": {
    "file": "8e04227c3c_m.mp3",
@@ -16652,13 +17873,13 @@
    "file": "60c711e8b2_f.mp3",
    "bytes": 3264,
    "heard": "赵",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "60c711e8b2_m": {
    "file": "60c711e8b2_m.mp3",
    "bytes": 3936,
    "heard": "赵",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "d9da578383_f": {
    "file": "d9da578383_f.mp3",
@@ -16813,8 +18034,14 @@
   "412360c0ec_m": {
    "file": "412360c0ec_m.mp3",
    "bytes": 6432,
-   "heard": "血河",
-   "check": "mismatch"
+   "heard": "适合",
+   "check": "exact",
+   "also": [
+    "旭和",
+    "血河",
+    "序和",
+    "畜和"
+   ]
   },
   "84ec5938fa_f": {
    "file": "84ec5938fa_f.mp3",
@@ -16988,13 +18215,25 @@
    "file": "694db01a1d_f.mp3",
    "bytes": 6432,
    "heard": "电话",
-   "check": "mismatch"
+   "check": "exact",
+   "also": [
+    "变化",
+    "变画",
+    "便画",
+    "变话"
+   ]
   },
   "694db01a1d_m": {
    "file": "694db01a1d_m.mp3",
    "bytes": 5664,
    "heard": "电话",
-   "check": "mismatch"
+   "check": "exact",
+   "also": [
+    "变化",
+    "变画",
+    "便画",
+    "变话"
+   ]
   },
   "4ae57ef88f_f": {
    "file": "4ae57ef88f_f.mp3",
@@ -17161,8 +18400,14 @@
   "748744d6f7_m": {
    "file": "748744d6f7_m.mp3",
    "bytes": 4416,
-   "heard": "gem",
-   "check": "mismatch"
+   "heard": "讲",
+   "check": "exact",
+   "also": [
+    "John",
+    "囧",
+    "整",
+    "卷"
+   ]
   },
   "4aeecab782_f": {
    "file": "4aeecab782_f.mp3",
@@ -17203,14 +18448,26 @@
   "7ff9c78744_f": {
    "file": "7ff9c78744_f.mp3",
    "bytes": 5856,
-   "heard": "菊",
-   "check": "mismatch"
+   "heard": "值",
+   "check": "exact",
+   "also": [
+    "执",
+    "直",
+    "职",
+    "植"
+   ]
   },
   "7ff9c78744_m": {
    "file": "7ff9c78744_m.mp3",
-   "bytes": 4416,
-   "heard": "杰",
-   "check": "mismatch"
+   "bytes": 5472,
+   "heard": "值",
+   "check": "exact",
+   "also": [
+    "执",
+    "直",
+    "职",
+    "植"
+   ]
   },
   "e80c2c67bd_f": {
    "file": "e80c2c67bd_f.mp3",
@@ -17233,8 +18490,14 @@
   "aa8625c947_m": {
    "file": "aa8625c947_m.mp3",
    "bytes": 5952,
-   "heard": "血液",
-   "check": "mismatch"
+   "heard": "事业",
+   "check": "exact",
+   "also": [
+    "血液",
+    "试射",
+    "是夜",
+    "树叶"
+   ]
   },
   "fe56a2d89c_f": {
    "file": "fe56a2d89c_f.mp3",
@@ -17407,14 +18670,26 @@
   "a49eb91659_f": {
    "file": "a49eb91659_f.mp3",
    "bytes": 3072,
-   "heard": "旭",
-   "check": "mismatch"
+   "heard": "是",
+   "check": "sounds-same",
+   "also": [
+    "市",
+    "视",
+    "事",
+    "拾"
+   ]
   },
   "a49eb91659_m": {
    "file": "a49eb91659_m.mp3",
    "bytes": 3744,
-   "heard": "去",
-   "check": "mismatch"
+   "heard": "是",
+   "check": "sounds-same",
+   "also": [
+    "市",
+    "视",
+    "事",
+    "拾"
+   ]
   },
   "9d7de028b2_f": {
    "file": "9d7de028b2_f.mp3",
@@ -17485,8 +18760,11 @@
   "4d85e2120d_m": {
    "file": "4d85e2120d_m.mp3",
    "bytes": 5184,
-   "heard": "中满",
-   "check": "mismatch"
+   "heard": "充满",
+   "check": "exact",
+   "also": [
+    "春晚"
+   ]
   },
   "035cacf2ce_f": {
    "file": "035cacf2ce_f.mp3",
@@ -17504,13 +18782,13 @@
    "file": "029aa2e57d_f.mp3",
    "bytes": 6144,
    "heard": "钥匙",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "029aa2e57d_m": {
    "file": "029aa2e57d_m.mp3",
    "bytes": 4704,
    "heard": "钥匙",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "bc5584ae87_f": {
    "file": "bc5584ae87_f.mp3",
@@ -17624,13 +18902,13 @@
    "file": "dea7157850_f.mp3",
    "bytes": 4416,
    "heard": "大",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "dea7157850_m": {
    "file": "dea7157850_m.mp3",
    "bytes": 3744,
    "heard": "大",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "978dc8028f_f": {
    "file": "978dc8028f_f.mp3",
@@ -17684,13 +18962,25 @@
    "file": "773882c158_f.mp3",
    "bytes": 5376,
    "heard": "7",
-   "check": "mismatch"
+   "check": "exact",
+   "also": [
+    "七",
+    "期",
+    "妻",
+    "漆"
+   ]
   },
   "773882c158_m": {
    "file": "773882c158_m.mp3",
    "bytes": 3744,
-   "heard": "7",
-   "check": "mismatch"
+   "heard": "鸡",
+   "check": "sounds-same",
+   "also": [
+    "7",
+    "七",
+    "奇",
+    "机"
+   ]
   },
   "b76fba983d_f": {
    "file": "b76fba983d_f.mp3",
@@ -17749,8 +19039,14 @@
   "df7ef8552d_m": {
    "file": "df7ef8552d_m.mp3",
    "bytes": 5184,
-   "heard": "解雇",
-   "check": "mismatch"
+   "heard": "事故",
+   "check": "exact",
+   "also": [
+    "是故",
+    "世故",
+    "解雇",
+    "四顾"
+   ]
   },
   "dc6eb65a68_f": {
    "file": "dc6eb65a68_f.mp3",
@@ -17773,8 +19069,14 @@
   "c7c8ade0b7_m": {
    "file": "c7c8ade0b7_m.mp3",
    "bytes": 5664,
-   "heard": "你好",
-   "check": "mismatch"
+   "heard": "美好",
+   "check": "exact",
+   "also": [
+    "没好",
+    "你好",
+    "买好",
+    "梅好"
+   ]
   },
   "79624fdfab_f": {
    "file": "79624fdfab_f.mp3",
@@ -17876,13 +19178,19 @@
    "file": "63852733ef_f.mp3",
    "bytes": 4896,
    "heard": "沛",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "63852733ef_m": {
    "file": "63852733ef_m.mp3",
    "bytes": 4032,
-   "heard": "p",
-   "check": "mismatch"
+   "heard": "呸",
+   "check": "exact",
+   "also": [
+    "嘿",
+    "沛",
+    "佩",
+    "配"
+   ]
   },
   "23f50d93a0_f": {
    "file": "23f50d93a0_f.mp3",
@@ -17984,19 +19292,29 @@
    "file": "973cf558cb_f.mp3",
    "bytes": 4032,
    "heard": "史记",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "973cf558cb_m": {
    "file": "973cf558cb_m.mp3",
    "bytes": 4896,
-   "heard": "世界",
-   "check": "mismatch"
+   "heard": "世纪",
+   "check": "exact",
+   "also": [
+    "事迹",
+    "设计",
+    "史记",
+    "试剂"
+   ]
   },
   "6be92b0d04_f": {
    "file": "6be92b0d04_f.mp3",
    "bytes": 6144,
-   "heard": "剧照",
-   "check": "mismatch"
+   "heard": "制造",
+   "check": "exact",
+   "also": [
+    "剧照",
+    "智造"
+   ]
   },
   "6be92b0d04_m": {
    "file": "6be92b0d04_m.mp3",
@@ -18032,13 +19350,19 @@
    "file": "1b044ba752_f.mp3",
    "bytes": 4704,
    "heard": "郑",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "1b044ba752_m": {
    "file": "1b044ba752_m.mp3",
    "bytes": 3744,
-   "heard": "gem",
-   "check": "mismatch"
+   "heard": "郑",
+   "check": "exact",
+   "also": [
+    "正",
+    "证",
+    "政",
+    "症"
+   ]
   },
   "e8ba8edec9_f": {
    "file": "e8ba8edec9_f.mp3",
@@ -18092,13 +19416,19 @@
    "file": "d3a1fe1a8b_f.mp3",
    "bytes": 4416,
    "heard": "炖",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "d3a1fe1a8b_m": {
    "file": "d3a1fe1a8b_m.mp3",
    "bytes": 4416,
-   "heard": "笨",
-   "check": "mismatch"
+   "heard": "炖",
+   "check": "exact",
+   "also": [
+    "盾",
+    "钝",
+    "顿",
+    "论"
+   ]
   },
   "31996f06f7_f": {
    "file": "31996f06f7_f.mp3",
@@ -18224,13 +19554,13 @@
    "file": "4bce872e98_f.mp3",
    "bytes": 3264,
    "heard": "盛",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "4bce872e98_m": {
    "file": "4bce872e98_m.mp3",
    "bytes": 3552,
    "heard": "盛",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "96ac5f89e5_f": {
    "file": "96ac5f89e5_f.mp3",
@@ -18248,13 +19578,13 @@
    "file": "01b683a8f2_f.mp3",
    "bytes": 3744,
    "heard": "呀",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "01b683a8f2_m": {
    "file": "01b683a8f2_m.mp3",
    "bytes": 3456,
    "heard": "呀",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "30cfef9ea6_f": {
    "file": "30cfef9ea6_f.mp3",
@@ -18272,7 +19602,7 @@
    "file": "090c8d6159_f.mp3",
    "bytes": 3744,
    "heard": "剑",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "090c8d6159_m": {
    "file": "090c8d6159_m.mp3",
@@ -18355,8 +19685,14 @@
   "c38daf161c_f": {
    "file": "c38daf161c_f.mp3",
    "bytes": 4032,
-   "heard": "许可",
-   "check": "mismatch"
+   "heard": "时刻",
+   "check": "exact",
+   "also": [
+    "捷克",
+    "10克",
+    "许可",
+    "叶克"
+   ]
   },
   "c38daf161c_m": {
    "file": "c38daf161c_m.mp3",
@@ -18517,8 +19853,14 @@
   "7111d6c3b4_m": {
    "file": "7111d6c3b4_m.mp3",
    "bytes": 4032,
-   "heard": "警",
-   "check": "mismatch"
+   "heard": "修",
+   "check": "exact",
+   "also": [
+    "羞",
+    "休",
+    "咻",
+    "西区"
+   ]
   },
   "b0a698aff0_f": {
    "file": "b0a698aff0_f.mp3",
@@ -18727,8 +20069,14 @@
   "529733aca7_f": {
    "file": "529733aca7_f.mp3",
    "bytes": 3264,
-   "heard": "声音",
-   "check": "mismatch"
+   "heard": "生",
+   "check": "exact",
+   "also": [
+    "升",
+    "声",
+    "笙",
+    "牲"
+   ]
   },
   "529733aca7_m": {
    "file": "529733aca7_m.mp3",
@@ -18870,9 +20218,15 @@
   },
   "bd9c9644a0_f": {
    "file": "bd9c9644a0_f.mp3",
-   "bytes": 4416,
-   "heard": "变",
-   "check": "mismatch"
+   "bytes": 3936,
+   "heard": "任",
+   "check": "exact",
+   "also": [
+    "认",
+    "刃",
+    "韧",
+    "妊"
+   ]
   },
   "bd9c9644a0_m": {
    "file": "bd9c9644a0_m.mp3",
@@ -19028,13 +20382,13 @@
    "file": "e91dc68e75_f.mp3",
    "bytes": 4032,
    "heard": "华",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "e91dc68e75_m": {
    "file": "e91dc68e75_m.mp3",
    "bytes": 3264,
    "heard": "华",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "71a43e8649_f": {
    "file": "71a43e8649_f.mp3",
@@ -19100,13 +20454,13 @@
    "file": "7ef04d61b2_f.mp3",
    "bytes": 4416,
    "heard": "令",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "7ef04d61b2_m": {
    "file": "7ef04d61b2_m.mp3",
    "bytes": 4032,
    "heard": "令",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "183c6a0206_f": {
    "file": "183c6a0206_f.mp3",
@@ -19153,8 +20507,14 @@
   "5d85833e49_m": {
    "file": "5d85833e49_m.mp3",
    "bytes": 5664,
-   "heard": "故乡",
-   "check": "mismatch"
+   "heard": "互相",
+   "check": "exact",
+   "also": [
+    "故乡",
+    "虎香",
+    "虎相",
+    "虎乡"
+   ]
   },
   "90b7143988_f": {
    "file": "90b7143988_f.mp3",
@@ -19196,13 +20556,13 @@
    "file": "379f93fb16_f.mp3",
    "bytes": 4896,
    "heard": "燕",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "379f93fb16_m": {
    "file": "379f93fb16_m.mp3",
    "bytes": 5184,
    "heard": "燕",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "50c6eb0094_f": {
    "file": "50c6eb0094_f.mp3",
@@ -19219,14 +20579,26 @@
   "2e093879e4_f": {
    "file": "2e093879e4_f.mp3",
    "bytes": 5664,
-   "heard": "蠢",
-   "check": "mismatch"
+   "heard": "存",
+   "check": "exact",
+   "also": [
+    "纯",
+    "蠢",
+    "唇",
+    "淳"
+   ]
   },
   "2e093879e4_m": {
    "file": "2e093879e4_m.mp3",
-   "bytes": 4032,
-   "heard": "储存",
-   "check": "mismatch"
+   "bytes": 3936,
+   "heard": "存",
+   "check": "exact",
+   "also": [
+    "纯",
+    "储存",
+    "唇",
+    "淳"
+   ]
   },
   "5d95bfff1d_f": {
    "file": "5d95bfff1d_f.mp3",
@@ -19261,8 +20633,14 @@
   "6e00f3c108_m": {
    "file": "6e00f3c108_m.mp3",
    "bytes": 3744,
-   "heard": "明",
-   "check": "mismatch"
+   "heard": "迷",
+   "check": "exact",
+   "also": [
+    "谜",
+    "弥",
+    "糜",
+    "梨"
+   ]
   },
   "5eb21fbafa_f": {
    "file": "5eb21fbafa_f.mp3",
@@ -19321,8 +20699,14 @@
   "4bacecfa97_m": {
    "file": "4bacecfa97_m.mp3",
    "bytes": 5952,
-   "heard": "暴打",
-   "check": "mismatch"
+   "heard": "到达",
+   "check": "exact",
+   "also": [
+    "到答",
+    "倒打",
+    "到打",
+    "道达"
+   ]
   },
   "e52f3d3b9c_f": {
    "file": "e52f3d3b9c_f.mp3",
@@ -19496,13 +20880,25 @@
    "file": "a16d3becd8_f.mp3",
    "bytes": 3264,
    "heard": "6",
-   "check": "mismatch"
+   "check": "sounds-same",
+   "also": [
+    "绿",
+    "路",
+    "六",
+    "陆"
+   ]
   },
   "a16d3becd8_m": {
    "file": "a16d3becd8_m.mp3",
    "bytes": 3744,
    "heard": "6",
-   "check": "mismatch"
+   "check": "sounds-same",
+   "also": [
+    "绿",
+    "路",
+    "六",
+    "陆"
+   ]
   },
   "dc00a2696e_f": {
    "file": "dc00a2696e_f.mp3",
@@ -19580,7 +20976,13 @@
    "file": "01db671380_f.mp3",
    "bytes": 5472,
    "heard": "单",
-   "check": "mismatch"
+   "check": "exact",
+   "also": [
+    "班",
+    "斑",
+    "搬",
+    "扳"
+   ]
   },
   "01db671380_m": {
    "file": "01db671380_m.mp3",
@@ -19640,13 +21042,13 @@
    "file": "a6338d0b29_f.mp3",
    "bytes": 5376,
    "heard": "即时",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "a6338d0b29_m": {
    "file": "a6338d0b29_m.mp3",
    "bytes": 4704,
    "heard": "即时",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "cffe1ef0fe_f": {
    "file": "cffe1ef0fe_f.mp3",
@@ -19663,8 +21065,9 @@
   "4242835331_f": {
    "file": "4242835331_f.mp3",
    "bytes": 5856,
-   "heard": "四格",
-   "check": "mismatch"
+   "heard": "资格",
+   "check": "exact",
+   "also": []
   },
   "4242835331_m": {
    "file": "4242835331_m.mp3",
@@ -19735,8 +21138,12 @@
   "8a1b2def5d_f": {
    "file": "8a1b2def5d_f.mp3",
    "bytes": 4224,
-   "heard": "地后",
-   "check": "mismatch"
+   "heard": "背后",
+   "check": "exact",
+   "also": [
+    "被后",
+    "被候"
+   ]
   },
   "8a1b2def5d_m": {
    "file": "8a1b2def5d_m.mp3",
@@ -19880,13 +21287,25 @@
    "file": "227b8f35a9_f.mp3",
    "bytes": 4416,
    "heard": "to",
-   "check": "mismatch"
+   "check": "sounds-same",
+   "also": [
+    "兔",
+    "too",
+    "吐",
+    "two"
+   ]
   },
   "227b8f35a9_m": {
    "file": "227b8f35a9_m.mp3",
    "bytes": 4416,
-   "heard": "堵",
-   "check": "mismatch"
+   "heard": "吐",
+   "check": "exact",
+   "also": [
+    "土",
+    "图",
+    "钍",
+    "to"
+   ]
   },
   "c7d54ecafa_f": {
    "file": "c7d54ecafa_f.mp3",
@@ -19897,8 +21316,14 @@
   "c7d54ecafa_m": {
    "file": "c7d54ecafa_m.mp3",
    "bytes": 4704,
-   "heard": "面",
-   "check": "mismatch"
+   "heard": "念",
+   "check": "exact",
+   "also": [
+    "面",
+    "廿",
+    "面议",
+    "练"
+   ]
   },
   "5d3476236a_f": {
    "file": "5d3476236a_f.mp3",
@@ -19952,13 +21377,25 @@
    "file": "b22fba73be_f.mp3",
    "bytes": 3456,
    "heard": "10例",
-   "check": "mismatch"
+   "check": "exact",
+   "also": [
+    "实力",
+    "实例",
+    "学历",
+    "徐立"
+   ]
   },
   "b22fba73be_m": {
    "file": "b22fba73be_m.mp3",
    "bytes": 3744,
-   "heard": "学历",
-   "check": "mismatch"
+   "heard": "10例",
+   "check": "exact",
+   "also": [
+    "实力",
+    "学历",
+    "实例",
+    "雪莉"
+   ]
   },
   "ce357e3519_f": {
    "file": "ce357e3519_f.mp3",
@@ -19969,8 +21406,14 @@
   "ce357e3519_m": {
    "file": "ce357e3519_m.mp3",
    "bytes": 5472,
-   "heard": "薛",
-   "check": "mismatch"
+   "heard": "切",
+   "check": "exact",
+   "also": [
+    "缺",
+    "阙",
+    "薛",
+    "千"
+   ]
   },
   "55faf32ab1_f": {
    "file": "55faf32ab1_f.mp3",
@@ -19988,13 +21431,13 @@
    "file": "237a953aaf_f.mp3",
    "bytes": 5664,
    "heard": "田",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "237a953aaf_m": {
    "file": "237a953aaf_m.mp3",
    "bytes": 4416,
    "heard": "田",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "e663dfa591_f": {
    "file": "e663dfa591_f.mp3",
@@ -20204,13 +21647,13 @@
    "file": "5012f98dde_f.mp3",
    "bytes": 5376,
    "heard": "鼓",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "5012f98dde_m": {
    "file": "5012f98dde_m.mp3",
    "bytes": 4032,
    "heard": "鼓",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "fe95c7f89f_f": {
    "file": "fe95c7f89f_f.mp3",
@@ -20258,7 +21701,7 @@
    "file": "eca0d4ad25_m.mp3",
    "bytes": 4704,
    "heard": "核发",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "2686f7af3c_f": {
    "file": "2686f7af3c_f.mp3",
@@ -20286,15 +21729,27 @@
   },
   "7ed9840210_f": {
    "file": "7ed9840210_f.mp3",
-   "bytes": 4896,
+   "bytes": 5664,
    "heard": "zhao",
-   "check": "mismatch"
+   "check": "exact",
+   "also": [
+    "造",
+    "赵",
+    "皂",
+    "灶"
+   ]
   },
   "7ed9840210_m": {
    "file": "7ed9840210_m.mp3",
    "bytes": 3936,
-   "heard": "走",
-   "check": "mismatch"
+   "heard": "zhao",
+   "check": "exact",
+   "also": [
+    "赵",
+    "造",
+    "皂",
+    "灶"
+   ]
   },
   "b7a16be1ea_f": {
    "file": "b7a16be1ea_f.mp3",
@@ -20329,8 +21784,12 @@
   "93d837491d_m": {
    "file": "93d837491d_m.mp3",
    "bytes": 4512,
-   "heard": "减近",
-   "check": "mismatch"
+   "heard": "前进",
+   "check": "exact",
+   "also": [
+    "钱进",
+    "监禁"
+   ]
   },
   "238828a02b_f": {
    "file": "238828a02b_f.mp3",
@@ -20516,13 +21975,19 @@
    "file": "284a70d71d_f.mp3",
    "bytes": 5376,
    "heard": "朝",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "284a70d71d_m": {
    "file": "284a70d71d_m.mp3",
    "bytes": 4704,
    "heard": "操",
-   "check": "mismatch"
+   "check": "exact",
+   "also": [
+    "草",
+    "炒",
+    "吵",
+    "找"
+   ]
   },
   "7337678a99_f": {
    "file": "7337678a99_f.mp3",
@@ -20546,7 +22011,7 @@
    "file": "4c19b154c2_m.mp3",
    "bytes": 4224,
    "heard": "董力",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "6fc6acbfa7_f": {
    "file": "6fc6acbfa7_f.mp3",
@@ -20636,13 +22101,13 @@
    "file": "fda5f659aa_f.mp3",
    "bytes": 3936,
    "heard": "喂",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "fda5f659aa_m": {
    "file": "fda5f659aa_m.mp3",
    "bytes": 5472,
    "heard": "喂",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "3d5c769543_f": {
    "file": "3d5c769543_f.mp3",
@@ -20738,7 +22203,7 @@
    "file": "5e6d9f44a5_m.mp3",
    "bytes": 4416,
    "heard": "卜",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "966dd6bc47_f": {
    "file": "966dd6bc47_f.mp3",
@@ -20857,8 +22322,13 @@
   "4868a51207_m": {
    "file": "4868a51207_m.mp3",
    "bytes": 3936,
-   "heard": "参数",
-   "check": "mismatch"
+   "heard": "深入",
+   "check": "exact",
+   "also": [
+    "伸入",
+    "先入",
+    "慎入"
+   ]
   },
   "8da17305e2_f": {
    "file": "8da17305e2_f.mp3",
@@ -20893,8 +22363,14 @@
   "305cb7feff_m": {
    "file": "305cb7feff_m.mp3",
    "bytes": 5376,
-   "heard": "真伪",
-   "check": "mismatch"
+   "heard": "陈伟",
+   "check": "sounds-same",
+   "also": [
+    "春伟",
+    "成伟",
+    "陈炜",
+    "程伟"
+   ]
   },
   "6446c22d4e_f": {
    "file": "6446c22d4e_f.mp3",
@@ -20905,8 +22381,14 @@
   "6446c22d4e_m": {
    "file": "6446c22d4e_m.mp3",
    "bytes": 4992,
-   "heard": "言情",
-   "check": "mismatch"
+   "heard": "袁群",
+   "check": "exact",
+   "also": [
+    "人群",
+    "原群",
+    "袁琴",
+    "任群"
+   ]
   },
   "4928f46e8c_f": {
    "file": "4928f46e8c_f.mp3",
@@ -20948,13 +22430,19 @@
    "file": "7dbd50a36b_f.mp3",
    "bytes": 3264,
    "heard": "丁",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "7dbd50a36b_m": {
    "file": "7dbd50a36b_m.mp3",
    "bytes": 3744,
-   "heard": "军",
-   "check": "mismatch"
+   "heard": "丁",
+   "check": "exact",
+   "also": [
+    "正",
+    "蒸",
+    "曾",
+    "争"
+   ]
   },
   "dfece50e56_f": {
    "file": "dfece50e56_f.mp3",
@@ -21199,8 +22687,12 @@
   "bdc4b2577e_f": {
    "file": "bdc4b2577e_f.mp3",
    "bytes": 4704,
-   "heard": "杰豪",
-   "check": "mismatch"
+   "heard": "之后",
+   "check": "exact",
+   "also": [
+    "只好",
+    "句号"
+   ]
   },
   "bdc4b2577e_m": {
    "file": "bdc4b2577e_m.mp3",
@@ -21264,9 +22756,10 @@
   },
   "bdd9ba4140_m": {
    "file": "bdd9ba4140_m.mp3",
-   "bytes": 5472,
-   "heard": "识经",
-   "check": "mismatch"
+   "bytes": 4992,
+   "heard": "至今",
+   "check": "exact",
+   "also": []
   },
   "f6b032cc16_f": {
    "file": "f6b032cc16_f.mp3",
@@ -21350,7 +22843,13 @@
    "file": "34c12de7bf_m.mp3",
    "bytes": 4416,
    "heard": "仙剑",
-   "check": "mismatch"
+   "check": "exact",
+   "also": [
+    "鲜见",
+    "先见",
+    "先建",
+    "先进"
+   ]
   },
   "4c4a0cb49e_f": {
    "file": "4c4a0cb49e_f.mp3",
@@ -21500,7 +22999,13 @@
    "file": "82fe1ed140_f.mp3",
    "bytes": 6144,
    "heard": "从序",
-   "check": "mismatch"
+   "check": "exact",
+   "also": [
+    "从续",
+    "丛旭",
+    "从事",
+    "重续"
+   ]
   },
   "82fe1ed140_m": {
    "file": "82fe1ed140_m.mp3",
@@ -21529,8 +23034,14 @@
   "5fc0854fd9_m": {
    "file": "5fc0854fd9_m.mp3",
    "bytes": 3936,
-   "heard": "确定",
-   "check": "mismatch"
+   "heard": "制定",
+   "check": "exact",
+   "also": [
+    "制订",
+    "置顶",
+    "确定",
+    "既定"
+   ]
   },
   "883694ba16_f": {
    "file": "883694ba16_f.mp3",
@@ -22064,7 +23575,10 @@
    "file": "37eb6b9daf_f.mp3",
    "bytes": 5856,
    "heard": "讨厌",
-   "check": "mismatch"
+   "check": "exact",
+   "also": [
+    "考验"
+   ]
   },
   "37eb6b9daf_m": {
    "file": "37eb6b9daf_m.mp3",
@@ -22364,13 +23878,13 @@
    "file": "fc6b3df9d8_f.mp3",
    "bytes": 4416,
    "heard": "蚊子",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "fc6b3df9d8_m": {
    "file": "fc6b3df9d8_m.mp3",
    "bytes": 4896,
    "heard": "蚊子",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "3f9d7ba7f8_f": {
    "file": "3f9d7ba7f8_f.mp3",
@@ -22404,9 +23918,15 @@
   },
   "d129c29586_m": {
    "file": "d129c29586_m.mp3",
-   "bytes": 5664,
-   "heard": "句号",
-   "check": "mismatch"
+   "bytes": 6144,
+   "heard": "UI",
+   "check": "exact",
+   "also": [
+    "热爱",
+    "uni",
+    "umi",
+    "uri"
+   ]
   },
   "04aa5971d4_f": {
    "file": "04aa5971d4_f.mp3",
@@ -22483,8 +24003,11 @@
   "fda2de299c_f": {
    "file": "fda2de299c_f.mp3",
    "bytes": 3936,
-   "heard": "修费",
-   "check": "mismatch"
+   "heard": "收费",
+   "check": "exact",
+   "also": [
+    "收废"
+   ]
   },
   "fda2de299c_m": {
    "file": "fda2de299c_m.mp3",
@@ -22688,7 +24211,13 @@
    "file": "352edafa54_f.mp3",
    "bytes": 4416,
    "heard": "徐行",
-   "check": "mismatch"
+   "check": "exact",
+   "also": [
+    "实行",
+    "学行",
+    "十行",
+    "时行"
+   ]
   },
   "352edafa54_m": {
    "file": "352edafa54_m.mp3",
@@ -22716,9 +24245,15 @@
   },
   "1cbaef6ad9_m": {
    "file": "1cbaef6ad9_m.mp3",
-   "bytes": 4896,
-   "heard": "讲",
-   "check": "mismatch"
+   "bytes": 4512,
+   "heard": "巧",
+   "check": "exact",
+   "also": [
+    "小",
+    "雀",
+    "脚",
+    "强"
+   ]
   },
   "c3a43a2d7d_f": {
    "file": "c3a43a2d7d_f.mp3",
@@ -22825,8 +24360,14 @@
   "80454cc30d_m": {
    "file": "80454cc30d_m.mp3",
    "bytes": 5184,
-   "heard": "新人",
-   "check": "mismatch"
+   "heard": "亲人",
+   "check": "exact",
+   "also": [
+    "轻人",
+    "信任",
+    "亲任",
+    "新人"
+   ]
   },
   "03de291f38_f": {
    "file": "03de291f38_f.mp3",
@@ -22873,8 +24414,9 @@
   "ebf74f29e5_m": {
    "file": "ebf74f29e5_m.mp3",
    "bytes": 4512,
-   "heard": "叔叔",
-   "check": "mismatch"
+   "heard": "输入",
+   "check": "exact",
+   "also": []
   },
   "648cf251aa_f": {
    "file": "648cf251aa_f.mp3",
@@ -22927,8 +24469,11 @@
   "2e2bc4986b_f": {
    "file": "2e2bc4986b_f.mp3",
    "bytes": 4896,
-   "heard": "没有",
-   "check": "mismatch"
+   "heard": "没用",
+   "check": "exact",
+   "also": [
+    "没有"
+   ]
   },
   "2e2bc4986b_m": {
    "file": "2e2bc4986b_m.mp3",
@@ -23113,8 +24658,12 @@
   "7cef75d06f_m": {
    "file": "7cef75d06f_m.mp3",
    "bytes": 5184,
-   "heard": "转来",
-   "check": "mismatch"
+   "heard": "传来",
+   "check": "exact",
+   "also": [
+    "船来",
+    "传媒"
+   ]
   },
   "38f575321e_f": {
    "file": "38f575321e_f.mp3",
@@ -23125,14 +24674,23 @@
   "38f575321e_m": {
    "file": "38f575321e_m.mp3",
    "bytes": 5856,
-   "heard": "总钱",
-   "check": "mismatch"
+   "heard": "从前",
+   "check": "exact",
+   "also": [
+    "从钱"
+   ]
   },
   "a2b070458c_f": {
    "file": "a2b070458c_f.mp3",
    "bytes": 5184,
-   "heard": "剧场",
-   "check": "mismatch"
+   "heard": "一场",
+   "check": "exact",
+   "also": [
+    "日常",
+    "异常",
+    "夜场",
+    "1厂"
+   ]
   },
   "a2b070458c_m": {
    "file": "a2b070458c_m.mp3",
@@ -23149,8 +24707,14 @@
   "f3edc8c3c0_m": {
    "file": "f3edc8c3c0_m.mp3",
    "bytes": 4896,
-   "heard": "切点",
-   "check": "mismatch"
+   "heard": "缺点",
+   "check": "exact",
+   "also": [
+    "节点",
+    "切点",
+    "结点",
+    "缺碘"
+   ]
   },
   "f455b7903d_f": {
    "file": "f455b7903d_f.mp3",
@@ -23161,8 +24725,14 @@
   "f455b7903d_m": {
    "file": "f455b7903d_m.mp3",
    "bytes": 6144,
-   "heard": "雪莉",
-   "check": "mismatch"
+   "heard": "设立",
+   "check": "exact",
+   "also": [
+    "舍利",
+    "设力",
+    "射利",
+    "热力"
+   ]
   },
   "24373d7e9e_f": {
    "file": "24373d7e9e_f.mp3",
@@ -23317,8 +24887,14 @@
   "32141073af_m": {
    "file": "32141073af_m.mp3",
    "bytes": 5472,
-   "heard": "血用",
-   "check": "mismatch"
+   "heard": "适用",
+   "check": "exact",
+   "also": [
+    "试用",
+    "是用",
+    "是勇",
+    "是永"
+   ]
   },
   "9060d9a419_f": {
    "file": "9060d9a419_f.mp3",
@@ -23444,7 +25020,7 @@
    "file": "86a6595e94_f.mp3",
    "bytes": 6336,
    "heard": "晚膳",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "86a6595e94_m": {
    "file": "86a6595e94_m.mp3",
@@ -23498,7 +25074,12 @@
    "file": "af98b44107_m.mp3",
    "bytes": 4704,
    "heard": "员工",
-   "check": "mismatch"
+   "check": "exact",
+   "also": [
+    "袁公",
+    "人工",
+    "人公"
+   ]
   },
   "11065a7af3_f": {
    "file": "11065a7af3_f.mp3",
@@ -23564,13 +25145,13 @@
    "file": "c84abd2b16_f.mp3",
    "bytes": 4704,
    "heard": "价签",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "c84abd2b16_m": {
    "file": "c84abd2b16_m.mp3",
    "bytes": 4032,
    "heard": "贾倩",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "c28935e472_f": {
    "file": "c28935e472_f.mp3",
@@ -23617,8 +25198,9 @@
   "de87398b33_m": {
    "file": "de87398b33_m.mp3",
    "bytes": 4224,
-   "heard": "开奖",
-   "check": "mismatch"
+   "heard": "开展",
+   "check": "exact",
+   "also": []
   },
   "6ff10327f5_f": {
    "file": "6ff10327f5_f.mp3",
@@ -23784,9 +25366,12 @@
   },
   "61fdaebb35_m": {
    "file": "61fdaebb35_m.mp3",
-   "bytes": 4416,
-   "heard": "主将",
-   "check": "mismatch"
+   "bytes": 7296,
+   "heard": "主张",
+   "check": "exact",
+   "also": [
+    "主将"
+   ]
   },
   "fabadad527_f": {
    "file": "fabadad527_f.mp3",
@@ -23887,14 +25472,26 @@
   "c0a3db0485_f": {
    "file": "c0a3db0485_f.mp3",
    "bytes": 5184,
-   "heard": "四柱",
-   "check": "mismatch"
+   "heard": "自主",
+   "check": "exact",
+   "also": [
+    "自煮",
+    "这主",
+    "四柱",
+    "子主"
+   ]
   },
   "c0a3db0485_m": {
    "file": "c0a3db0485_m.mp3",
    "bytes": 4992,
-   "heard": "四柱",
-   "check": "mismatch"
+   "heard": "自主",
+   "check": "exact",
+   "also": [
+    "自煮",
+    "四柱",
+    "饲主",
+    "子主"
+   ]
   },
   "86fe3157f2_f": {
    "file": "86fe3157f2_f.mp3",
@@ -23942,7 +25539,13 @@
    "file": "9b94961428_m.mp3",
    "bytes": 4416,
    "heard": "节目",
-   "check": "mismatch"
+   "check": "exact",
+   "also": [
+    "积木",
+    "题目",
+    "提莫",
+    "几幕"
+   ]
   },
   "8560db89fb_f": {
    "file": "8560db89fb_f.mp3",
@@ -23983,8 +25586,14 @@
   "22946b3550_f": {
    "file": "22946b3550_f.mp3",
    "bytes": 4992,
-   "heard": "蒋静",
-   "check": "mismatch"
+   "heard": "将近",
+   "check": "exact",
+   "also": [
+    "将尽",
+    "将进",
+    "将禁",
+    "江进"
+   ]
   },
   "22946b3550_m": {
    "file": "22946b3550_m.mp3",
@@ -24043,8 +25652,14 @@
   "3118f71706_f": {
    "file": "3118f71706_f.mp3",
    "bytes": 4896,
-   "heard": "相依",
-   "check": "mismatch"
+   "heard": "上衣",
+   "check": "exact",
+   "also": [
+    "上医",
+    "上一",
+    "尚衣",
+    "上1"
+   ]
   },
   "3118f71706_m": {
    "file": "3118f71706_m.mp3",
@@ -24062,7 +25677,7 @@
    "file": "47b39a0ab2_m.mp3",
    "bytes": 6144,
    "heard": "剪成",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "8201bd320e_f": {
    "file": "8201bd320e_f.mp3",
@@ -24109,8 +25724,14 @@
   "de38f56391_m": {
    "file": "de38f56391_m.mp3",
    "bytes": 6336,
-   "heard": "动物园",
-   "check": "mismatch"
+   "heard": "动人",
+   "check": "exact",
+   "also": [
+    "冻人",
+    "重任",
+    "众人",
+    "洞人"
+   ]
   },
   "0c7ed4ea76_f": {
    "file": "0c7ed4ea76_f.mp3",
@@ -24151,8 +25772,12 @@
   "b00c53f707_f": {
    "file": "b00c53f707_f.mp3",
    "bytes": 4896,
-   "heard": "番茄",
-   "check": "mismatch"
+   "heard": "搬家",
+   "check": "exact",
+   "also": [
+    "番茄",
+    "蕃茄"
+   ]
   },
   "b00c53f707_m": {
    "file": "b00c53f707_m.mp3",
@@ -24325,8 +25950,14 @@
   "dd55a16a9a_m": {
    "file": "dd55a16a9a_m.mp3",
    "bytes": 4416,
-   "heard": "精壮",
-   "check": "mismatch"
+   "heard": "听众",
+   "check": "exact",
+   "also": [
+    "听中",
+    "厅中",
+    "经中",
+    "京中"
+   ]
   },
   "b436c5d94e_f": {
    "file": "b436c5d94e_f.mp3",
@@ -24649,14 +26280,26 @@
   "ad143db5c7_m": {
    "file": "ad143db5c7_m.mp3",
    "bytes": 4704,
-   "heard": "住吉",
-   "check": "mismatch"
+   "heard": "初级",
+   "check": "exact",
+   "also": [
+    "书籍",
+    "出集",
+    "出席",
+    "朱集"
+   ]
   },
   "41e3976a5b_f": {
    "file": "41e3976a5b_f.mp3",
    "bytes": 4512,
    "heard": "经历",
-   "check": "mismatch"
+   "check": "exact",
+   "also": [
+    "听力",
+    "精力",
+    "金立",
+    "金利"
+   ]
   },
   "41e3976a5b_m": {
    "file": "41e3976a5b_m.mp3",
@@ -24685,8 +26328,14 @@
   "21387d0101_m": {
    "file": "21387d0101_m.mp3",
    "bytes": 4224,
-   "heard": "劝一",
-   "check": "mismatch"
+   "heard": "衬衣",
+   "check": "exact",
+   "also": [
+    "劝一",
+    "券一",
+    "圈椅",
+    "卷一"
+   ]
   },
   "d8a538a105_f": {
    "file": "d8a538a105_f.mp3",
@@ -24793,8 +26442,14 @@
   "1cadac6504_m": {
    "file": "1cadac6504_m.mp3",
    "bytes": 4896,
-   "heard": "下子",
-   "check": "mismatch"
+   "heard": "瞎子",
+   "check": "exact",
+   "also": [
+    "虾子",
+    "沙子",
+    "砂子",
+    "虾籽"
+   ]
   },
   "806618ce0f_f": {
    "file": "806618ce0f_f.mp3",
@@ -25076,13 +26731,19 @@
    "file": "e98b76c65b_f.mp3",
    "bytes": 5376,
    "heard": "尸体",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "e98b76c65b_m": {
    "file": "e98b76c65b_m.mp3",
    "bytes": 4704,
-   "heard": "解题",
-   "check": "mismatch"
+   "heard": "解体",
+   "check": "exact",
+   "also": [
+    "气体",
+    "试题",
+    "尸体",
+    "字体"
+   ]
   },
   "4e3e8a02a8_f": {
    "file": "4e3e8a02a8_f.mp3",
@@ -25208,13 +26869,13 @@
    "file": "099c5082ab_f.mp3",
    "bytes": 4224,
    "heard": "宜家",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "099c5082ab_m": {
    "file": "099c5082ab_m.mp3",
    "bytes": 4032,
    "heard": "宜家",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "4a7fb67254_f": {
    "file": "4a7fb67254_f.mp3",
@@ -25244,25 +26905,37 @@
    "file": "0ed00c94a3_f.mp3",
    "bytes": 4992,
    "heard": "空耳",
-   "check": "mismatch"
+   "check": "exact",
+   "also": [
+    "空儿",
+    "空尔",
+    "库尔",
+    "空而"
+   ]
   },
   "0ed00c94a3_m": {
    "file": "0ed00c94a3_m.mp3",
    "bytes": 4224,
-   "heard": "供给",
-   "check": "mismatch"
+   "heard": "空儿",
+   "check": "exact",
+   "also": [
+    "空啊",
+    "空耳",
+    "困啊",
+    "孔二"
+   ]
   },
   "8a7fcf3fc7_f": {
    "file": "8a7fcf3fc7_f.mp3",
    "bytes": 6624,
    "heard": "玉玺",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "8a7fcf3fc7_m": {
    "file": "8a7fcf3fc7_m.mp3",
    "bytes": 4416,
    "heard": "遇袭",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "e76cc6c54b_f": {
    "file": "e76cc6c54b_f.mp3",
@@ -25285,14 +26958,26 @@
   "c82f5ceed2_m": {
    "file": "c82f5ceed2_m.mp3",
    "bytes": 5664,
-   "heard": "厚棉",
-   "check": "mismatch"
+   "heard": "后年",
+   "check": "exact",
+   "also": [
+    "侯年",
+    "厚年",
+    "猴年",
+    "候年"
+   ]
   },
   "d40370fcbe_f": {
    "file": "d40370fcbe_f.mp3",
    "bytes": 6624,
    "heard": "联盟",
-   "check": "mismatch"
+   "check": "exact",
+   "also": [
+    "连忙",
+    "连盟",
+    "连萌",
+    "连蒙"
+   ]
   },
   "d40370fcbe_m": {
    "file": "d40370fcbe_m.mp3",
@@ -25369,8 +27054,14 @@
   "0c945f7001_m": {
    "file": "0c945f7001_m.mp3",
    "bytes": 4032,
-   "heard": "青睐",
-   "check": "mismatch"
+   "heard": "亲爱",
+   "check": "exact",
+   "also": [
+    "情爱",
+    "清迈",
+    "性爱",
+    "轻爱"
+   ]
   },
   "6c2069b695_f": {
    "file": "6c2069b695_f.mp3",
@@ -25688,7 +27379,10 @@
    "file": "38d945e3ec_f.mp3",
    "bytes": 4512,
    "heard": "怎么啦",
-   "check": "mismatch"
+   "check": "exact",
+   "also": [
+    "怎么了"
+   ]
   },
   "38d945e3ec_m": {
    "file": "38d945e3ec_m.mp3",
@@ -25760,13 +27454,13 @@
    "file": "ffbafee206_f.mp3",
    "bytes": 6144,
    "heard": "打炮",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "ffbafee206_m": {
    "file": "ffbafee206_m.mp3",
    "bytes": 4704,
    "heard": "打炮",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "246ddaf751_f": {
    "file": "246ddaf751_f.mp3",
@@ -25802,7 +27496,13 @@
    "file": "b8d5990927_m.mp3",
    "bytes": 4704,
    "heard": "三星",
-   "check": "mismatch"
+   "check": "exact",
+   "also": [
+    "单星",
+    "单兴",
+    "占星",
+    "担心"
+   ]
   },
   "d8f5666822_f": {
    "file": "d8f5666822_f.mp3",
@@ -26005,14 +27705,26 @@
   "db6835e584_m": {
    "file": "db6835e584_m.mp3",
    "bytes": 5184,
-   "heard": "坚守",
-   "check": "mismatch"
+   "heard": "牵手",
+   "check": "exact",
+   "also": [
+    "先手",
+    "坚守",
+    "纤手",
+    "千手"
+   ]
   },
   "c5c8ca7233_f": {
    "file": "c5c8ca7233_f.mp3",
    "bytes": 6624,
-   "heard": "解密",
-   "check": "mismatch"
+   "heard": "甜蜜",
+   "check": "exact",
+   "also": [
+    "田蜜",
+    "恬谧",
+    "便秘",
+    "甜蜜蜜"
+   ]
   },
   "c5c8ca7233_m": {
    "file": "c5c8ca7233_m.mp3",
@@ -26072,13 +27784,13 @@
    "file": "4d264e1d89_f.mp3",
    "bytes": 5184,
    "heard": "结帐",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "4d264e1d89_m": {
    "file": "4d264e1d89_m.mp3",
    "bytes": 4416,
    "heard": "结帐",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "d81fb9631e_f": {
    "file": "d81fb9631e_f.mp3",
@@ -26131,8 +27843,14 @@
   "cae8e58cc0_f": {
    "file": "cae8e58cc0_f.mp3",
    "bytes": 5184,
-   "heard": "射不到",
-   "check": "mismatch"
+   "heard": "舍不得",
+   "check": "exact",
+   "also": [
+    "射不到",
+    "这不到",
+    "设不到",
+    "舍不到"
+   ]
   },
   "cae8e58cc0_m": {
    "file": "cae8e58cc0_m.mp3",
@@ -26197,8 +27915,12 @@
   "5aaf2be645_m": {
    "file": "5aaf2be645_m.mp3",
    "bytes": 5664,
-   "heard": "拍好",
-   "check": "mismatch"
+   "heard": "还好",
+   "check": "exact",
+   "also": [
+    "排好",
+    "才好"
+   ]
   },
   "7a55dfeb96_f": {
    "file": "7a55dfeb96_f.mp3",
@@ -26216,19 +27938,25 @@
    "file": "758fcfa9d4_f.mp3",
    "bytes": 4224,
    "heard": "培",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "758fcfa9d4_m": {
    "file": "758fcfa9d4_m.mp3",
    "bytes": 4992,
    "heard": "培",
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "t5092616_f": {
    "file": "t5092616_f.mp3",
-   "bytes": 8544,
+   "bytes": 12576,
    "heard": "不要咖啡谢谢",
-   "check": "mismatch"
+   "check": "exact",
+   "also": [
+    "我要咖啡谢谢",
+    "不要咖啡解解",
+    "不要他非谢谢",
+    "不要咖啡泄泻"
+   ]
   },
   "t5092616_m": {
    "file": "t5092616_m.mp3",
@@ -26324,7 +28052,11 @@
    "file": "t6158476_f.mp3",
    "bytes": 6624,
    "heard": "不要一杯水",
-   "check": "mismatch"
+   "check": "exact",
+   "also": [
+    "我要一杯水",
+    "不要1杯水"
+   ]
   },
   "t6158476_m": {
    "file": "t6158476_m.mp3",
@@ -26431,8 +28163,14 @@
   "t14037689_f": {
    "file": "t14037689_f.mp3",
    "bytes": 8544,
-   "heard": "去咖啡很浓",
-   "check": "mismatch"
+   "heard": "这咖啡很浓",
+   "check": "exact",
+   "also": [
+    "去咖啡很浓",
+    "据咖啡很浓",
+    "家咖啡很浓",
+    "聚咖啡很浓"
+   ]
   },
   "t14037689_m": {
    "file": "t14037689_m.mp3",
@@ -26551,14 +28289,19 @@
   "t7771901_f": {
    "file": "t7771901_f.mp3",
    "bytes": 7296,
-   "heard": "不用现金付款",
-   "check": "mismatch"
+   "heard": "我用现金付款",
+   "check": "exact",
+   "also": [
+    "哦用现金付款",
+    "我涌现金付款"
+   ]
   },
   "t7771901_m": {
    "file": "t7771901_m.mp3",
    "bytes": 7872,
-   "heard": "不用现金付款",
-   "check": "mismatch"
+   "heard": "我用现金付款",
+   "check": "exact",
+   "also": []
   },
   "t5684089_f": {
    "file": "t5684089_f.mp3",
@@ -26802,15 +28545,27 @@
   },
   "t5613717_f": {
    "file": "t5613717_f.mp3",
-   "bytes": 7104,
-   "heard": "再给我一份中",
-   "check": "mismatch"
+   "bytes": 8736,
+   "heard": "再给我50分钟",
+   "check": "exact",
+   "also": [
+    "再给我一份中",
+    "再给我一分钟",
+    "再给我五分钟",
+    "在给我一份中"
+   ]
   },
   "t5613717_m": {
    "file": "t5613717_m.mp3",
    "bytes": 6432,
    "heard": "再给我10分钟",
-   "check": "mismatch"
+   "check": "exact",
+   "also": [
+    "再给我一份中",
+    "再给我一分钟",
+    "再给我五分钟",
+    "在给我一份中"
+   ]
   },
   "t8933788_f": {
    "file": "t8933788_f.mp3",
