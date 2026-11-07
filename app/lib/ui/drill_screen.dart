@@ -166,7 +166,8 @@ class _DrillScreenState extends State<DrillScreen> {
 
   void _answer(bool right) {
     final now = DateTime.now();
-    AppScope.of(context).store.logAnswer(right ? Rating.good : Rating.again, now.difference(_shownAt), now);
+    AppScope.of(context).store.logAnswer(right ? Rating.good : Rating.again, now.difference(_shownAt), now,
+        method: widget.drill == Drill.type ? 'type' : _kind.name, id: _queue!.first.id);
     _done++;
     if (right) _right++;
   }

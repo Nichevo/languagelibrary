@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 import '../data/daily.dart';
 import '../data/library.dart';
+import '../data/method_stats.dart';
 import '../data/user_store.dart';
 import '../srs/scheduler.dart';
 import 'common.dart';
@@ -185,6 +186,53 @@ class StatsView extends StatelessWidget {
               value: recent.isEmpty ? '0' : '${(100 * ratings[r.index] / recent.length).round()}%',
             ),
         ]),
+        () {
+          final methods = methodStats(reviews, today.subtract(const Duration(days: 29)));
+          final best = bestMethod(methods);
+          final used = [for (final m in methods) if (m.answers > 0) m];
+          final tested = [for (final m in methods) if (m.tested > 0) m];
+          return section('Practice methods', note: 'Last 30 days', [
+            if (used.isEmpty) Text('No answers yet.', style: theme.textTheme.bodyMedium),
+            for (final m in used)
+              _MethodRow(
+                label: m.label,
+                detail: '${m.answers} answers · ${(100 * m.rightRate!).round()}% right · ${_duration(m.time)}',
+                value: m.rightRate!,
+                color: theme.colorScheme.primary,
+              ),
+            const SizedBox(height: 8),
+            Text('What helps you remember', style: theme.textTheme.labelLarge),
+            const SizedBox(height: 2),
+            Text(
+              'How often a word was remembered on its next flashcard, by how you practised it in between. '
+              'Flashcards ask from memory, so they are the fair test.',
+              style: theme.textTheme.bodySmall,
+            ),
+            const SizedBox(height: 8),
+            if (best != null)
+              Padding(
+                padding: const EdgeInsets.only(bottom: 8),
+                child: Text(
+                  best.method == 'cards'
+                      ? 'So far, flashcards alone work best for you.'
+                      : 'So far, "${best.label}" helps you remember best.',
+                  style: theme.textTheme.titleSmall,
+                ),
+              ),
+            for (final m in tested)
+              _MethodRow(
+                label: m.method == 'cards' ? 'Flashcards alone' : m.label,
+                detail: m.tested < minTested
+                    ? '${m.tested} so far, ${minTested - m.tested} more to compare'
+                    : '${(100 * m.rememberRate!).round()}% remembered (${m.tested})',
+                value: m.tested < minTested ? 0 : m.rememberRate!,
+                color: m == best ? _statusColors(theme)[CardStatus.strong.index] : theme.colorScheme.secondary,
+              ),
+            if (tested.isEmpty)
+              Text('Practise some words a few ways, then do their flashcards, and this will fill in.',
+                  style: theme.textTheme.bodyMedium),
+          ]);
+        }(),
         section('Your own scores', note: 'Easy / OK / Hard on word pages', [
           for (final d in Difficulty.values)
             _Legend(
@@ -363,6 +411,31 @@ class _Stacked extends StatelessWidget {
                       ),
                 ],
               ),
+      ),
+    );
+  }
+}
+
+class _MethodRow extends StatelessWidget {
+  const _MethodRow({required this.label, required this.detail, required this.value, required this.color});
+  final String label;
+  final String detail;
+  final double value;
+  final Color color;
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 8),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Text(label, style: theme.textTheme.bodyMedium),
+          Text(detail, style: theme.textTheme.bodySmall),
+          const SizedBox(height: 4),
+          LinearProgressIndicator(value: value, color: color, minHeight: 6, borderRadius: BorderRadius.circular(3)),
+        ],
       ),
     );
   }
