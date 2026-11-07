@@ -46,6 +46,10 @@ class Entry {
   final String kind;
   bool get isSentence => kind == 'sentence';
 
+  /// Hand-picked for the app's topics (tools/sources/phrases.tsv), so always
+  /// shown whatever HSK level it also belongs to.
+  bool get curated => sources.contains('Curated phrase list');
+
   /// Short Tatoeba sentences that use this word.
   final List<Example> examples;
 

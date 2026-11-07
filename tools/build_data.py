@@ -47,8 +47,9 @@ OUT_REPORT = Path(__file__).resolve().parent / "build_report.md"
 HSK_URL = "https://raw.githubusercontent.com/drkameleon/complete-hsk-vocabulary/main/complete.json"
 CEDICT_URL = "https://www.mdbg.net/chinese/export/cedict/cedict_1_0_ts_utf-8_mdbg.zip"
 
-# HSK 3.0 levels 1 to 3 plus the curated phrases. Change with --levels.
-DEFAULT_LEVELS = ["new-1", "new-2", "new-3"]
+# HSK 3.0 levels 1 to 6 plus the curated phrases. Change with --levels.
+# The app shows levels 1 to 3 at first; the rest are switched on in Settings.
+DEFAULT_LEVELS = ["new-1", "new-2", "new-3", "new-4", "new-5", "new-6"]
 
 _CEDICT_LINE = re.compile(r"^(\S+) (\S+) \[([^\]]+)\] /(.*)/\s*$")
 _ERHUA = re.compile(r"^erhua variant of (?:[^|\[]+\|)?([^\[]+)\[([^\]]+)\]")
@@ -376,8 +377,11 @@ def add_related(entries: list[dict]) -> None:
         e["related"] = links
 
 
-def write_outputs(entries, dropped, flagged, levels, cedict_note: str, sentence_note: str = ""):
-    OUT_JSON.parent.mkdir(parents=True, exist_ok=True)
+def write_outputs(entries, dropped, flagged, levels, cedict_note: str, sentence_note: str = "",
+                  out_json: Path | None = None, out_report: Path | None = None):
+    out_json = out_json or OUT_JSON
+    out_report = out_report or OUT_REPORT
+    out_json.parent.mkdir(parents=True, exist_ok=True)
     data = {
         "version": 1,
         "built": date.today().isoformat(),
@@ -385,7 +389,7 @@ def write_outputs(entries, dropped, flagged, levels, cedict_note: str, sentence_
         "sources": {"cedict": cedict_note, **({"tatoeba": "tools/sources/tatoeba_cmn_eng.tsv"} if sentence_note else {})},
         "entries": entries,
     }
-    OUT_JSON.write_text(json.dumps(data, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+    out_json.write_text(json.dumps(data, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
 
     lines = [
         "# Build report",
@@ -400,7 +404,7 @@ def write_outputs(entries, dropped, flagged, levels, cedict_note: str, sentence_
     lines += [f"- {hz}: {why}" for hz, why in dropped] or ["- none"]
     lines += ["", "## Flagged (kept, but check the audio by ear)", ""]
     lines += [f"- {hz}: {why}" for hz, why in flagged] or ["- none"]
-    OUT_REPORT.write_text("\n".join(lines) + "\n", encoding="utf-8")
+    out_report.write_text("\n".join(lines) + "\n", encoding="utf-8")
 
 
 def main(argv=None):
@@ -408,24 +412,30 @@ def main(argv=None):
     ap.add_argument("--cedict", help="local CC-CEDICT file (default: download from MDBG)")
     ap.add_argument("--hsk", help="local complete.json (default: download)")
     ap.add_argument("--levels", nargs="+", default=DEFAULT_LEVELS,
-                    help="HSK levels to include, e.g. new-1 new-2 (default: new-1 new-2 new-3)")
+                    help="HSK levels to include, e.g. new-1 new-2 (default: new-1 to new-6)")
+    ap.add_argument("--out", type=Path, help="where to write library.json (default: the app's own)")
+    ap.add_argument("--words-only", action="store_true",
+                    help="only the HSK words: no curated phrases or phrasebook sentences")
     args = ap.parse_args(argv)
+    out_json = args.out.resolve() if args.out else OUT_JSON
+    out_report = out_json.parent / "build_report.md" if args.out else OUT_REPORT
 
     cedict = load_cedict(args.cedict)
     note = Path(args.cedict).name if args.cedict else CEDICT_URL
     hsk = load_hsk(args.hsk)
-    entries, dropped, flagged = build(cedict, hsk, load_phrases(), args.levels)
+    entries, dropped, flagged = build(cedict, hsk, [] if args.words_only else load_phrases(), args.levels)
     pairs = sentences.load_pairs()
     sentence_note = ""
     if pairs:
         reader = sentences.Reader(cedict, entries, hsk)
         with_examples = sentences.add_examples(reader, pairs, entries)
-        book, book_dropped = sentences.phrasebook_entries(reader, pairs, sentences.load_phrasebook(), entries)
+        picks = [] if args.words_only else sentences.load_phrasebook()
+        book, book_dropped = sentences.phrasebook_entries(reader, pairs, picks, entries)
         entries += book
         dropped += book_dropped
         sentence_note = f"{len(book)} phrasebook sentences; {with_examples} words have example sentences."
-    write_outputs(entries, dropped, flagged, args.levels, note, sentence_note)
-    print(f"kept {len(entries)}, dropped {len(dropped)}, flagged {len(flagged)} -> {OUT_JSON.relative_to(ROOT)}")
+    write_outputs(entries, dropped, flagged, args.levels, note, sentence_note, out_json, out_report)
+    print(f"kept {len(entries)}, dropped {len(dropped)}, flagged {len(flagged)} -> {out_json.relative_to(ROOT)}")
     if sentence_note:
         print(sentence_note)
 

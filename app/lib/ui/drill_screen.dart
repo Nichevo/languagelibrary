@@ -101,7 +101,8 @@ class _DrillScreenState extends State<DrillScreen> {
       final own = [for (final id in scope.store.idsIn(widget.list)) ?scope.library.byId[id]];
       var others = distractors(target, own, 3, _rnd);
       if (others.length < 3) {
-        others = [...others, ...distractors(target, scope.library.entries, 3 - others.length, _rnd)
+        final shown = scope.library.entries.where(scope.store.shows).toList();
+        others = [...others, ...distractors(target, shown, 3 - others.length, _rnd)
             .where((e) => !others.contains(e))];
       }
       _options = [target, ...others]..shuffle(_rnd);

@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../models/entry.dart';
 import '../srs/scheduler.dart';
 
 /// Everything the learner changes: stars, custom lists, flashcard progress,
@@ -53,6 +54,24 @@ class UserStore extends ChangeNotifier {
   /// Mix a few related words the learner has not starred into each session.
   bool mixRelated = false;
 
+  /// HSK levels shown in the library, word of the day and practice extras.
+  /// Levels added to the app later start hidden until switched on here.
+  final Set<int> levels = {1, 2, 3};
+
+  /// Show the phrasebook sentences in the library.
+  bool showSentences = true;
+
+  /// Whether [e] belongs to the content switched on in Settings. The curated
+  /// everyday phrases and starred words always show.
+  bool shows(Entry e) {
+    if (e.isSentence) return showSentences || _starredSet.contains(e.id);
+    return e.hsk == null || e.curated || levels.contains(e.hsk) || _starredSet.contains(e.id);
+  }
+
+  // Rebuilt after every change, since [starred] is a list.
+  Set<String>? _starredCache;
+  Set<String> get _starredSet => _starredCache ??= starred.toSet();
+
   /// Every flashcard answer, oldest first, for the statistics screen.
   final List<Review> reviews = [];
 
@@ -66,6 +85,7 @@ class UserStore extends ChangeNotifier {
   }
 
   void _apply(Map<String, dynamic> j) {
+    _starredCache = null;
     starred.clear();
     lists.clear();
     cards.clear();
@@ -91,6 +111,12 @@ class UserStore extends ChangeNotifier {
     sessionSize = j['sessionSize'] as int? ?? sessionSize;
     mixRelated = j['mixRelated'] as bool? ?? mixRelated;
     practiceMode = j['practiceMode'] as String? ?? practiceMode;
+    if (j['levels'] case final List l) {
+      levels
+        ..clear()
+        ..addAll(l.cast<int>());
+    }
+    showSentences = j['showSentences'] as bool? ?? showSentences;
     for (final r in j['reviews'] as List? ?? const []) {
       reviews.add(Review.fromJson(r as List));
     }
@@ -112,6 +138,8 @@ class UserStore extends ChangeNotifier {
         'sessionSize': sessionSize,
         'mixRelated': mixRelated,
         'practiceMode': practiceMode,
+        'levels': (levels.toList()..sort()),
+        'showSentences': showSentences,
         'reviews': [for (final r in reviews) r.toJson()],
         'snapshots': snapshots.map((k, v) => MapEntry(k, v.toJson())),
       };
@@ -161,6 +189,7 @@ class UserStore extends ChangeNotifier {
   }
 
   Future<void> _save() async {
+    _starredCache = null;
     _snapshot(DateTime.now());
     notifyListeners();
     await _prefs.setString(_key, jsonEncode(_toJson()));
@@ -254,6 +283,16 @@ class UserStore extends ChangeNotifier {
 
   Future<void> setPracticeMode(String v) {
     practiceMode = v;
+    return _save();
+  }
+
+  Future<void> setLevelShown(int level, bool on) {
+    on ? levels.add(level) : levels.remove(level);
+    return _save();
+  }
+
+  Future<void> setShowSentences(bool v) {
+    showSentences = v;
     return _save();
   }
 

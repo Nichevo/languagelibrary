@@ -117,7 +117,7 @@ class AndroidDevice implements Device {
     final today = dayOf(now);
     final words = [
       for (var i = 0; i < _widgetDays; i++)
-        if (wordOfTheDay(library, today.add(Duration(days: i))) case final e?)
+        if (wordOfTheDay(library, today.add(Duration(days: i)), shown: store.shows) case final e?)
           {'d': dayKey(today.add(Duration(days: i))), ...word(e)},
     ];
     final due = [

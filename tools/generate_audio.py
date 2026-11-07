@@ -33,6 +33,21 @@ LIBRARY = ROOT / "app" / "assets" / "data" / "library.json"
 AUDIO_DIR = ROOT / "app" / "assets" / "audio"
 MANIFEST = AUDIO_DIR / "manifest.json"
 REPORT = Path(__file__).resolve().parent / "audio_report.md"
+
+# Word sets with their own clips. HSK 7-9 is voiced now, while there is cloud
+# credit, but kept out of the app (extra/hsk7-9/) until it is wanted.
+SETS = {
+    "app": (LIBRARY, AUDIO_DIR, REPORT),
+    "hsk7-9": (ROOT / "extra" / "hsk7-9" / "library.json", ROOT / "extra" / "hsk7-9" / "audio",
+               ROOT / "extra" / "hsk7-9" / "audio_report.md"),
+}
+
+
+def use_set(name: str) -> None:
+    """Point LIBRARY, AUDIO_DIR, MANIFEST and REPORT at one word set."""
+    global LIBRARY, AUDIO_DIR, MANIFEST, REPORT
+    LIBRARY, AUDIO_DIR, REPORT = SETS[name]
+    MANIFEST = AUDIO_DIR / "manifest.json"
 SAMPLES_DIR = Path(__file__).resolve().parent / "audio_samples"
 
 LANG = "cmn-CN"
@@ -373,8 +388,11 @@ def main(argv=None):
     ap.add_argument("--recheck", action="store_true", help="try again for clips that failed the check")
     ap.add_argument("--char-readings", metavar="CEDICT", nargs="?", const="",
                     help="rebuild tools/sources/char_readings.tsv (from a local CC-CEDICT file, or download it)")
+    ap.add_argument("--set", choices=sorted(SETS), default="app",
+                    help="which words: 'app' (the app's library) or 'hsk7-9' (kept in extra/ until wanted)")
     args = ap.parse_args(argv)
 
+    use_set(args.set)
     entries = json.loads(LIBRARY.read_text(encoding="utf-8"))["entries"]
     if args.char_readings is not None:
         from tools.build_data import load_cedict

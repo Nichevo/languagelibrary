@@ -20,8 +20,14 @@ class _LibraryScreenState extends State<LibraryScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final library = AppScope.of(context).library;
-    final results = library.search(_query, topic: _topic);
+    final scope = AppScope.of(context);
+    return ListenableBuilder(listenable: scope.store, builder: (context, _) => _build(context, scope));
+  }
+
+  Widget _build(BuildContext context, AppScope scope) {
+    final library = scope.library;
+    final store = scope.store;
+    final results = library.search(_query, topic: _topic, shown: store.shows);
     return Scaffold(
       appBar: AppBar(title: const Text('Library')),
       body: Column(
@@ -45,7 +51,7 @@ class _LibraryScreenState extends State<LibraryScreen> {
               padding: const EdgeInsets.symmetric(horizontal: 12),
               children: [
                 _chip('All', null),
-                _chip('Sentences', Library.sentencesFilter),
+                if (store.showSentences) _chip('Sentences', Library.sentencesFilter),
                 for (final t in Library.topics) _chip(topicLabel(t), t),
               ],
             ),
@@ -59,7 +65,7 @@ class _LibraryScreenState extends State<LibraryScreen> {
           ),
           Expanded(
             child: Builder(builder: (context) {
-              final today = _query.isEmpty && _topic == null ? wordOfTheDay(library, DateTime.now()) : null;
+              final today = _query.isEmpty && _topic == null ? wordOfTheDay(library, DateTime.now(), shown: store.shows) : null;
               final extra = today == null ? 0 : 1;
               return ListView.separated(
                 itemCount: results.length + extra,
