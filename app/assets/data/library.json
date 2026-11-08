@@ -15,6 +15,29 @@
  },
  "scales": [
   {
+   "name": "Size",
+   "from": "small",
+   "to": "huge",
+   "items": [
+    {
+     "id": "63c28c3cb7",
+     "meaning": "small"
+    },
+    {
+     "id": "b4dc8174b7",
+     "meaning": "medium"
+    },
+    {
+     "id": "f2f161f7da",
+     "meaning": "big; large; great"
+    },
+    {
+     "id": "cd063c719a",
+     "meaning": "huge; immense; enormous; gigantic"
+    }
+   ]
+  },
+  {
    "name": "Temperature",
    "from": "cold",
    "to": "hot",

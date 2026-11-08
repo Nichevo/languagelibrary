@@ -10,6 +10,7 @@ import android.net.Uri
 import android.text.SpannableString
 import android.text.Spanned
 import android.text.style.ForegroundColorSpan
+import android.util.TypedValue
 import android.view.View
 import android.widget.RemoteViews
 import es.antonborri.home_widget.HomeWidgetLaunchIntent
@@ -56,6 +57,17 @@ internal object WidgetData {
         return s
     }
 
+    /** As big as the characters fit: short words very large, long phrases smaller. */
+    fun hanziSize(v: RemoteViews, hanzi: String, wide: Boolean) {
+        val n = hanzi.length
+        val sp = if (wide) {
+            when { n <= 2 -> 56f; n <= 4 -> 46f; n <= 7 -> 36f; else -> 28f }
+        } else {
+            when { n <= 2 -> 46f; n <= 3 -> 38f; n <= 5 -> 30f; else -> 24f }
+        }
+        v.setTextViewTextSize(R.id.hz, TypedValue.COMPLEX_UNIT_SP, sp)
+    }
+
     fun openApp(context: Context, place: String): PendingIntent =
         HomeWidgetLaunchIntent.getActivity(context, MainActivity::class.java, Uri.parse("langlib://$place"))
 }
@@ -74,6 +86,7 @@ class WordOfDayWidget : HomeWidgetProvider() {
                 v.setOnClickPendingIntent(R.id.hz, WidgetData.openApp(context, "library"))
             } else {
                 v.setTextViewText(R.id.hz, WidgetData.toned(context, w.optString("hz"), w.optString("tones"), tone))
+                WidgetData.hanziSize(v, w.optString("hz"), wide = false)
                 v.setTextViewText(R.id.py, w.optString("py"))
                 v.setTextViewText(R.id.en, w.optString("en"))
             }
@@ -159,6 +172,7 @@ class FocusCardWidget : HomeWidgetProvider() {
             } else {
                 val c = cards.getJSONObject(state.getInt("index", 0).coerceIn(0, cards.length() - 1))
                 v.setTextViewText(R.id.hz, WidgetData.toned(context, c.optString("hz"), c.optString("tones"), tone))
+                WidgetData.hanziSize(v, c.optString("hz"), wide = true)
                 v.setTextViewText(
                     R.id.answer,
                     if (revealed) c.optString("py") + "\n" + c.optString("en") else "Tap to show the answer",

@@ -21,12 +21,11 @@ class Scale {
   final String name, from, to;
   final List<ScaleItem> items;
 
-  /// The words switched on in Settings, still in order.
-  List<ScaleItem> shown(bool Function(Entry) shows) => [for (final i in items) if (shows(i.entry)) i];
 }
 
-/// Two words that are opposites (from the "Opposite:" related-word links).
-typedef OppositePair = (Entry, Entry);
+/// Two words that are opposites, with the English meanings that make them so
+/// (from the "Opposite: big / small" related-word links).
+typedef OppositePair = ({Entry a, String aEnglish, Entry b, String bEnglish});
 
 /// The read-only word library plus the list of audio clips that exist.
 class Library {
@@ -50,7 +49,10 @@ class Library {
         final o = byId[r.id];
         if (o == null || !r.why.startsWith('Opposite:')) continue;
         final key = ([e.id, o.id]..sort()).join();
-        if (seen.add(key)) out.add((e, o));
+        final english = r.why.substring('Opposite:'.length).split('/');
+        if (seen.add(key) && english.length == 2) {
+          out.add((a: e, aEnglish: english[0].trim(), b: o, bEnglish: english[1].trim()));
+        }
       }
     }
     return out;

@@ -33,23 +33,22 @@ void main() {
       }
     });
 
-    test('opposite pairs are listed once each', () {
-      final pairs = {
-        for (final (a, b) in lib.opposites) ([a.simplified, b.simplified]..sort()).join('/'),
-      };
+    test('opposite pairs are listed once each, with their English', () {
+      final pairs = {for (final p in lib.opposites) ([p.a.simplified, p.b.simplified]..sort()).join('/')};
       expect(pairs, contains((['大', '小']..sort()).join('/')));
       expect(pairs.length, lib.opposites.length);
+      final big = lib.opposites.firstWhere((p) => {p.a.simplified, p.b.simplified}.containsAll(['大', '小']));
+      expect(big.a.simplified == '大' ? big.aEnglish : big.bEnglish, 'big');
+      expect(big.a.simplified == '大' ? big.bEnglish : big.aEnglish, 'small');
     });
 
-    test('words at levels switched off drop out of a scale', () async {
-      SharedPreferences.setMockInitialValues({});
-      final store = await UserStore.open();
+    test('scales keep every word, whatever the level switches', () {
       final often = named('How often');
-      expect(often.items.first.entry.simplified, '偶尔'); // HSK 5, off by default
-      expect([for (final i in often.shown(store.shows)) i.entry.simplified], ['有时候', '常常', '总是']);
+      expect(often.items.first.entry.simplified, '偶尔'); // HSK 5
+      expect([for (final i in named('Size').items) i.entry.simplified], ['小', '中等', '大', '巨大']);
       final cold = lib.entries.firstWhere((e) => e.simplified == '冷');
-      expect(scaleToOrder(lib, cold, store.shows)?.$1.name, 'Temperature');
-      expect(scaleToOrder(lib, often.items.first.entry, store.shows), isNull);
+      expect(scaleToOrder(lib, cold)?.$1.name, 'Temperature');
+      expect(scaleToOrder(lib, lib.entries.firstWhere((e) => e.simplified == '书')), isNull);
     });
 
     test('"put in order" is only offered in the mix', () {
@@ -141,6 +140,39 @@ void main() {
       await tester.pumpAndSettle();
       expect(result, isTrue);
       expect(find.text('All in order!'), findsOneWidget);
+    });
+
+    testWidgets('drag mode: the choice is remembered and a shuffled order is wrong', (tester) async {
+      SharedPreferences.setMockInitialValues({});
+      final store = await UserStore.open();
+      final t = named('Temperature');
+      bool? result;
+      await tester.pumpWidget(
+        AppScope(
+          library: lib,
+          store: store,
+          speaker: Speaker(lib),
+          device: NoDevice(),
+          child: MaterialApp(
+            home: Scaffold(
+              body: ListView(
+                children: [OrderQuestion(scale: t, items: t.items, random: Random(2), onChecked: (r) => result = r)],
+              ),
+            ),
+          ),
+        ),
+      );
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('Drag'));
+      await tester.pumpAndSettle();
+      expect(store.orderByDrag, isTrue);
+      expect(find.text('Drag the words from cold to hot'), findsOneWidget);
+      expect(find.byType(ReorderableListView), findsOneWidget);
+      // Checking straight away: shuffledScale never starts in the right order.
+      await tester.tap(find.text('Check'));
+      await tester.pumpAndSettle();
+      expect(result, isFalse);
+      expect(find.text('Not quite. The right order is shown above.'), findsOneWidget);
     });
   });
 }
