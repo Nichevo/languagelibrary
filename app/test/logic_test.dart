@@ -81,6 +81,15 @@ void main() {
       expect(lib.byId.length, lib.entries.length);
     });
 
+    test('opposites are linked both ways', () {
+      Entry word(String hz) => lib.entries.firstWhere((e) => e.simplified == hz && !e.isSentence);
+      for (final (a, b) in [('大', '小'), ('冷', '热'), ('买', '卖'), ('对', '错')]) {
+        final link = word(a).related.firstWhere((r) => r.id == word(b).id);
+        expect(link.why, startsWith('Opposite'));
+        expect(word(b).related.any((r) => r.id == word(a).id && r.why.startsWith('Opposite')), isTrue);
+      }
+    });
+
     test('search by hanzi, pinyin and English', () {
       expect(lib.search('你好').first.simplified, '你好');
       expect(lib.search('nihao').first.simplified, '你好');

@@ -1,6 +1,6 @@
 {
  "version": 1,
- "built": "2026-11-07",
+ "built": "2026-11-08",
  "levels": [
   "new-1",
   "new-2",
@@ -1732,6 +1732,10 @@
    ],
    "related": [
     {
+     "id": "f818e7a35e",
+     "why": "Opposite: good / bad"
+    },
+    {
      "id": "f3b3d1690b",
      "why": "Also means \"appropriate\""
     },
@@ -1765,10 +1769,6 @@
     },
     {
      "id": "861e44c8be",
-     "why": "Contains 好"
-    },
-    {
-     "id": "9510a6a4ff",
      "why": "Contains 好"
     }
    ],
@@ -2267,6 +2267,10 @@
    ],
    "related": [
     {
+     "id": "5bfb13ea89",
+     "why": "Opposite: right / wrong"
+    },
+    {
      "id": "69577dc601",
      "why": "Also means \"correct\""
     },
@@ -2300,10 +2304,6 @@
     },
     {
      "id": "41d8419766",
-     "why": "Contains 对"
-    },
-    {
-     "id": "028cb0dd98",
      "why": "Contains 对"
     }
    ],
@@ -2381,6 +2381,10 @@
    ],
    "related": [
     {
+     "id": "ec9eca9ca9",
+     "why": "Opposite: up / down"
+    },
+    {
      "id": "a53f81958e",
      "why": "Also means \"above\""
     },
@@ -2414,10 +2418,6 @@
     },
     {
      "id": "c19c2140c5",
-     "why": "Contains 上"
-    },
-    {
-     "id": "eef45ba229",
      "why": "Contains 上"
     }
    ],
@@ -4541,6 +4541,10 @@
    ],
    "related": [
     {
+     "id": "63c28c3cb7",
+     "why": "Opposite: big / small"
+    },
+    {
      "id": "e13d212fa5",
      "why": "Also means \"great\""
     },
@@ -4651,6 +4655,10 @@
     "CC-CEDICT"
    ],
    "related": [
+    {
+     "id": "c012667bdf",
+     "why": "Opposite: down / up"
+    },
     {
      "id": "5cfdda8d22",
      "why": "Contains 下"
@@ -5519,6 +5527,10 @@
    ],
    "related": [
     {
+     "id": "d61961c717",
+     "why": "Opposite: many / few"
+    },
+    {
      "id": "f992f30b2a",
      "why": "Also means \"a lot of\""
     },
@@ -5987,6 +5999,10 @@
    ],
    "related": [
     {
+     "id": "39bce13718",
+     "why": "Opposite: go out / go in"
+    },
+    {
      "id": "169fcdd9c4",
      "why": "Also means \"to arise\""
     },
@@ -6021,10 +6037,6 @@
     {
      "id": "7aa5ad5d86",
      "why": "Also means \"to occur\""
-    },
-    {
-     "id": "f2e0185d30",
-     "why": "Contains 出"
     }
    ],
    "examples": [
@@ -6548,6 +6560,10 @@
     "CC-CEDICT"
    ],
    "related": [
+    {
+     "id": "f2f161f7da",
+     "why": "Opposite: small / big"
+    },
     {
      "id": "bd98391c73",
      "why": "Contains 小"
@@ -7872,6 +7888,10 @@
     "Curated phrase list"
    ],
    "related": [
+    {
+     "id": "026b418836",
+     "why": "Opposite: love / hate"
+    },
     {
      "id": "a392d71af2",
      "why": "Also means \"affection\""
@@ -9978,6 +9998,10 @@
    ],
    "related": [
     {
+     "id": "d736d33585",
+     "why": "Opposite: stand up / sit down"
+    },
+    {
      "id": "87e79e162d",
      "why": "Also means \"to get up\""
     },
@@ -10011,10 +10035,6 @@
     },
     {
      "id": "699d4c6002",
-     "why": "Also uses 起"
-    },
-    {
-     "id": "161e84a2bd",
      "why": "Also uses 起"
     }
    ],
@@ -11097,6 +11117,10 @@
    ],
    "related": [
     {
+     "id": "b7008b82a8",
+     "why": "Opposite: open / close"
+    },
+    {
      "id": "6e71d5327a",
      "why": "Also means \"to open\""
     },
@@ -11130,10 +11154,6 @@
     },
     {
      "id": "83b1732b61",
-     "why": "Also means \"to start\""
-    },
-    {
-     "id": "14daa657de",
      "why": "Also means \"to start\""
     }
    ],
@@ -11408,6 +11428,10 @@
    ],
    "related": [
     {
+     "id": "dae02843fe",
+     "why": "Opposite: here / there"
+    },
+    {
      "id": "fd8477e31b",
      "why": "Also means \"here\""
     },
@@ -11429,10 +11453,6 @@
     },
     {
      "id": "86331e8f40",
-     "why": "Also uses 里"
-    },
-    {
-     "id": "dae02843fe",
      "why": "Also uses 里"
     },
     {
@@ -12366,6 +12386,10 @@
    ],
    "related": [
     {
+     "id": "3cb2fd0f2c",
+     "why": "Opposite: buy / sell"
+    },
+    {
      "id": "fc4964f4b8",
      "why": "Also means \"to buy\""
     },
@@ -13254,6 +13278,10 @@
    ],
    "related": [
     {
+     "id": "66fe46bc4b",
+     "why": "Opposite: old / young"
+    },
+    {
      "id": "e88a74a49e",
      "why": "Also means \"old\""
     },
@@ -13986,6 +14014,14 @@
     "CC-CEDICT"
    ],
    "related": [
+    {
+     "id": "eecb104f9f",
+     "why": "Opposite: high / low"
+    },
+    {
+     "id": "0952002edb",
+     "why": "Opposite: high / low"
+    },
     {
      "id": "31b54559db",
      "why": "Also means \"tall\""
@@ -14735,6 +14771,10 @@
    ],
    "related": [
     {
+     "id": "eccf7255a4",
+     "why": "Opposite: go in / go out"
+    },
+    {
      "id": "dc42e8f00b",
      "why": "Also means \"to advance\""
     },
@@ -15259,6 +15299,10 @@
    ],
    "related": [
     {
+     "id": "58355fe7af",
+     "why": "Opposite: female / male"
+    },
+    {
      "id": "ca60e6864f",
      "why": "Also means \"female\""
     },
@@ -15584,6 +15628,10 @@
     "CC-CEDICT"
    ],
    "related": [
+    {
+     "id": "1329edf880",
+     "why": "Opposite: laugh / weep"
+    },
     {
      "id": "03697607c1",
      "why": "Also means \"to laugh at\""
@@ -16345,6 +16393,10 @@
     "CC-CEDICT"
    ],
    "related": [
+    {
+     "id": "52dd59b172",
+     "why": "Opposite: stand / sit"
+    },
     {
      "id": "0edf361de7",
      "why": "Also means \"to stand\""
@@ -17190,6 +17242,10 @@
    ],
    "related": [
     {
+     "id": "0a682edf8d",
+     "why": "Opposite: sit / stand"
+    },
+    {
      "id": "d736d33585",
      "why": "Contains 坐"
     },
@@ -17405,6 +17461,14 @@
     "CC-CEDICT"
    ],
    "related": [
+    {
+     "id": "dbe0434ac6",
+     "why": "Opposite: early / late"
+    },
+    {
+     "id": "803cfe63c9",
+     "why": "Opposite: early / late"
+    },
     {
      "id": "4a666b8393",
      "why": "Also means \"morning\""
@@ -17705,6 +17769,10 @@
     "CC-CEDICT"
    ],
    "related": [
+    {
+     "id": "ce44369d4f",
+     "why": "Opposite: dry / wet"
+    },
     {
      "id": "d2b1528412",
      "why": "Same characters, different reading"
@@ -18573,6 +18641,10 @@
    ],
    "related": [
     {
+     "id": "f17caceeb8",
+     "why": "Opposite: night / daytime"
+    },
+    {
      "id": "3c5babecee",
      "why": "Its measure word"
     },
@@ -18606,10 +18678,6 @@
     },
     {
      "id": "fbb70aba09",
-     "why": "Also uses 晚"
-    },
-    {
-     "id": "777eb3a4fd",
      "why": "Also uses 晚"
     }
    ],
@@ -19183,6 +19251,10 @@
    ],
    "related": [
     {
+     "id": "d24009b7ff",
+     "why": "Opposite: mother / father"
+    },
+    {
      "id": "3c5babecee",
      "why": "Its measure word"
     },
@@ -19383,6 +19455,10 @@
    ],
    "related": [
     {
+     "id": "3204f0fecb",
+     "why": "Opposite: wrong / right"
+    },
+    {
      "id": "5bbee6fe66",
      "why": "Also means \"mistake\""
     },
@@ -19491,6 +19567,10 @@
     "CC-CEDICT"
    ],
    "related": [
+    {
+     "id": "d95472b54f",
+     "why": "Opposite: few / many"
+    },
     {
      "id": "149b34f6e6",
      "why": "Also means \"few\""
@@ -19702,6 +19782,10 @@
    ],
    "related": [
     {
+     "id": "cce051b7bb",
+     "why": "Opposite: difficult / easy"
+    },
+    {
      "id": "bb663e54fa",
      "why": "Also means \"difficult\""
     },
@@ -19735,10 +19819,6 @@
     },
     {
      "id": "1ad0452f33",
-     "why": "Contains 难"
-    },
-    {
-     "id": "4bc86878c2",
      "why": "Contains 难"
     }
    ],
@@ -20488,6 +20568,10 @@
    ],
    "related": [
     {
+     "id": "db3147541a",
+     "why": "Opposite: late / early"
+    },
+    {
      "id": "b20e82ce1a",
      "why": "Also means \"evening\""
     },
@@ -20903,6 +20987,10 @@
    ],
    "related": [
     {
+     "id": "50b7ee29db",
+     "why": "Opposite: male / female"
+    },
+    {
      "id": "b8deae5016",
      "why": "Contains 男"
     },
@@ -21233,6 +21321,10 @@
    ],
    "related": [
     {
+     "id": "81ed49cf7d",
+     "why": "Opposite: heavy / light"
+    },
+    {
      "id": "4520e52d28",
      "why": "Also means \"heavy\""
     },
@@ -21535,6 +21627,10 @@
     "CC-CEDICT"
    ],
    "related": [
+    {
+     "id": "589d6e60af",
+     "why": "Opposite: far / near"
+    },
     {
      "id": "ae9990372e",
      "why": "Also means \"distant\""
@@ -21934,6 +22030,10 @@
     "CC-CEDICT"
    ],
    "related": [
+    {
+     "id": "75f7e79603",
+     "why": "Opposite: son / daughter"
+    },
     {
      "id": "c5cb9cc424",
      "why": "Part of 儿子"
@@ -23102,6 +23202,10 @@
    ],
    "related": [
     {
+     "id": "899963d159",
+     "why": "Opposite: there / here"
+    },
+    {
      "id": "ac7730ddcc",
      "why": "Also means \"there\""
     },
@@ -23112,10 +23216,6 @@
     {
      "id": "b03dc908af",
      "why": "Part of 那里"
-    },
-    {
-     "id": "899963d159",
-     "why": "Also uses 里"
     },
     {
      "id": "86331e8f40",
@@ -23611,6 +23711,14 @@
    ],
    "related": [
     {
+     "id": "c45fcef656",
+     "why": "Opposite: go out / come in"
+    },
+    {
+     "id": "1bd0ce6155",
+     "why": "Opposite: go out / go in"
+    },
+    {
      "id": "eccf7255a4",
      "why": "Also means \"to go out\""
     },
@@ -23640,14 +23748,6 @@
     },
     {
      "id": "f2e0185d30",
-     "why": "Also uses 出"
-    },
-    {
-     "id": "d8fdd2f49a",
-     "why": "Also uses 出"
-    },
-    {
-     "id": "14323eb8c3",
      "why": "Also uses 出"
     }
    ],
@@ -25458,6 +25558,10 @@
    ],
    "related": [
     {
+     "id": "45ae53e9fd",
+     "why": "Opposite: daughter / son"
+    },
+    {
      "id": "50b7ee29db",
      "why": "Part of 女儿"
     },
@@ -25491,10 +25595,6 @@
     },
     {
      "id": "a17bb03456",
-     "why": "Also uses 女"
-    },
-    {
-     "id": "b130fa4505",
      "why": "Also uses 女"
     }
    ],
@@ -25830,6 +25930,10 @@
     "CC-CEDICT"
    ],
    "related": [
+    {
+     "id": "dd352fa33a",
+     "why": "Opposite: father / mother"
+    },
     {
      "id": "3c5babecee",
      "why": "Its measure word"
@@ -26174,6 +26278,10 @@
    ],
    "related": [
     {
+     "id": "2aa6be020d",
+     "why": "Opposite: white / black"
+    },
+    {
      "id": "c9643b0860",
      "why": "Also means \"white\""
     },
@@ -26378,6 +26486,10 @@
     "CC-CEDICT"
    ],
    "related": [
+    {
+     "id": "148d8bf7eb",
+     "why": "Opposite: hot / cold"
+    },
     {
      "id": "a85abf2a71",
      "why": "Contains 热"
@@ -27030,6 +27142,10 @@
     "CC-CEDICT"
    ],
    "related": [
+    {
+     "id": "220cccf191",
+     "why": "Opposite: west / east"
+    },
     {
      "id": "87d3786fec",
      "why": "Contains 西"
@@ -28069,6 +28185,10 @@
    ],
    "related": [
     {
+     "id": "7c8af3feb0",
+     "why": "Opposite: cold / hot"
+    },
+    {
      "id": "10b31cf535",
      "why": "Also means \"cold\""
     },
@@ -28495,6 +28615,10 @@
     "CC-CEDICT"
    ],
    "related": [
+    {
+     "id": "95e136202a",
+     "why": "Opposite: always / never"
+    },
     {
      "id": "821caf6d50",
      "why": "Also means \"always\""
@@ -29058,6 +29182,10 @@
     "CC-CEDICT"
    ],
    "related": [
+    {
+     "id": "24d50b262f",
+     "why": "Opposite: close / open"
+    },
     {
      "id": "4b51c592c9",
      "why": "Also means \"to close\""
@@ -29643,6 +29771,14 @@
    ],
    "related": [
     {
+     "id": "4b51c592c9",
+     "why": "Opposite: open / close"
+    },
+    {
+     "id": "a5c704fe79",
+     "why": "Opposite: open / close"
+    },
+    {
      "id": "24d50b262f",
      "why": "Also means \"to open\""
     },
@@ -29673,14 +29809,6 @@
     {
      "id": "4bcb08b276",
      "why": "Also means \"to show\""
-    },
-    {
-     "id": "3053215147",
-     "why": "Part of 打开"
-    },
-    {
-     "id": "3741257eb8",
-     "why": "Also uses 打"
     }
    ],
    "examples": [
@@ -30311,6 +30439,10 @@
     "CC-CEDICT"
    ],
    "related": [
+    {
+     "id": "631b2a9d50",
+     "why": "Opposite: bad / good"
+    },
     {
      "id": "7b454903c4",
      "why": "Also means \"bad\""
@@ -31124,6 +31256,10 @@
    ],
    "related": [
     {
+     "id": "fe58ff6a6a",
+     "why": "Opposite: left / right"
+    },
+    {
      "id": "f96549437f",
      "why": "Also means \"left\""
     },
@@ -31803,6 +31939,10 @@
    ],
    "related": [
     {
+     "id": "031a13f23e",
+     "why": "Opposite: right / left"
+    },
+    {
      "id": "69577dc601",
      "why": "Also means \"right\""
     },
@@ -32253,6 +32393,14 @@
     "CC-CEDICT"
    ],
    "related": [
+    {
+     "id": "db177c417e",
+     "why": "Opposite: east / west"
+    },
+    {
+     "id": "6482efbc9c",
+     "why": "Opposite: east / west"
+    },
     {
      "id": "2188c5e009",
      "why": "Also means \"east\""
@@ -33348,6 +33496,10 @@
    ],
    "related": [
     {
+     "id": "bbeec41eab",
+     "why": "Opposite: go in / go out"
+    },
+    {
      "id": "39bce13718",
      "why": "Part of 进去"
     },
@@ -33381,10 +33533,6 @@
     },
     {
      "id": "39d3d2d23e",
-     "why": "Also uses 进"
-    },
-    {
-     "id": "5d3476236a",
      "why": "Also uses 进"
     }
    ],
@@ -34024,6 +34172,10 @@
    ],
    "related": [
     {
+     "id": "11976a9e53",
+     "why": "Opposite: south / north"
+    },
+    {
      "id": "1b6a2994d0",
      "why": "Also means \"south\""
     },
@@ -34338,6 +34490,10 @@
     "CC-CEDICT"
    ],
    "related": [
+    {
+     "id": "cdb6ba043f",
+     "why": "Opposite: slow / fast"
+    },
     {
      "id": "96ac5f89e5",
      "why": "Contains 慢"
@@ -34665,6 +34821,10 @@
    ],
    "related": [
     {
+     "id": "f87331024a",
+     "why": "Opposite: north / south"
+    },
+    {
      "id": "2df1965e44",
      "why": "Also means \"north\""
     },
@@ -34865,6 +35025,10 @@
    ],
    "related": [
     {
+     "id": "bbeec41eab",
+     "why": "Opposite: come in / go out"
+    },
+    {
      "id": "39bce13718",
      "why": "Part of 进来"
     },
@@ -34898,10 +35062,6 @@
     },
     {
      "id": "39d3d2d23e",
-     "why": "Also uses 进"
-    },
-    {
-     "id": "5d3476236a",
      "why": "Also uses 进"
     }
    ],
@@ -38549,6 +38709,10 @@
    ],
    "related": [
     {
+     "id": "ac7730ddcc",
+     "why": "Opposite: here / there"
+    },
+    {
      "id": "899963d159",
      "why": "Also means \"here\""
     },
@@ -38744,6 +38908,10 @@
    ],
    "related": [
     {
+     "id": "816cb12fd5",
+     "why": "Opposite: incorrect / correct"
+    },
+    {
      "id": "0f4949fd4b",
      "why": "Also means \"incorrect\""
     },
@@ -38777,10 +38945,6 @@
     },
     {
      "id": "bec04d638a",
-     "why": "Also uses 对"
-    },
-    {
-     "id": "eaafb80707",
      "why": "Also uses 对"
     }
    ],
@@ -41732,6 +41896,10 @@
    ],
    "related": [
     {
+     "id": "fd8477e31b",
+     "why": "Opposite: there / here"
+    },
+    {
      "id": "dae02843fe",
      "why": "Also means \"there\""
     },
@@ -42374,6 +42542,10 @@
    ],
    "related": [
     {
+     "id": "7683298e43",
+     "why": "Opposite: sit down / stand up"
+    },
+    {
      "id": "52dd59b172",
      "why": "Part of 坐下"
     },
@@ -42407,10 +42579,6 @@
     },
     {
      "id": "e34de89b18",
-     "why": "Also uses 下"
-    },
-    {
-     "id": "81f7670dbf",
      "why": "Also uses 下"
     }
    ],
@@ -42692,6 +42860,14 @@
    ],
    "related": [
     {
+     "id": "8ab8bad4b0",
+     "why": "Opposite: daytime / night"
+    },
+    {
+     "id": "b20e82ce1a",
+     "why": "Opposite: daytime / night"
+    },
+    {
      "id": "3c5babecee",
      "why": "Its measure word"
     },
@@ -42722,14 +42898,6 @@
     {
      "id": "a6c0f32ec6",
      "why": "Also uses 白"
-    },
-    {
-     "id": "144993166d",
-     "why": "Also uses 天"
-    },
-    {
-     "id": "5b5440ea1b",
-     "why": "Also uses 天"
     }
    ],
    "examples": []
@@ -43509,6 +43677,10 @@
    ],
    "related": [
     {
+     "id": "031587822a",
+     "why": "Opposite: external / internal"
+    },
+    {
      "id": "2f8415f976",
      "why": "Also means \"abroad\""
     },
@@ -43542,10 +43714,6 @@
     },
     {
      "id": "82bd017127",
-     "why": "Also uses 国"
-    },
-    {
-     "id": "b39f910b34",
      "why": "Also uses 国"
     }
    ],
@@ -44203,16 +44371,16 @@
    ],
    "related": [
     {
+     "id": "df473cd39b",
+     "why": "Opposite: downstairs / upstairs"
+    },
+    {
      "id": "3b5aa98a49",
      "why": "Part of 楼下"
     },
     {
      "id": "ec9eca9ca9",
      "why": "Part of 楼下"
-    },
-    {
-     "id": "df473cd39b",
-     "why": "Also uses 楼"
     },
     {
      "id": "eb07c533f1",
@@ -45556,6 +45724,10 @@
    ],
    "related": [
     {
+     "id": "2e2bc4986b",
+     "why": "Opposite: useful / useless"
+    },
+    {
      "id": "09c405eb89",
      "why": "Part of 有用"
     },
@@ -45589,10 +45761,6 @@
     },
     {
      "id": "c6d44cf7fa",
-     "why": "Also uses 用"
-    },
-    {
-     "id": "7d20a8aba0",
      "why": "Also uses 用"
     }
    ],
@@ -46420,16 +46588,16 @@
    ],
    "related": [
     {
+     "id": "c0730967de",
+     "why": "Opposite: upstairs / downstairs"
+    },
+    {
      "id": "3b5aa98a49",
      "why": "Part of 楼上"
     },
     {
      "id": "c012667bdf",
      "why": "Part of 楼上"
-    },
-    {
-     "id": "c0730967de",
-     "why": "Also uses 楼"
     },
     {
      "id": "eb07c533f1",
@@ -47883,6 +48051,10 @@
    ],
    "related": [
     {
+     "id": "6e71d5327a",
+     "why": "Opposite: close / open"
+    },
+    {
      "id": "b7008b82a8",
      "why": "Also means \"to close\""
     },
@@ -47916,10 +48088,6 @@
     },
     {
      "id": "8f608ce709",
-     "why": "Also uses 关"
-    },
-    {
-     "id": "1e76beab6e",
      "why": "Also uses 关"
     }
    ],
@@ -49166,6 +49334,10 @@
    ],
    "related": [
     {
+     "id": "152eb7b4e4",
+     "why": "Opposite: inside / outside"
+    },
+    {
      "id": "d8ea513996",
      "why": "Also means \"inside\""
     },
@@ -49199,10 +49371,6 @@
     },
     {
      "id": "86331e8f40",
-     "why": "Also uses 里"
-    },
-    {
-     "id": "dae02843fe",
      "why": "Also uses 里"
     }
    ],
@@ -49806,6 +49974,10 @@
    ],
    "related": [
     {
+     "id": "46b1adb9f5",
+     "why": "Opposite: outside / inside"
+    },
+    {
      "id": "6cf7cf85a5",
      "why": "Also means \"outer surface\""
     },
@@ -49839,10 +50011,6 @@
     },
     {
      "id": "ad96bf8ebd",
-     "why": "Also uses 外"
-    },
-    {
-     "id": "5adafb9bfe",
      "why": "Also uses 外"
     }
    ],
@@ -50289,6 +50457,14 @@
    ],
    "related": [
     {
+     "id": "2188c5e009",
+     "why": "Opposite: west / east"
+    },
+    {
+     "id": "220cccf191",
+     "why": "Opposite: west / east"
+    },
+    {
      "id": "6482efbc9c",
      "why": "Part of 西边"
     },
@@ -50318,14 +50494,6 @@
     },
     {
      "id": "9a3096ee2d",
-     "why": "Also uses 西"
-    },
-    {
-     "id": "f6ee2af904",
-     "why": "Also uses 西"
-    },
-    {
-     "id": "9081321fa5",
      "why": "Also uses 西"
     }
    ],
@@ -50614,6 +50782,10 @@
    ],
    "related": [
     {
+     "id": "db177c417e",
+     "why": "Opposite: east / west"
+    },
+    {
      "id": "220cccf191",
      "why": "Also means \"east\""
     },
@@ -50647,10 +50819,6 @@
     },
     {
      "id": "06c01acab7",
-     "why": "Also uses 边"
-    },
-    {
-     "id": "e2eb3027cc",
      "why": "Also uses 边"
     }
    ],
@@ -50915,6 +51083,10 @@
    ],
    "related": [
     {
+     "id": "2df1965e44",
+     "why": "Opposite: south / north"
+    },
+    {
      "id": "f87331024a",
      "why": "Also means \"south\""
     },
@@ -50948,10 +51120,6 @@
     },
     {
      "id": "e2eb3027cc",
-     "why": "Also uses 边"
-    },
-    {
-     "id": "edafbd512a",
      "why": "Also uses 边"
     }
    ],
@@ -51007,6 +51175,10 @@
    ],
    "related": [
     {
+     "id": "1b6a2994d0",
+     "why": "Opposite: north / south"
+    },
+    {
      "id": "11976a9e53",
      "why": "Also means \"north\""
     },
@@ -51040,10 +51212,6 @@
     },
     {
      "id": "e2eb3027cc",
-     "why": "Also uses 边"
-    },
-    {
-     "id": "edafbd512a",
      "why": "Also uses 边"
     }
    ],
@@ -58656,6 +58824,10 @@
    ],
    "related": [
     {
+     "id": "6ccc112725",
+     "why": "Opposite: safe / dangerous"
+    },
+    {
      "id": "5b059709e5",
      "why": "Part of 安全"
     },
@@ -58689,10 +58861,6 @@
     },
     {
      "id": "ff768eca04",
-     "why": "Also uses 安"
-    },
-    {
-     "id": "c3a43a2d7d",
      "why": "Also uses 安"
     }
    ],
@@ -61862,6 +62030,10 @@
    ],
    "related": [
     {
+     "id": "829ed9f511",
+     "why": "Opposite: pull / push"
+    },
+    {
      "id": "0b3c9b0f52",
      "why": "Also means \"to play\""
     },
@@ -62609,6 +62781,10 @@
    ],
    "related": [
     {
+     "id": "f39cb250c1",
+     "why": "Opposite: part / whole"
+    },
+    {
      "id": "3d23a299a9",
      "why": "Also means \"part\""
     },
@@ -62635,10 +62811,6 @@
     {
      "id": "8217e5adca",
      "why": "Part of 部分"
-    },
-    {
-     "id": "f39cb250c1",
-     "why": "Also uses 部"
     },
     {
      "id": "50551d1257",
@@ -64457,6 +64629,10 @@
     "CC-CEDICT"
    ],
    "related": [
+    {
+     "id": "24d67409bc",
+     "why": "Opposite: sell / buy"
+    },
     {
      "id": "d7fb75bf68",
      "why": "Also means \"to sell\""
@@ -68229,6 +68405,10 @@
    ],
    "related": [
     {
+     "id": "6f49aa1c54",
+     "why": "Opposite: whole / part"
+    },
+    {
      "id": "a3397eb5d7",
      "why": "Also means \"all\""
     },
@@ -68263,10 +68443,6 @@
     {
      "id": "ee5bdb0cbb",
      "why": "Also means \"all\""
-    },
-    {
-     "id": "87d977a091",
-     "why": "Also means \"whole\""
     }
    ],
    "examples": [
@@ -68553,6 +68729,10 @@
     "CC-CEDICT"
    ],
    "related": [
+    {
+     "id": "2b398b9f95",
+     "why": "Opposite: black / white"
+    },
     {
      "id": "d7526a4995",
      "why": "Also means \"black\""
@@ -72098,6 +72278,10 @@
    ],
    "related": [
     {
+     "id": "aec78d0fb5",
+     "why": "Opposite: near / far"
+    },
+    {
      "id": "974a64a4af",
      "why": "Also means \"near\""
     },
@@ -73002,7 +73186,12 @@
     "HSK",
     "CC-CEDICT"
    ],
-   "related": [],
+   "related": [
+    {
+     "id": "68bc6eaf3a",
+     "why": "Opposite: weep / laugh"
+    }
+   ],
    "examples": [
     {
      "zh": "我也哭了。",
@@ -73169,6 +73358,10 @@
     "Curated phrase list"
    ],
    "related": [
+    {
+     "id": "4bc86878c2",
+     "why": "Opposite: beautiful / ugly"
+    },
     {
      "id": "4ae57ef88f",
      "why": "Also means \"beautiful\""
@@ -73731,6 +73924,10 @@
     "CC-CEDICT"
    ],
    "related": [
+    {
+     "id": "fb248135b6",
+     "why": "Opposite: low / high"
+    },
     {
      "id": "22d5c047c6",
      "why": "Also means \"beneath\""
@@ -76847,6 +77044,10 @@
    ],
    "related": [
     {
+     "id": "5f48fcb839",
+     "why": "Opposite: young / old"
+    },
+    {
      "id": "d184338571",
      "why": "Also means \"young\""
     },
@@ -76880,10 +77081,6 @@
     },
     {
      "id": "32f1e4be8f",
-     "why": "Also uses 年"
-    },
-    {
-     "id": "6a0f742408",
      "why": "Also uses 年"
     }
    ],
@@ -78189,6 +78386,14 @@
    ],
    "related": [
     {
+     "id": "028cb0dd98",
+     "why": "Opposite: correct / incorrect"
+    },
+    {
+     "id": "5bbee6fe66",
+     "why": "Opposite: correct / wrong"
+    },
+    {
      "id": "69577dc601",
      "why": "Also means \"correct\""
     },
@@ -78218,14 +78423,6 @@
     },
     {
      "id": "abca8d0f08",
-     "why": "Also means \"sound\""
-    },
-    {
-     "id": "de27d59a32",
-     "why": "Also means \"sound\""
-    },
-    {
-     "id": "d67c7b8861",
      "why": "Also means \"sound\""
     }
    ],
@@ -80894,6 +81091,10 @@
    ],
    "related": [
     {
+     "id": "75209f2d43",
+     "why": "Opposite: push / pull"
+    },
+    {
      "id": "2eef61b72c",
      "why": "Also means \"to push\""
     },
@@ -82932,6 +83133,10 @@
    ],
    "related": [
     {
+     "id": "9e1dde8a37",
+     "why": "Opposite: insufficient / sufficient"
+    },
+    {
      "id": "a3a81f7a89",
      "why": "Also means \"insufficient\""
     },
@@ -82945,10 +83150,6 @@
     },
     {
      "id": "486c0c8e42",
-     "why": "Also uses 够"
-    },
-    {
-     "id": "9e1dde8a37",
      "why": "Also uses 够"
     }
    ],
@@ -86543,6 +86744,10 @@
    ],
    "related": [
     {
+     "id": "c6d45146d5",
+     "why": "Opposite: export / import"
+    },
+    {
      "id": "3c5babecee",
      "why": "Its measure word"
     },
@@ -86576,10 +86781,6 @@
     },
     {
      "id": "2b86ac0a96",
-     "why": "Also uses 出"
-    },
-    {
-     "id": "bbeec41eab",
      "why": "Also uses 出"
     }
    ],
@@ -87908,6 +88109,10 @@
    ],
    "related": [
     {
+     "id": "2d6abdeed4",
+     "why": "Opposite: light / heavy"
+    },
+    {
      "id": "cce051b7bb",
      "why": "Also means \"easy\""
     },
@@ -87941,10 +88146,6 @@
     },
     {
      "id": "99e24dd145",
-     "why": "Also means \"light\""
-    },
-    {
-     "id": "691f8bfe22",
      "why": "Also means \"light\""
     }
    ],
@@ -90204,6 +90405,14 @@
    ],
    "related": [
     {
+     "id": "4bad0214ef",
+     "why": "Opposite: convenient / inconvenient"
+    },
+    {
+     "id": "f15829262c",
+     "why": "Opposite: convenient / inconvenient"
+    },
+    {
      "id": "cec5829ced",
      "why": "Also means \"convenient\""
     },
@@ -90233,14 +90442,6 @@
     },
     {
      "id": "9b1594fd23",
-     "why": "Also uses 方"
-    },
-    {
-     "id": "054d7d0aed",
-     "why": "Also uses 方"
-    },
-    {
-     "id": "b228ca9a74",
      "why": "Also uses 方"
     }
    ],
@@ -91491,6 +91692,10 @@
    ],
    "related": [
     {
+     "id": "9ff5a667c0",
+     "why": "Opposite: be born / die"
+    },
+    {
      "id": "570454906c",
      "why": "Also means \"to be born\""
     },
@@ -91524,10 +91729,6 @@
     },
     {
      "id": "14323eb8c3",
-     "why": "Also uses 出"
-    },
-    {
-     "id": "627329c7e9",
      "why": "Also uses 出"
     }
    ],
@@ -94478,6 +94679,10 @@
    ],
    "related": [
     {
+     "id": "c9643b0860",
+     "why": "Opposite: black / white"
+    },
+    {
      "id": "2aa6be020d",
      "why": "Also means \"black\""
     },
@@ -94503,10 +94708,6 @@
     },
     {
      "id": "0c3b778ca0",
-     "why": "Also uses 色"
-    },
-    {
-     "id": "c9643b0860",
      "why": "Also uses 色"
     },
     {
@@ -97232,6 +97433,10 @@
    ],
    "related": [
     {
+     "id": "d7526a4995",
+     "why": "Opposite: white / black"
+    },
+    {
      "id": "2b398b9f95",
      "why": "Also means \"white\""
     },
@@ -97261,10 +97466,6 @@
     },
     {
      "id": "e189fcd359",
-     "why": "Also uses 色"
-    },
-    {
-     "id": "d7526a4995",
      "why": "Also uses 色"
     },
     {
@@ -102318,6 +102519,10 @@
    ],
    "related": [
     {
+     "id": "7f7ba92495",
+     "why": "Opposite: south / north"
+    },
+    {
      "id": "f87331024a",
      "why": "Also means \"south\""
     },
@@ -102351,10 +102556,6 @@
     },
     {
      "id": "9b1594fd23",
-     "why": "Also uses 方"
-    },
-    {
-     "id": "054d7d0aed",
      "why": "Also uses 方"
     }
    ],
@@ -103069,6 +103270,10 @@
    ],
    "related": [
     {
+     "id": "871605165f",
+     "why": "Opposite: good person / bad person"
+    },
+    {
      "id": "631b2a9d50",
      "why": "Part of 好人"
     },
@@ -103102,10 +103307,6 @@
     },
     {
      "id": "04f2f16414",
-     "why": "Also uses 好"
-    },
-    {
-     "id": "c6d245cc8a",
      "why": "Also uses 好"
     }
    ],
@@ -110161,6 +110362,10 @@
    ],
    "related": [
     {
+     "id": "971b59d477",
+     "why": "Opposite: north / south"
+    },
+    {
      "id": "11976a9e53",
      "why": "Also means \"north\""
     },
@@ -110194,10 +110399,6 @@
     },
     {
      "id": "9b1594fd23",
-     "why": "Also uses 方"
-    },
-    {
-     "id": "054d7d0aed",
      "why": "Also uses 方"
     }
    ],
@@ -112491,6 +112692,10 @@
     "CC-CEDICT"
    ],
    "related": [
+    {
+     "id": "2427c6d4ee",
+     "why": "Opposite: bad person / good person"
+    },
     {
      "id": "f818e7a35e",
      "why": "Part of 坏人"
@@ -118226,6 +118431,10 @@
    ],
    "related": [
     {
+     "id": "324b457b31",
+     "why": "Opposite: inside / outside"
+    },
+    {
      "id": "46b1adb9f5",
      "why": "Also means \"inside\""
     },
@@ -118259,10 +118468,6 @@
     },
     {
      "id": "86331e8f40",
-     "why": "Also uses 里"
-    },
-    {
-     "id": "dae02843fe",
      "why": "Also uses 里"
     }
    ],
@@ -119722,6 +119927,14 @@
    ],
    "related": [
     {
+     "id": "4ae57ef88f",
+     "why": "Opposite: ugly / beautiful"
+    },
+    {
+     "id": "350376fbc0",
+     "why": "Opposite: ugly / beautiful"
+    },
+    {
      "id": "be0e40fecc",
      "why": "Part of 难看"
     },
@@ -119751,14 +119964,6 @@
     },
     {
      "id": "e788fb46ca",
-     "why": "Also uses 难"
-    },
-    {
-     "id": "27cbf78f74",
-     "why": "Also uses 难"
-    },
-    {
-     "id": "7396879571",
      "why": "Also uses 难"
     }
    ],
@@ -133667,6 +133872,10 @@
    ],
    "related": [
     {
+     "id": "95e136202a",
+     "why": "Opposite: always / never"
+    },
+    {
      "id": "473f9040c1",
      "why": "Also means \"always\""
     },
@@ -133700,10 +133909,6 @@
     },
     {
      "id": "d007396e76",
-     "why": "Also uses 总"
-    },
-    {
-     "id": "b491bb8696",
      "why": "Also uses 总"
     }
    ],
@@ -134456,6 +134661,10 @@
    ],
    "related": [
     {
+     "id": "67fd449e9b",
+     "why": "Opposite: inside / outside"
+    },
+    {
      "id": "46b1adb9f5",
      "why": "Also means \"inside\""
     },
@@ -134489,10 +134698,6 @@
     },
     {
      "id": "899963d159",
-     "why": "Also uses 里"
-    },
-    {
-     "id": "86331e8f40",
      "why": "Also uses 里"
     }
    ],
@@ -134953,6 +135158,14 @@
    ],
    "related": [
     {
+     "id": "be0e40fecc",
+     "why": "Opposite: easy / difficult"
+    },
+    {
+     "id": "bb663e54fa",
+     "why": "Opposite: easy / difficult"
+    },
+    {
      "id": "81ed49cf7d",
      "why": "Also means \"easy\""
     },
@@ -134983,14 +135196,6 @@
     {
      "id": "021b9fcf44",
      "why": "Also uses 容"
-    },
-    {
-     "id": "42c6612161",
-     "why": "Also uses 容"
-    },
-    {
-     "id": "f658e7634f",
-     "why": "Also uses 易"
     }
    ],
    "examples": [
@@ -136498,6 +136703,10 @@
    ],
    "related": [
     {
+     "id": "76ff5b325a",
+     "why": "Opposite: simple / complex"
+    },
+    {
      "id": "f05494f8b9",
      "why": "Also means \"simple\""
     },
@@ -136531,10 +136740,6 @@
     },
     {
      "id": "1281ef6d71",
-     "why": "Also uses 单"
-    },
-    {
-     "id": "fc3611e760",
      "why": "Also uses 单"
     }
    ],
@@ -138304,6 +138509,10 @@
    ],
    "related": [
     {
+     "id": "e8e511c2e2",
+     "why": "Opposite: father / mother"
+    },
+    {
      "id": "3c5babecee",
      "why": "Its measure word"
     },
@@ -138334,10 +138543,6 @@
     {
      "id": "7fc0bac337",
      "why": "Also uses 父"
-    },
-    {
-     "id": "e8e511c2e2",
-     "why": "Also uses 亲"
     },
     {
      "id": "7720cb4ebd",
@@ -138737,6 +138942,10 @@
    ],
    "related": [
     {
+     "id": "20deef8afe",
+     "why": "Opposite: go down / go up"
+    },
+    {
      "id": "61bddffc2b",
      "why": "Also means \"to descend\""
     },
@@ -138770,10 +138979,6 @@
     },
     {
      "id": "e34de89b18",
-     "why": "Also uses 下"
-    },
-    {
-     "id": "81f7670dbf",
      "why": "Also uses 下"
     }
    ],
@@ -142755,6 +142960,10 @@
    ],
    "related": [
     {
+     "id": "9f94709824",
+     "why": "Opposite: mother / father"
+    },
+    {
      "id": "3c5babecee",
      "why": "Its measure word"
     },
@@ -142785,10 +142994,6 @@
     {
      "id": "5cd2b6656d",
      "why": "Also uses 母"
-    },
-    {
-     "id": "9f94709824",
-     "why": "Also uses 亲"
     },
     {
      "id": "7720cb4ebd",
@@ -146213,6 +146418,10 @@
    ],
    "related": [
     {
+     "id": "cce051b7bb",
+     "why": "Opposite: difficult / easy"
+    },
+    {
      "id": "be0e40fecc",
      "why": "Also means \"difficult\""
     },
@@ -146246,10 +146455,6 @@
     },
     {
      "id": "300f3cca38",
-     "why": "Also uses 难"
-    },
-    {
-     "id": "1ad0452f33",
      "why": "Also uses 难"
     }
    ],
@@ -148116,6 +148321,10 @@
     "CC-CEDICT"
    ],
    "related": [
+    {
+     "id": "cdc47c9533",
+     "why": "Opposite: dangerous / safe"
+    },
     {
      "id": "ae7acd3545",
      "why": "Also means \"danger\""
@@ -150050,6 +150259,10 @@
    ],
    "related": [
     {
+     "id": "4bc86878c2",
+     "why": "Opposite: beautiful / ugly"
+    },
+    {
      "id": "350376fbc0",
      "why": "Also means \"beautiful\""
     },
@@ -150083,10 +150296,6 @@
     },
     {
      "id": "42c6612161",
-     "why": "Also uses 美"
-    },
-    {
-     "id": "825fb5e11b",
      "why": "Also uses 美"
     }
    ],
@@ -151345,6 +151554,10 @@
    ],
    "related": [
     {
+     "id": "816cb12fd5",
+     "why": "Opposite: wrong / correct"
+    },
+    {
      "id": "3c5babecee",
      "why": "Its measure word"
     },
@@ -151378,10 +151591,6 @@
     },
     {
      "id": "778d7ae17c",
-     "why": "Also uses 错"
-    },
-    {
-     "id": "71c918f3b2",
      "why": "Also uses 错"
     }
    ],
@@ -152678,6 +152887,10 @@
    ],
    "related": [
     {
+     "id": "24e1f3b453",
+     "why": "Opposite: outside / inside"
+    },
+    {
      "id": "1928751e94",
      "why": "Also means \"outside\""
     },
@@ -152711,10 +152924,6 @@
     },
     {
      "id": "82bd017127",
-     "why": "Also uses 外"
-    },
-    {
-     "id": "a30cc75404",
      "why": "Also uses 外"
     }
    ],
@@ -154515,6 +154724,10 @@
    ],
    "related": [
     {
+     "id": "6468d58c31",
+     "why": "Opposite: increase / decrease"
+    },
+    {
      "id": "c5d8a5d9bc",
      "why": "Also means \"to increase\""
     },
@@ -154548,10 +154761,6 @@
     },
     {
      "id": "4605b7cbb9",
-     "why": "Also means \"to raise\""
-    },
-    {
-     "id": "737594cb15",
      "why": "Also means \"to raise\""
     }
    ],
@@ -156342,6 +156551,10 @@
     "CC-CEDICT"
    ],
    "related": [
+    {
+     "id": "660787cd39",
+     "why": "Opposite: inconvenient / convenient"
+    },
     {
      "id": "4bad0214ef",
      "why": "Also means \"inconvenient\""
@@ -160296,6 +160509,10 @@
    ],
    "related": [
     {
+     "id": "67567bd553",
+     "why": "Opposite: complex / simple"
+    },
+    {
      "id": "db3d25bf12",
      "why": "Part of 复杂"
     },
@@ -160329,10 +160546,6 @@
     },
     {
      "id": "61816d3231",
-     "why": "Also uses 复"
-    },
-    {
-     "id": "dab0dff846",
      "why": "Also uses 复"
     }
    ],
@@ -161048,6 +161261,10 @@
    ],
    "related": [
     {
+     "id": "90da78fba5",
+     "why": "Opposite: sufficient / insufficient"
+    },
+    {
      "id": "306b5c46e9",
      "why": "Also means \"enough\""
     },
@@ -161081,10 +161298,6 @@
     },
     {
      "id": "486c0c8e42",
-     "why": "Also uses 够"
-    },
-    {
-     "id": "90da78fba5",
      "why": "Also uses 够"
     }
    ],
@@ -163040,6 +163253,10 @@
    ],
    "related": [
     {
+     "id": "14490ee3aa",
+     "why": "Opposite: related / unrelated"
+    },
+    {
      "id": "b7008b82a8",
      "why": "Part of 相关"
     },
@@ -163073,10 +163290,6 @@
     },
     {
      "id": "5e82844e75",
-     "why": "Also uses 相"
-    },
-    {
-     "id": "e40722c684",
      "why": "Also uses 相"
     }
    ],
@@ -165760,6 +165973,10 @@
    ],
    "related": [
     {
+     "id": "4de51c19ac",
+     "why": "Opposite: waste / economize"
+    },
+    {
      "id": "f38245045a",
      "why": "Part of 浪费"
     },
@@ -165793,10 +166010,6 @@
     },
     {
      "id": "864e0cdda2",
-     "why": "Also uses 费"
-    },
-    {
-     "id": "4f83f8cae3",
      "why": "Also uses 费"
     }
    ],
@@ -169262,6 +169475,10 @@
    ],
    "related": [
     {
+     "id": "de9cbbc80c",
+     "why": "Opposite: go up / go down"
+    },
+    {
      "id": "26f439eb1e",
      "why": "Also means \"to go up\""
     },
@@ -169295,10 +169512,6 @@
     },
     {
      "id": "eef45ba229",
-     "why": "Also uses 上"
-    },
-    {
-     "id": "03c2a6a290",
      "why": "Also uses 上"
     }
    ],
@@ -172580,6 +172793,10 @@
    ],
    "related": [
     {
+     "id": "57e7a21df2",
+     "why": "Opposite: fast / slow"
+    },
+    {
      "id": "42f177256f",
      "why": "Also means \"rapid\""
     },
@@ -172613,10 +172830,6 @@
     },
     {
      "id": "761bfec5c3",
-     "why": "Also uses 快"
-    },
-    {
-     "id": "c35c2d65b4",
      "why": "Also uses 快"
     }
    ],
@@ -173361,6 +173574,10 @@
    ],
    "related": [
     {
+     "id": "740f76858d",
+     "why": "Opposite: public / private"
+    },
+    {
      "id": "8c46d946d6",
      "why": "Also means \"common\""
     },
@@ -173395,10 +173612,6 @@
     {
      "id": "fd68a70d81",
      "why": "Contains 公共"
-    },
-    {
-     "id": "f87341ebc4",
-     "why": "Also uses 公"
     }
    ],
    "examples": [
@@ -182843,6 +183056,10 @@
    ],
    "related": [
     {
+     "id": "7d8c1257a1",
+     "why": "Opposite: rich / poor"
+    },
+    {
      "id": "7337678a99",
      "why": "Also means \"rich\""
     },
@@ -184742,6 +184959,10 @@
    ],
    "related": [
     {
+     "id": "e10bbcc088",
+     "why": "Opposite: internal / external"
+    },
+    {
      "id": "5fb81cacba",
      "why": "Also means \"internal\""
     },
@@ -184755,10 +184976,6 @@
     },
     {
      "id": "5a38b8d802",
-     "why": "Also uses 国"
-    },
-    {
-     "id": "e10bbcc088",
      "why": "Also uses 国"
     },
     {
@@ -188787,6 +189004,10 @@
    ],
    "related": [
     {
+     "id": "4ca2d02d45",
+     "why": "Opposite: criticize / praise"
+    },
+    {
      "id": "f0bf74b6f2",
      "why": "Its measure word"
     },
@@ -188820,10 +189041,6 @@
     },
     {
      "id": "273bbc9b53",
-     "why": "Also uses 评"
-    },
-    {
-     "id": "5092dc8b2a",
      "why": "Also uses 评"
     }
    ],
@@ -189101,6 +189318,10 @@
    ],
    "related": [
     {
+     "id": "5c1b5bc4f5",
+     "why": "Opposite: deny / admit"
+    },
+    {
      "id": "a24a67091d",
      "why": "Also means \"to deny\""
     },
@@ -189134,10 +189355,6 @@
     },
     {
      "id": "b6dac9b09a",
-     "why": "Also uses 认"
-    },
-    {
-     "id": "fabadad527",
      "why": "Also uses 认"
     }
    ],
@@ -199014,6 +199231,10 @@
    ],
    "related": [
     {
+     "id": "cc9aba309b",
+     "why": "Opposite: useless / useful"
+    },
+    {
      "id": "422a4d0c5c",
      "why": "Part of 没用"
     },
@@ -199047,10 +199268,6 @@
     },
     {
      "id": "c3c7a0fa78",
-     "why": "Also uses 没"
-    },
-    {
-     "id": "1de9a556cb",
      "why": "Also uses 没"
     }
    ],
@@ -200781,6 +200998,10 @@
    ],
    "related": [
     {
+     "id": "c152ad7958",
+     "why": "Opposite: weak point / strong point"
+    },
+    {
      "id": "3c5babecee",
      "why": "Its measure word"
     },
@@ -200814,10 +201035,6 @@
     },
     {
      "id": "5872701816",
-     "why": "Also uses 点"
-    },
-    {
-     "id": "e345018ab8",
      "why": "Also uses 点"
     }
    ],
@@ -202223,6 +202440,10 @@
    ],
    "related": [
     {
+     "id": "d70d379987",
+     "why": "Opposite: objective / subjective"
+    },
+    {
      "id": "519bb8c309",
      "why": "Also means \"impartial\""
     },
@@ -202256,10 +202477,6 @@
     },
     {
      "id": "3b04240b9f",
-     "why": "Also uses 客"
-    },
-    {
-     "id": "0da95fbca8",
      "why": "Also uses 客"
     }
    ],
@@ -203150,6 +203367,10 @@
    ],
    "related": [
     {
+     "id": "f3edc8c3c0",
+     "why": "Opposite: strong point / weak point"
+    },
+    {
      "id": "3c5babecee",
      "why": "Its measure word"
     },
@@ -203183,10 +203404,6 @@
     },
     {
      "id": "ef85cb0c08",
-     "why": "Also uses 优"
-    },
-    {
-     "id": "85467253a3",
      "why": "Also uses 优"
     }
    ],
@@ -209184,6 +209401,10 @@
    ],
    "related": [
     {
+     "id": "0415e55684",
+     "why": "Opposite: employment / unemployment"
+    },
+    {
      "id": "3a3c0b7c39",
      "why": "Part of 就业"
     },
@@ -209217,10 +209438,6 @@
     },
     {
      "id": "1580664f06",
-     "why": "Also uses 业"
-    },
-    {
-     "id": "63686cdd9f",
      "why": "Also uses 业"
     }
    ],
@@ -209366,6 +209583,10 @@
    ],
    "related": [
     {
+     "id": "6d17ec3558",
+     "why": "Opposite: economize / waste"
+    },
+    {
      "id": "0d5c043430",
      "why": "Also means \"to conserve\""
     },
@@ -209399,10 +209620,6 @@
     },
     {
      "id": "1cd3fd6ffc",
-     "why": "Also uses 节"
-    },
-    {
-     "id": "9c1c02d233",
      "why": "Also uses 节"
     }
    ],
@@ -226976,6 +227193,10 @@
    ],
    "related": [
     {
+     "id": "52d86eee7c",
+     "why": "Opposite: admit / deny"
+    },
+    {
      "id": "715aa65a26",
      "why": "Also means \"to admit\""
     },
@@ -227009,10 +227230,6 @@
     },
     {
      "id": "f34c48117d",
-     "why": "Also uses 认"
-    },
-    {
-     "id": "c9cba24d80",
      "why": "Also uses 认"
     }
    ],
@@ -229775,6 +229992,10 @@
    ],
    "related": [
     {
+     "id": "83f84de63d",
+     "why": "Opposite: wife / husband"
+    },
+    {
      "id": "5f48fcb839",
      "why": "Part of 老婆"
     },
@@ -229808,10 +230029,6 @@
     },
     {
      "id": "0c7ed4ea76",
-     "why": "Also uses 老"
-    },
-    {
-     "id": "a662a690fe",
      "why": "Also uses 老"
     }
    ],
@@ -242235,6 +242452,10 @@
    ],
    "related": [
     {
+     "id": "f2cab038e6",
+     "why": "Opposite: background / foreground"
+    },
+    {
      "id": "ac40bc5022",
      "why": "Part of 背景"
     },
@@ -242260,10 +242481,6 @@
     },
     {
      "id": "8cccd0703d",
-     "why": "Also uses 景"
-    },
-    {
-     "id": "f2cab038e6",
      "why": "Also uses 景"
     },
     {
@@ -242446,6 +242663,14 @@
    ],
    "related": [
     {
+     "id": "2941e72e70",
+     "why": "Opposite: lessen / increase"
+    },
+    {
+     "id": "bc5584ae87",
+     "why": "Opposite: decrease / increase"
+    },
+    {
      "id": "f86b046fab",
      "why": "Also means \"to decrease\""
     },
@@ -242476,14 +242701,6 @@
     {
      "id": "79fe2c31db",
      "why": "Also uses 减"
-    },
-    {
-     "id": "e7dbe2dcc2",
-     "why": "Also uses 少"
-    },
-    {
-     "id": "d0f3770942",
-     "why": "Also uses 少"
     }
    ],
    "examples": [
@@ -244392,6 +244609,10 @@
     "CC-CEDICT"
    ],
    "related": [
+    {
+     "id": "17247e789f",
+     "why": "Opposite: wet / dry"
+    },
     {
      "id": "b4c11013cc",
      "why": "Also means \"moist\""
@@ -247095,6 +247316,10 @@
    ],
    "related": [
     {
+     "id": "5ff3c16691",
+     "why": "Opposite: prohibit / permit"
+    },
+    {
      "id": "c703573f3d",
      "why": "Also means \"to prohibit\""
     },
@@ -248137,6 +248362,10 @@
     "CC-CEDICT"
    ],
    "related": [
+    {
+     "id": "cd068fd872",
+     "why": "Opposite: weak / strong"
+    },
     {
      "id": "5e2240028f",
      "why": "Also means \"weak\""
@@ -250811,6 +251040,10 @@
    ],
    "related": [
     {
+     "id": "6e71d5327a",
+     "why": "Opposite: close / open"
+    },
+    {
      "id": "b7008b82a8",
      "why": "Also means \"to close\""
     },
@@ -250844,10 +251077,6 @@
     },
     {
      "id": "1e76beab6e",
-     "why": "Also uses 关"
-    },
-    {
-     "id": "4861726e6b",
      "why": "Also uses 关"
     }
    ],
@@ -260019,6 +260248,10 @@
    ],
    "related": [
     {
+     "id": "fb248135b6",
+     "why": "Opposite: low / high"
+    },
+    {
      "id": "eecb104f9f",
      "why": "Also means \"low\""
     },
@@ -262267,15 +262500,15 @@
    ],
    "related": [
     {
+     "id": "f8a519c98d",
+     "why": "Opposite: limited / unlimited"
+    },
+    {
      "id": "09c405eb89",
      "why": "Part of 有限"
     },
     {
      "id": "203cbae99e",
-     "why": "Also uses 限"
-    },
-    {
-     "id": "f8a519c98d",
      "why": "Also uses 限"
     },
     {
@@ -264358,6 +264591,10 @@
    ],
    "related": [
     {
+     "id": "9b9a35bd2f",
+     "why": "Opposite: poor / rich"
+    },
+    {
      "id": "1df75837c6",
      "why": "Contains 穷"
     }
@@ -265901,6 +266138,10 @@
    ],
    "related": [
     {
+     "id": "5293c2ea1e",
+     "why": "Opposite: unlimited / limited"
+    },
+    {
      "id": "4d4f9a2dca",
      "why": "Part of 无限"
     },
@@ -265934,10 +266175,6 @@
     },
     {
      "id": "14490ee3aa",
-     "why": "Also uses 无"
-    },
-    {
-     "id": "5658933319",
      "why": "Also uses 无"
     }
    ],
@@ -267974,6 +268211,10 @@
    ],
    "related": [
     {
+     "id": "8436354618",
+     "why": "Opposite: unemployment / employment"
+    },
+    {
      "id": "5ab1b7de3f",
      "why": "Also uses 失"
     },
@@ -268007,10 +268248,6 @@
     },
     {
      "id": "63686cdd9f",
-     "why": "Also uses 业"
-    },
-    {
-     "id": "d85c458913",
      "why": "Also uses 业"
     }
    ],
@@ -268334,7 +268571,12 @@
     "HSK",
     "CC-CEDICT"
    ],
-   "related": [],
+   "related": [
+    {
+     "id": "575cf54392",
+     "why": "Opposite: weak / strong"
+    }
+   ],
    "examples": [
     {
      "zh": "她淡淡一笑。",
@@ -269940,6 +270182,10 @@
     "CC-CEDICT"
    ],
    "related": [
+    {
+     "id": "5c62cba7dc",
+     "why": "Opposite: strong / weak"
+    },
     {
      "id": "8a628cb181",
      "why": "Also means \"dense\""
@@ -274922,6 +275168,10 @@
    ],
    "related": [
     {
+     "id": "d8fdd2f49a",
+     "why": "Opposite: import / export"
+    },
+    {
      "id": "51d4cf3ad0",
      "why": "Also means \"to import\""
     },
@@ -274955,10 +275205,6 @@
     },
     {
      "id": "e22d8e7d25",
-     "why": "Also uses 进"
-    },
-    {
-     "id": "346cc8179f",
      "why": "Also uses 进"
     }
    ],
@@ -291180,6 +291426,10 @@
    ],
    "related": [
     {
+     "id": "da8c843fec",
+     "why": "Opposite: praise / criticize"
+    },
+    {
      "id": "bf83d396fd",
      "why": "Also means \"to commend\""
     },
@@ -291213,10 +291463,6 @@
     },
     {
      "id": "ac2662ffd1",
-     "why": "Also uses 表"
-    },
-    {
-     "id": "41e9be140a",
      "why": "Also uses 表"
     }
    ],
@@ -304064,6 +304310,10 @@
    ],
    "related": [
     {
+     "id": "41d968f385",
+     "why": "Opposite: careless / careful"
+    },
+    {
      "id": "289f676854",
      "why": "Part of 粗心"
     },
@@ -304097,10 +304347,6 @@
     },
     {
      "id": "4b8bb353c7",
-     "why": "Also uses 心"
-    },
-    {
-     "id": "63dc275405",
      "why": "Also uses 心"
     }
    ],
@@ -311554,6 +311800,10 @@
    ],
    "related": [
     {
+     "id": "8856ecb40a",
+     "why": "Opposite: hate / love"
+    },
+    {
      "id": "2089c42a15",
      "why": "Also means \"to regret\""
     },
@@ -314667,6 +314917,10 @@
    ],
    "related": [
     {
+     "id": "5faa6e8463",
+     "why": "Opposite: outside / inside"
+    },
+    {
      "id": "1928751e94",
      "why": "Also means \"outside\""
     },
@@ -314700,10 +314954,6 @@
     },
     {
      "id": "d007396e76",
-     "why": "Also uses 之"
-    },
-    {
-     "id": "6b30aa3ebf",
      "why": "Also uses 之"
     }
    ],
@@ -316452,6 +316702,10 @@
     "CC-CEDICT"
    ],
    "related": [
+    {
+     "id": "4996784394",
+     "why": "Opposite: careful / careless"
+    },
     {
      "id": "fc79cd6993",
      "why": "Also means \"to be careful\""
@@ -318504,6 +318758,10 @@
     "CC-CEDICT"
    ],
    "related": [
+    {
+     "id": "275c25903f",
+     "why": "Opposite: private / public"
+    },
     {
      "id": "c0717c834b",
      "why": "Also means \"personal\""
@@ -325746,6 +326004,10 @@
    ],
    "related": [
     {
+     "id": "7923425ae3",
+     "why": "Opposite: inside / outside"
+    },
+    {
      "id": "46b1adb9f5",
      "why": "Also means \"inside\""
     },
@@ -325780,10 +326042,6 @@
     {
      "id": "c1ee229d1a",
      "why": "Also means \"within\""
-    },
-    {
-     "id": "d63a933dfd",
-     "why": "Also uses 之"
     }
    ],
    "examples": [
@@ -337870,6 +338128,10 @@
     "CC-CEDICT"
    ],
    "related": [
+    {
+     "id": "db3147541a",
+     "why": "Opposite: late / early"
+    },
     {
      "id": "b6e982afb1",
      "why": "Also means \"delayed\""
@@ -365169,6 +365431,10 @@
    ],
    "related": [
     {
+     "id": "1266995267",
+     "why": "Opposite: foreground / background"
+    },
+    {
      "id": "25027598e2",
      "why": "Part of 前景"
     },
@@ -365202,10 +365468,6 @@
     },
     {
      "id": "ed0389f270",
-     "why": "Also uses 前"
-    },
-    {
-     "id": "dc00a2696e",
      "why": "Also uses 前"
     }
    ],
@@ -376603,6 +376865,10 @@
    ],
    "related": [
     {
+     "id": "9640e7b062",
+     "why": "Opposite: high temperature / low temperature"
+    },
+    {
      "id": "fb248135b6",
      "why": "Part of 高温"
     },
@@ -376636,10 +376902,6 @@
     },
     {
      "id": "f46c1e714b",
-     "why": "Also uses 高"
-    },
-    {
-     "id": "77ebb4318e",
      "why": "Also uses 高"
     }
    ],
@@ -379671,6 +379933,10 @@
    ],
    "related": [
     {
+     "id": "9060d9a419",
+     "why": "Opposite: subjective / objective"
+    },
+    {
      "id": "80ebb35345",
      "why": "Also uses 主"
     },
@@ -379704,10 +379970,6 @@
     },
     {
      "id": "ab676f8c82",
-     "why": "Also uses 主"
-    },
-    {
-     "id": "73d03bdfb3",
      "why": "Also uses 主"
     }
    ],
@@ -381457,6 +381719,10 @@
    ],
    "related": [
     {
+     "id": "6468d58c31",
+     "why": "Opposite: increase / lessen"
+    },
+    {
      "id": "c5d8a5d9bc",
      "why": "Also means \"to increase\""
     },
@@ -381490,10 +381756,6 @@
     },
     {
      "id": "a804b33918",
-     "why": "Also uses 增"
-    },
-    {
-     "id": "e1f5cc02ae",
      "why": "Also uses 增"
     }
    ],
@@ -398967,6 +399229,10 @@
    ],
    "related": [
     {
+     "id": "2be4a7c3d3",
+     "why": "Opposite: die / be born"
+    },
+    {
      "id": "0c14adef1c",
      "why": "Also means \"to die\""
     },
@@ -400801,6 +401067,10 @@
     "CC-CEDICT"
    ],
    "related": [
+    {
+     "id": "2906b0d3b9",
+     "why": "Opposite: permit / prohibit"
+    },
     {
      "id": "3fcd4e14a8",
      "why": "Also means \"to allow\""
@@ -413553,6 +413823,10 @@
    ],
    "related": [
     {
+     "id": "b0a698aff0",
+     "why": "Opposite: unrelated / related"
+    },
+    {
      "id": "4d4f9a2dca",
      "why": "Part of 无关"
     },
@@ -413586,10 +413860,6 @@
     },
     {
      "id": "d6417d986b",
-     "why": "Also uses 无"
-    },
-    {
-     "id": "1ec96770f6",
      "why": "Also uses 无"
     }
    ],
@@ -424577,6 +424847,14 @@
    ],
    "related": [
     {
+     "id": "c632088363",
+     "why": "Opposite: never / always"
+    },
+    {
+     "id": "473f9040c1",
+     "why": "Opposite: never / always"
+    },
+    {
      "id": "c3c7a0fa78",
      "why": "Also means \"never\""
     },
@@ -424606,14 +424884,6 @@
     },
     {
      "id": "38f575321e",
-     "why": "Also uses 从"
-    },
-    {
-     "id": "1966942372",
-     "why": "Also uses 从"
-    },
-    {
-     "id": "4a05bb7801",
      "why": "Also uses 从"
     }
    ],
@@ -453141,6 +453411,10 @@
    ],
    "related": [
     {
+     "id": "660787cd39",
+     "why": "Opposite: inconvenient / convenient"
+    },
+    {
      "id": "f15829262c",
      "why": "Also means \"inconvenient\""
     },
@@ -453151,10 +453425,6 @@
     {
      "id": "1a4895ded8",
      "why": "Part of 不便"
-    },
-    {
-     "id": "660787cd39",
-     "why": "Also uses 便"
     },
     {
      "id": "7539168f5e",
@@ -454552,6 +454822,10 @@
    ],
    "related": [
     {
+     "id": "d184338571",
+     "why": "Opposite: strong / weak"
+    },
+    {
      "id": "a5372a6ec6",
      "why": "Also means \"strong\""
     },
@@ -454585,10 +454859,6 @@
     },
     {
      "id": "f6b68bed52",
-     "why": "Also uses 强"
-    },
-    {
-     "id": "113da46389",
      "why": "Also uses 强"
     }
    ],
@@ -455196,6 +455466,10 @@
    ],
    "related": [
     {
+     "id": "f17caceeb8",
+     "why": "Opposite: night / daytime"
+    },
+    {
      "id": "b20e82ce1a",
      "why": "Also means \"night\""
     },
@@ -455229,10 +455503,6 @@
     },
     {
      "id": "842c6c3e31",
-     "why": "Also uses 夜"
-    },
-    {
-     "id": "01227d49bf",
      "why": "Also uses 夜"
     }
    ],
@@ -465808,6 +466078,10 @@
    ],
    "related": [
     {
+     "id": "b314a2d0a1",
+     "why": "Opposite: low temperature / high temperature"
+    },
+    {
      "id": "eecb104f9f",
      "why": "Part of 低温"
     },
@@ -465837,10 +466111,6 @@
     },
     {
      "id": "1383f0504b",
-     "why": "Also uses 温"
-    },
-    {
-     "id": "b314a2d0a1",
      "why": "Also uses 温"
     },
     {
@@ -468039,6 +468309,10 @@
    ],
    "related": [
     {
+     "id": "fbdaff3183",
+     "why": "Opposite: white-collar / blue-collar"
+    },
+    {
      "id": "2b398b9f95",
      "why": "Part of 白领"
     },
@@ -468072,10 +468346,6 @@
     },
     {
      "id": "fb68129ab2",
-     "why": "Also uses 领"
-    },
-    {
-     "id": "fcb55d7bad",
      "why": "Also uses 领"
     }
    ],
@@ -480642,6 +480912,10 @@
    ],
    "related": [
     {
+     "id": "d8ea513996",
+     "why": "Opposite: outside / inside"
+    },
+    {
      "id": "1928751e94",
      "why": "Also means \"outside\""
     },
@@ -480675,10 +480949,6 @@
     },
     {
      "id": "5adafb9bfe",
-     "why": "Also uses 外"
-    },
-    {
-     "id": "1b7635018b",
      "why": "Also uses 外"
     }
    ],
@@ -489709,6 +489979,10 @@
    ],
    "related": [
     {
+     "id": "a6c0f32ec6",
+     "why": "Opposite: blue-collar / white-collar"
+    },
+    {
      "id": "6533d6255f",
      "why": "Part of 蓝领"
     },
@@ -489742,10 +490016,6 @@
     },
     {
      "id": "f39468d7a3",
-     "why": "Also uses 领"
-    },
-    {
-     "id": "76d59ad735",
      "why": "Also uses 领"
     }
    ],
@@ -497189,6 +497459,10 @@
    ],
    "related": [
     {
+     "id": "721c4544ef",
+     "why": "Opposite: husband / wife"
+    },
+    {
      "id": "52a4c06f6b",
      "why": "Also means \"husband\""
     },
@@ -497222,10 +497496,6 @@
     },
     {
      "id": "123db3897f",
-     "why": "Also uses 老"
-    },
-    {
-     "id": "bc2cf4bf86",
      "why": "Also uses 老"
     }
    ],

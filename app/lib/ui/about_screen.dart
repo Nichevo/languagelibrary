@@ -31,6 +31,13 @@ class AboutScreen extends StatelessWidget {
           'number and who wrote it. Licence: https://creativecommons.org/licenses/by/2.0/fr/',
     ),
     (
+      'WordNet',
+      'Copyright Princeton University, WordNet licence',
+      'https://wordnet.princeton.edu/',
+      'Opposite pairs (大 big / 小 small) are shown only when the two English meanings are '
+          'opposites in WordNet.',
+    ),
+    (
       'Voices',
       'Google Cloud Text-to-Speech',
       'https://cloud.google.com/text-to-speech',

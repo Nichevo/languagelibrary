@@ -328,16 +328,51 @@ def _meaning_keys(e: dict) -> set[str]:
     return keys
 
 
-def add_related(entries: list[dict]) -> None:
+def load_opposites() -> list[tuple[str, str, str, str]]:
+    """(hanzi, English, opposite hanzi, its English) from tools/sources/opposites.tsv."""
+    path = SOURCES / "opposites.tsv"
+    out = []
+    if path.exists():
+        for line in path.read_text(encoding="utf-8").splitlines():
+            if line.strip() and not line.startswith("#"):
+                a, x, b, y = line.split("\t")[:4]
+                out.append((a, x, b, y))
+    return out
+
+
+def _main_senses(e: dict) -> set[str]:
+    """Short glosses from the first three meanings ("to open" -> "open"), the ones
+    opposites.tsv was matched against."""
+    out = set()
+    for m in e["meanings"][:3]:
+        for g in m.split(";")[:3]:
+            g = re.sub(r"^to ", "", _PAREN.sub("", g).strip().lower())
+            if g and len(g.split()) <= 2:
+                out.add(g)
+    return out
+
+
+def add_related(entries: list[dict], opposites=None) -> None:
     """Link entries to others in the library, using only facts from the data:
-    same characters with another reading, the measure word, shared meanings,
-    and shared characters. Each link says why, in plain English."""
+    opposites (WordNet antonyms of the main meanings), same characters with
+    another reading, the measure word, shared meanings, and shared characters.
+    Each link says why, in plain English."""
     by_simp: dict[str, list[dict]] = defaultdict(list)
     by_meaning: dict[str, list[dict]] = defaultdict(list)
     for e in entries:
         by_simp[e["simplified"]].append(e)
         for k in _meaning_keys(e):
             by_meaning[k].append(e)
+
+    # Opposites both ways, matched on the reading whose main meaning is the listed one.
+    opposite_of: dict[str, list[tuple[dict, str]]] = defaultdict(list)
+    for a, x, b, y in (load_opposites() if opposites is None else opposites):
+        ea = [o for o in by_simp.get(a, []) if o.get("kind", "word") == "word" and x in _main_senses(o)]
+        eb = [o for o in by_simp.get(b, []) if o.get("kind", "word") == "word" and y in _main_senses(o)]
+        for p in ea:
+            for q in eb:
+                opposite_of[p["id"]].append((q, f"Opposite: {x} / {y}"))
+                opposite_of[q["id"]].append((p, f"Opposite: {y} / {x}"))
 
     for e in entries:
         links: list[dict] = []
@@ -348,6 +383,8 @@ def add_related(entries: list[dict]) -> None:
                 seen.add(other["id"])
                 links.append({"id": other["id"], "why": why})
 
+        for o, why in opposite_of.get(e["id"], []):
+            add(o, why)
         simp = e["simplified"]
         for o in by_simp[simp]:
             add(o, "Same characters, different reading")
