@@ -13,7 +13,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 Library loadRealLibrary() {
   final data = jsonDecode(File('assets/data/library.json').readAsStringSync()) as Map<String, dynamic>;
-  return Library([for (final e in data['entries'] as List) Entry.fromJson(e as Map<String, dynamic>)]);
+  return Library.fromJson(data);
 }
 
 void main() {

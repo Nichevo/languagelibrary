@@ -2,9 +2,11 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 
+import '../data/library.dart';
 import '../models/entry.dart';
 import '../srs/scheduler.dart';
 import 'common.dart';
+import 'scales_screen.dart';
 
 /// Multiple choice (see [Choice]) and typing (see a word, type its pinyin).
 /// Answers count towards the statistics but don't change when flashcards come back.
@@ -15,14 +17,30 @@ enum Choice {
   listen('Hear it, pick the word', 'Which word did you hear?'),
   meaning('See it, pick the meaning', 'What does it mean?'),
   reverse('See the meaning, pick the word', 'Which word means this?'),
-  pinyin('See it, pick the pinyin', 'How is it said?');
+  pinyin('See it, pick the pinyin', 'How is it said?'),
+
+  /// Only in the mix, and only for a word on a scale (see [scaleToOrder]).
+  order('Put a scale in order', 'Put them in order');
 
   const Choice(this.label, this.question);
   final String label;
   final String question;
 
   /// The setting's value, or null for 'mix'.
-  static Choice? fromSetting(String v) => values.asNameMap()[v];
+  static Choice? fromSetting(String v) => v == 'order' ? null : values.asNameMap()[v];
+
+  /// The kinds that can be picked on their own in Settings.
+  static List<Choice> get pickable => [for (final c in values) if (c != order) c];
+}
+
+/// A scale [target] is on with at least three words switched on, for a
+/// "put in order" question, or null.
+(Scale, List<ScaleItem>)? scaleToOrder(Library library, Entry target, bool Function(Entry) shows) {
+  for (final s in library.scalesFor(target)) {
+    final items = s.shown(shows);
+    if (items.length >= 3 && items.any((i) => i.entry.id == target.id)) return (s, items);
+  }
+  return null;
 }
 
 /// Removes spaces, apostrophes and punctuation, and writes v as ü.
@@ -105,6 +123,8 @@ class _DrillScreenState extends State<DrillScreen> {
   Entry? _picked;
   Choice _kind = Choice.listen;
   PinyinCheck? _checked;
+  (Scale, List<ScaleItem>)? _scale;
+  bool _ordered = false;
   final _typed = TextEditingController();
 
   @override
@@ -132,12 +152,20 @@ class _DrillScreenState extends State<DrillScreen> {
     if (!first) _queue!.removeAt(0);
     _picked = null;
     _checked = null;
+    _scale = null;
+    _ordered = false;
     _typed.clear();
     _shownAt = DateTime.now();
     if (_queue!.isEmpty) return;
     final target = _queue!.first;
     if (widget.drill == Drill.listen) {
-      _kind = Choice.fromSetting(scope.store.choiceKind) ?? Choice.values[_rnd.nextInt(Choice.values.length)];
+      final scale = scaleToOrder(scope.library, target, scope.store.shows);
+      final kinds = [...Choice.pickable, if (scale != null) Choice.order];
+      _kind = Choice.fromSetting(scope.store.choiceKind) ?? kinds[_rnd.nextInt(kinds.length)];
+      if (_kind == Choice.order) {
+        _scale = scale;
+        return;
+      }
       final shown = scope.library.entries.where(scope.store.shows).toList();
       if (_kind == Choice.pinyin) {
         _options = [target, ...pinyinDistractors(target, shown, 3, _rnd)]..shuffle(_rnd);
@@ -208,8 +236,36 @@ class _DrillScreenState extends State<DrillScreen> {
         child: FilledButton(onPressed: () => setState(_next), child: const Text('Next')),
       );
 
+  Widget _order(BuildContext context, Entry target) {
+    final (scale, items) = _scale!;
+    return Column(
+      children: [
+        _counter(context),
+        const SizedBox(height: 16),
+        Expanded(
+          child: ListView(
+            children: [
+              OrderQuestion(
+                key: ValueKey(target.id),
+                scale: scale,
+                items: items,
+                random: _rnd,
+                onChecked: (right) => setState(() {
+                  _ordered = true;
+                  _answer(right);
+                }),
+              ),
+            ],
+          ),
+        ),
+        if (_ordered) _nextButton(),
+      ],
+    );
+  }
+
   Widget _listen(BuildContext context, Entry target) {
     final theme = Theme.of(context);
+    if (_kind == Choice.order) return _order(context, target);
     final answered = _picked != null;
     final audio = Row(
       mainAxisAlignment: MainAxisAlignment.center,
@@ -236,19 +292,19 @@ class _DrillScreenState extends State<DrillScreen> {
               textAlign: TextAlign.center),
           if (answered) audio,
         ]),
-      Choice.reverse => Column(children: [
+      Choice.reverse || Choice.order => Column(children: [
           Text(target.gloss, style: theme.textTheme.headlineSmall, textAlign: TextAlign.center),
           if (answered) audio,
         ]),
     };
     Widget optionText(Entry o) => switch (_kind) {
-          Choice.listen || Choice.reverse => Text(o.simplified, style: theme.textTheme.headlineSmall),
+          Choice.listen || Choice.reverse || Choice.order => Text(o.simplified, style: theme.textTheme.headlineSmall),
           Choice.meaning => Text(o.gloss, style: theme.textTheme.titleMedium),
           Choice.pinyin => Text(o.pinyin, style: theme.textTheme.headlineSmall),
         };
     // After answering, every option shows all three so wrong ones teach too.
     String detail(Entry o) => switch (_kind) {
-          Choice.listen || Choice.reverse => '${o.pinyin} · ${o.gloss}',
+          Choice.listen || Choice.reverse || Choice.order => '${o.pinyin} · ${o.gloss}',
           Choice.meaning => '${o.simplified} · ${o.pinyin}',
           Choice.pinyin => '${o.simplified} · ${o.gloss}',
         };

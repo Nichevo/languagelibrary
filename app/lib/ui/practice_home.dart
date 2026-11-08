@@ -82,8 +82,8 @@ class PracticeHome extends StatelessWidget {
                     decoration: const InputDecoration(labelText: 'Question', border: OutlineInputBorder(), isDense: true),
                     onChanged: (v) => store.setChoiceKind(v!),
                     items: [
-                      for (final c in Choice.values) DropdownMenuItem(value: c.name, child: Text(c.label)),
-                      const DropdownMenuItem(value: 'mix', child: Text('Mix them up')),
+                      for (final c in Choice.pickable) DropdownMenuItem(value: c.name, child: Text(c.label)),
+                      const DropdownMenuItem(value: 'mix', child: Text('Mix them up, with scales to put in order')),
                     ],
                   ),
                 ),

@@ -1,0 +1,14 @@
+# Scales: words on the same line, from one end to the other (cold -> hot).
+# The words and the meaning shown for each come from the library (HSK + CC-CEDICT);
+# the build stops if a word or meaning isn't there. Which words go together, and
+# their order, were picked by hand for this app: that part is ours, not a source's.
+# name<TAB>from<TAB>to<TAB>hanzi=meaning<TAB>hanzi=meaning ...
+Temperature	cold	hot	冷=cold	凉快=pleasantly cool (weather etc)	暖和=warm	热=hot (of weather)
+How often	rarely	always	偶尔=occasionally	有时候=sometimes	常常=frequently; often	总是=always
+How much	a little	too much	有点儿=a little	很=very; quite	非常=very; really	太=too (much)
+Days	the day before yesterday	the day after tomorrow	前天=the day before yesterday	昨天=yesterday	今天=today	明天=tomorrow	后天=the day after tomorrow
+Years	last year	next year	去年=last year	今年=this year	明年=next year
+Time of day	early morning	evening	早上=early morning	上午=morning	中午=noon	下午=afternoon	晚上=evening
+Before and after	before	later	以前=before	现在=now; at present; currently	以后=later
+Seasons	spring	winter	春天=spring (season)	夏天=summer	秋天=autumn	冬天=winter
+Steps	first	last	先=beforehand; first; earlier	然后=then; after that; afterwards	最后=finally; in the end
