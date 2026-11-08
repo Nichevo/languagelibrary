@@ -1,0 +1,95 @@
+# Opposites, each pair backed by an open source: the two words' main English
+# meanings (from CC-CEDICT) are antonyms of each other in their most common sense in
+# WordNet 3.1 (Princeton University, WordNet licence: free to use with attribution).
+# Pairs were then picked by hand from that list only to leave out odd matches;
+# none are added from outside it.
+# hanzi<TAB>its English meaning<TAB>opposite hanzi<TAB>its English meaning
+上	up	下	down
+不对	incorrect	正确	correct
+东边	east	西边	west
+东	east	西边	west
+买	buy	卖	sell
+儿子	son	女儿	daughter
+关上	close	打开	open
+出去	go out	进来	come in
+北	north	南	south
+北边	north	南边	south
+北方	north	南方	south
+起来	stand up	坐下	sit down
+外边	outside	里边	inside
+外面	outside	里面	inside
+外头	outside	里头	inside
+女	female	男	male
+好	good	坏	bad
+小	small	大	big
+少	few	多	many
+左	left	右	right
+打开	open	关闭	close
+慢	slow	快速	fast
+早	early	迟	late
+这里	here	那里	there
+这儿	here	那儿	there
+楼下	downstairs	楼上	upstairs
+父亲	father	母亲	mother
+黑	black	白	white
+黑色	black	白色	white
+重	heavy	轻	light
+难	difficult	容易	easy
+困难	difficult	容易	easy
+低	low	高	high
+好人	good person	坏人	bad person
+拉	pull	推	push
+近	near	远	far
+部分	part	全部	whole
+美丽	beautiful	难看	ugly
+公共	public	私人	private
+客观	objective	主观	subjective
+有限	limited	无限	unlimited
+没用	useless	有用	useful
+节约	economize	浪费	waste
+老婆	wife	老公	husband
+禁止	prohibit	允许	permit
+表扬	praise	批评	criticize
+穷	poor	富	rich
+仔细	careful	粗心	careless
+增多	increase	减少	lessen
+恨	hate	爱	love
+从不	never	总是	always
+不便	inconvenient	方便	convenient
+无关	unrelated	相关	related
+白领	white-collar	蓝领	blue-collar
+低温	low temperature	高温	high temperature
+之内	inside	之外	outside
+上去	go up	下去	go down
+进去	go in	出去	go out
+黑夜	night	白天	daytime
+出生	be born	死亡	die
+背景	background	前景	foreground
+强壮	strong	弱	weak
+常	always	从不	never
+冷	cold	热	hot
+对	right	错	wrong
+正确	correct	错误	wrong
+早	early	晚	late
+白天	daytime	晚上	night
+东	east	西	west
+开	open	关	close
+老	old	年轻	young
+爸爸	father	妈妈	mother
+站	stand	坐	sit
+进	go in	出	go out
+干	dry	湿	wet
+哭	weep	笑	laugh
+不够	insufficient	足够	sufficient
+方便	convenient	麻烦	inconvenient
+漂亮	beautiful	难看	ugly
+危险	dangerous	安全	safe
+承认	admit	否认	deny
+增加	increase	减少	decrease
+简单	simple	复杂	complex
+进口	import	出口	export
+优点	strong point	缺点	weak point
+浓	strong	淡	weak
+失业	unemployment	就业	employment
+国内	internal	国外	external
+矮	low	高	high

@@ -38,6 +38,7 @@ void _registerDataLicenses() {
   const files = {
     'CC-CEDICT (CC BY-SA 4.0)': 'assets/licenses/CC-BY-SA-4.0.txt',
     'complete-hsk-vocabulary (MIT)': 'assets/licenses/complete-hsk-vocabulary-MIT.txt',
+    'WordNet (Princeton University)': 'assets/licenses/WordNet-license.txt',
   };
   LicenseRegistry.addLicense(() async* {
     for (final MapEntry(key: name, value: path) in files.entries) {

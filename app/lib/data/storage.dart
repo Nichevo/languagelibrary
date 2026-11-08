@@ -58,7 +58,7 @@ Future<List<StoragePart>> libraryStorage([AssetBundle? bundle]) async {
   ));
 
   var licences = 0;
-  for (final f in const ['CC-BY-SA-4.0.txt', 'complete-hsk-vocabulary-MIT.txt']) {
+  for (final f in const ['CC-BY-SA-4.0.txt', 'complete-hsk-vocabulary-MIT.txt', 'WordNet-license.txt']) {
     try {
       licences += (await b.load('assets/licenses/$f')).lengthInBytes;
     } catch (_) {}
