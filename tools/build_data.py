@@ -414,8 +414,34 @@ def add_related(entries: list[dict], opposites=None) -> None:
         e["related"] = links
 
 
+def load_scales(entries: list[dict], path: Path | None = None) -> list[dict]:
+    """Scales from tools/sources/scales.tsv, each word matched to its library entry
+    by its characters and the exact meaning given. Stops if either is missing, so a
+    scale can only ever show what the library says."""
+    path = path or SOURCES / "scales.tsv"
+    if not path.exists():
+        return []
+    by_simp: dict[str, list[dict]] = defaultdict(list)
+    for e in entries:
+        by_simp[e["simplified"]].append(e)
+    scales = []
+    for line in path.read_text(encoding="utf-8").splitlines():
+        if not line.strip() or line.startswith("#"):
+            continue
+        name, low, high, *words = line.split("\t")
+        items = []
+        for w in words:
+            hanzi, meaning = w.split("=", 1)
+            found = [e for e in by_simp.get(hanzi, []) if meaning in e["meanings"]]
+            if len(found) != 1:
+                raise SystemExit(f"scales.tsv: {name}: no single library entry {hanzi} meaning \"{meaning}\"")
+            items.append({"id": found[0]["id"], "meaning": meaning})
+        scales.append({"name": name, "from": low, "to": high, "items": items})
+    return scales
+
+
 def write_outputs(entries, dropped, flagged, levels, cedict_note: str, sentence_note: str = "",
-                  out_json: Path | None = None, out_report: Path | None = None):
+                  out_json: Path | None = None, out_report: Path | None = None, scales=None):
     out_json = out_json or OUT_JSON
     out_report = out_report or OUT_REPORT
     out_json.parent.mkdir(parents=True, exist_ok=True)
@@ -424,6 +450,7 @@ def write_outputs(entries, dropped, flagged, levels, cedict_note: str, sentence_
         "built": date.today().isoformat(),
         "levels": levels,
         "sources": {"cedict": cedict_note, **({"tatoeba": "tools/sources/tatoeba_cmn_eng.tsv"} if sentence_note else {})},
+        **({"scales": scales} if scales else {}),
         "entries": entries,
     }
     out_json.write_text(json.dumps(data, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
@@ -471,7 +498,8 @@ def main(argv=None):
         entries += book
         dropped += book_dropped
         sentence_note = f"{len(book)} phrasebook sentences; {with_examples} words have example sentences."
-    write_outputs(entries, dropped, flagged, args.levels, note, sentence_note, out_json, out_report)
+    scales = [] if args.words_only else load_scales(entries)
+    write_outputs(entries, dropped, flagged, args.levels, note, sentence_note, out_json, out_report, scales)
     print(f"kept {len(entries)}, dropped {len(dropped)}, flagged {len(flagged)} -> {out_json.relative_to(ROOT)}")
     if sentence_note:
         print(sentence_note)

@@ -13,6 +13,211 @@
   "cedict": "cedict_ts.u8",
   "tatoeba": "tools/sources/tatoeba_cmn_eng.tsv"
  },
+ "scales": [
+  {
+   "name": "Temperature",
+   "from": "cold",
+   "to": "hot",
+   "items": [
+    {
+     "id": "148d8bf7eb",
+     "meaning": "cold"
+    },
+    {
+     "id": "4bbc5e79f8",
+     "meaning": "pleasantly cool (weather etc)"
+    },
+    {
+     "id": "684af5cfeb",
+     "meaning": "warm"
+    },
+    {
+     "id": "7c8af3feb0",
+     "meaning": "hot (of weather)"
+    }
+   ]
+  },
+  {
+   "name": "How often",
+   "from": "rarely",
+   "to": "always",
+   "items": [
+    {
+     "id": "5ded832c8f",
+     "meaning": "occasionally"
+    },
+    {
+     "id": "718e91ba1a",
+     "meaning": "sometimes"
+    },
+    {
+     "id": "251f6b21cf",
+     "meaning": "frequently; often"
+    },
+    {
+     "id": "c632088363",
+     "meaning": "always"
+    }
+   ]
+  },
+  {
+   "name": "How much",
+   "from": "a little",
+   "to": "too much",
+   "items": [
+    {
+     "id": "211816e321",
+     "meaning": "a little"
+    },
+    {
+     "id": "e5503074da",
+     "meaning": "very; quite"
+    },
+    {
+     "id": "7279129784",
+     "meaning": "very; really"
+    },
+    {
+     "id": "578c75a3de",
+     "meaning": "too (much)"
+    }
+   ]
+  },
+  {
+   "name": "Days",
+   "from": "the day before yesterday",
+   "to": "the day after tomorrow",
+   "items": [
+    {
+     "id": "8ef9a5f4b3",
+     "meaning": "the day before yesterday"
+    },
+    {
+     "id": "cef991ea15",
+     "meaning": "yesterday"
+    },
+    {
+     "id": "144993166d",
+     "meaning": "today"
+    },
+    {
+     "id": "5b5440ea1b",
+     "meaning": "tomorrow"
+    },
+    {
+     "id": "8c66382f45",
+     "meaning": "the day after tomorrow"
+    }
+   ]
+  },
+  {
+   "name": "Years",
+   "from": "last year",
+   "to": "next year",
+   "items": [
+    {
+     "id": "8cfad7d248",
+     "meaning": "last year"
+    },
+    {
+     "id": "cb6aa341e1",
+     "meaning": "this year"
+    },
+    {
+     "id": "bc44b1de18",
+     "meaning": "next year"
+    }
+   ]
+  },
+  {
+   "name": "Time of day",
+   "from": "early morning",
+   "to": "evening",
+   "items": [
+    {
+     "id": "eef45ba229",
+     "meaning": "early morning"
+    },
+    {
+     "id": "4a666b8393",
+     "meaning": "morning"
+    },
+    {
+     "id": "d5bfdffab4",
+     "meaning": "noon"
+    },
+    {
+     "id": "5cfdda8d22",
+     "meaning": "afternoon"
+    },
+    {
+     "id": "b20e82ce1a",
+     "meaning": "evening"
+    }
+   ]
+  },
+  {
+   "name": "Before and after",
+   "from": "before",
+   "to": "later",
+   "items": [
+    {
+     "id": "17ce4c9f62",
+     "meaning": "before"
+    },
+    {
+     "id": "d37a528d37",
+     "meaning": "now; at present; currently"
+    },
+    {
+     "id": "d9126fe4a5",
+     "meaning": "later"
+    }
+   ]
+  },
+  {
+   "name": "Seasons",
+   "from": "spring",
+   "to": "winter",
+   "items": [
+    {
+     "id": "e2a78735af",
+     "meaning": "spring (season)"
+    },
+    {
+     "id": "c88e789de5",
+     "meaning": "summer"
+    },
+    {
+     "id": "a632d89c6e",
+     "meaning": "autumn"
+    },
+    {
+     "id": "21a9539fe5",
+     "meaning": "winter"
+    }
+   ]
+  },
+  {
+   "name": "Steps",
+   "from": "first",
+   "to": "last",
+   "items": [
+    {
+     "id": "da9298ef4f",
+     "meaning": "beforehand; first; earlier"
+    },
+    {
+     "id": "91f76b0a96",
+     "meaning": "then; after that; afterwards"
+    },
+    {
+     "id": "308384742a",
+     "meaning": "finally; in the end"
+    }
+   ]
+  }
+ ],
  "entries": [
   {
    "id": "02463bf744",

@@ -25,6 +25,10 @@ choices in `tools/sources/readings.tsv`, the phrase list in
   `tools/sources/topics.tsv`. They help filtering and are not shown as facts.
 - Pronunciation breakdowns and tone-change notes are computed from the pinyin by
   fixed rules in `tools/pinyin.py`, with tests.
+- Scales in `tools/sources/scales.tsv` (cold → cool → warm → hot): which words go
+  together and their order were picked by hand for this app, and the app says so.
+  Each word and the meaning shown for it must match the library exactly, or the
+  build stops.
 - Opposites in `tools/sources/opposites.tsv`: a pair is listed only when the two
   words' CC-CEDICT meanings are antonyms in their most common sense in WordNet 3.1
   (copyright Princeton University; licence text in `app/assets/licenses/WordNet-license.txt`).

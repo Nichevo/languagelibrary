@@ -31,6 +31,8 @@ class Speaker {
     final tts = _tts ??= FlutterTts();
     await tts.setLanguage('zh-CN');
     await tts.setSpeechRate(slow ? 0.34 : 0.45);
+    // So "Play in order" waits for each word before the next.
+    await tts.awaitSpeakCompletion(true);
     await tts.speak(e.simplified);
   }
 

@@ -6,6 +6,7 @@ import '../models/entry.dart';
 import 'common.dart';
 import 'entry_screen.dart';
 import 'entry_tile.dart';
+import 'scales_screen.dart';
 
 class LibraryScreen extends StatefulWidget {
   const LibraryScreen({super.key});
@@ -27,7 +28,8 @@ class _LibraryScreenState extends State<LibraryScreen> {
   Widget _build(BuildContext context, AppScope scope) {
     final library = scope.library;
     final store = scope.store;
-    final results = library.search(_query, topic: _topic, shown: store.shows);
+    final scales = _topic == Library.scalesFilter;
+    final results = library.search(_query, topic: scales ? null : _topic, shown: store.shows);
     return Scaffold(
       appBar: AppBar(title: const Text('Library')),
       body: Column(
@@ -51,29 +53,34 @@ class _LibraryScreenState extends State<LibraryScreen> {
               padding: const EdgeInsets.symmetric(horizontal: 12),
               children: [
                 _chip('All', null),
+                _chip('Pairs & scales', Library.scalesFilter),
                 if (store.showSentences) _chip('Sentences', Library.sentencesFilter),
                 for (final t in Library.topics) _chip(topicLabel(t), t),
               ],
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.fromLTRB(16, 4, 16, 4),
-            child: Align(
-              alignment: Alignment.centerLeft,
-              child: Text('${results.length} entries', style: Theme.of(context).textTheme.bodySmall),
+          if (scales)
+            Expanded(child: ScalesView(matching: _query.trim().isEmpty ? null : {for (final e in results) e.id}))
+          else ...[
+            Padding(
+              padding: const EdgeInsets.fromLTRB(16, 4, 16, 4),
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Text('${results.length} entries', style: Theme.of(context).textTheme.bodySmall),
+              ),
             ),
-          ),
-          Expanded(
-            child: Builder(builder: (context) {
-              final today = _query.isEmpty && _topic == null ? wordOfTheDay(library, DateTime.now(), shown: store.shows) : null;
-              final extra = today == null ? 0 : 1;
-              return ListView.separated(
-                itemCount: results.length + extra,
-                separatorBuilder: (_, i) => i < extra ? const SizedBox(height: 4) : const Divider(height: 1),
-                itemBuilder: (_, i) => i < extra ? _WordOfTheDay(today!) : EntryTile(results[i - extra]),
-              );
-            }),
-          ),
+            Expanded(
+              child: Builder(builder: (context) {
+                final today = _query.isEmpty && _topic == null ? wordOfTheDay(library, DateTime.now(), shown: store.shows) : null;
+                final extra = today == null ? 0 : 1;
+                return ListView.separated(
+                  itemCount: results.length + extra,
+                  separatorBuilder: (_, i) => i < extra ? const SizedBox(height: 4) : const Divider(height: 1),
+                  itemBuilder: (_, i) => i < extra ? _WordOfTheDay(today!) : EntryTile(results[i - extra]),
+                );
+              }),
+            ),
+          ],
         ],
       ),
     );

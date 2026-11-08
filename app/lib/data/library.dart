@@ -4,14 +4,57 @@ import 'package:flutter/services.dart';
 
 import '../models/entry.dart';
 
+/// One word on a scale, with the meaning that puts it there.
+class ScaleItem {
+  const ScaleItem(this.entry, this.meaning);
+  final Entry entry;
+  final String meaning;
+
+  /// The meaning without notes in brackets: "pleasantly cool (weather etc)" -> "pleasantly cool".
+  String get short => meaning.replaceAll(RegExp(r'\s*\([^)]*\)'), '').split(';').first.trim();
+}
+
+/// Words on the same line, from one end to the other (cold -> hot). The words
+/// and meanings are the library's; which words and their order were picked by hand.
+class Scale {
+  const Scale(this.name, this.from, this.to, this.items);
+  final String name, from, to;
+  final List<ScaleItem> items;
+
+  /// The words switched on in Settings, still in order.
+  List<ScaleItem> shown(bool Function(Entry) shows) => [for (final i in items) if (shows(i.entry)) i];
+}
+
+/// Two words that are opposites (from the "Opposite:" related-word links).
+typedef OppositePair = (Entry, Entry);
+
 /// The read-only word library plus the list of audio clips that exist.
 class Library {
-  Library(this.entries, {Map<String, String>? audioFiles})
+  Library(this.entries, {Map<String, String>? audioFiles, this.scales = const []})
       : audioFiles = audioFiles ?? const {},
         byId = {for (final e in entries) e.id: e};
 
   final List<Entry> entries;
   final Map<String, Entry> byId;
+  final List<Scale> scales;
+
+  /// The scales [e] is on.
+  List<Scale> scalesFor(Entry e) => [for (final s in scales) if (s.items.any((i) => i.entry.id == e.id)) s];
+
+  /// Every opposite pair once, in library order.
+  late final List<OppositePair> opposites = () {
+    final seen = <String>{};
+    final out = <OppositePair>[];
+    for (final e in entries) {
+      for (final r in e.related) {
+        final o = byId[r.id];
+        if (o == null || !r.why.startsWith('Opposite:')) continue;
+        final key = ([e.id, o.id]..sort()).join();
+        if (seen.add(key)) out.add((e, o));
+      }
+    }
+    return out;
+  }();
 
   /// `id_f` / `id_m` -> file name under assets/audio/.
   final Map<String, String> audioFiles;
@@ -24,13 +67,29 @@ class Library {
   /// Pass as the topic to search only the phrasebook sentences.
   static const sentencesFilter = 'sentences';
 
+  /// The Library chip that shows scales and opposite pairs.
+  static const scalesFilter = 'scales';
+
+  /// The library from the parsed library.json.
+  factory Library.fromJson(Map<String, dynamic> data, {Map<String, String>? audioFiles}) {
+    final entries = [
+      for (final e in data['entries'] as List) Entry.fromJson(e as Map<String, dynamic>),
+    ];
+    final byId = {for (final e in entries) e.id: e};
+    final scales = [
+      for (final s in (data['scales'] as List?) ?? const [])
+        Scale(s['name'] as String, s['from'] as String, s['to'] as String, [
+          for (final i in s['items'] as List)
+            if (byId[i['id']] case final e?) ScaleItem(e, i['meaning'] as String),
+        ]),
+    ];
+    return Library(entries, audioFiles: audioFiles, scales: scales);
+  }
+
   static Future<Library> load([AssetBundle? bundle]) async {
     final b = bundle ?? rootBundle;
     final data = jsonDecode(await b.loadString('assets/data/library.json'))
         as Map<String, dynamic>;
-    final entries = [
-      for (final e in data['entries'] as List) Entry.fromJson(e as Map<String, dynamic>),
-    ];
     final audio = <String, String>{};
     try {
       final manifest = jsonDecode(await b.loadString('assets/audio/manifest.json'))
@@ -45,7 +104,7 @@ class Library {
     } catch (_) {
       // No studio audio made yet: the app falls back to the phone's own voice.
     }
-    return Library(entries, audioFiles: audio);
+    return Library.fromJson(data, audioFiles: audio);
   }
 
   String? audioFor(Entry e, {required bool female}) => audioFiles['${e.id}_${female ? 'f' : 'm'}'];
