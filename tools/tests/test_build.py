@@ -88,5 +88,34 @@ class Build(unittest.TestCase):
                 self.assertIn(r["id"], ids)
 
 
+class Scales(unittest.TestCase):
+    entries = [
+        {"id": "a", "simplified": "冷", "meanings": ["cold"]},
+        {"id": "b", "simplified": "热", "meanings": ["to warm up", "hot (of weather)"]},
+    ]
+
+    def write(self, text):
+        import tempfile
+        from pathlib import Path
+        d = tempfile.mkdtemp()
+        p = Path(d) / "scales.tsv"
+        p.write_text(text, encoding="utf-8")
+        return p
+
+    def test_words_and_meanings_must_be_in_the_library(self):
+        p = self.write("# note\nTemperature\tcold\thot\t冷=cold\t热=hot (of weather)\n")
+        self.assertEqual(bd.load_scales(self.entries, p), [{
+            "name": "Temperature", "from": "cold", "to": "hot",
+            "items": [{"id": "a", "meaning": "cold"}, {"id": "b", "meaning": "hot (of weather)"}],
+        }])
+        with self.assertRaises(SystemExit):
+            bd.load_scales(self.entries, self.write("T\tcold\thot\t冷=cold\t热=hot\n"))
+
+    def test_the_real_list_builds(self):
+        import json
+        data = json.loads((bd.ROOT / "app/assets/data/library.json").read_text(encoding="utf-8"))
+        self.assertGreaterEqual(len(data["scales"]), 5)
+
+
 if __name__ == "__main__":
     unittest.main()
