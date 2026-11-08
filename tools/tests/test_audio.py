@@ -66,3 +66,33 @@ class RecheckTest(unittest.TestCase):
         self.assertEqual(manifest["clips"]["a_f"]["check"], "sounds-same")
         self.assertEqual(manifest["clips"]["b_f"]["check"], "exact")
 
+
+
+class RetryTest(unittest.TestCase):
+    def test_waits_out_a_brief_outage(self):
+        class ServiceUnavailable(Exception):
+            pass
+        calls, waits = [], []
+
+        def call():
+            calls.append(1)
+            if len(calls) < 3:
+                raise ServiceUnavailable("503")
+            return "ok"
+        self.assertEqual(ga._retry(call, waits=(1, 2, 3), sleep=waits.append), "ok")
+        self.assertEqual(waits, [1, 2])
+
+    def test_other_errors_stop_at_once(self):
+        def call():
+            raise PermissionError("no access")
+        with self.assertRaises(PermissionError):
+            ga._retry(call, waits=(1,), sleep=lambda s: None)
+
+    def test_gives_up_after_the_last_wait(self):
+        class ServiceUnavailable(Exception):
+            pass
+
+        def call():
+            raise ServiceUnavailable("503")
+        with self.assertRaises(ServiceUnavailable):
+            ga._retry(call, waits=(1, 1), sleep=lambda s: None)

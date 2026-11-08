@@ -26,6 +26,7 @@ import argparse
 import json
 import re
 import sys
+import time
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -173,7 +174,7 @@ def synthesize(tts_mod, client, hanzi: str, numbered: str | None, voice: str, en
             voice=tts_mod.VoiceSelectionParams(language_code=LANG, name=voice),
             audio_config=audio_config(),
         )
-        return client.synthesize_speech(request=req).audio_content
+        return _retry(lambda: client.synthesize_speech(request=req)).audio_content
     pron = tts_mod.CustomPronunciations(pronunciations=[
         tts_mod.CustomPronunciationParams(
             phrase=hanzi,
@@ -186,7 +187,26 @@ def synthesize(tts_mod, client, hanzi: str, numbered: str | None, voice: str, en
         voice=tts_mod.VoiceSelectionParams(language_code=LANG, name=voice),
         audio_config=audio_config(),
     )
-    return client.synthesize_speech(request=req).audio_content
+    return _retry(lambda: client.synthesize_speech(request=req)).audio_content
+
+
+# Google errors that mean "try again shortly" (a brief outage or too many requests).
+_TRANSIENT = {"ServiceUnavailable", "DeadlineExceeded", "InternalServerError", "TooManyRequests",
+              "ResourceExhausted", "GatewayTimeout", "BadGateway", "RetryError", "ConnectionError"}
+RETRY_WAITS = (5, 15, 30, 60, 120, 300)
+
+
+def _retry(call, waits=RETRY_WAITS, sleep=time.sleep):
+    """Run a cloud call, waiting and trying again on a temporary Google error, so a
+    short outage doesn't stop a long run. Other errors stop it straight away."""
+    for wait in (*waits, None):
+        try:
+            return call()
+        except Exception as exc:  # noqa: BLE001 - only the transient kinds are retried
+            if wait is None or type(exc).__name__ not in _TRANSIENT:
+                raise
+            print(f"  Google says {type(exc).__name__}; trying again in {wait} s...", flush=True)
+            sleep(wait)
 
 
 def transcribe(speech_mod, client, wav: bytes) -> list[str]:
@@ -197,7 +217,7 @@ def transcribe(speech_mod, client, wav: bytes) -> list[str]:
         language_code=STT_LANG,
         max_alternatives=5,
     )
-    resp = client.recognize(config=config, audio=speech_mod.RecognitionAudio(content=wav))
+    resp = _retry(lambda: client.recognize(config=config, audio=speech_mod.RecognitionAudio(content=wav)))
     results = [r for r in resp.results if r.alternatives]
     if len(results) == 1:
         return [a.transcript for a in results[0].alternatives]
