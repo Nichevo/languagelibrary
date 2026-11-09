@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
+import 'dart:math';
 import 'dart:typed_data';
 
 import 'package:file_picker/file_picker.dart';
@@ -12,6 +13,7 @@ import 'package:timezone/timezone.dart' as tz;
 import '../data/daily.dart';
 import '../data/library.dart';
 import '../data/user_store.dart';
+import '../data/widget_feed.dart';
 import '../models/entry.dart';
 import 'device.dart';
 
@@ -22,7 +24,7 @@ class AndroidDevice implements Device {
   bool _ready = false;
 
   /// Widget providers in android/app/src/main/kotlin.
-  static const _widgets = ['WordOfDayWidget', 'DueWidget', 'FocusCardWidget'];
+  static const _widgets = ['WordOfDayWidget', 'DueWidget', 'FocusCardWidget', 'QuizWidget', 'ScaleWidget'];
   static const _channel = AndroidNotificationDetails(
     'daily_reminder',
     'Daily reminder',
@@ -132,6 +134,8 @@ class AndroidDevice implements Device {
       await HomeWidget.saveWidgetData<String>('wotd', jsonEncode(words));
       await HomeWidget.saveWidgetData<String>('due', jsonEncode(due));
       await HomeWidget.saveWidgetData<String>('focus', jsonEncode(focus));
+      await HomeWidget.saveWidgetData<String>('quiz', jsonEncode(quizQuestions(library, store, Random())));
+      await HomeWidget.saveWidgetData<String>('scales', jsonEncode(scaleDays(library, now, days: _widgetDays)));
       await HomeWidget.saveWidgetData<bool>('toneHanzi', store.toneHanzi);
       for (final w in _widgets) {
         await HomeWidget.updateWidget(androidName: w);

@@ -3,6 +3,7 @@
 # the build stops if a word or meaning isn't there. Which words go together, and
 # their order, were picked by hand for this app: that part is ours, not a source's.
 # name<TAB>from<TAB>to<TAB>hanzi=meaning<TAB>hanzi=meaning ...
+Size	small	huge	小=small	中等=medium	大=big; large; great	巨大=huge; immense; enormous; gigantic
 Temperature	cold	hot	冷=cold	凉快=pleasantly cool (weather etc)	暖和=warm	热=hot (of weather)
 How often	rarely	always	偶尔=occasionally	有时候=sometimes	常常=frequently; often	总是=always
 How much	a little	too much	有点儿=a little	很=very; quite	非常=very; really	太=too (much)

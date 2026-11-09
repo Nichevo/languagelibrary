@@ -37,6 +37,9 @@ class UserStore extends ChangeNotifier {
   /// or a mix ('mix' = hanzi or pinyin, 'mixAll' = any of the three).
   String cardFront = 'hanzi';
   bool slowAudio = false;
+
+  /// "Put in order" questions: drag the words into order instead of tapping them.
+  bool orderByDrag = false;
   bool femaleVoice = true;
 
   /// Colour each character by its tone, like the pinyin.
@@ -108,6 +111,7 @@ class UserStore extends ChangeNotifier {
     });
     cardFront = j['cardFront'] as String? ?? cardFront;
     slowAudio = j['slowAudio'] as bool? ?? slowAudio;
+    orderByDrag = j['orderByDrag'] as bool? ?? orderByDrag;
     femaleVoice = j['femaleVoice'] as bool? ?? femaleVoice;
     toneHanzi = j['toneHanzi'] as bool? ?? toneHanzi;
     reminderOn = j['reminderOn'] as bool? ?? reminderOn;
@@ -136,6 +140,7 @@ class UserStore extends ChangeNotifier {
         'difficulty': difficulty.map((k, v) => MapEntry(k, v.name)),
         'cardFront': cardFront,
         'slowAudio': slowAudio,
+        'orderByDrag': orderByDrag,
         'femaleVoice': femaleVoice,
         'toneHanzi': toneHanzi,
         'reminderOn': reminderOn,
@@ -335,6 +340,11 @@ class UserStore extends ChangeNotifier {
 
   Future<void> setCardFront(String v) {
     cardFront = v;
+    return _save();
+  }
+
+  Future<void> setOrderByDrag(bool v) {
+    orderByDrag = v;
     return _save();
   }
 

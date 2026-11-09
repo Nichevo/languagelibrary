@@ -33,11 +33,11 @@ enum Choice {
   static List<Choice> get pickable => [for (final c in values) if (c != order) c];
 }
 
-/// A scale [target] is on with at least three words switched on, for a
-/// "put in order" question, or null.
-(Scale, List<ScaleItem>)? scaleToOrder(Library library, Entry target, bool Function(Entry) shows) {
+/// A scale [target] is on with at least three words, for a "put in order"
+/// question, or null.
+(Scale, List<ScaleItem>)? scaleToOrder(Library library, Entry target) {
   for (final s in library.scalesFor(target)) {
-    final items = s.shown(shows);
+    final items = s.items;
     if (items.length >= 3 && items.any((i) => i.entry.id == target.id)) return (s, items);
   }
   return null;
@@ -159,7 +159,7 @@ class _DrillScreenState extends State<DrillScreen> {
     if (_queue!.isEmpty) return;
     final target = _queue!.first;
     if (widget.drill == Drill.listen) {
-      final scale = scaleToOrder(scope.library, target, scope.store.shows);
+      final scale = scaleToOrder(scope.library, target);
       final kinds = [...Choice.pickable, if (scale != null) Choice.order];
       _kind = Choice.fromSetting(scope.store.choiceKind) ?? kinds[_rnd.nextInt(kinds.length)];
       if (_kind == Choice.order) {

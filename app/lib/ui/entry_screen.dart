@@ -179,8 +179,7 @@ class EntryScreen extends StatelessWidget {
               section('Measure word', [
                 Text(entry.classifiers.map((c) => '${c.hanzi} ${c.pinyin}').join(',  ')),
               ]),
-            for (final sc in scope.library.scalesFor(entry))
-              if (sc.shown(store.shows).length >= minScaleWords) ScaleCard(sc, entry),
+            for (final sc in scope.library.scalesFor(entry)) ScaleCard(sc, entry),
             if (related.isNotEmpty)
               section('Related words and phrases', [
                 Text(entry.isSentence ? 'Words in this sentence. Tap one to open it, or star it here.' : 'Tap one to open it, or star it here.',

@@ -11,4 +11,7 @@
     <color name="tone3">#64B5F6</color>
     <color name="tone4">#CE93D8</color>
     <color name="tone5">#BDBDBD</color>
+    <color name="widget_option">#26324A</color>
+    <color name="widget_option_right">#244D2A</color>
+    <color name="widget_option_wrong">#5D2B2B</color>
 </resources>

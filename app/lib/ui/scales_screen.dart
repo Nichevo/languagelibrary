@@ -11,9 +11,6 @@ import 'entry_tile.dart';
 /// Shown on scale screens: the order is ours, the words and meanings are not.
 const scaleSourceNote = 'Order picked by this app. Words, pinyin and meanings from HSK and CC-CEDICT.';
 
-/// A scale needs at least this many words switched on to be worth showing.
-const minScaleWords = 2;
-
 /// The Library's "Pairs & scales" view. With a search, only scales and pairs
 /// holding a matching word are listed.
 class ScalesView extends StatelessWidget {
@@ -30,12 +27,11 @@ class ScalesView extends StatelessWidget {
     bool hit(Entry e) => matching == null || matching!.contains(e.id);
     final scales = [
       for (final s in scope.library.scales)
-        if (s.shown(shows) case final items when items.length >= minScaleWords && items.any((i) => hit(i.entry)))
-          (s, items),
+        if (s.items case final items when items.any((i) => hit(i.entry))) (s, items),
     ];
     final pairs = [
-      for (final (a, b) in scope.library.opposites)
-        if (shows(a) && shows(b) && (hit(a) || hit(b))) (a, b),
+      for (final p in scope.library.opposites)
+        if (shows(p.a) && shows(p.b) && (hit(p.a) || hit(p.b))) p,
     ];
     Widget heading(String text) => Padding(
       padding: const EdgeInsets.fromLTRB(4, 12, 4, 6),
@@ -90,10 +86,16 @@ class ScalesView extends StatelessWidget {
             spacing: 8,
             runSpacing: 8,
             children: [
-              for (final (a, b) in pairs)
+              for (final p in pairs)
                 ActionChip(
-                  label: Text('${a.simplified}  ↔  ${b.simplified}', style: theme.textTheme.titleMedium),
-                  onPressed: () => _showPair(context, a, b),
+                  label: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text('${p.a.simplified}  ↔  ${p.b.simplified}', style: theme.textTheme.titleMedium),
+                      Text('${p.aEnglish} ↔ ${p.bEnglish}', style: theme.textTheme.bodySmall),
+                    ],
+                  ),
+                  onPressed: () => _showPair(context, p.a, p.b),
                 ),
             ],
           ),
@@ -194,9 +196,8 @@ class _ScaleScreenState extends State<ScaleScreen> {
     return ListenableBuilder(
       listenable: store,
       builder: (context, _) {
-        final items = s.shown(store.shows);
+        final items = s.items;
         final allStarred = items.every((i) => store.isStarred(i.entry.id));
-        final hidden = s.items.length - items.length;
         return Scaffold(
           appBar: AppBar(title: Text(s.name)),
           body: ListView(
@@ -291,14 +292,13 @@ class _ScaleScreenState extends State<ScaleScreen> {
                 ),
               ),
               const SizedBox(height: 16),
-              if (hidden > 0)
-                Padding(
-                  padding: const EdgeInsets.only(bottom: 8),
-                  child: Text(
-                    '$hidden more ${hidden == 1 ? 'word is' : 'words are'} on this scale at levels switched off in Levels and content.',
-                    style: theme.textTheme.bodySmall,
-                  ),
+              Padding(
+                padding: const EdgeInsets.only(bottom: 8),
+                child: Text(
+                  'Scales always show all their words, whatever levels are switched on, so none has gaps.',
+                  style: theme.textTheme.bodySmall,
                 ),
+              ),
               Text(scaleSourceNote, style: theme.textTheme.bodySmall),
             ],
           ),
@@ -317,9 +317,8 @@ class ScaleCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final scope = AppScope.of(context);
     final theme = Theme.of(context);
-    final items = scale.shown(scope.store.shows);
+    final items = scale.items;
     return Card(
       margin: const EdgeInsets.only(top: 6),
       child: Padding(
@@ -402,7 +401,8 @@ List<ScaleItem> shuffledScale(List<ScaleItem> items, Random rnd) {
   }
 }
 
-/// "Tap the words from cold to hot": tap each word in turn, then check.
+/// "Put the words in order from cold to hot": tap each word in turn, or drag
+/// them into order (the learner's choice, remembered), then check.
 class OrderQuestion extends StatefulWidget {
   const OrderQuestion({super.key, required this.scale, required this.items, required this.random, this.onChecked});
 
@@ -424,11 +424,15 @@ class _OrderQuestionState extends State<OrderQuestion> {
   final List<ScaleItem> _picked = [];
   bool _checked = false;
 
+  /// Drag mode: the words in their current order.
+  late List<ScaleItem> _dragged = [..._pool];
+
   @override
   void didUpdateWidget(OrderQuestion old) {
     super.didUpdateWidget(old);
     if (old.scale != widget.scale || old.items.length != widget.items.length) {
       _pool = shuffledScale(widget.items, widget.random);
+      _dragged = [..._pool];
       _picked.clear();
       _checked = false;
     }
@@ -442,6 +446,11 @@ class _OrderQuestionState extends State<OrderQuestion> {
   }
 
   void _check() {
+    if (AppScope.of(context).store.orderByDrag) {
+      _picked
+        ..clear()
+        ..addAll(_dragged);
+    }
     final right = inScaleOrder(widget.items, [for (final i in _picked) i.entry.id]);
     setState(() => _checked = true);
     widget.onChecked?.call(right);
@@ -454,6 +463,8 @@ class _OrderQuestionState extends State<OrderQuestion> {
     final good = dark ? const Color(0xFF244D2A) : const Color(0xFFD4F0D6);
     final bad = dark ? const Color(0xFF5D2B2B) : const Color(0xFFFFDAD6);
     final items = widget.items;
+    final store = AppScope.of(context).store;
+    final drag = store.orderByDrag && !_checked;
     final right = _checked && inScaleOrder(items, [for (final i in _picked) i.entry.id]);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -461,61 +472,110 @@ class _OrderQuestionState extends State<OrderQuestion> {
         Text('Put in order', style: theme.textTheme.labelLarge, textAlign: TextAlign.center),
         const SizedBox(height: 4),
         Text(
-          'Tap the words from ${widget.scale.from} to ${widget.scale.to}',
+          '${drag ? 'Drag' : 'Tap'} the words from ${widget.scale.from} to ${widget.scale.to}',
           style: theme.textTheme.titleMedium,
           textAlign: TextAlign.center,
         ),
-        const SizedBox(height: 16),
-        for (var n = 0; n < items.length; n++)
-          Builder(
-            builder: (context) {
-              final i = n < _picked.length ? _picked[n] : null;
-              final ok = i != null && i.entry.id == items[n].entry.id;
-              return Card(
-                margin: const EdgeInsets.symmetric(vertical: 3),
-                color: !_checked ? null : (ok ? good : bad),
-                child: ListTile(
-                  dense: true,
-                  leading: Text('${n + 1}', style: theme.textTheme.bodySmall),
-                  title: Text(i?.entry.simplified ?? '', style: theme.textTheme.titleLarge),
-                  subtitle: _checked ? Text('${items[n].entry.pinyin} · ${items[n].meaning}') : null,
-                  trailing: !_checked
-                      ? null
-                      : ok
-                      ? const Icon(Icons.check)
-                      : Text('Should be ${items[n].entry.simplified}', style: theme.textTheme.bodySmall),
-                ),
-              );
-            },
+        if (!_checked) ...[
+          const SizedBox(height: 8),
+          Center(
+            child: SegmentedButton<bool>(
+              showSelectedIcon: false,
+              segments: const [
+                ButtonSegment(value: false, label: Text('Tap'), icon: Icon(Icons.touch_app_outlined)),
+                ButtonSegment(value: true, label: Text('Drag'), icon: Icon(Icons.drag_indicator)),
+              ],
+              selected: {store.orderByDrag},
+              onSelectionChanged: (s) {
+                setState(() {
+                  _picked.clear();
+                  _dragged = [..._pool];
+                });
+                store.setOrderByDrag(s.first);
+              },
+            ),
           ),
+        ],
         const SizedBox(height: 16),
-        Wrap(
-          alignment: WrapAlignment.center,
-          spacing: 8,
-          runSpacing: 8,
-          children: [
-            for (final i in _pool)
-              OutlinedButton(
-                style: OutlinedButton.styleFrom(minimumSize: const Size(96, 56)),
-                onPressed: _checked || _picked.contains(i) ? null : () => _tap(i),
-                child: Text(i.entry.simplified, style: theme.textTheme.headlineSmall),
-              ),
-          ],
-        ),
+        if (drag)
+          ReorderableListView(
+            shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
+            buildDefaultDragHandles: false,
+            onReorderItem: (from, to) => setState(() => _dragged.insert(to, _dragged.removeAt(from))),
+            children: [
+              for (final (n, i) in _dragged.indexed)
+                Card(
+                  key: ValueKey(i.entry.id),
+                  margin: const EdgeInsets.symmetric(vertical: 3),
+                  child: ReorderableDragStartListener(
+                    index: n,
+                    child: ListTile(
+                      leading: Text('${n + 1}', style: theme.textTheme.bodySmall),
+                      title: Text(i.entry.simplified, style: theme.textTheme.headlineSmall),
+                      trailing: const Icon(Icons.drag_indicator),
+                      onTap: () {
+                        final scope = AppScope.of(context);
+                        scope.speaker.play(i.entry, female: store.femaleVoice, slow: store.slowAudio);
+                      },
+                    ),
+                  ),
+                ),
+            ],
+          )
+        else
+          for (var n = 0; n < items.length; n++)
+            Builder(
+              builder: (context) {
+                final i = n < _picked.length ? _picked[n] : null;
+                final ok = i != null && i.entry.id == items[n].entry.id;
+                return Card(
+                  margin: const EdgeInsets.symmetric(vertical: 3),
+                  color: !_checked ? null : (ok ? good : bad),
+                  child: ListTile(
+                    dense: true,
+                    leading: Text('${n + 1}', style: theme.textTheme.bodySmall),
+                    title: Text(i?.entry.simplified ?? '', style: theme.textTheme.titleLarge),
+                    subtitle: _checked ? Text('${items[n].entry.pinyin} · ${items[n].meaning}') : null,
+                    trailing: !_checked
+                        ? null
+                        : ok
+                        ? const Icon(Icons.check)
+                        : Text('Should be ${items[n].entry.simplified}', style: theme.textTheme.bodySmall),
+                  ),
+                );
+              },
+            ),
+        if (!drag) ...[
+          const SizedBox(height: 16),
+          Wrap(
+            alignment: WrapAlignment.center,
+            spacing: 8,
+            runSpacing: 8,
+            children: [
+              for (final i in _pool)
+                OutlinedButton(
+                  style: OutlinedButton.styleFrom(minimumSize: const Size(96, 56)),
+                  onPressed: _checked || _picked.contains(i) ? null : () => _tap(i),
+                  child: Text(i.entry.simplified, style: theme.textTheme.headlineSmall),
+                ),
+            ],
+          ),
+        ],
         const SizedBox(height: 16),
         if (!_checked)
           Row(
             children: [
               Expanded(
                 child: OutlinedButton(
-                  onPressed: _picked.isEmpty ? null : () => setState(_picked.clear),
+                  onPressed: drag || _picked.isEmpty ? null : () => setState(_picked.clear),
                   child: const Text('Start again'),
                 ),
               ),
               const SizedBox(width: 12),
               Expanded(
                 child: FilledButton(
-                  onPressed: _picked.length == items.length ? _check : null,
+                  onPressed: drag || _picked.length == items.length ? _check : null,
                   child: const Text('Check'),
                 ),
               ),
@@ -549,8 +609,7 @@ class _OrderPracticeScreenState extends State<OrderPracticeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final store = AppScope.of(context).store;
-    final items = widget.scale.shown(store.shows);
+    final items = widget.scale.items;
     return Scaffold(
       appBar: AppBar(title: Text(widget.scale.name)),
       body: SafeArea(
