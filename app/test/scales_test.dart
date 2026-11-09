@@ -140,6 +140,13 @@ void main() {
       await tester.pumpAndSettle();
       expect(result, isTrue);
       expect(find.text('All in order!'), findsOneWidget);
+      // Each place shows its word's pinyin and English, marked right.
+      for (final i in t.items) {
+        expect(find.text(i.entry.pinyin), findsWidgets);
+        expect(find.text(i.short), findsWidgets);
+      }
+      expect(find.byIcon(Icons.check_circle), findsNWidgets(t.items.length));
+      expect(find.text('Should be'), findsNothing);
     });
 
     testWidgets('drag mode: the choice is remembered and a shuffled order is wrong', (tester) async {
@@ -172,7 +179,16 @@ void main() {
       await tester.tap(find.text('Check'));
       await tester.pumpAndSettle();
       expect(result, isFalse);
-      expect(find.text('Not quite. The right order is shown above.'), findsOneWidget);
+      expect(find.textContaining('Not quite.'), findsOneWidget);
+      // Wrong places are marked and name the right word, with pinyin and English.
+      final wrong = tester.widgetList(find.byIcon(Icons.cancel)).length;
+      expect(wrong, greaterThan(0));
+      expect(find.text('Should be'), findsNWidgets(wrong));
+      expect(find.byIcon(Icons.check_circle), findsNWidgets(t.items.length - wrong));
+      for (final i in t.items) {
+        expect(find.text(i.entry.pinyin), findsWidgets);
+        expect(find.text(i.short), findsWidgets);
+      }
     });
   });
 }
