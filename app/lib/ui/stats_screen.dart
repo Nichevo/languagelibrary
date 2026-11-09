@@ -8,6 +8,7 @@ import '../data/method_stats.dart';
 import '../data/user_store.dart';
 import '../srs/scheduler.dart';
 import 'common.dart';
+import 'practice_screen.dart';
 
 /// The Progress tab: time spent, how well cards are known, and how that changes.
 class StatsScreen extends StatelessWidget {
@@ -56,6 +57,9 @@ class StatsView extends StatelessWidget {
         d = d.subtract(const Duration(days: 1))) {
       streak++;
     }
+
+    // Each word's current run of right answers.
+    final runs = rightInARow(reviews);
 
     // Cards by status, now.
     final status = List.filled(CardStatus.values.length, 0);
@@ -110,6 +114,7 @@ class StatsView extends StatelessWidget {
               _Tile('Last 7 days', _duration(week)),
               _Tile('Cards answered', '${reviews.length}'),
               _Tile('Days in a row', '$streak'),
+              _Tile('Words right 3+ in a row', '${runs.values.where((n) => n >= 3).length}'),
             ],
           ),
         ),
@@ -233,6 +238,223 @@ class StatsView extends StatelessWidget {
                   style: theme.textTheme.bodyMedium),
           ]);
         }(),
+        () {
+          final lately = {
+            for (final r in recent)
+              ?r.id,
+          };
+          final buckets = List.filled(4, 0);
+          for (final id in lately) {
+            final n = runs[id] ?? 0;
+            buckets[n == 0 ? 0 : n < 3 ? 1 : n < 5 ? 2 : 3]++;
+          }
+          final colors = _ratingColors(theme);
+          final runColors = [colors[0], colors[1], colors[3], colors[2]];
+          const runLabels = ['Missed last time', '1 or 2 in a row', '3 or 4 in a row', '5 or more in a row'];
+          final top = [
+            for (final e in runs.entries)
+              if (e.value > 0 && library.byId[e.key] != null) (library.byId[e.key]!, e.value),
+          ]..sort((a, b) => b.$2.compareTo(a.$2));
+          return section(
+            'Right in a row',
+            note: 'Words you practised in the last 30 days, by how many times in a row you have got each one right, '
+                'by any practice method. A wrong answer starts it again at 0.',
+            [
+              if (lately.isEmpty)
+                Text('No words practised lately.', style: theme.textTheme.bodyMedium)
+              else ...[
+                _Stacked(values: buckets, colors: runColors),
+                const SizedBox(height: 8),
+                for (var i = 0; i < 4; i++) _Legend(color: runColors[i], label: runLabels[i], value: '${buckets[i]}'),
+              ],
+              if (top.isNotEmpty) ...[
+                const SizedBox(height: 8),
+                Text('Longest runs now', style: theme.textTheme.labelLarge),
+                const SizedBox(height: 4),
+                for (final (e, n) in top.take(5))
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 3),
+                    child: Row(
+                      children: [
+                        Text(e.simplified, style: theme.textTheme.titleMedium),
+                        const SizedBox(width: 8),
+                        Expanded(
+                          child: Text(e.pinyin,
+                              style: theme.textTheme.bodyMedium?.copyWith(color: theme.colorScheme.primary),
+                              overflow: TextOverflow.ellipsis),
+                        ),
+                        Text('$n in a row', style: theme.textTheme.bodyMedium),
+                      ],
+                    ),
+                  ),
+              ],
+            ],
+          );
+        }(),
+        () {
+          final weeks = methodWeeks(reviews, today);
+          final used = [
+            for (final m in {...methodLabels.keys, for (final w in weeks) ...w.keys})
+              if (weeks.any((w) => w.containsKey(m))) m,
+          ];
+          final colors = _methodColors(theme);
+          Color colorOf(String m) {
+            final i = methodLabels.keys.toList().indexOf(m);
+            return colors[(i < 0 ? used.indexOf(m) : i) % colors.length];
+          }
+
+          final labels = _weekLabels(today, weeks.length);
+          final last = weeks.last;
+          return section('Practice methods over time', note: 'Answers each week, last 8 weeks', [
+            if (used.isEmpty)
+              Text('No answers yet.', style: theme.textTheme.bodyMedium)
+            else ...[
+              _StackedBars(
+                values: [
+                  for (final w in weeks) [for (final m in used) (w[m]?.answers ?? 0).toDouble()],
+                ],
+                colors: [for (final m in used) colorOf(m)],
+                labels: labels,
+              ),
+              const SizedBox(height: 16),
+              Text('Share right by method', style: theme.textTheme.labelLarge),
+              const SizedBox(height: 2),
+              Text('Each week with at least $minWeekAnswers answers that way', style: theme.textTheme.bodySmall),
+              const SizedBox(height: 8),
+              _WeekLine(
+                lines: [
+                  for (final m in used)
+                    (
+                      [
+                        for (final w in weeks)
+                          if (w[m] case final c? when c.answers >= minWeekAnswers) 100 * c.right / c.answers else null,
+                      ],
+                      colorOf(m),
+                    ),
+                ],
+              ),
+              const SizedBox(height: 6),
+              for (final m in used)
+                _Legend(
+                  color: colorOf(m),
+                  label: methodLabels[m] ?? m,
+                  detail: 'this week',
+                  value: last[m] == null
+                      ? '–'
+                      : '${(100 * last[m]!.right / last[m]!.answers).round()}% of ${last[m]!.answers}',
+                ),
+            ],
+          ]);
+        }(),
+        () {
+          final weeks = byWeek(reviews, today);
+          final labels = _weekLabels(today, weeks.length);
+          final memory = [for (final w in weeks) countOf(w, isRecall)];
+          final speed = [
+            for (final w in weeks)
+              w.isEmpty ? 0.0 : w.fold(Duration.zero, (t, r) => t + r.spent).inMilliseconds / 1000 / w.length,
+          ];
+          final end = DateTime(today.year, today.month, today.day + 1);
+          final learned = List.filled(weeks.length, 0.0);
+          for (final at in store.firstKnown.values) {
+            if (weekOf(at, end, weeks.length) case final w?) learned[w]++;
+          }
+          final good = _statusColors(theme)[CardStatus.strong.index];
+          return section('Week by week', note: 'Last 8 weeks', [
+            Text('Flashcards remembered', style: theme.textTheme.labelLarge),
+            Text('Share of flashcards you remembered, on words you had seen before', style: theme.textTheme.bodySmall),
+            const SizedBox(height: 8),
+            _WeekLine(
+              lines: [
+                (
+                  [for (final c in memory) c.answers >= minWeekAnswers ? 100 * c.right / c.answers : null],
+                  good,
+                ),
+              ],
+            ),
+            _Legend(
+              color: good,
+              label: 'This week',
+              value: memory.last.answers == 0
+                  ? '–'
+                  : '${(100 * memory.last.right / memory.last.answers).round()}% of ${memory.last.answers}',
+            ),
+            const SizedBox(height: 16),
+            Text('Seconds per answer', style: theme.textTheme.labelLarge),
+            Text('Average time on each answer, all practice methods. Faster usually means it is sinking in.',
+                style: theme.textTheme.bodySmall),
+            const SizedBox(height: 8),
+            _Bars(values: speed, labels: labels, color: theme.colorScheme.primary, decimals: true),
+            const SizedBox(height: 16),
+            Text('Cards learned', style: theme.textTheme.labelLarge),
+            Text('Cards that became Familiar (back in a week or more) for the first time', style: theme.textTheme.bodySmall),
+            const SizedBox(height: 8),
+            _Bars(values: learned, labels: labels, color: good),
+          ]);
+        }(),
+        () {
+          final weeks = byWeek(reviews, today);
+          final listen = [for (final w in weeks) countOf(w, isListening)];
+          final read = [for (final w in weeks) countOf(w, isReading)];
+          final colors = _methodColors(theme);
+          final l30 = countOf(recent, isListening), r30 = countOf(recent, isReading);
+          String share(WeekCount c) => c.answers == 0 ? '–' : '${(100 * c.right / c.answers).round()}% of ${c.answers}';
+          return section('Listening and reading', note: 'Share right each week, last 8 weeks', [
+            if (l30.answers == 0 && r30.answers == 0 && listen.every((c) => c.answers == 0))
+              Text('Practise with "Hear it, pick the word" and the "See it" questions, and this will fill in.',
+                  style: theme.textTheme.bodyMedium)
+            else ...[
+              _WeekLine(
+                lines: [
+                  ([for (final c in listen) c.answers >= minWeekAnswers ? 100 * c.right / c.answers : null], colors[0]),
+                  ([for (final c in read) c.answers >= minWeekAnswers ? 100 * c.right / c.answers : null], colors[1]),
+                ],
+              ),
+              const SizedBox(height: 6),
+              _Legend(color: colors[0], label: 'Listening', detail: 'hear it, pick the word · 30 days', value: share(l30)),
+              _Legend(color: colors[1], label: 'Reading', detail: 'see it, pick the answer · 30 days', value: share(r30)),
+            ],
+          ]);
+        }(),
+        () {
+          final tricky = [
+            for (final (id, misses, answers) in trickyWords(reviews, today.subtract(const Duration(days: 59))))
+              if (library.byId[id] case final e?) (e, misses, answers),
+          ];
+          return section('Words that trip you up', note: 'Missed twice or more in the last 60 days', [
+            if (tricky.isEmpty)
+              Text('Nothing yet. Words you miss more than once will show here.', style: theme.textTheme.bodyMedium)
+            else ...[
+              for (final (e, misses, answers) in tricky)
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 3),
+                  child: Row(
+                    children: [
+                      Text(e.simplified, style: theme.textTheme.titleMedium),
+                      const SizedBox(width: 8),
+                      Expanded(
+                        child: Text(
+                          '${e.pinyin}  ${e.gloss}',
+                          style: theme.textTheme.bodyMedium,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ),
+                      const SizedBox(width: 8),
+                      Text('missed $misses of $answers', style: theme.textTheme.bodySmall),
+                    ],
+                  ),
+                ),
+              const SizedBox(height: 8),
+              FilledButton.icon(
+                icon: const Icon(Icons.replay),
+                label: const Text('Practise these'),
+                onPressed: () => Navigator.of(context).push(MaterialPageRoute(
+                  builder: (_) => PracticeScreen(ids: [for (final (e, _, _) in tricky) e.id], includeNotDue: true),
+                )),
+              ),
+            ],
+          ]);
+        }(),
         section('Your own scores', note: 'Easy / OK / Hard on word pages', [
           for (final d in Difficulty.values)
             _Legend(
@@ -251,6 +473,15 @@ class StatsView extends StatelessWidget {
     return '${d.inHours} h ${d.inMinutes % 60} min';
   }
 
+  /// The first day of each of the last [n] weeks, as day/month.
+  static List<String> _weekLabels(DateTime today, int n) => [
+        for (var i = n - 1; i >= 0; i--)
+          () {
+            final d = today.subtract(Duration(days: 7 * i + 6));
+            return '${d.day}/${d.month}';
+          }(),
+      ];
+
   static String _weekday(DateTime d) => const ['M', 'T', 'W', 'T', 'F', 'S', 'S'][d.weekday - 1];
 
   static String _ratingName(Rating r) => switch (r) {
@@ -265,6 +496,32 @@ class StatsView extends StatelessWidget {
     return dark
         ? const [Color(0xFF6B6B6B), Color(0xFFD9A43A), Color(0xFF5FA3E0), Color(0xFF5DBB72)]
         : const [Color(0xFFBDBDBD), Color(0xFFE0A526), Color(0xFF2F7FD0), Color(0xFF2E9A4A)];
+  }
+
+  /// One colour per practice method, in [methodLabels] order.
+  static List<Color> _methodColors(ThemeData t) {
+    final dark = t.brightness == Brightness.dark;
+    return dark
+        ? const [
+            Color(0xFF5FA3E0),
+            Color(0xFFE0A526),
+            Color(0xFF5DBB72),
+            Color(0xFFE07A72),
+            Color(0xFFB08CE0),
+            Color(0xFF4FC1C1),
+            Color(0xFFE08CC0),
+            Color(0xFFB0B0B0),
+          ]
+        : const [
+            Color(0xFF2F7FD0),
+            Color(0xFFC98A0C),
+            Color(0xFF2E9A4A),
+            Color(0xFFD0453A),
+            Color(0xFF7B52C7),
+            Color(0xFF16908F),
+            Color(0xFFC2408F),
+            Color(0xFF6B6B6B),
+          ];
   }
 
   static List<Color> _ratingColors(ThemeData t) {
@@ -339,8 +596,11 @@ class _Legend extends StatelessWidget {
 
 /// A row of bars with a label under each and the value above the tallest.
 class _Bars extends StatelessWidget {
-  const _Bars({required this.values, required this.labels, required this.color});
+  const _Bars({required this.values, required this.labels, required this.color, this.decimals = false});
   final List<double> values;
+
+  /// Show values with one decimal place.
+  final bool decimals;
   final List<String> labels;
   final Color color;
 
@@ -361,7 +621,7 @@ class _Bars extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     if (values[i] > 0)
-                      Text(values[i] < 1 ? '<1' : values[i].round().toString(),
+                      Text(softWrap: false, decimals ? values[i].toStringAsFixed(1) : values[i] < 1 ? '<1' : values[i].round().toString(),
                           style: theme.textTheme.labelSmall, maxLines: 1),
                     const SizedBox(height: 2),
                     Container(
@@ -372,7 +632,64 @@ class _Bars extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(height: 4),
-                    Text(labels[i], style: theme.textTheme.labelSmall),
+                    FittedBox(
+                      fit: BoxFit.scaleDown,
+                      child: Text(labels[i], style: theme.textTheme.labelSmall, maxLines: 1),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+        ],
+      ),
+    );
+  }
+}
+
+/// A row of bars, each split into coloured parts, with a label under each and
+/// its total above it.
+class _StackedBars extends StatelessWidget {
+  const _StackedBars({required this.values, required this.colors, required this.labels});
+
+  /// For each bar, one value per colour.
+  final List<List<double>> values;
+  final List<Color> colors;
+  final List<String> labels;
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final totals = [for (final v in values) v.fold<double>(0, (a, b) => a + b)];
+    final top = totals.fold<double>(0, max);
+    return SizedBox(
+      height: 130,
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.end,
+        children: [
+          for (var i = 0; i < values.length; i++)
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 3),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    if (totals[i] > 0) Text('${totals[i].round()}', style: theme.textTheme.labelSmall, maxLines: 1),
+                    const SizedBox(height: 2),
+                    ClipRRect(
+                      borderRadius: const BorderRadius.vertical(top: Radius.circular(3)),
+                      child: Column(
+                        children: [
+                          for (var j = values[i].length - 1; j >= 0; j--)
+                            if (values[i][j] > 0)
+                              Container(height: top == 0 ? 0 : 84 * values[i][j] / top, color: colors[j]),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(height: 4),
+                    FittedBox(
+                      fit: BoxFit.scaleDown,
+                      child: Text(labels[i], style: theme.textTheme.labelSmall, maxLines: 1),
+                    ),
                   ],
                 ),
               ),
@@ -513,21 +830,66 @@ class _Trend extends StatelessWidget {
   }
 }
 
+/// Shares (0 to 100%) over the last 8 weeks, one line per colour.
+class _WeekLine extends StatelessWidget {
+  const _WeekLine({required this.lines});
+  final List<(List<double?>, Color)> lines;
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    return SizedBox(
+      height: 130,
+      child: CustomPaint(
+        size: Size.infinite,
+        painter: _TrendPainter(
+          lines,
+          theme.colorScheme.outlineVariant,
+          theme.textTheme.labelSmall!,
+          top: 100,
+          topLabel: '100%',
+          startLabel: '8 weeks ago',
+          endLabel: 'This week',
+          dots: true,
+        ),
+      ),
+    );
+  }
+}
+
 class _TrendPainter extends CustomPainter {
-  _TrendPainter(this.lines, this.grid, this.label);
+  _TrendPainter(
+    this.lines,
+    this.grid,
+    this.label, {
+    this.top,
+    this.topLabel,
+    this.startLabel = '30 days ago',
+    this.endLabel = 'Today',
+    this.dots = false,
+  });
   final List<(List<double?>, Color)> lines;
   final Color grid;
   final TextStyle label;
 
+  /// The value at the top of the chart; the largest value when null.
+  final double? top;
+  final String? topLabel;
+  final String startLabel;
+  final String endLabel;
+
+  /// Draw a dot on each point, so a value with no neighbour still shows.
+  final bool dots;
+
   @override
   void paint(Canvas canvas, Size size) {
-    final top = lines.expand((l) => l.$1).whereType<double>().fold<double>(1, max);
+    final top = this.top ?? lines.expand((l) => l.$1).whereType<double>().fold<double>(1, max);
     final h = size.height - 14;
     final gridPaint = Paint()
       ..color = grid
       ..strokeWidth = 1;
     canvas.drawLine(Offset(0, h), Offset(size.width, h), gridPaint);
-    final tp = TextPainter(text: TextSpan(text: top.round().toString(), style: label), textDirection: TextDirection.ltr)
+    final tp = TextPainter(text: TextSpan(text: topLabel ?? top.round().toString(), style: label), textDirection: TextDirection.ltr)
       ..layout();
     tp.paint(canvas, Offset.zero);
     canvas.drawLine(Offset(tp.width + 4, tp.height / 2), Offset(size.width, tp.height / 2), gridPaint);
@@ -543,6 +905,7 @@ class _TrendPainter extends CustomPainter {
         final v = values[i];
         if (v == null) continue;
         final p = Offset(size.width * i / (n - 1), tp.height / 2 + (h - tp.height / 2) * (1 - v / top));
+        if (dots) canvas.drawCircle(p, 3, Paint()..color = color);
         if (started) {
           path.lineTo(p.dx, p.dy);
         } else {
@@ -552,10 +915,10 @@ class _TrendPainter extends CustomPainter {
       }
       canvas.drawPath(path, paint);
     }
-    final start = TextPainter(text: TextSpan(text: '30 days ago', style: label), textDirection: TextDirection.ltr)
+    final start = TextPainter(text: TextSpan(text: startLabel, style: label), textDirection: TextDirection.ltr)
       ..layout();
     start.paint(canvas, Offset(0, size.height - start.height));
-    final end = TextPainter(text: TextSpan(text: 'Today', style: label), textDirection: TextDirection.ltr)..layout();
+    final end = TextPainter(text: TextSpan(text: endLabel, style: label), textDirection: TextDirection.ltr)..layout();
     end.paint(canvas, Offset(size.width - end.width, size.height - end.height));
   }
 

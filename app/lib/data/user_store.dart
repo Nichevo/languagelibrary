@@ -85,6 +85,12 @@ class UserStore extends ChangeNotifier {
   /// Day ('2026-11-05') -> how the starred cards stood at the end of that day.
   final Map<String, Snapshot> snapshots = {};
 
+  /// When each card first became familiar (back in a week or more), by card
+  /// key. Cards that were already familiar before this was recorded have
+  /// [unknownDate].
+  final Map<String, DateTime> firstKnown = {};
+  static final unknownDate = DateTime.fromMillisecondsSinceEpoch(0);
+
   void _load() {
     final raw = _prefs.getString(_key);
     if (raw == null) return;
@@ -100,6 +106,7 @@ class UserStore extends ChangeNotifier {
     difficulty.clear();
     reviews.clear();
     snapshots.clear();
+    firstKnown.clear();
     starred.addAll(List<String>.from(j['starred'] as List? ?? const []));
     (j['lists'] as Map? ?? const {}).forEach((k, v) => lists[k as String] = List<String>.from(v as List));
     (j['cards'] as Map? ?? const {})
@@ -130,6 +137,11 @@ class UserStore extends ChangeNotifier {
       reviews.add(Review.fromJson(r as List));
     }
     (j['snapshots'] as Map? ?? const {}).forEach((k, v) => snapshots[k as String] = Snapshot.fromJson(v as List));
+    (j['firstKnown'] as Map? ?? const {}).forEach(
+        (k, v) => firstKnown[k as String] = DateTime.fromMillisecondsSinceEpoch((v as int) * 1000));
+    cards.forEach((k, c) {
+      if (CardStatus.of(c).index >= CardStatus.familiar.index) firstKnown.putIfAbsent(k, () => unknownDate);
+    });
   }
 
   Map<String, dynamic> _toJson() => {
@@ -153,6 +165,7 @@ class UserStore extends ChangeNotifier {
         'choiceKind': choiceKind,
         'reviews': [for (final r in reviews) r.toJson()],
         'snapshots': snapshots.map((k, v) => MapEntry(k, v.toJson())),
+        'firstKnown': firstKnown.map((k, v) => MapEntry(k, v.millisecondsSinceEpoch ~/ 1000)),
       };
 
   static const backupFormat = 'language-library-backup';
@@ -259,6 +272,7 @@ class UserStore extends ChangeNotifier {
   Future<void> recordReview(String id, Direction d, CardState state, Rating rating, Duration spent, DateTime now) {
     final isNew = card(id, d) == null;
     cards[cardKey(id, d)] = state;
+    if (CardStatus.of(state).index >= CardStatus.familiar.index) firstKnown.putIfAbsent(cardKey(id, d), () => now);
     reviews.add(Review(now, spent > maxSpent ? maxSpent : spent, rating, isNew, id: id));
     if (reviews.length > maxReviews) reviews.removeRange(0, reviews.length - maxReviews);
     return _save();
