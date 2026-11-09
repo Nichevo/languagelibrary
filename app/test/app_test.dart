@@ -5,6 +5,7 @@ import 'package:language_library/device/device.dart';
 import 'package:language_library/main.dart';
 import 'package:language_library/srs/scheduler.dart';
 import 'package:language_library/ui/practice_home.dart';
+import 'package:language_library/ui/stats_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'logic_test.dart' show loadRealLibrary;
@@ -252,6 +253,25 @@ void main() {
     expect(find.text('Cards answered'), findsOneWidget);
     expect(find.text('1 min'), findsWidgets);
     expect(find.text('Cards by status'), findsOneWidget);
+    expect(find.text('Words right 3+ in a row'), findsOneWidget);
+    // The rest of the page builds: answers of several kinds, then scroll through it.
+    for (final (i, m) in ['listen', 'meaning', 'listen', 'pinyin', 'type'].indexed) {
+      await store.logAnswer(i.isEven ? Rating.good : Rating.again, const Duration(seconds: 5), now,
+          method: m, id: w.id);
+    }
+    await tester.pumpAndSettle();
+    final stats = find.descendant(of: find.byType(StatsView), matching: find.byType(Scrollable)).first;
+    for (final title in [
+      'Right in a row',
+      'Practice methods over time',
+      'Week by week',
+      'Listening and reading',
+      'Words that trip you up',
+    ]) {
+      await tester.scrollUntilVisible(find.text(title), 300, scrollable: stats);
+      expect(find.text(title), findsOneWidget);
+    }
+    expect(find.text('Practise these'), findsOneWidget);
 
     await tester.tap(find.text('Practice'));
     await tester.pumpAndSettle();
