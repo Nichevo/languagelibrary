@@ -537,20 +537,13 @@ class _OrderQuestionState extends State<OrderQuestion> {
             Builder(
               builder: (context) {
                 final i = n < _picked.length ? _picked[n] : null;
-                final ok = i != null && i.entry.id == items[n].entry.id;
+                if (_checked) return OrderResultRow(position: n + 1, yours: i, answer: items[n], good: good, bad: bad);
                 return Card(
                   margin: const EdgeInsets.symmetric(vertical: 3),
-                  color: !_checked ? null : (ok ? good : bad),
                   child: ListTile(
                     dense: true,
                     leading: Text('${n + 1}', style: theme.textTheme.bodySmall),
                     title: Text(i?.entry.simplified ?? '', style: theme.textTheme.titleLarge),
-                    subtitle: _checked ? Text('${items[n].entry.pinyin} · ${items[n].meaning}') : null,
-                    trailing: !_checked
-                        ? null
-                        : ok
-                        ? const Icon(Icons.check)
-                        : Text('Should be ${items[n].entry.simplified}', style: theme.textTheme.bodySmall),
                   ),
                 );
               },
@@ -592,11 +585,76 @@ class _OrderQuestionState extends State<OrderQuestion> {
           )
         else
           Text(
-            right ? 'All in order!' : 'Not quite. The right order is shown above.',
+            right ? 'All in order!' : 'Not quite. Each red place shows the word that belongs there. Tap a word to hear it.',
             style: theme.textTheme.titleMedium,
             textAlign: TextAlign.center,
           ),
       ],
+    );
+  }
+}
+
+/// One checked place in a put-in-order answer: the word put there, with its
+/// pinyin and English, marked right or wrong, and the right word when wrong.
+class OrderResultRow extends StatelessWidget {
+  const OrderResultRow({
+    super.key,
+    required this.position,
+    required this.yours,
+    required this.answer,
+    required this.good,
+    required this.bad,
+  });
+
+  final int position;
+
+  /// The word the learner put in this place.
+  final ScaleItem? yours;
+
+  /// The word that belongs here.
+  final ScaleItem answer;
+  final Color good;
+  final Color bad;
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final scope = AppScope.of(context);
+    final mine = yours;
+    final ok = mine?.entry.id == answer.entry.id;
+    Widget word(ScaleItem w, TextStyle? hanzi) => Wrap(
+      crossAxisAlignment: WrapCrossAlignment.center,
+      spacing: 8,
+      children: [
+        Text(w.entry.simplified, style: hanzi),
+        Text(w.entry.pinyin, style: theme.textTheme.bodyLarge?.copyWith(color: theme.colorScheme.primary)),
+        Text(w.short, style: theme.textTheme.bodyLarge),
+      ],
+    );
+    return Card(
+      margin: const EdgeInsets.symmetric(vertical: 3),
+      color: ok ? good : bad,
+      child: ListTile(
+        leading: Text('$position', style: theme.textTheme.bodySmall),
+        title: mine == null ? const Text('—') : word(mine, theme.textTheme.titleLarge),
+        subtitle: ok
+            ? null
+            : Padding(
+                padding: const EdgeInsets.only(top: 4),
+                child: Wrap(
+                  crossAxisAlignment: WrapCrossAlignment.center,
+                  spacing: 6,
+                  children: [
+                    Text('Should be', style: theme.textTheme.bodySmall),
+                    word(answer, theme.textTheme.titleMedium),
+                  ],
+                ),
+              ),
+        trailing: Icon(ok ? Icons.check_circle : Icons.cancel, semanticLabel: ok ? 'Right' : 'Wrong'),
+        onTap: mine == null
+            ? null
+            : () => scope.speaker.play(mine.entry, female: scope.store.femaleVoice, slow: scope.store.slowAudio),
+      ),
     );
   }
 }
