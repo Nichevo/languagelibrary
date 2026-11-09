@@ -6,6 +6,7 @@ import '../srs/scheduler.dart';
 import '../data/storage.dart';
 import 'about_screen.dart';
 import 'drill_screen.dart';
+import 'pairs_practice.dart';
 import 'common.dart';
 import 'content_screen.dart';
 import 'practice_screen.dart';
@@ -89,6 +90,13 @@ class PracticeHome extends StatelessWidget {
                 ),
               listTile('All starred words', null),
               for (final name in store.lists.keys) listTile(name, name),
+              ListTile(
+                leading: const Icon(Icons.swap_vert),
+                title: const Text('Pairs & scales'),
+                subtitle: const Text('Put scales in order (tap or drag) and pick opposites'),
+                trailing: const Icon(Icons.chevron_right),
+                onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const PairsPracticeScreen())),
+              ),
               const Divider(),
               const ListTile(title: Text('Settings')),
               ListTile(

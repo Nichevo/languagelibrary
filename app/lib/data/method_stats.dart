@@ -8,6 +8,7 @@ const methodLabels = {
   'reverse': 'See the meaning, pick the word',
   'pinyin': 'See it, pick the pinyin',
   'order': 'Put a scale in order',
+  'opposite': 'Pick the opposite',
   'type': 'Type the pinyin',
 };
 
