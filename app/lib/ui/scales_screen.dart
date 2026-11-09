@@ -7,6 +7,7 @@ import '../models/entry.dart';
 import 'common.dart';
 import 'entry_screen.dart';
 import 'entry_tile.dart';
+import 'pairs_practice.dart';
 
 /// Shown on scale screens: the order is ours, the words and meanings are not.
 const scaleSourceNote = 'Order picked by this app. Words, pinyin and meanings from HSK and CC-CEDICT.';
@@ -45,6 +46,14 @@ class ScalesView extends StatelessWidget {
     return ListView(
       padding: const EdgeInsets.fromLTRB(12, 0, 12, 24),
       children: [
+        Padding(
+          padding: const EdgeInsets.fromLTRB(4, 8, 4, 0),
+          child: FilledButton.tonalIcon(
+            icon: const Icon(Icons.swap_vert),
+            label: const Text('Practise pairs & scales'),
+            onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const PairsPracticeScreen())),
+          ),
+        ),
         if (scales.isNotEmpty) heading('Scales'),
         for (final (s, items) in scales)
           Card(
