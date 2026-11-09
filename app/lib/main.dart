@@ -15,6 +15,7 @@ import 'ui/entry_screen.dart';
 import 'ui/focus_screen.dart';
 import 'ui/library_screen.dart';
 import 'ui/practice_home.dart';
+import 'ui/scales_screen.dart';
 import 'ui/stats_screen.dart';
 
 Future<void> main() async {
@@ -146,9 +147,18 @@ class _HomeShellState extends State<HomeShell> {
     super.dispose();
   }
 
-  /// 'library', 'focus', 'practice', or `entry/ID` from a widget.
+  /// 'library', 'focus', 'practice', `entry/ID` or `scale/N` from a widget.
   void _go(String place) {
     if (!mounted) return;
+    if (place.startsWith('scale/')) {
+      final scales = AppScope.of(context).library.scales;
+      final n = int.tryParse(place.substring(6)) ?? -1;
+      setState(() => _tab = 0);
+      if (n >= 0 && n < scales.length) {
+        Navigator.of(context).push(MaterialPageRoute(builder: (_) => ScaleScreen(scales[n])));
+      }
+      return;
+    }
     if (place.startsWith('entry/')) {
       final e = AppScope.of(context).library.byId[place.substring(6)];
       setState(() => _tab = 0);

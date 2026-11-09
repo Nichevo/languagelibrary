@@ -6,4 +6,8 @@
     <string name="widget_due_desc">How many flashcards are due today. Tap to practise.</string>
     <string name="widget_focus_name">Focus card</string>
     <string name="widget_focus_desc">A word from your Focus list. Tap to see the answer.</string>
+    <string name="widget_quiz_name">Quick question</string>
+    <string name="widget_quiz_desc">Pick the meaning of a word right on your home screen.</string>
+    <string name="widget_scale_name">Scale of the day</string>
+    <string name="widget_scale_desc">A scale of words in order, like cold to hot. A new one each day.</string>
 </resources>

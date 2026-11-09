@@ -189,3 +189,148 @@ class FocusCardWidget : HomeWidgetProvider() {
         }
     }
 }
+
+/** 4 × 3: "What does it mean?" with four meanings to tap. The app saves the questions. */
+class QuizWidget : HomeWidgetProvider() {
+    companion object {
+        private const val PICK = "app.languagelibrary.language_library.QUIZ_PICK"
+        private const val NEXT = "app.languagelibrary.language_library.QUIZ_NEXT"
+        private const val STATE = "QuizWidgetState"
+        private val options = intArrayOf(R.id.o0, R.id.o1, R.id.o2, R.id.o3)
+    }
+
+    override fun onReceive(context: Context, intent: Intent) {
+        if (intent.action == PICK || intent.action == NEXT) {
+            val state = context.getSharedPreferences(STATE, Context.MODE_PRIVATE)
+            val questions = WidgetData.list(HomeWidgetPlugin.getData(context), "quiz")
+            val edit = state.edit()
+            // The score counts today's answers only.
+            if (state.getString("day", "") != WidgetData.today()) {
+                edit.putString("day", WidgetData.today()).putInt("right", 0).putInt("done", 0)
+            }
+            if (intent.action == PICK && state.getInt("picked", -1) < 0 && questions.length() > 0) {
+                val q = questions.getJSONObject(state.getInt("index", 0).coerceIn(0, questions.length() - 1))
+                val pick = intent.getIntExtra("opt", 0)
+                val sameDay = state.getString("day", "") == WidgetData.today()
+                val right = (if (sameDay) state.getInt("right", 0) else 0) + if (pick == q.optInt("right")) 1 else 0
+                val done = (if (sameDay) state.getInt("done", 0) else 0) + 1
+                edit.putInt("picked", pick).putInt("right", right).putInt("done", done)
+            } else if (intent.action == NEXT) {
+                val count = questions.length()
+                val next = if (count > 0) (state.getInt("index", 0) + 1) % count else 0
+                edit.putInt("index", next).putInt("picked", -1)
+            }
+            edit.apply()
+            val manager = AppWidgetManager.getInstance(context)
+            val ids = manager.getAppWidgetIds(ComponentName(context, QuizWidget::class.java))
+            onUpdate(context, manager, ids, HomeWidgetPlugin.getData(context))
+            return
+        }
+        super.onReceive(context, intent)
+    }
+
+    private fun self(context: Context, action: String, code: Int, opt: Int = -1): PendingIntent {
+        val i = Intent(context, QuizWidget::class.java).setAction(action)
+        if (opt >= 0) i.putExtra("opt", opt)
+        return PendingIntent.getBroadcast(context, code, i, PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE)
+    }
+
+    override fun onUpdate(context: Context, appWidgetManager: AppWidgetManager, appWidgetIds: IntArray, widgetData: SharedPreferences) {
+        val questions = WidgetData.list(widgetData, "quiz")
+        val state = context.getSharedPreferences(STATE, Context.MODE_PRIVATE)
+        val picked = state.getInt("picked", -1)
+        val tone = widgetData.getBoolean("toneHanzi", true)
+        val today = state.getString("day", "") == WidgetData.today()
+        val right = if (today) state.getInt("right", 0) else 0
+        val done = if (today) state.getInt("done", 0) else 0
+        for (id in appWidgetIds) {
+            val v = RemoteViews(context.packageName, R.layout.widget_quiz)
+            if (questions.length() == 0) {
+                v.setTextViewText(R.id.hz, "?")
+                v.setTextViewText(R.id.py, "")
+                v.setTextViewText(R.id.status, "Open the app once to get questions")
+                for (o in options) v.setTextViewText(o, "")
+                v.setOnClickPendingIntent(android.R.id.background, WidgetData.openApp(context, "library"))
+                appWidgetManager.updateAppWidget(id, v)
+                continue
+            }
+            val q = questions.getJSONObject(state.getInt("index", 0).coerceIn(0, questions.length() - 1))
+            val answer = q.optInt("right")
+            val opts = q.optJSONArray("opts") ?: JSONArray()
+            v.setTextViewText(R.id.hz, WidgetData.toned(context, q.optString("hz"), q.optString("tones"), tone))
+            WidgetData.hanziSize(v, q.optString("hz"), wide = true)
+            v.setTextViewText(R.id.py, if (picked >= 0) q.optString("py") else "")
+            v.setTextViewText(R.id.score, if (done == 0) "" else "$right of $done today")
+            for ((n, o) in options.withIndex()) {
+                v.setTextViewText(o, opts.optString(n))
+                val bg = when {
+                    picked < 0 -> R.drawable.widget_option
+                    n == answer -> R.drawable.widget_option_right
+                    n == picked -> R.drawable.widget_option_wrong
+                    else -> R.drawable.widget_option
+                }
+                v.setInt(o, "setBackgroundResource", bg)
+                v.setOnClickPendingIntent(o, self(context, PICK, 10 + n, n))
+            }
+            v.setTextViewText(
+                R.id.status,
+                when {
+                    picked < 0 -> "Tap an answer"
+                    picked == answer -> "Right!"
+                    else -> "It means: " + opts.optString(answer)
+                },
+            )
+            v.setOnClickPendingIntent(R.id.next, self(context, NEXT, 20))
+            v.setOnClickPendingIntent(R.id.face, WidgetData.openApp(context, "entry/" + q.optString("id")))
+            appWidgetManager.updateAppWidget(id, v)
+        }
+    }
+}
+
+/** 4 × 2: a scale of words in order (cold → hot), a different one each day. Tap to open it. */
+class ScaleWidget : HomeWidgetProvider() {
+    private val cols = intArrayOf(R.id.col0, R.id.col1, R.id.col2, R.id.col3, R.id.col4)
+    private val hzs = intArrayOf(R.id.hz0, R.id.hz1, R.id.hz2, R.id.hz3, R.id.hz4)
+    private val pys = intArrayOf(R.id.py0, R.id.py1, R.id.py2, R.id.py3, R.id.py4)
+    private val ens = intArrayOf(R.id.en0, R.id.en1, R.id.en2, R.id.en3, R.id.en4)
+
+    override fun onUpdate(context: Context, appWidgetManager: AppWidgetManager, appWidgetIds: IntArray, widgetData: SharedPreferences) {
+        val s = WidgetData.forToday(WidgetData.list(widgetData, "scales"))
+        for (id in appWidgetIds) {
+            val v = RemoteViews(context.packageName, R.layout.widget_scale)
+            if (s == null) {
+                v.setTextViewText(R.id.name, "")
+                v.setTextViewText(R.id.ends, "Open the app once to get scales")
+                for (n in cols.indices) v.setViewVisibility(cols[n], if (n == 0) View.VISIBLE else View.GONE)
+                v.setTextViewText(R.id.hz0, "…")
+                v.setOnClickPendingIntent(android.R.id.background, WidgetData.openApp(context, "library"))
+                appWidgetManager.updateAppWidget(id, v)
+                continue
+            }
+            val words = s.optJSONArray("words") ?: JSONArray()
+            val count = words.length().coerceAtMost(cols.size)
+            v.setTextViewText(R.id.name, s.optString("name"))
+            v.setTextViewText(R.id.ends, s.optString("ends") + " · tap to open")
+            for (n in cols.indices) {
+                if (n >= count) {
+                    v.setViewVisibility(cols[n], View.GONE)
+                    continue
+                }
+                val w = words.getJSONObject(n)
+                val hz = w.optString("hz")
+                v.setViewVisibility(cols[n], View.VISIBLE)
+                v.setTextViewText(hzs[n], hz)
+                v.setTextViewText(pys[n], w.optString("py"))
+                v.setTextViewText(ens[n], w.optString("en"))
+                val sp = when {
+                    hz.length <= 1 -> if (count >= 5) 32f else 40f
+                    hz.length == 2 -> if (count >= 5) 24f else 30f
+                    else -> if (count >= 5) 18f else 22f
+                }
+                v.setTextViewTextSize(hzs[n], TypedValue.COMPLEX_UNIT_SP, sp)
+            }
+            v.setOnClickPendingIntent(android.R.id.background, WidgetData.openApp(context, "scale/" + s.optInt("i")))
+            appWidgetManager.updateAppWidget(id, v)
+        }
+    }
+}
