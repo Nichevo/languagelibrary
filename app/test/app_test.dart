@@ -252,8 +252,8 @@ void main() {
     await tester.pumpAndSettle();
     expect(find.text('Cards answered'), findsOneWidget);
     expect(find.text('1 min'), findsWidgets);
-    expect(find.text('Cards by status'), findsOneWidget);
     expect(find.text('Words right 3+ in a row'), findsOneWidget);
+    expect(find.text('Where to focus'), findsOneWidget);
     // The rest of the page builds: answers of several kinds, then scroll through it.
     for (final (i, m) in ['listen', 'meaning', 'listen', 'pinyin', 'type'].indexed) {
       await store.logAnswer(i.isEven ? Rating.good : Rating.again, const Duration(seconds: 5), now,
@@ -262,9 +262,10 @@ void main() {
     await tester.pumpAndSettle();
     final stats = find.descendant(of: find.byType(StatsView), matching: find.byType(Scrollable)).first;
     for (final title in [
+      'Cards by status',
       'Right in a row',
       'Practice methods over time',
-      'Week by week',
+      'Over time',
       'Listening and reading',
       'Words that trip you up',
     ]) {
@@ -272,6 +273,17 @@ void main() {
       expect(find.text(title), findsOneWidget);
     }
     expect(find.text('Practise these'), findsOneWidget);
+    // Charts by day, week or month: the choice is remembered.
+    await tester.scrollUntilVisible(find.text('Charts by'), -300, scrollable: stats);
+    expect(find.text('Where to focus'), findsOneWidget);
+    expect(find.text('Trends we noticed'), findsOneWidget);
+    await tester.tap(find.text('Month'));
+    await tester.pumpAndSettle();
+    expect(store.statsPeriod, 'month');
+    expect(find.text('Last 6 months, in minutes'), findsOneWidget);
+    await tester.tap(find.text('Day'));
+    await tester.pumpAndSettle();
+    expect(find.text('Last 14 days, in minutes'), findsOneWidget);
 
     await tester.tap(find.text('Practice'));
     await tester.pumpAndSettle();

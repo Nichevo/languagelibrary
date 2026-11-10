@@ -93,31 +93,72 @@ Map<String, int> rightInARow(List<Review> reviews) {
   return run;
 }
 
-/// Answers and right answers for one practice method in one week.
+/// Answers and right answers for one practice method in one day, week or month.
 typedef WeekCount = ({int answers, int right});
 
-/// The answers in each of the last [weeks] weeks, oldest first; the last week
-/// ends with [today] and each one is 7 days.
-List<List<Review>> byWeek(List<Review> reviews, DateTime today, {int weeks = 8}) {
-  final out = List.generate(weeks, (_) => <Review>[]);
-  final end = DateTime(today.year, today.month, today.day + 1);
+/// How the Progress charts group answers over time.
+enum Period {
+  day('Day', 14, 'Last 14 days', '14 days ago', 'Today', 'today'),
+  week('Week', 8, 'Last 8 weeks', '8 weeks ago', 'This week', 'this week'),
+  month('Month', 6, 'Last 6 months', '6 months ago', 'This month', 'this month');
+
+  const Period(this.label, this.count, this.span, this.startLabel, this.endLabel, this.current);
+  final String label;
+
+  /// How many bars or points a chart shows.
+  final int count;
+  final String span, startLabel, endLabel, current;
+
+  static Period byName(String? name) => Period.values.asNameMap()[name] ?? Period.week;
+
+  /// Which of the last [count] periods up to [today] (oldest 0) [at] falls in,
+  /// or null. Days and months are calendar ones; a week is the 7 days ending
+  /// on today's weekday.
+  int? indexOf(DateTime at, DateTime today) {
+    final t = DateTime(today.year, today.month, today.day);
+    final d = DateTime(at.year, at.month, at.day);
+    if (d.isAfter(t)) return null;
+    final back = switch (this) {
+      Period.day => (t.difference(d).inHours / 24).round(),
+      Period.week => (t.difference(d).inHours / 24).round() ~/ 7,
+      Period.month => (t.year * 12 + t.month) - (d.year * 12 + d.month),
+    };
+    return back >= count ? null : count - 1 - back;
+  }
+
+  /// The first day of each period, oldest first.
+  List<DateTime> starts(DateTime today) => [
+        for (var back = count - 1; back >= 0; back--)
+          switch (this) {
+            Period.day => DateTime(today.year, today.month, today.day - back),
+            Period.week => DateTime(today.year, today.month, today.day - 7 * back - 6),
+            Period.month => DateTime(today.year, today.month - back),
+          },
+      ];
+
+  /// A short label under each bar.
+  List<String> labels(DateTime today) => [
+        for (final d in starts(today))
+          switch (this) {
+            Period.day => const ['M', 'T', 'W', 'T', 'F', 'S', 'S'][d.weekday - 1],
+            Period.week => '${d.day}/${d.month}',
+            Period.month => const ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'][d.month - 1],
+          },
+      ];
+}
+
+/// The answers in each of the last periods, oldest first.
+List<List<Review>> byPeriod(List<Review> reviews, DateTime today, {Period period = Period.week}) {
+  final out = List.generate(period.count, (_) => <Review>[]);
   for (final r in reviews) {
-    final w = weekOf(r.at, end, weeks);
-    if (w != null) out[w].add(r);
+    if (period.indexOf(r.at, today) case final i?) out[i].add(r);
   }
   return out;
 }
 
-/// Which of the [weeks] weeks before [end] (oldest 0) [at] falls in, or null.
-int? weekOf(DateTime at, DateTime end, int weeks) {
-  if (!at.isBefore(end)) return null;
-  final back = end.difference(at).inHours ~/ (24 * 7);
-  return back >= weeks ? null : weeks - 1 - back;
-}
-
-/// The last [weeks] weeks, oldest first: answers and right answers per practice method.
-List<Map<String, WeekCount>> methodWeeks(List<Review> reviews, DateTime today, {int weeks = 8}) => [
-      for (final week in byWeek(reviews, today, weeks: weeks))
+/// The last periods, oldest first: answers and right answers per practice method.
+List<Map<String, WeekCount>> methodWeeks(List<Review> reviews, DateTime today, {Period period = Period.week}) => [
+      for (final week in byPeriod(reviews, today, period: period))
         () {
           final m = <String, WeekCount>{};
           for (final r in week) {
@@ -165,5 +206,5 @@ List<(String, int, int)> trickyWords(List<Review> reviews, DateTime since, {int 
   return out.take(limit).toList();
 }
 
-/// The fewest answers in a week before its share right is drawn.
+/// The fewest answers in a day, week or month before its share right is drawn.
 const minWeekAnswers = 3;

@@ -62,6 +62,9 @@ class UserStore extends ChangeNotifier {
   /// into [reviews], so each one is brought in once.
   int widgetAnswersUpTo = 0;
 
+  /// How the Progress charts group time: 'day', 'week' or 'month'.
+  String statsPeriod = 'week';
+
   /// Mix a few related words the learner has not starred into each session.
   bool mixRelated = false;
 
@@ -138,6 +141,7 @@ class UserStore extends ChangeNotifier {
     showSentences = j['showSentences'] as bool? ?? showSentences;
     choiceKind = j['choiceKind'] as String? ?? choiceKind;
     widgetAnswersUpTo = j['widgetAnswersUpTo'] as int? ?? 0;
+    statsPeriod = j['statsPeriod'] as String? ?? statsPeriod;
     for (final r in j['reviews'] as List? ?? const []) {
       reviews.add(Review.fromJson(r as List));
     }
@@ -169,6 +173,7 @@ class UserStore extends ChangeNotifier {
         'showSentences': showSentences,
         'choiceKind': choiceKind,
         'widgetAnswersUpTo': widgetAnswersUpTo,
+        'statsPeriod': statsPeriod,
         'reviews': [for (final r in reviews) r.toJson()],
         'snapshots': snapshots.map((k, v) => MapEntry(k, v.toJson())),
         'firstKnown': firstKnown.map((k, v) => MapEntry(k, v.millisecondsSinceEpoch ~/ 1000)),
@@ -329,6 +334,11 @@ class UserStore extends ChangeNotifier {
     }
     final k = '${now.year.toString().padLeft(4, '0')}-${now.month.toString().padLeft(2, '0')}-${now.day.toString().padLeft(2, '0')}';
     snapshots[k] = Snapshot(starred.length, counts);
+  }
+
+  Future<void> setStatsPeriod(String v) {
+    statsPeriod = v;
+    return _save();
   }
 
   Future<void> setSessionSize(int v) {

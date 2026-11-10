@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 import '../data/daily.dart';
 import '../data/library.dart';
+import '../data/advice.dart';
 import '../data/method_stats.dart';
 import '../data/user_store.dart';
 import '../srs/scheduler.dart';
@@ -57,6 +58,10 @@ class StatsView extends StatelessWidget {
         d = d.subtract(const Duration(days: 1))) {
       streak++;
     }
+
+    final period = Period.byName(store.statsPeriod);
+    final labels = period.labels(today);
+    final buckets = byPeriod(reviews, today, period: period);
 
     // Each word's current run of right answers.
     final runs = rightInARow(reviews);
@@ -124,14 +129,64 @@ class StatsView extends StatelessWidget {
             child: Text('Practise some cards and your statistics will fill in here.',
                 style: theme.textTheme.bodyMedium),
           ),
-        section('Time per day', note: 'Last 14 days, in minutes', [
+        () {
+          final focus = tips(store, now);
+          final noticed = trends(reviews, now);
+          if (reviews.isEmpty) return const SizedBox.shrink();
+          void act(TipAction a) {
+            final ids = switch (a) {
+              TipAction.practiseTricky => [
+                  for (final (id, _, _) in trickyWords(reviews, today.subtract(const Duration(days: 59))))
+                    if (library.byId[id] != null) id,
+                ],
+              TipAction.practiseDue => null,
+            };
+            Navigator.of(context).push(MaterialPageRoute(
+              builder: (_) => ids == null ? const PracticeScreen() : PracticeScreen(ids: ids, includeNotDue: true),
+            ));
+          }
+
+          return Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              _TipCard(
+                title: 'Where to focus',
+                icon: Icons.flag_outlined,
+                empty: 'Nothing stands out right now. Keep going as you are.',
+                tips: focus,
+                onAction: act,
+              ),
+              _TipCard(
+                title: 'Trends we noticed',
+                icon: Icons.insights_outlined,
+                empty: 'No clear patterns yet. These show up after a couple of weeks of practice.',
+                tips: noticed,
+                note: 'Each one compares your own answers, and only shows when the difference is clear.',
+              ),
+            ],
+          );
+        }(),
+        Padding(
+          padding: const EdgeInsets.fromLTRB(16, 20, 16, 0),
+          child: Row(
+            children: [
+              Text('Charts by', style: theme.textTheme.titleSmall),
+              const SizedBox(width: 12),
+              Expanded(
+                child: SegmentedButton<Period>(
+                  showSelectedIcon: false,
+                  segments: [for (final p in Period.values) ButtonSegment(value: p, label: Text(p.label))],
+                  selected: {period},
+                  onSelectionChanged: (s) => store.setStatsPeriod(s.first.name),
+                ),
+              ),
+            ],
+          ),
+        ),
+        section('Time practising', note: '${period.span}, in minutes', [
           _Bars(
-            values: [
-              for (var i = 13; i >= 0; i--) (byDay[today.subtract(Duration(days: i))]?.$1.inSeconds ?? 0) / 60,
-            ],
-            labels: [
-              for (var i = 13; i >= 0; i--) _weekday(today.subtract(Duration(days: i))),
-            ],
+            values: [for (final b in buckets) b.fold(Duration.zero, (t, r) => t + r.spent).inSeconds / 60],
+            labels: labels,
             color: theme.colorScheme.primary,
           ),
         ]),
@@ -149,10 +204,11 @@ class StatsView extends StatelessWidget {
               value: '${status[s.index]}',
             ),
         ]),
-        section('Change over time', note: 'Last 30 days', [
+        section('Change over time', note: period.span, [
           _Trend(
             store: store,
             today: today,
+            period: period,
             focusColor: theme.colorScheme.tertiary,
             knownColor: _statusColors(theme)[CardStatus.strong.index],
           ),
@@ -292,7 +348,7 @@ class StatsView extends StatelessWidget {
           );
         }(),
         () {
-          final weeks = methodWeeks(reviews, today);
+          final weeks = methodWeeks(reviews, today, period: period);
           final used = [
             for (final m in {...methodLabels.keys, for (final w in weeks) ...w.keys})
               if (weeks.any((w) => w.containsKey(m))) m,
@@ -303,9 +359,8 @@ class StatsView extends StatelessWidget {
             return colors[(i < 0 ? used.indexOf(m) : i) % colors.length];
           }
 
-          final labels = _weekLabels(today, weeks.length);
           final last = weeks.last;
-          return section('Practice methods over time', note: 'Answers each week, last 8 weeks', [
+          return section('Practice methods over time', note: 'Answers each ${period.name}, ${period.span.toLowerCase()}', [
             if (used.isEmpty)
               Text('No answers yet.', style: theme.textTheme.bodyMedium)
             else ...[
@@ -319,9 +374,10 @@ class StatsView extends StatelessWidget {
               const SizedBox(height: 16),
               Text('Share right by method', style: theme.textTheme.labelLarge),
               const SizedBox(height: 2),
-              Text('Each week with at least $minWeekAnswers answers that way', style: theme.textTheme.bodySmall),
+              Text('Each ${period.name} with at least $minWeekAnswers answers that way', style: theme.textTheme.bodySmall),
               const SizedBox(height: 8),
               _WeekLine(
+                period: period,
                 lines: [
                   for (final m in used)
                     (
@@ -338,7 +394,7 @@ class StatsView extends StatelessWidget {
                 _Legend(
                   color: colorOf(m),
                   label: methodLabels[m] ?? m,
-                  detail: 'this week',
+                  detail: period.current,
                   value: last[m] == null
                       ? '–'
                       : '${(100 * last[m]!.right / last[m]!.answers).round()}% of ${last[m]!.answers}',
@@ -347,24 +403,25 @@ class StatsView extends StatelessWidget {
           ]);
         }(),
         () {
-          final weeks = byWeek(reviews, today);
-          final labels = _weekLabels(today, weeks.length);
+          final weeks = buckets;
           final memory = [for (final w in weeks) countOf(w, isRecall)];
           final speed = [
             for (final w in weeks)
               w.isEmpty ? 0.0 : w.fold(Duration.zero, (t, r) => t + r.spent).inMilliseconds / 1000 / w.length,
           ];
-          final end = DateTime(today.year, today.month, today.day + 1);
           final learned = List.filled(weeks.length, 0.0);
           for (final at in store.firstKnown.values) {
-            if (weekOf(at, end, weeks.length) case final w?) learned[w]++;
+            if (at != UserStore.unknownDate) {
+              if (period.indexOf(at, today) case final w?) learned[w]++;
+            }
           }
           final good = _statusColors(theme)[CardStatus.strong.index];
-          return section('Week by week', note: 'Last 8 weeks', [
+          return section('Over time', note: period.span, [
             Text('Flashcards remembered', style: theme.textTheme.labelLarge),
             Text('Share of flashcards you remembered, on words you had seen before', style: theme.textTheme.bodySmall),
             const SizedBox(height: 8),
             _WeekLine(
+                period: period,
               lines: [
                 (
                   [for (final c in memory) c.answers >= minWeekAnswers ? 100 * c.right / c.answers : null],
@@ -374,7 +431,7 @@ class StatsView extends StatelessWidget {
             ),
             _Legend(
               color: good,
-              label: 'This week',
+              label: period.endLabel,
               value: memory.last.answers == 0
                   ? '–'
                   : '${(100 * memory.last.right / memory.last.answers).round()}% of ${memory.last.answers}',
@@ -393,18 +450,19 @@ class StatsView extends StatelessWidget {
           ]);
         }(),
         () {
-          final weeks = byWeek(reviews, today);
+          final weeks = buckets;
           final listen = [for (final w in weeks) countOf(w, isListening)];
           final read = [for (final w in weeks) countOf(w, isReading)];
           final colors = _methodColors(theme);
           final l30 = countOf(recent, isListening), r30 = countOf(recent, isReading);
           String share(WeekCount c) => c.answers == 0 ? '–' : '${(100 * c.right / c.answers).round()}% of ${c.answers}';
-          return section('Listening and reading', note: 'Share right each week, last 8 weeks', [
+          return section('Listening and reading', note: 'Share right each ${period.name}, ${period.span.toLowerCase()}', [
             if (l30.answers == 0 && r30.answers == 0 && listen.every((c) => c.answers == 0))
               Text('Practise with "Hear it, pick the word" and the "See it" questions, and this will fill in.',
                   style: theme.textTheme.bodyMedium)
             else ...[
               _WeekLine(
+                period: period,
                 lines: [
                   ([for (final c in listen) c.answers >= minWeekAnswers ? 100 * c.right / c.answers : null], colors[0]),
                   ([for (final c in read) c.answers >= minWeekAnswers ? 100 * c.right / c.answers : null], colors[1]),
@@ -473,17 +531,6 @@ class StatsView extends StatelessWidget {
     return '${d.inHours} h ${d.inMinutes % 60} min';
   }
 
-  /// The first day of each of the last [n] weeks, as day/month.
-  static List<String> _weekLabels(DateTime today, int n) => [
-        for (var i = n - 1; i >= 0; i--)
-          () {
-            final d = today.subtract(Duration(days: 7 * i + 6));
-            return '${d.day}/${d.month}';
-          }(),
-      ];
-
-  static String _weekday(DateTime d) => const ['M', 'T', 'W', 'T', 'F', 'S', 'S'][d.weekday - 1];
-
   static String _ratingName(Rating r) => switch (r) {
         Rating.again => 'Again',
         Rating.hard => 'Hard',
@@ -531,6 +578,78 @@ class StatsView extends StatelessWidget {
     return dark
         ? const [Color(0xFFE07A72), Color(0xFFD9A43A), Color(0xFF5DBB72), Color(0xFF5FA3E0)]
         : const [Color(0xFFD0453A), Color(0xFFE0A526), Color(0xFF2E9A4A), Color(0xFF2F7FD0)];
+  }
+}
+
+/// A card of suggestions or noticed trends at the top of Progress.
+class _TipCard extends StatelessWidget {
+  const _TipCard({
+    required this.title,
+    required this.icon,
+    required this.empty,
+    required this.tips,
+    this.note,
+    this.onAction,
+  });
+  final String title;
+  final IconData icon;
+  final String empty;
+  final String? note;
+  final List<Tip> tips;
+  final void Function(TipAction)? onAction;
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(16, 12, 16, 0),
+      child: Card(
+        margin: EdgeInsets.zero,
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(16, 14, 16, 8),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Row(
+                children: [
+                  Icon(icon, size: 20, color: theme.colorScheme.primary),
+                  const SizedBox(width: 8),
+                  Text(title, style: theme.textTheme.titleMedium),
+                ],
+              ),
+              if (note != null) ...[
+                const SizedBox(height: 2),
+                Text(note!, style: theme.textTheme.bodySmall),
+              ],
+              const SizedBox(height: 8),
+              if (tips.isEmpty)
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 8),
+                  child: Text(empty, style: theme.textTheme.bodyMedium),
+                ),
+              for (final t in tips)
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 10),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(t.title, style: theme.textTheme.titleSmall),
+                      const SizedBox(height: 2),
+                      Text(t.detail, style: theme.textTheme.bodyMedium),
+                      if (t.action case final a? when onAction != null)
+                        TextButton(
+                          style: TextButton.styleFrom(padding: EdgeInsets.zero),
+                          onPressed: () => onAction!(a),
+                          child: Text(a == TipAction.practiseTricky ? 'Practise these words' : 'Practise now'),
+                        ),
+                    ],
+                  ),
+                ),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }
 
@@ -796,27 +915,34 @@ class _Ratio extends StatelessWidget {
 
 /// Two lines over the last 30 days, from the daily snapshots.
 class _Trend extends StatelessWidget {
-  const _Trend({required this.store, required this.today, required this.focusColor, required this.knownColor});
+  const _Trend(
+      {required this.store, required this.today, required this.period, required this.focusColor, required this.knownColor});
   final UserStore store;
   final DateTime today;
+  final Period period;
   final Color focusColor;
   final Color knownColor;
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final focus = <double?>[];
-    final known = <double?>[];
-    for (var i = 29; i >= 0; i--) {
-      final s = store.snapshots[dayKey(today.subtract(Duration(days: i)))];
-      focus.add(s?.starred.toDouble());
-      known.add(s == null
-          ? null
-          : (s.byStatus[CardStatus.familiar.index] + s.byStatus[CardStatus.strong.index]).toDouble());
-    }
+    // The last snapshot in each day, week or month.
+    final latest = List<(String, Snapshot)?>.filled(period.count, null);
+    store.snapshots.forEach((key, s) {
+      final day = DateTime.tryParse(key);
+      if (day == null) return;
+      if (period.indexOf(day, today) case final i?) {
+        if (latest[i] == null || latest[i]!.$1.compareTo(key) < 0) latest[i] = (key, s);
+      }
+    });
+    final focus = [for (final l in latest) l?.$2.starred.toDouble()];
+    final known = [
+      for (final l in latest)
+        l == null ? null : (l.$2.byStatus[CardStatus.familiar.index] + l.$2.byStatus[CardStatus.strong.index]).toDouble(),
+    ];
     final days = focus.whereType<double>().length;
     if (days < 2) {
-      return Text('This fills in as you use the app on different days.', style: theme.textTheme.bodySmall);
+      return Text('This fills in as you use the app over more ${period.name}s.', style: theme.textTheme.bodySmall);
     }
     return SizedBox(
       height: 120,
@@ -826,16 +952,20 @@ class _Trend extends StatelessWidget {
           [(focus, focusColor), (known, knownColor)],
           theme.colorScheme.outlineVariant,
           theme.textTheme.labelSmall!,
+          startLabel: period.startLabel,
+          endLabel: period.endLabel,
+          dots: true,
         ),
       ),
     );
   }
 }
 
-/// Shares (0 to 100%) over the last 8 weeks, one line per colour.
+/// Shares (0 to 100%) over the chosen days, weeks or months, one line per colour.
 class _WeekLine extends StatelessWidget {
-  const _WeekLine({required this.lines});
+  const _WeekLine({required this.lines, required this.period});
   final List<(List<double?>, Color)> lines;
+  final Period period;
 
   @override
   Widget build(BuildContext context) {
@@ -850,8 +980,8 @@ class _WeekLine extends StatelessWidget {
           theme.textTheme.labelSmall!,
           top: 100,
           topLabel: '100%',
-          startLabel: '8 weeks ago',
-          endLabel: 'This week',
+          startLabel: period.startLabel,
+          endLabel: period.endLabel,
           dots: true,
         ),
       ),
