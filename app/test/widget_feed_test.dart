@@ -78,7 +78,10 @@ void main() {
     final store = await UserStore.open();
     final qs = mixedQuestions(lib, store, Random(2));
     expect(qs.length, 40);
-    expect([for (final q in qs.take(4)) q['kind']], [for (final k in QuizKind.values) k.name]);
+    expect({for (final q in qs.take(4)) q['kind']}, {for (final k in QuizKind.values) k.name});
+    expect(qs.every((q) => (q['title'] as String).startsWith(mixPrefix)), isTrue);
+    final firsts = {for (var seed = 0; seed < 12; seed++) mixedQuestions(lib, store, Random(seed)).first['kind']};
+    expect(firsts.length, greaterThan(1), reason: 'the first kind changes');
   });
 
   test('scale of the day takes turns and covers a month', () {

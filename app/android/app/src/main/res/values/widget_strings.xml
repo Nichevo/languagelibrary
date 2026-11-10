@@ -14,8 +14,8 @@
     <string name="widget_quiz_pinyin_desc">See the characters, pick the pinyin with the right tones.</string>
     <string name="widget_quiz_opposite_name">What\'s the opposite?</string>
     <string name="widget_quiz_opposite_desc">See a word, pick its opposite.</string>
-    <string name="widget_quiz_mix_name">Quick questions (mixed)</string>
-    <string name="widget_quiz_mix_desc">All the quick question kinds, taking turns.</string>
+    <string name="widget_quiz_mix_name">Random quick questions</string>
+    <string name="widget_quiz_mix_desc">Every kind of quick question in turn: meaning, which one, pinyin and opposite. Each question starts with "RANDOM:".</string>
     <string name="widget_scale_name">Scale of the day</string>
     <string name="widget_scale_desc">A scale of words in order, like cold to hot. A new one each day.</string>
 </resources>

@@ -132,15 +132,20 @@ List<Map<String, Object>> _oppositeQuestions(Library library, Random rnd, int co
   return out;
 }
 
+/// Put before each question's title on the mixed widget, so it is clearly the mixed one.
+const mixPrefix = 'RANDOM: ';
+
 /// A mix of every kind, taking turns, for the mixed widget.
 List<Map<String, Object>> mixedQuestions(Library library, UserStore store, Random rnd, {int count = 40}) {
+  // A random first kind, so the random widget does not always open on "What does it mean?".
+  final kinds = [...QuizKind.values]..shuffle(rnd);
   final lists = [
-    for (final k in QuizKind.values) quizQuestions(library, store, rnd, kind: k, count: count ~/ QuizKind.values.length + 1),
+    for (final k in kinds) quizQuestions(library, store, rnd, kind: k, count: count ~/ QuizKind.values.length + 1),
   ];
   final out = <Map<String, Object>>[];
   for (var i = 0; out.length < count && lists.any((l) => i < l.length); i++) {
     for (final l in lists) {
-      if (i < l.length && out.length < count) out.add(l[i]);
+      if (i < l.length && out.length < count) out.add({...l[i], 'title': '$mixPrefix${l[i]['title']}'});
     }
   }
   return out;
