@@ -297,15 +297,15 @@ class UserStore extends ChangeNotifier {
     return _save();
   }
 
-  /// Adds answers given on the home-screen quiz widget, logged as 'widget',
+  /// Adds answers given on the home-screen quiz widgets, logged as 'widget…',
   /// skipping any already brought in. Returns how many were added.
-  Future<int> addWidgetAnswers(List<({String id, bool right, int at, int ms})> answers) async {
+  Future<int> addWidgetAnswers(List<({String id, bool right, int at, int ms, String method})> answers) async {
     final fresh = [for (final a in answers) if (a.at > widgetAnswersUpTo) a]..sort((a, b) => a.at.compareTo(b.at));
     if (fresh.isEmpty) return 0;
     for (final a in fresh) {
       final spent = Duration(milliseconds: a.ms.clamp(0, maxSpent.inMilliseconds));
       final r = Review(DateTime.fromMillisecondsSinceEpoch(a.at), spent, a.right ? Rating.good : Rating.again, false,
-          method: 'widget', id: a.id);
+          method: a.method, id: a.id);
       // Keep the log in time order for the statistics: answers in the app
       // since the widget answer go after it.
       var i = reviews.length;

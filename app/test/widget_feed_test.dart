@@ -37,6 +37,50 @@ void main() {
     expect(qs.every((q) => lib.byId[q['id']]!.hsk == 1), isTrue);
   });
 
+  test('every quick-question kind: four different answers, the right one is the word\'s', () async {
+    SharedPreferences.setMockInitialValues({});
+    final store = await UserStore.open();
+    for (final kind in QuizKind.values) {
+      final qs = quizQuestions(lib, store, Random(5), kind: kind);
+      expect(qs.length, greaterThan(10), reason: kind.name);
+      for (final q in qs) {
+        final opts = (q['opts'] as List).cast<String>();
+        final e = lib.byId[q['id']]!;
+        final right = opts[q['right'] as int];
+        expect(opts.length, 4);
+        expect(opts.toSet().length, 4, reason: '$kind ${q['big']} $opts');
+        expect(q['method'], kind.method);
+        expect(q['title'], kind.title);
+        switch (kind) {
+          case QuizKind.meaning:
+            expect(right, e.gloss);
+            expect(q['big'], e.simplified);
+          case QuizKind.which:
+            expect(right, e.simplified);
+            expect(q['big'], e.gloss);
+          case QuizKind.pinyin:
+            expect(right, e.pinyin);
+            expect(q['big'], e.simplified);
+          case QuizKind.opposite:
+            expect(q['big'], e.simplified);
+            final pair = lib.opposites.firstWhere((p) =>
+                (p.a.id == e.id && p.b.simplified == right) || (p.b.id == e.id && p.a.simplified == right));
+            expect(q['wrongMsg'], contains(right), reason: '$pair');
+        }
+      }
+    }
+    expect(QuizKind.meaning.method, 'widget');
+    expect(QuizKind.opposite.method, 'widgetOpposite');
+  });
+
+  test('the mixed widget takes turns between kinds', () async {
+    SharedPreferences.setMockInitialValues({});
+    final store = await UserStore.open();
+    final qs = mixedQuestions(lib, store, Random(2));
+    expect(qs.length, 40);
+    expect([for (final q in qs.take(4)) q['kind']], [for (final k in QuizKind.values) k.name]);
+  });
+
   test('scale of the day takes turns and covers a month', () {
     final today = DateTime(2026, 11, 9);
     final days = scaleDays(lib, today);
@@ -56,7 +100,7 @@ void main() {
     await store.logAnswer(Rating.good, const Duration(seconds: 5), t.add(const Duration(minutes: 10)),
         method: 'meaning', id: 'later');
     final ms = t.millisecondsSinceEpoch;
-    final log = '[{"id":"a","ok":true,"at":$ms,"ms":4000},'
+    final log = '[{"id":"a","ok":true,"at":$ms,"ms":4000,"method":"widgetPinyin"},'
         '{"id":"b","ok":false,"at":${ms + 60000},"ms":900000},'
         '{"bad":1}]';
     final answers = widgetAnswers(log);
@@ -64,7 +108,8 @@ void main() {
     expect(await store.addWidgetAnswers(answers), 2);
     expect([for (final r in store.reviews) r.id], ['a', 'b', 'later']);
     final a = store.reviews.first;
-    expect(a.method, 'widget');
+    expect(a.method, 'widgetPinyin');
+    expect(store.reviews[1].method, 'widget', reason: 'answers logged before the kinds existed');
     expect(a.right, isTrue);
     expect(a.spent, const Duration(seconds: 4));
     expect(store.reviews[1].right, isFalse);
@@ -73,7 +118,7 @@ void main() {
     expect(await store.addWidgetAnswers(answers), 0);
     final more = widgetAnswers('[{"id":"c","ok":true,"at":${ms + 120000}}]');
     expect(await store.addWidgetAnswers(more), 1);
-    expect(store.reviews.where((r) => r.method == 'widget').length, 3);
+    expect(store.reviews.where((r) => r.method.startsWith('widget')).length, 3);
     expect(widgetAnswers(null), isEmpty);
     expect(widgetAnswers('not json'), isEmpty);
   });
