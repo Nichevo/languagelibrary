@@ -896,14 +896,14 @@
   "2e77930615_f": {
    "file": "2e77930615_f.mp3",
    "bytes": 4032,
-   "heard": "剧",
+   "heard": "至",
    "also": [
-    "据",
-    "巨",
-    "聚",
-    "距"
+    "智",
+    "治",
+    "置",
+    "识"
    ],
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "2e77930615_m": {
    "file": "2e77930615_m.mp3",
@@ -1528,14 +1528,14 @@
   "265f1eabf0_f": {
    "file": "265f1eabf0_f.mp3",
    "bytes": 5664,
-   "heard": "Hi",
+   "heard": "哼",
    "also": [
-    "和",
-    "喝",
-    "呵呵",
-    "Hello"
+    "横",
+    "home",
+    "凤",
+    "碰"
    ],
-   "check": "mismatch"
+   "check": "exact"
   },
   "265f1eabf0_m": {
    "file": "265f1eabf0_m.mp3",
@@ -4601,15 +4601,15 @@
   },
   "9ae45baf48_f": {
    "file": "9ae45baf48_f.mp3",
-   "bytes": 4896,
-   "heard": "学画",
+   "bytes": 6624,
+   "heard": "徐华",
    "also": [
-    "雪华",
-    "薛华",
-    "学话",
-    "徐华"
+    "徐化",
+    "实话",
+    "石化",
+    "许华"
    ],
-   "check": "mismatch"
+   "check": "exact"
   },
   "9ae45baf48_m": {
    "file": "9ae45baf48_m.mp3",
@@ -9835,14 +9835,14 @@
   "e397356a88_m": {
    "file": "e397356a88_m.mp3",
    "bytes": 3744,
-   "heard": "gem",
+   "heard": "郑",
    "also": [
-    "gin",
-    "jan",
-    "剑",
-    "建"
+    "正",
+    "朕",
+    "震",
+    "镇"
    ],
-   "check": "mismatch"
+   "check": "exact"
   },
   "3a77d8d885_f": {
    "file": "3a77d8d885_f.mp3",
@@ -11704,14 +11704,14 @@
   "51830af327_m": {
    "file": "51830af327_m.mp3",
    "bytes": 3744,
-   "heard": "否",
+   "heard": "臭",
    "also": [
-    "错",
-    "丑",
     "操",
-    "瞅"
+    "凑",
+    "错",
+    "寿"
    ],
-   "check": "mismatch"
+   "check": "exact"
   },
   "cef44c3fc5_f": {
    "file": "cef44c3fc5_f.mp3",
@@ -13771,14 +13771,14 @@
   "a0d9460a14_f": {
    "file": "a0d9460a14_f.mp3",
    "bytes": 6432,
-   "heard": "巨腐",
+   "heard": "制服",
    "also": [
     "聚福",
     "巨福",
     "巨幅",
-    "巨斧"
+    "制伏"
    ],
-   "check": "mismatch"
+   "check": "exact"
   },
   "a0d9460a14_m": {
    "file": "a0d9460a14_m.mp3",
@@ -21006,12 +21006,12 @@
    "bytes": 3744,
    "heard": "家",
    "also": [
+    "掐",
     "佳",
     "加",
-    "嘉",
-    "夹"
+    "嘉"
    ],
-   "check": "mismatch"
+   "check": "exact"
   },
   "045e7e6f86_f": {
    "file": "045e7e6f86_f.mp3",
@@ -42231,15 +42231,15 @@
   },
   "8c28aba933_m": {
    "file": "8c28aba933_m.mp3",
-   "bytes": 6144,
-   "heard": "建营",
+   "bytes": 4512,
+   "heard": "阵营",
    "also": [
-    "电影",
+    "建营",
     "建盈",
-    "建赢",
-    "剑影"
+    "镇迎",
+    "郑莹"
    ],
-   "check": "mismatch"
+   "check": "exact"
   },
   "212a99678f_f": {
    "file": "212a99678f_f.mp3",
@@ -59382,15 +59382,15 @@
   },
   "fed6ff35a4_f": {
    "file": "fed6ff35a4_f.mp3",
-   "bytes": 4704,
-   "heard": "走向",
+   "bytes": 5472,
+   "heard": "奏效",
    "also": [
+    "住校",
+    "速效",
     "头像",
-    "走巷",
-    "轴向",
-    "走相"
+    "塑像"
    ],
-   "check": "mismatch"
+   "check": "exact"
   },
   "fed6ff35a4_m": {
    "file": "fed6ff35a4_m.mp3",
@@ -67087,15 +67087,15 @@
   },
   "519a32646b_m": {
    "file": "519a32646b_m.mp3",
-   "bytes": 3552,
-   "heard": "shein",
+   "bytes": 4416,
+   "heard": "炫",
    "also": [
-    "shine",
-    "shen",
-    "shan",
-    "雪"
+    "券",
+    "肾",
+    "旋",
+    "线"
    ],
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "dd4c48399a_f": {
    "file": "dd4c48399a_f.mp3",
@@ -69258,14 +69258,14 @@
   "66ec190dfa_f": {
    "file": "66ec190dfa_f.mp3",
    "bytes": 6624,
-   "heard": "买场",
+   "heard": "埋藏",
    "also": [
-    "梅厂",
-    "煤场",
-    "买一场",
-    "煤厂"
+    "买场",
+    "买藏",
+    "买长",
+    "奶茶"
    ],
-   "check": "mismatch"
+   "check": "exact"
   },
   "66ec190dfa_m": {
    "file": "66ec190dfa_m.mp3",
@@ -75870,15 +75870,15 @@
   },
   "cb446d2e7a_m": {
    "file": "cb446d2e7a_m.mp3",
-   "bytes": 4704,
+   "bytes": 4992,
    "heard": "顺兴",
    "also": [
     "顺星",
     "舜星",
-    "荤腥",
-    "舜兴"
+    "顺心",
+    "炫星"
    ],
-   "check": "mismatch"
+   "check": "exact"
   },
   "971655e34c_f": {
    "file": "971655e34c_f.mp3",
@@ -79124,15 +79124,15 @@
   },
   "4431a43b78_m": {
    "file": "4431a43b78_m.mp3",
-   "bytes": 6144,
-   "heard": "决议",
+   "bytes": 4992,
+   "heard": "11",
    "also": [
-    "决意",
-    "结义",
-    "绝艺",
-    "11"
+    "执意",
+    "决议",
+    "直译",
+    "决意"
    ],
-   "check": "mismatch"
+   "check": "exact"
   },
   "f2bf02f992_f": {
    "file": "f2bf02f992_f.mp3",
@@ -84344,12 +84344,12 @@
    "bytes": 4512,
    "heard": "哈喽",
    "also": [
+    "拉拢",
     "拉露",
-    "Hello",
-    "lalo",
+    "拉鲁",
     "拉喽"
    ],
-   "check": "mismatch"
+   "check": "exact"
   },
   "4badb250d8_m": {
    "file": "4badb250d8_m.mp3",
@@ -84628,9 +84628,12 @@
   "56cf2e4d21_m": {
    "file": "56cf2e4d21_m.mp3",
    "bytes": 4896,
-   "heard": "空调",
-   "also": [],
-   "check": "mismatch"
+   "heard": "烹调",
+   "also": [
+    "空调",
+    "封条"
+   ],
+   "check": "exact"
   },
   "4b3956dfc8_f": {
    "file": "4b3956dfc8_f.mp3",
@@ -85022,11 +85025,11 @@
    "heard": "元气",
    "also": [
     "元気",
-    "圆器",
-    "原器",
-    "人气"
+    "人气",
+    "燃气",
+    "圆器"
    ],
-   "check": "mismatch"
+   "check": "exact"
   },
   "567c115ee9_f": {
    "file": "567c115ee9_f.mp3",
@@ -89064,14 +89067,14 @@
   "c18659a378_f": {
    "file": "c18659a378_f.mp3",
    "bytes": 5184,
-   "heard": "50",
+   "heard": "务实",
    "also": [
-    "故时",
-    "布什",
-    "不时",
-    "故实"
+    "乌什",
+    "乌石",
+    "误食",
+    "恶食"
    ],
-   "check": "mismatch"
+   "check": "exact"
   },
   "c18659a378_m": {
    "file": "c18659a378_m.mp3",
@@ -89877,15 +89880,15 @@
   },
   "38947c0f2d_m": {
    "file": "38947c0f2d_m.mp3",
-   "bytes": 5856,
-   "heard": "雪幻",
+   "bytes": 6624,
+   "heard": "许焕",
    "also": [
+    "使唤",
+    "雪幻",
     "雪换",
-    "雪唤",
-    "雪患",
-    "雪华"
+    "许换"
    ],
-   "check": "mismatch"
+   "check": "exact"
   },
   "55f98d07fd_f": {
    "file": "55f98d07fd_f.mp3",
@@ -113498,14 +113501,9 @@
   "e943fb6fd4_f": {
    "file": "e943fb6fd4_f.mp3",
    "bytes": 7392,
-   "heard": "弟弟毕业去蒋欣",
-   "also": [
-    "弟弟别具匠心",
-    "低的别具匠心",
-    "didi别具匠心",
-    "DD毕业去蒋欣"
-   ],
-   "check": "mismatch"
+   "heard": "别具匠心",
+   "also": [],
+   "check": "exact"
   },
   "e943fb6fd4_m": {
    "file": "e943fb6fd4_m.mp3",
