@@ -72,6 +72,9 @@ class Library {
   /// The Library chip that shows scales and opposite pairs.
   static const scalesFilter = 'scales';
 
+  /// The Library chip that shows tone sets and other tricky sounds.
+  static const soundsFilter = 'sounds';
+
   /// The library from the parsed library.json.
   factory Library.fromJson(Map<String, dynamic> data, {Map<String, String>? audioFiles}) {
     final entries = [

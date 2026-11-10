@@ -7,6 +7,7 @@ import 'common.dart';
 import 'entry_screen.dart';
 import 'entry_tile.dart';
 import 'scales_screen.dart';
+import 'sounds_screen.dart';
 
 class LibraryScreen extends StatefulWidget {
   const LibraryScreen({super.key});
@@ -29,7 +30,8 @@ class _LibraryScreenState extends State<LibraryScreen> {
     final library = scope.library;
     final store = scope.store;
     final scales = _topic == Library.scalesFilter;
-    final results = library.search(_query, topic: scales ? null : _topic, shown: store.shows);
+    final sounds = _topic == Library.soundsFilter;
+    final results = library.search(_query, topic: scales || sounds ? null : _topic, shown: store.shows);
     return Scaffold(
       appBar: AppBar(title: const Text('Library')),
       body: Column(
@@ -54,6 +56,7 @@ class _LibraryScreenState extends State<LibraryScreen> {
               children: [
                 _chip('All', null),
                 _chip('Pairs & scales', Library.scalesFilter),
+                _chip('Tricky sounds', Library.soundsFilter),
                 if (store.showSentences) _chip('Sentences', Library.sentencesFilter),
                 for (final t in Library.topics) _chip(topicLabel(t), t),
               ],
@@ -61,6 +64,8 @@ class _LibraryScreenState extends State<LibraryScreen> {
           ),
           if (scales)
             Expanded(child: ScalesView(matching: _query.trim().isEmpty ? null : {for (final e in results) e.id}))
+          else if (sounds)
+            Expanded(child: SoundsView(matching: _query.trim().isEmpty ? null : {for (final e in results) e.id}))
           else ...[
             Padding(
               padding: const EdgeInsets.fromLTRB(16, 4, 16, 4),

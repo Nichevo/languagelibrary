@@ -118,6 +118,18 @@ def load_phrases() -> list[tuple[str, str, str]]:
     return out
 
 
+def load_tone_words() -> list[tuple[str, str]]:
+    """Extra single characters for the Tricky sounds tone sets."""
+    path = SOURCES / "tone_words.tsv"
+    out = []
+    if path.exists():
+        for line in path.read_text(encoding="utf-8").splitlines():
+            if line.strip() and not line.startswith("#"):
+                hz, pin = line.split("\t")[:2]
+                out.append((hz, pin))
+    return out
+
+
 def load_readings() -> dict[str, list[str]]:
     out = {}
     for line in (SOURCES / "readings.tsv").read_text(encoding="utf-8").splitlines():
@@ -302,6 +314,9 @@ def build(cedict: list[dict], hsk: list[dict], phrases, levels: list[str]):
 
     for hz, pin, topic in phrases:
         make(hz, pin, "Curated phrase list", None, None, extra_topic=topic)
+    if phrases:
+        for hz, pin in load_tone_words():
+            make(hz, pin, "Tricky sounds list", None, None)
 
     ordered = sorted(entries.values(), key=lambda e: (e["hsk"] or 99, e["frequency"] or 10**9, e["simplified"]))
     add_related(ordered)

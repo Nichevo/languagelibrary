@@ -7,6 +7,7 @@ import '../data/storage.dart';
 import 'about_screen.dart';
 import 'drill_screen.dart';
 import 'pairs_practice.dart';
+import 'sounds_screen.dart';
 import 'common.dart';
 import 'content_screen.dart';
 import 'practice_screen.dart';
@@ -96,6 +97,13 @@ class PracticeHome extends StatelessWidget {
                 subtitle: const Text('Put scales in order (tap or drag) and pick opposites'),
                 trailing: const Icon(Icons.chevron_right),
                 onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const PairsPracticeScreen())),
+              ),
+              ListTile(
+                leading: const Icon(Icons.hearing),
+                title: const Text('Tricky sounds'),
+                subtitle: const Text('Hear a word, pick its tone: tāng, táng, tǎng or tàng?'),
+                trailing: const Icon(Icons.chevron_right),
+                onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const ToneQuizScreen())),
               ),
               const Divider(),
               const ListTile(title: Text('Settings')),
