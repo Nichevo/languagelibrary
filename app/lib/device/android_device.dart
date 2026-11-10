@@ -80,9 +80,17 @@ class AndroidDevice implements Device {
     _debounce?.cancel();
     _debounce = Timer(const Duration(seconds: 2), () async {
       final now = DateTime.now();
+      await _bringInWidgetAnswers(store);
       await _scheduleReminders(store, now);
       await _updateWidgets(library, store, now);
     });
+  }
+
+  /// Adds answers given on the quiz widget to the practice log.
+  Future<void> _bringInWidgetAnswers(UserStore store) async {
+    try {
+      await store.addWidgetAnswers(widgetAnswers(await HomeWidget.getWidgetData<String>('quizLog')));
+    } catch (_) {}
   }
 
   Future<void> _scheduleReminders(UserStore store, DateTime now) async {

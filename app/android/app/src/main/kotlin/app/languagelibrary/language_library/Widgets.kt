@@ -215,10 +215,11 @@ class QuizWidget : HomeWidgetProvider() {
                 val right = (if (sameDay) state.getInt("right", 0) else 0) + if (pick == q.optInt("right")) 1 else 0
                 val done = (if (sameDay) state.getInt("done", 0) else 0) + 1
                 edit.putInt("picked", pick).putInt("right", right).putInt("done", done)
+                logAnswer(context, q.optString("id"), pick == q.optInt("right"), state.getLong("shown", 0L))
             } else if (intent.action == NEXT) {
                 val count = questions.length()
                 val next = if (count > 0) (state.getInt("index", 0) + 1) % count else 0
-                edit.putInt("index", next).putInt("picked", -1)
+                edit.putInt("index", next).putInt("picked", -1).putLong("shown", System.currentTimeMillis())
             }
             edit.apply()
             val manager = AppWidgetManager.getInstance(context)
@@ -227,6 +228,23 @@ class QuizWidget : HomeWidgetProvider() {
             return
         }
         super.onReceive(context, intent)
+    }
+
+    /**
+     * Adds an answer to the log the app reads into its practice records the next
+     * time it opens (lib/data/widget_feed.dart widgetAnswers). The app remembers
+     * the last one it took, so the log just keeps the latest few hundred.
+     */
+    private fun logAnswer(context: Context, id: String, ok: Boolean, shown: Long) {
+        if (id.isEmpty()) return
+        val prefs = HomeWidgetPlugin.getData(context)
+        val log = WidgetData.list(prefs, "quizLog")
+        val now = System.currentTimeMillis()
+        val ms = if (shown in 1..now && now - shown < 10 * 60 * 1000) now - shown else 0L
+        log.put(JSONObject().put("id", id).put("ok", ok).put("at", now).put("ms", ms))
+        val kept = JSONArray()
+        for (i in maxOf(0, log.length() - 500) until log.length()) kept.put(log.get(i))
+        prefs.edit().putString("quizLog", kept.toString()).apply()
     }
 
     private fun self(context: Context, action: String, code: Int, opt: Int = -1): PendingIntent {

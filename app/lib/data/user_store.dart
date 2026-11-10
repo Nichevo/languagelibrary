@@ -58,6 +58,10 @@ class UserStore extends ChangeNotifier {
   /// Which multiple-choice question: see `Choice` in drill_screen.dart ('mix' varies).
   String choiceKind = 'listen';
 
+  /// The time (milliseconds since 1970) of the last home-screen quiz answer brought
+  /// into [reviews], so each one is brought in once.
+  int widgetAnswersUpTo = 0;
+
   /// Mix a few related words the learner has not starred into each session.
   bool mixRelated = false;
 
@@ -133,6 +137,7 @@ class UserStore extends ChangeNotifier {
     }
     showSentences = j['showSentences'] as bool? ?? showSentences;
     choiceKind = j['choiceKind'] as String? ?? choiceKind;
+    widgetAnswersUpTo = j['widgetAnswersUpTo'] as int? ?? 0;
     for (final r in j['reviews'] as List? ?? const []) {
       reviews.add(Review.fromJson(r as List));
     }
@@ -163,6 +168,7 @@ class UserStore extends ChangeNotifier {
         'levels': (levels.toList()..sort()),
         'showSentences': showSentences,
         'choiceKind': choiceKind,
+        'widgetAnswersUpTo': widgetAnswersUpTo,
         'reviews': [for (final r in reviews) r.toJson()],
         'snapshots': snapshots.map((k, v) => MapEntry(k, v.toJson())),
         'firstKnown': firstKnown.map((k, v) => MapEntry(k, v.millisecondsSinceEpoch ~/ 1000)),
@@ -284,6 +290,29 @@ class UserStore extends ChangeNotifier {
     reviews.add(Review(now, spent > maxSpent ? maxSpent : spent, rating, false, method: method, id: id));
     if (reviews.length > maxReviews) reviews.removeRange(0, reviews.length - maxReviews);
     return _save();
+  }
+
+  /// Adds answers given on the home-screen quiz widget, logged as 'widget',
+  /// skipping any already brought in. Returns how many were added.
+  Future<int> addWidgetAnswers(List<({String id, bool right, int at, int ms})> answers) async {
+    final fresh = [for (final a in answers) if (a.at > widgetAnswersUpTo) a]..sort((a, b) => a.at.compareTo(b.at));
+    if (fresh.isEmpty) return 0;
+    for (final a in fresh) {
+      final spent = Duration(milliseconds: a.ms.clamp(0, maxSpent.inMilliseconds));
+      final r = Review(DateTime.fromMillisecondsSinceEpoch(a.at), spent, a.right ? Rating.good : Rating.again, false,
+          method: 'widget', id: a.id);
+      // Keep the log in time order for the statistics: answers in the app
+      // since the widget answer go after it.
+      var i = reviews.length;
+      while (i > 0 && reviews[i - 1].at.isAfter(r.at)) {
+        i--;
+      }
+      reviews.insert(i, r);
+    }
+    if (reviews.length > maxReviews) reviews.removeRange(0, reviews.length - maxReviews);
+    widgetAnswersUpTo = fresh.last.at;
+    await _save();
+    return fresh.length;
   }
 
   /// Time on one card counts up to this, so a phone left on the table doesn't add hours.

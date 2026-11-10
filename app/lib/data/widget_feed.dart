@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:math';
 
 import '../ui/drill_screen.dart' show distractors;
@@ -60,3 +61,18 @@ List<Map<String, Object>> scaleDays(Library library, DateTime today, {int days =
           };
         }(),
     ];
+
+/// The answers the quiz widget logged (see QuizWidget in Widgets.kt): a JSON
+/// list of {"id", "ok", "at" (milliseconds since 1970), "ms"}. Anything unreadable is skipped.
+List<({String id, bool right, int at, int ms})> widgetAnswers(String? json) {
+  if (json == null || json.isEmpty) return const [];
+  try {
+    return [
+      for (final o in jsonDecode(json) as List)
+        if (o case {'id': final String id, 'ok': final bool ok, 'at': final int at})
+          (id: id, right: ok, at: at, ms: o['ms'] is int ? o['ms'] as int : 0),
+    ];
+  } catch (_) {
+    return const [];
+  }
+}
