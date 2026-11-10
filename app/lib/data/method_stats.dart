@@ -14,6 +14,7 @@ const methodLabels = {
   'widgetWhich': 'Widget: which one is it?',
   'widgetPinyin': 'Widget: pick the pinyin',
   'widgetOpposite': 'Widget: what\'s the opposite?',
+  'tones': 'Hear it, pick the tone',
 };
 
 /// How one practice method has gone.

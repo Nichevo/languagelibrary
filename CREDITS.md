@@ -17,7 +17,7 @@ and the full license texts ship in `app/assets/licenses/`.
 `app/assets/data/library.json` contains material adapted from CC-CEDICT, so that
 file is shared under CC BY-SA 4.0 too. Our own additions (topic tags, the reading
 choices in `tools/sources/readings.tsv`, the phrase list in
-`tools/sources/phrases.tsv`) are included under the same license.
+`tools/sources/phrases.tsv`, the tone-set fill list in `tools/sources/tone_words.tsv`) are included under the same license.
 
 ## What is ours
 
@@ -36,6 +36,10 @@ choices in `tools/sources/readings.tsv`, the phrase list in
 - Where a word has several dictionary readings, `tools/sources/readings.tsv` picks
   the everyday one. The meaning shown always comes from the CC-CEDICT entry for
   that exact reading.
+- Tricky sounds: tone sets, same-sound groups and two-reading characters are
+  grouped by the app from the pinyin. The extra characters in
+  `tools/sources/tone_words.tsv` (烫, 麻 and others from HSK 3.0 levels 7 to 9) were
+  picked by hand to fill tone sets; their pinyin and meaning come from CC-CEDICT.
 
 - [Tatoeba](https://tatoeba.org) sentences, licensed
   [CC BY 2.0 FR](https://creativecommons.org/licenses/by/2.0/fr/). Used for the

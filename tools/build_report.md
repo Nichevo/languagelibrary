@@ -1,177 +1,79 @@
 # Build report
 
-Built 2026-11-08 from HSK levels new-1, new-2, new-3, new-4, new-5, new-6 plus the curated phrase list.
-Kept **5622** entries, dropped **201**, flagged **1323**.
-449 phrasebook sentences; 2747 words have example sentences.
+Built 2026-11-10 from HSK levels new-1, new-2, new-3, new-4, new-5, new-6 plus the curated phrase list.
+Kept **5804** entries, dropped **87**, flagged **1470**.
+449 phrasebook sentences; 2904 words have example sentences.
 Sentences come from Tatoeba (native Mandarin speakers only); see tools/sentences.py.
 
 ## Dropped (not shown in the app)
 
 - 啊: several readings (a1, a2, a3, a4, a5) and none chosen in readings.tsv
-- 挨: several readings (ai1, ai2) and none chosen in readings.tsv
-- 把: several readings (ba3, ba4) and none chosen in readings.tsv
 - 罢了: several readings (ba4 le5, ba4 liao3) and none chosen in readings.tsv
-- 板: several readings (ban3, pan4) and none chosen in readings.tsv
-- 薄: several readings (bao2, bo2) and none chosen in readings.tsv
-- 背: several readings (bei1, bei4) and none chosen in readings.tsv
 - 背着: several readings (bei1 zhe5, bei4 zhe5) and none chosen in readings.tsv
 - 本事: several readings (ben3 shi4, ben3 shi5) and none chosen in readings.tsv
-- 边: several readings (bian1, bian5) and none chosen in readings.tsv
-- 扁: several readings (bian3, pian1) and none chosen in readings.tsv
 - 便宜: several readings (bian4 yi2, pian2 yi5) and none chosen in readings.tsv
 - 不太: CC-CEDICT does not agree: list says [bu4 tai4], CC-CEDICT has [no entry]
 - 不一会儿: pinyin could not be read (not a numbered pinyin syllable: 'yīhuǐr5')
-- 藏: several readings (cang2, zang4) and none chosen in readings.tsv
-- 侧: several readings (ce4, zhai1) and none chosen in readings.tsv
 - 曾: several readings (ceng2, zeng1) and none chosen in readings.tsv
 - 叉: several readings (cha1, cha2, cha3) and none chosen in readings.tsv
 - 差一点儿: CC-CEDICT only lists it as a variant or cross-reference
-- 厂: several readings (chang3, han3) and none chosen in readings.tsv
-- 场: several readings (chang2, chang3) and none chosen in readings.tsv
-- 朝: several readings (chao2, zhao1) and none chosen in readings.tsv
 - 车上: CC-CEDICT does not agree: list says [che1 shang4], CC-CEDICT has [no entry]
-- 称: several readings (chen4, cheng1, cheng4) and none chosen in readings.tsv
 - 城里: pinyin could not be read (not a numbered pinyin syllable: 'chénglǐ5')
-- 乘: several readings (cheng2, sheng4) and none chosen in readings.tsv
-- 尺: several readings (che3, chi3) and none chosen in readings.tsv
-- 冲: several readings (chong1, chong4) and none chosen in readings.tsv
-- 臭: several readings (chou4, xiu4) and none chosen in readings.tsv
-- 处: several readings (chu3, chu4) and none chosen in readings.tsv
-- 传: several readings (chuan2, zhuan4) and none chosen in readings.tsv
-- 刺: several readings (ci1, ci4) and none chosen in readings.tsv
-- 答: several readings (da1, da2) and none chosen in readings.tsv
 - 大都: several readings (da4 dou1, da4 du1) and none chosen in readings.tsv
 - 大方: several readings (da4 fang1, da4 fang5) and none chosen in readings.tsv
 - 大夫: several readings (da4 fu1, dai4 fu5) and none chosen in readings.tsv
 - 大爷: several readings (da4 ye2, da4 ye5) and none chosen in readings.tsv
-- 待: several readings (dai1, dai4) and none chosen in readings.tsv
-- 弹: several readings (dan4, tan2) and none chosen in readings.tsv
-- 当: several readings (dang1, dang4) and none chosen in readings.tsv
 - 当年: several readings (dang1 nian2, dang4 nian2) and none chosen in readings.tsv
 - 当时: several readings (dang1 shi2, dang4 shi2) and none chosen in readings.tsv
 - 当天: several readings (dang1 tian1, dang4 tian1) and none chosen in readings.tsv
-- 挡: several readings (dang3, dang4) and none chosen in readings.tsv
-- 档: several readings (dang3, dang4) and none chosen in readings.tsv
-- 倒: several readings (dao3, dao4) and none chosen in readings.tsv
 - 倒车: several readings (dao3 che1, dao4 che1) and none chosen in readings.tsv
-- 得: several readings (de2, de5, dei3) and none chosen in readings.tsv
 - 得了: several readings (de2 le5, de2 liao3) and none chosen in readings.tsv
-- 底: several readings (de5, di3) and none chosen in readings.tsv
 - 电动车: pinyin could not be read (not a numbered pinyin syllable: 'diàndòngchē5')
-- 调: several readings (diao4, tiao2) and none chosen in readings.tsv
-- 度: several readings (du4, duo2) and none chosen in readings.tsv
 - 恶心: several readings (e3 xin1, e4 xin1) and none chosen in readings.tsv
-- 发: several readings (fa1, fa4) and none chosen in readings.tsv
 - 放到: CC-CEDICT does not agree: list says [fang4 dao4], CC-CEDICT has [no entry]
-- 服: several readings (fu2, fu4) and none chosen in readings.tsv
 - 杆: several readings (gan1, gan3) and none chosen in readings.tsv
 - 高中: several readings (gao1 zhong1, gao1 zhong4) and none chosen in readings.tsv
 - 跟前: several readings (gen1 qian2, gen1 qian5) and none chosen in readings.tsv
-- 更: several readings (geng1, geng4) and none chosen in readings.tsv
 - 工夫: several readings (gong1 fu1, gong1 fu5) and none chosen in readings.tsv
 - 故事: several readings (gu4 shi4, gu4 shi5) and none chosen in readings.tsv
-- 广: several readings (guang3, yan3) and none chosen in readings.tsv
 - 过去: several readings (guo4 qu4, guo4 qu5) and none chosen in readings.tsv
-- 咳: several readings (hai1, ke2) and none chosen in readings.tsv
 - 好处: several readings (hao3 chu3, hao3 chu5) and none chosen in readings.tsv
 - 好事: several readings (hao3 shi4, hao4 shi4) and none chosen in readings.tsv
 - 好学: several readings (hao3 xue2, hao4 xue2) and none chosen in readings.tsv
-- 合: several readings (ge3, he2) and none chosen in readings.tsv
 - 很难说: pinyin could not be read (not a numbered pinyin syllable: 'nánshuō5')
-- 横: several readings (heng2, heng4) and none chosen in readings.tsv
 - 胡同儿: pinyin could not be read (not a numbered pinyin syllable: 'hútòngr5')
-- 划: several readings (hua2, hua4) and none chosen in readings.tsv
-- 混: several readings (hun2, hun4) and none chosen in readings.tsv
-- 夹: several readings (jia1, jia2, jia4) and none chosen in readings.tsv
-- 假: several readings (jia3, jia4) and none chosen in readings.tsv
-- 价: several readings (jia4, jie5) and none chosen in readings.tsv
 - 见过: pinyin could not be read (not a numbered pinyin syllable: 'jiànguò5')
-- 将: several readings (jiang1, jiang4, qiang1) and none chosen in readings.tsv
-- 降: several readings (jiang4, xiang2) and none chosen in readings.tsv
-- 角: several readings (jiao3, jue2) and none chosen in readings.tsv
-- 脚: several readings (jiao3, jue2) and none chosen in readings.tsv
 - 教学: several readings (jiao1 xue2, jiao4 xue2) and none chosen in readings.tsv
-- 结: several readings (jie1, jie2) and none chosen in readings.tsv
 - 结果: several readings (jie1 guo3, jie2 guo3) and none chosen in readings.tsv
 - 结实: several readings (jie1 shi2, jie1 shi5) and none chosen in readings.tsv
-- 解: several readings (jie3, jie4, xie4) and none chosen in readings.tsv
-- 尽: several readings (jin3, jin4) and none chosen in readings.tsv
 - 尽量: several readings (jin3 liang4, jin4 liang4) and none chosen in readings.tsv
 - 精神: several readings (jing1 shen2, jing1 shen5) and none chosen in readings.tsv
-- 卷: several readings (juan3, juan4) and none chosen in readings.tsv
-- 觉: several readings (jiao4, jue2) and none chosen in readings.tsv
-- 卡: several readings (ka3, qia3) and none chosen in readings.tsv
 - 开通: several readings (kai1 tong1, kai1 tong5) and none chosen in readings.tsv
 - 看得见: CC-CEDICT does not agree: list says [kan4 de2 jian4], CC-CEDICT has [kan4 de5 jian4]
 - 看好: several readings (kan1 hao3, kan4 hao3) and none chosen in readings.tsv
-- 空: several readings (kong1, kong4) and none chosen in readings.tsv
 - 啦: several readings (la1, la5) and none chosen in readings.tsv
 - 老公: several readings (lao3 gong1, lao3 gong5) and none chosen in readings.tsv
-- 乐: several readings (le4, yue4) and none chosen in readings.tsv
-- 离: several readings (chi1, li2) and none chosen in readings.tsv
-- 凉: several readings (liang2, liang4) and none chosen in readings.tsv
 - 两边: CC-CEDICT does not agree: list says [liang3 bian5], CC-CEDICT has [liang3 bian1]
-- 量: several readings (liang2, liang4) and none chosen in readings.tsv
 - 令: several readings (ling3, ling4) and none chosen in readings.tsv
-- 露: several readings (lou4, lu4) and none chosen in readings.tsv
-- 落: several readings (la4, lao4, luo4) and none chosen in readings.tsv
 - 码头: CC-CEDICT does not agree: list says [ma3 tou2], CC-CEDICT has [ma3 tou5]
-- 嘛: several readings (ma2, ma5) and none chosen in readings.tsv
 - 没法儿: pinyin could not be read (not a numbered pinyin syllable: 'méifǎr5')
 - 蒙: several readings (meng1, meng2) and none chosen in readings.tsv
 - 名牌儿: pinyin could not be read (not a numbered pinyin syllable: 'míngpáir5')
-- 磨: several readings (mo2, mo4) and none chosen in readings.tsv
 - 能不能: pinyin could not be read (not a numbered pinyin syllable: 'bùnéng5')
-- 泥: several readings (ni2, ni4) and none chosen in readings.tsv
-- 鸟: several readings (diao3, niao3) and none chosen in readings.tsv
-- 弄: several readings (long4, nong4) and none chosen in readings.tsv
-- 胖: several readings (pan2, pang4) and none chosen in readings.tsv
-- 泡: several readings (pao1, pao4) and none chosen in readings.tsv
 - 炮: several readings (bao1, pao2, pao4) and none chosen in readings.tsv
 - 喷: several readings (pen1, pen4) and none chosen in readings.tsv
 - 匹: several readings (pi1, pi3) and none chosen in readings.tsv
-- 片: several readings (pian1, pian4) and none chosen in readings.tsv
-- 铺: several readings (pu1, pu4) and none chosen in readings.tsv
 - 妻子: several readings (qi1 zi3, qi1 zi5) and none chosen in readings.tsv
-- 骑: several readings (ji4, qi2) and none chosen in readings.tsv
-- 浅: several readings (jian1, qian3) and none chosen in readings.tsv
-- 强: several readings (jiang4, qiang2, qiang3) and none chosen in readings.tsv
-- 抢: several readings (qiang1, qiang3) and none chosen in readings.tsv
-- 切: several readings (qie1, qie4) and none chosen in readings.tsv
-- 亲: several readings (qin1, qing4) and none chosen in readings.tsv
-- 圈: several readings (juan1, juan4, quan1) and none chosen in readings.tsv
 - 人家: several readings (ren2 jia1, ren2 jia5) and none chosen in readings.tsv
 - 塞: several readings (sai1, sai4, se4) and none chosen in readings.tsv
-- 散: several readings (san3, san4) and none chosen in readings.tsv
-- 扫: several readings (sao3, sao4) and none chosen in readings.tsv
-- 色: several readings (se4, shai3) and none chosen in readings.tsv
-- 扇: several readings (shan1, shan4) and none chosen in readings.tsv
 - 生意: several readings (sheng1 yi4, sheng1 yi5) and none chosen in readings.tsv
-- 省: several readings (sheng3, xing3) and none chosen in readings.tsv
-- 识: several readings (shi2, zhi4) and none chosen in readings.tsv
-- 拾: several readings (she4, shi2) and none chosen in readings.tsv
-- 属: several readings (shu3, zhu3) and none chosen in readings.tsv
-- 数: several readings (shu3, shu4, shuo4) and none chosen in readings.tsv
-- 刷: several readings (shua1, shua4) and none chosen in readings.tsv
 - 说法: several readings (shuo1 fa3, shuo1 fa5) and none chosen in readings.tsv
 - 送到: CC-CEDICT does not agree: list says [song4 dao4], CC-CEDICT has [no entry]
 - 所长: several readings (suo3 chang2, suo3 zhang3) and none chosen in readings.tsv
-- 汤: several readings (shang1, tang1) and none chosen in readings.tsv
-- 趟: several readings (tang1, tang4) and none chosen in readings.tsv
-- 挑: several readings (tiao1, tiao3) and none chosen in readings.tsv
-- 通: several readings (tong1, tong4) and none chosen in readings.tsv
 - 同行: several readings (tong2 hang2, tong2 xing2) and none chosen in readings.tsv
-- 头: several readings (tou2, tou5) and none chosen in readings.tsv
 - 土地: several readings (tu3 di4, tu3 di5) and none chosen in readings.tsv
-- 吐: several readings (tu3, tu4) and none chosen in readings.tsv
 - 哇: several readings (wa1, wa5) and none chosen in readings.tsv
-- 王: several readings (wang2, wang4) and none chosen in readings.tsv
-- 为: several readings (wei2, wei4) and none chosen in readings.tsv
-- 喂: several readings (wei2, wei4) and none chosen in readings.tsv
 - 温和: several readings (wen1 he2, wen1 huo5) and none chosen in readings.tsv
-- 系: several readings (ji4, xi4) and none chosen in readings.tsv
-- 吓: several readings (he4, xia4) and none chosen in readings.tsv
-- 鲜: several readings (xian1, xian3) and none chosen in readings.tsv
 - 小偷儿: pinyin could not be read (not a numbered pinyin syllable: 'xiǎotōur5')
 - 笑话儿: pinyin could not be read (not a numbered pinyin syllable: 'xiàohuar5')
 - 姓名: CC-CEDICT only lists it as a variant or cross-reference
@@ -179,48 +81,37 @@ Sentences come from Tatoeba (native Mandarin speakers only); see tools/sentences
 - 眼里: pinyin could not be read (not a numbered pinyin syllable: 'yǎnli5')
 - 一番: CC-CEDICT does not agree: list says [yi4 fan1], CC-CEDICT has [no entry]
 - 乙: several readings (yi3, zhe2) and none chosen in readings.tsv
-- 应: several readings (ying1, ying4) and none chosen in readings.tsv
 - 有劲儿: pinyin could not be read (not a numbered pinyin syllable: 'yǒujìnr5')
 - 有空儿: pinyin could not be read (not a numbered pinyin syllable: 'yǒukòngr5')
-- 与: several readings (yu3, yu4) and none chosen in readings.tsv
-- 约: several readings (yao1, yue1) and none chosen in readings.tsv
-- 晕: several readings (yun1, yun4) and none chosen in readings.tsv
-- 脏: several readings (zang1, zang4) and none chosen in readings.tsv
 - 扎: several readings (za1, zha1) and none chosen in readings.tsv
-- 炸: several readings (zha2, zha4) and none chosen in readings.tsv
-- 占: several readings (zhan1, zhan4) and none chosen in readings.tsv
-- 长: several readings (chang2, zhang3) and none chosen in readings.tsv
-- 涨: several readings (zhang3, zhang4) and none chosen in readings.tsv
 - 折: several readings (she2, zhe1, zhe2) and none chosen in readings.tsv
 - 这时候: pinyin could not be read (not a numbered pinyin syllable: 'shíhòu5')
 - 正当: several readings (zheng4 dang1, zheng4 dang4) and none chosen in readings.tsv
-- 只: several readings (zhi1, zhi3) and none chosen in readings.tsv
 - 指着: pinyin could not be read (not a numbered pinyin syllable: 'zhǐzhe5')
-- 种: several readings (zhong3, zhong4) and none chosen in readings.tsv
 - 重点: several readings (chong2 dian3, zhong4 dian3) and none chosen in readings.tsv
-- 转: several readings (zhuan3, zhuan4) and none chosen in readings.tsv
 - 转动: several readings (zhuan3 dong4, zhuan4 dong4) and none chosen in readings.tsv
 - 转向: several readings (zhuan3 xiang4, zhuan4 xiang4) and none chosen in readings.tsv
 - 赚: several readings (zhuan4, zuan4) and none chosen in readings.tsv
-- 追: several readings (dui1, zhui1) and none chosen in readings.tsv
-- 足: several readings (ju4, zu2) and none chosen in readings.tsv
-- 钻: several readings (zuan1, zuan4) and none chosen in readings.tsv
-- 作: several readings (zuo1, zuo4) and none chosen in readings.tsv
 - 最近过得好吗？: 得 has more than one reading (de2, de5, dei3)
 - 今晚月色真美。: 今 is not a word in the checked lists
 
 ## Flagged (kept, but check the audio by ear)
 
 - 阿姨: has characters with more than one reading (阿); listen to its audio
+- 挨: has characters with more than one reading (挨); listen to its audio
+- 挨: has characters with more than one reading (挨); listen to its audio
 - 挨打: has characters with more than one reading (打挨); listen to its audio
 - 挨着: has characters with more than one reading (挨着); listen to its audio
 - 爱好: has characters with more than one reading (好); listen to its audio
+- 把: has characters with more than one reading (把); listen to its audio
 - 把握: has characters with more than one reading (把); listen to its audio
 - 吧: has characters with more than one reading (吧); listen to its audio
 - 白色: has characters with more than one reading (色); listen to its audio
 - 百分点: has characters with more than one reading (分); listen to its audio
 - 班长: has characters with more than one reading (长); listen to its audio
+- 板: has characters with more than one reading (板); listen to its audio
 - 办事处: has characters with more than one reading (处); listen to its audio
+- 薄: has characters with more than one reading (薄); listen to its audio
 - 薄弱: has characters with more than one reading (薄); listen to its audio
 - 宝石: has characters with more than one reading (石); listen to its audio
 - 报答: has characters with more than one reading (答); listen to its audio
@@ -229,6 +120,8 @@ Sentences come from Tatoeba (native Mandarin speakers only); see tools/sentences
 - 暴雨: has characters with more than one reading (雨); listen to its audio
 - 爆发: has characters with more than one reading (发); listen to its audio
 - 爆炸: has characters with more than one reading (炸); listen to its audio
+- 背: has characters with more than one reading (背); listen to its audio
+- 背: has characters with more than one reading (背); listen to its audio
 - 背包: has characters with more than one reading (背); listen to its audio
 - 背后: has characters with more than one reading (背); listen to its audio
 - 背景: has characters with more than one reading (背); listen to its audio
@@ -239,6 +132,7 @@ Sentences come from Tatoeba (native Mandarin speakers only); see tools/sentences
 - 比重: has characters with more than one reading (重); listen to its audio
 - 必将: has characters with more than one reading (将); listen to its audio
 - 必要: has characters with more than one reading (要); listen to its audio
+- 扁: has characters with more than one reading (扁); listen to its audio
 - 变更: has characters with more than one reading (更); listen to its audio
 - 变为: has characters with more than one reading (为); listen to its audio
 - 别: has characters with more than one reading (别); listen to its audio
@@ -271,8 +165,10 @@ Sentences come from Tatoeba (native Mandarin speakers only); see tools/sentences
 - 参与: has characters with more than one reading (与参); listen to its audio
 - 参展: has characters with more than one reading (参); listen to its audio
 - 餐饮: has characters with more than one reading (饮); listen to its audio
+- 藏: has characters with more than one reading (藏); listen to its audio
 - 操场: has characters with more than one reading (场); listen to its audio
 - 操作: has characters with more than one reading (作); listen to its audio
+- 侧: has characters with more than one reading (侧); listen to its audio
 - 测量: has characters with more than one reading (量); listen to its audio
 - 策划: has characters with more than one reading (划); listen to its audio
 - 曾经: has characters with more than one reading (曾); listen to its audio
@@ -289,8 +185,10 @@ Sentences come from Tatoeba (native Mandarin speakers only); see tools/sentences
 - 昌盛: has characters with more than one reading (盛); listen to its audio
 - 常见: has characters with more than one reading (见); listen to its audio
 - 常识: has characters with more than one reading (识); listen to its audio
+- 厂: has characters with more than one reading (厂); listen to its audio
 - 厂商: has characters with more than one reading (厂); listen to its audio
 - 厂长: has characters with more than one reading (厂长); listen to its audio
+- 场: has characters with more than one reading (场); listen to its audio
 - 场地: has characters with more than one reading (场); listen to its audio
 - 场馆: has characters with more than one reading (场); listen to its audio
 - 场合: has characters with more than one reading (合场); listen to its audio
@@ -299,6 +197,8 @@ Sentences come from Tatoeba (native Mandarin speakers only); see tools/sentences
 - 场所: has characters with more than one reading (场); listen to its audio
 - 畅通: has characters with more than one reading (通); listen to its audio
 - 唱片: has characters with more than one reading (片); listen to its audio
+- 朝: has characters with more than one reading (朝); listen to its audio
+- 朝: has characters with more than one reading (朝); listen to its audio
 - 炒作: has characters with more than one reading (作); listen to its audio
 - 车: has characters with more than one reading (车); listen to its audio
 - 车号: has characters with more than one reading (号车); listen to its audio
@@ -311,6 +211,7 @@ Sentences come from Tatoeba (native Mandarin speakers only); see tools/sentences
 - 撤离: has characters with more than one reading (离); listen to its audio
 - 沉重: has characters with more than one reading (重); listen to its audio
 - 衬衣: has characters with more than one reading (衣); listen to its audio
+- 称: has characters with more than one reading (称); listen to its audio
 - 称号: has characters with more than one reading (号称); listen to its audio
 - 称为: has characters with more than one reading (为称); listen to its audio
 - 称赞: has characters with more than one reading (称); listen to its audio
@@ -319,17 +220,21 @@ Sentences come from Tatoeba (native Mandarin speakers only); see tools/sentences
 - 成语: has characters with more than one reading (语); listen to its audio
 - 成长: has characters with more than one reading (长); listen to its audio
 - 承担: has characters with more than one reading (担); listen to its audio
+- 乘: has characters with more than one reading (乘); listen to its audio
 - 乘车: has characters with more than one reading (乘车); listen to its audio
 - 乘客: has characters with more than one reading (乘); listen to its audio
 - 乘坐: has characters with more than one reading (乘); listen to its audio
 - 程度: has characters with more than one reading (度); listen to its audio
+- 尺: has characters with more than one reading (尺); listen to its audio
 - 尺寸: has characters with more than one reading (尺); listen to its audio
 - 尺子: has characters with more than one reading (尺); listen to its audio
 - 充分: has characters with more than one reading (分); listen to its audio
 - 充足: has characters with more than one reading (足); listen to its audio
+- 冲: has characters with more than one reading (冲); listen to its audio
 - 冲动: has characters with more than one reading (冲); listen to its audio
 - 冲击: has characters with more than one reading (冲); listen to its audio
 - 冲突: has characters with more than one reading (冲); listen to its audio
+- 臭: has characters with more than one reading (臭); listen to its audio
 - 出差: has characters with more than one reading (差); listen to its audio
 - 出场: has characters with more than one reading (场); listen to its audio
 - 出发: has characters with more than one reading (发); listen to its audio
@@ -338,6 +243,8 @@ Sentences come from Tatoeba (native Mandarin speakers only); see tools/sentences
 - 出租车: has characters with more than one reading (车); listen to its audio
 - 初中: has characters with more than one reading (中); listen to its audio
 - 除了: has characters with more than one reading (了); listen to its audio
+- 处: has characters with more than one reading (处); listen to its audio
+- 处: has characters with more than one reading (处); listen to its audio
 - 处处: has characters with more than one reading (处); listen to its audio
 - 处罚: has characters with more than one reading (处); listen to its audio
 - 处分: has characters with more than one reading (分处); listen to its audio
@@ -345,6 +252,7 @@ Sentences come from Tatoeba (native Mandarin speakers only); see tools/sentences
 - 处于: has characters with more than one reading (处); listen to its audio
 - 处在: has characters with more than one reading (处); listen to its audio
 - 处长: has characters with more than one reading (处长); listen to its audio
+- 传: has characters with more than one reading (传); listen to its audio
 - 传播: has characters with more than one reading (传); listen to its audio
 - 传出: has characters with more than one reading (传); listen to its audio
 - 传达: has characters with more than one reading (传); listen to its audio
@@ -369,10 +277,13 @@ Sentences come from Tatoeba (native Mandarin speakers only); see tools/sentences
 - 词语: has characters with more than one reading (语); listen to its audio
 - 此处: has characters with more than one reading (处); listen to its audio
 - 次数: has characters with more than one reading (数); listen to its audio
+- 刺: has characters with more than one reading (刺); listen to its audio
 - 刺激: has characters with more than one reading (刺); listen to its audio
 - 从没: has characters with more than one reading (没); listen to its audio
 - 从中: has characters with more than one reading (中); listen to its audio
 - 搭档: has characters with more than one reading (档); listen to its audio
+- 答: has characters with more than one reading (答); listen to its audio
+- 答: has characters with more than one reading (答); listen to its audio
 - 答案: has characters with more than one reading (答); listen to its audio
 - 答复: has characters with more than one reading (答); listen to its audio
 - 答应: has characters with more than one reading (应答); listen to its audio
@@ -412,6 +323,8 @@ Sentences come from Tatoeba (native Mandarin speakers only); see tools/sentences
 - 大衣: has characters with more than one reading (衣); listen to its audio
 - 大约: has characters with more than one reading (约); listen to its audio
 - 代价: has characters with more than one reading (价); listen to its audio
+- 待: has characters with more than one reading (待); listen to its audio
+- 待: has characters with more than one reading (待); listen to its audio
 - 待会儿: has characters with more than one reading (会待); listen to its audio
 - 待遇: has characters with more than one reading (待); listen to its audio
 - 单打: has characters with more than one reading (打); listen to its audio
@@ -420,6 +333,10 @@ Sentences come from Tatoeba (native Mandarin speakers only); see tools/sentences
 - 担任: has characters with more than one reading (担); listen to its audio
 - 担心: has characters with more than one reading (担); listen to its audio
 - 担忧: has characters with more than one reading (担); listen to its audio
+- 弹: has characters with more than one reading (弹); listen to its audio
+- 弹: has characters with more than one reading (弹); listen to its audio
+- 当: has characters with more than one reading (当); listen to its audio
+- 当: has characters with more than one reading (当); listen to its audio
 - 当场: has characters with more than one reading (场当); listen to its audio
 - 当成: has characters with more than one reading (当); listen to its audio
 - 当初: has characters with more than one reading (当); listen to its audio
@@ -430,14 +347,21 @@ Sentences come from Tatoeba (native Mandarin speakers only); see tools/sentences
 - 当选: has characters with more than one reading (当); listen to its audio
 - 当中: has characters with more than one reading (中当); listen to its audio
 - 当作: has characters with more than one reading (作当); listen to its audio
+- 挡: has characters with more than one reading (挡); listen to its audio
+- 档: has characters with more than one reading (档); listen to its audio
 - 档案: has characters with more than one reading (档); listen to its audio
 - 到处: has characters with more than one reading (处); listen to its audio
+- 倒: has characters with more than one reading (倒); listen to its audio
+- 倒: has characters with more than one reading (倒); listen to its audio
 - 倒闭: has characters with more than one reading (倒); listen to its audio
 - 倒是: has characters with more than one reading (倒); listen to its audio
 - 地板: has characters with more than one reading (板); listen to its audio
 - 的: has characters with more than one reading (的); listen to its audio
 - 的话: has characters with more than one reading (的); listen to its audio
 - 的确: has characters with more than one reading (的); listen to its audio
+- 得: has characters with more than one reading (得); listen to its audio
+- 得: has characters with more than one reading (得); listen to its audio
+- 得: has characters with more than one reading (得); listen to its audio
 - 得出: has characters with more than one reading (得); listen to its audio
 - 得到: has characters with more than one reading (得); listen to its audio
 - 得分: has characters with more than one reading (分得); listen to its audio
@@ -446,6 +370,8 @@ Sentences come from Tatoeba (native Mandarin speakers only); see tools/sentences
 - 等待: has characters with more than one reading (待); listen to its audio
 - 递给: has characters with more than one reading (给); listen to its audio
 - 电车: has characters with more than one reading (车); listen to its audio
+- 调: has characters with more than one reading (调); listen to its audio
+- 调: has characters with more than one reading (调); listen to its audio
 - 调查: has characters with more than one reading (调); listen to its audio
 - 调动: has characters with more than one reading (调); listen to its audio
 - 调节: has characters with more than one reading (调); listen to its audio
@@ -467,6 +393,7 @@ Sentences come from Tatoeba (native Mandarin speakers only); see tools/sentences
 - 读者: has characters with more than one reading (读); listen to its audio
 - 堵车: has characters with more than one reading (车); listen to its audio
 - 肚子: has characters with more than one reading (肚); listen to its audio
+- 度: has characters with more than one reading (度); listen to its audio
 - 度过: has characters with more than one reading (度); listen to its audio
 - 短处: has characters with more than one reading (处); listen to its audio
 - 短片: has characters with more than one reading (片); listen to its audio
@@ -478,6 +405,8 @@ Sentences come from Tatoeba (native Mandarin speakers only); see tools/sentences
 - 多少: has characters with more than one reading (少); listen to its audio
 - 多数: has characters with more than one reading (数); listen to its audio
 - 多种: has characters with more than one reading (种); listen to its audio
+- 发: has characters with more than one reading (发); listen to its audio
+- 发: has characters with more than one reading (发); listen to its audio
 - 发表: has characters with more than one reading (发); listen to its audio
 - 发病: has characters with more than one reading (发); listen to its audio
 - 发布: has characters with more than one reading (发); listen to its audio
@@ -536,6 +465,7 @@ Sentences come from Tatoeba (native Mandarin speakers only); see tools/sentences
 - 否定: has characters with more than one reading (否); listen to its audio
 - 否认: has characters with more than one reading (否); listen to its audio
 - 否则: has characters with more than one reading (否); listen to its audio
+- 服: has characters with more than one reading (服); listen to its audio
 - 服从: has characters with more than one reading (服); listen to its audio
 - 服务: has characters with more than one reading (服); listen to its audio
 - 服务员: has characters with more than one reading (服); listen to its audio
@@ -574,6 +504,8 @@ Sentences come from Tatoeba (native Mandarin speakers only); see tools/sentences
 - 各种: has characters with more than one reading (种); listen to its audio
 - 给: has characters with more than one reading (给); listen to its audio
 - 给予: has characters with more than one reading (予给); listen to its audio
+- 更: has characters with more than one reading (更); listen to its audio
+- 更: has characters with more than one reading (更); listen to its audio
 - 更换: has characters with more than one reading (更); listen to its audio
 - 更加: has characters with more than one reading (更); listen to its audio
 - 更是: has characters with more than one reading (更); listen to its audio
@@ -596,6 +528,7 @@ Sentences come from Tatoeba (native Mandarin speakers only); see tools/sentences
 - 观念: has characters with more than one reading (观); listen to its audio
 - 观众: has characters with more than one reading (观); listen to its audio
 - 冠军: has characters with more than one reading (冠); listen to its audio
+- 广: has characters with more than one reading (广); listen to its audio
 - 广播: has characters with more than one reading (广); listen to its audio
 - 广场: has characters with more than one reading (场广); listen to its audio
 - 广大: has characters with more than one reading (广); listen to its audio
@@ -609,6 +542,7 @@ Sentences come from Tatoeba (native Mandarin speakers only); see tools/sentences
 - 过度: has characters with more than one reading (度); listen to its audio
 - 过分: has characters with more than one reading (分); listen to its audio
 - 哈哈: has characters with more than one reading (哈); listen to its audio
+- 咳: has characters with more than one reading (咳); listen to its audio
 - 还: has characters with more than one reading (还); listen to its audio
 - 还: has characters with more than one reading (还); listen to its audio
 - 还是: has characters with more than one reading (还); listen to its audio
@@ -638,6 +572,7 @@ Sentences come from Tatoeba (native Mandarin speakers only); see tools/sentences
 - 号码: has characters with more than one reading (号); listen to its audio
 - 号召: has characters with more than one reading (号); listen to its audio
 - 喝: has characters with more than one reading (喝); listen to its audio
+- 合: has characters with more than one reading (合); listen to its audio
 - 合并: has characters with more than one reading (合); listen to its audio
 - 合成: has characters with more than one reading (合); listen to its audio
 - 合法: has characters with more than one reading (合); listen to its audio
@@ -653,11 +588,14 @@ Sentences come from Tatoeba (native Mandarin speakers only); see tools/sentences
 - 贺卡: has characters with more than one reading (卡); listen to its audio
 - 黑板: has characters with more than one reading (板); listen to its audio
 - 黑色: has characters with more than one reading (色); listen to its audio
+- 横: has characters with more than one reading (横); listen to its audio
 - 衡量: has characters with more than one reading (量); listen to its audio
 - 红色: has characters with more than one reading (色); listen to its audio
 - 互相: has characters with more than one reading (相); listen to its audio
 - 化解: has characters with more than one reading (解); listen to its audio
 - 化石: has characters with more than one reading (石); listen to its audio
+- 划: has characters with more than one reading (划); listen to its audio
+- 划: has characters with more than one reading (划); listen to its audio
 - 划船: has characters with more than one reading (划); listen to its audio
 - 划分: has characters with more than one reading (分划); listen to its audio
 - 坏处: has characters with more than one reading (处); listen to its audio
@@ -675,6 +613,7 @@ Sentences come from Tatoeba (native Mandarin speakers only); see tools/sentences
 - 会议: has characters with more than one reading (会); listen to its audio
 - 会员: has characters with more than one reading (会); listen to its audio
 - 会长: has characters with more than one reading (会长); listen to its audio
+- 混: has characters with more than one reading (混); listen to its audio
 - 混合: has characters with more than one reading (合混); listen to its audio
 - 混乱: has characters with more than one reading (混); listen to its audio
 - 火车: has characters with more than one reading (车); listen to its audio
@@ -696,12 +635,16 @@ Sentences come from Tatoeba (native Mandarin speakers only); see tools/sentences
 - 技术: has characters with more than one reading (术); listen to its audio
 - 季度: has characters with more than one reading (度); listen to its audio
 - 加强: has characters with more than one reading (强); listen to its audio
+- 夹: has characters with more than one reading (夹); listen to its audio
 - 茄子: has characters with more than one reading (茄); listen to its audio
 - 家属: has characters with more than one reading (属); listen to its audio
 - 家长: has characters with more than one reading (长); listen to its audio
+- 假: has characters with more than one reading (假); listen to its audio
+- 假: has characters with more than one reading (假); listen to its audio
 - 假期: has characters with more than one reading (假); listen to its audio
 - 假日: has characters with more than one reading (假); listen to its audio
 - 假如: has characters with more than one reading (假); listen to its audio
+- 价: has characters with more than one reading (价); listen to its audio
 - 价格: has characters with more than one reading (价); listen to its audio
 - 价钱: has characters with more than one reading (价); listen to its audio
 - 价值: has characters with more than one reading (价); listen to its audio
@@ -716,18 +659,23 @@ Sentences come from Tatoeba (native Mandarin speakers only); see tools/sentences
 - 见到: has characters with more than one reading (见); listen to its audio
 - 见面: has characters with more than one reading (见); listen to its audio
 - 渐渐: has characters with more than one reading (渐); listen to its audio
+- 将: has characters with more than one reading (将); listen to its audio
 - 将近: has characters with more than one reading (将); listen to its audio
 - 将军: has characters with more than one reading (将); listen to its audio
 - 将来: has characters with more than one reading (将); listen to its audio
 - 将要: has characters with more than one reading (将要); listen to its audio
+- 降: has characters with more than one reading (降); listen to its audio
 - 降低: has characters with more than one reading (降); listen to its audio
 - 降价: has characters with more than one reading (价降); listen to its audio
 - 降落: has characters with more than one reading (落降); listen to its audio
 - 降温: has characters with more than one reading (降); listen to its audio
 - 交给: has characters with more than one reading (给); listen to its audio
 - 交通: has characters with more than one reading (通); listen to its audio
+- 角: has characters with more than one reading (角); listen to its audio
+- 角: has characters with more than one reading (角); listen to its audio
 - 角度: has characters with more than one reading (度角); listen to its audio
 - 角色: has characters with more than one reading (色角); listen to its audio
+- 脚: has characters with more than one reading (脚); listen to its audio
 - 脚步: has characters with more than one reading (脚); listen to its audio
 - 脚印: has characters with more than one reading (脚); listen to its audio
 - 叫作: has characters with more than one reading (作); listen to its audio
@@ -746,17 +694,21 @@ Sentences come from Tatoeba (native Mandarin speakers only); see tools/sentences
 - 节假日: has characters with more than one reading (假); listen to its audio
 - 节省: has characters with more than one reading (省); listen to its audio
 - 节约: has characters with more than one reading (约); listen to its audio
+- 结: has characters with more than one reading (结); listen to its audio
 - 结构: has characters with more than one reading (结); listen to its audio
 - 结合: has characters with more than one reading (合结); listen to its audio
 - 结婚: has characters with more than one reading (结); listen to its audio
 - 结论: has characters with more than one reading (结); listen to its audio
 - 结束: has characters with more than one reading (结); listen to its audio
+- 解: has characters with more than one reading (解); listen to its audio
 - 解除: has characters with more than one reading (解); listen to its audio
 - 解放: has characters with more than one reading (解); listen to its audio
 - 解决: has characters with more than one reading (解); listen to its audio
 - 解开: has characters with more than one reading (解); listen to its audio
 - 解释: has characters with more than one reading (解); listen to its audio
 - 解说: has characters with more than one reading (解说); listen to its audio
+- 尽: has characters with more than one reading (尽); listen to its audio
+- 尽: has characters with more than one reading (尽); listen to its audio
 - 尽管: has characters with more than one reading (尽); listen to its audio
 - 尽可能: has characters with more than one reading (尽); listen to its audio
 - 尽快: has characters with more than one reading (尽); listen to its audio
@@ -776,9 +728,13 @@ Sentences come from Tatoeba (native Mandarin speakers only); see tools/sentences
 - 据说: has characters with more than one reading (说); listen to its audio
 - 距离: has characters with more than one reading (离); listen to its audio
 - 聚会: has characters with more than one reading (会); listen to its audio
+- 卷: has characters with more than one reading (卷); listen to its audio
 - 绝大多数: has characters with more than one reading (数); listen to its audio
+- 觉: has characters with more than one reading (觉); listen to its audio
+- 觉: has characters with more than one reading (觉); listen to its audio
 - 觉得: has characters with more than one reading (得觉); listen to its audio
 - 觉悟: has characters with more than one reading (觉); listen to its audio
+- 卡: has characters with more than one reading (卡); listen to its audio
 - 开车: has characters with more than one reading (车); listen to its audio
 - 开创: has characters with more than one reading (创); listen to its audio
 - 开发: has characters with more than one reading (发); listen to its audio
@@ -806,6 +762,8 @@ Sentences come from Tatoeba (native Mandarin speakers only); see tools/sentences
 - 克服: has characters with more than one reading (服); listen to its audio
 - 客车: has characters with more than one reading (车); listen to its audio
 - 客观: has characters with more than one reading (观); listen to its audio
+- 空: has characters with more than one reading (空); listen to its audio
+- 空: has characters with more than one reading (空); listen to its audio
 - 空调: has characters with more than one reading (空调); listen to its audio
 - 空儿: has characters with more than one reading (空); listen to its audio
 - 空间: has characters with more than one reading (空间); listen to its audio
@@ -827,6 +785,8 @@ Sentences come from Tatoeba (native Mandarin speakers only); see tools/sentences
 - 蓝色: has characters with more than one reading (色); listen to its audio
 - 朗读: has characters with more than one reading (读); listen to its audio
 - 老板: has characters with more than one reading (板); listen to its audio
+- 乐: has characters with more than one reading (乐); listen to its audio
+- 乐: has characters with more than one reading (乐); listen to its audio
 - 乐队: has characters with more than one reading (乐); listen to its audio
 - 乐观: has characters with more than one reading (乐观); listen to its audio
 - 乐曲: has characters with more than one reading (乐曲); listen to its audio
@@ -835,6 +795,7 @@ Sentences come from Tatoeba (native Mandarin speakers only); see tools/sentences
 - 了不起: has characters with more than one reading (了); listen to its audio
 - 了解: has characters with more than one reading (了解); listen to its audio
 - 累: has characters with more than one reading (累); listen to its audio
+- 离: has characters with more than one reading (离); listen to its audio
 - 离不开: has characters with more than one reading (离); listen to its audio
 - 离婚: has characters with more than one reading (离); listen to its audio
 - 离开: has characters with more than one reading (离); listen to its audio
@@ -847,11 +808,14 @@ Sentences come from Tatoeba (native Mandarin speakers only); see tools/sentences
 - 联系: has characters with more than one reading (系); listen to its audio
 - 脸色: has characters with more than one reading (色); listen to its audio
 - 良好: has characters with more than one reading (好); listen to its audio
+- 凉: has characters with more than one reading (凉); listen to its audio
 - 凉快: has characters with more than one reading (凉); listen to its audio
 - 凉水: has characters with more than one reading (凉); listen to its audio
 - 凉鞋: has characters with more than one reading (凉); listen to its audio
 - 粮食: has characters with more than one reading (食); listen to its audio
 - 两侧: has characters with more than one reading (侧); listen to its audio
+- 量: has characters with more than one reading (量); listen to its audio
+- 量: has characters with more than one reading (量); listen to its audio
 - 列车: has characters with more than one reading (车); listen to its audio
 - 列为: has characters with more than one reading (为); listen to its audio
 - 零食: has characters with more than one reading (食); listen to its audio
@@ -861,11 +825,13 @@ Sentences come from Tatoeba (native Mandarin speakers only); see tools/sentences
 - 陆地: has characters with more than one reading (陆); listen to its audio
 - 陆军: has characters with more than one reading (陆); listen to its audio
 - 陆续: has characters with more than one reading (陆); listen to its audio
+- 露: has characters with more than one reading (露); listen to its audio
 - 旅行: has characters with more than one reading (行); listen to its audio
 - 旅行社: has characters with more than one reading (行); listen to its audio
 - 率领: has characters with more than one reading (率); listen to its audio
 - 率先: has characters with more than one reading (率); listen to its audio
 - 绿色: has characters with more than one reading (色); listen to its audio
+- 落: has characters with more than one reading (落); listen to its audio
 - 落后: has characters with more than one reading (落); listen to its audio
 - 落实: has characters with more than one reading (落); listen to its audio
 - 马车: has characters with more than one reading (车); listen to its audio
@@ -901,6 +867,7 @@ Sentences come from Tatoeba (native Mandarin speakers only); see tools/sentences
 - 模特儿: has characters with more than one reading (模); listen to its audio
 - 模型: has characters with more than one reading (模); listen to its audio
 - 模样: has characters with more than one reading (模); listen to its audio
+- 磨: has characters with more than one reading (磨); listen to its audio
 - 母亲: has characters with more than one reading (亲); listen to its audio
 - 目的: has characters with more than one reading (的); listen to its audio
 - 哪: has characters with more than one reading (哪); listen to its audio
@@ -940,16 +907,22 @@ Sentences come from Tatoeba (native Mandarin speakers only); see tools/sentences
 - 能否: has characters with more than one reading (否); listen to its audio
 - 能干: has characters with more than one reading (干); listen to its audio
 - 能量: has characters with more than one reading (量); listen to its audio
+- 泥: has characters with more than one reading (泥); listen to its audio
 - 年度: has characters with more than one reading (度); listen to its audio
+- 鸟: has characters with more than one reading (鸟); listen to its audio
 - 宁静: has characters with more than one reading (宁); listen to its audio
 - 牛仔裤: has characters with more than one reading (仔); listen to its audio
+- 弄: has characters with more than one reading (弄); listen to its audio
 - 暖和: has characters with more than one reading (和); listen to its audio
 - 排行榜: has characters with more than one reading (榜行); listen to its audio
+- 胖: has characters with more than one reading (胖); listen to its audio
 - 胖子: has characters with more than one reading (胖); listen to its audio
 - 跑: has characters with more than one reading (跑); listen to its audio
 - 跑步: has characters with more than one reading (跑); listen to its audio
+- 泡: has characters with more than one reading (泡); listen to its audio
 - 配合: has characters with more than one reading (合); listen to its audio
 - 碰见: has characters with more than one reading (见); listen to its audio
+- 片: has characters with more than one reading (片); listen to its audio
 - 片面: has characters with more than one reading (片); listen to its audio
 - 票价: has characters with more than one reading (价); listen to its audio
 - 漂亮: has characters with more than one reading (漂); listen to its audio
@@ -959,12 +932,14 @@ Sentences come from Tatoeba (native Mandarin speakers only); see tools/sentences
 - 迫切: has characters with more than one reading (切); listen to its audio
 - 普通: has characters with more than one reading (通); listen to its audio
 - 普通话: has characters with more than one reading (通); listen to its audio
+- 铺: has characters with more than one reading (铺); listen to its audio
 - 期待: has characters with more than one reading (待); listen to its audio
 - 期间: has characters with more than one reading (间); listen to its audio
 - 期中: has characters with more than one reading (中); listen to its audio
 - 其中: has characters with more than one reading (中); listen to its audio
 - 奇怪: has characters with more than one reading (奇); listen to its audio
 - 奇妙: has characters with more than one reading (奇); listen to its audio
+- 骑: has characters with more than one reading (骑); listen to its audio
 - 骑车: has characters with more than one reading (车骑); listen to its audio
 - 启发: has characters with more than one reading (发); listen to its audio
 - 气体: has characters with more than one reading (体); listen to its audio
@@ -972,6 +947,8 @@ Sentences come from Tatoeba (native Mandarin speakers only); see tools/sentences
 - 恰当: has characters with more than one reading (当); listen to its audio
 - 恰好: has characters with more than one reading (好); listen to its audio
 - 签约: has characters with more than one reading (约); listen to its audio
+- 浅: has characters with more than one reading (浅); listen to its audio
+- 强: has characters with more than one reading (强); listen to its audio
 - 强大: has characters with more than one reading (强); listen to its audio
 - 强盗: has characters with more than one reading (强); listen to its audio
 - 强调: has characters with more than one reading (强调); listen to its audio
@@ -981,8 +958,12 @@ Sentences come from Tatoeba (native Mandarin speakers only); see tools/sentences
 - 强迫: has characters with more than one reading (强); listen to its audio
 - 强势: has characters with more than one reading (强); listen to its audio
 - 强壮: has characters with more than one reading (强); listen to its audio
+- 抢: has characters with more than one reading (抢); listen to its audio
 - 抢救: has characters with more than one reading (抢); listen to its audio
+- 切: has characters with more than one reading (切); listen to its audio
+- 切: has characters with more than one reading (切); listen to its audio
 - 切实: has characters with more than one reading (切); listen to its audio
+- 亲: has characters with more than one reading (亲); listen to its audio
 - 亲爱: has characters with more than one reading (亲); listen to its audio
 - 亲密: has characters with more than one reading (亲); listen to its audio
 - 亲切: has characters with more than one reading (亲切); listen to its audio
@@ -998,6 +979,7 @@ Sentences come from Tatoeba (native Mandarin speakers only); see tools/sentences
 - 区分: has characters with more than one reading (分); listen to its audio
 - 渠道: has characters with more than one reading (渠); listen to its audio
 - 取得: has characters with more than one reading (得); listen to its audio
+- 圈: has characters with more than one reading (圈); listen to its audio
 - 全场: has characters with more than one reading (场); listen to its audio
 - 全都: has characters with more than one reading (都); listen to its audio
 - 全体: has characters with more than one reading (体); listen to its audio
@@ -1011,13 +993,18 @@ Sentences come from Tatoeba (native Mandarin speakers only); see tools/sentences
 - 认为: has characters with more than one reading (为); listen to its audio
 - 融合: has characters with more than one reading (合); listen to its audio
 - 赛场: has characters with more than one reading (场); listen to its audio
+- 散: has characters with more than one reading (散); listen to its audio
+- 散: has characters with more than one reading (散); listen to its audio
 - 散步: has characters with more than one reading (散); listen to its audio
 - 散文: has characters with more than one reading (散); listen to its audio
 - 丧失: has characters with more than one reading (丧); listen to its audio
+- 扫: has characters with more than one reading (扫); listen to its audio
+- 色: has characters with more than one reading (色); listen to its audio
 - 色彩: has characters with more than one reading (色); listen to its audio
 - 沙发: has characters with more than one reading (发沙); listen to its audio
 - 沙漠: has characters with more than one reading (沙); listen to its audio
 - 沙子: has characters with more than one reading (沙); listen to its audio
+- 扇: has characters with more than one reading (扇); listen to its audio
 - 扇子: has characters with more than one reading (扇); listen to its audio
 - 商场: has characters with more than one reading (场); listen to its audio
 - 商量: has characters with more than one reading (量); listen to its audio
@@ -1039,6 +1026,7 @@ Sentences come from Tatoeba (native Mandarin speakers only); see tools/sentences
 - 什么样: has characters with more than one reading (什); listen to its audio
 - 神奇: has characters with more than one reading (奇); listen to its audio
 - 生长: has characters with more than one reading (长); listen to its audio
+- 省: has characters with more than one reading (省); listen to its audio
 - 省钱: has characters with more than one reading (省); listen to its audio
 - 盛行: has characters with more than one reading (盛行); listen to its audio
 - 十分: has characters with more than one reading (分); listen to its audio
@@ -1062,7 +1050,9 @@ Sentences come from Tatoeba (native Mandarin speakers only); see tools/sentences
 - 适当: has characters with more than one reading (当); listen to its audio
 - 适合: has characters with more than one reading (合); listen to its audio
 - 适应: has characters with more than one reading (应); listen to its audio
+- 识: has characters with more than one reading (识); listen to its audio
 - 识字: has characters with more than one reading (识); listen to its audio
+- 拾: has characters with more than one reading (拾); listen to its audio
 - 收藏: has characters with more than one reading (藏); listen to its audio
 - 收看: has characters with more than one reading (看); listen to its audio
 - 收拾: has characters with more than one reading (拾); listen to its audio
@@ -1073,15 +1063,19 @@ Sentences come from Tatoeba (native Mandarin speakers only); see tools/sentences
 - 受不了: has characters with more than one reading (了); listen to its audio
 - 书柜: has characters with more than one reading (柜); listen to its audio
 - 舒服: has characters with more than one reading (服); listen to its audio
+- 属: has characters with more than one reading (属); listen to its audio
 - 属于: has characters with more than one reading (属); listen to its audio
 - 暑假: has characters with more than one reading (假); listen to its audio
 - 薯片: has characters with more than one reading (片); listen to its audio
 - 树叶: has characters with more than one reading (叶); listen to its audio
+- 数: has characters with more than one reading (数); listen to its audio
+- 数: has characters with more than one reading (数); listen to its audio
 - 数据: has characters with more than one reading (数); listen to its audio
 - 数量: has characters with more than one reading (数量); listen to its audio
 - 数码: has characters with more than one reading (数); listen to its audio
 - 数目: has characters with more than one reading (数); listen to its audio
 - 数字: has characters with more than one reading (数); listen to its audio
+- 刷: has characters with more than one reading (刷); listen to its audio
 - 刷牙: has characters with more than one reading (刷); listen to its audio
 - 刷子: has characters with more than one reading (刷); listen to its audio
 - 摔倒: has characters with more than one reading (倒); listen to its audio
@@ -1108,6 +1102,8 @@ Sentences come from Tatoeba (native Mandarin speakers only); see tools/sentences
 - 岁数: has characters with more than one reading (数); listen to its audio
 - 太空: has characters with more than one reading (空); listen to its audio
 - 态度: has characters with more than one reading (度); listen to its audio
+- 汤: has characters with more than one reading (汤); listen to its audio
+- 趟: has characters with more than one reading (趟); listen to its audio
 - 逃跑: has characters with more than one reading (跑); listen to its audio
 - 特别: has characters with more than one reading (别); listen to its audio
 - 特价: has characters with more than one reading (价); listen to its audio
@@ -1125,6 +1121,8 @@ Sentences come from Tatoeba (native Mandarin speakers only); see tools/sentences
 - 体重: has characters with more than one reading (体重); listen to its audio
 - 天空: has characters with more than one reading (空); listen to its audio
 - 填空: has characters with more than one reading (空); listen to its audio
+- 挑: has characters with more than one reading (挑); listen to its audio
+- 挑: has characters with more than one reading (挑); listen to its audio
 - 挑选: has characters with more than one reading (挑); listen to its audio
 - 挑战: has characters with more than one reading (挑); listen to its audio
 - 跳远: has characters with more than one reading (远); listen to its audio
@@ -1140,6 +1138,7 @@ Sentences come from Tatoeba (native Mandarin speakers only); see tools/sentences
 - 停车: has characters with more than one reading (车); listen to its audio
 - 停车场: has characters with more than one reading (场车); listen to its audio
 - 挺好: has characters with more than one reading (好); listen to its audio
+- 通: has characters with more than one reading (通); listen to its audio
 - 通报: has characters with more than one reading (通); listen to its audio
 - 通常: has characters with more than one reading (通); listen to its audio
 - 通道: has characters with more than one reading (通); listen to its audio
@@ -1156,6 +1155,8 @@ Sentences come from Tatoeba (native Mandarin speakers only); see tools/sentences
 - 透露: has characters with more than one reading (露); listen to its audio
 - 图片: has characters with more than one reading (片); listen to its audio
 - 途中: has characters with more than one reading (中); listen to its audio
+- 吐: has characters with more than one reading (吐); listen to its audio
+- 吐: has characters with more than one reading (吐); listen to its audio
 - 团结: has characters with more than one reading (结); listen to its audio
 - 团体: has characters with more than one reading (体); listen to its audio
 - 团长: has characters with more than one reading (长); listen to its audio
@@ -1169,6 +1170,7 @@ Sentences come from Tatoeba (native Mandarin speakers only); see tools/sentences
 - 完了: has characters with more than one reading (了); listen to its audio
 - 顽强: has characters with more than one reading (强); listen to its audio
 - 晚会: has characters with more than one reading (会); listen to its audio
+- 王: has characters with more than one reading (王); listen to its audio
 - 王后: has characters with more than one reading (王); listen to its audio
 - 王子: has characters with more than one reading (王); listen to its audio
 - 网吧: has characters with more than one reading (吧); listen to its audio
@@ -1178,6 +1180,8 @@ Sentences come from Tatoeba (native Mandarin speakers only); see tools/sentences
 - 唯一: has characters with more than one reading (唯); listen to its audio
 - 尾巴: has characters with more than one reading (尾); listen to its audio
 - 卫生间: has characters with more than one reading (间); listen to its audio
+- 为: has characters with more than one reading (为); listen to its audio
+- 为: has characters with more than one reading (为); listen to its audio
 - 为此: has characters with more than one reading (为); listen to its audio
 - 为何: has characters with more than one reading (为); listen to its audio
 - 为了: has characters with more than one reading (为了); listen to its audio
@@ -1186,6 +1190,7 @@ Sentences come from Tatoeba (native Mandarin speakers only); see tools/sentences
 - 为什么: has characters with more than one reading (为什); listen to its audio
 - 为止: has characters with more than one reading (为); listen to its audio
 - 为主: has characters with more than one reading (为); listen to its audio
+- 喂: has characters with more than one reading (喂); listen to its audio
 - 温度: has characters with more than one reading (度); listen to its audio
 - 卧铺: has characters with more than one reading (铺); listen to its audio
 - 无数: has characters with more than one reading (数); listen to its audio
@@ -1198,6 +1203,7 @@ Sentences come from Tatoeba (native Mandarin speakers only); see tools/sentences
 - 洗衣粉: has characters with more than one reading (衣); listen to its audio
 - 洗衣机: has characters with more than one reading (衣); listen to its audio
 - 戏曲: has characters with more than one reading (曲); listen to its audio
+- 系: has characters with more than one reading (系); listen to its audio
 - 系列: has characters with more than one reading (系); listen to its audio
 - 系统: has characters with more than one reading (系); listen to its audio
 - 细菌: has characters with more than one reading (菌); listen to its audio
@@ -1206,6 +1212,8 @@ Sentences come from Tatoeba (native Mandarin speakers only); see tools/sentences
 - 下降: has characters with more than one reading (降); listen to its audio
 - 下雨: has characters with more than one reading (雨); listen to its audio
 - 下载: has characters with more than one reading (载); listen to its audio
+- 吓: has characters with more than one reading (吓); listen to its audio
+- 鲜: has characters with more than one reading (鲜); listen to its audio
 - 鲜花: has characters with more than one reading (鲜); listen to its audio
 - 鲜明: has characters with more than one reading (鲜); listen to its audio
 - 鲜艳: has characters with more than one reading (鲜); listen to its audio
@@ -1308,6 +1316,8 @@ Sentences come from Tatoeba (native Mandarin speakers only); see tools/sentences
 - 隐藏: has characters with more than one reading (藏隐); listen to its audio
 - 隐私: has characters with more than one reading (隐); listen to its audio
 - 印刷: has characters with more than one reading (刷); listen to its audio
+- 应: has characters with more than one reading (应); listen to its audio
+- 应: has characters with more than one reading (应); listen to its audio
 - 应当: has characters with more than one reading (应当); listen to its audio
 - 应对: has characters with more than one reading (应); listen to its audio
 - 应该: has characters with more than one reading (应); listen to its audio
@@ -1326,6 +1336,7 @@ Sentences come from Tatoeba (native Mandarin speakers only); see tools/sentences
 - 有着: has characters with more than one reading (着); listen to its audio
 - 友好: has characters with more than one reading (好); listen to its audio
 - 娱乐: has characters with more than one reading (乐); listen to its audio
+- 与: has characters with more than one reading (与); listen to its audio
 - 羽绒服: has characters with more than one reading (服); listen to its audio
 - 雨: has characters with more than one reading (雨); listen to its audio
 - 雨水: has characters with more than one reading (雨); listen to its audio
@@ -1341,10 +1352,13 @@ Sentences come from Tatoeba (native Mandarin speakers only); see tools/sentences
 - 远离: has characters with more than one reading (离远); listen to its audio
 - 远远: has characters with more than one reading (远); listen to its audio
 - 院长: has characters with more than one reading (长); listen to its audio
+- 约: has characters with more than one reading (约); listen to its audio
 - 约定: has characters with more than one reading (约); listen to its audio
 - 约会: has characters with more than one reading (会约); listen to its audio
 - 约束: has characters with more than one reading (约); listen to its audio
 - 阅读: has characters with more than one reading (读); listen to its audio
+- 晕: has characters with more than one reading (晕); listen to its audio
+- 晕: has characters with more than one reading (晕); listen to its audio
 - 晕车: has characters with more than one reading (晕车); listen to its audio
 - 运动会: has characters with more than one reading (会); listen to its audio
 - 运行: has characters with more than one reading (行); listen to its audio
@@ -1353,17 +1367,24 @@ Sentences come from Tatoeba (native Mandarin speakers only); see tools/sentences
 - 再见: has characters with more than one reading (见); listen to its audio
 - 再说: has characters with more than one reading (说); listen to its audio
 - 在场: has characters with more than one reading (场); listen to its audio
+- 脏: has characters with more than one reading (脏); listen to its audio
+- 脏: has characters with more than one reading (脏); listen to its audio
 - 增强: has characters with more than one reading (强); listen to its audio
 - 增长: has characters with more than one reading (长); listen to its audio
 - 扎实: has characters with more than one reading (扎); listen to its audio
+- 炸: has characters with more than one reading (炸); listen to its audio
+- 炸: has characters with more than one reading (炸); listen to its audio
 - 炸弹: has characters with more than one reading (弹炸); listen to its audio
 - 炸药: has characters with more than one reading (炸); listen to its audio
+- 占: has characters with more than one reading (占); listen to its audio
 - 占据: has characters with more than one reading (占); listen to its audio
 - 占领: has characters with more than one reading (占); listen to its audio
 - 占有: has characters with more than one reading (占); listen to its audio
 - 战场: has characters with more than one reading (场); listen to its audio
 - 战斗: has characters with more than one reading (斗); listen to its audio
 - 战术: has characters with more than one reading (术); listen to its audio
+- 长: has characters with more than one reading (长); listen to its audio
+- 长: has characters with more than one reading (长); listen to its audio
 - 长处: has characters with more than one reading (处长); listen to its audio
 - 长大: has characters with more than one reading (长); listen to its audio
 - 长度: has characters with more than one reading (度长); listen to its audio
@@ -1375,6 +1396,7 @@ Sentences come from Tatoeba (native Mandarin speakers only); see tools/sentences
 - 长寿: has characters with more than one reading (长); listen to its audio
 - 长途: has characters with more than one reading (长); listen to its audio
 - 长远: has characters with more than one reading (远长); listen to its audio
+- 涨: has characters with more than one reading (涨); listen to its audio
 - 涨价: has characters with more than one reading (价涨); listen to its audio
 - 丈夫: has characters with more than one reading (夫); listen to its audio
 - 照片: has characters with more than one reading (片); listen to its audio
@@ -1414,6 +1436,8 @@ Sentences come from Tatoeba (native Mandarin speakers only); see tools/sentences
 - 知识: has characters with more than one reading (识); listen to its audio
 - 执行: has characters with more than one reading (行); listen to its audio
 - 值得: has characters with more than one reading (得); listen to its audio
+- 只: has characters with more than one reading (只); listen to its audio
+- 只: has characters with more than one reading (只); listen to its audio
 - 只不过: has characters with more than one reading (只); listen to its audio
 - 只得: has characters with more than one reading (只得); listen to its audio
 - 只顾: has characters with more than one reading (只); listen to its audio
@@ -1450,6 +1474,8 @@ Sentences come from Tatoeba (native Mandarin speakers only); see tools/sentences
 - 中学生: has characters with more than one reading (中); listen to its audio
 - 中央: has characters with more than one reading (中); listen to its audio
 - 中药: has characters with more than one reading (中); listen to its audio
+- 种: has characters with more than one reading (种); listen to its audio
+- 种: has characters with more than one reading (种); listen to its audio
 - 种类: has characters with more than one reading (种); listen to its audio
 - 种植: has characters with more than one reading (种); listen to its audio
 - 种种: has characters with more than one reading (种); listen to its audio
@@ -1469,6 +1495,8 @@ Sentences come from Tatoeba (native Mandarin speakers only); see tools/sentences
 - 主体: has characters with more than one reading (体); listen to its audio
 - 主要: has characters with more than one reading (要); listen to its audio
 - 注重: has characters with more than one reading (重); listen to its audio
+- 转: has characters with more than one reading (转); listen to its audio
+- 转: has characters with more than one reading (转); listen to its audio
 - 转变: has characters with more than one reading (转); listen to its audio
 - 转告: has characters with more than one reading (转); listen to its audio
 - 转化: has characters with more than one reading (转); listen to its audio
@@ -1479,6 +1507,7 @@ Sentences come from Tatoeba (native Mandarin speakers only); see tools/sentences
 - 转移: has characters with more than one reading (转); listen to its audio
 - 赚钱: has characters with more than one reading (赚); listen to its audio
 - 壮观: has characters with more than one reading (观); listen to its audio
+- 追: has characters with more than one reading (追); listen to its audio
 - 追究: has characters with more than one reading (追); listen to its audio
 - 追求: has characters with more than one reading (追); listen to its audio
 - 仔细: has characters with more than one reading (仔); listen to its audio
@@ -1493,14 +1522,18 @@ Sentences come from Tatoeba (native Mandarin speakers only); see tools/sentences
 - 总量: has characters with more than one reading (量); listen to its audio
 - 总数: has characters with more than one reading (数); listen to its audio
 - 总体: has characters with more than one reading (体); listen to its audio
+- 足: has characters with more than one reading (足); listen to its audio
 - 足够: has characters with more than one reading (足); listen to its audio
 - 足球: has characters with more than one reading (足); listen to its audio
 - 足以: has characters with more than one reading (足); listen to its audio
 - 组合: has characters with more than one reading (合); listen to its audio
 - 组长: has characters with more than one reading (长); listen to its audio
+- 钻: has characters with more than one reading (钻); listen to its audio
+- 钻: has characters with more than one reading (钻); listen to its audio
 - 最好: has characters with more than one reading (好); listen to its audio
 - 罪恶: has characters with more than one reading (恶); listen to its audio
 - 尊重: has characters with more than one reading (重); listen to its audio
+- 作: has characters with more than one reading (作); listen to its audio
 - 作出: has characters with more than one reading (作); listen to its audio
 - 作废: has characters with more than one reading (作); listen to its audio
 - 作家: has characters with more than one reading (作); listen to its audio
