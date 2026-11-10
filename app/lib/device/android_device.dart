@@ -24,7 +24,17 @@ class AndroidDevice implements Device {
   bool _ready = false;
 
   /// Widget providers in android/app/src/main/kotlin.
-  static const _widgets = ['WordOfDayWidget', 'DueWidget', 'FocusCardWidget', 'QuizWidget', 'ScaleWidget'];
+  static const _widgets = [
+    'WordOfDayWidget',
+    'DueWidget',
+    'FocusCardWidget',
+    'QuizWidget',
+    'QuizWhichWidget',
+    'QuizPinyinWidget',
+    'QuizOppositeWidget',
+    'QuizMixWidget',
+    'ScaleWidget',
+  ];
   static const _channel = AndroidNotificationDetails(
     'daily_reminder',
     'Daily reminder',
@@ -142,7 +152,11 @@ class AndroidDevice implements Device {
       await HomeWidget.saveWidgetData<String>('wotd', jsonEncode(words));
       await HomeWidget.saveWidgetData<String>('due', jsonEncode(due));
       await HomeWidget.saveWidgetData<String>('focus', jsonEncode(focus));
-      await HomeWidget.saveWidgetData<String>('quiz', jsonEncode(quizQuestions(library, store, Random())));
+      final rnd = Random();
+      for (final k in QuizKind.values) {
+        await HomeWidget.saveWidgetData<String>(k.key, jsonEncode(quizQuestions(library, store, rnd, kind: k)));
+      }
+      await HomeWidget.saveWidgetData<String>('quizMix', jsonEncode(mixedQuestions(library, store, rnd)));
       await HomeWidget.saveWidgetData<String>('scales', jsonEncode(scaleDays(library, now, days: _widgetDays)));
       await HomeWidget.saveWidgetData<bool>('toneHanzi', store.toneHanzi);
       for (final w in _widgets) {

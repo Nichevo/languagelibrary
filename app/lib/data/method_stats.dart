@@ -10,7 +10,10 @@ const methodLabels = {
   'order': 'Put a scale in order',
   'opposite': 'Pick the opposite',
   'type': 'Type the pinyin',
-  'widget': 'Home-screen quiz (pick the meaning)',
+  'widget': 'Widget: what does it mean?',
+  'widgetWhich': 'Widget: which one is it?',
+  'widgetPinyin': 'Widget: pick the pinyin',
+  'widgetOpposite': 'Widget: what\'s the opposite?',
 };
 
 /// How one practice method has gone.
@@ -187,7 +190,8 @@ bool isRecall(Review r) => r.method == 'cards' && !r.isNew;
 bool isListening(Review r) => r.method == 'listen';
 
 /// Seeing the word (or its meaning) and picking the answer.
-bool isReading(Review r) => const {'meaning', 'reverse', 'pinyin', 'widget'}.contains(r.method);
+bool isReading(Review r) =>
+    const {'meaning', 'reverse', 'pinyin', 'widget', 'widgetWhich', 'widgetPinyin'}.contains(r.method);
 
 /// Words missed at least [minMisses] times since [since], most missed first:
 /// (word id, misses, answers).

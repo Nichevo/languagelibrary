@@ -64,6 +64,30 @@
             </intent-filter>
             <meta-data android:name="android.appwidget.provider" android:resource="@xml/widget_quiz_info" />
         </receiver>
+        <receiver android:name=".QuizWhichWidget" android:label="@string/widget_quiz_which_name" android:exported="true">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data android:name="android.appwidget.provider" android:resource="@xml/widget_quiz_which_info" />
+        </receiver>
+        <receiver android:name=".QuizPinyinWidget" android:label="@string/widget_quiz_pinyin_name" android:exported="true">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data android:name="android.appwidget.provider" android:resource="@xml/widget_quiz_pinyin_info" />
+        </receiver>
+        <receiver android:name=".QuizOppositeWidget" android:label="@string/widget_quiz_opposite_name" android:exported="true">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data android:name="android.appwidget.provider" android:resource="@xml/widget_quiz_opposite_info" />
+        </receiver>
+        <receiver android:name=".QuizMixWidget" android:label="@string/widget_quiz_mix_name" android:exported="true">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data android:name="android.appwidget.provider" android:resource="@xml/widget_quiz_mix_info" />
+        </receiver>
         <receiver android:name=".ScaleWidget" android:label="@string/widget_scale_name" android:exported="true">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />

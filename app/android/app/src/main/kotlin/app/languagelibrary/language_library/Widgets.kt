@@ -190,19 +190,22 @@ class FocusCardWidget : HomeWidgetProvider() {
     }
 }
 
-/** 4 × 3: "What does it mean?" with four meanings to tap. The app saves the questions. */
-class QuizWidget : HomeWidgetProvider() {
+/**
+ * 4 × 3 quick questions: a word (or its meaning) and four answers to tap, then Next.
+ * The app saves each widget's questions under [feed] (lib/data/widget_feed.dart),
+ * already worded, so every kind lays out the same way.
+ */
+abstract class QuizBase(private val feed: String, private val stateName: String) : HomeWidgetProvider() {
     companion object {
         private const val PICK = "app.languagelibrary.language_library.QUIZ_PICK"
         private const val NEXT = "app.languagelibrary.language_library.QUIZ_NEXT"
-        private const val STATE = "QuizWidgetState"
         private val options = intArrayOf(R.id.o0, R.id.o1, R.id.o2, R.id.o3)
     }
 
     override fun onReceive(context: Context, intent: Intent) {
         if (intent.action == PICK || intent.action == NEXT) {
-            val state = context.getSharedPreferences(STATE, Context.MODE_PRIVATE)
-            val questions = WidgetData.list(HomeWidgetPlugin.getData(context), "quiz")
+            val state = context.getSharedPreferences(stateName, Context.MODE_PRIVATE)
+            val questions = WidgetData.list(HomeWidgetPlugin.getData(context), feed)
             val edit = state.edit()
             // The score counts today's answers only.
             if (state.getString("day", "") != WidgetData.today()) {
@@ -215,7 +218,7 @@ class QuizWidget : HomeWidgetProvider() {
                 val right = (if (sameDay) state.getInt("right", 0) else 0) + if (pick == q.optInt("right")) 1 else 0
                 val done = (if (sameDay) state.getInt("done", 0) else 0) + 1
                 edit.putInt("picked", pick).putInt("right", right).putInt("done", done)
-                logAnswer(context, q.optString("id"), pick == q.optInt("right"), state.getLong("shown", 0L))
+                logAnswer(context, q.optString("id"), q.optString("method", "widget"), pick == q.optInt("right"), state.getLong("shown", 0L))
             } else if (intent.action == NEXT) {
                 val count = questions.length()
                 val next = if (count > 0) (state.getInt("index", 0) + 1) % count else 0
@@ -223,7 +226,7 @@ class QuizWidget : HomeWidgetProvider() {
             }
             edit.apply()
             val manager = AppWidgetManager.getInstance(context)
-            val ids = manager.getAppWidgetIds(ComponentName(context, QuizWidget::class.java))
+            val ids = manager.getAppWidgetIds(ComponentName(context, this::class.java))
             onUpdate(context, manager, ids, HomeWidgetPlugin.getData(context))
             return
         }
@@ -235,27 +238,27 @@ class QuizWidget : HomeWidgetProvider() {
      * time it opens (lib/data/widget_feed.dart widgetAnswers). The app remembers
      * the last one it took, so the log just keeps the latest few hundred.
      */
-    private fun logAnswer(context: Context, id: String, ok: Boolean, shown: Long) {
+    private fun logAnswer(context: Context, id: String, method: String, ok: Boolean, shown: Long) {
         if (id.isEmpty()) return
         val prefs = HomeWidgetPlugin.getData(context)
         val log = WidgetData.list(prefs, "quizLog")
         val now = System.currentTimeMillis()
         val ms = if (shown in 1..now && now - shown < 10 * 60 * 1000) now - shown else 0L
-        log.put(JSONObject().put("id", id).put("ok", ok).put("at", now).put("ms", ms))
+        log.put(JSONObject().put("id", id).put("ok", ok).put("at", now).put("ms", ms).put("method", method))
         val kept = JSONArray()
         for (i in maxOf(0, log.length() - 500) until log.length()) kept.put(log.get(i))
         prefs.edit().putString("quizLog", kept.toString()).apply()
     }
 
     private fun self(context: Context, action: String, code: Int, opt: Int = -1): PendingIntent {
-        val i = Intent(context, QuizWidget::class.java).setAction(action)
+        val i = Intent(context, this::class.java).setAction(action)
         if (opt >= 0) i.putExtra("opt", opt)
         return PendingIntent.getBroadcast(context, code, i, PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE)
     }
 
     override fun onUpdate(context: Context, appWidgetManager: AppWidgetManager, appWidgetIds: IntArray, widgetData: SharedPreferences) {
-        val questions = WidgetData.list(widgetData, "quiz")
-        val state = context.getSharedPreferences(STATE, Context.MODE_PRIVATE)
+        val questions = WidgetData.list(widgetData, feed)
+        val state = context.getSharedPreferences(stateName, Context.MODE_PRIVATE)
         val picked = state.getInt("picked", -1)
         val tone = widgetData.getBoolean("toneHanzi", true)
         val today = state.getString("day", "") == WidgetData.today()
@@ -275,12 +278,25 @@ class QuizWidget : HomeWidgetProvider() {
             val q = questions.getJSONObject(state.getInt("index", 0).coerceIn(0, questions.length() - 1))
             val answer = q.optInt("right")
             val opts = q.optJSONArray("opts") ?: JSONArray()
-            v.setTextViewText(R.id.hz, WidgetData.toned(context, q.optString("hz"), q.optString("tones"), tone))
-            WidgetData.hanziSize(v, q.optString("hz"), wide = true)
-            v.setTextViewText(R.id.py, if (picked >= 0) q.optString("py") else "")
+            // Questions saved before the kinds existed have only "hz" and "py".
+            val big = q.optString("big", q.optString("hz"))
+            val bigHanzi = q.optBoolean("bigHanzi", true)
+            val optsHanzi = q.optBoolean("optsHanzi", false)
+            v.setTextViewText(R.id.title, q.optString("title", "WHAT DOES IT MEAN?"))
+            if (bigHanzi) {
+                v.setTextViewText(R.id.hz, WidgetData.toned(context, big, q.optString("tones"), tone))
+                WidgetData.hanziSize(v, big, wide = true)
+                v.setInt(R.id.hz, "setMaxLines", 1)
+            } else {
+                v.setTextViewText(R.id.hz, big)
+                v.setTextViewTextSize(R.id.hz, TypedValue.COMPLEX_UNIT_SP, if (big.length <= 14) 28f else 20f)
+                v.setInt(R.id.hz, "setMaxLines", 2)
+            }
+            v.setTextViewText(R.id.py, if (picked >= 0) q.optString("after", q.optString("py")) else "")
             v.setTextViewText(R.id.score, if (done == 0) "" else "$right of $done today")
             for ((n, o) in options.withIndex()) {
                 v.setTextViewText(o, opts.optString(n))
+                v.setTextViewTextSize(o, TypedValue.COMPLEX_UNIT_SP, if (optsHanzi) 24f else 15f)
                 val bg = when {
                     picked < 0 -> R.drawable.widget_option
                     n == answer -> R.drawable.widget_option_right
@@ -294,8 +310,8 @@ class QuizWidget : HomeWidgetProvider() {
                 R.id.status,
                 when {
                     picked < 0 -> "Tap an answer"
-                    picked == answer -> "Right!"
-                    else -> "It means: " + opts.optString(answer)
+                    picked == answer -> q.optString("rightMsg", "Right!")
+                    else -> q.optString("wrongMsg", "It means: " + opts.optString(answer))
                 },
             )
             v.setOnClickPendingIntent(R.id.next, self(context, NEXT, 20))
@@ -304,6 +320,21 @@ class QuizWidget : HomeWidgetProvider() {
         }
     }
 }
+
+/** "What does it mean?": the characters, pick the English. */
+class QuizWidget : QuizBase("quiz", "QuizWidgetState")
+
+/** "Which one is it?": the English, pick the characters. */
+class QuizWhichWidget : QuizBase("quizWhich", "QuizWhichWidgetState")
+
+/** "Pick the pinyin": the characters, pick the pinyin with the right tones. */
+class QuizPinyinWidget : QuizBase("quizPinyin", "QuizPinyinWidgetState")
+
+/** "What's the opposite?": a word, pick its opposite. */
+class QuizOppositeWidget : QuizBase("quizOpposite", "QuizOppositeWidgetState")
+
+/** All the kinds above, taking turns. */
+class QuizMixWidget : QuizBase("quizMix", "QuizMixWidgetState")
 
 /** 4 × 2: a scale of words in order (cold → hot), a different one each day. Tap to open it. */
 class ScaleWidget : HomeWidgetProvider() {
