@@ -4,6 +4,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:language_library/data/daily.dart';
 import 'package:language_library/data/user_store.dart';
 import 'package:language_library/data/widget_feed.dart';
+import 'package:language_library/srs/scheduler.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'logic_test.dart' show loadRealLibrary;
@@ -46,5 +47,34 @@ void main() {
     expect(days.first['name'], first.name);
     expect((days.first['words'] as List).length, first.items.length);
     expect({for (final d in days) d['i']}.length, lib.scales.length);
+  });
+
+  test('quiz widget answers are added to the practice log once, in time order', () async {
+    SharedPreferences.setMockInitialValues({});
+    final store = await UserStore.open();
+    final t = DateTime(2026, 11, 10, 9);
+    await store.logAnswer(Rating.good, const Duration(seconds: 5), t.add(const Duration(minutes: 10)),
+        method: 'meaning', id: 'later');
+    final ms = t.millisecondsSinceEpoch;
+    final log = '[{"id":"a","ok":true,"at":$ms,"ms":4000},'
+        '{"id":"b","ok":false,"at":${ms + 60000},"ms":900000},'
+        '{"bad":1}]';
+    final answers = widgetAnswers(log);
+    expect(answers.length, 2, reason: 'unreadable entries are skipped');
+    expect(await store.addWidgetAnswers(answers), 2);
+    expect([for (final r in store.reviews) r.id], ['a', 'b', 'later']);
+    final a = store.reviews.first;
+    expect(a.method, 'widget');
+    expect(a.right, isTrue);
+    expect(a.spent, const Duration(seconds: 4));
+    expect(store.reviews[1].right, isFalse);
+    expect(store.reviews[1].spent, UserStore.maxSpent, reason: 'time on one answer is capped');
+    // The same log read again adds nothing; a newer answer is added.
+    expect(await store.addWidgetAnswers(answers), 0);
+    final more = widgetAnswers('[{"id":"c","ok":true,"at":${ms + 120000}}]');
+    expect(await store.addWidgetAnswers(more), 1);
+    expect(store.reviews.where((r) => r.method == 'widget').length, 3);
+    expect(widgetAnswers(null), isEmpty);
+    expect(widgetAnswers('not json'), isEmpty);
   });
 }
