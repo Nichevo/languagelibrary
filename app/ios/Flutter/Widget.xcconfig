@@ -1,0 +1,2 @@
+// Build settings for the home-screen widget: Flutter's version numbers only.
+#include "Generated.xcconfig"

@@ -7,6 +7,7 @@ import 'common.dart';
 import 'entry_screen.dart';
 import 'entry_tile.dart';
 import 'settings_screen.dart';
+import 'wide.dart';
 
 class LibraryScreen extends StatefulWidget {
   const LibraryScreen({super.key});
@@ -19,6 +20,9 @@ class _LibraryScreenState extends State<LibraryScreen> {
   String _query = '';
   String? _topic;
 
+  /// The word shown beside the list on a wide screen.
+  String? _selected;
+
   @override
   Widget build(BuildContext context) {
     final scope = AppScope.of(context);
@@ -29,7 +33,7 @@ class _LibraryScreenState extends State<LibraryScreen> {
     final library = scope.library;
     final store = scope.store;
     final results = library.search(_query, topic: _topic, shown: store.shows);
-    return Scaffold(
+    final list = Scaffold(
       appBar: AppBar(title: const Text('Library'), actions: const [SettingsButton()]),
       body: Column(
         children: [
@@ -80,6 +84,27 @@ class _LibraryScreenState extends State<LibraryScreen> {
         ],
       ),
     );
+    if (!isWide(context)) return list;
+
+    // iPad and other big screens: the list on the left, the word on the right.
+    final shownId = _selected ??
+        wordOfTheDay(library, DateTime.now(), shown: store.shows)?.id ??
+        (results.isEmpty ? null : results.first.id);
+    final shown = shownId == null ? null : library.byId[shownId];
+    return Row(
+      children: [
+        SizedBox(
+          width: 400,
+          child: EntryPicker(selected: shown?.id, onPick: (e) => setState(() => _selected = e.id), child: list),
+        ),
+        const VerticalDivider(width: 1),
+        Expanded(
+          child: shown == null
+              ? const Scaffold(body: Center(child: Text('Pick a word on the left')))
+              : EntryScreen(shown, key: ValueKey(shown.id)),
+        ),
+      ],
+    );
   }
 
   Widget _chip(String label, String? topic) => Padding(
@@ -107,7 +132,11 @@ class _WordOfTheDay extends StatelessWidget {
         color: theme.colorScheme.secondaryContainer,
         clipBehavior: Clip.antiAlias,
         child: InkWell(
-          onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => EntryScreen(entry))),
+          onTap: () {
+            final picker = EntryPicker.maybeOf(context);
+            if (picker != null) return picker.onPick(entry);
+            Navigator.of(context).push(MaterialPageRoute(builder: (_) => EntryScreen(entry)));
+          },
           child: Padding(
             padding: const EdgeInsets.fromLTRB(16, 10, 4, 10),
             child: Row(

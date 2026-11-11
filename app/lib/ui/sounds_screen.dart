@@ -8,6 +8,7 @@ import '../srs/scheduler.dart';
 import 'common.dart';
 import 'entry_screen.dart';
 import 'entry_tile.dart';
+import 'wide.dart';
 
 /// The first meaning, without bracketed notes: "hemp", "to say".
 String shortMeaning(Entry e) =>
@@ -317,7 +318,7 @@ class _ToneSetScreenState extends State<ToneSetScreen> {
         final allStarred = words.every((e) => store.isStarred(e.id));
         return Scaffold(
           appBar: AppBar(title: Text('${widget.set.syllable} in ${words.length} tones')),
-          body: ListView(
+          body: Readable(child: ListView(
             padding: const EdgeInsets.fromLTRB(16, 0, 16, 32),
             children: [
               Text('Same sound, different tone, different word. Listen to them one after another.',
@@ -359,7 +360,7 @@ class _ToneSetScreenState extends State<ToneSetScreen> {
               const SizedBox(height: 8),
               Text(soundsSourceNote, style: theme.textTheme.bodySmall),
             ],
-          ),
+          )),
         );
       },
     );
@@ -476,7 +477,7 @@ class _ToneQuizScreenState extends State<ToneQuizScreen> {
     final answered = _picked != null;
     return Scaffold(
       appBar: AppBar(title: const Text('Hear it, pick the tone')),
-      body: queue.isEmpty
+      body: Readable(child: queue.isEmpty
           ? Center(
               child: Padding(
                 padding: const EdgeInsets.all(32),
@@ -536,7 +537,7 @@ class _ToneQuizScreenState extends State<ToneQuizScreen> {
                     ),
                 ],
               ),
-            ),
+            )),
     );
   }
 

@@ -9,6 +9,7 @@ import 'sounds_screen.dart';
 import 'families_screen.dart';
 import 'patterns_screen.dart';
 import '../data/sounds.dart';
+import 'wide.dart';
 
 class EntryScreen extends StatelessWidget {
   const EntryScreen(this.entry, {super.key});
@@ -41,7 +42,7 @@ class EntryScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(actions: [StarButton(entry), _ListsButton(entry)]),
-      body: ListenableBuilder(
+      body: Readable(child: ListenableBuilder(
         listenable: store,
         builder: (context, _) => ListView(
           padding: const EdgeInsets.fromLTRB(20, 0, 20, 32),
@@ -224,7 +225,7 @@ class EntryScreen extends StatelessWidget {
             ]),
           ],
         ),
-      ),
+      )),
     );
   }
 

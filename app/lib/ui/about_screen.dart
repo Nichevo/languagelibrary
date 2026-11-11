@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 
 import 'common.dart';
 import 'entry_screen.dart';
+import 'wide.dart';
 
 /// Where every piece of data comes from, the licenses, and reported problems.
 class AboutScreen extends StatelessWidget {
@@ -60,7 +61,7 @@ class AboutScreen extends StatelessWidget {
     final theme = Theme.of(context);
     return Scaffold(
       appBar: AppBar(title: const Text('About')),
-      body: ListenableBuilder(
+      body: Readable(child: ListenableBuilder(
         listenable: store,
         builder: (context, _) => ListView(
           padding: const EdgeInsets.all(16),
@@ -123,7 +124,7 @@ class AboutScreen extends StatelessWidget {
             ],
           ],
         ),
-      ),
+      )),
     );
   }
 }

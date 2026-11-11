@@ -3,9 +3,12 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 
 import '../data/storage.dart';
+import '../data/user_store.dart';
+import '../sync/dropbox_sync.dart';
 import 'about_screen.dart';
 import 'common.dart';
 import 'content_screen.dart';
+import 'wide.dart';
 
 /// The gear in each tab's app bar that opens [SettingsScreen].
 class SettingsButton extends StatelessWidget {
@@ -29,7 +32,7 @@ class SettingsScreen extends StatelessWidget {
     final store = scope.store;
     return Scaffold(
       appBar: AppBar(title: const Text('Settings')),
-      body: ListenableBuilder(
+      body: Readable(child: ListenableBuilder(
         listenable: store,
         builder: (context, _) {
           return ListView(
@@ -134,6 +137,8 @@ class SettingsScreen extends StatelessWidget {
                   },
                 ),
               const Divider(),
+              const SyncSection(),
+              const Divider(),
               const ListTile(title: Text('Your progress')),
               ListTile(
                 leading: const Icon(Icons.save_alt),
@@ -149,8 +154,14 @@ class SettingsScreen extends StatelessWidget {
               ListTile(
                 leading: const Icon(Icons.restore),
                 title: const Text('Restore from a file'),
-                subtitle: const Text('Replaces what is on this phone'),
+                subtitle: const Text('Replaces what is on this device'),
                 onTap: () => _restore(context),
+              ),
+              ListTile(
+                leading: const Icon(Icons.merge_type),
+                title: const Text('Add progress from a file'),
+                subtitle: const Text('Joins a backup from your other device with this one, keeping both'),
+                onTap: () => _join(context),
               ),
               const Divider(),
               const StorageSection(),
@@ -164,7 +175,7 @@ class SettingsScreen extends StatelessWidget {
             ],
           );
         },
-      ),
+      )),
     );
   }
 
@@ -175,6 +186,18 @@ class SettingsScreen extends StatelessWidget {
       ScaffoldMessenger.of(context)
         ..hideCurrentSnackBar()
         ..showSnackBar(SnackBar(content: Text(text)));
+
+  Future<void> _join(BuildContext context) async {
+    final scope = AppScope.of(context);
+    final bytes = await scope.device.openFile();
+    if (bytes == null || !context.mounted) return;
+    try {
+      final result = await scope.store.mergeFrom(UserStore.backupData(utf8.decode(bytes, allowMalformed: true)));
+      if (context.mounted) _say(context, result.describe());
+    } on FormatException catch (e) {
+      if (context.mounted) _say(context, e.message);
+    }
+  }
 
   Future<void> _restore(BuildContext context) async {
     final scope = AppScope.of(context);
@@ -278,4 +301,105 @@ String _contentSummary(Set<int> levels, bool sentences) {
   }
   final hsk = parts.isEmpty ? 'No HSK levels' : 'HSK ${parts.join(', ')}';
   return sentences ? '$hsk and the phrasebook' : hsk;
+}
+
+/// Dropbox sync: link once on each device, and progress is joined whenever
+/// the app opens or is put away.
+class SyncSection extends StatelessWidget {
+  const SyncSection({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final scope = AppScope.of(context);
+    final sync = scope.sync;
+    if (sync == null) return const SizedBox.shrink();
+    return ListenableBuilder(
+      listenable: sync,
+      builder: (context, _) {
+        final theme = Theme.of(context);
+        final error = sync.lastError;
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            const ListTile(
+              title: Text('Sync with your other devices'),
+              subtitle: Text('Keeps stars, lists, scores and flashcard progress the same on your phone and iPad. '
+                  'Settings stay separate on each.'),
+            ),
+            if (!sync.linked)
+              ListTile(
+                leading: const Icon(Icons.cloud_outlined),
+                title: const Text('Link Dropbox'),
+                subtitle: const Text('Do this once on each device. The app only sees its own folder in your Dropbox.'),
+                trailing: sync.busy ? const _Spinner() : const Icon(Icons.chevron_right),
+                onTap: sync.busy ? null : () => sync.link(scope.store),
+              )
+            else ...[
+              ListTile(
+                leading: const Icon(Icons.cloud_done_outlined),
+                title: const Text('Dropbox'),
+                subtitle: Text(sync.busy
+                    ? 'Syncing…'
+                    : sync.lastSync == null
+                        ? 'Linked, not synced yet'
+                        : 'Last synced ${_ago(sync.lastSync!)}. ${sync.lastResult ?? ''}'),
+                trailing: sync.busy
+                    ? const _Spinner()
+                    : TextButton(
+                        onPressed: () async {
+                          final r = await sync.sync(scope.store);
+                          if (r != null && context.mounted) SettingsScreen._say(context, r.describe());
+                        },
+                        child: const Text('Sync now'),
+                      ),
+              ),
+              ListTile(
+                leading: const Icon(Icons.link_off),
+                title: const Text('Unlink Dropbox'),
+                subtitle: const Text('Stops syncing on this device. Your progress here stays.'),
+                onTap: () => _unlink(context, sync),
+              ),
+            ],
+            if (error != null)
+              Padding(
+                padding: const EdgeInsets.fromLTRB(16, 0, 16, 8),
+                child: Text(error, style: TextStyle(color: theme.colorScheme.error)),
+              ),
+          ],
+        );
+      },
+    );
+  }
+
+  static String _ago(DateTime t) {
+    final d = DateTime.now().difference(t);
+    if (d.inMinutes < 1) return 'just now';
+    if (d.inMinutes < 60) return '${d.inMinutes} min ago';
+    if (d.inHours < 24) return '${d.inHours} h ago';
+    return '${d.inDays} ${d.inDays == 1 ? 'day' : 'days'} ago';
+  }
+
+  Future<void> _unlink(BuildContext context, DropboxSync sync) async {
+    final ok = await showDialog<bool>(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text('Unlink Dropbox?'),
+        content: const Text('This device stops syncing. Nothing is deleted here or in Dropbox, '
+            'and you can link again any time.'),
+        actions: [
+          TextButton(onPressed: () => Navigator.pop(context, false), child: const Text('Cancel')),
+          FilledButton(onPressed: () => Navigator.pop(context, true), child: const Text('Unlink')),
+        ],
+      ),
+    );
+    if (ok == true) await sync.unlink();
+  }
+}
+
+class _Spinner extends StatelessWidget {
+  const _Spinner();
+
+  @override
+  Widget build(BuildContext context) =>
+      const SizedBox(width: 20, height: 20, child: CircularProgressIndicator(strokeWidth: 2));
 }

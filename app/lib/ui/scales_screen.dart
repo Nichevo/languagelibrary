@@ -8,6 +8,7 @@ import 'common.dart';
 import 'entry_screen.dart';
 import 'entry_tile.dart';
 import 'pairs_practice.dart';
+import 'wide.dart';
 
 /// Shown on scale screens: the order is ours, the words and meanings are not.
 const scaleSourceNote = 'Order picked by this app. Words, pinyin and meanings from HSK and CC-CEDICT.';
@@ -209,7 +210,7 @@ class _ScaleScreenState extends State<ScaleScreen> {
         final allStarred = items.every((i) => store.isStarred(i.entry.id));
         return Scaffold(
           appBar: AppBar(title: Text(s.name)),
-          body: ListView(
+          body: Readable(child: ListView(
             padding: const EdgeInsets.fromLTRB(16, 0, 16, 32),
             children: [
               Text('${items.length} words, from ${s.from} to ${s.to}', style: theme.textTheme.bodyMedium),
@@ -310,7 +311,7 @@ class _ScaleScreenState extends State<ScaleScreen> {
               ),
               Text(scaleSourceNote, style: theme.textTheme.bodySmall),
             ],
-          ),
+          )),
         );
       },
     );
@@ -679,7 +680,7 @@ class _OrderPracticeScreenState extends State<OrderPracticeScreen> {
     final items = widget.scale.items;
     return Scaffold(
       appBar: AppBar(title: Text(widget.scale.name)),
-      body: SafeArea(
+      body: Readable(child: SafeArea(
         top: false,
         child: ListView(
           padding: const EdgeInsets.fromLTRB(16, 16, 16, 24),
@@ -702,7 +703,7 @@ class _OrderPracticeScreenState extends State<OrderPracticeScreen> {
               ),
           ],
         ),
-      ),
+      )),
     );
   }
 }

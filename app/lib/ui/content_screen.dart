@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'common.dart';
+import 'wide.dart';
 
 /// Rough guide to what each HSK level is for, in plain words.
 String levelBlurb(int level) => switch (level) {
@@ -36,7 +37,7 @@ class ContentScreen extends StatelessWidget {
     }
     return Scaffold(
       appBar: AppBar(title: const Text('Levels and content')),
-      body: ListenableBuilder(
+      body: Readable(child: ListenableBuilder(
         listenable: store,
         builder: (context, _) => ListView(
           padding: const EdgeInsets.only(bottom: 24),
@@ -70,7 +71,7 @@ class ContentScreen extends StatelessWidget {
             ),
           ],
         ),
-      ),
+      )),
     );
   }
 }

@@ -6,6 +6,7 @@ import 'patterns_screen.dart';
 import 'scales_screen.dart';
 import 'settings_screen.dart';
 import 'sounds_screen.dart';
+import 'wide.dart';
 
 /// A way of learning on the Learn tab: a card that opens its own page.
 class LearnSection {
@@ -36,7 +37,7 @@ class LearnScreen extends StatelessWidget {
     final theme = Theme.of(context);
     return Scaffold(
       appBar: AppBar(title: const Text('Learn'), actions: const [SettingsButton()]),
-      body: ListView(
+      body: Readable(child: ListView(
         padding: const EdgeInsets.fromLTRB(12, 4, 12, 24),
         children: [
           Padding(
@@ -55,7 +56,7 @@ class LearnScreen extends StatelessWidget {
               ),
             ),
         ],
-      ),
+      )),
     );
   }
 }
@@ -82,7 +83,7 @@ class _LearnPageState extends State<LearnPage> {
         final matching = q.isEmpty ? null : {for (final e in scope.library.search(q, shown: scope.store.shows)) e.id};
         return Scaffold(
           appBar: AppBar(title: Text(widget.section.title)),
-          body: Column(
+          body: Readable(child: Column(
             children: [
               Padding(
                 padding: const EdgeInsets.fromLTRB(16, 4, 16, 8),
@@ -98,7 +99,7 @@ class _LearnPageState extends State<LearnPage> {
               ),
               Expanded(child: widget.section.view(q, matching)),
             ],
-          ),
+          )),
         );
       },
     );

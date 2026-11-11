@@ -9,6 +9,7 @@ import 'patterns_screen.dart';
 import 'practice_screen.dart';
 import 'settings_screen.dart';
 import 'sounds_screen.dart';
+import 'wide.dart';
 
 class PracticeHome extends StatelessWidget {
   const PracticeHome({super.key});
@@ -19,7 +20,7 @@ class PracticeHome extends StatelessWidget {
     final store = scope.store;
     return Scaffold(
       appBar: AppBar(title: const Text('Practice'), actions: const [SettingsButton()]),
-      body: ListenableBuilder(
+      body: Readable(child: ListenableBuilder(
         listenable: store,
         builder: (context, _) {
           final now = DateTime.now();
@@ -109,7 +110,7 @@ class PracticeHome extends StatelessWidget {
             ],
           );
         },
-      ),
+      )),
     );
   }
 }

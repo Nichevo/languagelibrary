@@ -6,6 +6,7 @@ import '../data/library.dart';
 import '../srs/scheduler.dart';
 import 'common.dart';
 import 'entry_screen.dart';
+import 'wide.dart';
 
 /// Shown on pattern screens: the rules are summarised from Chinese Grammar Wiki,
 /// the sentences are from the phrasebook, and the chunks are ours.
@@ -176,7 +177,7 @@ class PatternScreen extends StatelessWidget {
         );
     return Scaffold(
       appBar: AppBar(title: Text(p.name)),
-      body: ListView(
+      body: Readable(child: ListView(
         padding: const EdgeInsets.fromLTRB(16, 0, 16, 32),
         children: [
           Text(p.rule, style: theme.textTheme.bodyLarge),
@@ -227,7 +228,7 @@ class PatternScreen extends StatelessWidget {
           const SizedBox(height: 8),
           Text(patternsSourceNote, style: theme.textTheme.bodySmall),
         ],
-      ),
+      )),
     );
   }
 }
@@ -344,7 +345,7 @@ class _BuildSentenceScreenState extends State<BuildSentenceScreen> {
     final bad = dark ? const Color(0xFF5D2B2B) : const Color(0xFFFFDAD6);
     return Scaffold(
       appBar: AppBar(title: const Text('Build the sentence')),
-      body: queue.isEmpty
+      body: Readable(child: queue.isEmpty
           ? Center(
               child: Padding(
                 padding: const EdgeInsets.all(32),
@@ -469,7 +470,7 @@ class _BuildSentenceScreenState extends State<BuildSentenceScreen> {
                   ],
                 );
               }),
-            ),
+            )),
     );
   }
 }

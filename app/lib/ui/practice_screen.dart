@@ -6,6 +6,7 @@ import '../data/user_store.dart';
 import '../models/entry.dart';
 import '../srs/scheduler.dart';
 import 'common.dart';
+import 'wide.dart';
 
 /// One flashcard to show: an entry in one direction.
 class PracticeCard {
@@ -208,7 +209,7 @@ class _PracticeScreenState extends State<PracticeScreen> {
           ),
         ],
       ),
-      body: queue.isEmpty
+      body: Readable(child: queue.isEmpty
           ? Center(
               child: Padding(
                 padding: const EdgeInsets.all(32),
@@ -220,7 +221,7 @@ class _PracticeScreenState extends State<PracticeScreen> {
               ),
             )
           // Keeps the buttons above the phone's own navigation bar.
-          : SafeArea(top: false, child: _buildCard(context, queue.first, queue.length)),
+          : SafeArea(top: false, child: _buildCard(context, queue.first, queue.length))),
     );
   }
 

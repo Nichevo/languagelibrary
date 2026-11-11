@@ -23,7 +23,7 @@ import java.util.Date
 import java.util.Locale
 import kotlin.random.Random
 
-/** Shared helpers. The app writes JSON lists with HomeWidget.saveWidgetData; see lib/device/android_device.dart. */
+/** Shared helpers. The app writes JSON lists with HomeWidget.saveWidgetData; see lib/device/native_device.dart. */
 internal object WidgetData {
     fun today(): String = SimpleDateFormat("yyyy-MM-dd", Locale.US).format(Date())
 

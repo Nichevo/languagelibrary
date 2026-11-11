@@ -1,6 +1,6 @@
 # Language Library
 
-An offline Android app (Flutter) for learning Mandarin: a small, checked library of
+An offline Android and iPad app (Flutter) for learning Mandarin: a small, checked library of
 words and phrases, a Focus list of the ones you are working on, and two-way
 flashcards with spaced repetition.
 
@@ -60,6 +60,46 @@ uninstall of any older test build; after that, updates install over the top.
 
 To build yourself: install [Flutter](https://docs.flutter.dev/get-started/install),
 then `cd app && flutter run` with the phone plugged in.
+
+## Installing on your iPad
+
+The iPad app is installed with [AltServer](https://altstore.io) on a Windows PC and
+your own Apple ID, so no Mac or App Store is needed.
+
+### Getting the iPad file
+
+Actions tab → **Build iPad app** → **Run workflow**. It takes about 5 minutes on
+a Mac that GitHub provides, then puts `LanguageLibrary.ipa` on the repo's
+**Releases** page. It isn't run on every change, because each Mac minute uses 10
+of the private repo's free Actions minutes (so one build uses about 50).
+
+### First install (about 20 minutes)
+
+1. On the PC, install **iTunes** and **iCloud** from Apple's website (not the
+   Microsoft Store versions, which AltServer can't use).
+2. Install **AltServer** from altstore.io and start it. It sits in the system tray.
+3. Plug in the iPad, unlock it and tap **Trust**. In iTunes, turn on
+   **Sync with this iPad over Wi-Fi** so later refreshes work without the cable.
+4. AltServer tray icon → **Install AltStore** → your iPad. Sign in with your Apple ID.
+5. On the iPad: **Settings → General → VPN & Device Management**, trust your Apple ID.
+   If asked, turn on **Settings → Privacy & Security → Developer Mode** and restart.
+6. Get `LanguageLibrary.ipa` from the latest release onto the iPad: download it in
+   Safari while signed in to GitHub, or download it on the PC and put it in Dropbox
+   or iCloud Drive. Then open **AltStore → My Apps → +** and pick the file.
+
+To add a widget: touch and hold the home screen → **Edit → Add Widget** → Language
+Library. For the quick-question widget, touch and hold it → **Edit Widget** to choose
+the kind of question (or Random).
+
+### Living with a free Apple ID
+
+- Apps installed this way last **7 days**. AltStore refreshes them by itself when the
+  PC is on with AltServer running and the iPad is on the same Wi-Fi. If one expires,
+  open AltStore and tap **Refresh All**. Your progress stays either way.
+- A free Apple ID allows 3 sideloaded apps at a time (AltStore is one) and 10 app IDs
+  a week. Language Library uses 2 (the app and its widgets).
+- To update, run **Build iPad app** again and install the new `.ipa` the same way.
+  Progress stays.
 
 ## Rebuilding the word data
 

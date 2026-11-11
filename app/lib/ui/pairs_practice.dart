@@ -7,6 +7,7 @@ import '../models/entry.dart';
 import '../srs/scheduler.dart';
 import 'common.dart';
 import 'scales_screen.dart';
+import 'wide.dart';
 
 /// One question in Pairs & scales practice: put a scale in order, or pick
 /// the opposite of a word.
@@ -110,7 +111,7 @@ class _PairsPracticeScreenState extends State<PairsPracticeScreen> {
     final queue = _queue!;
     return Scaffold(
       appBar: AppBar(title: const Text('Pairs & scales')),
-      body: queue.isEmpty
+      body: Readable(child: queue.isEmpty
           ? Center(
               child: Padding(
                 padding: const EdgeInsets.all(32),
@@ -156,7 +157,7 @@ class _PairsPracticeScreenState extends State<PairsPracticeScreen> {
                     ),
                 ],
               ),
-            ),
+            )),
     );
   }
 

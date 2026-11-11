@@ -11,6 +11,7 @@ import '../srs/scheduler.dart';
 import 'common.dart';
 import 'settings_screen.dart';
 import 'practice_screen.dart';
+import 'wide.dart';
 
 /// The Progress tab: time spent, how well cards are known, and how that changes.
 class StatsScreen extends StatelessWidget {
@@ -21,10 +22,10 @@ class StatsScreen extends StatelessWidget {
     final scope = AppScope.of(context);
     return Scaffold(
       appBar: AppBar(title: const Text('Progress'), actions: const [SettingsButton()]),
-      body: ListenableBuilder(
+      body: Readable(child: ListenableBuilder(
         listenable: scope.store,
         builder: (context, _) => StatsView(library: scope.library, store: scope.store, now: DateTime.now()),
-      ),
+      )),
     );
   }
 }

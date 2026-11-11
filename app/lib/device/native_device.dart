@@ -1,9 +1,10 @@
 import 'dart:async';
 import 'dart:convert';
+import 'dart:io' show Platform;
 import 'dart:math';
-import 'dart:typed_data';
 
 import 'package:file_picker/file_picker.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_timezone/flutter_timezone.dart';
 import 'package:home_widget/home_widget.dart';
@@ -17,11 +18,23 @@ import '../data/widget_feed.dart';
 import '../models/entry.dart';
 import 'device.dart';
 
-/// The real phone: notifications, widgets and the system file dialogs.
-class AndroidDevice implements Device {
+/// The real phone or iPad: notifications, widgets and the system file dialogs.
+class NativeDevice implements Device {
   final _notes = FlutterLocalNotificationsPlugin();
   final _opened = StreamController<String>.broadcast();
   bool _ready = false;
+  final bool _ios = Platform.isIOS;
+
+  /// The app's own settings on iPhone and iPad (ios/Runner/AppDelegate.swift).
+  static const _native = MethodChannel('langlib/device');
+
+  /// The space the app shares with its iPad widgets when nothing says otherwise.
+  /// AltStore renames it when it installs the app, so the real name comes from
+  /// the app itself (see ios/LanguageWidgets/AppGroup.swift).
+  static const _defaultAppGroup = 'group.app.languagelibrary.languageLibrary';
+
+  /// iPad widgets in ios/LanguageWidgets, by kind.
+  static const _iosWidgets = ['WordOfDayWidget', 'DueWidget', 'FocusCardWidget', 'QuizWidget', 'ScaleWidget'];
 
   /// Widget providers in android/app/src/main/kotlin.
   static const _widgets = [
@@ -42,6 +55,7 @@ class AndroidDevice implements Device {
     importance: Importance.defaultImportance,
     priority: Priority.defaultPriority,
   );
+  static const _iosNote = DarwinNotificationDetails();
   static const _reminderDays = 14;
   static const _widgetDays = 31;
 
@@ -51,12 +65,29 @@ class AndroidDevice implements Device {
   @override
   Future<String?> start() async {
     String? first;
+    if (_ios) {
+      var group = _defaultAppGroup;
+      try {
+        group = await _native.invokeMethod<String>('appGroup') ?? group;
+      } catch (_) {}
+      try {
+        await HomeWidget.setAppGroupId(group);
+      } catch (_) {}
+    }
     try {
       tzdata.initializeTimeZones();
       final zone = await FlutterTimezone.getLocalTimezone();
       tz.setLocalLocation(tz.getLocation(zone.identifier));
       await _notes.initialize(
-        settings: const InitializationSettings(android: AndroidInitializationSettings('@mipmap/ic_launcher')),
+        settings: const InitializationSettings(
+          android: AndroidInitializationSettings('@mipmap/ic_launcher'),
+          // Permission is asked for when the reminder is switched on, not at start.
+          iOS: DarwinInitializationSettings(
+            requestAlertPermission: false,
+            requestSoundPermission: false,
+            requestBadgePermission: false,
+          ),
+        ),
         onDidReceiveNotificationResponse: (r) => _opened.add(r.payload ?? 'practice'),
       );
       final launch = await _notes.getNotificationAppLaunchDetails();
@@ -118,7 +149,7 @@ class AndroidDevice implements Device {
           title: due == 1 ? '1 card is due' : '$due cards are due',
           body: 'About ${(due * 0.4).ceil()} minutes. Tap to start practising.',
           scheduledDate: at,
-          notificationDetails: const NotificationDetails(android: _channel),
+          notificationDetails: const NotificationDetails(android: _channel, iOS: _iosNote),
           androidScheduleMode: AndroidScheduleMode.inexactAllowWhileIdle,
           payload: 'practice',
         );
@@ -159,8 +190,8 @@ class AndroidDevice implements Device {
       await HomeWidget.saveWidgetData<String>('quizMix', jsonEncode(mixedQuestions(library, store, rnd)));
       await HomeWidget.saveWidgetData<String>('scales', jsonEncode(scaleDays(library, now, days: _widgetDays)));
       await HomeWidget.saveWidgetData<bool>('toneHanzi', store.toneHanzi);
-      for (final w in _widgets) {
-        await HomeWidget.updateWidget(androidName: w);
+      for (final w in _ios ? _iosWidgets : _widgets) {
+        await (_ios ? HomeWidget.updateWidget(iOSName: w) : HomeWidget.updateWidget(androidName: w));
       }
     } catch (_) {}
   }
@@ -168,6 +199,10 @@ class AndroidDevice implements Device {
   @override
   Future<bool> allowNotifications() async {
     try {
+      if (_ios) {
+        final ios = _notes.resolvePlatformSpecificImplementation<IOSFlutterLocalNotificationsPlugin>();
+        return await ios?.requestPermissions(alert: true, sound: true) ?? false;
+      }
       final android = _notes.resolvePlatformSpecificImplementation<AndroidFlutterLocalNotificationsPlugin>();
       return await android?.requestNotificationsPermission() ?? true;
     } catch (_) {

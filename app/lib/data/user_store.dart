@@ -101,6 +101,14 @@ class UserStore extends ChangeNotifier {
   final Map<String, DateTime> firstKnown = {};
   static final unknownDate = DateTime.fromMillisecondsSinceEpoch(0);
 
+  /// When each starred word, list, card, score and report last changed on this
+  /// device or one it synced with (milliseconds since 1970), keyed like
+  /// 'star:ID', 'list:NAME', 'card:ID:direction', 'diff:ID', 'report:ID'. A sync
+  /// keeps whichever side changed something last, so un-starring carries over.
+  final Map<String, int> stamps = {};
+
+  void _stamp(String key, [DateTime? at]) => stamps[key] = (at ?? DateTime.now()).millisecondsSinceEpoch;
+
   void _load() {
     final raw = _prefs.getString(_key);
     if (raw == null) return;
@@ -117,6 +125,7 @@ class UserStore extends ChangeNotifier {
     reviews.clear();
     snapshots.clear();
     firstKnown.clear();
+    stamps.clear();
     starred.addAll(List<String>.from(j['starred'] as List? ?? const []));
     (j['lists'] as Map? ?? const {}).forEach((k, v) => lists[k as String] = List<String>.from(v as List));
     (j['cards'] as Map? ?? const {})
@@ -152,6 +161,7 @@ class UserStore extends ChangeNotifier {
     (j['snapshots'] as Map? ?? const {}).forEach((k, v) => snapshots[k as String] = Snapshot.fromJson(v as List));
     (j['firstKnown'] as Map? ?? const {}).forEach(
         (k, v) => firstKnown[k as String] = DateTime.fromMillisecondsSinceEpoch((v as int) * 1000));
+    (j['stamps'] as Map? ?? const {}).forEach((k, v) => stamps[k as String] = (v as num).toInt());
     cards.forEach((k, c) {
       if (CardStatus.of(c).index >= CardStatus.familiar.index) firstKnown.putIfAbsent(k, () => unknownDate);
     });
@@ -182,6 +192,7 @@ class UserStore extends ChangeNotifier {
         'reviews': [for (final r in reviews) r.toJson()],
         'snapshots': snapshots.map((k, v) => MapEntry(k, v.toJson())),
         'firstKnown': firstKnown.map((k, v) => MapEntry(k, v.millisecondsSinceEpoch ~/ 1000)),
+        'stamps': stamps,
       };
 
   static const backupFormat = 'language-library-backup';
@@ -197,16 +208,7 @@ class UserStore extends ChangeNotifier {
   /// Replaces everything with a backup made by [exportBackup].
   /// Throws [FormatException] if the file is not one, and changes nothing then.
   Future<void> importBackup(String text) async {
-    final Object? j;
-    try {
-      j = jsonDecode(text);
-    } on FormatException {
-      throw const FormatException('This file is not a Language Library backup.');
-    }
-    if (j is! Map<String, dynamic> || j['format'] != backupFormat || j['data'] is! Map<String, dynamic>) {
-      throw const FormatException('This file is not a Language Library backup.');
-    }
-    final data = j['data'] as Map<String, dynamic>;
+    final data = backupData(text);
     // Check it reads cleanly before touching the current data.
     UserStore._check(data);
     _apply(data);
@@ -223,9 +225,173 @@ class UserStore extends ChangeNotifier {
         Review.fromJson(r as List);
       }
       (data['snapshots'] as Map? ?? const {}).forEach((k, v) => Snapshot.fromJson(v as List));
+      (data['stamps'] as Map? ?? const {}).forEach((k, v) => (k as String, v as num));
     } catch (_) {
       throw const FormatException('This backup file is damaged, so nothing was restored.');
     }
+  }
+
+  /// Joins another device's progress (the data in its sync file or backup)
+  /// into this one, instead of replacing it like [importBackup]: every answer
+  /// from both is kept, and for each star, list, card, score and report the
+  /// side that changed it last wins. Settings stay as they are on this device.
+  /// Throws [FormatException] if the data is damaged, and changes nothing then.
+  Future<MergeResult> mergeFrom(Map<String, dynamic> data) async {
+    _check(data);
+    final theirStamps = <String, int>{
+      for (final MapEntry(:key, :value) in (data['stamps'] as Map? ?? const {}).entries)
+        key as String: (value as num).toInt(),
+    };
+    // Which side to believe for one thing: 1 theirs, -1 mine, 0 changed at the
+    // same time (or never recorded), when both are kept where that makes sense.
+    int side(String key) => (theirStamps[key] ?? 0).compareTo(stamps[key] ?? 0);
+    void keepLatest(String key) {
+      final t = theirStamps[key];
+      if (t != null && t > (stamps[key] ?? 0)) stamps[key] = t;
+    }
+
+    Set<String> keysFrom(String prefix) => {
+          for (final k in theirStamps.keys)
+            if (k.startsWith(prefix)) k.substring(prefix.length),
+        };
+
+    // Stars, keeping this device's order and adding new ones at the end.
+    final theirStarred = List<String>.from(data['starred'] as List? ?? const []);
+    final theirStarSet = theirStarred.toSet();
+    final myStarSet = starred.toSet();
+    var starsAdded = 0, starsRemoved = 0;
+    for (final id in {...theirStarred, ...starred, ...keysFrom('star:')}) {
+      final s = side('star:$id');
+      final want = s > 0
+          ? theirStarSet.contains(id)
+          : s < 0
+              ? myStarSet.contains(id)
+              : myStarSet.contains(id) || theirStarSet.contains(id);
+      if (want && !myStarSet.contains(id)) {
+        starred.add(id);
+        starsAdded++;
+      } else if (!want && myStarSet.contains(id)) {
+        starred.remove(id);
+        starsRemoved++;
+      }
+      keepLatest('star:$id');
+    }
+    // Keep the order the other device starred them in for the new ones.
+    if (starsAdded > 0) {
+      final order = {for (var i = 0; i < theirStarred.length; i++) theirStarred[i]: i};
+      final kept = [for (final id in starred) if (myStarSet.contains(id)) id];
+      final added = [for (final id in starred) if (!myStarSet.contains(id)) id]
+        ..sort((a, b) => (order[a] ?? 0).compareTo(order[b] ?? 0));
+      starred
+        ..clear()
+        ..addAll([...kept, ...added]);
+    }
+
+    // Lists: the newer list wins as a whole; changed at the same time, join them.
+    final theirLists = <String, List<String>>{
+      for (final MapEntry(:key, :value) in (data['lists'] as Map? ?? const {}).entries)
+        key as String: List<String>.from(value as List),
+    };
+    for (final name in {...theirLists.keys, ...lists.keys, ...keysFrom('list:')}) {
+      final s = side('list:$name');
+      final theirs = theirLists[name];
+      if (s > 0) {
+        theirs == null ? lists.remove(name) : lists[name] = List.of(theirs);
+      } else if (s == 0 && theirs != null) {
+        final mine = lists.putIfAbsent(name, () => []);
+        for (final id in theirs) {
+          if (!mine.contains(id)) mine.add(id);
+        }
+      }
+      keepLatest('list:$name');
+    }
+    final starSet = starred.toSet();
+    for (final l in lists.values) {
+      l.removeWhere((id) => !starSet.contains(id));
+    }
+
+    // Flashcards: the one answered last; never answered stamps, the one due later.
+    var cardsUpdated = 0;
+    (data['cards'] as Map? ?? const {}).forEach((k, v) {
+      final key = k as String;
+      final theirs = CardState.fromJson(v as Map<String, dynamic>);
+      final mine = cards[key];
+      final s = side('card:$key');
+      final take = mine == null || s > 0 || (s == 0 && theirs.due.isAfter(mine.due));
+      if (take && (mine == null || jsonEncode(mine.toJson()) != jsonEncode(theirs.toJson()))) {
+        cards[key] = theirs;
+        cardsUpdated++;
+      }
+      keepLatest('card:$key');
+    });
+
+    // Easy / OK / Hard scores and reported problems.
+    void mergeMap<T>(String prefix, Map<String, T> mine, Map<String, T> theirs) {
+      for (final id in {...theirs.keys, ...keysFrom(prefix)}) {
+        final s = side('$prefix$id');
+        if (s > 0 || (s == 0 && !mine.containsKey(id))) {
+          final t = theirs[id];
+          t == null ? mine.remove(id) : mine[id] = t;
+        }
+        keepLatest('$prefix$id');
+      }
+    }
+
+    final theirDifficulty = <String, Difficulty>{
+      for (final MapEntry(:key, :value) in (data['difficulty'] as Map? ?? const {}).entries)
+        key as String: ?Difficulty.values.asNameMap()[value],
+    };
+    mergeMap('diff:', difficulty, theirDifficulty);
+    mergeMap('report:', reported, Map<String, String>.from(data['reported'] as Map? ?? const {}));
+
+    // Every answer from both, once each, in time order.
+    final seen = {for (final r in reviews) jsonEncode(r.toJson())};
+    var answersAdded = 0;
+    for (final r in data['reviews'] as List? ?? const []) {
+      final review = Review.fromJson(r as List);
+      if (seen.add(jsonEncode(review.toJson()))) {
+        reviews.add(review);
+        answersAdded++;
+      }
+    }
+    if (answersAdded > 0) {
+      mergeSort(reviews, compare: (a, b) => a.at.compareTo(b.at));
+      if (reviews.length > maxReviews) reviews.removeRange(0, reviews.length - maxReviews);
+    }
+
+    // Day-by-day counts this device doesn't have, and the earliest date each card became familiar.
+    (data['snapshots'] as Map? ?? const {})
+        .forEach((k, v) => snapshots.putIfAbsent(k as String, () => Snapshot.fromJson(v as List)));
+    (data['firstKnown'] as Map? ?? const {}).forEach((k, v) {
+      final theirs = DateTime.fromMillisecondsSinceEpoch((v as int) * 1000);
+      final mine = firstKnown[k as String];
+      if (mine == null || mine == unknownDate || (theirs != unknownDate && theirs.isBefore(mine))) {
+        firstKnown[k] = theirs;
+      }
+    });
+
+    await _save();
+    return MergeResult(
+      answersAdded: answersAdded,
+      starsAdded: starsAdded,
+      starsRemoved: starsRemoved,
+      cardsUpdated: cardsUpdated,
+    );
+  }
+
+  /// The data part of a sync file or backup made by [exportBackup].
+  /// Throws [FormatException] if [text] is not one.
+  static Map<String, dynamic> backupData(String text) {
+    final Object? j;
+    try {
+      j = jsonDecode(text);
+    } on FormatException {
+      throw const FormatException('This file is not a Language Library backup.');
+    }
+    if (j is! Map<String, dynamic> || j['format'] != backupFormat || j['data'] is! Map<String, dynamic>) {
+      throw const FormatException('This file is not a Language Library backup.');
+    }
+    return j['data'] as Map<String, dynamic>;
   }
 
   Future<void> _save() async {
@@ -241,10 +407,11 @@ class UserStore extends ChangeNotifier {
   bool isStarred(String id) => starred.contains(id);
 
   Future<void> toggleStar(String id) {
+    _stamp('star:$id');
     if (starred.remove(id)) {
-      for (final l in lists.values) {
-        l.remove(id);
-      }
+      lists.forEach((name, l) {
+        if (l.remove(id)) _stamp('list:$name');
+      });
     } else {
       starred.add(id);
     }
@@ -253,19 +420,25 @@ class UserStore extends ChangeNotifier {
 
   Future<void> createList(String name) {
     lists.putIfAbsent(name.trim(), () => []);
+    _stamp('list:${name.trim()}');
     return _save();
   }
 
   Future<void> deleteList(String name) {
     lists.remove(name);
+    _stamp('list:$name');
     return _save();
   }
 
   Future<void> setInList(String list, String id, bool inList) {
     final ids = lists.putIfAbsent(list, () => []);
+    _stamp('list:$list');
     if (inList) {
       if (!ids.contains(id)) ids.add(id);
-      if (!starred.contains(id)) starred.add(id);
+      if (!starred.contains(id)) {
+        starred.add(id);
+        _stamp('star:$id');
+      }
     } else {
       ids.remove(id);
     }
@@ -281,6 +454,7 @@ class UserStore extends ChangeNotifier {
 
   Future<void> saveCard(String id, Direction d, CardState state) {
     cards[cardKey(id, d)] = state;
+    _stamp('card:${cardKey(id, d)}');
     return _save();
   }
 
@@ -288,6 +462,7 @@ class UserStore extends ChangeNotifier {
   Future<void> recordReview(String id, Direction d, CardState state, Rating rating, Duration spent, DateTime now) {
     final isNew = card(id, d) == null;
     cards[cardKey(id, d)] = state;
+    _stamp('card:${cardKey(id, d)}', now);
     if (CardStatus.of(state).index >= CardStatus.familiar.index) firstKnown.putIfAbsent(cardKey(id, d), () => now);
     reviews.add(Review(now, spent > maxSpent ? maxSpent : spent, rating, isNew, id: id));
     if (reviews.length > maxReviews) reviews.removeRange(0, reviews.length - maxReviews);
@@ -383,16 +558,19 @@ class UserStore extends ChangeNotifier {
 
   Future<void> report(String id, String note) {
     reported[id] = note;
+    _stamp('report:$id');
     return _save();
   }
 
   Future<void> clearReport(String id) {
     reported.remove(id);
+    _stamp('report:$id');
     return _save();
   }
 
   /// Pass null to clear the score.
   Future<void> setDifficulty(String id, Difficulty? d) {
+    _stamp('diff:$id');
     if (d == null) {
       difficulty.remove(id);
     } else {
@@ -430,6 +608,31 @@ class UserStore extends ChangeNotifier {
   Future<void> setFemaleVoice(bool v) {
     femaleVoice = v;
     return _save();
+  }
+}
+
+/// What a sync brought in from the other device.
+class MergeResult {
+  const MergeResult({this.answersAdded = 0, this.starsAdded = 0, this.starsRemoved = 0, this.cardsUpdated = 0});
+  final int answersAdded;
+  final int starsAdded;
+  final int starsRemoved;
+  final int cardsUpdated;
+
+  bool get changedAnything => answersAdded + starsAdded + starsRemoved + cardsUpdated > 0;
+
+  /// For example "12 answers, 3 starred words and 8 flashcards from your other device".
+  String describe() {
+    String n(int count, String one, String many) => '$count ${count == 1 ? one : many}';
+    final parts = [
+      if (answersAdded > 0) n(answersAdded, 'answer', 'answers'),
+      if (starsAdded > 0) n(starsAdded, 'starred word', 'starred words'),
+      if (cardsUpdated > 0) n(cardsUpdated, 'flashcard', 'flashcards'),
+      if (starsRemoved > 0) n(starsRemoved, 'unstarred word', 'unstarred words'),
+    ];
+    if (parts.isEmpty) return 'Already up to date';
+    final list = parts.length == 1 ? parts.first : '${parts.sublist(0, parts.length - 1).join(', ')} and ${parts.last}';
+    return 'Added $list from your other device';
   }
 }
 
