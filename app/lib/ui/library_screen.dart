@@ -8,6 +8,8 @@ import 'entry_screen.dart';
 import 'entry_tile.dart';
 import 'scales_screen.dart';
 import 'sounds_screen.dart';
+import 'families_screen.dart';
+import 'patterns_screen.dart';
 
 class LibraryScreen extends StatefulWidget {
   const LibraryScreen({super.key});
@@ -31,7 +33,11 @@ class _LibraryScreenState extends State<LibraryScreen> {
     final store = scope.store;
     final scales = _topic == Library.scalesFilter;
     final sounds = _topic == Library.soundsFilter;
-    final results = library.search(_query, topic: scales || sounds ? null : _topic, shown: store.shows);
+    final fams = _topic == Library.familiesFilter;
+    final pats = _topic == Library.patternsFilter;
+    final special = scales || sounds || fams || pats;
+    final results = library.search(_query, topic: special ? null : _topic, shown: store.shows);
+    final matching = _query.trim().isEmpty ? null : {for (final e in results) e.id};
     return Scaffold(
       appBar: AppBar(title: const Text('Library')),
       body: Column(
@@ -56,8 +62,10 @@ class _LibraryScreenState extends State<LibraryScreen> {
               children: [
                 _chip('All', null),
                 _chip('Pairs & scales', Library.scalesFilter),
-                _chip('Tricky sounds', Library.soundsFilter),
                 if (store.showSentences) _chip('Sentences', Library.sentencesFilter),
+                _chip('Families', Library.familiesFilter),
+                _chip('Patterns', Library.patternsFilter),
+                _chip('Tricky sounds', Library.soundsFilter),
                 for (final t in Library.topics) _chip(topicLabel(t), t),
               ],
             ),
@@ -65,7 +73,11 @@ class _LibraryScreenState extends State<LibraryScreen> {
           if (scales)
             Expanded(child: ScalesView(matching: _query.trim().isEmpty ? null : {for (final e in results) e.id}))
           else if (sounds)
-            Expanded(child: SoundsView(matching: _query.trim().isEmpty ? null : {for (final e in results) e.id}))
+            Expanded(child: SoundsView(matching: matching))
+          else if (fams)
+            Expanded(child: FamiliesView(query: _query.trim(), matching: matching))
+          else if (pats)
+            Expanded(child: PatternsView(matching: matching))
           else ...[
             Padding(
               padding: const EdgeInsets.fromLTRB(16, 4, 16, 4),

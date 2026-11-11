@@ -160,6 +160,7 @@ void main() {
     await tester.pumpWidget(appForTest(loadRealLibrary(), store));
     await tester.tap(find.text('Practice'));
     await tester.pumpAndSettle();
+    await tester.scrollUntilVisible(find.text('Levels and content'), 200, scrollable: find.byType(Scrollable).last);
     expect(find.text('HSK 1–3 and the phrasebook'), findsOneWidget);
     await tester.tap(find.text('Levels and content'));
     await tester.pumpAndSettle();
@@ -288,8 +289,7 @@ void main() {
     await tester.tap(find.text('Practice'));
     await tester.pumpAndSettle();
     final list = find.descendant(of: find.byType(PracticeHome), matching: find.byType(Scrollable)).first;
-    await tester.drag(list, const Offset(0, -3000));
-    await tester.pumpAndSettle();
+    await tester.scrollUntilVisible(find.text('Space on this phone'), 300, scrollable: list);
     // The sizes themselves are checked in daily_test.dart.
     expect(find.text('Space on this phone'), findsOneWidget);
   });

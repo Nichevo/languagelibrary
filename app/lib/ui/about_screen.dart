@@ -38,6 +38,13 @@ class AboutScreen extends StatelessWidget {
           'opposites in WordNet.',
     ),
     (
+      'Chinese Grammar Wiki',
+      'AllSet Learning, Creative Commons BY-NC-SA',
+      'https://resources.allsetlearning.com/chinese/grammar/',
+      'The word order rules on the Patterns screens are our short summaries of its pages, '
+          'and each pattern names the page it comes from. Sentences are split into chunks by this app.',
+    ),
+    (
       'Voices',
       'Google Cloud Text-to-Speech',
       'https://cloud.google.com/text-to-speech',

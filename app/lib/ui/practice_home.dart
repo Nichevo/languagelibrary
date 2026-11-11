@@ -8,6 +8,7 @@ import 'about_screen.dart';
 import 'drill_screen.dart';
 import 'pairs_practice.dart';
 import 'sounds_screen.dart';
+import 'patterns_screen.dart';
 import 'common.dart';
 import 'content_screen.dart';
 import 'practice_screen.dart';
@@ -104,6 +105,13 @@ class PracticeHome extends StatelessWidget {
                 subtitle: const Text('Hear a word, pick its tone: tāng, táng, tǎng or tàng?'),
                 trailing: const Icon(Icons.chevron_right),
                 onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const ToneQuizScreen())),
+              ),
+              ListTile(
+                leading: const Icon(Icons.view_week_outlined),
+                title: const Text('Build the sentence'),
+                subtitle: const Text('See the English, put the Chinese chunks in order'),
+                trailing: const Icon(Icons.chevron_right),
+                onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const BuildSentenceScreen())),
               ),
               const Divider(),
               const ListTile(title: Text('Settings')),

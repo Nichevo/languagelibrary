@@ -1,6 +1,6 @@
 # Build report
 
-Built 2026-11-10 from HSK levels new-1, new-2, new-3, new-4, new-5, new-6 plus the curated phrase list.
+Built 2026-11-11 from HSK levels new-1, new-2, new-3, new-4, new-5, new-6 plus the curated phrase list.
 Kept **5804** entries, dropped **87**, flagged **1470**.
 449 phrasebook sentences; 2904 words have example sentences.
 Sentences come from Tatoeba (native Mandarin speakers only); see tools/sentences.py.

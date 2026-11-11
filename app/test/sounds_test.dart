@@ -106,6 +106,8 @@ void screens() {
 
   testWidgets('Library chip, a tone set, and its practice', (tester) async {
     final store = await _open(tester, lib);
+    await tester.dragUntilVisible(find.text('Tricky sounds'), find.byType(ListView).first, const Offset(-150, 0));
+    await tester.pumpAndSettle();
     await tester.tap(find.text('Tricky sounds'));
     await tester.pumpAndSettle();
     expect(find.text('One sound, different tones'), findsOneWidget);

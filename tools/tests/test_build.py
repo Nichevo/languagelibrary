@@ -115,6 +115,27 @@ class Scales(unittest.TestCase):
         import json
         data = json.loads((bd.ROOT / "app/assets/data/library.json").read_text(encoding="utf-8"))
         self.assertGreaterEqual(len(data["scales"]), 5)
+        self.assertGreaterEqual(len(data["patterns"]), 8)
+
+    def test_pattern_examples_must_match_a_sentence_exactly(self):
+        import json
+        sentence = {"id": "t1", "kind": "sentence", "simplified": "我在喝牛奶。", "meanings": ["I'm drinking milk."]}
+        def patterns(zh, en, role="who"):
+            import tempfile
+            from pathlib import Path
+            p = Path(tempfile.mkdtemp()) / "patterns.json"
+            p.write_text(json.dumps({"patterns": [{"id": "x", "name": "X", "rule": "r", "source": ["T", "https://example.org"],
+                                                   "examples": [{"zh": zh, "en": en}]}]}), encoding="utf-8")
+            return bd.load_patterns([sentence], p)
+        ok = patterns([["我", "who"], ["在", "now"], ["喝牛奶。", "action"]], [["I'm", "who"], ["drinking milk.", "action"]])
+        self.assertEqual(ok[0]["examples"][0]["id"], "t1")
+        self.assertEqual(ok[0]["source"]["url"], "https://example.org")
+        with self.assertRaises(SystemExit):
+            patterns([["我", "who"], ["喝牛奶。", "action"]], [["I'm drinking milk.", "action"]])
+        with self.assertRaises(SystemExit):
+            patterns([["我在喝牛奶。", "action"]], [["I am drinking milk.", "action"]])
+        with self.assertRaises(SystemExit):
+            patterns([["我在喝牛奶。", "verb"]], [["I'm drinking milk.", "action"]])
 
 
 if __name__ == "__main__":
