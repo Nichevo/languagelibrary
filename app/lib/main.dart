@@ -8,8 +8,8 @@ import 'package:flutter/services.dart';
 import 'audio/speaker.dart';
 import 'data/library.dart';
 import 'data/user_store.dart';
-import 'device/android_device.dart';
 import 'device/device.dart';
+import 'device/native_device.dart';
 import 'ui/common.dart';
 import 'ui/entry_screen.dart';
 import 'ui/focus_screen.dart';
@@ -18,13 +18,14 @@ import 'ui/library_screen.dart';
 import 'ui/practice_home.dart';
 import 'ui/scales_screen.dart';
 import 'ui/stats_screen.dart';
+import 'ui/wide.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   _registerDataLicenses();
   final library = await Library.load();
   final store = await UserStore.open();
-  final Device device = !kIsWeb && Platform.isAndroid ? AndroidDevice() : NoDevice();
+  final Device device = !kIsWeb && (Platform.isAndroid || Platform.isIOS) ? NativeDevice() : NoDevice();
   final openedAt = await device.start();
   runApp(LanguageLibraryApp(
     library: library,
@@ -170,22 +171,51 @@ class _HomeShellState extends State<HomeShell> {
     if (tab != null) setState(() => _tab = tab);
   }
 
+  static const _places = [
+    (Icons.menu_book_outlined, Icons.menu_book, 'Library'),
+    (Icons.lightbulb_outline, Icons.lightbulb, 'Learn'),
+    (Icons.star_outline, Icons.star, 'Focus'),
+    (Icons.style_outlined, Icons.style, 'Practice'),
+    (Icons.insights_outlined, Icons.insights, 'Progress'),
+  ];
+
   @override
   Widget build(BuildContext context) {
+    final pages = IndexedStack(
+      index: _tab,
+      children: const [LibraryScreen(), LearnScreen(), FocusScreen(), PracticeHome(), StatsScreen()],
+    );
+    if (isWide(context)) {
+      // iPad in landscape and other big screens: the tabs go down the left side.
+      return Scaffold(
+        body: Row(
+          children: [
+            SafeArea(
+              right: false,
+              child: NavigationRail(
+                selectedIndex: _tab,
+                onDestinationSelected: (i) => setState(() => _tab = i),
+                labelType: NavigationRailLabelType.all,
+                groupAlignment: -0.9,
+                destinations: [
+                  for (final (icon, selected, label) in _places)
+                    NavigationRailDestination(icon: Icon(icon), selectedIcon: Icon(selected), label: Text(label)),
+                ],
+              ),
+            ),
+            const VerticalDivider(width: 1),
+            Expanded(child: pages),
+          ],
+        ),
+      );
+    }
     return Scaffold(
-      body: IndexedStack(
-        index: _tab,
-        children: const [LibraryScreen(), LearnScreen(), FocusScreen(), PracticeHome(), StatsScreen()],
-      ),
+      body: pages,
       bottomNavigationBar: NavigationBar(
         selectedIndex: _tab,
         onDestinationSelected: (i) => setState(() => _tab = i),
-        destinations: const [
-          NavigationDestination(icon: Icon(Icons.menu_book_outlined), label: 'Library'),
-          NavigationDestination(icon: Icon(Icons.lightbulb_outline), label: 'Learn'),
-          NavigationDestination(icon: Icon(Icons.star_outline), label: 'Focus'),
-          NavigationDestination(icon: Icon(Icons.style_outlined), label: 'Practice'),
-          NavigationDestination(icon: Icon(Icons.insights_outlined), label: 'Progress'),
+        destinations: [
+          for (final (icon, _, label) in _places) NavigationDestination(icon: Icon(icon), label: label),
         ],
       ),
     );

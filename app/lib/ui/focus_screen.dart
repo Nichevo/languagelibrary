@@ -7,6 +7,7 @@ import 'settings_screen.dart';
 import 'entry_screen.dart';
 import 'entry_tile.dart';
 import 'practice_screen.dart';
+import 'wide.dart';
 
 /// Your starred words, optional custom lists, and what's due to practise.
 class FocusScreen extends StatefulWidget {
@@ -52,7 +53,7 @@ class _FocusScreenState extends State<FocusScreen> {
               const SettingsButton(),
             ],
           ),
-          body: Column(
+          body: Readable(child: Column(
             children: [
               Padding(
                 padding: const EdgeInsets.fromLTRB(16, 0, 16, 4),
@@ -153,7 +154,7 @@ class _FocusScreenState extends State<FocusScreen> {
                   ),
                 ),
             ],
-          ),
+          )),
         );
       },
     );

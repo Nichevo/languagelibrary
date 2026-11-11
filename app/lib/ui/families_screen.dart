@@ -7,6 +7,7 @@ import 'entry_screen.dart';
 import 'entry_tile.dart';
 import 'practice_screen.dart';
 import 'sounds_screen.dart' show shortMeaning;
+import 'wide.dart';
 
 /// The Library's "Families" view: characters you can build on, biggest first.
 class FamiliesView extends StatelessWidget {
@@ -112,7 +113,7 @@ class FamilyScreen extends StatelessWidget {
       builder: (context, _) {
         final f = familyOf(scope.library, store.shows, hanzi);
         if (f == null) {
-          return Scaffold(appBar: AppBar(title: Text('The $hanzi family')), body: const Center(child: Text('No family.')));
+          return Scaffold(appBar: AppBar(title: Text('The $hanzi family')), body: Readable(child: const Center(child: Text('No family.'))));
         }
         final known = knownIds(store);
         final k = f.all.where((e) => known.contains(e.id)).length;
@@ -130,7 +131,7 @@ class FamilyScreen extends StatelessWidget {
             );
         return Scaffold(
           appBar: AppBar(title: Text('The $hanzi family')),
-          body: ListView(
+          body: Readable(child: ListView(
             padding: const EdgeInsets.fromLTRB(16, 0, 16, 32),
             children: [
               for (final h in f.heads)
@@ -215,7 +216,7 @@ class FamilyScreen extends StatelessWidget {
               Text('A family is every library entry that uses the character, so it grows as you switch on more levels.',
                   style: theme.textTheme.bodySmall),
             ],
-          ),
+          )),
         );
       },
     );

@@ -1,0 +1,76 @@
+name: Build iPad app
+
+# Builds LanguageLibrary.ipa for installing with AltStore / AltServer.
+# Mac time costs 10 of your free minutes per minute on a private repo, so this
+# only runs when started from the Actions tab (Run workflow), or on a pull
+# request that changes the iPad project.
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - "app/ios/**"
+      - ".github/workflows/ios.yml"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: ios-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  ipa:
+    runs-on: macos-latest
+    timeout-minutes: 45
+    defaults:
+      run:
+        working-directory: app
+    steps:
+      - uses: actions/checkout@v4
+      - name: Use the newest Xcode on the runner
+        run: |
+          latest=$(ls -d /Applications/Xcode_*.app | sort -V | tail -1)
+          echo "Using $latest"
+          sudo xcode-select -s "$latest"
+          xcodebuild -version
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          flutter-version: 3.47.9
+          cache: true
+      - run: flutter pub get
+      - name: Build the app (not signed yet)
+        run: flutter build ios --release --no-codesign --build-number=${{ github.run_number }}
+      - name: Mark the app and widgets with their shared space
+        # No certificate here: AltStore signs the app with your Apple ID when it
+        # installs it. This placeholder signature only carries the entitlements
+        # (the app group the widgets share), which AltStore reads to set them up.
+        run: |
+          APP=build/ios/iphoneos/Runner.app
+          for f in "$APP"/Frameworks/*; do codesign --force --sign - "$f"; done
+          codesign --force --sign - --entitlements ios/LanguageWidgets/LanguageWidgets.entitlements "$APP/PlugIns/LanguageWidgets.appex"
+          codesign --force --sign - --entitlements ios/Runner/Runner.entitlements "$APP"
+          echo "--- widget entitlements"; codesign -d --entitlements - "$APP/PlugIns/LanguageWidgets.appex"
+          echo "--- app entitlements"; codesign -d --entitlements - "$APP"
+      - name: Package LanguageLibrary.ipa
+        run: |
+          rm -rf Payload && mkdir Payload
+          cp -R build/ios/iphoneos/Runner.app Payload/
+          zip -qry LanguageLibrary.ipa Payload
+          ls -lh LanguageLibrary.ipa
+      - uses: actions/upload-artifact@v4
+        with:
+          name: language-library-ipa
+          path: app/LanguageLibrary.ipa
+          retention-days: 30
+      - name: Publish as a release
+        if: github.event_name == 'workflow_dispatch'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          tag="ipad-${{ github.run_number }}"
+          gh release create "$tag" LanguageLibrary.ipa \
+            --title "iPad app (build ${{ github.run_number }})" \
+            --notes "Install with AltServer: see 'Installing on your iPad' in the README." \
+            --target "${{ github.sha }}"

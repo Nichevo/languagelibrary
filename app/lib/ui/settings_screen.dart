@@ -6,6 +6,7 @@ import '../data/storage.dart';
 import 'about_screen.dart';
 import 'common.dart';
 import 'content_screen.dart';
+import 'wide.dart';
 
 /// The gear in each tab's app bar that opens [SettingsScreen].
 class SettingsButton extends StatelessWidget {
@@ -29,7 +30,7 @@ class SettingsScreen extends StatelessWidget {
     final store = scope.store;
     return Scaffold(
       appBar: AppBar(title: const Text('Settings')),
-      body: ListenableBuilder(
+      body: Readable(child: ListenableBuilder(
         listenable: store,
         builder: (context, _) {
           return ListView(
@@ -164,7 +165,7 @@ class SettingsScreen extends StatelessWidget {
             ],
           );
         },
-      ),
+      )),
     );
   }
 

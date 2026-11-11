@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../models/entry.dart';
 import 'common.dart';
 import 'entry_screen.dart';
+import 'wide.dart';
 
 /// One row in the Library or Focus list: hanzi, pinyin, English, star.
 class EntryTile extends StatelessWidget {
@@ -14,11 +15,25 @@ class EntryTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    if (entry.isSentence) return _sentence(context, theme);
+    final picker = EntryPicker.maybeOf(context);
+    final tile = entry.isSentence ? _sentence(context, theme) : _word(context, theme);
+    if (picker?.selected != entry.id) return tile;
+    return Material(color: theme.colorScheme.secondaryContainer, child: tile);
+  }
+
+  /// Opens the word, or shows it in the other pane on a wide screen.
+  void _open(BuildContext context) {
+    final picker = EntryPicker.maybeOf(context);
+    if (picker != null) {
+      picker.onPick(entry);
+    } else {
+      Navigator.of(context).push(MaterialPageRoute(builder: (_) => EntryScreen(entry)));
+    }
+  }
+
+  Widget _word(BuildContext context, ThemeData theme) {
     return InkWell(
-      onTap: () => Navigator.of(context).push(
-        MaterialPageRoute(builder: (_) => EntryScreen(entry)),
-      ),
+      onTap: () => _open(context),
       child: Padding(
         padding: const EdgeInsets.fromLTRB(16, 10, 4, 10),
         child: Row(
@@ -52,7 +67,7 @@ class EntryTile extends StatelessWidget {
   }
 
   Widget _sentence(BuildContext context, ThemeData theme) => InkWell(
-        onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => EntryScreen(entry))),
+        onTap: () => _open(context),
         child: Padding(
           padding: const EdgeInsets.fromLTRB(16, 10, 4, 10),
           child: Row(

@@ -7,6 +7,7 @@ import '../models/entry.dart';
 import '../srs/scheduler.dart';
 import 'common.dart';
 import 'scales_screen.dart';
+import 'wide.dart';
 
 /// Multiple choice (see [Choice]) and typing (see a word, type its pinyin).
 /// Answers count towards the statistics but don't change when flashcards come back.
@@ -207,7 +208,7 @@ class _DrillScreenState extends State<DrillScreen> {
     final title = widget.drill == Drill.listen ? 'Multiple choice' : 'Type the pinyin';
     return Scaffold(
       appBar: AppBar(title: Text(title)),
-      body: queue.isEmpty
+      body: Readable(child: queue.isEmpty
           ? Center(
               child: Padding(
                 padding: const EdgeInsets.all(32),
@@ -224,7 +225,7 @@ class _DrillScreenState extends State<DrillScreen> {
                 padding: const EdgeInsets.fromLTRB(16, 16, 16, 24),
                 child: widget.drill == Drill.listen ? _listen(context, queue.first) : _type(context, queue.first),
               ),
-            ),
+            )),
     );
   }
 
