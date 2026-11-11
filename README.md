@@ -68,10 +68,10 @@ your own Apple ID, so no Mac or App Store is needed.
 
 ### Getting the iPad file
 
-Actions tab → **Build iPad app** → **Run workflow**. It takes about 15 to 25
-minutes on a Mac that GitHub provides, then puts `LanguageLibrary.ipa` on the
-repo's **Releases** page. It isn't run on every change, because each Mac minute
-uses 10 of the private repo's free Actions minutes.
+Actions tab → **Build iPad app** → **Run workflow**. It takes about 5 minutes on
+a Mac that GitHub provides, then puts `LanguageLibrary.ipa` on the repo's
+**Releases** page. It isn't run on every change, because each Mac minute uses 10
+of the private repo's free Actions minutes (so one build uses about 50).
 
 ### First install (about 20 minutes)
 
