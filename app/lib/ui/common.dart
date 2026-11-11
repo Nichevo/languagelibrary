@@ -5,6 +5,7 @@ import '../data/library.dart';
 import '../data/user_store.dart';
 import '../device/device.dart';
 import '../models/entry.dart';
+import '../sync/dropbox_sync.dart';
 
 /// Gives every screen the library, the learner's data and the speaker.
 class AppScope extends InheritedWidget {
@@ -14,6 +15,7 @@ class AppScope extends InheritedWidget {
     required this.store,
     required this.speaker,
     required this.device,
+    this.sync,
     required super.child,
   });
 
@@ -22,12 +24,19 @@ class AppScope extends InheritedWidget {
   final Speaker speaker;
   final Device device;
 
+  /// Dropbox sync, or null where there is none (tests).
+  final DropboxSync? sync;
+
   static AppScope of(BuildContext context) =>
       context.dependOnInheritedWidgetOfExactType<AppScope>()!;
 
   @override
   bool updateShouldNotify(AppScope old) =>
-      library != old.library || store != old.store || speaker != old.speaker || device != old.device;
+      library != old.library ||
+      store != old.store ||
+      speaker != old.speaker ||
+      device != old.device ||
+      sync != old.sync;
 }
 
 /// The same colour for a tone everywhere in the app, so tones become visual.

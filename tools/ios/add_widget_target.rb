@@ -37,7 +37,9 @@ runner_group.new_reference('Runner.entitlements')
 
 # Flutter's version numbers for the widget's Info.plist, without CocoaPods' settings.
 flutter_group = project.main_group['Flutter']
-widget_xcconfig = flutter_group.new_reference('Widget.xcconfig')
+# The Flutter group has no folder of its own, so the path includes Flutter/.
+widget_xcconfig = flutter_group.new_reference('Flutter/Widget.xcconfig')
+widget_xcconfig.name = 'Widget.xcconfig'
 
 # Profile configuration, like the rest of a Flutter project.
 unless widget.build_configurations.any? { |c| c.name == 'Profile' }

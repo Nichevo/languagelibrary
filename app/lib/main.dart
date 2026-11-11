@@ -10,6 +10,7 @@ import 'data/library.dart';
 import 'data/user_store.dart';
 import 'device/device.dart';
 import 'device/native_device.dart';
+import 'sync/dropbox_sync.dart';
 import 'ui/common.dart';
 import 'ui/entry_screen.dart';
 import 'ui/focus_screen.dart';
@@ -27,11 +28,13 @@ Future<void> main() async {
   final store = await UserStore.open();
   final Device device = !kIsWeb && (Platform.isAndroid || Platform.isIOS) ? NativeDevice() : NoDevice();
   final openedAt = await device.start();
+  final sync = await DropboxSync.open();
   runApp(LanguageLibraryApp(
     library: library,
     store: store,
     speaker: Speaker(library),
     device: device,
+    sync: sync,
     openedAt: openedAt,
   ));
 }
@@ -61,6 +64,7 @@ class LanguageLibraryApp extends StatefulWidget {
     required this.store,
     required this.speaker,
     required this.device,
+    this.sync,
     this.openedAt,
   });
 
@@ -68,6 +72,7 @@ class LanguageLibraryApp extends StatefulWidget {
   final UserStore store;
   final Speaker speaker;
   final Device device;
+  final DropboxSync? sync;
 
   /// Where a widget or the reminder opened the app, e.g. 'practice'.
   final String? openedAt;
@@ -83,7 +88,12 @@ class _LanguageLibraryAppState extends State<LanguageLibraryApp> with WidgetsBin
     WidgetsBinding.instance.addObserver(this);
     widget.store.addListener(_changed);
     widget.device.refresh(widget.library, widget.store);
+    _sync();
   }
+
+  /// Brings in progress from the other device when the app opens or comes
+  /// back, and sends this device's when it is put away. Only when Dropbox is linked.
+  void _sync() => widget.sync?.sync(widget.store);
 
   @override
   void dispose() {
@@ -98,7 +108,11 @@ class _LanguageLibraryAppState extends State<LanguageLibraryApp> with WidgetsBin
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
     // A new day may have started while the app was in the background.
-    if (state == AppLifecycleState.resumed) widget.device.refresh(widget.library, widget.store);
+    if (state == AppLifecycleState.resumed) {
+      widget.device.refresh(widget.library, widget.store);
+      _sync();
+    }
+    if (state == AppLifecycleState.paused) _sync();
   }
 
   @override
@@ -109,6 +123,7 @@ class _LanguageLibraryAppState extends State<LanguageLibraryApp> with WidgetsBin
       store: widget.store,
       speaker: widget.speaker,
       device: widget.device,
+      sync: widget.sync,
       child: MaterialApp(
         title: 'Language Library',
         debugShowCheckedModeBanner: false,
@@ -223,5 +238,5 @@ class _HomeShellState extends State<HomeShell> {
 }
 
 @visibleForTesting
-Widget appForTest(Library library, UserStore store, {Device? device}) =>
-    LanguageLibraryApp(library: library, store: store, speaker: Speaker(library), device: device ?? NoDevice());
+Widget appForTest(Library library, UserStore store, {Device? device, DropboxSync? sync}) => LanguageLibraryApp(
+    library: library, store: store, speaker: Speaker(library), device: device ?? NoDevice(), sync: sync);
