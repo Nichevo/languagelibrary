@@ -455,8 +455,41 @@ def load_scales(entries: list[dict], path: Path | None = None) -> list[dict]:
     return scales
 
 
+PATTERN_ROLES = {"who", "when", "where", "position", "action", "thing", "question",
+                 "describe", "link", "count", "now", "other"}
+
+
+def load_patterns(entries: list[dict], path: Path | None = None) -> list[dict]:
+    """Sentence patterns from tools/sources/patterns.json. Each example must be a
+    phrasebook sentence: its Chinese chunks must join to the sentence exactly and
+    its English chunks, joined with spaces, to the sentence's English. Stops otherwise."""
+    path = path or SOURCES / "patterns.json"
+    if not path.exists():
+        return []
+    sentences = {e["simplified"]: e for e in entries if e.get("kind") == "sentence"}
+    out = []
+    for p in json.loads(path.read_text(encoding="utf-8"))["patterns"]:
+        examples = []
+        for ex in p["examples"]:
+            zh = "".join(t for t, _ in ex["zh"])
+            e = sentences.get(zh)
+            if e is None:
+                raise SystemExit(f"patterns.json: {p['id']}: {zh} is not a phrasebook sentence")
+            en = " ".join(t for t, _ in ex["en"])
+            if en != e["meanings"][0]:
+                raise SystemExit(f"patterns.json: {p['id']}: \"{en}\" is not the English of {zh} (\"{e['meanings'][0]}\")")
+            for _, role in ex["zh"] + ex["en"]:
+                if role not in PATTERN_ROLES:
+                    raise SystemExit(f"patterns.json: {p['id']}: unknown role {role}")
+            examples.append({"id": e["id"], "zh": ex["zh"], "en": ex["en"]})
+        title, url = p["source"]
+        out.append({"id": p["id"], "name": p["name"], "rule": p["rule"],
+                    "source": {"title": title, "url": url}, "examples": examples})
+    return out
+
+
 def write_outputs(entries, dropped, flagged, levels, cedict_note: str, sentence_note: str = "",
-                  out_json: Path | None = None, out_report: Path | None = None, scales=None):
+                  out_json: Path | None = None, out_report: Path | None = None, scales=None, patterns=None):
     out_json = out_json or OUT_JSON
     out_report = out_report or OUT_REPORT
     out_json.parent.mkdir(parents=True, exist_ok=True)
@@ -466,6 +499,7 @@ def write_outputs(entries, dropped, flagged, levels, cedict_note: str, sentence_
         "levels": levels,
         "sources": {"cedict": cedict_note, **({"tatoeba": "tools/sources/tatoeba_cmn_eng.tsv"} if sentence_note else {})},
         **({"scales": scales} if scales else {}),
+        **({"patterns": patterns} if patterns else {}),
         "entries": entries,
     }
     out_json.write_text(json.dumps(data, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
@@ -514,7 +548,8 @@ def main(argv=None):
         dropped += book_dropped
         sentence_note = f"{len(book)} phrasebook sentences; {with_examples} words have example sentences."
     scales = [] if args.words_only else load_scales(entries)
-    write_outputs(entries, dropped, flagged, args.levels, note, sentence_note, out_json, out_report, scales)
+    patterns = [] if args.words_only else load_patterns(entries)
+    write_outputs(entries, dropped, flagged, args.levels, note, sentence_note, out_json, out_report, scales, patterns)
     print(f"kept {len(entries)}, dropped {len(dropped)}, flagged {len(flagged)} -> {out_json.relative_to(ROOT)}")
     if sentence_note:
         print(sentence_note)

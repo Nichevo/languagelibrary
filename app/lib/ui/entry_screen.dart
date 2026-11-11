@@ -6,6 +6,8 @@ import 'common.dart';
 import 'entry_tile.dart';
 import 'scales_screen.dart';
 import 'sounds_screen.dart';
+import 'families_screen.dart';
+import 'patterns_screen.dart';
 import '../data/sounds.dart';
 
 class EntryScreen extends StatelessWidget {
@@ -182,6 +184,8 @@ class EntryScreen extends StatelessWidget {
                 Text(entry.classifiers.map((c) => '${c.hanzi} ${c.pinyin}').join(',  ')),
               ]),
             for (final sc in scope.library.scalesFor(entry)) ScaleCard(sc, entry),
+            if (entry.isSentence) PatternLinks(scope.library.patternsFor(entry)),
+            FamiliesCard(entry),
             if (toneSetFor(scope.library, entry) case final ts?)
               section('Same sound, other tones', [
                 Text('Tap to hear the ${ts.byTone.length} tones of ${ts.syllable} side by side.', style: theme.textTheme.bodySmall),

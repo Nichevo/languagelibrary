@@ -1,6 +1,6 @@
 {
  "version": 1,
- "built": "2026-11-10",
+ "built": "2026-11-11",
  "levels": [
   "new-1",
   "new-2",
@@ -237,6 +237,924 @@
     {
      "id": "308384742a",
      "meaning": "finally; in the end"
+    }
+   ]
+  }
+ ],
+ "patterns": [
+  {
+   "id": "time",
+   "name": "When comes early",
+   "rule": "English often says when at the end: have dinner at seven. Chinese says when at the start, or straight after who: we seven o'clock eat dinner. Putting the time at the end does not sound natural in Chinese.",
+   "source": {
+    "title": "Time words and word order",
+    "url": "https://resources.allsetlearning.com/chinese/grammar/ASG5RWKO"
+   },
+   "examples": [
+    {
+     "id": "t1691769",
+     "zh": [
+      [
+       "我们",
+       "who"
+      ],
+      [
+       "七点",
+       "when"
+      ],
+      [
+       "吃晚饭。",
+       "action"
+      ]
+     ],
+     "en": [
+      [
+       "We",
+       "who"
+      ],
+      [
+       "have dinner",
+       "action"
+      ],
+      [
+       "at seven.",
+       "when"
+      ]
+     ]
+    },
+    {
+     "id": "t427894",
+     "zh": [
+      [
+       "我",
+       "who"
+      ],
+      [
+       "今天",
+       "when"
+      ],
+      [
+       "要早点回家。",
+       "action"
+      ]
+     ],
+     "en": [
+      [
+       "I",
+       "who"
+      ],
+      [
+       "need to go home a little early",
+       "action"
+      ],
+      [
+       "today.",
+       "when"
+      ]
+     ]
+    },
+    {
+     "id": "t8589264",
+     "zh": [
+      [
+       "你",
+       "who"
+      ],
+      [
+       "今天下午",
+       "when"
+      ],
+      [
+       "会在家",
+       "action"
+      ],
+      [
+       "吗？",
+       "question"
+      ]
+     ],
+     "en": [
+      [
+       "Will",
+       "question"
+      ],
+      [
+       "you",
+       "who"
+      ],
+      [
+       "be at home",
+       "action"
+      ],
+      [
+       "this afternoon?",
+       "when"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "where",
+   "name": "Where comes before the action",
+   "rule": "English says where after the action: take a walk in the park. Chinese says where first, with 在, then what you do: in the park take a walk.",
+   "source": {
+    "title": "Indicating location with \"zai\" before verbs",
+    "url": "https://resources.allsetlearning.com/chinese/grammar/ASGX0Z0N"
+   },
+   "examples": [
+    {
+     "id": "t4845139",
+     "zh": [
+      [
+       "我们",
+       "who"
+      ],
+      [
+       "在公园里",
+       "where"
+      ],
+      [
+       "散步。",
+       "action"
+      ]
+     ],
+     "en": [
+      [
+       "We",
+       "who"
+      ],
+      [
+       "took a walk",
+       "action"
+      ],
+      [
+       "in the park.",
+       "where"
+      ]
+     ]
+    },
+    {
+     "id": "t8696313",
+     "zh": [
+      [
+       "你",
+       "who"
+      ],
+      [
+       "在哪里",
+       "where"
+      ],
+      [
+       "工作？",
+       "action"
+      ]
+     ],
+     "en": [
+      [
+       "Where",
+       "where"
+      ],
+      [
+       "do",
+       "other"
+      ],
+      [
+       "you",
+       "who"
+      ],
+      [
+       "work?",
+       "action"
+      ]
+     ]
+    },
+    {
+     "id": "t1785990",
+     "zh": [
+      [
+       "请",
+       "other"
+      ],
+      [
+       "在这儿",
+       "where"
+      ],
+      [
+       "等",
+       "action"
+      ],
+      [
+       "一会儿。",
+       "when"
+      ]
+     ],
+     "en": [
+      [
+       "Please",
+       "other"
+      ],
+      [
+       "wait",
+       "action"
+      ],
+      [
+       "here",
+       "where"
+      ],
+      [
+       "a moment.",
+       "when"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ma",
+   "name": "Yes-no questions: add 吗",
+   "rule": "English changes the word order to ask: you drink tea → do you drink tea? Chinese keeps the statement as it is and adds 吗 at the end. Don't add 吗 when the question already has a question word.",
+   "source": {
+    "title": "Yes-no questions with \"ma\"",
+    "url": "https://resources.allsetlearning.com/chinese/grammar/ASGQ2AZA"
+   },
+   "examples": [
+    {
+     "id": "t3378236",
+     "zh": [
+      [
+       "你",
+       "who"
+      ],
+      [
+       "喝茶",
+       "action"
+      ],
+      [
+       "吗？",
+       "question"
+      ]
+     ],
+     "en": [
+      [
+       "Do",
+       "question"
+      ],
+      [
+       "you",
+       "who"
+      ],
+      [
+       "drink tea?",
+       "action"
+      ]
+     ]
+    },
+    {
+     "id": "t3365590",
+     "zh": [
+      [
+       "你",
+       "who"
+      ],
+      [
+       "渴",
+       "describe"
+      ],
+      [
+       "吗？",
+       "question"
+      ]
+     ],
+     "en": [
+      [
+       "Are",
+       "question"
+      ],
+      [
+       "you",
+       "who"
+      ],
+      [
+       "thirsty?",
+       "describe"
+      ]
+     ]
+    },
+    {
+     "id": "t10972063",
+     "zh": [
+      [
+       "妈妈",
+       "who"
+      ],
+      [
+       "在这里",
+       "where"
+      ],
+      [
+       "吗？",
+       "question"
+      ]
+     ],
+     "en": [
+      [
+       "Is",
+       "question"
+      ],
+      [
+       "Mom",
+       "who"
+      ],
+      [
+       "here?",
+       "where"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "qwords",
+   "name": "Question words stay put",
+   "rule": "English moves the question word to the front: what would you like to drink? Chinese leaves it where the answer would go: you want to drink what?",
+   "source": {
+    "title": "Placement of question words",
+    "url": "https://resources.allsetlearning.com/chinese/grammar/ASGJQPSC"
+   },
+   "examples": [
+    {
+     "id": "t419678",
+     "zh": [
+      [
+       "你",
+       "who"
+      ],
+      [
+       "想喝",
+       "action"
+      ],
+      [
+       "什么？",
+       "question"
+      ]
+     ],
+     "en": [
+      [
+       "What",
+       "question"
+      ],
+      [
+       "would",
+       "other"
+      ],
+      [
+       "you",
+       "who"
+      ],
+      [
+       "like to drink?",
+       "action"
+      ]
+     ]
+    },
+    {
+     "id": "t2778265",
+     "zh": [
+      [
+       "旅馆",
+       "thing"
+      ],
+      [
+       "在",
+       "other"
+      ],
+      [
+       "哪里？",
+       "question"
+      ]
+     ],
+     "en": [
+      [
+       "Where",
+       "question"
+      ],
+      [
+       "is",
+       "other"
+      ],
+      [
+       "the hotel?",
+       "thing"
+      ]
+     ]
+    },
+    {
+     "id": "t5613716",
+     "zh": [
+      [
+       "你家里",
+       "where"
+      ],
+      [
+       "谁",
+       "question"
+      ],
+      [
+       "做饭？",
+       "action"
+      ]
+     ],
+     "en": [
+      [
+       "Who",
+       "question"
+      ],
+      [
+       "does the cooking",
+       "action"
+      ],
+      [
+       "in your home?",
+       "where"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "zai-now",
+   "name": "Doing it now: 在 + verb",
+   "rule": "English adds -ing: I'm drinking. Chinese puts 在 before the action and the verb itself does not change: I 在 drink milk.",
+   "source": {
+    "title": "Expressing actions in progress with \"zai\"",
+    "url": "https://resources.allsetlearning.com/chinese/grammar/ASG846EA"
+   },
+   "examples": [
+    {
+     "id": "t3140495",
+     "zh": [
+      [
+       "我",
+       "who"
+      ],
+      [
+       "在",
+       "now"
+      ],
+      [
+       "喝牛奶。",
+       "action"
+      ]
+     ],
+     "en": [
+      [
+       "I'm",
+       "who"
+      ],
+      [
+       "drinking milk.",
+       "action"
+      ]
+     ]
+    },
+    {
+     "id": "t6169159",
+     "zh": [
+      [
+       "你的家人",
+       "who"
+      ],
+      [
+       "在",
+       "now"
+      ],
+      [
+       "等你。",
+       "action"
+      ]
+     ],
+     "en": [
+      [
+       "Your family's",
+       "who"
+      ],
+      [
+       "waiting for you.",
+       "action"
+      ]
+     ]
+    },
+    {
+     "id": "t7772049",
+     "zh": [
+      [
+       "您",
+       "who"
+      ],
+      [
+       "在",
+       "now"
+      ],
+      [
+       "忙",
+       "describe"
+      ],
+      [
+       "吗？",
+       "question"
+      ]
+     ],
+     "en": [
+      [
+       "Are",
+       "question"
+      ],
+      [
+       "you",
+       "who"
+      ],
+      [
+       "busy?",
+       "describe"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "adjective",
+   "name": "No 是 before describing words",
+   "rule": "English links a describing word with is: the tea is good. Chinese does not use 是 for this. It usually puts 很 in between, which often just links the words rather than meaning very.",
+   "source": {
+    "title": "Simple \"noun + adjective\" sentences",
+    "url": "https://resources.allsetlearning.com/chinese/grammar/ASG17BLH"
+   },
+   "examples": [
+    {
+     "id": "t397734",
+     "zh": [
+      [
+       "我",
+       "who"
+      ],
+      [
+       "很",
+       "link"
+      ],
+      [
+       "累。",
+       "describe"
+      ]
+     ],
+     "en": [
+      [
+       "I'm",
+       "who"
+      ],
+      [
+       "very",
+       "link"
+      ],
+      [
+       "tired.",
+       "describe"
+      ]
+     ]
+    },
+    {
+     "id": "t9991977",
+     "zh": [
+      [
+       "这杯茶",
+       "thing"
+      ],
+      [
+       "很",
+       "link"
+      ],
+      [
+       "好喝。",
+       "describe"
+      ]
+     ],
+     "en": [
+      [
+       "This tea",
+       "thing"
+      ],
+      [
+       "is very",
+       "link"
+      ],
+      [
+       "good.",
+       "describe"
+      ]
+     ]
+    },
+    {
+     "id": "t4764659",
+     "zh": [
+      [
+       "我家",
+       "thing"
+      ],
+      [
+       "很",
+       "link"
+      ],
+      [
+       "远。",
+       "describe"
+      ]
+     ],
+     "en": [
+      [
+       "My home",
+       "thing"
+      ],
+      [
+       "is",
+       "link"
+      ],
+      [
+       "far away.",
+       "describe"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "measure",
+   "name": "Counting needs a measure word",
+   "rule": "English counts some things straight away (two kids) and others with a word in between (a cup of coffee). Chinese always puts a measure word between the number and the thing: two 个 kids, one 杯 coffee.",
+   "source": {
+    "title": "Measure words for counting",
+    "url": "https://resources.allsetlearning.com/chinese/grammar/ASG64BTE"
+   },
+   "examples": [
+    {
+     "id": "t2302310",
+     "zh": [
+      [
+       "我",
+       "who"
+      ],
+      [
+       "要",
+       "action"
+      ],
+      [
+       "一杯",
+       "count"
+      ],
+      [
+       "咖啡。",
+       "thing"
+      ]
+     ],
+     "en": [
+      [
+       "I",
+       "who"
+      ],
+      [
+       "want to have",
+       "action"
+      ],
+      [
+       "a cup of",
+       "count"
+      ],
+      [
+       "coffee.",
+       "thing"
+      ]
+     ]
+    },
+    {
+     "id": "t408165",
+     "zh": [
+      [
+       "我们",
+       "who"
+      ],
+      [
+       "有",
+       "action"
+      ],
+      [
+       "两个",
+       "count"
+      ],
+      [
+       "孩子。",
+       "thing"
+      ]
+     ],
+     "en": [
+      [
+       "We",
+       "who"
+      ],
+      [
+       "have",
+       "action"
+      ],
+      [
+       "two",
+       "count"
+      ],
+      [
+       "kids.",
+       "thing"
+      ]
+     ]
+    },
+    {
+     "id": "t6158478",
+     "zh": [
+      [
+       "我",
+       "who"
+      ],
+      [
+       "要",
+       "action"
+      ],
+      [
+       "一瓶",
+       "count"
+      ],
+      [
+       "冰水。",
+       "thing"
+      ]
+     ],
+     "en": [
+      [
+       "I",
+       "who"
+      ],
+      [
+       "want",
+       "action"
+      ],
+      [
+       "a bottle of",
+       "count"
+      ],
+      [
+       "ice water.",
+       "thing"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "position",
+   "name": "In, on: the place comes first",
+   "rule": "English says in or on before the place: in the park, on the map. Chinese says the place first and 里 (in) or 上 (on) after it, with 在 in front: 在 park 里.",
+   "source": {
+    "title": "Expressing location with \"zai... shang / xia / li\"",
+    "url": "https://resources.allsetlearning.com/chinese/grammar/ASGFBWZL"
+   },
+   "examples": [
+    {
+     "id": "t4845139",
+     "zh": [
+      [
+       "我们",
+       "who"
+      ],
+      [
+       "在",
+       "other"
+      ],
+      [
+       "公园",
+       "where"
+      ],
+      [
+       "里",
+       "position"
+      ],
+      [
+       "散步。",
+       "action"
+      ]
+     ],
+     "en": [
+      [
+       "We",
+       "who"
+      ],
+      [
+       "took a walk",
+       "action"
+      ],
+      [
+       "in",
+       "position"
+      ],
+      [
+       "the park.",
+       "where"
+      ]
+     ]
+    },
+    {
+     "id": "t9953328",
+     "zh": [
+      [
+       "请",
+       "other"
+      ],
+      [
+       "在",
+       "other"
+      ],
+      [
+       "词典",
+       "where"
+      ],
+      [
+       "里",
+       "position"
+      ],
+      [
+       "查这个词。",
+       "action"
+      ]
+     ],
+     "en": [
+      [
+       "Please",
+       "other"
+      ],
+      [
+       "look up this word",
+       "action"
+      ],
+      [
+       "in",
+       "position"
+      ],
+      [
+       "a dictionary.",
+       "where"
+      ]
+     ]
+    },
+    {
+     "id": "t12422335",
+     "zh": [
+      [
+       "我",
+       "who"
+      ],
+      [
+       "在",
+       "other"
+      ],
+      [
+       "这张地图",
+       "where"
+      ],
+      [
+       "上",
+       "position"
+      ],
+      [
+       "的哪里？",
+       "question"
+      ]
+     ],
+     "en": [
+      [
+       "Where",
+       "question"
+      ],
+      [
+       "am",
+       "other"
+      ],
+      [
+       "I",
+       "who"
+      ],
+      [
+       "on",
+       "position"
+      ],
+      [
+       "this map?",
+       "where"
+      ]
+     ]
     }
    ]
   }

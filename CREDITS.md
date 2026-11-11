@@ -51,6 +51,14 @@ choices in `tools/sources/readings.tsv`, the phrase list in
   word up in the library and the HSK list (confirmed by CC-CEDICT) and leaves out
   any sentence with a word it can't read one way only.
 
+- [Chinese Grammar Wiki](https://resources.allsetlearning.com/chinese/grammar/)
+  (AllSet Learning, Creative Commons BY-NC-SA, used non-commercially with credit).
+  Each sentence pattern in `tools/sources/patterns.json` summarises one of its pages
+  in our own words and links to it. The example sentences are Tatoeba phrasebook
+  sentences; how they are split into chunks, and the role names, are ours.
+- Character families are worked out by the app: every library entry that uses
+  the character. Nothing is added by hand.
+
 ## Planned sources (not used yet)
 
 - [Hanzi Writer](https://github.com/chanind/hanzi-writer) stroke order (code MIT,

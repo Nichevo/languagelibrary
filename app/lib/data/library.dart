@@ -28,14 +28,56 @@ class Scale {
 typedef OppositePair = ({Entry a, String aEnglish, Entry b, String bEnglish});
 
 /// The read-only word library plus the list of audio clips that exist.
+/// One piece of a pattern example, with what it does in the sentence
+/// ("who", "when", "where", "action" …). How sentences are split is ours.
+class Chunk {
+  const Chunk(this.text, this.role);
+  final String text;
+  final String role;
+}
+
+/// A pattern example: a phrasebook sentence split into chunks, in Chinese
+/// order and in English order.
+class PatternExample {
+  PatternExample(this.sentence, this.zh, this.en);
+  final Entry sentence;
+  final List<Chunk> zh;
+  final List<Chunk> en;
+
+  /// The pinyin of each Chinese chunk, from the sentence's own syllables.
+  late final List<String> zhPinyin = () {
+    final syl = sentence.syllables;
+    var i = 0;
+    return [
+      for (final c in zh)
+        [
+          for (final ch in c.text.runes.map(String.fromCharCode))
+            if (i < syl.length && syl[i].hanzi == ch) syl[i++].pinyin,
+        ].join(' '),
+    ];
+  }();
+}
+
+/// How Chinese orders a kind of sentence, next to English.
+class SentencePattern {
+  const SentencePattern(this.id, this.name, this.rule, this.sourceTitle, this.sourceUrl, this.examples);
+  final String id, name, rule, sourceTitle, sourceUrl;
+  final List<PatternExample> examples;
+}
+
 class Library {
-  Library(this.entries, {Map<String, String>? audioFiles, this.scales = const []})
+  Library(this.entries, {Map<String, String>? audioFiles, this.scales = const [], this.patterns = const []})
       : audioFiles = audioFiles ?? const {},
         byId = {for (final e in entries) e.id: e};
 
   final List<Entry> entries;
   final Map<String, Entry> byId;
   final List<Scale> scales;
+  final List<SentencePattern> patterns;
+
+  /// The patterns that use sentence [e] as an example.
+  List<SentencePattern> patternsFor(Entry e) =>
+      [for (final p in patterns) if (p.examples.any((x) => x.sentence.id == e.id)) p];
 
   /// The scales [e] is on.
   List<Scale> scalesFor(Entry e) => [for (final s in scales) if (s.items.any((i) => i.entry.id == e.id)) s];
@@ -75,6 +117,10 @@ class Library {
   /// The Library chip that shows tone sets and other tricky sounds.
   static const soundsFilter = 'sounds';
 
+  /// The Library chips for character families and sentence patterns.
+  static const familiesFilter = 'families';
+  static const patternsFilter = 'patterns';
+
   /// The library from the parsed library.json.
   factory Library.fromJson(Map<String, dynamic> data, {Map<String, String>? audioFiles}) {
     final entries = [
@@ -88,7 +134,16 @@ class Library {
             if (byId[i['id']] case final e?) ScaleItem(e, i['meaning'] as String),
         ]),
     ];
-    return Library(entries, audioFiles: audioFiles, scales: scales);
+    List<Chunk> chunks(List l) => [for (final c in l) Chunk(c[0] as String, c[1] as String)];
+    final patterns = [
+      for (final p in (data['patterns'] as List?) ?? const [])
+        SentencePattern(p['id'] as String, p['name'] as String, p['rule'] as String, p['source']['title'] as String,
+            p['source']['url'] as String, [
+          for (final x in p['examples'] as List)
+            if (byId[x['id']] case final e?) PatternExample(e, chunks(x['zh'] as List), chunks(x['en'] as List)),
+        ]),
+    ];
+    return Library(entries, audioFiles: audioFiles, scales: scales, patterns: patterns);
   }
 
   static Future<Library> load([AssetBundle? bundle]) async {
