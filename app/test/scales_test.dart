@@ -78,8 +78,10 @@ void main() {
       return store;
     }
 
-    testWidgets('Library chip, scale screen, star all, word page card', (tester) async {
+    testWidgets('Learn tab, scale screen, star all, word page card', (tester) async {
       final store = await open(tester);
+      await tester.tap(find.text('Learn'));
+      await tester.pumpAndSettle();
       await tester.tap(find.text('Pairs & scales'));
       await tester.pumpAndSettle();
       expect(find.text('Temperature'), findsOneWidget);
@@ -102,6 +104,8 @@ void main() {
 
     testWidgets('search narrows the scales', (tester) async {
       await open(tester);
+      await tester.tap(find.text('Learn'));
+      await tester.pumpAndSettle();
       await tester.tap(find.text('Pairs & scales'));
       await tester.pumpAndSettle();
       await tester.enterText(find.byType(TextField), 'yesterday');

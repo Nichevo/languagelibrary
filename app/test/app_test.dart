@@ -4,7 +4,7 @@ import 'package:language_library/data/user_store.dart';
 import 'package:language_library/device/device.dart';
 import 'package:language_library/main.dart';
 import 'package:language_library/srs/scheduler.dart';
-import 'package:language_library/ui/practice_home.dart';
+import 'package:language_library/ui/settings_screen.dart';
 import 'package:language_library/ui/stats_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -158,7 +158,7 @@ void main() {
     SharedPreferences.setMockInitialValues({});
     final store = await UserStore.open();
     await tester.pumpWidget(appForTest(loadRealLibrary(), store));
-    await tester.tap(find.text('Practice'));
+    await tester.tap(find.byTooltip('Settings').first);
     await tester.pumpAndSettle();
     await tester.scrollUntilVisible(find.text('Levels and content'), 200, scrollable: find.byType(Scrollable).last);
     expect(find.text('HSK 1–3 and the phrasebook'), findsOneWidget);
@@ -185,7 +185,7 @@ void main() {
     await tester.pumpWidget(appForTest(lib, store, device: device));
     await store.toggleStar(lib.entries.first.id);
 
-    await tester.tap(find.text('Practice'));
+    await tester.tap(find.byTooltip('Settings').first);
     await tester.pumpAndSettle();
     final list = find.byType(Scrollable).last;
     await tester.scrollUntilVisible(find.text('Daily reminder'), 200, scrollable: list);
@@ -286,9 +286,9 @@ void main() {
     await tester.pumpAndSettle();
     expect(find.text('Last 14 days, in minutes'), findsOneWidget);
 
-    await tester.tap(find.text('Practice'));
+    await tester.tap(find.byTooltip('Settings').first);
     await tester.pumpAndSettle();
-    final list = find.descendant(of: find.byType(PracticeHome), matching: find.byType(Scrollable)).first;
+    final list = find.descendant(of: find.byType(SettingsScreen), matching: find.byType(Scrollable)).first;
     await tester.scrollUntilVisible(find.text('Space on this phone'), 300, scrollable: list);
     // The sizes themselves are checked in daily_test.dart.
     expect(find.text('Space on this phone'), findsOneWidget);

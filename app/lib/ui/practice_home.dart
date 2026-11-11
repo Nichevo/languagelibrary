@@ -1,19 +1,15 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 
+import '../data/today.dart';
 import '../srs/scheduler.dart';
-import '../data/storage.dart';
-import 'about_screen.dart';
+import 'common.dart';
 import 'drill_screen.dart';
 import 'pairs_practice.dart';
-import 'sounds_screen.dart';
 import 'patterns_screen.dart';
-import 'common.dart';
-import 'content_screen.dart';
 import 'practice_screen.dart';
+import 'settings_screen.dart';
+import 'sounds_screen.dart';
 
-/// The Practice tab: pick what to study, plus settings and credits.
 class PracticeHome extends StatelessWidget {
   const PracticeHome({super.key});
 
@@ -22,7 +18,7 @@ class PracticeHome extends StatelessWidget {
     final scope = AppScope.of(context);
     final store = scope.store;
     return Scaffold(
-      appBar: AppBar(title: const Text('Practice')),
+      appBar: AppBar(title: const Text('Practice'), actions: const [SettingsButton()]),
       body: ListenableBuilder(
         listenable: store,
         builder: (context, _) {
@@ -54,7 +50,10 @@ class PracticeHome extends StatelessWidget {
           }
 
           return ListView(
+            padding: const EdgeInsets.only(bottom: 24),
             children: [
+              const TodayCard(),
+              const _Heading('Flashcards'),
               Padding(
                 padding: const EdgeInsets.fromLTRB(16, 12, 16, 4),
                 child: SegmentedButton<String>(
@@ -92,142 +91,20 @@ class PracticeHome extends StatelessWidget {
                 ),
               listTile('All starred words', null),
               for (final name in store.lists.keys) listTile(name, name),
-              ListTile(
-                leading: const Icon(Icons.swap_vert),
-                title: const Text('Pairs & scales'),
-                subtitle: const Text('Put scales in order (tap or drag) and pick opposites'),
-                trailing: const Icon(Icons.chevron_right),
-                onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const PairsPracticeScreen())),
-              ),
-              ListTile(
-                leading: const Icon(Icons.hearing),
-                title: const Text('Tricky sounds'),
-                subtitle: const Text('Hear a word, pick its tone: tāng, táng, tǎng or tàng?'),
-                trailing: const Icon(Icons.chevron_right),
-                onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const ToneQuizScreen())),
-              ),
-              ListTile(
-                leading: const Icon(Icons.view_week_outlined),
-                title: const Text('Build the sentence'),
-                subtitle: const Text('See the English, put the Chinese chunks in order'),
-                trailing: const Icon(Icons.chevron_right),
-                onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const BuildSentenceScreen())),
-              ),
-              const Divider(),
-              const ListTile(title: Text('Settings')),
-              ListTile(
-                title: const Text('Levels and content'),
-                subtitle: Text(_contentSummary(store.levels, store.showSentences)),
-                trailing: const Icon(Icons.chevron_right),
-                onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const ContentScreen())),
-              ),
-              ListTile(
-                title: const Text('Cards per session'),
-                subtitle: const Text('Picked at random, cards that are due first'),
-                trailing: DropdownButton<int>(
-                  value: store.sessionSize,
-                  onChanged: (v) => store.setSessionSize(v!),
-                  items: [
-                    for (final n in const [10, 20, 30, 50, 100]) DropdownMenuItem(value: n, child: Text('$n')),
-                    if (!const [0, 10, 20, 30, 50, 100].contains(store.sessionSize))
-                      DropdownMenuItem(value: store.sessionSize, child: Text('${store.sessionSize}')),
-                    const DropdownMenuItem(value: 0, child: Text('All')),
+              const _Heading('More ways to practise'),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 12),
+                child: GridView.count(
+                  crossAxisCount: 2,
+                  shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(),
+                  mainAxisSpacing: 8,
+                  crossAxisSpacing: 8,
+                  childAspectRatio: 1.6,
+                  children: [
+                    for (final t in practiceTypes) _TypeTile(t),
                   ],
                 ),
-              ),
-              SwitchListTile(
-                title: const Text('Mix in related words'),
-                subtitle: const Text('About one in five cards is a word related to one you are practising'),
-                value: store.mixRelated,
-                onChanged: store.setMixRelated,
-              ),
-              ListTile(
-                title: const Text('Chinese side of the card shows'),
-                subtitle: store.cardFront.startsWith('mix') ? const Text('Changes from card to card') : null,
-                trailing: DropdownButton<String>(
-                  value: store.cardFront,
-                  onChanged: (v) => store.setCardFront(v!),
-                  items: const [
-                    DropdownMenuItem(value: 'hanzi', child: Text('Hanzi')),
-                    DropdownMenuItem(value: 'pinyin', child: Text('Pinyin')),
-                    DropdownMenuItem(value: 'audio', child: Text('Audio only')),
-                    DropdownMenuItem(value: 'mix', child: Text('Mix hanzi + pinyin')),
-                    DropdownMenuItem(value: 'mixAll', child: Text('Mix all three')),
-                  ],
-                ),
-              ),
-              SwitchListTile(
-                title: const Text('Flashcard voice'),
-                subtitle: Text(store.femaleVoice ? 'Female' : 'Male'),
-                value: store.femaleVoice,
-                onChanged: store.setFemaleVoice,
-              ),
-              SwitchListTile(
-                title: const Text('Slow audio (0.75×)'),
-                value: store.slowAudio,
-                onChanged: store.setSlowAudio,
-              ),
-              SwitchListTile(
-                title: const Text('Colour characters by tone'),
-                subtitle: const Text('Pinyin is always coloured'),
-                value: store.toneHanzi,
-                onChanged: store.setToneHanzi,
-              ),
-              SwitchListTile(
-                title: const Text('Daily reminder'),
-                subtitle: Text(store.reminderOn
-                    ? 'At ${_time(context, store.reminderMinutes)} on days when cards are due'
-                    : 'Off'),
-                value: store.reminderOn,
-                onChanged: (on) async {
-                  if (on && !await scope.device.allowNotifications()) {
-                    if (context.mounted) {
-                      _say(context, 'Notifications are turned off for this app in your phone\'s settings.');
-                    }
-                    return;
-                  }
-                  await store.setReminder(on: on);
-                },
-              ),
-              if (store.reminderOn)
-                ListTile(
-                  title: const Text('Reminder time'),
-                  trailing: Text(_time(context, store.reminderMinutes)),
-                  onTap: () async {
-                    final t = await showTimePicker(
-                      context: context,
-                      initialTime: TimeOfDay(hour: store.reminderMinutes ~/ 60, minute: store.reminderMinutes % 60),
-                    );
-                    if (t != null) await store.setReminder(on: true, minutes: t.hour * 60 + t.minute);
-                  },
-                ),
-              const Divider(),
-              const ListTile(title: Text('Your progress')),
-              ListTile(
-                leading: const Icon(Icons.save_alt),
-                title: const Text('Back up to a file'),
-                subtitle: const Text('Stars, lists, Easy / OK / Hard scores and flashcard progress'),
-                onTap: () async {
-                  final now = DateTime.now();
-                  final name = 'language-library-backup-${now.toIso8601String().substring(0, 10)}.json';
-                  final ok = await scope.device.saveFile(name, utf8.encode(store.exportBackup(now)));
-                  if (context.mounted && ok) _say(context, 'Saved $name');
-                },
-              ),
-              ListTile(
-                leading: const Icon(Icons.restore),
-                title: const Text('Restore from a file'),
-                subtitle: const Text('Replaces what is on this phone'),
-                onTap: () => _restore(context),
-              ),
-              const Divider(),
-              const StorageSection(),
-              const Divider(),
-              ListTile(
-                leading: const Icon(Icons.info_outline),
-                title: const Text('About, sources and credits'),
-                subtitle: store.reported.isEmpty ? null : Text('${store.reported.length} reported problems'),
-                onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const AboutScreen())),
               ),
             ],
           );
@@ -235,114 +112,150 @@ class PracticeHome extends StatelessWidget {
       ),
     );
   }
-
-  static String _time(BuildContext context, int minutes) =>
-      TimeOfDay(hour: minutes ~/ 60, minute: minutes % 60).format(context);
-
-  static void _say(BuildContext context, String text) =>
-      ScaffoldMessenger.of(context)
-        ..hideCurrentSnackBar()
-        ..showSnackBar(SnackBar(content: Text(text)));
-
-  Future<void> _restore(BuildContext context) async {
-    final scope = AppScope.of(context);
-    final bytes = await scope.device.openFile();
-    if (bytes == null || !context.mounted) return;
-    final ok = await showDialog<bool>(
-      context: context,
-      builder: (context) => AlertDialog(
-        title: const Text('Restore this backup?'),
-        content: const Text('Your stars, lists, scores and flashcard progress on this phone will be replaced.'),
-        actions: [
-          TextButton(onPressed: () => Navigator.pop(context, false), child: const Text('Cancel')),
-          FilledButton(onPressed: () => Navigator.pop(context, true), child: const Text('Restore')),
-        ],
-      ),
-    );
-    if (ok != true || !context.mounted) return;
-    try {
-      await scope.store.importBackup(utf8.decode(bytes, allowMalformed: true));
-      if (context.mounted) _say(context, 'Restored ${scope.store.starred.length} starred ${scope.store.starred.length == 1 ? 'word' : 'words'}.');
-    } on FormatException catch (e) {
-      if (context.mounted) _say(context, e.message);
-    }
-  }
 }
 
-/// How much space each part of the library takes on the phone.
-class StorageSection extends StatefulWidget {
-  const StorageSection({super.key});
+class _Heading extends StatelessWidget {
+  const _Heading(this.text);
+  final String text;
 
   @override
-  State<StorageSection> createState() => _StorageSectionState();
+  Widget build(BuildContext context) => Padding(
+        padding: const EdgeInsets.fromLTRB(16, 16, 16, 4),
+        child: Text(text, style: Theme.of(context).textTheme.titleMedium),
+      );
 }
 
-class _StorageSectionState extends State<StorageSection> {
-  Future<List<StoragePart>>? _parts;
+/// A practice type on the Practice tab's grid.
+class PracticeType {
+  const PracticeType(this.method, this.title, this.subtitle, this.icon, this.open);
+  final String method, title, subtitle;
+  final IconData icon;
+  final Widget Function() open;
+}
 
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-    _parts ??= libraryStorage();
-  }
+final practiceTypes = <PracticeType>[
+  PracticeType('build', 'Build the sentence', 'Chinese word order', Icons.view_week_outlined,
+      () => const BuildSentenceScreen()),
+  PracticeType('tones', 'Tricky sounds', 'Hear it, pick the tone', Icons.hearing, () => const ToneQuizScreen()),
+  PracticeType('order', 'Pairs & scales', 'Order and opposites', Icons.swap_vert, () => const PairsPracticeScreen()),
+];
+
+PracticeType practiceType(String method) => practiceTypes.firstWhere((t) => t.method == method);
+
+class _TypeTile extends StatelessWidget {
+  const _TypeTile(this.type);
+  final PracticeType type;
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    return FutureBuilder<List<StoragePart>>(
-      future: _parts,
-      builder: (context, snap) {
-        final parts = snap.data == null
-            ? null
-            : ([...snap.data!, progressStorage(AppScope.of(context).store)]..sort((a, b) => b.bytes.compareTo(a.bytes)));
-        final total = parts?.fold<int>(0, (n, p) => n + p.bytes) ?? 0;
-        return Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            ListTile(
-              title: const Text('Space on this phone'),
-              subtitle: Text(parts == null
-                  ? (snap.hasError ? 'Could not measure' : 'Measuring...')
-                  : '${formatBytes(total)} of library data and progress. The app itself takes more on top.'),
-            ),
-            for (final p in parts ?? const <StoragePart>[])
-              Padding(
-                padding: const EdgeInsets.fromLTRB(16, 0, 16, 10),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      children: [
-                        Expanded(child: Text(p.label, style: theme.textTheme.bodyLarge)),
-                        Text(formatBytes(p.bytes), style: theme.textTheme.bodyMedium),
-                      ],
-                    ),
-                    const SizedBox(height: 4),
-                    LinearProgressIndicator(value: total == 0 ? 0 : p.bytes / total),
-                    const SizedBox(height: 2),
-                    Text(p.detail, style: theme.textTheme.bodySmall),
-                  ],
-                ),
-              ),
-          ],
-        );
-      },
+    return Card(
+      margin: EdgeInsets.zero,
+      clipBehavior: Clip.antiAlias,
+      child: InkWell(
+        onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => type.open())),
+        child: Padding(
+          padding: const EdgeInsets.all(12),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Icon(type.icon, color: theme.colorScheme.primary),
+              const Spacer(),
+              Text(type.title, style: theme.textTheme.titleSmall, maxLines: 1, overflow: TextOverflow.ellipsis),
+              Text(type.subtitle, style: theme.textTheme.bodySmall, maxLines: 1, overflow: TextOverflow.ellipsis),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }
 
-/// "HSK 1–3 and the phrasebook", for the Settings row.
-String _contentSummary(Set<int> levels, bool sentences) {
-  final l = levels.toList()..sort();
-  final parts = <String>[];
-  for (var i = 0; i < l.length; i++) {
-    var j = i;
-    while (j + 1 < l.length && l[j + 1] == l[j] + 1) {
-      j++;
-    }
-    parts.add(i == j ? '${l[i]}' : '${l[i]}–${l[j]}');
-    i = j;
+/// The top of Practice: today's answers against the daily goal, the streak,
+/// the last seven days, and one button for what to do next.
+class TodayCard extends StatelessWidget {
+  const TodayCard({super.key});
+
+  @override
+  Widget build(BuildContext context) =>
+      ListenableBuilder(listenable: AppScope.of(context).store, builder: (context, _) => _build(context));
+
+  Widget _build(BuildContext context) {
+    final store = AppScope.of(context).store;
+    final theme = Theme.of(context);
+    final now = DateTime.now();
+    final done = answersOn(store.reviews, now);
+    final goal = store.dailyGoal;
+    final days = streak(store.reviews, goal, now);
+    final week = lastDays(store.reviews, now);
+    final step = nextStep(store, now);
+    final met = done >= goal;
+    final (label, detail) = switch (step) {
+      DueCards(:final count) => ('Review $count due ${count == 1 ? 'card' : 'cards'}', 'Flashcards first, while they are due.'),
+      TryType(:final method, :final lastWeek) => (
+          practiceType(method).title,
+          lastWeek == 0 ? 'No cards due. You haven\'t tried this in the last week.' : 'No cards due. Your least-used practice this week.'
+        ),
+    };
+    return Card(
+      margin: const EdgeInsets.fromLTRB(12, 12, 12, 4),
+      color: theme.colorScheme.primaryContainer,
+      child: Padding(
+        padding: const EdgeInsets.fromLTRB(16, 14, 16, 14),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              children: [
+                Expanded(child: Text('Today', style: theme.textTheme.titleLarge)),
+                if (days > 0)
+                  Text('$days ${days == 1 ? 'day' : 'days'} in a row',
+                      style: theme.textTheme.labelLarge?.copyWith(fontWeight: FontWeight.bold)),
+              ],
+            ),
+            const SizedBox(height: 8),
+            Text(met ? '$done answers today. Goal of $goal reached!' : '$done of $goal answers today',
+                style: theme.textTheme.bodyLarge),
+            const SizedBox(height: 6),
+            ClipRRect(
+              borderRadius: BorderRadius.circular(4),
+              child: LinearProgressIndicator(value: (done / goal).clamp(0, 1).toDouble(), minHeight: 8),
+            ),
+            const SizedBox(height: 10),
+            Row(
+              children: [
+                for (final (d, n) in week)
+                  Expanded(
+                    child: Column(
+                      children: [
+                        Icon(n >= goal ? Icons.circle : (n > 0 ? Icons.adjust : Icons.circle_outlined),
+                            size: 14, color: theme.colorScheme.primary),
+                        Text(const ['M', 'T', 'W', 'T', 'F', 'S', 'S'].elementAt(d.weekday - 1),
+                            style: theme.textTheme.labelSmall),
+                      ],
+                    ),
+                  ),
+              ],
+            ),
+            const SizedBox(height: 10),
+            Text(detail, style: theme.textTheme.bodySmall),
+            const SizedBox(height: 6),
+            SizedBox(
+              width: double.infinity,
+              child: FilledButton.icon(
+                icon: const Icon(Icons.play_arrow),
+                label: Text(label),
+                onPressed: () => Navigator.of(context).push(MaterialPageRoute(
+                  builder: (_) => switch (step) {
+                    DueCards() => const PracticeScreen(),
+                    TryType(:final method) => practiceType(method).open(),
+                  },
+                )),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
   }
-  final hsk = parts.isEmpty ? 'No HSK levels' : 'HSK ${parts.join(', ')}';
-  return sentences ? '$hsk and the phrasebook' : hsk;
 }
