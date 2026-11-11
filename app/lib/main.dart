@@ -13,6 +13,7 @@ import 'device/device.dart';
 import 'ui/common.dart';
 import 'ui/entry_screen.dart';
 import 'ui/focus_screen.dart';
+import 'ui/learn_screen.dart';
 import 'ui/library_screen.dart';
 import 'ui/practice_home.dart';
 import 'ui/scales_screen.dart';
@@ -147,7 +148,7 @@ class _HomeShellState extends State<HomeShell> {
     super.dispose();
   }
 
-  /// 'library', 'focus', 'practice', `entry/ID` or `scale/N` from a widget.
+  /// 'library', 'learn', 'focus', 'practice', 'progress', `entry/ID` or `scale/N` from a widget.
   void _go(String place) {
     if (!mounted) return;
     if (place.startsWith('scale/')) {
@@ -165,7 +166,7 @@ class _HomeShellState extends State<HomeShell> {
       if (e != null) Navigator.of(context).push(MaterialPageRoute(builder: (_) => EntryScreen(e)));
       return;
     }
-    final tab = const {'library': 0, 'focus': 1, 'practice': 2, 'progress': 3}[place];
+    final tab = const {'library': 0, 'learn': 1, 'focus': 2, 'practice': 3, 'progress': 4}[place];
     if (tab != null) setState(() => _tab = tab);
   }
 
@@ -174,13 +175,14 @@ class _HomeShellState extends State<HomeShell> {
     return Scaffold(
       body: IndexedStack(
         index: _tab,
-        children: const [LibraryScreen(), FocusScreen(), PracticeHome(), StatsScreen()],
+        children: const [LibraryScreen(), LearnScreen(), FocusScreen(), PracticeHome(), StatsScreen()],
       ),
       bottomNavigationBar: NavigationBar(
         selectedIndex: _tab,
         onDestinationSelected: (i) => setState(() => _tab = i),
         destinations: const [
           NavigationDestination(icon: Icon(Icons.menu_book_outlined), label: 'Library'),
+          NavigationDestination(icon: Icon(Icons.lightbulb_outline), label: 'Learn'),
           NavigationDestination(icon: Icon(Icons.star_outline), label: 'Focus'),
           NavigationDestination(icon: Icon(Icons.style_outlined), label: 'Practice'),
           NavigationDestination(icon: Icon(Icons.insights_outlined), label: 'Progress'),

@@ -52,6 +52,9 @@ class UserStore extends ChangeNotifier {
   /// Most cards in one practice session, picked at random; 0 means all of them.
   int sessionSize = 20;
 
+  /// Answers a day the Today card aims for.
+  int dailyGoal = 20;
+
   /// How the Practice tab practises: 'cards', 'listen' (multiple choice) or 'type'.
   String practiceMode = 'cards';
 
@@ -131,6 +134,7 @@ class UserStore extends ChangeNotifier {
     reminderOn = j['reminderOn'] as bool? ?? reminderOn;
     reminderMinutes = j['reminderMinutes'] as int? ?? reminderMinutes;
     sessionSize = j['sessionSize'] as int? ?? sessionSize;
+    dailyGoal = j['dailyGoal'] as int? ?? dailyGoal;
     mixRelated = j['mixRelated'] as bool? ?? mixRelated;
     practiceMode = j['practiceMode'] as String? ?? practiceMode;
     if (j['levels'] case final List l) {
@@ -167,6 +171,7 @@ class UserStore extends ChangeNotifier {
         'reminderOn': reminderOn,
         'reminderMinutes': reminderMinutes,
         'sessionSize': sessionSize,
+        'dailyGoal': dailyGoal,
         'mixRelated': mixRelated,
         'practiceMode': practiceMode,
         'levels': (levels.toList()..sort()),
@@ -338,6 +343,11 @@ class UserStore extends ChangeNotifier {
 
   Future<void> setStatsPeriod(String v) {
     statsPeriod = v;
+    return _save();
+  }
+
+  Future<void> setDailyGoal(int v) {
+    dailyGoal = v;
     return _save();
   }
 

@@ -88,13 +88,13 @@ void main() {
     }
   });
 
-  testWidgets('Families chip and a family screen', (tester) async {
+  testWidgets('Families on Learn and a family screen', (tester) async {
     final store = await fresh();
     tester.view.physicalSize = const Size(800, 2400);
     tester.view.devicePixelRatio = 1;
     addTearDown(tester.view.reset);
     await tester.pumpWidget(appForTest(lib, store));
-    await tester.dragUntilVisible(find.text('Families'), find.byType(ListView).first, const Offset(-150, 0));
+    await tester.tap(find.text('Learn'));
     await tester.pumpAndSettle();
     await tester.tap(find.text('Families'));
     await tester.pumpAndSettle();
@@ -110,13 +110,13 @@ void main() {
     expect(store.starred.length, familyOf(lib, store.shows, '在')!.words.length);
   });
 
-  testWidgets('Patterns chip, a pattern, and building a sentence', (tester) async {
+  testWidgets('Patterns on Learn, a pattern, and building a sentence', (tester) async {
     final store = await fresh();
     tester.view.physicalSize = const Size(800, 2400);
     tester.view.devicePixelRatio = 1;
     addTearDown(tester.view.reset);
     await tester.pumpWidget(appForTest(lib, store));
-    await tester.dragUntilVisible(find.text('Patterns'), find.byType(ListView).first, const Offset(-150, 0));
+    await tester.tap(find.text('Learn'));
     await tester.pumpAndSettle();
     await tester.tap(find.text('Patterns'));
     await tester.pumpAndSettle();

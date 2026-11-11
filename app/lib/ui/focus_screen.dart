@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../data/user_store.dart';
 import '../srs/scheduler.dart';
 import 'common.dart';
+import 'settings_screen.dart';
 import 'entry_screen.dart';
 import 'entry_tile.dart';
 import 'practice_screen.dart';
@@ -48,6 +49,7 @@ class _FocusScreenState extends State<FocusScreen> {
                   icon: const Icon(Icons.delete_outline),
                   onPressed: () => _confirmDelete(context, _list!),
                 ),
+              const SettingsButton(),
             ],
           ),
           body: Column(
