@@ -40,6 +40,9 @@ void main() {
     final store = await UserStore.open();
     expect(nextStep(store, now), isA<TryType>().having((t) => t.method, 'method', 'build'));
     store.reviews.addAll([...many(ago(1), 3, 'build'), ...many(ago(2), 2, 'tones'), ...many(ago(3), 1, 'opposite')]);
+    // Say it hasn't been tried at all, so it comes first.
+    expect((nextStep(store, now) as TryType).method, 'speak');
+    store.reviews.addAll(many(ago(1), 4, 'speak'));
     expect(nextStep(store, now), isA<TryType>().having((t) => t.method, 'method', 'order').having((t) => t.lastWeek, 'n', 1));
     store.reviews.addAll(many(ago(10), 9, 'order')); // too long ago to count
     expect((nextStep(store, now) as TryType).method, 'order');

@@ -41,7 +41,7 @@ List<(DateTime, int)> lastDays(List<Review> reviews, DateTime now, {int days = 7
 
 /// The practice types the Today card can suggest, as logged in the practice log
 /// ('order' stands for Pairs & scales, which also logs 'opposite').
-const todayTypes = ['build', 'tones', 'order'];
+const todayTypes = ['build', 'tones', 'order', 'speak'];
 
 /// What the Today card suggests next.
 sealed class TodayStep {}

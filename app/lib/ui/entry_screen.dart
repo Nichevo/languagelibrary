@@ -4,6 +4,7 @@ import '../data/user_store.dart';
 import '../models/entry.dart';
 import 'common.dart';
 import 'entry_tile.dart';
+import 'say_it_screen.dart';
 import 'scales_screen.dart';
 import 'sounds_screen.dart';
 import 'families_screen.dart';
@@ -86,6 +87,13 @@ class EntryScreen extends StatelessWidget {
               children: [
                 const Text('Slow (0.75×)'),
                 Switch(value: store.slowAudio, onChanged: store.setSlowAudio),
+                const SizedBox(width: 12),
+                TextButton.icon(
+                  icon: const Icon(Icons.mic_none),
+                  label: const Text('Say it'),
+                  onPressed: () => Navigator.of(context)
+                      .push(MaterialPageRoute(builder: (_) => SayItScreen(entries: [entry]))),
+                ),
               ],
             ),
             Padding(

@@ -37,6 +37,11 @@ android {
         // flag during build.
         versionCode = flutter.versionCode
         versionName = flutter.versionName
+        // Real phones and tablets only. Leaving out the x86 emulator builds keeps
+        // the speech recogniser's native code (Say it) from doubling the APK size.
+        ndk {
+            abiFilters += listOf("arm64-v8a", "armeabi-v7a")
+        }
     }
 
     signingConfigs {

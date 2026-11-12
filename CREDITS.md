@@ -11,6 +11,7 @@ and the full license texts ship in `app/assets/licenses/`.
 | Opposites | [WordNet 3.1](https://wordnet.princeton.edu/) by Princeton University | [WordNet licence](https://wordnet.princeton.edu/license-and-commercial-use) | Checking that opposite pairs (大 big / 小 small) are antonyms in English |
 | Voices | [Google Cloud Text-to-Speech](https://cloud.google.com/text-to-speech) | Google Cloud terms | Female and male audio clips |
 | Audio check | [Google Cloud Speech-to-Text](https://cloud.google.com/speech-to-text) | Google Cloud terms | Checking each clip says the right word |
+| Say it recogniser | [sherpa-onnx](https://github.com/k2-fsa/sherpa-onnx) by the k2-fsa project, with its small streaming Zipformer CTC Chinese model (`sherpa-onnx-streaming-zipformer-small-ctc-zh-int8-2025-04-01`) | [Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0) (the model came with no separate licence file; it is published by the same project) | Hearing what the learner said, on the device, in the Say it practice |
 
 ## Share-alike note
 
@@ -18,6 +19,8 @@ and the full license texts ship in `app/assets/licenses/`.
 file is shared under CC BY-SA 4.0 too. Our own additions (topic tags, the reading
 choices in `tools/sources/readings.tsv`, the phrase list in
 `tools/sources/phrases.tsv`, the tone-set fill list in `tools/sources/tone_words.tsv`) are included under the same license.
+The same goes for `app/assets/data/char_tones.tsv` (every reading CC-CEDICT gives each
+character, made by `tools/char_tones.py`), which Say it uses to name what the recogniser heard.
 
 ## What is ours
 
@@ -56,6 +59,12 @@ choices in `tools/sources/readings.tsv`, the phrase list in
   Each sentence pattern in `tools/sources/patterns.json` summarises one of its pages
   in our own words and links to it. The example sentences are Tatoeba phrasebook
   sentences; how they are split into chunks, and the role names, are ours.
+- Say it: the recogniser only writes characters. Saying which syllable came out
+  wrong ("卖 mài, a 4th tone") is the app comparing those characters' CC-CEDICT
+  readings with the word's pinyin. The pitch line is measured on the device (the
+  YIN method) and drawn as it is; the app does not mark tones right or wrong from
+  it, because on our own voice clips that kind of automatic verdict was wrong too
+  often. Recordings stay on the device.
 - Character families are worked out by the app: every library entry that uses
   the character. Nothing is added by hand.
 

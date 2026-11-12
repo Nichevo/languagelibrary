@@ -52,6 +52,14 @@ class AboutScreen extends StatelessWidget {
       'Female and male recordings, made once and stored in the app. Each clip was checked '
           'with Google Speech-to-Text.',
     ),
+    (
+      'Say it speech recogniser',
+      'sherpa-onnx by the k2-fsa project, Apache License 2.0',
+      'https://github.com/k2-fsa/sherpa-onnx',
+      'Hears what you said, on this device, using the project\'s small streaming Chinese model '
+          '(Zipformer CTC, 2025-04-01). Which syllable came out wrong is worked out by this app from '
+          'CC-CEDICT readings. Recordings never leave the device.',
+    ),
   ];
 
   @override
