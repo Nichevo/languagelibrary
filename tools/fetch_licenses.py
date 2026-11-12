@@ -8,6 +8,7 @@ OUT = Path(__file__).resolve().parent.parent / "app" / "assets" / "licenses"
 FILES = {
     "CC-BY-SA-4.0.txt": "https://raw.githubusercontent.com/spdx/license-list-data/main/text/CC-BY-SA-4.0.txt",
     "complete-hsk-vocabulary-MIT.txt": "https://raw.githubusercontent.com/drkameleon/complete-hsk-vocabulary/main/LICENSE",
+    "Apache-2.0.txt": "https://www.apache.org/licenses/LICENSE-2.0.txt",
 }
 
 

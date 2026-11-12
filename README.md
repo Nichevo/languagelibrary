@@ -22,9 +22,10 @@ flashcards with spaced repetition.
 
 ```
 app/                 Flutter app
-  assets/data/       library.json (built by tools/build_data.py)
+  assets/data/       library.json (built by tools/build_data.py), char_tones.tsv (tools/char_tones.py)
   assets/audio/      voice clips + manifest.json (made by tools/generate_audio.py)
   assets/licenses/   full license texts (tools/fetch_licenses.py)
+  assets/speech/     the Say it speech recogniser's model (sherpa-onnx, see CREDITS.md)
 tools/               Python scripts that build the data and audio
   sources/           our small hand-kept lists (phrases, reading choices, topic rules)
   build_report.md    what the last data build dropped or flagged
@@ -112,6 +113,12 @@ The script downloads the HSK list and CC-CEDICT. A word is kept only if both sou
 agree on its characters and pinyin, every syllable is a real Mandarin syllable, and
 CC-CEDICT has a real meaning for it. Everything dropped or flagged is listed in
 `tools/build_report.md`.
+
+After rebuilding, refresh the readings Say it uses to name what it heard:
+
+```
+python3 -m tools.char_tones
+```
 
 ### Sentences
 

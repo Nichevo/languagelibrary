@@ -45,6 +45,12 @@ class Speaker {
     await tts.speak(text);
   }
 
+  /// Stops whatever is playing.
+  Future<void> stop() async {
+    await _player.stop();
+    await _tts?.stop();
+  }
+
   Future<void> dispose() async {
     await _player.dispose();
     await _tts?.stop();

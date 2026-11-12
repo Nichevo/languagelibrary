@@ -16,6 +16,7 @@ const methodLabels = {
   'widgetOpposite': 'Widget: what\'s the opposite?',
   'tones': 'Hear it, pick the tone',
   'build': 'Build the sentence',
+  'speak': 'Say it',
 };
 
 /// How one practice method has gone.

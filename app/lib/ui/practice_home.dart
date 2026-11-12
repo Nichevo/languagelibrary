@@ -7,6 +7,7 @@ import 'drill_screen.dart';
 import 'pairs_practice.dart';
 import 'patterns_screen.dart';
 import 'practice_screen.dart';
+import 'say_it_screen.dart';
 import 'settings_screen.dart';
 import 'sounds_screen.dart';
 import 'wide.dart';
@@ -139,6 +140,7 @@ final practiceTypes = <PracticeType>[
       () => const BuildSentenceScreen()),
   PracticeType('tones', 'Tricky sounds', 'Hear it, pick the tone', Icons.hearing, () => const ToneQuizScreen()),
   PracticeType('order', 'Pairs & scales', 'Order and opposites', Icons.swap_vert, () => const PairsPracticeScreen()),
+  PracticeType('speak', 'Say it', 'Speak and see what it heard', Icons.mic_none, () => const SayItScreen()),
 ];
 
 PracticeType practiceType(String method) => practiceTypes.firstWhere((t) => t.method == method);
