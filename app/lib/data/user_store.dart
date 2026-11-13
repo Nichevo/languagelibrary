@@ -1,9 +1,11 @@
 import 'dart:convert';
+import 'dart:math';
 
 import 'package:flutter/foundation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../models/entry.dart';
+import '../models/journey_week.dart';
 import '../srs/scheduler.dart';
 
 /// Everything the learner changes: stars, custom lists, flashcard progress,
@@ -77,6 +79,37 @@ class UserStore extends ChangeNotifier {
 
   /// Show the phrasebook sentences in the library.
   bool showSentences = true;
+
+  /// The learning journey: a week-by-week plan that grows from the learner's
+  /// own words. [journeyAsked] is set once the learner has said yes or not now.
+  bool journeyOn = false;
+  bool journeyAsked = false;
+
+  /// How weeks are chosen, any mix of 'connections', 'topics', 'characters',
+  /// 'sentences' and 'hsk'. Weeks take turns between the ones switched on.
+  final Set<String> journeyPaths = {'connections', 'topics'};
+
+  /// New words a week.
+  int journeyPace = 20;
+
+  /// Every this many weeks is a review week with no new words; 0 for never.
+  int reviewEvery = 4;
+
+  /// Change the app's colour at each milestone (words known).
+  bool milestoneColours = true;
+
+  /// The journey's weeks, oldest first. Synced between devices as a whole.
+  final List<JourneyWeek> weeks = [];
+  static const maxWeeks = 104;
+
+  /// The week the learner picked for next week, used when it starts.
+  JourneyWeek? nextWeek;
+
+  /// The start ('2026-11-09') of a finished week whose recap hasn't been seen.
+  String? recapPending;
+
+  /// The highest milestone already celebrated.
+  int milestoneSeen = 0;
 
   /// Whether [e] belongs to the content switched on in Settings. The curated
   /// everyday phrases and starred words always show.
@@ -157,6 +190,23 @@ class UserStore extends ChangeNotifier {
         ..addAll(l.cast<int>());
     }
     showSentences = j['showSentences'] as bool? ?? showSentences;
+    journeyOn = j['journeyOn'] as bool? ?? false;
+    journeyAsked = j['journeyAsked'] as bool? ?? false;
+    if (j['journeyPaths'] case final List l) {
+      journeyPaths
+        ..clear()
+        ..addAll(l.cast<String>());
+    }
+    journeyPace = j['journeyPace'] as int? ?? journeyPace;
+    reviewEvery = j['reviewEvery'] as int? ?? reviewEvery;
+    milestoneColours = j['milestoneColours'] as bool? ?? milestoneColours;
+    weeks.clear();
+    for (final w in j['weeks'] as List? ?? const []) {
+      weeks.add(JourneyWeek.fromJson(w as Map<String, dynamic>));
+    }
+    nextWeek = j['nextWeek'] == null ? null : JourneyWeek.fromJson(j['nextWeek'] as Map<String, dynamic>);
+    recapPending = j['recapPending'] as String?;
+    milestoneSeen = j['milestoneSeen'] as int? ?? 0;
     choiceKind = j['choiceKind'] as String? ?? choiceKind;
     widgetAnswersUpTo = j['widgetAnswersUpTo'] as int? ?? 0;
     statsPeriod = j['statsPeriod'] as String? ?? statsPeriod;
@@ -194,6 +244,16 @@ class UserStore extends ChangeNotifier {
         'practiceMode': practiceMode,
         'levels': (levels.toList()..sort()),
         'showSentences': showSentences,
+        'journeyOn': journeyOn,
+        'journeyAsked': journeyAsked,
+        'journeyPaths': (journeyPaths.toList()..sort()),
+        'journeyPace': journeyPace,
+        'reviewEvery': reviewEvery,
+        'milestoneColours': milestoneColours,
+        'weeks': [for (final w in weeks) w.toJson()],
+        'nextWeek': nextWeek?.toJson(),
+        'recapPending': recapPending,
+        'milestoneSeen': milestoneSeen,
         'choiceKind': choiceKind,
         'widgetAnswersUpTo': widgetAnswersUpTo,
         'statsPeriod': statsPeriod,
@@ -238,6 +298,9 @@ class UserStore extends ChangeNotifier {
       }
       (data['snapshots'] as Map? ?? const {}).forEach((k, v) => Snapshot.fromJson(v as List));
       (data['stamps'] as Map? ?? const {}).forEach((k, v) => (k as String, v as num));
+      for (final w in data['weeks'] as List? ?? const []) {
+        JourneyWeek.fromJson(w as Map<String, dynamic>);
+      }
     } catch (_) {
       throw const FormatException('This backup file is damaged, so nothing was restored.');
     }
@@ -396,6 +459,22 @@ class UserStore extends ChangeNotifier {
         firstKnown[k] = theirs;
       }
     });
+
+    // The journey's weeks: whichever device planned or changed them last.
+    if (side('journey') > 0) {
+      weeks
+        ..clear()
+        ..addAll([
+          for (final w in data['weeks'] as List? ?? const []) JourneyWeek.fromJson(w as Map<String, dynamic>),
+        ]);
+      nextWeek = data['nextWeek'] == null ? null : JourneyWeek.fromJson(data['nextWeek'] as Map<String, dynamic>);
+      if (weeks.isNotEmpty && !journeyAsked) {
+        journeyOn = true;
+        journeyAsked = true;
+      }
+    }
+    keepLatest('journey');
+    milestoneSeen = max(milestoneSeen, data['milestoneSeen'] as int? ?? 0);
 
     await _save();
     return MergeResult(
@@ -583,6 +662,94 @@ class UserStore extends ChangeNotifier {
 
   Future<void> setShowSentences(bool v) {
     showSentences = v;
+    return _save();
+  }
+
+  /// Starts the journey or switches it off. The weeks planned so far are kept.
+  Future<void> setJourneyOn(bool on, {int? milestone}) {
+    journeyOn = on;
+    journeyAsked = true;
+    if (milestone != null) milestoneSeen = max(milestoneSeen, milestone);
+    return _save();
+  }
+
+  Future<void> setJourneyPath(String path, bool on) {
+    on ? journeyPaths.add(path) : journeyPaths.remove(path);
+    if (journeyPaths.isEmpty) journeyPaths.add('connections');
+    return _save();
+  }
+
+  Future<void> setJourneyPace(int v) {
+    journeyPace = v;
+    return _save();
+  }
+
+  Future<void> setReviewEvery(int v) {
+    reviewEvery = v;
+    return _save();
+  }
+
+  Future<void> setMilestoneColours(bool v) {
+    milestoneColours = v;
+    return _save();
+  }
+
+  /// The week that [now] falls in, if one was planned.
+  JourneyWeek? weekAt(DateTime now) {
+    for (final w in weeks.reversed) {
+      final end = DateTime(w.start.year, w.start.month, w.start.day + 7);
+      if (!now.isBefore(w.start) && now.isBefore(end)) return w;
+    }
+    return null;
+  }
+
+  /// Adds [week], replacing a week that starts on the same day.
+  /// [recapOf] marks a finished week whose recap is waiting to be seen.
+  Future<void> startWeek(JourneyWeek week, {String? recapOf}) {
+    weeks.removeWhere((w) => w.start == week.start);
+    weeks.add(week);
+    weeks.sort((a, b) => a.start.compareTo(b.start));
+    if (weeks.length > maxWeeks) weeks.removeRange(0, weeks.length - maxWeeks);
+    if (nextWeek != null && !nextWeek!.start.isAfter(week.start)) nextWeek = null;
+    if (recapOf != null) recapPending = recapOf;
+    _stamp('journey');
+    return _save();
+  }
+
+  /// Picks the week to start next Monday.
+  Future<void> setNextWeek(JourneyWeek? week) {
+    nextWeek = week;
+    _stamp('journey');
+    return _save();
+  }
+
+  /// Adds a word to the week starting [start].
+  Future<void> addToWeek(DateTime start, String id) {
+    for (final w in weeks) {
+      if (w.start == start && !w.words.contains(id)) w.words.add(id);
+    }
+    _stamp('journey');
+    return _save();
+  }
+
+  Future<void> recapSeen() {
+    recapPending = null;
+    return _save();
+  }
+
+  Future<void> setMilestoneSeen(int m) {
+    milestoneSeen = m;
+    return _save();
+  }
+
+  /// Stars every one of [ids] not starred yet, so their cards come back for review.
+  Future<void> starAll(Iterable<String> ids) {
+    for (final id in ids) {
+      if (!starred.contains(id)) {
+        starred.add(id);
+        _stamp('star:$id');
+      }
+    }
     return _save();
   }
 

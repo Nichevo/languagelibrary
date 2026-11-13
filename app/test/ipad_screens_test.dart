@@ -54,7 +54,7 @@ void main() {
 
       await visit('Practice');
       for (final t in practiceTypes) {
-        await tester.ensureVisible(find.text(t.subtitle));
+        await tester.scrollUntilVisible(find.text(t.subtitle), 200, scrollable: find.byType(Scrollable).last);
         await tester.pumpAndSettle();
         await visit(t.subtitle);
         await back();

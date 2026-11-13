@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import 'audio/speaker.dart';
+import 'data/journey.dart';
 import 'data/library.dart';
 import 'data/user_store.dart';
 import 'device/device.dart';
@@ -89,7 +90,24 @@ class _LanguageLibraryAppState extends State<LanguageLibraryApp> with WidgetsBin
     WidgetsBinding.instance.addObserver(this);
     widget.store.addListener(_changed);
     widget.device.refresh(widget.library, widget.store);
+    _colour = appColor(widget.library, widget.store);
     _sync();
+    _ensureWeek();
+  }
+
+  /// The app's colour, which changes at each journey milestone.
+  late Color _colour;
+  bool _planning = false;
+
+  /// Starts the journey's week when a new one begins.
+  Future<void> _ensureWeek() async {
+    if (_planning) return;
+    _planning = true;
+    try {
+      await ensureWeek(widget.library, widget.store, DateTime.now());
+    } finally {
+      _planning = false;
+    }
   }
 
   /// Brings in progress from the other device when the app opens or comes
@@ -104,7 +122,12 @@ class _LanguageLibraryAppState extends State<LanguageLibraryApp> with WidgetsBin
   }
 
   /// Stars, scores and studied cards change the reminder and the widgets.
-  void _changed() => widget.device.refresh(widget.library, widget.store);
+  void _changed() {
+    widget.device.refresh(widget.library, widget.store);
+    final c = appColor(widget.library, widget.store);
+    if (c != _colour) setState(() => _colour = c);
+    _ensureWeek();
+  }
 
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
@@ -112,13 +135,14 @@ class _LanguageLibraryAppState extends State<LanguageLibraryApp> with WidgetsBin
     if (state == AppLifecycleState.resumed) {
       widget.device.refresh(widget.library, widget.store);
       _sync();
+      _ensureWeek();
     }
     if (state == AppLifecycleState.paused) _sync();
   }
 
   @override
   Widget build(BuildContext context) {
-    const seed = Color(0xFF1565C0);
+    final seed = _colour;
     return AppScope(
       library: widget.library,
       store: widget.store,

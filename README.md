@@ -16,6 +16,14 @@ flashcards with spaced repetition.
 - **Focus list**: star words; optional custom lists such as "This week".
 - **Practice**: every word has a Chinese → English card and an English → Chinese
   card. Again / Hard / Good / Easy decides when each comes back.
+- **Learning journey** (optional, offered on the Practice tab): a focus each week that grows
+  from the words you already have. Next words are picked by how they link to yours: characters
+  you know, phrasebook sentences with only one word missing, the dictionary's related words,
+  topics and sentence patterns, and each suggestion says why. Paths (Connections, Topics,
+  Characters, Sentences, HSK gaps) take turns, with a review week every fourth week. Words you
+  find yourself count too. Progress shows as a word web on the Progress tab, and the app's
+  colour changes at each milestone (150, 400, 900, 1,800, 3,000 and 5,000 words known).
+  Settings → Learning journey changes the paths, pace and colours, or turns it off.
 - Simplified characters only for now; traditional forms are already stored.
 
 ## Layout

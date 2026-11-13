@@ -4,6 +4,7 @@ import '../data/today.dart';
 import '../srs/scheduler.dart';
 import 'common.dart';
 import 'drill_screen.dart';
+import 'journey_screens.dart';
 import 'pairs_practice.dart';
 import 'patterns_screen.dart';
 import 'practice_screen.dart';
@@ -54,6 +55,7 @@ class PracticeHome extends StatelessWidget {
           return ListView(
             padding: const EdgeInsets.only(bottom: 24),
             children: [
+              const WeekCard(),
               const TodayCard(),
               const _Heading('Flashcards'),
               Padding(
