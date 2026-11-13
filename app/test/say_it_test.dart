@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:io';
 import 'dart:math';
 import 'dart:typed_data';
@@ -395,6 +396,29 @@ void main() {
       expect(find.textContaining('Usually 2 tries · right once'), findsOneWidget);
     });
 
+    testWidgets('letting go while the microphone is being asked for records nothing', (tester) async {
+      SharedPreferences.setMockInitialValues({});
+      final store = await UserStore.open();
+      final recorder = _SlowRecorder();
+      await tester.pumpWidget(AppScope(
+        library: lib,
+        store: store,
+        speaker: Speaker(lib),
+        device: NoDevice(),
+        child: MaterialApp(home: SayItScreen(entries: [word('谢谢')], recorder: recorder, checker: _FakeChecker('谢谢'))),
+      ));
+      await tester.pumpAndSettle();
+      final gesture = await tester.startGesture(tester.getCenter(find.byIcon(Icons.mic)));
+      await tester.pump();
+      await gesture.up(); // let go while "Allow the microphone?" is showing
+      await tester.pump();
+      recorder.answer.complete(true);
+      await tester.pumpAndSettle();
+      expect(recorder.started, isFalse);
+      expect(find.text('Hold the button down while you speak, then let go.'), findsOneWidget);
+      expect(store.speakTries, isEmpty);
+    });
+
     testWidgets('a quick tap asks to hold the button', (tester) async {
       await pumpScreen(tester, _FakeChecker('谢谢'), [word('谢谢')]);
       await tester.tap(find.byIcon(Icons.mic));
@@ -413,6 +437,16 @@ class _FakeRecorder implements Recorder {
   Future<String?> stop() async => 'fake.wav';
   @override
   Future<void> dispose() async {}
+}
+
+/// Asks for the microphone and waits for [answer], like the first time on a device.
+class _SlowRecorder extends _FakeRecorder {
+  final answer = Completer<bool>();
+  bool started = false;
+  @override
+  Future<bool> allowed() => answer.future;
+  @override
+  Future<void> start() async => started = true;
 }
 
 class _FakeChecker implements SpeechChecker {

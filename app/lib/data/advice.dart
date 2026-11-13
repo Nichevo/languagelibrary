@@ -1,4 +1,4 @@
-import '../srs/scheduler.dart';
+import 'daily.dart';
 import 'method_stats.dart';
 import 'user_store.dart';
 
@@ -39,8 +39,7 @@ List<Tip> tips(UserStore store, DateTime now, {int limit = 3}) {
   }
 
   // Studied cards waiting.
-  const sched = Scheduler();
-  final overdue = store.cards.values.where((c) => sched.isDue(c, now)).length;
+  final overdue = dueNow(store, now);
   if (overdue >= 2 * store.sessionSize && overdue >= 20) {
     out.add(Tip(
       '$overdue cards are waiting for review',

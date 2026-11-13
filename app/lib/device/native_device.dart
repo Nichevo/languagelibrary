@@ -145,7 +145,7 @@ class NativeDevice implements Device {
             store.reminderMinutes % 60);
         if (!at.isAfter(tz.TZDateTime.now(tz.local))) continue;
         await _notes.zonedSchedule(
-          id: day.difference(DateTime(2024)).inDays,
+          id: dayNumber(day),
           title: due == 1 ? '1 card is due' : '$due cards are due',
           body: 'About ${(due * 0.4).ceil()} minutes. Tap to start practising.',
           scheduledDate: at,
@@ -168,8 +168,8 @@ class NativeDevice implements Device {
     final today = dayOf(now);
     final words = [
       for (var i = 0; i < _widgetDays; i++)
-        if (wordOfTheDay(library, today.add(Duration(days: i)), shown: store.shows) case final e?)
-          {'d': dayKey(today.add(Duration(days: i))), ...word(e)},
+        if (wordOfTheDay(library, dayPlus(today, i), shown: store.shows) case final e?)
+          {'d': dayKey(dayPlus(today, i)), ...word(e)},
     ];
     final due = [
       for (final (day, n) in dueByDay(store, now, days: _widgetDays)) {'d': dayKey(day), 'n': n},

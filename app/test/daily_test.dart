@@ -39,6 +39,32 @@ void main() {
     expect(counts, [2, 2, 3, 3, 3, 3, 3, 4]);
   });
 
+  test('days count on through daylight saving changes (run with TZ=Europe/London to check)', () {
+    for (final (y, m, d) in [(2026, 3, 29), (2026, 10, 25), (2026, 11, 1)]) {
+      final before = DateTime(y, m, d - 1, 12), on = DateTime(y, m, d, 12), after = DateTime(y, m, d + 1, 12);
+      expect(dayNumber(on) - dayNumber(before), 1);
+      expect(dayNumber(after) - dayNumber(on), 1);
+      expect(dayPlus(DateTime(y, m, d - 1), 1), DateTime(y, m, d));
+      expect(dayKey(dayPlus(DateTime(y, m, d), 1)), dayKey(after));
+      expect(wordOfTheDay(lib, on)!.id, isNot(wordOfTheDay(lib, before)!.id));
+    }
+  });
+
+  test('cards due now count starred words only', () async {
+    SharedPreferences.setMockInitialValues({});
+    final store = await UserStore.open();
+    final now = DateTime(2026, 11, 5, 9);
+    final a = lib.entries[0].id, b = lib.entries[1].id;
+    final past = CardState(reps: 1, intervalDays: 1, ease: 2.5, due: now.subtract(const Duration(hours: 1)), lapses: 0);
+    await store.toggleStar(a);
+    await store.toggleStar(b);
+    await store.saveCard(a, Direction.zhToEn, past);
+    await store.saveCard(b, Direction.zhToEn, past);
+    expect(dueNow(store, now), 2);
+    await store.toggleStar(b); // unstarred: its card is kept but not due for practice
+    expect(dueNow(store, now), 1);
+  });
+
   test('tone digits line up with characters, 0 for punctuation', () {
     final hao = lib.entries.firstWhere((e) => e.simplified == '你好');
     expect(toneDigits(hao), '33');

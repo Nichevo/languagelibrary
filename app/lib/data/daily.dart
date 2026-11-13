@@ -6,6 +6,28 @@ import 'user_store.dart';
 /// Midnight at the start of [t]'s day.
 DateTime dayOf(DateTime t) => DateTime(t.year, t.month, t.day);
 
+/// Days since 1 January 2024, counted in calendar days, so a change to or
+/// from daylight saving (a 23 or 25 hour day) doesn't repeat or skip a day.
+int dayNumber(DateTime t) => DateTime.utc(t.year, t.month, t.day).difference(DateTime.utc(2024)).inDays;
+
+/// Midnight [n] calendar days after [t]'s day (before it when [n] is negative).
+DateTime dayPlus(DateTime t, int n) => DateTime(t.year, t.month, t.day + n);
+
+/// Studied flashcards of starred words that are due now. Cards of words that
+/// were unstarred are kept (in case they are starred again) but not counted,
+/// since practice only shows starred words.
+int dueNow(UserStore store, DateTime now) {
+  const sched = Scheduler();
+  var n = 0;
+  for (final id in store.starred) {
+    for (final d in Direction.values) {
+      final c = store.card(id, d);
+      if (c != null && sched.isDue(c, now)) n++;
+    }
+  }
+  return n;
+}
+
 String dayKey(DateTime t) =>
     '${t.year.toString().padLeft(4, '0')}-${t.month.toString().padLeft(2, '0')}-${t.day.toString().padLeft(2, '0')}';
 
@@ -14,7 +36,7 @@ String dayKey(DateTime t) =>
 Entry? wordOfTheDay(Library library, DateTime day, {bool Function(Entry)? shown}) {
   final words = [for (final e in library.entries) if (!e.isSentence && (shown == null || shown(e))) e];
   if (words.isEmpty) return null;
-  final days = dayOf(day).difference(DateTime(2024)).inDays;
+  final days = dayNumber(day);
   // A large prime step walks through the whole list before repeating.
   return words[(days * 7919) % words.length];
 }
@@ -32,8 +54,8 @@ List<(DateTime, int)> dueByDay(UserStore store, DateTime now, {int days = 14}) {
   return [
     for (var i = 0; i < days; i++)
       () {
-        final day = today.add(Duration(days: i));
-        final end = day.add(const Duration(days: 1)).subtract(const Duration(seconds: 1));
+        final day = dayPlus(today, i);
+        final end = dayPlus(today, i + 1).subtract(const Duration(seconds: 1));
         return (day, cards.where((c) => sched.isDue(c, end)).length);
       }(),
   ];

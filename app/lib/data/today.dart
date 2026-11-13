@@ -1,4 +1,3 @@
-import '../srs/scheduler.dart';
 import 'daily.dart';
 import 'user_store.dart';
 
@@ -17,7 +16,7 @@ int streak(List<Review> reviews, int goal, DateTime now) {
     perDay[d] = (perDay[d] ?? 0) + 1;
   }
   var day = dayOf(now);
-  if ((perDay[day] ?? 0) < goal) day = day.subtract(const Duration(days: 1));
+  if ((perDay[day] ?? 0) < goal) day = dayPlus(day, -1);
   var n = 0;
   while ((perDay[day] ?? 0) >= goal) {
     n++;
@@ -62,8 +61,7 @@ class TryType extends TodayStep {
 /// Due flashcards first; with none due, the practice type answered least in
 /// the last 7 days (the first in [todayTypes] on a tie).
 TodayStep nextStep(UserStore store, DateTime now) {
-  const sched = Scheduler();
-  final due = store.cards.values.where((c) => sched.isDue(c, now)).length;
+  final due = dueNow(store, now);
   if (due > 0) return DueCards(due);
   final since = now.subtract(const Duration(days: 7));
   final counts = {for (final m in todayTypes) m: 0};
