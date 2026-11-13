@@ -7,6 +7,7 @@ import '../data/user_store.dart';
 import '../sync/dropbox_sync.dart';
 import 'about_screen.dart';
 import 'common.dart';
+import 'journey_screens.dart';
 import 'content_screen.dart';
 import 'wide.dart';
 
@@ -49,6 +50,12 @@ class SettingsScreen extends StatelessWidget {
                       DropdownMenuItem(value: store.dailyGoal, child: Text('${store.dailyGoal}')),
                   ],
                 ),
+              ),
+              ListTile(
+                title: const Text('Learning journey'),
+                subtitle: Text(store.journeyOn ? 'On: a focus each week' : 'Off'),
+                trailing: const Icon(Icons.chevron_right),
+                onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const JourneySettingsScreen())),
               ),
               ListTile(
                 title: const Text('Levels and content'),

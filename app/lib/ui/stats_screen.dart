@@ -9,6 +9,7 @@ import '../data/method_stats.dart';
 import '../data/user_store.dart';
 import '../srs/scheduler.dart';
 import 'common.dart';
+import 'word_web.dart';
 import 'settings_screen.dart';
 import 'practice_screen.dart';
 import 'wide.dart';
@@ -110,6 +111,7 @@ class StatsView extends StatelessWidget {
     return ListView(
       padding: const EdgeInsets.only(bottom: 24),
       children: [
+        const JourneySummaryCard(),
         Padding(
           padding: const EdgeInsets.fromLTRB(16, 12, 16, 0),
           child: Wrap(

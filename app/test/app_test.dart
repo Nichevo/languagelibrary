@@ -225,7 +225,7 @@ void main() {
 
     device.open('practice');
     await tester.pumpAndSettle();
-    expect(find.text('All starred words'), findsOneWidget);
+    expect(find.text('Today'), findsOneWidget);
 
     final coffee = lib.entries.firstWhere((e) => e.simplified == '咖啡');
     device.open('entry/${coffee.id}');

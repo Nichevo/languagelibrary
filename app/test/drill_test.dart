@@ -63,6 +63,7 @@ void main() {
     await tester.tap(find.text('Type'));
     await tester.pumpAndSettle();
     expect(store.practiceMode, 'type');
+    await tester.scrollUntilVisible(find.text('All starred words'), 200, scrollable: find.byType(Scrollable).last);
     await tester.tap(find.text('All starred words'));
     await tester.pumpAndSettle();
     await tester.enterText(find.byType(TextField), 'ni3 hao3');

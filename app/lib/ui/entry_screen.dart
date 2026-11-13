@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../data/user_store.dart';
 import '../models/entry.dart';
 import 'common.dart';
+import 'journey_screens.dart';
 import 'entry_tile.dart';
 import 'say_it_screen.dart';
 import 'scales_screen.dart';
@@ -194,6 +195,7 @@ class EntryScreen extends StatelessWidget {
               ]),
             for (final sc in scope.library.scalesFor(entry)) ScaleCard(sc, entry),
             if (entry.isSentence) PatternLinks(scope.library.patternsFor(entry)),
+            ConnectionsCard(entry),
             FamiliesCard(entry),
             if (toneSetFor(scope.library, entry) case final ts?)
               section('Same sound, other tones', [
