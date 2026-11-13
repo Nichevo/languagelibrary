@@ -19,6 +19,7 @@ import 'package:language_library/speech/speech_service.dart';
 import 'package:language_library/speech/tone_shape.dart';
 import 'package:language_library/speech/wav.dart';
 import 'package:language_library/ui/say_it_screen.dart';
+import 'package:language_library/ui/say_it_words_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'logic_test.dart' show loadRealLibrary;
@@ -201,6 +202,56 @@ void main() {
     expect(sentences.every((e) => e.isSentence), isTrue);
   });
 
+  group('tries per word', () {
+    SpeakTry t(String id, bool ok, int minute) => SpeakTry(DateTime(2026, 11, 13, 9, minute), id, ok);
+
+    test('rounds run until the first success', () {
+      final r = speakRecords([t('a', false, 0), t('a', true, 1), t('a', true, 2), t('a', false, 3)])['a']!;
+      expect(r.rounds, [2, 1]);
+      expect(r.open, 1);
+      expect(r.tries, 4);
+      expect(r.average, 2); // (2 + 1 + 1 open) / 2
+      expect(r.level, SpeakLevel.gettingThere);
+    });
+
+    test('levels', () {
+      SpeakLevel? level(List<bool> tries) =>
+          speakRecords([for (var i = 0; i < tries.length; i++) t('a', tries[i], i)])['a']!.level;
+      expect(level([true]), SpeakLevel.easy);
+      expect(level([true, true, false, true, true]), SpeakLevel.easy);
+      expect(level([true, true, false, true]), SpeakLevel.gettingThere, reason: 'the last one took two tries');
+      expect(level([false]), isNull);
+      expect(level([false, false, false]), SpeakLevel.struggling);
+      expect(level([false, false, true]), SpeakLevel.struggling);
+      expect(level([false, true]), SpeakLevel.gettingThere);
+      expect(level([true, false, true]), SpeakLevel.gettingThere);
+    });
+
+    test('kept in backups and joined by sync', () async {
+      SharedPreferences.setMockInitialValues({});
+      final phone = await UserStore.open();
+      await phone.logSpeakTry('a', false, DateTime(2026, 11, 13, 9));
+      await phone.logSpeakTry('a', true, DateTime(2026, 11, 13, 10));
+      final data = UserStore.backupData(phone.exportBackup(DateTime(2026, 11, 13)));
+      SharedPreferences.setMockInitialValues({});
+      final ipad = await UserStore.open();
+      await ipad.logSpeakTry('a', false, DateTime(2026, 11, 13, 9, 30));
+      await ipad.mergeFrom(data);
+      await ipad.mergeFrom(data);
+      expect(ipad.speakTries.map((x) => (x.at.hour, x.at.minute, x.right)),
+          [(9, 0, false), (9, 30, false), (10, 0, true)]);
+      expect(speakRecords(ipad.speakTries)['a']!.rounds, [3]);
+    });
+  });
+
+  test('a sentence splits into library words, read the way the sentence reads them', () {
+    final s = lib.entries.firstWhere((e) => e.isSentence && e.simplified == '有谁想一起去吃饭吗？');
+    final words = [for (final (_, w) in wordsIn(s, lib)) w];
+    expect(words.map((w) => w.simplified), containsAllInOrder(['有', '谁', '想', '一起', '去', '吃饭', '吗']));
+    // 谁 is read shéi here, so the shéi entry is the one used, not shuí.
+    expect(words.firstWhere((w) => w.simplified == '谁').pinyin, 'shéi');
+  });
+
   test('the on-device recogniser hears the app\'s own 谢谢 clip', () {
     final Recognizer r;
     try {
@@ -273,6 +324,77 @@ void main() {
       expect(find.text('买 mǎi came out as 卖 mài, a 4th tone. Aim for the 3rd tone: low, dipping.'), findsOneWidget);
     });
 
+    testWidgets('buttons sit above the mic, and tries are counted until it is right', (tester) async {
+      final checker = _FakeChecker('卖');
+      final store = await pumpScreen(tester, checker, [word('买'), word('谢谢')]);
+      final mic = tester.getCenter(find.byIcon(Icons.mic)).dy;
+      for (final label in ['Listen', 'Play mine', 'Skip']) {
+        expect(tester.getCenter(find.text(label)).dy, lessThan(mic), reason: '$label is above the mic');
+      }
+      await speak(tester);
+      expect(find.text('Try 1 at this one'), findsOneWidget);
+      expect(find.text('Next'), findsOneWidget);
+      await speak(tester);
+      expect(find.text('Try 2 at this one so far'), findsOneWidget);
+      checker.text = '买';
+      await speak(tester);
+      expect(find.text('Got it in 3 tries'), findsOneWidget);
+      expect(store.speakTries.map((t) => t.right), [false, false, true]);
+      expect(store.reviews.where((r) => r.method == 'speak'), hasLength(1), reason: 'one answer per word per round');
+      final r = speakRecords(store.speakTries)[word('买').id]!;
+      expect(r.rounds, [3]);
+      expect(r.level, SpeakLevel.struggling);
+    });
+
+    testWidgets('one word of a sentence can be practised on its own', (tester) async {
+      tester.view.physicalSize = const Size(800, 2000);
+      tester.view.devicePixelRatio = 1;
+      addTearDown(tester.view.reset);
+      final sentence = lib.entries.firstWhere((e) => e.isSentence && e.simplified == '咱们去吃饭吧。');
+      await pumpScreen(tester, _FakeChecker(sentence.simplified.replaceFirst('吃', '是')), [sentence]);
+      await speak(tester);
+      expect(find.text('PRACTISE ONE WORD'), findsOneWidget);
+      final chip = find.widgetWithText(ActionChip, '吃饭 chī fàn');
+      expect(chip, findsOneWidget);
+      await tester.tap(chip);
+      await tester.pumpAndSettle();
+      expect(find.byType(SayItScreen, skipOffstage: false), findsNWidgets(2));
+      // The new screen is just the word, ready to listen to and say.
+      expect(find.text('chī fàn'), findsWidgets);
+      expect(find.text('PRACTISE ONE WORD'), findsNothing);
+    });
+
+    testWidgets('your words, sorted by how many tries they take', (tester) async {
+      SharedPreferences.setMockInitialValues({});
+      final store = await UserStore.open();
+      final t0 = DateTime(2026, 11, 13, 9);
+      var n = 0;
+      Future<void> tries(String hanzi, List<bool> results) async {
+        for (final ok in results) {
+          await store.logSpeakTry(word(hanzi).id, ok, t0.add(Duration(minutes: n++)));
+        }
+      }
+
+      await tries('买', [false, false, false]);
+      await tries('谢谢', [true, true]);
+      await tries('不客气', [false, true]);
+      await tester.pumpWidget(AppScope(
+        library: lib,
+        store: store,
+        speaker: Speaker(lib),
+        device: NoDevice(),
+        child: const MaterialApp(home: SayItWordsScreen()),
+      ));
+      await tester.pumpAndSettle();
+      expect(find.text('Struggling (1)'), findsOneWidget);
+      expect(find.text('Getting there (1)'), findsOneWidget);
+      expect(find.text('Easy (1)'), findsOneWidget);
+      expect(find.text('Practise the 1 struggling'), findsOneWidget);
+      expect(find.textContaining('3 tries, not right yet'), findsOneWidget);
+      expect(find.textContaining('Usually 1 try · right 2 times'), findsOneWidget);
+      expect(find.textContaining('Usually 2 tries · right once'), findsOneWidget);
+    });
+
     testWidgets('a quick tap asks to hold the button', (tester) async {
       await pumpScreen(tester, _FakeChecker('谢谢'), [word('谢谢')]);
       await tester.tap(find.byIcon(Icons.mic));
@@ -295,7 +417,9 @@ class _FakeRecorder implements Recorder {
 
 class _FakeChecker implements SpeechChecker {
   _FakeChecker(this.text);
-  final String text;
+
+  /// What it "hears"; change it between tries.
+  String text;
 
   @override
   Future<SpeechResult> analyse(String wavPath) async {

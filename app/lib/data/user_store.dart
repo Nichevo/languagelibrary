@@ -92,6 +92,10 @@ class UserStore extends ChangeNotifier {
   /// Every flashcard answer, oldest first, for the statistics screen.
   final List<Review> reviews = [];
 
+  /// Every Say it try, oldest first: how many tries each word takes.
+  final List<SpeakTry> speakTries = [];
+  static const maxSpeakTries = 20000;
+
   /// Day ('2026-11-05') -> how the starred cards stood at the end of that day.
   final Map<String, Snapshot> snapshots = {};
 
@@ -123,6 +127,7 @@ class UserStore extends ChangeNotifier {
     reported.clear();
     difficulty.clear();
     reviews.clear();
+    speakTries.clear();
     snapshots.clear();
     firstKnown.clear();
     stamps.clear();
@@ -158,6 +163,9 @@ class UserStore extends ChangeNotifier {
     for (final r in j['reviews'] as List? ?? const []) {
       reviews.add(Review.fromJson(r as List));
     }
+    for (final t in j['speakTries'] as List? ?? const []) {
+      speakTries.add(SpeakTry.fromJson(t as List));
+    }
     (j['snapshots'] as Map? ?? const {}).forEach((k, v) => snapshots[k as String] = Snapshot.fromJson(v as List));
     (j['firstKnown'] as Map? ?? const {}).forEach(
         (k, v) => firstKnown[k as String] = DateTime.fromMillisecondsSinceEpoch((v as int) * 1000));
@@ -190,6 +198,7 @@ class UserStore extends ChangeNotifier {
         'widgetAnswersUpTo': widgetAnswersUpTo,
         'statsPeriod': statsPeriod,
         'reviews': [for (final r in reviews) r.toJson()],
+        'speakTries': [for (final t in speakTries) t.toJson()],
         'snapshots': snapshots.map((k, v) => MapEntry(k, v.toJson())),
         'firstKnown': firstKnown.map((k, v) => MapEntry(k, v.millisecondsSinceEpoch ~/ 1000)),
         'stamps': stamps,
@@ -223,6 +232,9 @@ class UserStore extends ChangeNotifier {
       (data['reported'] as Map? ?? const {}).forEach((k, v) => v as String);
       for (final r in data['reviews'] as List? ?? const []) {
         Review.fromJson(r as List);
+      }
+      for (final t in data['speakTries'] as List? ?? const []) {
+        SpeakTry.fromJson(t as List);
       }
       (data['snapshots'] as Map? ?? const {}).forEach((k, v) => Snapshot.fromJson(v as List));
       (data['stamps'] as Map? ?? const {}).forEach((k, v) => (k as String, v as num));
@@ -359,6 +371,21 @@ class UserStore extends ChangeNotifier {
       if (reviews.length > maxReviews) reviews.removeRange(0, reviews.length - maxReviews);
     }
 
+    // Every Say it try from both, once each, in time order.
+    final seenTries = {for (final t in speakTries) jsonEncode(t.toJson())};
+    var triesAdded = 0;
+    for (final t in data['speakTries'] as List? ?? const []) {
+      final tr = SpeakTry.fromJson(t as List);
+      if (seenTries.add(jsonEncode(tr.toJson()))) {
+        speakTries.add(tr);
+        triesAdded++;
+      }
+    }
+    if (triesAdded > 0) {
+      mergeSort(speakTries, compare: (a, b) => a.at.compareTo(b.at));
+      if (speakTries.length > maxSpeakTries) speakTries.removeRange(0, speakTries.length - maxSpeakTries);
+    }
+
     // Day-by-day counts this device doesn't have, and the earliest date each card became familiar.
     (data['snapshots'] as Map? ?? const {})
         .forEach((k, v) => snapshots.putIfAbsent(k as String, () => Snapshot.fromJson(v as List)));
@@ -474,6 +501,13 @@ class UserStore extends ChangeNotifier {
   Future<void> logAnswer(Rating rating, Duration spent, DateTime now, {required String method, String? id}) {
     reviews.add(Review(now, spent > maxSpent ? maxSpent : spent, rating, false, method: method, id: id));
     if (reviews.length > maxReviews) reviews.removeRange(0, reviews.length - maxReviews);
+    return _save();
+  }
+
+  /// Records one Say it try at [id]: whether the recogniser heard it right.
+  Future<void> logSpeakTry(String id, bool right, DateTime now) {
+    speakTries.add(SpeakTry(now, id, right));
+    if (speakTries.length > maxSpeakTries) speakTries.removeRange(0, speakTries.length - maxSpeakTries);
     return _save();
   }
 
@@ -647,6 +681,19 @@ enum Difficulty {
 }
 
 /// One flashcard answer.
+/// One Say it try: when, which word, and whether the recogniser heard it right.
+class SpeakTry {
+  const SpeakTry(this.at, this.id, this.right);
+  final DateTime at;
+  final String id;
+  final bool right;
+
+  List<Object> toJson() => [at.millisecondsSinceEpoch, id, right ? 1 : 0];
+
+  factory SpeakTry.fromJson(List j) =>
+      SpeakTry(DateTime.fromMillisecondsSinceEpoch((j[0] as num).toInt()), j[1] as String, j[2] == 1);
+}
+
 class Review {
   const Review(this.at, this.spent, this.rating, this.isNew, {this.method = 'cards', this.id});
   final DateTime at;
