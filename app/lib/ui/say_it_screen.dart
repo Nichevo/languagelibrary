@@ -56,6 +56,10 @@ class _SayItScreenState extends State<SayItScreen> {
   String? _tryNote;
   final Set<int> _logged = {};
 
+  /// The mic button is down; the recorder is being switched on.
+  bool _holding = false, _starting = false;
+  static const _holdHint = 'Hold the button down while you speak, then let go.';
+
   Entry? get _entry => _queue == null || _at >= _queue!.length ? null : _queue![_at];
 
   @override
@@ -86,15 +90,34 @@ class _SayItScreenState extends State<SayItScreen> {
   }
 
   Future<void> _startRecording() async {
-    if (_phase == _Phase.recording || _phase == _Phase.checking) return;
-    _pressedAt = DateTime.now();
-    if (!await _recorder.allowed()) {
-      setState(() => _error = 'The app needs the microphone for this. You can allow it in your device\'s settings.');
+    if (_phase == _Phase.recording || _phase == _Phase.checking || _starting) return;
+    _holding = true;
+    _starting = true;
+    try {
+      _pressedAt = DateTime.now();
+      if (!await _recorder.allowed()) {
+        if (mounted) {
+          setState(() => _error = 'The app needs the microphone for this. You can allow it in your device\'s settings.');
+        }
+        return;
+      }
+      // Let go while the microphone was being asked for or switched on (the
+      // first time, or a quick tap): don't record with nobody holding the button.
+      if (!_holding || !mounted) {
+        if (mounted) setState(() => _error = _holdHint);
+        return;
+      }
+      await _player.stop();
+      await _recorder.start();
+    } finally {
+      _starting = false;
+    }
+    if (!mounted) return;
+    if (!_holding) {
+      await _recorder.stop();
+      if (mounted) setState(() => _error = _holdHint);
       return;
     }
-    await _player.stop();
-    await _recorder.start();
-    if (!mounted) return;
     setState(() {
       _phase = _Phase.recording;
       _error = null;
@@ -104,6 +127,7 @@ class _SayItScreenState extends State<SayItScreen> {
   }
 
   Future<void> _stopRecording() async {
+    _holding = false;
     _limit?.cancel();
     if (_phase != _Phase.recording) return;
     final path = await _recorder.stop();
@@ -112,7 +136,7 @@ class _SayItScreenState extends State<SayItScreen> {
     if (path == null || held < const Duration(milliseconds: 400)) {
       setState(() {
         _phase = _check == null ? _Phase.ready : _Phase.result;
-        _error = 'Hold the button down while you speak, then let go.';
+        _error = _holdHint;
       });
       return;
     }
@@ -188,6 +212,7 @@ class _SayItScreenState extends State<SayItScreen> {
   }
 
   void _switchKind(bool sentences) {
+    _player.stop();
     setState(() {
       _sentences = sentences;
       _queue = _pick();
@@ -197,6 +222,9 @@ class _SayItScreenState extends State<SayItScreen> {
       _phase = _Phase.ready;
       _check = null;
       _pitch = null;
+      _times = null;
+      _tryNote = null;
+      _recording = null;
       _error = null;
       _shownAt = DateTime.now();
     });

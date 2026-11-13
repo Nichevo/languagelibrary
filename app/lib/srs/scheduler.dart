@@ -80,7 +80,8 @@ class Scheduler {
 
   CardState _after(int reps, double days, double ease, DateTime now, int lapses) {
     final rounded = days.roundToDouble().clamp(1.0, 3650.0);
-    final due = DateTime(now.year, now.month, now.day).add(Duration(days: rounded.toInt()));
+    // Calendar days, so a change to or from daylight saving doesn't move it by an hour.
+    final due = DateTime(now.year, now.month, now.day + rounded.toInt());
     return CardState(reps: reps, intervalDays: rounded, ease: ease, due: due, lapses: lapses);
   }
 

@@ -43,6 +43,17 @@ void main() {
     expect(phone.reviews.map((x) => x.id), ['a', 'b']);
   });
 
+  test('Say it tries come across and are counted in the sync message', () async {
+    await phone.logSpeakTry('a', false, DateTime(2026, 11, 10, 9));
+    await phone.logSpeakTry('a', true, DateTime(2026, 11, 10, 9, 1));
+    final r = await ipad.mergeFrom(dataOf(phone));
+    expect(ipad.speakTries.length, 2);
+    expect(r.triesAdded, 2);
+    expect(r.changedAnything, isTrue);
+    expect(r.describe(), 'Added 2 Say it tries from your other device');
+    expect((await ipad.mergeFrom(dataOf(phone))).describe(), 'Already up to date');
+  });
+
   test('stars join, and un-starring on one device carries over', () async {
     await phone.toggleStar('a');
     await ipad.toggleStar('b');

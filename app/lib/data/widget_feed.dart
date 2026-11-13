@@ -153,13 +153,13 @@ List<Map<String, Object>> mixedQuestions(Library library, UserStore store, Rando
 
 /// The scale shown on [day]: the scales take turns, one a day.
 int scaleIndexFor(Library library, DateTime day) =>
-    library.scales.isEmpty ? -1 : dayOf(day).difference(DateTime(2024)).inDays % library.scales.length;
+    library.scales.isEmpty ? -1 : dayNumber(day) % library.scales.length;
 
 /// A month of scale-of-the-day entries for the widget, from [today].
 List<Map<String, Object>> scaleDays(Library library, DateTime today, {int days = 31}) => [
       for (var i = 0; i < days && library.scales.isNotEmpty; i++)
         () {
-          final day = dayOf(today).add(Duration(days: i));
+          final day = dayPlus(today, i);
           final n = scaleIndexFor(library, day);
           final s = library.scales[n];
           return <String, Object>{

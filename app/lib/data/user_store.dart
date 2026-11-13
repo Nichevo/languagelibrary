@@ -403,6 +403,7 @@ class UserStore extends ChangeNotifier {
       starsAdded: starsAdded,
       starsRemoved: starsRemoved,
       cardsUpdated: cardsUpdated,
+      triesAdded: triesAdded,
     );
   }
 
@@ -647,13 +648,17 @@ class UserStore extends ChangeNotifier {
 
 /// What a sync brought in from the other device.
 class MergeResult {
-  const MergeResult({this.answersAdded = 0, this.starsAdded = 0, this.starsRemoved = 0, this.cardsUpdated = 0});
+  const MergeResult(
+      {this.answersAdded = 0, this.starsAdded = 0, this.starsRemoved = 0, this.cardsUpdated = 0, this.triesAdded = 0});
   final int answersAdded;
   final int starsAdded;
   final int starsRemoved;
   final int cardsUpdated;
 
-  bool get changedAnything => answersAdded + starsAdded + starsRemoved + cardsUpdated > 0;
+  /// Say it tries.
+  final int triesAdded;
+
+  bool get changedAnything => answersAdded + starsAdded + starsRemoved + cardsUpdated + triesAdded > 0;
 
   /// For example "12 answers, 3 starred words and 8 flashcards from your other device".
   String describe() {
@@ -662,6 +667,7 @@ class MergeResult {
       if (answersAdded > 0) n(answersAdded, 'answer', 'answers'),
       if (starsAdded > 0) n(starsAdded, 'starred word', 'starred words'),
       if (cardsUpdated > 0) n(cardsUpdated, 'flashcard', 'flashcards'),
+      if (triesAdded > 0) n(triesAdded, 'Say it try', 'Say it tries'),
       if (starsRemoved > 0) n(starsRemoved, 'unstarred word', 'unstarred words'),
     ];
     if (parts.isEmpty) return 'Already up to date';
@@ -680,7 +686,6 @@ enum Difficulty {
   final String label;
 }
 
-/// One flashcard answer.
 /// One Say it try: when, which word, and whether the recogniser heard it right.
 class SpeakTry {
   const SpeakTry(this.at, this.id, this.right);
@@ -694,6 +699,7 @@ class SpeakTry {
       SpeakTry(DateTime.fromMillisecondsSinceEpoch((j[0] as num).toInt()), j[1] as String, j[2] == 1);
 }
 
+/// One flashcard answer.
 class Review {
   const Review(this.at, this.spent, this.rating, this.isNew, {this.method = 'cards', this.id});
   final DateTime at;

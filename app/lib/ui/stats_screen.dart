@@ -55,9 +55,8 @@ class StatsView extends StatelessWidget {
         if (!r.at.isBefore(today.subtract(const Duration(days: 6)))) r.spent,
     ].fold(Duration.zero, (t, s) => t + s);
     var streak = 0;
-    for (var d = byDay.containsKey(today) ? today : today.subtract(const Duration(days: 1));
-        byDay.containsKey(d);
-        d = d.subtract(const Duration(days: 1))) {
+    // Calendar days, so a change to or from daylight saving doesn't end the run.
+    for (var d = byDay.containsKey(today) ? today : dayPlus(today, -1); byDay.containsKey(d); d = dayPlus(d, -1)) {
       streak++;
     }
 
