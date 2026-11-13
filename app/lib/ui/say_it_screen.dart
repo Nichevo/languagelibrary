@@ -12,6 +12,7 @@ import '../speech/heard.dart';
 import '../speech/speech_service.dart';
 import '../speech/tone_shape.dart';
 import 'common.dart';
+import 'say_it_words_screen.dart';
 import 'wide.dart';
 
 /// Shown under every result: where the checks come from.
@@ -52,6 +53,7 @@ class _SayItScreenState extends State<SayItScreen> {
   WordCheck? _check;
   PitchPicture? _pitch;
   List<double>? _times;
+  String? _tryNote;
   final Set<int> _logged = {};
 
   Entry? get _entry => _queue == null || _at >= _queue!.length ? null : _queue![_at];
@@ -123,6 +125,7 @@ class _SayItScreenState extends State<SayItScreen> {
       final check = checkHeard(e, result.transcript.text, tones);
       _log(e, check);
       setState(() {
+        _tryNote = _triesSoFar(e, check);
         _recording = path;
         _check = check;
         _pitch = PitchPicture.of(result.pitch);
@@ -138,11 +141,14 @@ class _SayItScreenState extends State<SayItScreen> {
     }
   }
 
-  /// The first try at each word counts as an answer. A single syllable the
+  /// Every try is kept, to work out how many each word takes. The first try
+  /// at each word in a round also counts as an answer. A single syllable the
   /// recogniser missed altogether isn't counted against you.
   void _log(Entry e, WordCheck check) {
-    if (_logged.contains(_at)) return;
     if (check.heardNothing && e.syllables.length == 1) return;
+    final store = AppScope.of(context).store;
+    store.logSpeakTry(e.id, check.allRight, DateTime.now());
+    if (_logged.contains(_at)) return;
     _logged.add(_at);
     if (check.allRight) _right++;
     final now = DateTime.now();
@@ -150,6 +156,21 @@ class _SayItScreenState extends State<SayItScreen> {
         .store
         .logAnswer(check.allRight ? Rating.good : Rating.again, now.difference(_shownAt), now, method: 'speak', id: e.id);
   }
+
+  /// "Got it in 3 tries", from every try at this word so far.
+  String? _triesSoFar(Entry e, WordCheck check) {
+    final store = AppScope.of(context).store;
+    final r = speakRecords([for (final t in store.speakTries) if (t.id == e.id) t])[e.id];
+    if (r == null) return null;
+    if (check.allRight && r.rounds.isNotEmpty) {
+      final n = r.rounds.last;
+      return n == 1 ? 'First try!' : 'Got it in $n tries';
+    }
+    return r.open == 1 ? 'Try 1 at this one' : 'Try ${r.open} at this one so far';
+  }
+
+  void _openWord(Entry word) =>
+      Navigator.of(context).push(MaterialPageRoute(builder: (_) => SayItScreen(entries: [word])));
 
   void _next() {
     _player.stop();
@@ -159,6 +180,7 @@ class _SayItScreenState extends State<SayItScreen> {
       _check = null;
       _pitch = null;
       _times = null;
+      _tryNote = null;
       _recording = null;
       _error = null;
       _shownAt = DateTime.now();
@@ -198,6 +220,12 @@ class _SayItScreenState extends State<SayItScreen> {
       appBar: AppBar(
         title: const Text('Say it'),
         actions: [
+          if (!single)
+            IconButton(
+              tooltip: 'Your words',
+              icon: const Icon(Icons.leaderboard_outlined),
+              onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const SayItWordsScreen())),
+            ),
           if (e != null && queue.length > 1)
             Center(child: Padding(padding: const EdgeInsets.only(right: 16), child: Text('${_at + 1} / ${queue.length}'))),
         ],
@@ -225,7 +253,27 @@ class _SayItScreenState extends State<SayItScreen> {
             : ListView(
                 padding: const EdgeInsets.fromLTRB(20, 16, 20, 32),
                 children: [
-                  _Prompt(e, onListen: _listen),
+                  _Prompt(e),
+                  const SizedBox(height: 12),
+                  Wrap(
+                    alignment: WrapAlignment.center,
+                    spacing: 8,
+                    runSpacing: 8,
+                    children: [
+                      FilledButton.tonalIcon(
+                          icon: const Icon(Icons.volume_up), label: const Text('Listen'), onPressed: _listen),
+                      OutlinedButton.icon(
+                          icon: const Icon(Icons.person),
+                          label: const Text('Play mine'),
+                          onPressed: _recording == null ? null : _playMine),
+                      if (!single || _at < queue.length - 1)
+                        _check == null
+                            ? OutlinedButton.icon(
+                                icon: const Icon(Icons.skip_next), label: const Text('Skip'), onPressed: _next)
+                            : FilledButton.icon(
+                                icon: const Icon(Icons.arrow_forward), label: const Text('Next'), onPressed: _next),
+                    ],
+                  ),
                   const SizedBox(height: 20),
                   _MicButton(
                     phase: _phase,
@@ -250,21 +298,13 @@ class _SayItScreenState extends State<SayItScreen> {
                     ),
                   if (_check != null) ...[
                     const SizedBox(height: 16),
-                    SayItResult(entry: e, check: _check!, pitch: _pitch, charTimes: _times),
-                    const SizedBox(height: 12),
-                    Wrap(
-                      alignment: WrapAlignment.center,
-                      spacing: 8,
-                      runSpacing: 8,
-                      children: [
-                        OutlinedButton.icon(
-                            icon: const Icon(Icons.person), label: const Text('Play mine'), onPressed: _playMine),
-                        OutlinedButton.icon(
-                            icon: const Icon(Icons.volume_up), label: const Text('Play voice'), onPressed: _listen),
-                        if (!single || _at < queue.length - 1)
-                          FilledButton.icon(
-                              icon: const Icon(Icons.arrow_forward), label: const Text('Next'), onPressed: _next),
-                      ],
+                    SayItResult(
+                      entry: e,
+                      check: _check!,
+                      pitch: _pitch,
+                      charTimes: _times,
+                      tryNote: _tryNote,
+                      onWord: _openWord,
                     ),
                   ],
                 ],
@@ -275,9 +315,8 @@ class _SayItScreenState extends State<SayItScreen> {
 }
 
 class _Prompt extends StatelessWidget {
-  const _Prompt(this.entry, {required this.onListen});
+  const _Prompt(this.entry);
   final Entry entry;
-  final VoidCallback onListen;
 
   @override
   Widget build(BuildContext context) {
@@ -293,8 +332,6 @@ class _Prompt extends StatelessWidget {
           Text('said ${entry.spoken}', textAlign: TextAlign.center, style: theme.textTheme.bodySmall),
         const SizedBox(height: 4),
         Text(entry.gloss, textAlign: TextAlign.center, style: theme.textTheme.titleSmall),
-        const SizedBox(height: 8),
-        FilledButton.tonalIcon(icon: const Icon(Icons.play_arrow), label: const Text('Listen'), onPressed: onListen),
       ],
     );
   }
@@ -337,11 +374,18 @@ class _MicButton extends StatelessWidget {
 
 /// What the recogniser heard and the pitch line, for one try.
 class SayItResult extends StatelessWidget {
-  const SayItResult({super.key, required this.entry, required this.check, this.pitch, this.charTimes});
+  const SayItResult(
+      {super.key, required this.entry, required this.check, this.pitch, this.charTimes, this.tryNote, this.onWord});
   final Entry entry;
   final WordCheck check;
   final PitchPicture? pitch;
   final List<double>? charTimes;
+
+  /// "Got it in 3 tries".
+  final String? tryNote;
+
+  /// Practise one word of a sentence on its own.
+  final void Function(Entry word)? onWord;
 
   @override
   Widget build(BuildContext context) {
@@ -368,6 +412,7 @@ class SayItResult extends StatelessWidget {
                         color: good ? Colors.green.shade600 : (verdict == Verdict.nothing ? scheme.outline : scheme.error)),
                     const SizedBox(width: 8),
                     Expanded(child: Text(headline(entry, check), style: theme.textTheme.titleMedium)),
+                    if (tryNote != null) Text(tryNote!, style: theme.textTheme.labelMedium),
                   ],
                 ),
                 if (!check.heardNothing) ...[
@@ -381,6 +426,7 @@ class SayItResult extends StatelessWidget {
             ),
           ),
         ),
+        if (entry.isSentence && onWord != null) _SentenceWords(entry: entry, check: check, onWord: onWord!),
         if (pitch != null) ...[
           const SizedBox(height: 12),
           Card(
@@ -412,6 +458,60 @@ class SayItResult extends StatelessWidget {
         const SizedBox(height: 8),
         Text(sayItSourceNote, style: theme.textTheme.bodySmall?.copyWith(color: scheme.outline)),
       ],
+    );
+  }
+}
+
+/// The words of a sentence, to practise one on its own. Words the recogniser
+/// got wrong come first and are marked.
+class _SentenceWords extends StatelessWidget {
+  const _SentenceWords({required this.entry, required this.check, required this.onWord});
+  final Entry entry;
+  final WordCheck check;
+  final void Function(Entry) onWord;
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final scheme = theme.colorScheme;
+    final words = wordsIn(entry, AppScope.of(context).library);
+    if (words.isEmpty) return const SizedBox.shrink();
+    final sylAt = syllableAt(entry);
+    final wrongSyl = {
+      for (final s in check.syllables)
+        if (s.heard != Heard.right) entry.syllables.indexOf(s.syllable),
+    };
+    bool missed(int at, Entry w) =>
+        [for (var k = at; k < at + w.simplified.length; k++) sylAt[k]].any(wrongSyl.contains);
+    final sorted = [
+      for (final (at, w) in words) if (missed(at, w)) (w, true),
+      for (final (at, w) in words) if (!missed(at, w)) (w, false),
+    ];
+    final seen = <String>{};
+    return Padding(
+      padding: const EdgeInsets.only(top: 12),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text('PRACTISE ONE WORD', style: theme.textTheme.labelSmall?.copyWith(letterSpacing: 0.8)),
+          const SizedBox(height: 6),
+          Wrap(
+            spacing: 6,
+            runSpacing: 6,
+            children: [
+              for (final (w, bad) in sorted)
+                if (seen.add(w.id))
+                  ActionChip(
+                    avatar: Icon(Icons.mic_none, size: 18, color: bad ? scheme.onErrorContainer : null),
+                    backgroundColor: bad ? scheme.errorContainer : null,
+                    label: Text('${w.simplified} ${w.pinyin}',
+                        style: bad ? TextStyle(color: scheme.onErrorContainer) : null),
+                    onPressed: () => onWord(w),
+                  ),
+            ],
+          ),
+        ],
+      ),
     );
   }
 }
@@ -618,6 +718,11 @@ class _Done extends StatelessWidget {
               Text('The recogniser understood $right of $total.', textAlign: TextAlign.center),
               const SizedBox(height: 16),
               FilledButton(onPressed: onAgain, child: const Text('Another round')),
+              TextButton(
+                onPressed: () =>
+                    Navigator.of(context).push(MaterialPageRoute(builder: (_) => const SayItWordsScreen())),
+                child: const Text('See your words: easy and struggling'),
+              ),
             ],
           ],
         ),
