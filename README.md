@@ -47,6 +47,8 @@ download `language-library.apk` and open it.
 
 Builds go to a release rather than an Actions artifact because artifacts count
 against the private repo's 0.5 GB Actions storage and release files don't.
+Pull requests only run analyze and tests, not the ~12-minute APK build, to stay
+inside the free Actions minutes; changes that only touch `.md` files skip CI.
 
 Android's Play Protect will warn that it doesn't recognise the app, because it
 isn't from the Play Store. Tap **More details → Install anyway**. If that option

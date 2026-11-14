@@ -3,7 +3,9 @@ name: CI
 on:
   push:
     branches: [main]
+    paths-ignore: ["**.md"]
   pull_request:
+    paths-ignore: ["**.md"]
   workflow_dispatch:
 
 # A newer push to the same branch cancels the build it replaces, which saves
@@ -29,6 +31,9 @@ jobs:
       contents: write
     env:
       HAS_SIGNING_KEY: ${{ secrets.ANDROID_KEYSTORE_BASE64 != '' }}
+      # The release build is ~12 of the ~13 minutes, so pull requests only run
+      # analyze and tests; main and manual runs also build the APK.
+      BUILD_APK: ${{ github.event_name != 'pull_request' }}
     defaults:
       run:
         working-directory: app
@@ -38,10 +43,15 @@ jobs:
         with:
           distribution: temurin
           java-version: "17"
+      # Caches Gradle downloads and build outputs between runs (the Actions cache
+      # has its own 10 GB allowance, separate from the 0.5 GB artifact storage).
+      - uses: gradle/actions/setup-gradle@v4
+        if: env.BUILD_APK == 'true'
       - uses: subosito/flutter-action@v2
         with:
           channel: stable
           flutter-version: 3.47.9
+          cache: true
       - run: flutter pub get
       - run: flutter analyze
       - run: flutter test
@@ -49,7 +59,7 @@ jobs:
         env:
           KEYSTORE_BASE64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
           KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
-        if: env.HAS_SIGNING_KEY == 'true'
+        if: env.BUILD_APK == 'true' && env.HAS_SIGNING_KEY == 'true'
         run: |
           echo "$KEYSTORE_BASE64" | base64 --decode > android/release.jks
           {
@@ -59,8 +69,10 @@ jobs:
             echo "keyPassword=$KEYSTORE_PASSWORD"
           } > android/key.properties
       - name: Build Android app
+        if: env.BUILD_APK == 'true'
         run: flutter build apk --release --build-number=${{ github.run_number }}
       - name: Check how the app is signed
+        if: env.BUILD_APK == 'true'
         run: |
           if [ -f android/key.properties ]; then echo "Signed with the release key"; else echo "::warning::No signing secrets set, so this APK uses a throwaway debug key. Updates will not install over it."; fi
       # Artifacts count against the private repo's 0.5 GB Actions storage, so
