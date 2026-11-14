@@ -55,8 +55,11 @@ jobs:
       - name: Check how the app is signed
         run: |
           if [ -f android/key.properties ]; then echo "Signed with the release key"; else echo "::warning::No signing secrets set, so this APK uses a throwaway debug key. Updates will not install over it."; fi
+      # The APK is ~220 MB, so keep it a week; if GitHub's storage is full the
+      # tests and build above still count, and the upload just warns.
       - uses: actions/upload-artifact@v4
+        continue-on-error: true
         with:
           name: language-library-apk
           path: app/build/app/outputs/flutter-apk/app-release.apk
-          retention-days: 30
+          retention-days: 7
