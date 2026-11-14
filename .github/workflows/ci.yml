@@ -83,6 +83,9 @@ jobs:
         run: |
           if [ -f android/key.properties ]; then echo "Signed with the release key"; else echo "::warning::No signing secrets set, so this APK uses a throwaway debug key. Updates will not install over it."; fi
       - uses: actions/upload-artifact@v4
+        # A pull request's check is about the build passing; on main a failed
+        # save should show, since that APK is the one to install.
+        continue-on-error: ${{ github.event_name == 'pull_request' }}
         with:
           name: language-library-apk
           path: app/build/app/outputs/flutter-apk/app-release.apk
