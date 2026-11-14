@@ -4,6 +4,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:just_audio/just_audio.dart';
 
+import '../data/daily.dart';
 import '../data/say_it.dart';
 import '../srs/scheduler.dart';
 import '../models/entry.dart';
@@ -67,6 +68,9 @@ class _SayItScreenState extends State<SayItScreen> {
   String? _tryNote;
   final Set<int> _logged = {};
 
+  /// "Again" after a carrying-on round: start from the top this time.
+  bool _fresh = false;
+
   /// The mic button is down; the recorder is being switched on.
   bool _holding = false, _starting = false;
   static const _holdHint = 'Hold the button down while you speak, then let go.';
@@ -80,7 +84,7 @@ class _SayItScreenState extends State<SayItScreen> {
   }
 
   List<Entry> _pick() {
-    if (widget.entries != null) return widget.carryOn ? _carryOn(widget.entries!) : widget.entries!;
+    if (widget.entries != null) return widget.carryOn && !_fresh ? _carryOn(widget.entries!) : widget.entries!;
     final scope = AppScope.of(context);
     final size = scope.store.sessionSize;
     return sayItQueue(scope.library, scope.store, widget.random ?? Random(),
@@ -88,18 +92,38 @@ class _SayItScreenState extends State<SayItScreen> {
   }
 
   /// Puts the entries already tried today first and starts after them, with
-  /// their first-try results counted, so the round goes on from there.
+  /// their first-try results counted, so the round goes on from there. Entries
+  /// skipped today before leaving also count as passed: the round opens where
+  /// it was left, recorded or not.
   List<Entry> _carryOn(List<Entry> entries) {
     final store = AppScope.of(context).store;
-    final today = sayItTriedToday(store, DateTime.now());
+    final now = DateTime.now();
+    final today = sayItTriedToday(store, now);
     final done = [for (final e in entries) if (today.containsKey(e.id)) e];
     final rest = [for (final e in entries) if (!today.containsKey(e.id)) e];
+    final queue = [...done, ...rest];
     _at = done.length;
     for (var i = 0; i < done.length; i++) {
       _logged.add(i);
       if (today[done[i].id]!) _right++;
     }
-    return [...done, ...rest];
+    final next = store.sayItPlaces['${dayKey(now)}|${_listKey(entries)}'];
+    if (next == null) return queue;
+    final at = queue.indexWhere((e) => e.id == next);
+    // Gone from the list, or finished: past the end.
+    _at = at < 0 ? queue.length : (at > _at ? at : _at);
+    return queue;
+  }
+
+  /// The same list of entries gives the same key, whatever order they're in.
+  static String _listKey(List<Entry> entries) => ([for (final e in entries) e.id]..sort()).join(',');
+
+  /// Saves where a carrying-on round is, so leaving and coming back opens there.
+  void _savePlace() {
+    if (!widget.carryOn || widget.entries == null) return;
+    final store = AppScope.of(context).store;
+    final next = _entry?.id;
+    store.setSayItPlace(dayKey(DateTime.now()), _listKey(widget.entries!), next ?? '');
   }
 
   @override
@@ -226,6 +250,7 @@ class _SayItScreenState extends State<SayItScreen> {
     _player.stop();
     setState(() {
       _at++;
+      _savePlace();
       _phase = _Phase.ready;
       _check = null;
       _pitch = null;
@@ -239,6 +264,10 @@ class _SayItScreenState extends State<SayItScreen> {
 
   void _switchKind(bool sentences) {
     _player.stop();
+    if (widget.carryOn && widget.entries != null) {
+      _fresh = true;
+      AppScope.of(context).store.setSayItPlace(dayKey(DateTime.now()), _listKey(widget.entries!), null);
+    }
     setState(() {
       _sentences = sentences;
       _queue = _pick();

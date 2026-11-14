@@ -446,6 +446,37 @@ void main() {
       expect(find.text('1 / 3'), findsOneWidget, reason: 'other uses start at the beginning');
     });
 
+    testWidgets('skipped entries count too: leave and come back to the same place', (tester) async {
+      SharedPreferences.setMockInitialValues({});
+      final store = await UserStore.open();
+      final words = [word('谢谢'), word('买'), word('不客气')];
+      Future<void> open() async {
+        await tester.pumpWidget(AppScope(
+          library: lib,
+          store: store,
+          speaker: Speaker(lib),
+          device: NoDevice(),
+          child: MaterialApp(
+              home: SayItScreen(
+                  key: UniqueKey(), entries: words, carryOn: true, recorder: _FakeRecorder(), checker: _FakeChecker('谢谢'))),
+        ));
+        await tester.pumpAndSettle();
+      }
+
+      await open();
+      expect(find.text('1 / 3'), findsOneWidget);
+      await tester.tap(find.text('Skip'));
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('Skip'));
+      await tester.pumpAndSettle();
+      expect(find.text('3 / 3'), findsOneWidget);
+      expect(store.speakTries, isEmpty, reason: 'nothing was recorded');
+      await open(); // left the screen and came back
+      expect(find.text('3 / 3'), findsOneWidget);
+      // The same words in another order are the same list.
+      expect(store.sayItPlaces.length, 1);
+    });
+
     testWidgets('a quick tap asks to hold the button', (tester) async {
       await pumpScreen(tester, _FakeChecker('谢谢'), [word('谢谢')]);
       await tester.tap(find.byIcon(Icons.mic));
