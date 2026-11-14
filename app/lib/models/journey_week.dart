@@ -12,6 +12,8 @@ class JourneyWeek {
     this.topic,
     this.char,
     this.pattern,
+    this.level = 0,
+    this.levelNote,
   });
 
   /// Midnight on the Monday the week starts.
@@ -37,9 +39,18 @@ class JourneyWeek {
   /// sentence pattern, where the week has one.
   final String? seed, topic, char, pattern;
 
+  /// How hard the Sentences day is, from -2 (shortest sentences, fewer of
+  /// them) to 2 (longer ones, more of them). Set from how the previous week's
+  /// sentences went (see `sentenceLevel` in data/journey.dart).
+  final int level;
+
+  /// Why the level changed, for example "Last week the recogniser understood
+  /// 3 of 12 sentences, so these are shorter". Null when nothing changed.
+  final String? levelNote;
+
   bool get isReview => path == 'review';
 
-  JourneyWeek copyWith({DateTime? start}) => JourneyWeek(
+  JourneyWeek copyWith({DateTime? start, int? level, String? Function()? levelNote}) => JourneyWeek(
         start: start ?? this.start,
         path: path,
         title: title,
@@ -50,6 +61,8 @@ class JourneyWeek {
         topic: topic,
         char: char,
         pattern: pattern,
+        level: level ?? this.level,
+        levelNote: levelNote != null ? levelNote() : this.levelNote,
       );
 
   Map<String, dynamic> toJson() => {
@@ -63,6 +76,8 @@ class JourneyWeek {
         'topic': ?topic,
         'char': ?char,
         'pattern': ?pattern,
+        if (level != 0) 'level': level,
+        'levelNote': ?levelNote,
       };
 
   factory JourneyWeek.fromJson(Map<String, dynamic> j) {
@@ -78,6 +93,8 @@ class JourneyWeek {
       topic: j['topic'] as String?,
       char: j['char'] as String?,
       pattern: j['pattern'] as String?,
+      level: (j['level'] as num?)?.toInt() ?? 0,
+      levelNote: j['levelNote'] as String?,
     );
   }
 }

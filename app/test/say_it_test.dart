@@ -15,6 +15,7 @@ import 'package:language_library/models/entry.dart';
 import 'package:language_library/speech/feedback.dart';
 import 'package:language_library/speech/heard.dart';
 import 'package:language_library/speech/pitch.dart';
+import 'package:language_library/speech/pitch_refs.dart';
 import 'package:language_library/speech/recognizer.dart';
 import 'package:language_library/speech/speech_service.dart';
 import 'package:language_library/speech/tone_shape.dart';
@@ -187,6 +188,26 @@ void main() {
         ...List.filled(8, null), 150.0, 150.0, // a blip
       ];
       expect(voicedRuns(hz), [(0, 22), (30, 40)]);
+    });
+
+    test('a sudden octave jump is folded back', () {
+      final st = trackPitch(readWav(wavOf([...glide(200, 200, seconds: 0.2), ...glide(400, 400, seconds: 0.2)])))
+          .hz
+          .nonNulls
+          .toList();
+      expect(st.every((f) => f > 180 && f < 220), isTrue, reason: 'voices don\'t leap an octave in 10 ms');
+    });
+
+    test('the app voice\'s pitch lines read back', () {
+      final refs = PitchRefs.parse({
+        'clips': {
+          'a_f': {'bytes': 1, 'line': 'BD.0T'},
+          'b_m': {'bytes': 1, 'line': ''},
+        },
+      });
+      expect(refs.lineFor('a_f'), [0.0, 1.0, null, -9.0, 9.0]);
+      expect(refs.lineFor('b_m'), isNull);
+      expect(refs.lineFor('c_f'), isNull);
     });
   });
 

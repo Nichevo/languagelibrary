@@ -90,6 +90,7 @@ PitchTrack trackPitch(Samples input) {
 }
 
 /// Drops octave slips and lone blips, then smooths with a median of five.
+/// tools/pitch_refs.py does the same for the app's voice clips: keep in step.
 List<double?> _clean(List<double?> raw) {
   final n = raw.length;
   final out = List<double?>.of(raw);
@@ -114,6 +115,25 @@ List<double?> _clean(List<double?> raw) {
     } else if (r > 1.7 || r < 0.59) {
       out[i] = null;
     }
+  }
+  // Octave slips longer than the window above: keep each frame within an
+  // octave of the voiced frame before it (up to 50 ms back).
+  double? prev;
+  var prevAt = -100;
+  for (var i = 0; i < n; i++) {
+    var f = out[i];
+    if (f == null) continue;
+    if (prev != null && i - prevAt <= 5) {
+      final r = f / prev;
+      if (r > 1.7 && r < 2.3) {
+        f = f / 2;
+      } else if (r > 0.43 && r < 0.59) {
+        f = f * 2;
+      }
+      out[i] = f;
+    }
+    prev = f;
+    prevAt = i;
   }
   final smooth = List<double?>.filled(n, null);
   for (var i = 0; i < n; i++) {
