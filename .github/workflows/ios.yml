@@ -59,11 +59,16 @@ jobs:
           cp -R build/ios/iphoneos/Runner.app Payload/
           zip -qry LanguageLibrary.ipa Payload
           ls -lh LanguageLibrary.ipa
+      # A started build goes to Releases (below), which doesn't use the
+      # repo's limited space for build files; a pull request's check keeps
+      # its .ipa for a few days only.
       - uses: actions/upload-artifact@v4
+        if: github.event_name == 'pull_request'
+        continue-on-error: true # the build passing is what the check is for
         with:
           name: language-library-ipa
           path: app/LanguageLibrary.ipa
-          retention-days: 30
+          retention-days: 3
       - name: Publish as a release
         if: github.event_name == 'workflow_dispatch'
         env:

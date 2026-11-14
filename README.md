@@ -43,7 +43,8 @@ tools/               Python scripts that build the data and audio
 
 Every push builds the app on GitHub Actions. Open the latest **CI** run on the
 Actions tab, download **language-library-apk**, unzip it, copy `app-release.apk`
-to the phone and open it.
+to the phone and open it. Each APK is kept for 7 days, and only the newest one
+stays once a newer change lands on main.
 
 Android's Play Protect will warn that it doesn't recognise the app, because it
 isn't from the Play Store. Tap **More details → Install anyway**. If that option

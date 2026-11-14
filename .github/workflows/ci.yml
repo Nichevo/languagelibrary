@@ -7,6 +7,30 @@ on:
   workflow_dispatch:
 
 jobs:
+  # Each APK is over 100 MB, and the repo's free space for build files fills
+  # up after a few days of changes, which stops new APKs (and iPad builds)
+  # being saved. On main, delete every saved build file except the newest
+  # APK before the new one is added. Space frees up within 6 to 12 hours.
+  tidy-build-files:
+    if: github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    permissions:
+      actions: write
+    env:
+      GH_TOKEN: ${{ github.token }}
+      REPO: ${{ github.repository }}
+    steps:
+      - name: Delete older build files
+        run: |
+          gh api --paginate "repos/$REPO/actions/artifacts?per_page=100" \
+            --jq '.artifacts[] | "\(.created_at) \(.id) \(.name)"' | sort -r > all.txt
+          newest_apk=$(grep ' language-library-apk$' all.txt | head -1 | cut -d' ' -f2)
+          while read -r _ id name; do
+            [ "$id" = "$newest_apk" ] && continue
+            echo "Deleting $name ($id)"
+            gh api -X DELETE "repos/$REPO/actions/artifacts/$id"
+          done < all.txt
+
   data-tools:
     runs-on: ubuntu-latest
     steps:
@@ -18,6 +42,9 @@ jobs:
       - run: python -m unittest discover -s tools/tests -t . -v
 
   app:
+    needs: tidy-build-files
+    # Still runs on pull requests, where the tidy-up is skipped.
+    if: ${{ !failure() && !cancelled() }}
     runs-on: ubuntu-latest
     env:
       HAS_SIGNING_KEY: ${{ secrets.ANDROID_KEYSTORE_BASE64 != '' }}
@@ -59,4 +86,4 @@ jobs:
         with:
           name: language-library-apk
           path: app/build/app/outputs/flutter-apk/app-release.apk
-          retention-days: 30
+          retention-days: 7
