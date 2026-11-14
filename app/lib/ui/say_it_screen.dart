@@ -22,10 +22,21 @@ const sayItSourceNote = 'Checked on this device by an open speech recogniser (sh
 /// "Say it": hear a word, say it, and see what the recogniser heard and what
 /// your pitch did.
 class SayItScreen extends StatefulWidget {
-  const SayItScreen({super.key, this.entries, this.sentences = false, this.recorder, this.checker, this.random});
+  const SayItScreen(
+      {super.key,
+      this.entries,
+      this.sentences = false,
+      this.carryOn = false,
+      this.recorder,
+      this.checker,
+      this.random});
 
   /// Practise these. Otherwise a round is picked (see [sayItQueue]).
   final List<Entry>? entries;
+
+  /// For a fixed set, like a day of the week plan: ones already tried today
+  /// count as done, so leaving and coming back carries on where you were.
+  final bool carryOn;
   final bool sentences;
   final Recorder? recorder;
   final SpeechChecker? checker;
@@ -69,11 +80,26 @@ class _SayItScreenState extends State<SayItScreen> {
   }
 
   List<Entry> _pick() {
-    if (widget.entries != null) return widget.entries!;
+    if (widget.entries != null) return widget.carryOn ? _carryOn(widget.entries!) : widget.entries!;
     final scope = AppScope.of(context);
     final size = scope.store.sessionSize;
     return sayItQueue(scope.library, scope.store, widget.random ?? Random(),
         sentences: _sentences, count: size == 0 ? 20 : size);
+  }
+
+  /// Puts the entries already tried today first and starts after them, with
+  /// their first-try results counted, so the round goes on from there.
+  List<Entry> _carryOn(List<Entry> entries) {
+    final store = AppScope.of(context).store;
+    final today = sayItTriedToday(store, DateTime.now());
+    final done = [for (final e in entries) if (today.containsKey(e.id)) e];
+    final rest = [for (final e in entries) if (!today.containsKey(e.id)) e];
+    _at = done.length;
+    for (var i = 0; i < done.length; i++) {
+      _logged.add(i);
+      if (today[done[i].id]!) _right++;
+    }
+    return [...done, ...rest];
   }
 
   @override
