@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import '../models/entry.dart';
+import 'daily.dart';
 import 'library.dart';
 import 'user_store.dart';
 
@@ -140,4 +141,26 @@ Map<String, bool> sayItTriedToday(UserStore store, DateTime now) {
     if (t.at.year == now.year && t.at.month == now.month && t.at.day == now.day) out.putIfAbsent(t.id, () => t.right);
   }
   return out;
+}
+
+/// The key a carrying-on list is saved under: the same entries give the same
+/// key, whatever order they're in.
+String sayItListKey(List<Entry> entries) => ([for (final e in entries) e.id]..sort()).join(',');
+
+/// Where a carrying-on round of [entries] opens today, after reordering them
+/// with the ones tried today first: (the reordered list, where to start, the
+/// first-try results of those tried today).
+({List<Entry> queue, int at, Map<String, bool> tried}) sayItCarryOn(UserStore store, List<Entry> entries, DateTime now) {
+  final today = sayItTriedToday(store, now);
+  final done = [for (final e in entries) if (today.containsKey(e.id)) e];
+  final rest = [for (final e in entries) if (!today.containsKey(e.id)) e];
+  final queue = [...done, ...rest];
+  var at = done.length;
+  final next = store.sayItPlaces['${dayKey(now)}|${sayItListKey(entries)}'];
+  if (next != null) {
+    final i = queue.indexWhere((e) => e.id == next);
+    // Gone from the list, or finished: past the end.
+    at = i < 0 ? queue.length : max(i, at);
+  }
+  return (queue: queue, at: at, tried: {for (final e in done) e.id: today[e.id]!});
 }

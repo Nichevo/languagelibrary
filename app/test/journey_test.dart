@@ -1,5 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
+import 'package:language_library/data/daily.dart';
 import 'package:language_library/data/journey.dart';
+import 'package:language_library/data/say_it.dart';
 import 'package:language_library/data/user_store.dart';
 import 'package:language_library/models/journey_week.dart';
 import 'package:language_library/srs/scheduler.dart';
@@ -127,5 +129,32 @@ void main() {
     await other.mergeFrom(UserStore.backupData(json));
     expect(other.weeks.single.title, store.weeks.single.title);
     expect(other.journeyOn, isTrue);
+  });
+
+  test('the Sentences day carries on past its 10 to the week\'s other sentences', () async {
+    final store = await knowsHsk1();
+    final week = planWeek(lib, store, monday, 'topics')!;
+    final list = sayItListFor(lib, week, DayKind.sentences)!;
+    expect(list.length, greaterThan(sentencesPerDay));
+    final t = DateTime.now();
+    // The first ten said earlier today, as an earlier build's list would have had them.
+    for (final e in list.take(sentencesPerDay)) {
+      await store.logSpeakTry(e.id, true, t.subtract(const Duration(minutes: 5)));
+    }
+    final c = sayItCarryOn(store, list, t);
+    expect(c.at, sentencesPerDay);
+    expect(c.at, lessThan(c.queue.length), reason: 'more to say, not "Round done"');
+    // A Skip past the next one is remembered too.
+    await store.setSayItPlace(dayKey(t), sayItListKey(list), c.queue[c.at + 1].id);
+    expect(sayItCarryOn(store, list, t).at, sentencesPerDay + 1);
+  });
+
+  test('words met counts any kind of practice', () async {
+    final store = await knowsHsk1();
+    final week = planWeek(lib, store, monday, 'topics')!;
+    expect(metIn(store, week), isEmpty);
+    await store.logSpeakTry(week.words[0], true, now);
+    await store.logAnswer(Rating.good, const Duration(seconds: 3), now, method: 'listen', id: week.words[1]);
+    expect(metIn(store, week), {week.words[0], week.words[1]});
   });
 }

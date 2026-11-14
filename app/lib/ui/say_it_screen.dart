@@ -96,27 +96,16 @@ class _SayItScreenState extends State<SayItScreen> {
   /// skipped today before leaving also count as passed: the round opens where
   /// it was left, recorded or not.
   List<Entry> _carryOn(List<Entry> entries) {
-    final store = AppScope.of(context).store;
-    final now = DateTime.now();
-    final today = sayItTriedToday(store, now);
-    final done = [for (final e in entries) if (today.containsKey(e.id)) e];
-    final rest = [for (final e in entries) if (!today.containsKey(e.id)) e];
-    final queue = [...done, ...rest];
-    _at = done.length;
-    for (var i = 0; i < done.length; i++) {
+    final c = sayItCarryOn(AppScope.of(context).store, entries, DateTime.now());
+    _at = c.at;
+    for (var i = 0; i < c.tried.length; i++) {
       _logged.add(i);
-      if (today[done[i].id]!) _right++;
+      if (c.tried[c.queue[i].id]!) _right++;
     }
-    final next = store.sayItPlaces['${dayKey(now)}|${_listKey(entries)}'];
-    if (next == null) return queue;
-    final at = queue.indexWhere((e) => e.id == next);
-    // Gone from the list, or finished: past the end.
-    _at = at < 0 ? queue.length : (at > _at ? at : _at);
-    return queue;
+    return c.queue;
   }
 
-  /// The same list of entries gives the same key, whatever order they're in.
-  static String _listKey(List<Entry> entries) => ([for (final e in entries) e.id]..sort()).join(',');
+  static String _listKey(List<Entry> entries) => sayItListKey(entries);
 
   /// Saves where a carrying-on round is, so leaving and coming back opens there.
   void _savePlace() {

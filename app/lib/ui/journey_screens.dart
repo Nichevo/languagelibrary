@@ -1,8 +1,11 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 import '../data/daily.dart';
 import '../data/journey.dart';
 import '../data/library.dart';
+import '../data/say_it.dart';
 import '../data/today.dart';
 import '../data/user_store.dart';
 import '../models/entry.dart';
@@ -40,7 +43,7 @@ void openDay(BuildContext context, JourneyWeek week, int day) {
     case DayKind.skill:
       screen = skillScreen(lib, week);
     case DayKind.sentences:
-      final ss = sentencesFor(lib, week.words, limit: sentencesPerDay);
+      final ss = sayItListFor(lib, week, DayKind.sentences) ?? const <Entry>[];
       screen = ss.isEmpty
           ? PracticeScreen(ids: week.words, includeNotDue: true)
           : SayItScreen(entries: ss, sentences: true, carryOn: true);
@@ -131,8 +134,13 @@ class WeekCard extends StatelessWidget {
     final day = dayIndex(week, now);
     final plan = dayPlan(week, day, skillTitle: _skillTitle(week.skill));
     final number = store.weeks.indexOf(week) + 1;
-    final practised = {for (final k in store.cards.keys) k.split(':').first};
-    final met = week.words.where(practised.contains).length;
+    final metSet = metIn(store, week);
+    final met = metSet.length;
+    final unmet = [for (final id in week.words) if (!metSet.contains(id)) id];
+    // How far today's Say it list has got, so the button can carry on.
+    final list = sayItListFor(lib, week, plan.kind);
+    final progress = list == null ? null : sayItCarryOn(store, list, now);
+    final aim = plan.kind == DayKind.sentences ? min(sentencesPerDay, list?.length ?? 0) : (list?.length ?? 0);
     final found = foundBetween(lib, store, week.start, now.add(const Duration(minutes: 1)), except: week.words.toSet());
     final goal = store.dailyGoal;
     final perDay = lastDays(store.reviews, now, days: day + 1);
@@ -192,15 +200,43 @@ class WeekCard extends StatelessWidget {
                     TextSpan(text: '${_days[day]}: ', style: const TextStyle(fontWeight: FontWeight.bold)),
                     TextSpan(text: '${plan.title}. ${plan.detail}.'),
                   ])),
+                  if (progress != null) ...[
+                    const SizedBox(height: 6),
+                    LinearProgressIndicator(value: (progress.at / aim).clamp(0, 1).toDouble()),
+                    const SizedBox(height: 2),
+                    Text(
+                        progress.at >= aim
+                            ? '${progress.at} said today. Aim reached, and you can keep going'
+                            : '${progress.at} of $aim said today',
+                        style: theme.textTheme.labelMedium),
+                  ],
                   const SizedBox(height: 8),
                   SizedBox(
                     width: double.infinity,
                     child: FilledButton.tonalIcon(
                       icon: const Icon(Icons.play_arrow),
-                      label: Text(plan.title),
+                      label: Text(progress == null || progress.at == 0
+                          ? plan.title
+                          : progress.at >= progress.queue.length
+                              ? '${plan.title}: all done, start again'
+                              : 'Carry on from ${progress.at + 1}'),
                       onPressed: () => openDay(context, week, day),
                     ),
                   ),
+                  // Started mid-week, or missed the first days: the words come first.
+                  if (plan.kind != DayKind.meet && !week.isReview && unmet.isNotEmpty)
+                    SizedBox(
+                      width: double.infinity,
+                      child: TextButton.icon(
+                        icon: const Icon(Icons.style_outlined),
+                        label: Text('Meet the ${unmet.length} words you haven\'t yet'),
+                        onPressed: () {
+                          AppScope.of(context).store.starAll(unmet);
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (_) => PracticeScreen(ids: unmet, includeNotDue: true)));
+                        },
+                      ),
+                    ),
                   if (found.isNotEmpty) ...[
                     const SizedBox(height: 10),
                     Text('Found yourself this week: ${found.length}', style: theme.textTheme.labelMedium),
@@ -261,7 +297,7 @@ class WeekScreen extends StatelessWidget {
         final today = dayIndex(week, now);
         final perDay = lastDays(store.reviews, now, days: today + 1);
         final pattern = lib.patterns.where((p) => p.id == week.pattern).firstOrNull;
-        final practised = {for (final k in store.cards.keys) k.split(':').first};
+        final practised = metIn(store, week);
         Widget fact(String label, String value) => Expanded(
               child: Card(
                 margin: const EdgeInsets.all(3),

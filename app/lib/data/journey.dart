@@ -486,13 +486,42 @@ DayPlan dayPlan(JourneyWeek week, int day, {String? skillTitle}) {
     2 => DayPlan(DayKind.practise, 'Practise the week\'s words', 'Every word of the week, due or not', w),
     3 => DayPlan(DayKind.skill, '${skillTitle ?? 'Skill'} day', 'The week\'s practice type, with its words where it can', w),
     4 => DayPlan(DayKind.practise, 'Mixed review', 'All the week\'s words again', w),
-    5 => DayPlan(DayKind.sentences, 'Sentences', 'Say phrasebook sentences that use the week\'s words', w),
+    5 => DayPlan(DayKind.sentences, 'Sentences', 'Say $sentencesPerDay phrasebook sentences with the week\'s words, or more if you like', w),
     _ => DayPlan(DayKind.recap, 'Week recap', 'A look back, and pick next week', w),
   };
 }
 
+/// The week's words the learner has started on: a flashcard, a Say it try or
+/// an answer of any kind.
+Set<String> metIn(UserStore store, JourneyWeek week) {
+  final words = week.words.toSet();
+  return {
+    for (final k in store.cards.keys)
+      if (words.contains(k.split(':').first)) k.split(':').first,
+    for (final t in store.speakTries)
+      if (words.contains(t.id)) t.id,
+    for (final r in store.reviews)
+      if (r.id case final id? when words.contains(id)) id,
+  };
+}
+
+/// The Say it list a day of [week] works through, when it has one: the
+/// Sentences day's sentences, or the week's words on a Say it skill day.
+List<Entry>? sayItListFor(Library lib, JourneyWeek week, DayKind kind) => switch (kind) {
+      DayKind.sentences => () {
+          final ss = sentencesFor(lib, week.words, limit: sentencesInWeek);
+          return ss.isEmpty ? null : ss;
+        }(),
+      DayKind.skill when week.skill == 'speak' => [for (final id in week.words) ?lib.byId[id]],
+      _ => null,
+    };
+
 /// How many sentences the Sentences day asks you to say.
 const sentencesPerDay = 10;
+
+/// The Sentences day works through up to this many of the week's sentences,
+/// carrying on from the last one, so a day that's done can keep going.
+const sentencesInWeek = 40;
 
 /// Phrasebook sentences that use any of [ids], shortest first.
 List<Entry> sentencesFor(Library lib, Iterable<String> ids, {int limit = 20}) {
@@ -517,8 +546,7 @@ class WeekSummary {
 WeekSummary summarise(Library lib, UserStore store, JourneyWeek week, DateTime now) {
   final end = DateTime(week.start.year, week.start.month, week.start.day + 7);
   final to = now.isBefore(end) ? now.add(const Duration(seconds: 1)) : end;
-  final practised = {for (final k in store.cards.keys) k.split(':').first};
-  final met = week.words.where(practised.contains).length;
+  final met = metIn(store, week).length;
   var answers = 0, right = 0;
   final days = <int>{};
   for (final r in store.reviews) {
