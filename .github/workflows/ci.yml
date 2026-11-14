@@ -6,6 +6,12 @@ on:
   pull_request:
   workflow_dispatch:
 
+# A newer push to the same branch cancels the build it replaces, which saves
+# Actions minutes and keeps two builds from publishing at once.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   data-tools:
     runs-on: ubuntu-latest
@@ -19,6 +25,8 @@ jobs:
 
   app:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     env:
       HAS_SIGNING_KEY: ${{ secrets.ANDROID_KEYSTORE_BASE64 != '' }}
     defaults:
@@ -55,8 +63,23 @@ jobs:
       - name: Check how the app is signed
         run: |
           if [ -f android/key.properties ]; then echo "Signed with the release key"; else echo "::warning::No signing secrets set, so this APK uses a throwaway debug key. Updates will not install over it."; fi
+      # Artifacts count against the private repo's 0.5 GB Actions storage, so
+      # builds from main go to one release that is replaced each time (release
+      # files don't count). A manual run keeps its APK for a day for testing.
+      - name: Publish as the latest Android release
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          cp build/app/outputs/flutter-apk/app-release.apk language-library.apk
+          gh release delete android-latest --yes --cleanup-tag || true
+          gh release create android-latest language-library.apk \
+            --title "Android app (build ${{ github.run_number }})" \
+            --notes "Built from ${GITHUB_SHA::7}. Download language-library.apk on the phone to install." \
+            --target "${{ github.sha }}" --latest
       - uses: actions/upload-artifact@v4
+        if: github.event_name == 'workflow_dispatch'
         with:
           name: language-library-apk
           path: app/build/app/outputs/flutter-apk/app-release.apk
-          retention-days: 30
+          retention-days: 1

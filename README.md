@@ -41,9 +41,12 @@ tools/               Python scripts that build the data and audio
 
 ## Installing on your phone
 
-Every push builds the app on GitHub Actions. Open the latest **CI** run on the
-Actions tab, download **language-library-apk**, unzip it, copy `app-release.apk`
-to the phone and open it.
+Every push to `main` builds the app on GitHub Actions and replaces the
+**android-latest** release. On the phone, open the repo's **Releases** page,
+download `language-library.apk` and open it.
+
+Builds go to a release rather than an Actions artifact because artifacts count
+against the private repo's 0.5 GB Actions storage and release files don't.
 
 Android's Play Protect will warn that it doesn't recognise the app, because it
 isn't from the Play Store. Tap **More details → Install anyway**. If that option
