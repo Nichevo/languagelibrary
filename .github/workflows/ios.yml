@@ -59,11 +59,14 @@ jobs:
           cp -R build/ios/iphoneos/Runner.app Payload/
           zip -qry LanguageLibrary.ipa Payload
           ls -lh LanguageLibrary.ipa
+      # Manual runs publish a release below; only pull request builds need the
+      # artifact, and a day is enough to test them.
       - uses: actions/upload-artifact@v4
+        if: github.event_name != 'workflow_dispatch'
         with:
           name: language-library-ipa
           path: app/LanguageLibrary.ipa
-          retention-days: 30
+          retention-days: 1
       - name: Publish as a release
         if: github.event_name == 'workflow_dispatch'
         env:
