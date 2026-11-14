@@ -288,7 +288,20 @@ String nextPath(UserStore store) {
 
 /// Plans a week starting [start] along [path], or null when that path has
 /// nothing left to offer. [seed] makes a connections week grow from that word.
+/// The week's Sentences level comes from how last week's sentences went.
 JourneyWeek? planWeek(Library lib, UserStore store, DateTime start, String path,
+    {String? seed, String? char, Connections? conn}) {
+  final w = _planWeek(lib, store, start, path, seed: seed, char: char, conn: conn);
+  return w == null ? null : withSentenceLevel(lib, store, w);
+}
+
+/// [week] with its Sentences level worked out afresh from the week before it.
+JourneyWeek withSentenceLevel(Library lib, UserStore store, JourneyWeek week) {
+  final (level, note) = sentenceLevel(lib, store, week.start);
+  return week.copyWith(level: level, levelNote: () => note);
+}
+
+JourneyWeek? _planWeek(Library lib, UserStore store, DateTime start, String path,
     {String? seed, String? char, Connections? conn}) {
   final c = conn ?? Connections(lib, store);
   final pace = store.journeyPace;
@@ -450,10 +463,12 @@ Future<bool> ensureWeek(Library lib, UserStore store, DateTime now) async {
   if (!store.journeyOn || store.weekAt(now) != null) return false;
   final start = mondayOf(now);
   final picked = store.nextWeek;
-  final week = picked != null && !picked.start.isAfter(start)
+  final chosen = picked != null && !picked.start.isAfter(start)
       ? picked.copyWith(start: start)
       : weekOptions(lib, store, start, count: 1).firstOrNull;
-  if (week == null) return false;
+  if (chosen == null) return false;
+  // A week picked early may have been planned before last week was over.
+  final week = withSentenceLevel(lib, store, chosen);
   final last = store.weeks.lastOrNull;
   await store.startWeek(week, recapOf: last != null && picked == null ? dayKey(last.start) : null);
   return true;
@@ -486,7 +501,7 @@ DayPlan dayPlan(JourneyWeek week, int day, {String? skillTitle}) {
     2 => DayPlan(DayKind.practise, 'Practise the week\'s words', 'Every word of the week, due or not', w),
     3 => DayPlan(DayKind.skill, '${skillTitle ?? 'Skill'} day', 'The week\'s practice type, with its words where it can', w),
     4 => DayPlan(DayKind.practise, 'Mixed review', 'All the week\'s words again', w),
-    5 => DayPlan(DayKind.sentences, 'Sentences', 'Say $sentencesPerDay phrasebook sentences with the week\'s words, or more if you like', w),
+    5 => DayPlan(DayKind.sentences, 'Sentences', 'Say ${sentenceAim(week)} phrasebook sentences with the week\'s words, or more if you like', w),
     _ => DayPlan(DayKind.recap, 'Week recap', 'A look back, and pick next week', w),
   };
 }
@@ -509,7 +524,7 @@ Set<String> metIn(UserStore store, JourneyWeek week) {
 /// Sentences day's sentences, or the week's words on a Say it skill day.
 List<Entry>? sayItListFor(Library lib, JourneyWeek week, DayKind kind) => switch (kind) {
       DayKind.sentences => () {
-          final ss = sentencesFor(lib, week.words, limit: sentencesInWeek);
+          final ss = sentencesFor(lib, week.words, limit: sentencesInWeek, level: week.level);
           return ss.isEmpty ? null : ss;
         }(),
       DayKind.skill when week.skill == 'speak' => [for (final id in week.words) ?lib.byId[id]],
@@ -523,16 +538,84 @@ const sentencesPerDay = 10;
 /// carrying on from the last one, so a day that's done can keep going.
 const sentencesInWeek = 40;
 
-/// Phrasebook sentences that use any of [ids], shortest first.
-List<Entry> sentencesFor(Library lib, Iterable<String> ids, {int limit = 20}) {
+/// How many sentences the Sentences day of [week] asks for: 10 at the usual
+/// level, 2 fewer for each step easier and 2 more for each step harder.
+int sentenceAim(JourneyWeek week) => sentencesPerDay + 2 * week.level;
+
+/// Phrasebook sentences that use any of [ids], easiest first: fewest
+/// characters, with 2 more counted for each other word in the sentence.
+///
+/// [level] below 0 keeps to the easier half (-1) or third (-2); above 0 it
+/// leaves out the easiest fifth for each step. Either way only when enough are
+/// left to fill a day. The order doesn't depend on what the learner knows, so
+/// a week's list stays the same all week and Say it can carry on in it.
+List<Entry> sentencesFor(Library lib, Iterable<String> ids, {int limit = 20, int level = 0}) {
   final ix = _Index.of(lib);
+  final words = ids.toSet();
   final out = <Entry>{};
-  for (final id in ids) {
+  for (final id in words) {
     for (final s in ix.wordSentences[id] ?? const <String>[]) {
       out.add(lib.byId[s]!);
     }
   }
-  return (out.toList()..sort((a, b) => a.simplified.length.compareTo(b.simplified.length))).take(limit).toList();
+  int effort(Entry e) =>
+      _hanCount(e.simplified) + 2 * (ix.sentenceParts[e.id] ?? const <String>[]).where((p) => !words.contains(p)).length;
+  final score = {for (final e in out) e: effort(e)};
+  var list = out.toList()
+    ..sort((a, b) {
+      final c = score[a]!.compareTo(score[b]!);
+      return c != 0 ? c : a.id.compareTo(b.id);
+    });
+  final aim = sentencesPerDay + 2 * level;
+  if (level < 0) {
+    final keep = (list.length / (level == -1 ? 2 : 3)).ceil();
+    if (keep >= aim) list = list.sublist(0, keep);
+  } else if (level > 0) {
+    final drop = (list.length * 0.2 * level).floor();
+    if (list.length - drop >= aim) list = list.sublist(drop);
+  }
+  return list.take(limit).toList();
+}
+
+int _hanCount(String s) => s.runes.where((r) => r >= 0x3400 && r <= 0x9fff).length;
+
+/// How the Say it sentences between [from] and [to] went: how many were said
+/// (first try at each sentence each day) and how many of those the recogniser
+/// understood.
+({int said, int right}) sentenceResults(Library lib, UserStore store, DateTime from, DateTime to) {
+  final seen = <String>{};
+  var said = 0, right = 0;
+  for (final t in store.speakTries) {
+    if (t.at.isBefore(from) || !t.at.isBefore(to)) continue;
+    if (lib.byId[t.id] case final e? when e.isSentence) {
+      if (!seen.add('${dayKey(t.at)}|${t.id}')) continue;
+      said++;
+      if (t.right) right++;
+    }
+  }
+  return (said: said, right: right);
+}
+
+/// The Sentences level for a week starting [start], and a note when it moved:
+/// one step easier when under 40% of last week's sentences were understood,
+/// one step harder when over 80% were. Fewer than 5 said keeps the level.
+(int, String?) sentenceLevel(Library lib, UserStore store, DateTime start) {
+  final prev = store.weeks.where((w) => w.start.isBefore(start)).lastOrNull;
+  final was = prev?.level ?? 0;
+  final r = sentenceResults(lib, store, DateTime(start.year, start.month, start.day - 7), start);
+  if (r.said < 5) return (was, null);
+  final heard = 'Last week the recogniser understood ${r.right} of ${r.said} sentences';
+  if (r.right * 10 < r.said * 4) {
+    return was > -2
+        ? (was - 1, '$heard, so this week\'s are a bit shorter and there are fewer')
+        : (was, '$heard, so this week\'s stay short');
+  }
+  if (r.right * 10 > r.said * 8) {
+    return was < 2
+        ? (was + 1, '$heard, so this week\'s are a bit longer and there are more')
+        : (was, '$heard, so this week\'s stay at the hardest level');
+  }
+  return (was, null);
 }
 
 /// How a week went.

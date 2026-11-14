@@ -31,7 +31,8 @@ flashcards with spaced repetition.
 ```
 app/                 Flutter app
   assets/data/       library.json (built by tools/build_data.py), char_tones.tsv (tools/char_tones.py)
-  assets/audio/      voice clips + manifest.json (made by tools/generate_audio.py)
+  assets/audio/      voice clips + manifest.json (made by tools/generate_audio.py),
+                     pitch_refs.json (each clip's pitch line, tools/pitch_refs.py)
   assets/licenses/   full license texts (tools/fetch_licenses.py)
   assets/speech/     the Say it speech recogniser's model (sherpa-onnx, see CREDITS.md)
 tools/               Python scripts that build the data and audio
@@ -131,6 +132,14 @@ After rebuilding, refresh the readings Say it uses to name what it heard:
 
 ```
 python3 -m tools.char_tones
+```
+
+After new voice clips, work out their pitch lines (the dotted guide on the Say it
+pitch graph; `windows\make-voices.bat` does this for you, and it needs numpy and
+ffmpeg):
+
+```
+python3 -m tools.pitch_refs
 ```
 
 ### Sentences

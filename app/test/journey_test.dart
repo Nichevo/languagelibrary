@@ -157,4 +157,55 @@ void main() {
     await store.logAnswer(Rating.good, const Duration(seconds: 3), now, method: 'listen', id: week.words[1]);
     expect(metIn(store, week), {week.words[0], week.words[1]});
   });
+
+  test('next week\'s sentences get easier after a hard week and harder after an easy one', () async {
+    final store = await knowsHsk1();
+    final week = planWeek(lib, store, monday, 'topics')!;
+    expect(week.level, 0);
+    await store.startWeek(week);
+    final usual = sayItListFor(lib, week, DayKind.sentences)!;
+    final next = monday.add(const Duration(days: 7));
+    // Too few said: no change.
+    for (final e in usual.take(3)) {
+      await store.logSpeakTry(e.id, false, now);
+    }
+    expect(planWeek(lib, store, next, 'topics')!.level, 0);
+    // 2 of 10 understood (a second try at the same sentence the same day doesn't count).
+    for (final (i, e) in usual.skip(3).take(7).indexed) {
+      await store.logSpeakTry(e.id, i < 2, now);
+    }
+    await store.logSpeakTry(usual.first.id, true, now.add(const Duration(minutes: 1)));
+    expect(sentenceResults(lib, store, monday, next), (said: 10, right: 2));
+    final easier = planWeek(lib, store, next, 'topics')!;
+    expect(easier.level, -1);
+    expect(easier.levelNote, contains('2 of 10'));
+    expect(sentenceAim(easier), sentencesPerDay - 2);
+    final all = sentencesFor(lib, week.words, limit: 1000);
+    final easy = sentencesFor(lib, week.words, limit: 1000, level: -1);
+    expect(easy.length, lessThan(all.length));
+    expect(easy, all.take(easy.length), reason: 'the easier half');
+    // Saved and read back with its level.
+    final back = JourneyWeek.fromJson(easier.toJson());
+    expect((back.level, back.levelNote), (easier.level, easier.levelNote));
+
+    // An easy week after that one goes back up a step.
+    await store.startWeek(easier);
+    final after = next.add(const Duration(days: 7));
+    for (final e in sentencesFor(lib, easier.words, limit: 40, level: -1).take(8)) {
+      await store.logSpeakTry(e.id, true, next.add(const Duration(days: 2)));
+    }
+    final harder = planWeek(lib, store, after, 'topics')!;
+    expect(harder.level, 0);
+    expect(harder.levelNote, contains('8 of 8'));
+    expect(sentenceAim(harder), sentencesPerDay);
+  });
+
+  test('a harder level leaves out the shortest sentences', () async {
+    final store = await knowsHsk1();
+    final week = planWeek(lib, store, monday, 'topics')!;
+    final usual = sentencesFor(lib, week.words, limit: 1000);
+    final hard = sentencesFor(lib, week.words, limit: 1000, level: 1);
+    expect(hard.length, lessThan(usual.length));
+    expect(hard.first.simplified.length, greaterThanOrEqualTo(usual.first.simplified.length));
+  });
 }

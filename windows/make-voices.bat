@@ -83,6 +83,12 @@ echo Clips that still can't be confirmed are left out of the app, which uses the
 python -m tools.generate_audio --recheck --female %FEMALE% --male %MALE%
 if errorlevel 1 goto :end
 
+rem ---- the pitch line of each clip, drawn dotted on the Say it graph
+echo.
+echo Working out the pitch line of any new clips.
+python -m tools.pitch_refs
+if errorlevel 1 goto :end
+
 rem ---- HSK 7 to 9: voiced now while there is cloud credit, kept out of the app (extra\hsk7-9)
 if exist "extra\hsk7-9\library.json" (
   echo.

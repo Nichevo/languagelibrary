@@ -140,7 +140,7 @@ class WeekCard extends StatelessWidget {
     // How far today's Say it list has got, so the button can carry on.
     final list = sayItListFor(lib, week, plan.kind);
     final progress = list == null ? null : sayItCarryOn(store, list, now);
-    final aim = plan.kind == DayKind.sentences ? min(sentencesPerDay, list?.length ?? 0) : (list?.length ?? 0);
+    final aim = plan.kind == DayKind.sentences ? min(sentenceAim(week), list?.length ?? 0) : (list?.length ?? 0);
     final found = foundBetween(lib, store, week.start, now.add(const Duration(minutes: 1)), except: week.words.toSet());
     final goal = store.dailyGoal;
     final perDay = lastDays(store.reviews, now, days: day + 1);
@@ -169,6 +169,11 @@ class WeekCard extends StatelessWidget {
                   ),
                   Text(week.title, style: theme.textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold)),
                   Text(week.why, style: theme.textTheme.bodySmall),
+                  if (week.levelNote case final note?)
+                    Padding(
+                      padding: const EdgeInsets.only(top: 2),
+                      child: Text(note, style: theme.textTheme.bodySmall?.copyWith(fontStyle: FontStyle.italic)),
+                    ),
                   const SizedBox(height: 8),
                   Row(
                     children: [
@@ -331,6 +336,11 @@ class WeekScreen extends StatelessWidget {
                     children: [
                       Text(week.title, style: theme.textTheme.headlineSmall),
                       Text(week.why),
+                      if (week.levelNote case final note?)
+                        Padding(
+                          padding: const EdgeInsets.only(top: 4),
+                          child: Text(note, style: theme.textTheme.bodySmall?.copyWith(fontStyle: FontStyle.italic)),
+                        ),
                     ],
                   ),
                 ),
@@ -617,6 +627,7 @@ class RecapScreen extends StatelessWidget {
     final theme = Theme.of(context);
     final now = DateTime.now();
     final sum = summarise(lib, store, week, now);
+    final sentences = sentenceResults(lib, store, week.start, DateTime(week.start.year, week.start.month, week.start.day + 7));
     final current = store.weekAt(now);
     // A finished week: offer to swap the week that started without a choice.
     // Otherwise: pick next week.
@@ -661,6 +672,11 @@ class RecapScreen extends StatelessWidget {
               stat('Answers', '${sum.answers}', 'on ${sum.days} ${sum.days == 1 ? 'day' : 'days'}'),
               stat('Right', '${sum.percentRight}%'),
             ]),
+            if (sentences.said > 0)
+              Row(children: [
+                stat('Sentences understood', '${sentences.right} of ${sentences.said}',
+                    'by the recogniser, a guide. Under 40% makes next week\'s easier, over 80% harder'),
+              ]),
             if (sum.found.isNotEmpty)
               Padding(
                 padding: const EdgeInsets.fromLTRB(4, 8, 4, 0),

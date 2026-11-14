@@ -10,6 +10,7 @@ import '../srs/scheduler.dart';
 import '../models/entry.dart';
 import '../speech/feedback.dart';
 import '../speech/heard.dart';
+import '../speech/pitch_refs.dart';
 import '../speech/speech_service.dart';
 import '../speech/tone_shape.dart';
 import 'common.dart';
@@ -64,6 +65,10 @@ class _SayItScreenState extends State<SayItScreen> {
   String? _error, _recording;
   WordCheck? _check;
   PitchPicture? _pitch;
+  PitchRefs? _refs;
+
+  /// The voice clip of the entry just tried, for the dotted guide line.
+  String? _clip;
   List<double>? _times;
   String? _tryNote;
   final Set<int> _logged = {};
@@ -81,6 +86,11 @@ class _SayItScreenState extends State<SayItScreen> {
   void didChangeDependencies() {
     super.didChangeDependencies();
     _queue ??= _pick();
+    if (_refs == null) {
+      PitchRefs.load().then((r) {
+        if (mounted) setState(() => _refs = r);
+      });
+    }
   }
 
   List<Entry> _pick() {
@@ -185,6 +195,9 @@ class _SayItScreenState extends State<SayItScreen> {
       final tones = await loadCharTones();
       if (!mounted) return;
       final e = _entry!;
+      final scope = AppScope.of(context);
+      final clip = scope.library.audioFor(e, female: scope.store.femaleVoice) ??
+          scope.library.audioFor(e, female: !scope.store.femaleVoice);
       final check = checkHeard(e, result.transcript.text, tones);
       _log(e, check);
       setState(() {
@@ -192,6 +205,7 @@ class _SayItScreenState extends State<SayItScreen> {
         _recording = path;
         _check = check;
         _pitch = PitchPicture.of(result.pitch);
+        _clip = clip?.replaceAll('.mp3', '');
         _times = result.transcript.charTimes;
         _phase = _Phase.result;
       });
@@ -243,6 +257,7 @@ class _SayItScreenState extends State<SayItScreen> {
       _phase = _Phase.ready;
       _check = null;
       _pitch = null;
+      _clip = null;
       _times = null;
       _tryNote = null;
       _recording = null;
@@ -266,6 +281,7 @@ class _SayItScreenState extends State<SayItScreen> {
       _phase = _Phase.ready;
       _check = null;
       _pitch = null;
+      _clip = null;
       _times = null;
       _tryNote = null;
       _recording = null;
@@ -375,6 +391,7 @@ class _SayItScreenState extends State<SayItScreen> {
                       check: _check!,
                       pitch: _pitch,
                       charTimes: _times,
+                      reference: _clip == null ? null : _refs?.lineFor(_clip!),
                       tryNote: _tryNote,
                       onWord: _openWord,
                     ),
@@ -447,11 +464,14 @@ class _MicButton extends StatelessWidget {
 /// What the recogniser heard and the pitch line, for one try.
 class SayItResult extends StatelessWidget {
   const SayItResult(
-      {super.key, required this.entry, required this.check, this.pitch, this.charTimes, this.tryNote, this.onWord});
+      {super.key, required this.entry, required this.check, this.pitch, this.charTimes, this.reference, this.tryNote, this.onWord});
   final Entry entry;
   final WordCheck check;
   final PitchPicture? pitch;
   final List<double>? charTimes;
+
+  /// The app's voice's pitch line, drawn dotted (see PitchRefs).
+  final List<double?>? reference;
 
   /// "Got it in 3 tries".
   final String? tryNote;
@@ -512,12 +532,13 @@ class SayItResult extends StatelessWidget {
                   const SizedBox(height: 8),
                   _ToneTargets(entry),
                   const SizedBox(height: 6),
-                  PitchChart(picture: pitch!, entry: entry, charTimes: charTimes),
+                  PitchChart(picture: pitch!, entry: entry, charTimes: charTimes, reference: reference),
                   const SizedBox(height: 6),
                   Text(
                     pitch!.isEmpty
                         ? 'No voice was picked up clearly enough to draw.'
                         : 'How your voice rose and fell, against your own middle pitch (dashed). '
+                            '${reference != null ? 'The dotted line is the app\'s voice saying it, stretched to your timing and measured against its own middle pitch. ' : ''}'
                             'The shapes above are each tone\'s textbook shape, after tone changes. '
                             'This is a picture to compare, not a score.',
                     style: theme.textTheme.bodySmall,
@@ -693,11 +714,15 @@ class ToneGlyph extends CustomPainter {
 
 /// The learner's pitch over time, with the characters placed where the
 /// recogniser heard them.
+///
+/// [reference] is the app's voice saying the same thing (see PitchRefs),
+/// stretched over the learner's voiced time and drawn dotted.
 class PitchChart extends StatelessWidget {
-  const PitchChart({super.key, required this.picture, required this.entry, this.charTimes});
+  const PitchChart({super.key, required this.picture, required this.entry, this.charTimes, this.reference});
   final PitchPicture picture;
   final Entry entry;
   final List<double>? charTimes;
+  final List<double?>? reference;
 
   @override
   Widget build(BuildContext context) {
@@ -711,6 +736,8 @@ class PitchChart extends StatelessWidget {
           picture: picture,
           line: theme.colorScheme.primary,
           grid: theme.colorScheme.outlineVariant,
+          guide: theme.colorScheme.tertiary,
+          reference: reference,
           text: theme.textTheme.bodyMedium!.copyWith(color: theme.colorScheme.onSurfaceVariant),
           labels: charTimes != null && charTimes!.length == hanzi.length
               ? [for (var i = 0; i < hanzi.length; i++) (charTimes![i], hanzi[i].hanzi ?? '')]
@@ -722,9 +749,17 @@ class PitchChart extends StatelessWidget {
 }
 
 class _PitchPainter extends CustomPainter {
-  _PitchPainter({required this.picture, required this.line, required this.grid, required this.text, required this.labels});
+  _PitchPainter(
+      {required this.picture,
+      required this.line,
+      required this.grid,
+      required this.guide,
+      required this.text,
+      required this.labels,
+      this.reference});
   final PitchPicture picture;
-  final Color line, grid;
+  final Color line, grid, guide;
+  final List<double?>? reference;
   final TextStyle text;
   final List<(double, String)> labels;
 
@@ -743,6 +778,31 @@ class _PitchPainter extends CustomPainter {
       ..strokeWidth = 1;
     for (var dx = 0.0; dx < size.width; dx += 8) {
       canvas.drawLine(Offset(dx, h / 2), Offset(min(dx + 4, size.width), h / 2), dash);
+    }
+    // The app's voice, dotted, stretched from where the learner's voice starts
+    // to where it ends (the picture has 0.1 s either side of that).
+    final ref = reference;
+    if (ref != null && ref.length > 1 && !picture.isEmpty) {
+      final a = picture.start + 0.1, b = picture.end - 0.1;
+      double rx(int i) => x(a + i / (ref.length - 1) * (b - a));
+      final dot = Paint()..color = guide;
+      final path = Path();
+      var open = false;
+      for (var i = 0; i < ref.length; i++) {
+        final st = ref[i];
+        if (st == null) {
+          open = false;
+          continue;
+        }
+        final pt = Offset(rx(i), y(st.clamp(-_range, _range)));
+        open ? path.lineTo(pt.dx, pt.dy) : path.moveTo(pt.dx, pt.dy);
+        open = true;
+      }
+      for (final m in path.computeMetrics()) {
+        for (var d = 0.0; d <= m.length; d += 6) {
+          if (m.getTangentForOffset(d) case final t?) canvas.drawCircle(t.position, 1.6, dot);
+        }
+      }
     }
     final p = Paint()
       ..color = line
@@ -766,7 +826,7 @@ class _PitchPainter extends CustomPainter {
   }
 
   @override
-  bool shouldRepaint(_PitchPainter old) => old.picture != picture || old.line != line || old.labels != labels;
+  bool shouldRepaint(_PitchPainter old) => old.picture != picture || old.line != line || old.labels != labels || old.reference != reference;
 }
 
 class _Done extends StatelessWidget {
