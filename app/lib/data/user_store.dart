@@ -111,6 +111,11 @@ class UserStore extends ChangeNotifier {
   /// The highest milestone already celebrated.
   int milestoneSeen = 0;
 
+  /// Where a Say it list that carries on (the week's Sentences day) was left
+  /// today: '2026-11-14|list key' -> the id of the next entry to show. Only
+  /// today's places are kept.
+  final Map<String, String> sayItPlaces = {};
+
   /// Whether [e] belongs to the content switched on in Settings. The curated
   /// everyday phrases and starred words always show.
   bool shows(Entry e) {
@@ -207,6 +212,9 @@ class UserStore extends ChangeNotifier {
     nextWeek = j['nextWeek'] == null ? null : JourneyWeek.fromJson(j['nextWeek'] as Map<String, dynamic>);
     recapPending = j['recapPending'] as String?;
     milestoneSeen = j['milestoneSeen'] as int? ?? 0;
+    sayItPlaces
+      ..clear()
+      ..addAll(Map<String, String>.from(j['sayItPlaces'] as Map? ?? const {}));
     choiceKind = j['choiceKind'] as String? ?? choiceKind;
     widgetAnswersUpTo = j['widgetAnswersUpTo'] as int? ?? 0;
     statsPeriod = j['statsPeriod'] as String? ?? statsPeriod;
@@ -254,6 +262,7 @@ class UserStore extends ChangeNotifier {
         'nextWeek': nextWeek?.toJson(),
         'recapPending': recapPending,
         'milestoneSeen': milestoneSeen,
+        'sayItPlaces': sayItPlaces,
         'choiceKind': choiceKind,
         'widgetAnswersUpTo': widgetAnswersUpTo,
         'statsPeriod': statsPeriod,
@@ -734,6 +743,15 @@ class UserStore extends ChangeNotifier {
 
   Future<void> recapSeen() {
     recapPending = null;
+    return _save();
+  }
+
+  /// Remembers that [list] (a Say it list that carries on) is at [nextId]
+  /// today, or finished when [nextId] is null.
+  Future<void> setSayItPlace(String day, String list, String? nextId) {
+    sayItPlaces.removeWhere((k, _) => !k.startsWith('$day|'));
+    final key = '$day|$list';
+    nextId == null ? sayItPlaces.remove(key) : sayItPlaces[key] = nextId;
     return _save();
   }
 
