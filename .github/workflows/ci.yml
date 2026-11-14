@@ -42,6 +42,7 @@ jobs:
       # remove preinstalled tools this job never uses (about 20 GB).
       - name: Free disk space
         if: env.BUILD_APK == 'true'
+        working-directory: /
         run: |
           sudo rm -rf /usr/share/dotnet /opt/ghc /usr/local/.ghcup /opt/hostedtoolcache/CodeQL /usr/local/share/boost /usr/share/swift
           df -h /
