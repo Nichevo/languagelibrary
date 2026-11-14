@@ -491,6 +491,9 @@ DayPlan dayPlan(JourneyWeek week, int day, {String? skillTitle}) {
   };
 }
 
+/// How many sentences the Sentences day asks you to say.
+const sentencesPerDay = 10;
+
 /// Phrasebook sentences that use any of [ids], shortest first.
 List<Entry> sentencesFor(Library lib, Iterable<String> ids, {int limit = 20}) {
   final ix = _Index.of(lib);

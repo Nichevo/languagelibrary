@@ -40,8 +40,10 @@ void openDay(BuildContext context, JourneyWeek week, int day) {
     case DayKind.skill:
       screen = skillScreen(lib, week);
     case DayKind.sentences:
-      final ss = sentencesFor(lib, week.words);
-      screen = ss.isEmpty ? PracticeScreen(ids: week.words, includeNotDue: true) : SayItScreen(entries: ss, sentences: true);
+      final ss = sentencesFor(lib, week.words, limit: sentencesPerDay);
+      screen = ss.isEmpty
+          ? PracticeScreen(ids: week.words, includeNotDue: true)
+          : SayItScreen(entries: ss, sentences: true, carryOn: true);
     case DayKind.recap:
       screen = RecapScreen(week: week);
   }
@@ -53,7 +55,7 @@ Widget skillScreen(Library lib, JourneyWeek week) {
   final words = [for (final id in week.words) ?lib.byId[id]];
   switch (week.skill) {
     case 'speak':
-      return SayItScreen(entries: words);
+      return SayItScreen(entries: words, carryOn: true);
     case 'build':
       final p = lib.patterns.where((p) => p.id == week.pattern).firstOrNull;
       return BuildSentenceScreen(only: p);

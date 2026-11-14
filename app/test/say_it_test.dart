@@ -419,6 +419,33 @@ void main() {
       expect(store.speakTries, isEmpty);
     });
 
+    testWidgets('a day\'s set carries on from where it was left today', (tester) async {
+      SharedPreferences.setMockInitialValues({});
+      final store = await UserStore.open();
+      final words = [word('谢谢'), word('买'), word('不客气')];
+      final now = DateTime.now();
+      await store.logSpeakTry(words[0].id, true, now.subtract(const Duration(minutes: 30)));
+      await store.logSpeakTry(words[1].id, true, now.subtract(const Duration(days: 1))); // yesterday: not done today
+      Future<void> open(bool carryOn) async {
+        await tester.pumpWidget(AppScope(
+          library: lib,
+          store: store,
+          speaker: Speaker(lib),
+          device: NoDevice(),
+          child: MaterialApp(
+              home: SayItScreen(
+                  key: UniqueKey(), entries: words, carryOn: carryOn, recorder: _FakeRecorder(), checker: _FakeChecker('谢谢'))),
+        ));
+        await tester.pumpAndSettle();
+      }
+
+      await open(true);
+      expect(find.text('2 / 3'), findsOneWidget);
+      expect(find.text('mǎi'), findsWidgets);
+      await open(false);
+      expect(find.text('1 / 3'), findsOneWidget, reason: 'other uses start at the beginning');
+    });
+
     testWidgets('a quick tap asks to hold the button', (tester) async {
       await pumpScreen(tester, _FakeChecker('谢谢'), [word('谢谢')]);
       await tester.tap(find.byIcon(Icons.mic));

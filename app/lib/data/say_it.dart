@@ -132,3 +132,12 @@ Map<int, int> syllableAt(Entry e) {
   }
   return out;
 }
+
+/// Entries tried in Say it today -> whether the first try today was right.
+Map<String, bool> sayItTriedToday(UserStore store, DateTime now) {
+  final out = <String, bool>{};
+  for (final t in store.speakTries) {
+    if (t.at.year == now.year && t.at.month == now.month && t.at.day == now.day) out.putIfAbsent(t.id, () => t.right);
+  }
+  return out;
+}
