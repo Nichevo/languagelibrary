@@ -52,7 +52,7 @@ if errorlevel 1 goto :done
 python -m tools.voices_status
 if errorlevel 2 goto :done
 echo.
-choice /m "Some words have no recorded voice yet. Make them now"
+choice /m "Some voice clips are missing or need making again. Make them now"
 if errorlevel 2 goto :done
 call "%HERE%make-voices.bat"
 goto :end

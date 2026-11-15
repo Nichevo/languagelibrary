@@ -1,0 +1,8 @@
+# Voice clips that passed the speech check but sound wrong to a listener.
+# windows\make-voices.bat (python -m tools.generate_audio --remake) records a few
+# fresh takes of each, all with the exact pinyin, and keeps the one that speech
+# recognition confirms with the most clearly voiced sound.
+#
+# One line per clip, tab-separated: word, pinyin, female or male, take number, note.
+# To have the same clip made again later, raise its take number by one.
+对	duì	female	1	cut short and squeaky (about 0.1 s of voice at twice the voice's usual pitch); the male clip is fine

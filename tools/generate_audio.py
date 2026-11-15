@@ -18,6 +18,10 @@ How a clip is made and checked:
 
 Re-running skips clips that already exist, so it is cheap to run again after
 adding words. Use --force to remake everything.
+
+A clip that passes the check can still sound wrong to a listener (cut short, or
+said in an odd voice). List it in tools/sources/remake_clips.tsv and run
+--remake: it records a few fresh takes and keeps the best one.
 """
 
 from __future__ import annotations
@@ -27,6 +31,8 @@ import json
 import re
 import sys
 import time
+import wave
+from io import BytesIO
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -34,6 +40,7 @@ LIBRARY = ROOT / "app" / "assets" / "data" / "library.json"
 AUDIO_DIR = ROOT / "app" / "assets" / "audio"
 MANIFEST = AUDIO_DIR / "manifest.json"
 REPORT = Path(__file__).resolve().parent / "audio_report.md"
+REMAKE_LIST = Path(__file__).resolve().parent / "sources" / "remake_clips.tsv"
 
 # Word sets with their own clips. HSK 7-9 is voiced now, while there is cloud
 # credit, but kept out of the app (extra/hsk7-9/) until it is wanted.
@@ -365,6 +372,110 @@ def cmd_recheck(tts_mod, speech_mod, entries, female: str, male: str):
     write_report(entries, manifest)
 
 
+# ------------------------------------------------------------- remaking clips someone flagged
+
+_WHO = {"female": "f", "male": "m"}
+
+
+def load_remake_list(entries, path: Path | None = None) -> list[tuple[str, int, str]]:
+    """The clips listed in remake_clips.tsv, as (clip key, take, word).
+
+    Each line is: word, pinyin, female or male, take number, then an optional note.
+    The take number goes up by one each time the same clip should be made again."""
+    path = path or REMAKE_LIST
+    if not path.exists():
+        return []
+    by_word = {(e["simplified"], e["pinyin"]): e for e in entries}
+    out = []
+    for n, line in enumerate(path.read_text(encoding="utf-8").splitlines(), 1):
+        if not line.strip() or line.startswith("#"):
+            continue
+        cols = line.split("\t")
+        if len(cols) < 4 or cols[2] not in _WHO or not cols[3].strip().isdigit():
+            sys.exit(f"{path.name} line {n}: expected word, pinyin, female/male, take number (tab-separated).")
+        e = by_word.get((cols[0], cols[1]))
+        if e is None:
+            print(f"  {path.name} line {n}: {cols[0]} ({cols[1]}) is not in this word list, skipped.")
+            continue
+        out.append((f"{e['id']}_{_WHO[cols[2]]}", int(cols[3]), cols[0]))
+    return out
+
+
+def remakes_due(entries, manifest) -> list[tuple[str, int, str]]:
+    """Listed clips whose take number is newer than the take they have now."""
+    clips = manifest.get("clips", {})
+    return [r for r in load_remake_list(entries) if r[0] in clips and clips[r[0]].get("take", 0) < r[1]]
+
+
+def voiced_ms(wav: bytes) -> int:
+    """How long the voice is clearly heard, in ms, tracked the same way as the Say it pitch line.
+    A take that is cut short, or squeaks above a normal speaking pitch, scores low."""
+    import numpy as np
+    from tools import pitch_refs
+    with wave.open(BytesIO(wav)) as w:
+        rate = w.getframerate()
+        x = np.frombuffer(w.readframes(w.getnframes()), dtype=np.int16).astype(np.float64) / 32768.0
+    if rate != pitch_refs.RATE and len(x):
+        t = np.arange(int(len(x) * pitch_refs.RATE / rate)) * rate / pitch_refs.RATE
+        x = np.interp(t, np.arange(len(x)), x)
+    return 10 * sum(1 for hz in pitch_refs.track(x) if hz)
+
+
+# The fresh takes: a full stop asks for a plain statement (not a question or a
+# clipped interjection), and a slightly slower rate gives the word more room.
+REMAKE_TAKES = (("。", 1.0), ("", 0.9), ("。", 0.9))
+
+
+def cmd_remake(tts_mod, speech_mod, entries, female: str, male: str):
+    """Makes again the clips listed in tools/sources/remake_clips.tsv.
+
+    Each gets a few fresh takes, all with the exact pinyin. Of the takes that speech
+    recognition confirms, the one with the most clearly voiced sound is kept. If none
+    is confirmed, the old clip stays and the line is tried again next time."""
+    if not MANIFEST.exists():
+        sys.exit("No clips yet. Make them first with --female and --male.")
+    manifest = json.loads(MANIFEST.read_text(encoding="utf-8"))
+    todo = remakes_due(entries, manifest)
+    if not todo:
+        print("No clips to remake.")
+        return
+    readings = char_readings_from_library(entries)
+    tts = tts_mod.TextToSpeechClient()
+    stt = speech_mod.SpeechClient()
+    by_id = {e["id"]: e for e in entries}
+    voices = {"f": female, "m": male}
+    for key, take, word in todo:
+        eid, who = key.rsplit("_", 1)
+        e = by_id[eid]
+        c = manifest["clips"][key]
+        hint = None if e.get("kind") == "sentence" else e["pinyinNumbered"]
+        best = None
+        for end, rate in REMAKE_TAKES:
+            text = e["simplified"] if strip_punct(e["simplified"][-1:]) == "" else e["simplified"] + end
+            try:
+                wav = synthesize(tts_mod, tts, text, hint, voices[who], tts_mod.AudioEncoding.LINEAR16, rate)
+                heard = transcribe(speech_mod, stt, wav)
+            except Exception as err:  # e.g. a voice that doesn't take a speaking rate
+                print(f"  {word}: skipped one take ({type(err).__name__})")
+                continue
+            verdict = judge_any(strip_punct(e["simplified"]), e["pinyinNumbered"], heard, readings)
+            ms = voiced_ms(wav)
+            print(f"  {word} ({'female' if who == 'f' else 'male'}), take {text!r} at {rate}x: "
+                  f"heard {heard[0] if heard else ''!r}, {ms} ms of voice")
+            if verdict != "mismatch" and (best is None or ms > best[0]):
+                best = (ms, text, rate, heard, verdict)
+        if best is None:
+            print(f"  {word}: no new take was confirmed, so the old clip stays. It is tried again next time.")
+            continue
+        _, text, rate, heard, verdict = best
+        mp3 = synthesize(tts_mod, tts, text, hint, voices[who], tts_mod.AudioEncoding.MP3, rate)
+        (AUDIO_DIR / c["file"]).write_bytes(mp3)
+        c.update(bytes=len(mp3), heard=heard[0] if heard else "", also=heard[1:], check=verdict, take=take)
+        print(f"  {word}: remade.")
+        MANIFEST.write_text(json.dumps(manifest, ensure_ascii=False, indent=1), encoding="utf-8")
+    write_report(entries, manifest)
+
+
 def write_report(entries, manifest):
     by_id = {e["id"]: e for e in entries}
     bad, similar = [], []
@@ -406,6 +517,7 @@ def main(argv=None):
     ap.add_argument("--force", action="store_true", help="remake clips that already exist")
     ap.add_argument("--limit", type=int, help="only the first N entries (for a quick test)")
     ap.add_argument("--recheck", action="store_true", help="try again for clips that failed the check")
+    ap.add_argument("--remake", action="store_true", help="make again the clips listed in tools/sources/remake_clips.tsv")
     ap.add_argument("--char-readings", metavar="CEDICT", nargs="?", const="",
                     help="rebuild tools/sources/char_readings.tsv (from a local CC-CEDICT file, or download it)")
     ap.add_argument("--set", choices=sorted(SETS), default="app",
@@ -425,6 +537,8 @@ def main(argv=None):
         cmd_samples(tts_mod, entries)
     elif args.recheck and args.female and args.male:
         cmd_recheck(tts_mod, speech_mod, entries, args.female, args.male)
+    elif args.remake and args.female and args.male:
+        cmd_remake(tts_mod, speech_mod, entries, args.female, args.male)
     elif args.female and args.male:
         cmd_generate(tts_mod, speech_mod, entries, args.female, args.male, args.force, args.limit)
     else:

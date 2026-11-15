@@ -201,6 +201,17 @@ far inside Google's free monthly allowance. Commit the new files in
 `app/assets/audio/` and the app uses them automatically; until then it falls back to
 the phone's own Chinese voice.
 
+### A clip that sounds wrong
+
+Speech recognition can confirm a clip that still sounds wrong to a listener, for
+example one cut short or said in an odd voice. Add a line for it to
+`tools/sources/remake_clips.tsv` (word, pinyin, female or male, take number, note)
+and run `windows\make-voices.bat` again, or
+`python3 -m tools.generate_audio --remake --female VOICE-NAME --male VOICE-NAME`.
+It records three fresh takes with the exact pinyin (with a full stop, a little
+slower, and both) and keeps the confirmed take with the most clearly voiced sound.
+To have the same clip made again later, raise its take number by one.
+
 No keys or credentials are stored in this repo or in the app.
 
 ## Tests
