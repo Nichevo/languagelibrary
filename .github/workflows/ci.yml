@@ -8,6 +8,12 @@ on:
     paths-ignore: ["**.md"]
   workflow_dispatch:
 
+# Every job gets a read-only token unless it asks for more below. Only the
+# publish job (pushes to main) can write, and pull request runs never see the
+# signing secrets: they only run the checks jobs.
+permissions:
+  contents: read
+
 # A newer push to the same branch cancels the build it replaces, which saves
 # Actions minutes and keeps two builds from publishing at once.
 concurrency:
@@ -18,40 +24,26 @@ jobs:
   data-tools:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
         with:
           python-version: "3.12"
       - run: pip install -r tools/requirements-audio.txt
       - run: python -m unittest discover -s tools/tests -t . -v
 
+  # Analyze and tests: the only app job pull requests run.
   app:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
-    env:
-      HAS_SIGNING_KEY: ${{ secrets.ANDROID_KEYSTORE_BASE64 != '' }}
-      # The release build is ~12 of the ~13 minutes, so pull requests only run
-      # analyze and tests; main and manual runs also build the APK.
-      BUILD_APK: ${{ github.event_name != 'pull_request' }}
     defaults:
       run:
         working-directory: app
     steps:
-      # The release build leaves under 100 MB free on the runner's disk, so
-      # remove preinstalled tools this job never uses (about 20 GB).
-      - name: Free disk space
-        if: env.BUILD_APK == 'true'
-        working-directory: /
-        run: |
-          sudo rm -rf /usr/share/dotnet /opt/ghc /usr/local/.ghcup /opt/hostedtoolcache/CodeQL /usr/local/share/boost /usr/share/swift
-          df -h /
-      - uses: actions/checkout@v4
-      - uses: actions/setup-java@v4
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
-          distribution: temurin
-          java-version: "17"
-      - uses: subosito/flutter-action@v2
+          persist-credentials: false
+      - uses: subosito/flutter-action@1a449444c387b1966244ae4d4f8c696479add0b2 # v2.23.0
         with:
           channel: stable
           flutter-version: 3.47.9
@@ -59,11 +51,44 @@ jobs:
       - run: flutter pub get
       - run: flutter analyze
       - run: flutter test
+
+  # The release build is ~12 of the ~13 minutes, so pull requests skip it;
+  # main and manual runs build the APK, signed with the release key.
+  android-build:
+    needs: app
+    if: github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    env:
+      HAS_SIGNING_KEY: ${{ secrets.ANDROID_KEYSTORE_BASE64 != '' }}
+    defaults:
+      run:
+        working-directory: app
+    steps:
+      # The release build leaves under 100 MB free on the runner's disk, so
+      # remove preinstalled tools this job never uses (about 20 GB).
+      - name: Free disk space
+        working-directory: /
+        run: |
+          sudo rm -rf /usr/share/dotnet /opt/ghc /usr/local/.ghcup /opt/hostedtoolcache/CodeQL /usr/local/share/boost /usr/share/swift
+          df -h /
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-java@d1374f8ac74474200d16ef8ecee22c7ae7a51880 # v6.3.0
+        with:
+          distribution: temurin
+          java-version: "17"
+      - uses: subosito/flutter-action@1a449444c387b1966244ae4d4f8c696479add0b2 # v2.23.0
+        with:
+          channel: stable
+          flutter-version: 3.47.9
+          cache: true
+      - run: flutter pub get
       - name: Set up release signing key
         env:
           KEYSTORE_BASE64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
           KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
-        if: env.BUILD_APK == 'true' && env.HAS_SIGNING_KEY == 'true'
+        if: env.HAS_SIGNING_KEY == 'true'
         run: |
           echo "$KEYSTORE_BASE64" | base64 --decode > android/release.jks
           {
@@ -73,29 +98,43 @@ jobs:
             echo "keyPassword=$KEYSTORE_PASSWORD"
           } > android/key.properties
       - name: Build Android app
-        if: env.BUILD_APK == 'true'
         run: flutter build apk --release --build-number=${{ github.run_number }}
       - name: Check how the app is signed
-        if: env.BUILD_APK == 'true'
         run: |
           if [ -f android/key.properties ]; then echo "Signed with the release key"; else echo "::warning::No signing secrets set, so this APK uses a throwaway debug key. Updates will not install over it."; fi
-      # Artifacts count against the private repo's 0.5 GB Actions storage, so
-      # builds from main go to one release that is replaced each time (release
-      # files don't count). A manual run keeps its APK for a day for testing.
+      - name: Remove the signing key from the runner
+        if: always()
+        run: rm -f android/release.jks android/key.properties
+      # Kept for a day only: artifacts count against the private repo's 0.5 GB
+      # Actions storage. Manual runs use it for testing, and the publish job
+      # below picks it up for pushes to main.
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: language-library-apk
+          path: app/build/app/outputs/flutter-apk/app-release.apk
+          retention-days: 1
+
+  # Builds from main go to one release that is replaced each time (release
+  # files don't count against Actions storage). This is the only job in the
+  # workflow that can write to the repo, and it runs no build code.
+  publish:
+    needs: android-build
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        with:
+          name: language-library-apk
       - name: Publish as the latest Android release
-        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         env:
           GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
         run: |
-          cp build/app/outputs/flutter-apk/app-release.apk language-library.apk
+          mv app-release.apk language-library.apk
           gh release delete android-latest --yes --cleanup-tag || true
           gh release create android-latest language-library.apk \
             --title "Android app (build ${{ github.run_number }})" \
             --notes "Built from ${GITHUB_SHA::7}. Download language-library.apk on the phone to install." \
             --target "${{ github.sha }}" --latest
-      - uses: actions/upload-artifact@v4
-        if: github.event_name == 'workflow_dispatch'
-        with:
-          name: language-library-apk
-          path: app/build/app/outputs/flutter-apk/app-release.apk
-          retention-days: 1

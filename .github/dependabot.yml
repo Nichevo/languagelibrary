@@ -1,0 +1,30 @@
+# Opens pull requests when a pinned action or a package has a new version.
+# Actions are pinned to full commit SHAs with the version as a comment;
+# Dependabot updates both together.
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+    groups:
+      actions:
+        patterns: ["*"]
+
+  # Flutter / Dart packages (app/pubspec.yaml)
+  - package-ecosystem: pub
+    directory: /app
+    schedule:
+      interval: weekly
+
+  # Android Gradle plugin and Kotlin (app/android/*.gradle.kts)
+  - package-ecosystem: gradle
+    directory: /app/android
+    schedule:
+      interval: weekly
+
+  # Python data and audio tools (tools/requirements-audio.txt)
+  - package-ecosystem: pip
+    directory: /tools
+    schedule:
+      interval: weekly

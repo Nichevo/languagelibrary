@@ -6,11 +6,15 @@ name: Create signing key (run once)
 on:
   workflow_dispatch:
 
+# Needs no repo access at all: the key only leaves as a short-lived artifact.
+permissions:
+  contents: read
+
 jobs:
   key:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/setup-java@v4
+      - uses: actions/setup-java@d1374f8ac74474200d16ef8ecee22c7ae7a51880 # v6.3.0
         with:
           distribution: temurin
           java-version: "17"
@@ -23,7 +27,7 @@ jobs:
             -storepass "$PW" -keypass "$PW" -dname "CN=Language Library"
           base64 -w0 out/release.jks > out/ANDROID_KEYSTORE_BASE64.txt
           echo -n "$PW" > out/ANDROID_KEYSTORE_PASSWORD.txt
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: signing-key-keep-private
           path: out/
