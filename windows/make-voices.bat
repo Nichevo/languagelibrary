@@ -82,6 +82,10 @@ echo Checking again, a few different ways, any clip speech recognition couldn't 
 echo Clips that still can't be confirmed are left out of the app, which uses the phone's voice for them.
 python -m tools.generate_audio --recheck --female %FEMALE% --male %MALE%
 if errorlevel 1 goto :end
+echo.
+echo Making again any clip listed in tools\sources\remake_clips.tsv as sounding wrong.
+python -m tools.generate_audio --remake --female %FEMALE% --male %MALE%
+if errorlevel 1 goto :end
 
 rem ---- the pitch line of each clip, drawn dotted on the Say it graph
 echo.
