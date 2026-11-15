@@ -51,6 +51,11 @@ against the private repo's 0.5 GB Actions storage and release files don't.
 Pull requests only run analyze and tests, not the ~12-minute APK build, to stay
 inside the free Actions minutes; changes that only touch `.md` files skip CI.
 
+Workflows run with a read-only token. Only the jobs that publish a release (or
+commit the Tatoeba file) can write, and pull request runs never get write access
+or the signing secrets. Actions are pinned to full commit SHAs, and Dependabot
+opens a weekly pull request when actions or packages have new versions.
+
 Android's Play Protect will warn that it doesn't recognise the app, because it
 isn't from the Play Store. Tap **More details → Install anyway**. If that option
 isn't shown: Play Store → profile picture → Play Protect → gear → turn off
