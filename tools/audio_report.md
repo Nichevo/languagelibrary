@@ -1,6 +1,6 @@
 # Audio check
 
-11608 clips. 29 could not be confirmed by speech recognition, so the app does not play them and uses the phone's own voice for those words instead. 877 came back as a same-sounding word, which counts as a pass.
+11608 clips. 26 could not be confirmed by speech recognition, so the app does not play them and uses the phone's own voice for those words instead. 879 came back as a same-sounding word, which counts as a pass.
 
 ## Not confirmed (not played in the app)
 
@@ -13,8 +13,6 @@
 - 仅 (jǐn), female voice: heard "警" (85885f4c80_f.mp3)
 - 仅 (jǐn), male voice: heard "警" (85885f4c80_m.mp3)
 - 尺 (chǐ), male voice: heard "鞋" (94e9c639b1_m.mp3)
-- 识 (shí), female voice: heard "10" (b0c23fa966_f.mp3)
-- 民意 (mín yì), female voice: heard "名义" (c79ffff552_f.mp3)
 - 我儿子十岁了。 (Wǒ ér zi shí suì le.), female voice: heard "我儿子10岁了" (t10029668_f.mp3)
 - 我儿子十岁了。 (Wǒ ér zi shí suì le.), male voice: heard "我儿子10岁了" (t10029668_m.mp3)
 - 现在是一点五十分。 (Xiàn zài shì yī diǎn wǔ shí fēn.), female voice: heard "现在是1点50分" (t13994928_f.mp3)
@@ -29,7 +27,6 @@
 - 认识您很高兴。 (Rèn shi nín hěn gāo xìng.), male voice: heard "认识你很高兴" (t393275_m.mp3)
 - 我父亲五十岁了。 (Wǒ fù qīn wǔ shí suì le.), female voice: heard "我父亲50岁了" (t517002_f.mp3)
 - 我父亲五十岁了。 (Wǒ fù qīn wǔ shí suì le.), male voice: heard "我父亲50岁了" (t517002_m.mp3)
-- 您十一点时来看我吧。 (Nín shí yī diǎn shí lái kàn wǒ ba.), male voice: heard "你11点10来看我吧" (t7767639_m.mp3)
 - 我们去坐四点十分的火车吧。 (Wǒ men qù zuò sì diǎn shí fēn de huǒ chē ba.), female voice: heard "我们去做4点10分的火车吧" (t8742138_f.mp3)
 - 我们去坐四点十分的火车吧。 (Wǒ men qù zuò sì diǎn shí fēn de huǒ chē ba.), male voice: heard "我们去做4点10分的火车吧" (t8742138_m.mp3)
 - 请问您有多少件行李？ (Qǐng wèn nín yǒu duō shao jiàn xíng li?), female voice: heard "请问你有多少件行李" (t8777616_f.mp3)
@@ -629,6 +626,7 @@
 - 险 (xiǎn), female voice: heard "咸" (ae7acd3545_f.mp3)
 - 险 (xiǎn), male voice: heard "鲜" (ae7acd3545_m.mp3)
 - 里 (lǐ), male voice: heard "李" (b03dc908af_m.mp3)
+- 识 (shí), female voice: heard "徐" (b0c23fa966_f.mp3)
 - 识 (shí), male voice: heard "10" (b0c23fa966_m.mp3)
 - 游 (yóu), female voice: heard "由" (b0cc766dbb_f.mp3)
 - 游 (yóu), male voice: heard "有" (b0cc766dbb_m.mp3)
@@ -903,6 +901,7 @@
 - 她的生日是五月五日。 (Tā de shēng rì shì wǔ yuè wǔ rì.), female voice: heard "他的生日是5月5日" (t5617210_f.mp3)
 - 她的生日是五月五日。 (Tā de shēng rì shì wǔ yuè wǔ rì.), male voice: heard "他的生日是5月5日" (t5617210_m.mp3)
 - 您十一点时来看我吧。 (Nín shí yī diǎn shí lái kàn wǒ ba.), female voice: heard "你11点10来看我吧" (t7767639_f.mp3)
+- 您十一点时来看我吧。 (Nín shí yī diǎn shí lái kàn wǒ ba.), male voice: heard "您11点10来看我吧" (t7767639_m.mp3)
 - 我可以和你一起呆在这里吗？ (Wǒ kě yǐ hé nǐ yī qǐ dāi zài zhè lǐ ma?), female voice: heard "我可以和你一起待在这里吗" (t8589664_f.mp3)
 - 我可以和你一起呆在这里吗？ (Wǒ kě yǐ hé nǐ yī qǐ dāi zài zhè lǐ ma?), male voice: heard "我可以和你一起待在这里吗" (t8589664_m.mp3)
 - 在明天早上九点见可以吗？ (Zài míng tiān zǎo shang jiǔ diǎn jiàn kě yǐ ma?), female voice: heard "在明天早上9点见可以吗" (t8734941_f.mp3)

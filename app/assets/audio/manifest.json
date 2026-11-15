@@ -300,9 +300,16 @@
   },
   "3204f0fecb_f": {
    "file": "3204f0fecb_f.mp3",
-   "bytes": 3744,
+   "bytes": 5376,
    "heard": "对",
-   "check": "exact"
+   "check": "exact",
+   "also": [
+    "给",
+    "gay",
+    "date",
+    "大"
+   ],
+   "take": 1
   },
   "3204f0fecb_m": {
    "file": "3204f0fecb_m.mp3",
@@ -86954,15 +86961,15 @@
   },
   "c79ffff552_f": {
    "file": "c79ffff552_f.mp3",
-   "bytes": 4224,
+   "bytes": 5376,
    "heard": "名义",
    "also": [
     "明义",
-    "01",
     "明一",
-    "宁一"
+    "民意",
+    "名一"
    ],
-   "check": "mismatch"
+   "check": "exact"
   },
   "c79ffff552_m": {
    "file": "c79ffff552_m.mp3",
@@ -95784,13 +95791,14 @@
   "t7767639_m": {
    "file": "t7767639_m.mp3",
    "bytes": 9024,
-   "heard": "你11点10来看我吧",
+   "heard": "您11点10来看我吧",
    "also": [
-    "您11点10来看我吧",
-    "你十1点10来看我吧",
-    "你11点时来看我吧"
+    "您11点是来看我吧",
+    "民11点10来看我吧",
+    "明11点10来看我吧",
+    "您11点视来看我吧"
    ],
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "t8777616_f": {
    "file": "t8777616_f.mp3",
@@ -101344,14 +101352,14 @@
   "b0c23fa966_f": {
    "file": "b0c23fa966_f.mp3",
    "bytes": 3744,
-   "heard": "10",
+   "heard": "徐",
    "also": [
-    "嘘",
-    "11",
-    "西",
-    "习"
+    "10",
+    "许",
+    "徐雨",
+    "时"
    ],
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "b0c23fa966_m": {
    "file": "b0c23fa966_m.mp3",
