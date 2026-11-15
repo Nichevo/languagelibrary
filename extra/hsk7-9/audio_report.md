@@ -1,6 +1,6 @@
 # Audio check
 
-10922 clips. 17 could not be confirmed by speech recognition, so the app does not play them and uses the phone's own voice for those words instead. 501 came back as a same-sounding word, which counts as a pass.
+10922 clips. 13 could not be confirmed by speech recognition, so the app does not play them and uses the phone's own voice for those words instead. 501 came back as a same-sounding word, which counts as a pass.
 
 ## Not confirmed (not played in the app)
 
@@ -12,14 +12,10 @@
 - 动弹 (dòng tan), male voice: heard "动态" (552156ed27_m.mp3)
 - 腥 (xīng), female voice: heard "新" (66fa141226_f.mp3)
 - 灰心 (huī xīn), male voice: heard "归星" (70256ba737_m.mp3)
-- 藏身 (cáng shēn), female voice: heard "长生" (9402b2294e_f.mp3)
 - 亲近 (qīn jìn), male voice: heard "精进" (9645b071d9_m.mp3)
 - 实话 (shí huà), male voice: heard "学画" (9ae45baf48_m.mp3)
-- 打盹儿 (dǎ dǔnr), male voice: heard "打断" (b0237ed89f_m.mp3)
-- 这会儿 (zhè huìr), male voice: heard "这话" (b66a34afa8_m.mp3)
 - 黑心 (hēi xīn), male voice: heard "黑星" (d88d44af75_m.mp3)
 - 起劲 (qǐ jìn), male voice: heard "起建" (da16368ba7_m.mp3)
-- 厄运 (è yùn), female voice: heard "奥运" (e55ef56cf4_f.mp3)
 - 厄运 (è yùn), male voice: heard "奥运" (e55ef56cf4_m.mp3)
 
 ## Same sound, different characters (played in the app)
