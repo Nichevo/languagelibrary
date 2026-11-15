@@ -567,6 +567,8 @@ class StatsView extends StatelessWidget {
             Color(0xFF7FD6A0),
             Color(0xFFFF8A80),
             Color(0xFFA5D6A7),
+            Color(0xFFD7A98C),
+            Color(0xFFFFE082),
           ]
         : const [
             Color(0xFF2F7FD0),
@@ -583,6 +585,8 @@ class StatsView extends StatelessWidget {
             Color(0xFF1E6B3A),
             Color(0xFFB3261E),
             Color(0xFF558B2F),
+            Color(0xFF6D4C41),
+            Color(0xFF00796B),
           ];
   }
 

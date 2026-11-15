@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:flutter_test/flutter_test.dart';
 import 'package:language_library/data/daily.dart';
+import 'package:language_library/data/method_stats.dart';
 import 'package:language_library/data/user_store.dart';
 import 'package:language_library/data/widget_feed.dart';
 import 'package:language_library/srs/scheduler.dart';
@@ -80,6 +81,8 @@ void main() {
     expect(qs.length, 40);
     expect({for (final q in qs.take(4)) q['kind']}, {for (final k in QuizKind.values) k.name});
     expect(qs.every((q) => (q['title'] as String).startsWith(mixPrefix)), isTrue);
+    expect(qs.every((q) => q['method'] == mixMethod), isTrue, reason: 'random widget answers get their own stats line');
+    expect(methodLabels.containsKey(mixMethod), isTrue);
     final firsts = {for (var seed = 0; seed < 12; seed++) mixedQuestions(lib, store, Random(seed)).first['kind']};
     expect(firsts.length, greaterThan(1), reason: 'the first kind changes');
   });
