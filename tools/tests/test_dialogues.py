@@ -176,6 +176,11 @@ class CheckTest(unittest.TestCase):
         self.assertEqual([r["zh"] for r in turns["d2.2"]["right"]], ["我很好。", "我很好，谢谢。"])
         self.assertLessEqual(len(turns["d2.2"]["wrong"]), 1)
 
+    def test_echoes(self):
+        self.assertTrue(dg.echoes("他们忙吗？", "他们忙吗？"))
+        self.assertTrue(dg.echoes("今天晚上有两个电影；你想看哪个？", "你们想看哪个电影？"))
+        self.assertFalse(dg.echoes("你忙吗？", "我不忙。"))
+
     def test_prompt_key(self):
         self.assertEqual(dg.prompt_key("请问你贵姓？"), dg.prompt_key("你贵姓?"))
 

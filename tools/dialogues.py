@@ -248,6 +248,18 @@ def prompt_key(text: str) -> str:
     return core[2:] if core.startswith("请问") else core
 
 
+def _hanzi(text: str) -> str:
+    return "".join(ch for ch in text if "\u4e00" <= ch <= "\u9fff")
+
+
+def echoes(prompt: str, reply: str) -> bool:
+    """True when most of the reply's characters already appear in the prompt."""
+    p, r = _hanzi(prompt), _hanzi(reply)
+    if not r:
+        return False
+    return sum(1 for ch in r if ch in p) / len(r) >= 0.6
+
+
 def build_web(dialogues: list[dict]) -> dict:
     """Right and wrong replies for every line that answers the line before it."""
     lines = {ln["id"]: ln for d in dialogues for ln in d["lines"]}
@@ -287,6 +299,9 @@ def build_web(dialogues: list[dict]) -> dict:
                      and is_question(lines[w]["zh"]) == asks
                      and lines[w]["zh"] not in {r["zh"] for r in right}
                      and lines[w]["hsk"] <= max(ln["hsk"], 2)]
+            # A wrong reply must not just repeat the question: drop lines that mostly
+            # reuse the characters of the line before (他们忙吗？ offered for 他们忙吗？).
+            wrong = [w for w in wrong if not echoes(prompt["zh"], lines[w]["zh"])]
             size = len(ln["zh"])
             # Most plausible first: shares words with the line before, and is about as long as the right reply.
             wrong.sort(key=lambda w: (-len(pwords & set(lines[w]["words"])), abs(len(lines[w]["zh"]) - size) // 4, _order(w)))
