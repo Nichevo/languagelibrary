@@ -9,7 +9,7 @@
    "pinyin": "Nǐ hǎo!",
    "pinyinNumbered": "ni3 hao3",
    "en": "Hello!",
-   "hsk": 99,
+   "hsk": 1,
    "alts": [],
    "ok": true,
    "why": ""
@@ -21,7 +21,7 @@
    "pinyin": "Nǐ hǎo!",
    "pinyinNumbered": "ni3 hao3",
    "en": "Hello!",
-   "hsk": 99,
+   "hsk": 1,
    "alts": [],
    "ok": true,
    "why": ""
@@ -33,7 +33,7 @@
    "pinyin": "Nǐ hǎo ma?",
    "pinyinNumbered": "ni3 hao3 ma5",
    "en": "How are you?",
-   "hsk": 99,
+   "hsk": 1,
    "alts": [],
    "ok": true,
    "why": ""
@@ -285,7 +285,7 @@
    "pinyin": "Tā men dōu hěn hǎo, xiè xie. Wǒ bà mā yě wèn nǐ hǎo.",
    "pinyinNumbered": "ta1 men5 dou1 hen3 hao3 xie4 xie5 wo3 ba4 ma1 ye3 wen4 ni3 hao3",
    "en": "They are both fine, thanks. My parents send their regards to you, too.",
-   "hsk": 99,
+   "hsk": 1,
    "alts": [],
    "ok": true,
    "why": ""
@@ -393,7 +393,7 @@
    "pinyin": "Wáng xiǎo jie, nǐ hǎo.",
    "pinyinNumbered": "wang2 xiao3 jie5 ni3 hao3",
    "en": "Hello,",
-   "hsk": 99,
+   "hsk": 4,
    "alts": [],
    "ok": true,
    "why": ""
@@ -717,7 +717,7 @@
    "pinyin": "Wáng lǎo shī, nǐ hǎo.",
    "pinyinNumbered": "wang2 lao3 shi1 ni3 hao3",
    "en": "Hello,",
-   "hsk": 99,
+   "hsk": 4,
    "alts": [],
    "ok": true,
    "why": ""
@@ -729,7 +729,7 @@
    "pinyin": "Nǐ hǎo. Nǐ xué shén me?",
    "pinyinNumbered": "ni3 hao3 ni3 xue2 shen2 me5",
    "en": "Hello. What do you study?",
-   "hsk": 99,
+   "hsk": 1,
    "alts": [],
    "ok": true,
    "why": ""
@@ -1221,7 +1221,7 @@
    "pinyin": "Nǐ hǎo! Qǐng wèn nǐ guì xìng?",
    "pinyinNumbered": "ni3 hao3 qing3 wen4 ni3 gui4 xing4",
    "en": "Hello! What is your last name?",
-   "hsk": 99,
+   "hsk": 2,
    "alts": [],
    "ok": true,
    "why": ""
@@ -1269,7 +1269,7 @@
    "pinyin": "Nǐ hǎo! Nǐ jiào shén me míng zi?",
    "pinyinNumbered": "ni3 hao3 ni3 jiao4 shen2 me5 ming2 zi5",
    "en": null,
-   "hsk": 99,
+   "hsk": 1,
    "alts": [],
    "ok": false,
    "why": "no English line to match it"
@@ -1317,7 +1317,7 @@
    "pinyin": "Nǐ hǎo! Nǐ xìng shén me?",
    "pinyinNumbered": "ni3 hao3 ni3 xing4 shen2 me5",
    "en": "Hello. What is your last name?",
-   "hsk": 99,
+   "hsk": 2,
    "alts": [],
    "ok": true,
    "why": ""
@@ -1401,7 +1401,7 @@
    "pinyin": "Wáng xiān sheng, nǐ hǎo!",
    "pinyinNumbered": "wang2 xian1 sheng5 ni3 hao3",
    "en": "How are you, Mr. Wang?",
-   "hsk": 99,
+   "hsk": 4,
    "alts": [],
    "ok": true,
    "why": ""
@@ -1425,7 +1425,7 @@
    "pinyin": "Nǐ hǎo, nǐ guì xìng?",
    "pinyinNumbered": "ni3 hao3 ni3 gui4 xing4",
    "en": "Hello, what is your last name?",
-   "hsk": 99,
+   "hsk": 2,
    "alts": [],
    "ok": true,
    "why": ""
@@ -1461,7 +1461,7 @@
    "pinyin": "Wáng xiān sheng, nǐ hǎo!",
    "pinyinNumbered": "wang2 xian1 sheng5 ni3 hao3",
    "en": "Hello,",
-   "hsk": 99,
+   "hsk": 4,
    "alts": [],
    "ok": true,
    "why": ""
@@ -2655,7 +2655,7 @@
    "pinyin": "Tài hǎo le! Míng tiān jǐ diǎn? Zài nǎr?",
    "pinyinNumbered": "tai4 hao3 le5 ming2 tian1 ji3 dian3 zai4 na3 r5",
    "en": "Wonderful! What time tomorrow? And where?",
-   "hsk": 99,
+   "hsk": 1,
    "alts": [],
    "ok": true,
    "why": ""
@@ -2835,7 +2835,7 @@
    "pinyin": "Nǐ jīn nián duō dà?",
    "pinyinNumbered": "ni3 jin1 nian2 duo1 da4",
    "en": "How old are you this year?",
-   "hsk": 99,
+   "hsk": 1,
    "alts": [],
    "ok": true,
    "why": ""
@@ -3027,7 +3027,7 @@
    "pinyin": "Tā méi yǒu nán péng you ma? Tā jīn nián duō dà?",
    "pinyinNumbered": "ta1 mei2 you3 nan2 peng2 you5 ma5 ta1 jin1 nian2 duo1 da4",
    "en": "Does she not have a boyfriend? How old is she this year?",
-   "hsk": 99,
+   "hsk": 1,
    "alts": [],
    "ok": true,
    "why": ""
@@ -3135,7 +3135,7 @@
    "pinyin": "Tài hǎo le! Wǒ gēn wǒ mèi mei dōu hěn xǐ huan chī rì běn cài.",
    "pinyinNumbered": "tai4 hao3 le5 wo3 gen1 wo3 mei4 mei5 dou1 hen3 xi3 huan5 chi1 ri4 ben3 cai4",
    "en": "Great! Both me and my sister like to eat Japanese food very much.",
-   "hsk": 99,
+   "hsk": 1,
    "alts": [],
    "ok": true,
    "why": ""
@@ -3753,7 +3753,7 @@
    "pinyin": "Shì ma? Tā duō dà? Hǎo kàn bù hǎo kàn?",
    "pinyinNumbered": "shi4 ma5 ta1 duo1 da4 hao3 kan4 bu4 hao3 kan4",
    "en": "Is that so? How old is she? Is she pretty?",
-   "hsk": 99,
+   "hsk": 1,
    "alts": [
     {
      "zh": "是吗？她多大？好不好看？",
@@ -3957,7 +3957,7 @@
    "pinyin": "Tài hǎo le! Wǒ mèi mei hé wǒ yě dōu hěn ài chī rì běn cài.",
    "pinyinNumbered": "tai4 hao3 le5 wo3 mei4 mei5 he2 wo3 ye3 dou1 hen3 ai4 chi1 ri4 ben3 cai4",
    "en": "Great! Both my sister and I love Japanese food very much, too.",
-   "hsk": 99,
+   "hsk": 1,
    "alts": [],
    "ok": true,
    "why": ""
@@ -4005,7 +4005,7 @@
    "pinyin": "Nǐ jué de rì běn pí jiǔ hǎo hē hái shi zhōng guó pí jiǔ hǎo hē?",
    "pinyinNumbered": "ni3 jue2 de5 ri4 ben3 pi2 jiu3 hao3 he1 hai2 shi5 zhong1 guo2 pi2 jiu3 hao3 he1",
    "en": "Do you think Japanese beers are tastier or Chinese beers are tastier?",
-   "hsk": 99,
+   "hsk": 3,
    "alts": [],
    "ok": true,
    "why": ""
@@ -4065,7 +4065,7 @@
    "pinyin": "Qǐng wèn nǐ duō dà?",
    "pinyinNumbered": "qing3 wen4 ni3 duo1 da4",
    "en": "May I ask how old you are?",
-   "hsk": 99,
+   "hsk": 1,
    "alts": [],
    "ok": true,
    "why": ""
@@ -4251,7 +4251,7 @@
    "pinyin": "Hǎo, wǒ jiè shào yī xià.……. Zhāng xiǎo wén, hǎo jiǔ bu jiàn, nǐ hǎo ma?",
    "pinyinNumbered": "hao3 wo3 jie4 shao4 yi1 xia4 zhang1 xiao3 wen2 hao3 jiu3 bu5 jian4 ni3 hao3 ma5",
    "en": "OK, I’ll introduce you. …. Xiaowen Zhang, long time no see. How are you?",
-   "hsk": 99,
+   "hsk": 7,
    "alts": [],
    "ok": true,
    "why": ""
@@ -4311,7 +4311,7 @@
    "pinyin": "Zhāng xiǎo jie, nǐ hǎo. Rèn shi nǐ hěn gāo xìng.",
    "pinyinNumbered": "zhang1 xiao3 jie5 ni3 hao3 ren4 shi5 ni3 hen3 gao1 xing4",
    "en": "Hello, Miss Zhang. I am pleased to meet you.",
-   "hsk": 99,
+   "hsk": 3,
    "alts": [],
    "ok": true,
    "why": ""
@@ -4323,7 +4323,7 @@
    "pinyin": "Wáng xiān sheng, nǐ hǎo.",
    "pinyinNumbered": "wang2 xian1 sheng5 ni3 hao3",
    "en": "Hello, Mr.",
-   "hsk": 99,
+   "hsk": 4,
    "alts": [],
    "ok": true,
    "why": ""
@@ -4958,7 +4958,7 @@
    "pinyin": "Kě yǐ! Nǐ men jǐ diǎn lái?",
    "pinyinNumbered": "ke3 yi3 ni3 men5 ji3 dian3 lai2",
    "en": "Sure. What time will you be here (= What time will you come)?",
-   "hsk": 99,
+   "hsk": 2,
    "alts": [],
    "ok": true,
    "why": ""
@@ -4970,7 +4970,7 @@
    "pinyin": "Nǐ yào wǒ men jǐ diǎn lái?",
    "pinyinNumbered": "ni3 yao4 wo3 men5 ji3 dian3 lai2",
    "en": "What time do you want us to come?",
-   "hsk": 99,
+   "hsk": 1,
    "alts": [],
    "ok": true,
    "why": ""
@@ -5030,7 +5030,7 @@
    "pinyin": "Tài hǎo le! Xīng qī liù xià wǔ sì diǎn bàn zài wǒ jiā jiàn.",
    "pinyinNumbered": "tai4 hao3 le5 xing1 qi1 liu4 xia4 wu3 si4 dian3 ban4 zai4 wo3 jia1 jian4",
    "en": "Excellent! See you at 4:30 Saturday at my house.",
-   "hsk": 99,
+   "hsk": 1,
    "alts": [],
    "ok": true,
    "why": ""
@@ -5066,7 +5066,7 @@
    "pinyin": "Qǐng děng yī xià, wǒ qù kàn yī xià tā zài bù zài jiā…… dà zhōng, diàn huà.",
    "pinyinNumbered": "qing3 deng3 yi1 xia4 wo3 qu4 kan4 yi1 xia4 ta1 zai4 bu4 zai4 jia1 da4 zhong1 dian4 hua4",
    "en": "Please wait for a moment. I will go take a look (to see) if he is home …. Dazhong, phonecall.",
-   "hsk": 99,
+   "hsk": 1,
    "alts": [],
    "ok": true,
    "why": ""
@@ -5336,7 +5336,7 @@
    "pinyin": "Tài hǎo le! Tā de diàn huà shì jǐ hào?",
    "pinyinNumbered": "tai4 hao3 le5 ta1 de5 dian4 hua4 shi4 ji3 hao4",
    "en": "Excellent! What’s her phone number?",
-   "hsk": 99,
+   "hsk": 1,
    "alts": [
     {
      "zh": "太好了！她的电话几号？",
@@ -5810,7 +5810,7 @@
    "pinyin": "Kǎo shì jǐ diǎn kāi shǐ?",
    "pinyinNumbered": "kao3 shi4 ji3 dian3 kai1 shi3",
    "en": "What time did the test start?",
-   "hsk": 99,
+   "hsk": 3,
    "alts": [],
    "ok": true,
    "why": ""
@@ -6698,7 +6698,7 @@
    "pinyin": "Zhēn de ma? Tài hǎo le! Bà ba, wǒ men kě bù kě yǐ chī le fàn jiù qù kàn diàn nǎo?",
    "pinyinNumbered": "zhen1 de5 ma5 tai4 hao3 le5 ba4 ba5 wo3 men5 ke3 bu4 ke3 yi3 chi1 le5 fan4 jiu4 qu4 kan4 dian4 nao3",
    "en": "Really? Great! Dad, can we go look at computers right after dinner?",
-   "hsk": 99,
+   "hsk": 5,
    "alts": [],
    "ok": true,
    "why": ""
@@ -6785,7 +6785,7 @@
      "next": "d2.3"
     }
    ],
-   "wrong": "d2.3"
+   "wrong": "d1.2"
   },
   "d2.3": {
    "prompt": "d2.2",
@@ -6796,7 +6796,7 @@
      "next": "d2.4"
     }
    ],
-   "wrong": "d2.2"
+   "wrong": "d4.2"
   },
   "d2.4": {
    "prompt": "d2.3",
@@ -6807,7 +6807,7 @@
      "next": null
     }
    ],
-   "wrong": "d2.3"
+   "wrong": "d47.6"
   },
   "d3.2": {
    "prompt": "d3.1",
@@ -6818,7 +6818,7 @@
      "next": "d3.3"
     }
    ],
-   "wrong": "d3.4"
+   "wrong": "d38.3"
   },
   "d3.3": {
    "prompt": "d3.2",
@@ -6829,7 +6829,7 @@
      "next": "d3.4"
     }
    ],
-   "wrong": "d3.2"
+   "wrong": "d5.2"
   },
   "d3.4": {
    "prompt": "d3.3",
@@ -6846,7 +6846,7 @@
      "branch": true
     }
    ],
-   "wrong": "d3.3"
+   "wrong": "d5.4"
   },
   "d3.5": {
    "prompt": "d3.4",
@@ -6857,7 +6857,7 @@
      "next": null
     }
    ],
-   "wrong": "d3.4"
+   "wrong": "d7.2"
   },
   "d4.2": {
    "prompt": "d4.1",
@@ -6868,7 +6868,7 @@
      "next": "d4.3"
     }
    ],
-   "wrong": "d3.4"
+   "wrong": "d16.3"
   },
   "d4.3": {
    "prompt": "d4.2",
@@ -6879,7 +6879,7 @@
      "next": null
     }
    ],
-   "wrong": "d4.2"
+   "wrong": "d2.2"
   },
   "d5.2": {
    "prompt": "d5.1",
@@ -6901,7 +6901,7 @@
      "next": "d5.4"
     }
    ],
-   "wrong": "d5.2"
+   "wrong": "d3.2"
   },
   "d5.4": {
    "prompt": "d5.3",
@@ -6912,7 +6912,7 @@
      "next": "d5.5"
     }
    ],
-   "wrong": "d5.3"
+   "wrong": "d4.2"
   },
   "d5.5": {
    "prompt": "d5.4",
@@ -6929,7 +6929,7 @@
      "branch": true
     }
    ],
-   "wrong": "d3.3"
+   "wrong": "d3.5"
   },
   "d7.2": {
    "prompt": "d7.1",
@@ -6940,7 +6940,7 @@
      "next": "d7.3"
     }
    ],
-   "wrong": "d3.4"
+   "wrong": "d47.6"
   },
   "d7.3": {
    "prompt": "d7.2",
@@ -6973,7 +6973,7 @@
      "next": "d8.4"
     }
    ],
-   "wrong": "d8.2"
+   "wrong": "d37.2"
   },
   "d8.4": {
    "prompt": "d8.3",
@@ -6984,7 +6984,7 @@
      "next": "d8.5"
     }
    ],
-   "wrong": "d8.3"
+   "wrong": "d37.2"
   },
   "d8.5": {
    "prompt": "d8.4",
@@ -6995,7 +6995,7 @@
      "next": null
     }
    ],
-   "wrong": "d8.2"
+   "wrong": "d14.2"
   },
   "d9.2": {
    "prompt": "d9.1",
@@ -7012,7 +7012,7 @@
      "branch": true
     }
    ],
-   "wrong": "d9.4"
+   "wrong": "d35.7"
   },
   "d9.3": {
    "prompt": "d9.2",
@@ -7023,7 +7023,7 @@
      "next": "d9.4"
     }
    ],
-   "wrong": "d9.2"
+   "wrong": "d25.5"
   },
   "d9.4": {
    "prompt": "d9.3",
@@ -7034,7 +7034,7 @@
      "next": null
     }
    ],
-   "wrong": "d53.7"
+   "wrong": "d15.5"
   },
   "d12.2": {
    "prompt": "d12.1",
@@ -7045,7 +7045,7 @@
      "next": "d12.3"
     }
    ],
-   "wrong": "d32.3"
+   "wrong": "d47.6"
   },
   "d12.3": {
    "prompt": "d12.2",
@@ -7056,7 +7056,7 @@
      "next": "d12.4"
     }
    ],
-   "wrong": "d12.2"
+   "wrong": "d27.4"
   },
   "d12.4": {
    "prompt": "d12.3",
@@ -7067,7 +7067,7 @@
      "next": "d12.5"
     }
    ],
-   "wrong": "d12.3"
+   "wrong": "d52.10"
   },
   "d12.5": {
    "prompt": "d12.4",
@@ -7078,7 +7078,7 @@
      "next": null
     }
    ],
-   "wrong": "d19.4"
+   "wrong": "d66.3"
   },
   "d13.2": {
    "prompt": "d13.1",
@@ -7089,7 +7089,7 @@
      "next": "d13.3"
     }
    ],
-   "wrong": "d12.3"
+   "wrong": "d37.6"
   },
   "d13.3": {
    "prompt": "d13.2",
@@ -7100,7 +7100,7 @@
      "next": "d13.4"
     }
    ],
-   "wrong": "d13.2"
+   "wrong": "d59.15"
   },
   "d13.4": {
    "prompt": "d13.3",
@@ -7111,7 +7111,7 @@
      "next": null
     }
    ],
-   "wrong": "d57.4"
+   "wrong": "d19.4"
   },
   "d14.2": {
    "prompt": "d14.1",
@@ -7122,7 +7122,7 @@
      "next": "d14.3"
     }
    ],
-   "wrong": "d15.7"
+   "wrong": "d19.2"
   },
   "d14.3": {
    "prompt": "d14.2",
@@ -7133,7 +7133,7 @@
      "next": "d14.4"
     }
    ],
-   "wrong": "d14.2"
+   "wrong": "d16.5"
   },
   "d14.4": {
    "prompt": "d14.3",
@@ -7144,7 +7144,7 @@
      "next": null
     }
    ],
-   "wrong": "d14.3"
+   "wrong": "d31.3"
   },
   "d15.2": {
    "prompt": "d15.1",
@@ -7166,7 +7166,7 @@
      "next": "d15.4"
     }
    ],
-   "wrong": "d15.2"
+   "wrong": "d38.3"
   },
   "d15.4": {
    "prompt": "d15.3",
@@ -7177,7 +7177,7 @@
      "next": "d15.5"
     }
    ],
-   "wrong": "d15.3"
+   "wrong": "d27.5"
   },
   "d15.5": {
    "prompt": "d15.4",
@@ -7188,7 +7188,7 @@
      "next": "d15.6"
     }
    ],
-   "wrong": "d15.4"
+   "wrong": "d27.4"
   },
   "d15.6": {
    "prompt": "d15.5",
@@ -7199,7 +7199,7 @@
      "next": "d15.7"
     }
    ],
-   "wrong": "d41.5"
+   "wrong": "d1.2"
   },
   "d15.7": {
    "prompt": "d15.6",
@@ -7210,7 +7210,7 @@
      "next": null
     }
    ],
-   "wrong": "d15.6"
+   "wrong": "d41.5"
   },
   "d16.2": {
    "prompt": "d16.1",
@@ -7221,7 +7221,7 @@
      "next": "d16.3"
     }
    ],
-   "wrong": "d17.5"
+   "wrong": "d19.4"
   },
   "d16.3": {
    "prompt": "d16.2",
@@ -7232,7 +7232,7 @@
      "next": "d16.4"
     }
    ],
-   "wrong": "d16.2"
+   "wrong": "d37.2"
   },
   "d16.4": {
    "prompt": "d16.3",
@@ -7243,7 +7243,7 @@
      "next": "d16.5"
     }
    ],
-   "wrong": "d16.3"
+   "wrong": "d47.6"
   },
   "d16.5": {
    "prompt": "d16.4",
@@ -7254,7 +7254,7 @@
      "next": "d16.6"
     }
    ],
-   "wrong": "d16.4"
+   "wrong": "d8.3"
   },
   "d16.6": {
    "prompt": "d16.5",
@@ -7265,7 +7265,7 @@
      "next": null
     }
    ],
-   "wrong": "d16.5"
+   "wrong": "d14.2"
   },
   "d17.2": {
    "prompt": "d17.1",
@@ -7282,7 +7282,7 @@
      "branch": true
     }
    ],
-   "wrong": "d31.2"
+   "wrong": "d32.2"
   },
   "d17.5": {
    "prompt": "d17.4",
@@ -7293,7 +7293,7 @@
      "next": "d17.6"
     }
    ],
-   "wrong": "d13.4"
+   "wrong": "d39.3"
   },
   "d17.6": {
    "prompt": "d17.5",
@@ -7304,7 +7304,7 @@
      "next": "d17.7"
     }
    ],
-   "wrong": "d17.5"
+   "wrong": "d47.6"
   },
   "d17.7": {
    "prompt": "d17.6",
@@ -7315,7 +7315,7 @@
      "next": "d17.8"
     }
    ],
-   "wrong": "d21.4"
+   "wrong": "d65.3"
   },
   "d17.8": {
    "prompt": "d17.7",
@@ -7326,7 +7326,7 @@
      "next": null
     }
    ],
-   "wrong": "d17.7"
+   "wrong": "d36.4"
   },
   "d18.4": {
    "prompt": "d18.3",
@@ -7337,7 +7337,7 @@
      "next": "d18.5"
     }
    ],
-   "wrong": "d39.3"
+   "wrong": "d24.9"
   },
   "d18.5": {
    "prompt": "d18.4",
@@ -7348,7 +7348,7 @@
      "next": "d18.6"
     }
    ],
-   "wrong": "d9.4"
+   "wrong": "d31.5"
   },
   "d18.6": {
    "prompt": "d18.5",
@@ -7359,7 +7359,7 @@
      "next": null
     }
    ],
-   "wrong": "d18.5"
+   "wrong": "d38.2"
   },
   "d19.2": {
    "prompt": "d19.1",
@@ -7370,7 +7370,7 @@
      "next": "d19.3"
     }
    ],
-   "wrong": "d16.5"
+   "wrong": "d47.6"
   },
   "d19.3": {
    "prompt": "d19.2",
@@ -7381,7 +7381,7 @@
      "next": "d19.4"
     }
    ],
-   "wrong": "d19.2"
+   "wrong": "d16.5"
   },
   "d19.4": {
    "prompt": "d19.3",
@@ -7392,7 +7392,7 @@
      "next": null
     }
    ],
-   "wrong": "d19.3"
+   "wrong": "d14.2"
   },
   "d20.4": {
    "prompt": "d20.3",
@@ -7403,7 +7403,7 @@
      "next": "d20.5"
     }
    ],
-   "wrong": "d12.3"
+   "wrong": "d52.10"
   },
   "d20.5": {
    "prompt": "d20.4",
@@ -7414,7 +7414,7 @@
      "next": null
     }
    ],
-   "wrong": "d31.2"
+   "wrong": "d66.3"
   },
   "d20.8": {
    "prompt": "d20.7",
@@ -7425,7 +7425,7 @@
      "next": null
     }
    ],
-   "wrong": "d31.5"
+   "wrong": "d41.8"
   },
   "d21.2": {
    "prompt": "d21.1",
@@ -7436,7 +7436,7 @@
      "next": "d21.3"
     }
    ],
-   "wrong": "d19.3"
+   "wrong": "d42.7"
   },
   "d21.3": {
    "prompt": "d21.2",
@@ -7447,7 +7447,7 @@
      "next": "d21.4"
     }
    ],
-   "wrong": "d21.4"
+   "wrong": "d8.3"
   },
   "d21.4": {
    "prompt": "d21.3",
@@ -7458,7 +7458,7 @@
      "next": null
     }
    ],
-   "wrong": "d21.3"
+   "wrong": "d47.6"
   },
   "d22.2": {
    "prompt": "d22.1",
@@ -7469,7 +7469,7 @@
      "next": null
     }
    ],
-   "wrong": "d9.4"
+   "wrong": "d9.2"
   },
   "d24.2": {
    "prompt": "d24.1",
@@ -7480,7 +7480,7 @@
      "next": null
     }
    ],
-   "wrong": "d15.7"
+   "wrong": "d54.9"
   },
   "d24.7": {
    "prompt": "d24.6",
@@ -7497,7 +7497,7 @@
      "branch": true
     }
    ],
-   "wrong": "d9.4"
+   "wrong": "d35.7"
   },
   "d24.8": {
    "prompt": "d24.7",
@@ -7508,7 +7508,7 @@
      "next": "d24.9"
     }
    ],
-   "wrong": "d24.7"
+   "wrong": "d27.5"
   },
   "d24.9": {
    "prompt": "d24.8",
@@ -7525,7 +7525,7 @@
      "branch": true
     }
    ],
-   "wrong": "d13.2"
+   "wrong": "d54.10"
   },
   "d25.5": {
    "prompt": "d25.4",
@@ -7542,7 +7542,7 @@
      "branch": true
     }
    ],
-   "wrong": "d13.2"
+   "wrong": "d24.8"
   },
   "d25.6": {
    "prompt": "d25.5",
@@ -7553,7 +7553,7 @@
      "next": null
     }
    ],
-   "wrong": "d25.5"
+   "wrong": "d9.4"
   },
   "d26.3": {
    "prompt": "d26.2",
@@ -7564,7 +7564,7 @@
      "next": null
     }
    ],
-   "wrong": "d3.4"
+   "wrong": "d2.4"
   },
   "d27.4": {
    "prompt": "d27.3",
@@ -7586,7 +7586,7 @@
      "next": null
     }
    ],
-   "wrong": "d27.4"
+   "wrong": "d24.9"
   },
   "d29.2": {
    "prompt": "d29.1",
@@ -7597,7 +7597,7 @@
      "next": "d29.3"
     }
    ],
-   "wrong": "d20.5"
+   "wrong": "d47.6"
   },
   "d29.3": {
    "prompt": "d29.2",
@@ -7608,7 +7608,7 @@
      "next": "d29.4"
     }
    ],
-   "wrong": "d29.2"
+   "wrong": "d27.4"
   },
   "d29.4": {
    "prompt": "d29.3",
@@ -7619,7 +7619,7 @@
      "next": null
     }
    ],
-   "wrong": "d29.3"
+   "wrong": "d55.6"
   },
   "d30.2": {
    "prompt": "d30.1",
@@ -7639,9 +7639,20 @@
      "line": "d30.6",
      "zh": "好。",
      "next": null
+    },
+    {
+     "tatoeba": "10961164",
+     "zh": "好，明天见！",
+     "en": "Okay, see you tomorrow!",
+     "pinyin": "Hǎo, míng tiān jiàn!",
+     "credit": [
+      "Tatoeba #10961164 by xjjAstrus",
+      "English: Tatoeba #13112404 by LeviHighway"
+     ],
+     "next": null
     }
    ],
-   "wrong": "d9.4"
+   "wrong": "d55.6"
   },
   "d31.2": {
    "prompt": "d31.1",
@@ -7658,7 +7669,7 @@
      "branch": true
     }
    ],
-   "wrong": "d65.7"
+   "wrong": "d32.2"
   },
   "d31.3": {
    "prompt": "d31.2",
@@ -7669,7 +7680,7 @@
      "next": "d31.4"
     }
    ],
-   "wrong": "d20.4"
+   "wrong": "d55.5"
   },
   "d31.4": {
    "prompt": "d31.3",
@@ -7680,7 +7691,7 @@
      "next": "d31.5"
     }
    ],
-   "wrong": "d31.3"
+   "wrong": "d41.8"
   },
   "d31.5": {
    "prompt": "d31.4",
@@ -7691,7 +7702,7 @@
      "next": null
     }
    ],
-   "wrong": "d29.2"
+   "wrong": "d16.5"
   },
   "d32.2": {
    "prompt": "d32.1",
@@ -7702,7 +7713,7 @@
      "next": "d32.3"
     }
    ],
-   "wrong": "d31.2"
+   "wrong": "d36.2"
   },
   "d32.3": {
    "prompt": "d32.2",
@@ -7713,7 +7724,7 @@
      "next": "d32.4"
     }
    ],
-   "wrong": "d32.2"
+   "wrong": "d33.5"
   },
   "d32.4": {
    "prompt": "d32.3",
@@ -7724,7 +7735,7 @@
      "next": "d32.5"
     }
    ],
-   "wrong": "d32.3"
+   "wrong": "d47.6"
   },
   "d32.5": {
    "prompt": "d32.4",
@@ -7735,7 +7746,7 @@
      "next": null
     }
    ],
-   "wrong": "d32.4"
+   "wrong": "d39.2"
   },
   "d33.2": {
    "prompt": "d33.1",
@@ -7752,7 +7763,7 @@
      "branch": true
     }
    ],
-   "wrong": "d31.2"
+   "wrong": "d32.2"
   },
   "d33.3": {
    "prompt": "d33.2",
@@ -7763,7 +7774,7 @@
      "next": "d33.4"
     }
    ],
-   "wrong": "d14.2"
+   "wrong": "d39.2"
   },
   "d33.4": {
    "prompt": "d33.3",
@@ -7774,7 +7785,7 @@
      "next": "d33.5"
     }
    ],
-   "wrong": "d12.5"
+   "wrong": "d65.4"
   },
   "d33.5": {
    "prompt": "d33.4",
@@ -7785,7 +7796,7 @@
      "next": "d33.6"
     }
    ],
-   "wrong": "d33.4"
+   "wrong": "d17.5"
   },
   "d33.6": {
    "prompt": "d33.5",
@@ -7796,7 +7807,7 @@
      "next": null
     }
    ],
-   "wrong": "d33.5"
+   "wrong": "d47.6"
   },
   "d34.2": {
    "prompt": "d34.1",
@@ -7807,7 +7818,7 @@
      "next": "d34.3"
     }
    ],
-   "wrong": "d31.2"
+   "wrong": "d65.9"
   },
   "d34.3": {
    "prompt": "d34.2",
@@ -7818,7 +7829,7 @@
      "next": "d34.4"
     }
    ],
-   "wrong": "d34.2"
+   "wrong": "d17.5"
   },
   "d34.4": {
    "prompt": "d34.3",
@@ -7829,7 +7840,7 @@
      "next": null
     }
    ],
-   "wrong": "d32.3"
+   "wrong": "d47.6"
   },
   "d35.7": {
    "prompt": "d35.6",
@@ -7840,7 +7851,7 @@
      "next": null
     }
    ],
-   "wrong": "d9.4"
+   "wrong": "d7.3"
   },
   "d36.2": {
    "prompt": "d36.1",
@@ -7857,7 +7868,7 @@
      "branch": true
     }
    ],
-   "wrong": "d65.7"
+   "wrong": "d32.2"
   },
   "d36.3": {
    "prompt": "d36.2",
@@ -7868,7 +7879,7 @@
      "next": "d36.4"
     }
    ],
-   "wrong": "d20.4"
+   "wrong": "d14.4"
   },
   "d36.4": {
    "prompt": "d36.3",
@@ -7879,7 +7890,7 @@
      "next": null
     }
    ],
-   "wrong": "d36.3"
+   "wrong": "d21.2"
   },
   "d37.2": {
    "prompt": "d37.1",
@@ -7901,7 +7912,7 @@
      "next": "d37.4"
     }
    ],
-   "wrong": "d37.2"
+   "wrong": "d47.6"
   },
   "d37.4": {
    "prompt": "d37.3",
@@ -7912,7 +7923,7 @@
      "next": "d37.5"
     }
    ],
-   "wrong": "d37.3"
+   "wrong": "d8.2"
   },
   "d37.5": {
    "prompt": "d37.4",
@@ -7923,7 +7934,7 @@
      "next": "d37.6"
     }
    ],
-   "wrong": "d37.4"
+   "wrong": "d47.6"
   },
   "d37.6": {
    "prompt": "d37.5",
@@ -7934,7 +7945,7 @@
      "next": null
     }
    ],
-   "wrong": "d37.5"
+   "wrong": "d12.4"
   },
   "d38.2": {
    "prompt": "d38.1",
@@ -7951,7 +7962,7 @@
      "next": "d38.3"
     }
    ],
-   "wrong": "d21.3"
+   "wrong": "d7.2"
   },
   "d38.3": {
    "prompt": "d38.2",
@@ -7962,7 +7973,7 @@
      "next": "d38.4"
     }
    ],
-   "wrong": "d38.2"
+   "wrong": "d14.2"
   },
   "d38.4": {
    "prompt": "d38.3",
@@ -7973,7 +7984,7 @@
      "next": "d38.5"
     }
    ],
-   "wrong": "d38.3"
+   "wrong": "d15.2"
   },
   "d38.5": {
    "prompt": "d38.4",
@@ -7984,7 +7995,7 @@
      "next": null
     }
    ],
-   "wrong": "d38.4"
+   "wrong": "d47.6"
   },
   "d39.2": {
    "prompt": "d39.1",
@@ -8017,7 +8028,7 @@
      "next": "d40.3"
     }
    ],
-   "wrong": "d8.3"
+   "wrong": "d8.5"
   },
   "d40.3": {
    "prompt": "d40.2",
@@ -8028,7 +8039,7 @@
      "next": "d40.4"
     }
    ],
-   "wrong": "d40.2"
+   "wrong": "d8.3"
   },
   "d40.4": {
    "prompt": "d40.3",
@@ -8039,7 +8050,7 @@
      "next": "d40.5"
     }
    ],
-   "wrong": "d40.3"
+   "wrong": "d47.6"
   },
   "d40.5": {
    "prompt": "d40.4",
@@ -8050,7 +8061,7 @@
      "next": null
     }
    ],
-   "wrong": "d40.4"
+   "wrong": "d21.4"
   },
   "d41.2": {
    "prompt": "d41.1",
@@ -8072,7 +8083,7 @@
      "next": "d41.4"
     }
    ],
-   "wrong": "d41.2"
+   "wrong": "d14.4"
   },
   "d41.4": {
    "prompt": "d41.3",
@@ -8094,7 +8105,7 @@
      "next": null
     }
    ],
-   "wrong": "d41.4"
+   "wrong": "d8.2"
   },
   "d41.8": {
    "prompt": "d41.7",
@@ -8105,7 +8116,7 @@
      "next": null
     }
    ],
-   "wrong": "d20.5"
+   "wrong": "d31.4"
   },
   "d42.4": {
    "prompt": "d42.3",
@@ -8116,7 +8127,7 @@
      "next": "d42.5"
     }
    ],
-   "wrong": "d2.3"
+   "wrong": "d44.11"
   },
   "d42.5": {
    "prompt": "d42.4",
@@ -8127,7 +8138,7 @@
      "next": "d42.6"
     }
    ],
-   "wrong": "d42.4"
+   "wrong": "d48.3"
   },
   "d42.6": {
    "prompt": "d42.5",
@@ -8138,7 +8149,7 @@
      "next": "d42.7"
     }
    ],
-   "wrong": "d42.5"
+   "wrong": "d9.4"
   },
   "d42.7": {
    "prompt": "d42.6",
@@ -8149,7 +8160,7 @@
      "next": null
     }
    ],
-   "wrong": "d19.3"
+   "wrong": "d56.9"
   },
   "d43.2": {
    "prompt": "d43.1",
@@ -8160,7 +8171,7 @@
      "next": null
     }
    ],
-   "wrong": "d55.6"
+   "wrong": "d25.6"
   },
   "d44.5": {
    "prompt": "d44.4",
@@ -8171,7 +8182,7 @@
      "next": "d44.6"
     }
    ],
-   "wrong": "d50.3"
+   "wrong": "d8.2"
   },
   "d44.6": {
    "prompt": "d44.5",
@@ -8182,7 +8193,7 @@
      "next": null
     }
    ],
-   "wrong": "d48.3"
+   "wrong": "d7.3"
   },
   "d44.11": {
    "prompt": "d44.10",
@@ -8204,7 +8215,7 @@
      "next": "d44.13"
     }
    ],
-   "wrong": "d44.11"
+   "wrong": "d42.7"
   },
   "d44.13": {
    "prompt": "d44.12",
@@ -8215,7 +8226,7 @@
      "next": null
     }
    ],
-   "wrong": "d49.14"
+   "wrong": "d57.19"
   },
   "d45.2": {
    "prompt": "d45.1",
@@ -8226,7 +8237,7 @@
      "next": "d45.3"
     }
    ],
-   "wrong": "d66.3"
+   "wrong": "d42.4"
   },
   "d45.3": {
    "prompt": "d45.2",
@@ -8237,7 +8248,7 @@
      "next": null
     }
    ],
-   "wrong": "d45.2"
+   "wrong": "d65.5"
   },
   "d46.2": {
    "prompt": "d46.1",
@@ -8248,7 +8259,7 @@
      "next": null
     }
    ],
-   "wrong": "d3.4"
+   "wrong": "d55.6"
   },
   "d46.11": {
    "prompt": "d46.10",
@@ -8259,7 +8270,7 @@
      "next": "d46.12"
     }
    ],
-   "wrong": "d46.12"
+   "wrong": "d52.18"
   },
   "d46.12": {
    "prompt": "d46.11",
@@ -8270,7 +8281,7 @@
      "next": "d46.13"
     }
    ],
-   "wrong": "d65.9"
+   "wrong": "d52.22"
   },
   "d46.13": {
    "prompt": "d46.12",
@@ -8281,7 +8292,7 @@
      "next": null
     }
    ],
-   "wrong": "d46.12"
+   "wrong": "d19.2"
   },
   "d47.2": {
    "prompt": "d47.1",
@@ -8292,7 +8303,7 @@
      "next": null
     }
    ],
-   "wrong": "d12.2"
+   "wrong": "d32.4"
   },
   "d47.5": {
    "prompt": "d47.4",
@@ -8303,7 +8314,7 @@
      "next": "d47.6"
     }
    ],
-   "wrong": "d20.4"
+   "wrong": "d52.10"
   },
   "d47.6": {
    "prompt": "d47.5",
@@ -8336,7 +8347,7 @@
      "next": "d48.5"
     }
    ],
-   "wrong": "d48.3"
+   "wrong": "d59.8"
   },
   "d48.5": {
    "prompt": "d48.4",
@@ -8347,7 +8358,7 @@
      "next": null
     }
    ],
-   "wrong": "d48.4"
+   "wrong": "d50.3"
   },
   "d49.2": {
    "prompt": "d49.1",
@@ -8358,7 +8369,7 @@
      "next": "d49.3"
     }
    ],
-   "wrong": "d19.3"
+   "wrong": "d56.19"
   },
   "d49.3": {
    "prompt": "d49.2",
@@ -8369,7 +8380,7 @@
      "next": "d49.4"
     }
    ],
-   "wrong": "d49.2"
+   "wrong": "d51.6"
   },
   "d49.4": {
    "prompt": "d49.3",
@@ -8380,7 +8391,7 @@
      "next": null
     }
    ],
-   "wrong": "d49.3"
+   "wrong": "d56.19"
   },
   "d49.7": {
    "prompt": "d49.6",
@@ -8391,7 +8402,7 @@
      "next": "d49.8"
     }
    ],
-   "wrong": "d49.4"
+   "wrong": "d66.3"
   },
   "d49.8": {
    "prompt": "d49.7",
@@ -8402,7 +8413,7 @@
      "next": "d49.9"
     }
    ],
-   "wrong": "d49.7"
+   "wrong": "d42.4"
   },
   "d49.9": {
    "prompt": "d49.8",
@@ -8419,7 +8430,7 @@
      "next": null
     }
    ],
-   "wrong": "d49.8"
+   "wrong": "d52.7"
   },
   "d49.14": {
    "prompt": "d49.13",
@@ -8441,7 +8452,7 @@
      "next": "d50.3"
     }
    ],
-   "wrong": "d64.2"
+   "wrong": "d46.13"
   },
   "d50.3": {
    "prompt": "d50.2",
@@ -8452,7 +8463,7 @@
      "next": "d50.4"
     }
    ],
-   "wrong": "d50.2"
+   "wrong": "d51.5"
   },
   "d50.4": {
    "prompt": "d50.3",
@@ -8463,7 +8474,7 @@
      "next": "d50.5"
     }
    ],
-   "wrong": "d50.3"
+   "wrong": "d8.3"
   },
   "d50.5": {
    "prompt": "d50.4",
@@ -8474,7 +8485,7 @@
      "next": null
     }
    ],
-   "wrong": "d50.4"
+   "wrong": "d49.8"
   },
   "d50.8": {
    "prompt": "d50.7",
@@ -8485,7 +8496,7 @@
      "next": null
     }
    ],
-   "wrong": "d42.5"
+   "wrong": "d42.7"
   },
   "d51.2": {
    "prompt": "d51.1",
@@ -8502,7 +8513,7 @@
      "next": null
     }
    ],
-   "wrong": "d21.3"
+   "wrong": "d47.6"
   },
   "d51.5": {
    "prompt": "d51.4",
@@ -8524,7 +8535,7 @@
      "next": "d51.7"
     }
    ],
-   "wrong": "d51.5"
+   "wrong": "d56.20"
   },
   "d51.7": {
    "prompt": "d51.6",
@@ -8535,7 +8546,7 @@
      "next": "d51.8"
     }
    ],
-   "wrong": "d51.6"
+   "wrong": "d49.4"
   },
   "d51.8": {
    "prompt": "d51.7",
@@ -8546,7 +8557,7 @@
      "next": "d51.9"
     }
    ],
-   "wrong": "d51.5"
+   "wrong": "d5.2"
   },
   "d51.9": {
    "prompt": "d51.8",
@@ -8557,7 +8568,7 @@
      "next": null
     }
    ],
-   "wrong": "d51.8"
+   "wrong": "d55.6"
   },
   "d52.3": {
    "prompt": "d52.2",
@@ -8579,7 +8590,7 @@
      "next": "d52.7"
     }
    ],
-   "wrong": "d3.4"
+   "wrong": "d47.6"
   },
   "d52.7": {
    "prompt": "d52.6",
@@ -8596,7 +8607,7 @@
      "next": "d52.8"
     }
    ],
-   "wrong": "d52.6"
+   "wrong": "d8.2"
   },
   "d52.8": {
    "prompt": "d52.7",
@@ -8607,7 +8618,7 @@
      "next": "d52.9"
     }
    ],
-   "wrong": "d12.2"
+   "wrong": "d49.8"
   },
   "d52.9": {
    "prompt": "d52.8",
@@ -8618,7 +8629,7 @@
      "next": "d52.10"
     }
    ],
-   "wrong": "d52.8"
+   "wrong": "d4.2"
   },
   "d52.10": {
    "prompt": "d52.9",
@@ -8629,7 +8640,7 @@
      "next": null
     }
    ],
-   "wrong": "d12.3"
+   "wrong": "d58.3"
   },
   "d52.15": {
    "prompt": "d52.14",
@@ -8640,7 +8651,7 @@
      "next": null
     }
    ],
-   "wrong": "d49.4"
+   "wrong": "d59.8"
   },
   "d52.18": {
    "prompt": "d52.17",
@@ -8657,7 +8668,7 @@
      "next": "d52.19"
     }
    ],
-   "wrong": "d52.19"
+   "wrong": "d46.13"
   },
   "d52.19": {
    "prompt": "d52.18",
@@ -8668,7 +8679,7 @@
      "next": null
     }
    ],
-   "wrong": "d52.18"
+   "wrong": "d59.15"
   },
   "d52.22": {
    "prompt": "d52.21",
@@ -8679,7 +8690,7 @@
      "next": null
     }
    ],
-   "wrong": "d52.18"
+   "wrong": "d46.12"
   },
   "d53.3": {
    "prompt": "d53.2",
@@ -8690,7 +8701,7 @@
      "next": "d53.4"
     }
    ],
-   "wrong": "d53.6"
+   "wrong": "d54.11"
   },
   "d53.4": {
    "prompt": "d53.3",
@@ -8701,7 +8712,7 @@
      "next": "d53.5"
     }
    ],
-   "wrong": "d53.3"
+   "wrong": "d8.2"
   },
   "d53.5": {
    "prompt": "d53.4",
@@ -8712,7 +8723,7 @@
      "next": "d53.6"
     }
    ],
-   "wrong": "d19.2"
+   "wrong": "d50.5"
   },
   "d53.6": {
    "prompt": "d53.5",
@@ -8723,7 +8734,7 @@
      "next": "d53.7"
     }
    ],
-   "wrong": "d53.5"
+   "wrong": "d65.6"
   },
   "d53.7": {
    "prompt": "d53.6",
@@ -8734,7 +8745,7 @@
      "next": "d53.8"
     }
    ],
-   "wrong": "d19.2"
+   "wrong": "d48.3"
   },
   "d53.8": {
    "prompt": "d53.7",
@@ -8745,7 +8756,7 @@
      "next": "d53.9"
     }
    ],
-   "wrong": "d53.7"
+   "wrong": "d54.9"
   },
   "d53.9": {
    "prompt": "d53.8",
@@ -8756,7 +8767,7 @@
      "next": "d53.10"
     }
    ],
-   "wrong": "d53.8"
+   "wrong": "d4.2"
   },
   "d53.10": {
    "prompt": "d53.9",
@@ -8767,7 +8778,7 @@
      "next": "d53.11"
     }
    ],
-   "wrong": "d2.3"
+   "wrong": "d7.3"
   },
   "d53.11": {
    "prompt": "d53.10",
@@ -8784,7 +8795,7 @@
      "next": null
     }
    ],
-   "wrong": "d53.10"
+   "wrong": "d48.4"
   },
   "d53.16": {
    "prompt": "d53.15",
@@ -8795,7 +8806,7 @@
      "next": "d53.17"
     }
    ],
-   "wrong": "d50.2"
+   "wrong": "d39.2"
   },
   "d53.17": {
    "prompt": "d53.16",
@@ -8817,7 +8828,7 @@
      "next": "d53.19"
     }
    ],
-   "wrong": "d53.17"
+   "wrong": "d59.8"
   },
   "d53.19": {
    "prompt": "d53.18",
@@ -8834,7 +8845,7 @@
      "next": null
     }
    ],
-   "wrong": "d53.18"
+   "wrong": "d52.18"
   },
   "d54.4": {
    "prompt": "d54.3",
@@ -8845,7 +8856,7 @@
      "next": null
     }
    ],
-   "wrong": "d2.2"
+   "wrong": "d59.15"
   },
   "d54.7": {
    "prompt": "d54.6",
@@ -8867,7 +8878,7 @@
      "next": "d54.9"
     }
    ],
-   "wrong": "d54.7"
+   "wrong": "d70.21"
   },
   "d54.9": {
    "prompt": "d54.8",
@@ -8878,7 +8889,7 @@
      "next": "d54.10"
     }
    ],
-   "wrong": "d54.8"
+   "wrong": "d55.6"
   },
   "d54.10": {
    "prompt": "d54.9",
@@ -8889,7 +8900,7 @@
      "next": "d54.11"
     }
    ],
-   "wrong": "d54.9"
+   "wrong": "d59.7"
   },
   "d54.11": {
    "prompt": "d54.10",
@@ -8906,7 +8917,7 @@
      "branch": true
     }
    ],
-   "wrong": "d2.2"
+   "wrong": "d7.2"
   },
   "d55.3": {
    "prompt": "d55.2",
@@ -8923,7 +8934,7 @@
      "next": "d55.4"
     }
    ],
-   "wrong": "d59.6"
+   "wrong": "d56.20"
   },
   "d55.4": {
    "prompt": "d55.3",
@@ -8940,7 +8951,7 @@
      "next": "d55.5"
     }
    ],
-   "wrong": "d55.3"
+   "wrong": "d41.8"
   },
   "d55.5": {
    "prompt": "d55.4",
@@ -8957,7 +8968,7 @@
      "next": "d55.6"
     }
    ],
-   "wrong": "d41.8"
+   "wrong": "d5.2"
   },
   "d55.6": {
    "prompt": "d55.5",
@@ -8968,7 +8979,7 @@
      "next": "d55.7"
     }
    ],
-   "wrong": "d15.2"
+   "wrong": "d34.2"
   },
   "d55.7": {
    "prompt": "d55.6",
@@ -8979,7 +8990,7 @@
      "next": "d55.8"
     }
    ],
-   "wrong": "d55.6"
+   "wrong": "d27.4"
   },
   "d55.8": {
    "prompt": "d55.7",
@@ -8990,7 +9001,7 @@
      "next": "d55.9"
     }
    ],
-   "wrong": "d55.7"
+   "wrong": "d14.3"
   },
   "d55.9": {
    "prompt": "d55.8",
@@ -9001,7 +9012,7 @@
      "next": null
     }
    ],
-   "wrong": "d55.8"
+   "wrong": "d43.2"
   },
   "d55.13": {
    "prompt": "d55.12",
@@ -9012,7 +9023,7 @@
      "next": "d55.14"
     }
    ],
-   "wrong": "d4.3"
+   "wrong": "d52.15"
   },
   "d55.14": {
    "prompt": "d55.13",
@@ -9023,7 +9034,7 @@
      "next": "d55.15"
     }
    ],
-   "wrong": "d2.2"
+   "wrong": "d1.2"
   },
   "d55.15": {
    "prompt": "d55.14",
@@ -9045,7 +9056,7 @@
      "next": null
     }
    ],
-   "wrong": "d2.3"
+   "wrong": "d12.3"
   },
   "d56.9": {
    "prompt": "d56.8",
@@ -9056,7 +9067,7 @@
      "next": "d56.10"
     }
    ],
-   "wrong": "d19.3"
+   "wrong": "d19.4"
   },
   "d56.10": {
    "prompt": "d56.9",
@@ -9073,7 +9084,7 @@
      "next": "d56.11"
     }
    ],
-   "wrong": "d56.9"
+   "wrong": "d70.5"
   },
   "d56.11": {
    "prompt": "d56.10",
@@ -9084,7 +9095,7 @@
      "next": null
     }
    ],
-   "wrong": "d59.8"
+   "wrong": "d55.6"
   },
   "d56.15": {
    "prompt": "d56.14",
@@ -9095,7 +9106,7 @@
      "next": null
     }
    ],
-   "wrong": "d56.20"
+   "wrong": "d59.8"
   },
   "d56.19": {
    "prompt": "d56.18",
@@ -9106,7 +9117,7 @@
      "next": "d56.20"
     }
    ],
-   "wrong": "d56.20"
+   "wrong": "d65.9"
   },
   "d56.20": {
    "prompt": "d56.19",
@@ -9123,7 +9134,7 @@
      "next": "d56.21"
     }
    ],
-   "wrong": "d56.19"
+   "wrong": "d51.6"
   },
   "d56.21": {
    "prompt": "d56.20",
@@ -9134,7 +9145,7 @@
      "next": "d56.22"
     }
    ],
-   "wrong": "d56.20"
+   "wrong": "d49.9"
   },
   "d56.22": {
    "prompt": "d56.21",
@@ -9145,7 +9156,7 @@
      "next": "d56.23"
     }
    ],
-   "wrong": "d56.21"
+   "wrong": "d42.6"
   },
   "d56.23": {
    "prompt": "d56.22",
@@ -9156,7 +9167,7 @@
      "next": null
     }
    ],
-   "wrong": "d56.20"
+   "wrong": "d7.3"
   },
   "d57.2": {
    "prompt": "d57.1",
@@ -9167,7 +9178,7 @@
      "next": "d57.3"
     }
    ],
-   "wrong": "d2.2"
+   "wrong": "d4.2"
   },
   "d57.3": {
    "prompt": "d57.2",
@@ -9178,7 +9189,7 @@
      "next": "d57.4"
     }
    ],
-   "wrong": "d57.2"
+   "wrong": "d65.9"
   },
   "d57.4": {
    "prompt": "d57.3",
@@ -9189,7 +9200,7 @@
      "next": null
     }
    ],
-   "wrong": "d54.11"
+   "wrong": "d59.8"
   },
   "d57.19": {
    "prompt": "d57.18",
@@ -9200,7 +9211,7 @@
      "next": "d57.20"
     }
    ],
-   "wrong": "d8.2"
+   "wrong": "d32.2"
   },
   "d57.20": {
    "prompt": "d57.19",
@@ -9211,7 +9222,7 @@
      "next": null
     }
    ],
-   "wrong": "d57.19"
+   "wrong": "d2.2"
   },
   "d58.3": {
    "prompt": "d58.2",
@@ -9222,7 +9233,7 @@
      "next": "d58.4"
     }
    ],
-   "wrong": "d49.9"
+   "wrong": "d38.5"
   },
   "d58.4": {
    "prompt": "d58.3",
@@ -9233,7 +9244,7 @@
      "next": "d58.5"
     }
    ],
-   "wrong": "d58.3"
+   "wrong": "d8.5"
   },
   "d58.5": {
    "prompt": "d58.4",
@@ -9250,7 +9261,7 @@
      "next": "d58.6"
     }
    ],
-   "wrong": "d58.4"
+   "wrong": "d8.2"
   },
   "d58.6": {
    "prompt": "d58.5",
@@ -9261,7 +9272,7 @@
      "next": null
     }
    ],
-   "wrong": "d38.5"
+   "wrong": "d16.5"
   },
   "d59.6": {
    "prompt": "d59.5",
@@ -9283,7 +9294,7 @@
      "next": "d59.8"
     }
    ],
-   "wrong": "d46.12"
+   "wrong": "d49.2"
   },
   "d59.8": {
    "prompt": "d59.7",
@@ -9300,7 +9311,7 @@
      "next": null
     }
    ],
-   "wrong": "d59.7"
+   "wrong": "d3.4"
   },
   "d59.15": {
    "prompt": "d59.14",
@@ -9339,7 +9350,7 @@
      "next": null
     }
    ],
-   "wrong": "d17.5"
+   "wrong": "d65.9"
   },
   "d61.8": {
    "prompt": "d61.7",
@@ -9350,7 +9361,7 @@
      "next": null
     }
    ],
-   "wrong": "d56.10"
+   "wrong": "d3.2"
   },
   "d62.2": {
    "prompt": "d62.1",
@@ -9361,7 +9372,7 @@
      "next": null
     }
    ],
-   "wrong": "d55.5"
+   "wrong": "d32.4"
   },
   "d64.2": {
    "prompt": "d64.1",
@@ -9383,7 +9394,7 @@
      "next": null
     }
    ],
-   "wrong": "d64.2"
+   "wrong": "d31.4"
   },
   "d65.2": {
    "prompt": "d65.1",
@@ -9394,7 +9405,7 @@
      "next": "d65.3"
     }
    ],
-   "wrong": "d65.9"
+   "wrong": "d34.2"
   },
   "d65.3": {
    "prompt": "d65.2",
@@ -9411,7 +9422,7 @@
      "next": "d65.4"
     }
    ],
-   "wrong": "d58.4"
+   "wrong": "d8.2"
   },
   "d65.4": {
    "prompt": "d65.3",
@@ -9428,7 +9439,7 @@
      "next": "d65.5"
     }
    ],
-   "wrong": "d65.3"
+   "wrong": "d47.6"
   },
   "d65.5": {
    "prompt": "d65.4",
@@ -9439,7 +9450,7 @@
      "next": "d65.6"
     }
    ],
-   "wrong": "d65.4"
+   "wrong": "d66.3"
   },
   "d65.6": {
    "prompt": "d65.5",
@@ -9456,7 +9467,7 @@
      "next": "d65.7"
     }
    ],
-   "wrong": "d65.5"
+   "wrong": "d45.2"
   },
   "d65.7": {
    "prompt": "d65.6",
@@ -9467,7 +9478,7 @@
      "next": "d65.8"
     }
    ],
-   "wrong": "d65.6"
+   "wrong": "d37.2"
   },
   "d65.8": {
    "prompt": "d65.7",
@@ -9478,7 +9489,7 @@
      "next": "d65.9"
     }
    ],
-   "wrong": "d65.7"
+   "wrong": "d32.2"
   },
   "d65.9": {
    "prompt": "d65.8",
@@ -9489,7 +9500,7 @@
      "next": null
     }
    ],
-   "wrong": "d65.8"
+   "wrong": "d13.4"
   },
   "d66.2": {
    "prompt": "d66.1",
@@ -9500,7 +9511,7 @@
      "next": "d66.3"
     }
    ],
-   "wrong": "d41.4"
+   "wrong": "d70.12"
   },
   "d66.3": {
    "prompt": "d66.2",
@@ -9517,7 +9528,7 @@
      "next": null
     }
    ],
-   "wrong": "d50.2"
+   "wrong": "d51.8"
   },
   "d68.8": {
    "prompt": "d68.7",
@@ -9528,7 +9539,7 @@
      "next": "d68.9"
     }
    ],
-   "wrong": "d20.4"
+   "wrong": "d66.3"
   },
   "d68.9": {
    "prompt": "d68.8",
@@ -9539,7 +9550,7 @@
      "next": "d68.10"
     }
    ],
-   "wrong": "d56.20"
+   "wrong": "d47.6"
   },
   "d68.10": {
    "prompt": "d68.9",
@@ -9550,7 +9561,7 @@
      "next": "d68.11"
     }
    ],
-   "wrong": "d68.9"
+   "wrong": "d56.20"
   },
   "d68.11": {
    "prompt": "d68.10",
@@ -9561,7 +9572,7 @@
      "next": null
     }
    ],
-   "wrong": "d68.10"
+   "wrong": "d44.6"
   },
   "d68.18": {
    "prompt": "d68.17",
@@ -9572,7 +9583,7 @@
      "next": null
     }
    ],
-   "wrong": "d3.4"
+   "wrong": "d14.2"
   },
   "d70.2": {
    "prompt": "d70.1",
@@ -9594,7 +9605,7 @@
      "next": "d70.4"
     }
    ],
-   "wrong": "d70.2"
+   "wrong": "d18.5"
   },
   "d70.4": {
    "prompt": "d70.3",
@@ -9605,7 +9616,7 @@
      "next": "d70.5"
     }
    ],
-   "wrong": "d70.3"
+   "wrong": "d57.3"
   },
   "d70.5": {
    "prompt": "d70.4",
@@ -9616,7 +9627,7 @@
      "next": null
     }
    ],
-   "wrong": "d70.3"
+   "wrong": "d56.20"
   },
   "d70.11": {
    "prompt": "d70.10",
@@ -9627,7 +9638,7 @@
      "next": "d70.12"
     }
    ],
-   "wrong": "d14.2"
+   "wrong": "d41.5"
   },
   "d70.12": {
    "prompt": "d70.11",
@@ -9638,7 +9649,7 @@
      "next": "d70.13"
     }
    ],
-   "wrong": "d70.11"
+   "wrong": "d47.6"
   },
   "d70.13": {
    "prompt": "d70.12",
@@ -9649,7 +9660,7 @@
      "next": null
     }
    ],
-   "wrong": "d41.8"
+   "wrong": "d15.7"
   },
   "d70.16": {
    "prompt": "d70.15",
@@ -9671,7 +9682,7 @@
      "next": null
     }
    ],
-   "wrong": "d17.6"
+   "wrong": "d21.4"
   }
  },
  "scenes": [
@@ -9684,7 +9695,7 @@
     "d1.1",
     "d1.2"
    ],
-   "hsk": 99
+   "hsk": 1
   },
   {
    "id": "d2",
@@ -9697,7 +9708,7 @@
     "d2.3",
     "d2.4"
    ],
-   "hsk": 99
+   "hsk": 1
   },
   {
    "id": "d3",
@@ -9749,7 +9760,7 @@
     "d7.2",
     "d7.3"
    ],
-   "hsk": 99
+   "hsk": 1
   },
   {
    "id": "d8",
@@ -9776,7 +9787,7 @@
     "d9.3",
     "d9.4"
    ],
-   "hsk": 99
+   "hsk": 4
   },
   {
    "id": "d12",
@@ -9832,7 +9843,7 @@
     "d15.6",
     "d15.7"
    ],
-   "hsk": 99
+   "hsk": 4
   },
   {
    "id": "d16",
@@ -9895,7 +9906,7 @@
     "d22.1",
     "d22.2"
    ],
-   "hsk": 99
+   "hsk": 4
   },
   {
    "id": "d24",
@@ -9906,7 +9917,7 @@
     "d24.1",
     "d24.2"
    ],
-   "hsk": 99
+   "hsk": 4
   },
   {
    "id": "d29",
@@ -10164,7 +10175,7 @@
     "d57.3",
     "d57.4"
    ],
-   "hsk": 99
+   "hsk": 5
   },
   {
    "id": "d61",

@@ -8,10 +8,11 @@ Made by `python3 -m tools.dialogues` from the transcripts in tools/sources/coerl
 
 - Dialogues: 70, lines: 548
 - Lines that pass every check: 372 (67%)
-- Dialogues where every line passes: 18, of which 6 use only HSK 1-2 words
+- Dialogues where every line passes: 18, of which 9 use only HSK 1-2 words
 - Scenes (a dialogue's usable lines from the start, 2 or more): 44
-- Reply turns: 248; with two right replies: 30; with a branch into another dialogue: 11
-- Reply turns still needing a second right reply (from Tatoeba later): 218
+- Reply turns: 248; with two right replies: 31; with a branch into another dialogue: 11
+- Second right replies taken from Tatoeba: 1
+- Reply turns with only one right reply: 217
 
 Why lines were left out:
 
@@ -55,52 +56,52 @@ Why lines were left out:
 
 For each reply turn: does each ✓ reply answer the line before it, and does the ✗ reply not answer it?
 
-### Dialogue 1 (episode 01, up to HSK 99)
+### Dialogue 1 (episode 01, up to HSK 1)
 
 - **A**: 你好！ (Nǐ hǎo!) Hello!
 - **B**: 你好! (Nǐ hǎo!) Hello!
   - ✓ 你好! Hello!
   - ✗ 他们都很好，谢谢。我爸妈也问你好。 They are both fine, thanks. My parents send their regards to you, too. (from d7.2)
 
-### Dialogue 2 (episode 01, up to HSK 99)
+### Dialogue 2 (episode 01, up to HSK 1)
 
 - **A**: 你好吗？ (Nǐ hǎo ma?) How are you?
 - **B**: 我很好。 (Wǒ hěn hǎo.) I am fine.
   - ✓ 我很好。 I am fine.
-  - ✗ 你忙吗？ Are you busy? (from d2.3)
+  - ✗ 你好! Hello! (from d1.2)
 - **A**: 你忙吗？ (Nǐ máng ma?) Are you busy?
   - ✓ 你忙吗？ Are you busy?
-  - ✗ 我很好。 I am fine. (from d2.2)
+  - ✗ 她很好。你妈妈呢？ She is fine. How about your mother? (from d4.2)
 - **B**: 我不忙。 (Wǒ bù máng.) I am not busy.
   - ✓ 我不忙。 I am not busy.
-  - ✗ 你忙吗？ Are you busy? (from d2.3)
+  - ✗ 是吗？那你姐姐有两个男朋友。 Is that so? Then your sister has two boyfriends. (from d47.6)
 
 ### Dialogue 3 (episode 01, up to HSK 1)
 
 - **A**: 你爸爸、妈妈好吗？ (Nǐ bà ba, mā ma hǎo ma?) How are your parents?
 - **B**: 他们都很好。 (Tā men dōu hěn hǎo.) They are both fine.
   - ✓ 他们都很好。 They are both fine.
-  - ✗ 我爸爸很忙，我妈妈不忙。你爸妈忙吗？ My father is busy; my mother is not. Are your parents busy? (from d3.4)
+  - ✗ 是吗？我爸爸也是医生。 Is that so? My father is also a doctor. (from d38.3)
 - **A**: 他们忙吗？ (Tā men máng ma?) Are they busy?
   - ✓ 他们忙吗？ Are they busy?
-  - ✗ 他们都很好。 They are both fine. (from d3.2)
+  - ✗ 他们都很好。你哥哥、弟弟呢？ They are both fine. How about your old and younger brothers? (from d5.2)
 - **B**: 我爸爸很忙，我妈妈不忙。你爸妈忙吗？ (Wǒ bà ba hěn máng, wǒ mā ma bù máng. Nǐ bà mā máng ma?) My father is busy; my mother is not. Are your parents busy?
   - ✓ 我爸爸很忙，我妈妈不忙。你爸妈忙吗？ My father is busy; my mother is not. Are your parents busy?
   - ✓ 他们都很忙。 They are both busy. (from d5.5, then carries on there)
-  - ✗ 他们忙吗？ Are they busy? (from d3.3)
+  - ✗ 他们忙吗？ Are they busy? (from d5.4)
 - **A**: 他们都不忙。 (Tā men dōu bù máng.) Neither of them is busy.
   - ✓ 他们都不忙。 Neither of them is busy.
-  - ✗ 我爸爸很忙，我妈妈不忙。你爸妈忙吗？ My father is busy; my mother is not. Are your parents busy? (from d3.4)
+  - ✗ 他们都很好，谢谢。我爸妈也问你好。 They are both fine, thanks. My parents send their regards to you, too. (from d7.2)
 
 ### Dialogue 4 (episode 01, up to HSK 1)
 
 - **A**: 你妈妈好吗？ (Nǐ mā ma hǎo ma?) How is your mother?
 - **B**: 她很好。你妈妈呢？ (Tā hěn hǎo. Nǐ mā ma ne?) She is fine. How about your mother?
   - ✓ 她很好。你妈妈呢？ She is fine. How about your mother?
-  - ✗ 我爸爸很忙，我妈妈不忙。你爸妈忙吗？ My father is busy; my mother is not. Are your parents busy? (from d3.4)
+  - ✗ 你妈妈没有车吗？ Does your mother not have a car? (from d16.3)
 - **A**: 她也很好。 (Tā yě hěn hǎo.) She is fine, too.
   - ✓ 她也很好。 She is fine, too.
-  - ✗ 她很好。你妈妈呢？ She is fine. How about your mother? (from d4.2)
+  - ✗ 我很好。 I am fine. (from d2.2)
 
 ### Dialogue 5 (episode 01, up to HSK 1)
 
@@ -110,21 +111,21 @@ For each reply turn: does each ✓ reply answer the line before it, and does the
   - ✗ 我有一个姐姐，没有妹妹。你有哥哥、弟弟吗？ I have one older sister; I don’t have younger sisters. Do you have brothers? (from d8.3)
 - **A**: 他们也都很好。 (Tā men yě dōu hěn hǎo.) They are both fine, too.
   - ✓ 他们也都很好。 They are both fine, too.
-  - ✗ 他们都很好。你哥哥、弟弟呢？ They are both fine. How about your old and younger brothers? (from d5.2)
+  - ✗ 他们都很好。 They are both fine. (from d3.2)
 - **B**: 他们忙吗？ (Tā men máng ma?) Are they busy?
   - ✓ 他们忙吗？ Are they busy?
-  - ✗ 他们也都很好。 They are both fine, too. (from d5.3)
+  - ✗ 她很好。你妈妈呢？ She is fine. How about your mother? (from d4.2)
 - **A**: 他们都很忙。 (Tā men dōu hěn máng.) They are both busy.
   - ✓ 他们都很忙。 They are both busy.
   - ✓ 我爸爸很忙，我妈妈不忙。你爸妈忙吗？ My father is busy; my mother is not. Are your parents busy? (from d3.4, then carries on there)
-  - ✗ 他们忙吗？ Are they busy? (from d3.3)
+  - ✗ 他们都不忙。 Neither of them is busy. (from d3.5)
 
-### Dialogue 7 (episode 01, up to HSK 99)
+### Dialogue 7 (episode 01, up to HSK 1)
 
 - **A**: 你爸妈好吗？ (Nǐ bà mā hǎo ma?) How are your parents?
 - **B**: 他们都很好，谢谢。我爸妈也问你好。 (Tā men dōu hěn hǎo, xiè xie. Wǒ bà mā yě wèn nǐ hǎo.) They are both fine, thanks. My parents send their regards to you, too.
   - ✓ 他们都很好，谢谢。我爸妈也问你好。 They are both fine, thanks. My parents send their regards to you, too.
-  - ✗ 我爸爸很忙，我妈妈不忙。你爸妈忙吗？ My father is busy; my mother is not. Are your parents busy? (from d3.4)
+  - ✗ 是吗？那你姐姐有两个男朋友。 Is that so? Then your sister has two boyfriends. (from d47.6)
 - **A**: 请你谢谢他们。 (Qǐng nǐ xiè xie tā men.) Please thank them.
   - ✓ 请你谢谢他们。 Please thank them.
   - ✗ 他们也都很好。 They are both fine, too. (from d5.3)
@@ -137,71 +138,71 @@ For each reply turn: does each ✓ reply answer the line before it, and does the
   - ✗ 是吗？你有几个哥哥？ Is that so? How many older brothers do you have? (from d17.5)
 - **A**: 我有一个姐姐，没有妹妹。你有哥哥、弟弟吗？ (Wǒ yǒu yī gè jiě jie, méi yǒu mèi mei. Nǐ yǒu gē ge, dì di ma?) I have one older sister; I don’t have younger sisters. Do you have brothers?
   - ✓ 我有一个姐姐，没有妹妹。你有哥哥、弟弟吗？ I have one older sister; I don’t have younger sisters. Do you have brothers?
-  - ✗ 我没有姐姐，有一个妹妹。你呢？ I do not have older sisters; I have one younger sister. How about you? (from d8.2)
+  - ✗ 有，我有两个姐姐、一个妹妹。你呢？ Yes, I have two older sisters and one younger sister. How about you? (from d37.2)
 - **B**: 没有。你呢？ (Méi yǒu. Nǐ ne?) No. How about you?
   - ✓ 没有。你呢？ No. How about you?
-  - ✗ 我有一个姐姐，没有妹妹。你有哥哥、弟弟吗？ I have one older sister; I don’t have younger sisters. Do you have brothers? (from d8.3)
+  - ✗ 有，我有两个姐姐、一个妹妹。你呢？ Yes, I have two older sisters and one younger sister. How about you? (from d37.2)
 - **A**: 我也没有哥哥，我有一个弟弟。 (Wǒ yě méi yǒu gē ge, wǒ yǒu yī gè dì di.) I don’t have older brothers, either. I have one younger brother.
   - ✓ 我也没有哥哥，我有一个弟弟。 I don’t have older brothers, either. I have one younger brother.
-  - ✗ 我没有姐姐，有一个妹妹。你呢？ I do not have older sisters; I have one younger sister. How about you? (from d8.2)
+  - ✗ 不是，那是我爸爸的车，我没有车。 No, that is my father’s car. I don’t have a car. (from d14.2)
 
-### Dialogue 9 (episode 02, up to HSK 99)
+### Dialogue 9 (episode 02, up to HSK 4)
 
 - **A**: 你贵姓？ (Nǐ guì xìng?) What is your honorable last name?
 - **B**: 我姓王，叫王贵一。 (Wǒ xìng wáng, jiào wáng guì yī.) My last name is Wang; my name is
   - ✓ 我姓王，叫王贵一。 My last name is Wang; my name is
   - ✓ 我也姓王。 My last name is also (from d24.7, then carries on there)
-  - ✗ 请叫我贵一，好吗？你贵姓？ Please call me Guiyi, OK? What is your honorable last name? (from d9.4)
+  - ✗ 我姓王，我是你的老师，请叫我王老师。 My last name is Wang. I am your teacher. Please call me Teacher Wang. (from d35.7)
 - **A**: 王小姐，你好。 (Wáng xiǎo jie, nǐ hǎo.) Hello,
   - ✓ 王小姐，你好。 Hello,
-  - ✗ 我姓王，叫王贵一。 My last name is Wang; my name is (from d9.2)
+  - ✗ 我叫王贵，我朋友都叫我小王。 My name is Wang Gui. All of my friends call me (from d25.5)
 - **B**: 请叫我贵一，好吗？你贵姓？ (Qǐng jiào wǒ guì yī, hǎo ma? Nǐ guì xìng?) Please call me Guiyi, OK? What is your honorable last name?
   - ✓ 请叫我贵一，好吗？你贵姓？ Please call me Guiyi, OK? What is your honorable last name?
-  - ✗ 小姐，你呢？ Miss, what about you? (from d53.7)
+  - ✗ 你好。你学什么？ Hello. What do you study? (from d15.5)
 
 ### Dialogue 12 (episode 02, up to HSK 3)
 
 - **A**: 这是谁？是你女朋友吗？ (Zhè shì shéi? Shì nǐ nǚ péng you ma?) Who is this? Is it your girlfriend?
 - **B**: 不是，她是我姐姐。 (Bù shì, tā shì wǒ jiě jie.) No, she is my older sister.
   - ✓ 不是，她是我姐姐。 No, she is my older sister.
-  - ✗ 这也是你姐姐吗？ (Point at another photo) Is this also your older sister? (from d32.3)
+  - ✗ 是吗？那你姐姐有两个男朋友。 Is that so? Then your sister has two boyfriends. (from d47.6)
 - **A**: 你有你女朋友的照片吗？ (Nǐ yǒu nǐ nǚ péng you de zhào piàn ma?) Do you have your girlfriend’s pictures?
   - ✓ 你有你女朋友的照片吗？ Do you have your girlfriend’s pictures?
-  - ✗ 不是，她是我姐姐。 No, she is my older sister. (from d12.2)
+  - ✗ 我不是老师，是学生。你呢？ I am not a teacher; I am a student. How about you? (from d27.4)
 - **B**: 有一张。……这是我，这是我女朋友。 (Yǒu yī zhāng.…… zhè shì wǒ, zhè shì wǒ nǚ péng you.) I have one…… This is me; this is my girlfriend.
   - ✓ 有一张。……这是我，这是我女朋友。 I have one…… This is me; this is my girlfriend.
-  - ✗ 你有你女朋友的照片吗？ Do you have your girlfriend’s pictures? (from d12.3)
+  - ✗ 有，可是我现在只有一张。你看，这是她的照片。她十九岁。 Yes, I do, but I have only one right now. Look, this is her photo. She is 19. (from d52.10)
 - **A**: 这个呢？ (Zhè gè ne?) What about this one?
   - ✓ 这个呢？ What about this one?
-  - ✗ 在那儿！那儿有一辆日本车，那是我的车。 It’s over there! There is a Japanese car over there. That is my car. (from d19.4)
+  - ✗ 是吗？这一课有几个生词？ Is that so? How many vocabulary words are there in this lesson? (from d66.3)
 
 ### Dialogue 13 (episode 02, up to HSK 4)
 
 - **A**: 这是谁的照片？是你女朋友的吗？ (Zhè shì shéi de zhào piàn? Shì nǐ nǚ péng you de ma?) Whose picture is this? Is it your girlfriend’s?
 - **B**: 不是，这是王先生的女朋友。 (Bù shì, zhè shì wáng xiān sheng de nǚ péng you.) No, this is Mr.
   - ✓ 不是，这是王先生的女朋友。 No, this is Mr.
-  - ✗ 你有你女朋友的照片吗？ Do you have your girlfriend’s pictures? (from d12.3)
+  - ✗ 什么？这是你大姐？她是我哥哥的女朋友。 What? This is your eldest sister? She is my older brother’s girlfriend. (from d37.6)
 - **A**: 王先生？王先生是谁？ (Wáng xiān sheng? Wáng xiān sheng shì shéi?) Mr. Wang? Who is Mr. Wang?
   - ✓ 王先生？王先生是谁？ Mr. Wang? Who is Mr. Wang?
-  - ✗ 不是，这是王先生的女朋友。 No, this is Mr. (from d13.2)
+  - ✗ 你女朋友有一个漂亮的妹妹，你可以不可以给我介绍她妹妹？ Your girlfriend has a pretty (younger) sister. Can you introduce her sister to me? (from d59.15)
 - **B**: 他是我哥哥的老师，他女朋友也是我哥哥的老师。 (Tā shì wǒ gē ge de lǎo shī, tā nǚ péng you yě shì wǒ gē ge de lǎo shī.) He is my older brother’s teacher. His girlfriend is also my older brother’s teacher.
   - ✓ 他是我哥哥的老师，他女朋友也是我哥哥的老师。 He is my older brother’s teacher. His girlfriend is also my older brother’s teacher.
-  - ✗ 好。是谁？ OK! Who is it? (from d57.4)
+  - ✗ 在那儿！那儿有一辆日本车，那是我的车。 It’s over there! There is a Japanese car over there. That is my car. (from d19.4)
 
 ### Dialogue 14 (episode 03, up to HSK 3)
 
 - **A**: 这是谁的车？是你的吗？ (Zhè shì shéi de chē? Shì nǐ de ma?) Whose car is this? Is it yours?
 - **B**: 不是，那是我爸爸的车，我没有车。 (Bù shì, nà shì wǒ bà ba de chē, wǒ méi yǒu chē.) No, that is my father’s car. I don’t have a car.
   - ✓ 不是，那是我爸爸的车，我没有车。 No, that is my father’s car. I don’t have a car.
-  - ✗ 是吗？你的中文老师姓什么？ Is that so? What is your Chinese teacher’s last name? (from d15.7)
+  - ✗ 那两辆车都不是我的，我的车是日本车。 Neither of those two cars are mine. My car is a (from d19.2)
 - **A**: 你爸爸的车是美国车吗？ (Nǐ bà ba de chē shì měi guó chē ma?) Is your father’s car an American car?
   - ✓ 你爸爸的车是美国车吗？ Is your father’s car an American car?
-  - ✗ 不是，那是我爸爸的车，我没有车。 No, that is my father’s car. I don’t have a car. (from d14.2)
+  - ✗ 你的车是哪国车？ What kind (country of origin) of car your car? (from d16.5)
 - **B**: 是，我妈妈的车也是美国车。你爸妈有车吗？ (Shì, wǒ mā ma de chē yě shì měi guó chē. Nǐ bà mā yǒu chē ma?) Yes. My mother’s car is also an American car. Do your parents have cars?
   - ✓ 是，我妈妈的车也是美国车。你爸妈有车吗？ Yes. My mother’s car is also an American car. Do your parents have cars?
-  - ✗ 你爸爸的车是美国车吗？ Is your father’s car an American car? (from d14.3)
+  - ✗ 你男朋友是美国人吗？ Is your boyfriend an American? (from d31.3)
 
-### Dialogue 15 (episode 03, up to HSK 99)
+### Dialogue 15 (episode 03, up to HSK 4)
 
 - **A**: 你是学生吗？ (Nǐ shì xué sheng ma?) Are you a student?
 - **B**: 是，我是学生，你也是学生吗？ (Shì, wǒ shì xué sheng, nǐ yě shì xué sheng ma?) Yes, I am a student. Are you also a student?
@@ -209,38 +210,38 @@ For each reply turn: does each ✓ reply answer the line before it, and does the
   - ✗ 是，你也是中国学生吗？ Yes. Are you also a Chinese student? (from d30.2)
 - **A**: 不是，我是老师。我姓王。 (Bù shì, wǒ shì lǎo shī. Wǒ xìng wáng.) No. I am a teacher. My last name is
   - ✓ 不是，我是老师。我姓王。 No. I am a teacher. My last name is
-  - ✗ 是，我是学生，你也是学生吗？ Yes, I am a student. Are you also a student? (from d15.2)
+  - ✗ 是吗？我爸爸也是医生。 Is that so? My father is also a doctor. (from d38.3)
 - **B**: 王老师，你好。 (Wáng lǎo shī, nǐ hǎo.) Hello,
   - ✓ 王老师，你好。 Hello,
-  - ✗ 不是，我是老师。我姓王。 No. I am a teacher. My last name is (from d15.3)
+  - ✗ 我是老师，我也姓王。请叫我王老师。 I am a teacher; my last name is also Wang. Please call me Teacher Wang. (from d27.5)
 - **A**: 你好。你学什么？ (Nǐ hǎo. Nǐ xué shén me?) Hello. What do you study?
   - ✓ 你好。你学什么？ Hello. What do you study?
-  - ✗ 王老师，你好。 Hello, (from d15.4)
+  - ✗ 我不是老师，是学生。你呢？ I am not a teacher; I am a student. How about you? (from d27.4)
 - **B**: 我学中文。 (Wǒ xué zhōng wén.) I study
   - ✓ 我学中文。 I study
-  - ✗ 我也学中文。你的中文老师姓什么？ I study Chinese, too. What is your Chinese teacher’s last name? (from d41.5)
+  - ✗ 你好! Hello! (from d1.2)
 - **A**: 是吗？你的中文老师姓什么？ (Shì ma? Nǐ de zhōng wén lǎo shī xìng shén me?) Is that so? What is your Chinese teacher’s last name?
   - ✓ 是吗？你的中文老师姓什么？ Is that so? What is your Chinese teacher’s last name?
-  - ✗ 我学中文。 I study (from d15.6)
+  - ✗ 我也学中文。你的中文老师姓什么？ I study Chinese, too. What is your Chinese teacher’s last name? (from d41.5)
 
 ### Dialogue 16 (episode 03, up to HSK 3)
 
 - **A**: 你家有几辆车？ (Nǐ jiā yǒu jǐ liàng chē?) How many cars does your family have?
 - **B**: 两辆，我爸爸有一辆，我也有一辆。 (Liǎng liàng, wǒ bà ba yǒu yī liàng, wǒ yě yǒu yī liàng.) Two. My father has one; I have one.
   - ✓ 两辆，我爸爸有一辆，我也有一辆。 Two. My father has one; I have one.
-  - ✗ 是吗？你有几个哥哥？ Is that so? How many older brothers do you have? (from d17.5)
+  - ✗ 在那儿！那儿有一辆日本车，那是我的车。 It’s over there! There is a Japanese car over there. That is my car. (from d19.4)
 - **A**: 你妈妈没有车吗？ (Nǐ mā ma méi yǒu chē ma?) Does your mother not have a car?
   - ✓ 你妈妈没有车吗？ Does your mother not have a car?
-  - ✗ 两辆，我爸爸有一辆，我也有一辆。 Two. My father has one; I have one. (from d16.2)
+  - ✗ 有，我有两个姐姐、一个妹妹。你呢？ Yes, I have two older sisters and one younger sister. How about you? (from d37.2)
 - **B**: 没有，我弟弟也没有车。 (Méi yǒu, wǒ dì di yě méi yǒu chē.) No. My younger brother does not have a car, either.
   - ✓ 没有，我弟弟也没有车。 No. My younger brother does not have a car, either.
-  - ✗ 你妈妈没有车吗？ Does your mother not have a car? (from d16.3)
+  - ✗ 是吗？那你姐姐有两个男朋友。 Is that so? Then your sister has two boyfriends. (from d47.6)
 - **A**: 你的车是哪国车？ (Nǐ de chē shì nǎ guó chē?) What kind (country of origin) of car your car?
   - ✓ 你的车是哪国车？ What kind (country of origin) of car your car?
-  - ✗ 没有，我弟弟也没有车。 No. My younger brother does not have a car, either. (from d16.4)
+  - ✗ 我有一个姐姐，没有妹妹。你有哥哥、弟弟吗？ I have one older sister; I don’t have younger sisters. Do you have brothers? (from d8.3)
 - **B**: 我的车是日本车，我爸爸的是美国车。 (Wǒ de chē shì rì běn chē, wǒ bà ba de shì měi guó chē.) My car is a Japanese car. My father’s is an American car.
   - ✓ 我的车是日本车，我爸爸的是美国车。 My car is a Japanese car. My father’s is an American car.
-  - ✗ 你的车是哪国车？ What kind (country of origin) of car your car? (from d16.5)
+  - ✗ 不是，那是我爸爸的车，我没有车。 No, that is my father’s car. I don’t have a car. (from d14.2)
 
 ### Dialogue 17 (episode 03, up to HSK 3)
 
@@ -248,51 +249,51 @@ For each reply turn: does each ✓ reply answer the line before it, and does the
 - **B**: 是我哥哥。 (Shì wǒ gē ge.) It’s my older brother.
   - ✓ 是我哥哥。 It’s my older brother.
   - ✓ 那是我爸爸。 That is my father. (from d33.2, then carries on there)
-  - ✗ 这是我男朋友的照片。 This is a picture of my boyfriend. (from d31.2)
+  - ✗ 这是我姐姐。 This is my older sister. (from d32.2)
 
 ### Dialogue 19 (episode 03, up to HSK 2)
 
 - **A**: 这儿有两辆车，哪辆是你的？ (Zhèr yǒu liǎng liàng chē, nǎ liàng shì nǐ de?) There are two cars here. Which one is yours?
 - **B**: 那两辆车都不是我的，我的车是日本车。 (Nà liǎng liàng chē dōu bù shì wǒ de, wǒ de chē shì rì běn chē.) Neither of those two cars are mine. My car is a
   - ✓ 那两辆车都不是我的，我的车是日本车。 Neither of those two cars are mine. My car is a
-  - ✗ 你的车是哪国车？ What kind (country of origin) of car your car? (from d16.5)
+  - ✗ 是吗？那你姐姐有两个男朋友。 Is that so? Then your sister has two boyfriends. (from d47.6)
 - **A**: 那你的车在哪儿？ (Nà nǐ de chē zài nǎr?) Then where is your car?
   - ✓ 那你的车在哪儿？ Then where is your car?
-  - ✗ 那两辆车都不是我的，我的车是日本车。 Neither of those two cars are mine. My car is a (from d19.2)
+  - ✗ 你的车是哪国车？ What kind (country of origin) of car your car? (from d16.5)
 - **B**: 在那儿！那儿有一辆日本车，那是我的车。 (Zài nàr! Nàr yǒu yī liàng rì běn chē, nà shì wǒ de chē.) It’s over there! There is a Japanese car over there. That is my car.
   - ✓ 在那儿！那儿有一辆日本车，那是我的车。 It’s over there! There is a Japanese car over there. That is my car.
-  - ✗ 那你的车在哪儿？ Then where is your car? (from d19.3)
+  - ✗ 不是，那是我爸爸的车，我没有车。 No, that is my father’s car. I don’t have a car. (from d14.2)
 
 ### Dialogue 21 (episode 03, up to HSK 3)
 
 - **A**: 你家在哪儿？ (Nǐ jiā zài nǎr?) Where is your home?
 - **B**: 我家有六个人，我爸妈在外国，我哥哥、姐姐都在北京。 (Wǒ jiā yǒu liù gè rén, wǒ bà mā zài wài guó, wǒ gē ge, jiě jie dōu zài běi jīng.) My family has six people. My parents are abroad (in a foreign country). My older brothers and older sister are in
   - ✓ 我家有六个人，我爸妈在外国，我哥哥、姐姐都在北京。 My family has six people. My parents are abroad (in a foreign country). My older brothers and older sister are in
-  - ✗ 那你的车在哪儿？ Then where is your car? (from d19.3)
+  - ✗ 晚上七点，在我家。 7:00 pm. At my house. (from d42.7)
 - **A**: 你哥哥、姐姐做什么工作？ (Nǐ gē ge, jiě jie zuò shén me gōng zuò?) What do your older brothers and older sister do?
   - ✓ 你哥哥、姐姐做什么工作？ What do your older brothers and older sister do?
-  - ✗ 我的两个哥哥都是北京大学的学生；我姐姐是那儿的老师。 Both of my older brothers are students at Beijing University. My older sister is a teacher there. (from d21.4)
+  - ✗ 我有一个姐姐，没有妹妹。你有哥哥、弟弟吗？ I have one older sister; I don’t have younger sisters. Do you have brothers? (from d8.3)
 - **B**: 我的两个哥哥都是北京大学的学生；我姐姐是那儿的老师。 (Wǒ de liǎng gè gē ge dōu shì běi jīng dà xué de xué sheng; wǒ jiě jie shì nàr de lǎo shī.) Both of my older brothers are students at Beijing University. My older sister is a teacher there.
   - ✓ 我的两个哥哥都是北京大学的学生；我姐姐是那儿的老师。 Both of my older brothers are students at Beijing University. My older sister is a teacher there.
-  - ✗ 你哥哥、姐姐做什么工作？ What do your older brothers and older sister do? (from d21.3)
+  - ✗ 是吗？那你姐姐有两个男朋友。 Is that so? Then your sister has two boyfriends. (from d47.6)
 
-### Dialogue 22 (episode 04, up to HSK 99)
+### Dialogue 22 (episode 04, up to HSK 4)
 
 _A secretary greets someone on the job for the first day._
 
 - **Secretary**: 你好！请问你贵姓？ (Nǐ hǎo! Qǐng wèn nǐ guì xìng?) Hello! What is your last name?
 - **New employee**: 我姓王。 (Wǒ xìng wáng.) My last name is
   - ✓ 我姓王。 My last name is
-  - ✗ 请叫我贵一，好吗？你贵姓？ Please call me Guiyi, OK? What is your honorable last name? (from d9.4)
+  - ✗ 我姓王，叫王贵一。 My last name is Wang; my name is (from d9.2)
 
-### Dialogue 24 (episode 04, up to HSK 99)
+### Dialogue 24 (episode 04, up to HSK 4)
 
 _A new student approaches the registration desk. A man is sitting behind the desk._
 
 - **Man**: 你好！你姓什么？ (Nǐ hǎo! Nǐ xìng shén me?) Hello. What is your last name?
 - **Student**: 我姓王。 (Wǒ xìng wáng.) My last name is
   - ✓ 我姓王。 My last name is
-  - ✗ 是吗？你的中文老师姓什么？ Is that so? What is your Chinese teacher’s last name? (from d15.7)
+  - ✗ 张小姐，你好。认识你很高兴。 Hello, Miss Zhang. I am pleased to meet you. (from d54.9)
 
 ### Dialogue 29 (episode 05, up to HSK 1)
 
@@ -301,13 +302,13 @@ _A man and a woman are about to enter the Chinese embassy to attend a reception.
 - **A**: 先生，请问你是中国人吗？ (Xiān sheng, qǐng wèn nǐ shì zhōng guó rén ma?) Sir, may I please ask if you are Chinese?
 - **B**: 我不是中国人。 (Wǒ bù shì zhōng guó rén.) I am not
   - ✓ 我不是中国人。 I am not
-  - ✗ 你男朋友是外国人吗？ Is your boyfriend a foreigner? (from d20.5)
+  - ✗ 是吗？那你姐姐有两个男朋友。 Is that so? Then your sister has two boyfriends. (from d47.6)
 - **A**: 你的朋友呢? (Nǐ de péng you ne?) What about your friend?
   - ✓ 你的朋友呢? What about your friend?
-  - ✗ 我不是中国人。 I am not (from d29.2)
+  - ✗ 我不是老师，是学生。你呢？ I am not a teacher; I am a student. How about you? (from d27.4)
 - **B**: 她也不是中国人。 (Tā yě bù shì zhōng guó rén.) She is not Chinese, either. (A checks B's invitation.)
   - ✓ 她也不是中国人。 She is not Chinese, either. (A checks B's invitation.)
-  - ✗ 你的朋友呢? What about your friend? (from d29.3)
+  - ✗ 都是他的老同学，我想你不认识他们。 All were his old classmates. I don’t think you know them. (from d55.6)
 
 ### Dialogue 30 (episode 05, up to HSK 1)
 
@@ -322,16 +323,16 @@ _A man and a woman are about to enter the Chinese embassy to attend a reception.
 - **李**: 这是我男朋友的照片。 (Zhè shì wǒ nán péng you de zhào piàn.) This is a picture of my boyfriend.
   - ✓ 这是我男朋友的照片。 This is a picture of my boyfriend.
   - ✓ 这是我家人的照片。 This is a picture of my family. (from d36.2, then carries on there)
-  - ✗ 这是什么字？ (Pointing at the character B knows) What character is this? (from d65.7)
+  - ✗ 这是我姐姐。 This is my older sister. (from d32.2)
 - **王**: 你男朋友是美国人吗？ (Nǐ nán péng you shì měi guó rén ma?) Is your boyfriend an American?
   - ✓ 你男朋友是美国人吗？ Is your boyfriend an American?
-  - ✗ 有，这儿有七、八张他的照片。……这是我男朋友，这几个是他家人。 Yes. There are seven or eight pictures of his here. …… This is my boyfriend; these few are his family (members). (from d20.4)
+  - ✗ 这八个人是谁？我认识他们吗？ Who were these eight people? Do I know them? (from d55.5)
 - **李**: 他爸爸是美国人，他妈妈是中国人。 (Tā bà ba shì měi guó rén, tā mā ma shì zhōng guó rén.) His father is an American; his mother is
   - ✓ 他爸爸是美国人，他妈妈是中国人。 His father is an American; his mother is
-  - ✗ 你男朋友是美国人吗？ Is your boyfriend an American? (from d31.3)
+  - ✗ 高老师是美国人，他的中文很不好。 Teacher Gao is an American. His Chinese is very bad. (from d41.8)
 - **王**: 他有中文名字吗？ (Tā yǒu zhōng wén míng zi ma?) Does he have a Chinese name?
   - ✓ 他有中文名字吗？ Does he have a Chinese name?
-  - ✗ 我不是中国人。 I am not (from d29.2)
+  - ✗ 你的车是哪国车？ What kind (country of origin) of car your car? (from d16.5)
 
 ### Dialogue 32 (episode 06, up to HSK 1)
 
@@ -340,16 +341,16 @@ _Wang is showing a couple of photographs to Li._
 - **李**: 这是谁？ (Zhè shì shéi?) Who is this?
 - **王**: 这是我姐姐。 (Zhè shì wǒ jiě jie.) This is my older sister.
   - ✓ 这是我姐姐。 This is my older sister.
-  - ✗ 这是我男朋友的照片。 This is a picture of my boyfriend. (from d31.2)
+  - ✗ 这是我家人的照片。 This is a picture of my family. (from d36.2)
 - **李**: 这也是你姐姐吗？ (Zhè yě shì nǐ jiě jie ma?) (Point at another photo) Is this also your older sister?
   - ✓ 这也是你姐姐吗？ (Point at another photo) Is this also your older sister?
-  - ✗ 这是我姐姐。 This is my older sister. (from d32.2)
+  - ✗ 这是你妈妈吗？ Is this your mother? (from d33.5)
 - **王**: 不是，那是我姐姐的女儿。 (Bù shì, nà shì wǒ jiě jie de nǚ ér.) No, that is my older sister’s daughter.
   - ✓ 不是，那是我姐姐的女儿。 No, that is my older sister’s daughter.
-  - ✗ 这也是你姐姐吗？ (Point at another photo) Is this also your older sister? (from d32.3)
+  - ✗ 是吗？那你姐姐有两个男朋友。 Is that so? Then your sister has two boyfriends. (from d47.6)
 - **李**: 你姐姐有儿子吗？ (Nǐ jiě jie yǒu ér zi ma?) Does your older sister have sons?
   - ✓ 你姐姐有儿子吗？ Does your older sister have sons?
-  - ✗ 不是，那是我姐姐的女儿。 No, that is my older sister’s daughter. (from d32.4)
+  - ✗ 不是，我是学生。你呢？ No, I am a student. How about you? (from d39.2)
 
 ### Dialogue 33 (episode 06, up to HSK 3)
 
@@ -359,19 +360,19 @@ _Wang is looking at Li’s family picture._
 - **李**: 那是我爸爸。 (Nà shì wǒ bà ba.) That is my father.
   - ✓ 那是我爸爸。 That is my father.
   - ✓ 是我哥哥。 It’s my older brother. (from d17.2, then carries on there)
-  - ✗ 这是我男朋友的照片。 This is a picture of my boyfriend. (from d31.2)
+  - ✗ 这是我姐姐。 This is my older sister. (from d32.2)
 - **王**: 这个呢？ (Zhè gè ne?) How about this one?
   - ✓ 这个呢？ How about this one?
-  - ✗ 不是，那是我爸爸的车，我没有车。 No, that is my father’s car. I don’t have a car. (from d14.2)
+  - ✗ 不是，我是学生。你呢？ No, I am a student. How about you? (from d39.2)
 - **李**: 那是我哥哥。 (Nà shì wǒ gē ge.) That is my older brother.
   - ✓ 那是我哥哥。 That is my older brother.
-  - ✗ 这个呢？ What about this one? (from d12.5)
+  - ✗ 我认识这一个。 I know this one. (from d65.4)
 - **王**: 这是你妈妈吗？ (Zhè shì nǐ mā ma ma?) Is this your mother?
   - ✓ 这是你妈妈吗？ Is this your mother?
-  - ✗ 那是我哥哥。 That is my older brother. (from d33.4)
+  - ✗ 是吗？你有几个哥哥？ Is that so? How many older brothers do you have? (from d17.5)
 - **李**: 不是，那是我爸爸的姐姐。 (Bù shì, nà shì wǒ bà ba de jiě jie.) No, that is my father’s older sister.
   - ✓ 不是，那是我爸爸的姐姐。 No, that is my father’s older sister.
-  - ✗ 这是你妈妈吗？ Is this your mother? (from d33.5)
+  - ✗ 是吗？那你姐姐有两个男朋友。 Is that so? Then your sister has two boyfriends. (from d47.6)
 
 ### Dialogue 34 (episode 06, up to HSK 4)
 
@@ -380,13 +381,13 @@ _Wang is looking at a picture in a frame on Li’s desk._
 - **王**: 这五个人是谁？ (Zhè wǔ gè rén shì shéi?) Who are these five people?
 - **李**: 这是我爸爸，这是我妈妈，这三个是我哥哥。 (Zhè shì wǒ bà ba, zhè shì wǒ mā ma, zhè sān gè shì wǒ gē ge.) This is my father; this is my mother; these three are my older brothers.
   - ✓ 这是我爸爸，这是我妈妈，这三个是我哥哥。 This is my father; this is my mother; these three are my older brothers.
-  - ✗ 这是我男朋友的照片。 This is a picture of my boyfriend. (from d31.2)
+  - ✗ 不对！这是“太”字。这三个字，你都不认识。 Wrong! This is character “t]ai.” You know none of these three characters. (from d65.9)
 - **王**: 这是你大哥吗？ (Zhè shì nǐ dà gē ma?) Is this your eldest brother?
   - ✓ 这是你大哥吗？ Is this your eldest brother?
-  - ✗ 这是我爸爸，这是我妈妈，这三个是我哥哥。 This is my father; this is my mother; these three are my older brothers. (from d34.2)
+  - ✗ 是吗？你有几个哥哥？ Is that so? How many older brothers do you have? (from d17.5)
 - **李**: 不是，那是我二哥。 (Bù shì, nà shì wǒ èr gē.) No, that is my second eldest brother.
   - ✓ 不是，那是我二哥。 No, that is my second eldest brother.
-  - ✗ 这也是你姐姐吗？ (Point at another photo) Is this also your older sister? (from d32.3)
+  - ✗ 是吗？那你姐姐有两个男朋友。 Is that so? Then your sister has two boyfriends. (from d47.6)
 
 ### Dialogue 36 (episode 07, up to HSK 3)
 
@@ -394,13 +395,13 @@ _Wang is looking at a picture in a frame on Li’s desk._
 - **李**: 这是我家人的照片。 (Zhè shì wǒ jiā rén de zhào piàn.) This is a picture of my family.
   - ✓ 这是我家人的照片。 This is a picture of my family.
   - ✓ 这是我男朋友的照片。 This is a picture of my boyfriend. (from d31.2, then carries on there)
-  - ✗ 这是什么字？ (Pointing at the character B knows) What character is this? (from d65.7)
+  - ✗ 这是我姐姐。 This is my older sister. (from d32.2)
 - **王**: 一、二、三、四、五、六，你家有六个人吗？ (Yī, èr, sān, sì, wǔ, liù, nǐ jiā yǒu liù gè rén ma?) (Counting) one, two, three, four, five, six. Does your family have six people?
   - ✓ 一、二、三、四、五、六，你家有六个人吗？ (Counting) one, two, three, four, five, six. Does your family have six people?
-  - ✗ 有，这儿有七、八张他的照片。……这是我男朋友，这几个是他家人。 Yes. There are seven or eight pictures of his here. …… This is my boyfriend; these few are his family (members). (from d20.4)
+  - ✗ 是，我妈妈的车也是美国车。你爸妈有车吗？ Yes. My mother’s car is also an American car. Do your parents have cars? (from d14.4)
 - **李**: 我家有五个人。这个是我姐姐的男朋友。 (Wǒ jiā yǒu wǔ gè rén. Zhè gè shì wǒ jiě jie de nán péng you.) There are five people in my family. (Pointing at a man in the picture) This one is my older sister’s boyfriend.
   - ✓ 我家有五个人。这个是我姐姐的男朋友。 There are five people in my family. (Pointing at a man in the picture) This one is my older sister’s boyfriend.
-  - ✗ 一、二、三、四、五、六，你家有六个人吗？ (Counting) one, two, three, four, five, six. Does your family have six people? (from d36.3)
+  - ✗ 我家有六个人，我爸妈在外国，我哥哥、姐姐都在北京。 My family has six people. My parents are abroad (in a foreign country). My older brothers and older sister are in (from d21.2)
 
 ### Dialogue 37 (episode 07, up to HSK 4)
 
@@ -410,16 +411,16 @@ _Wang is looking at a picture in a frame on Li’s desk._
   - ✗ 我有一个姐姐，没有妹妹。你有哥哥、弟弟吗？ I have one older sister; I don’t have younger sisters. Do you have brothers? (from d8.3)
 - **李**: 我也有两个姐姐，没有妹妹。 (Wǒ yě yǒu liǎng gè jiě jie, méi yǒu mèi mei.) I also have two older sisters; I don’t have any younger sisters.
   - ✓ 我也有两个姐姐，没有妹妹。 I also have two older sisters; I don’t have any younger sisters.
-  - ✗ 有，我有两个姐姐、一个妹妹。你呢？ Yes, I have two older sisters and one younger sister. How about you? (from d37.2)
+  - ✗ 是吗？那你姐姐有两个男朋友。 Is that so? Then your sister has two boyfriends. (from d47.6)
 - **王**: 你有你姐姐的照片吗？ (Nǐ yǒu nǐ jiě jie de zhào piàn ma?) Do you have your sisters’ pictures?
   - ✓ 你有你姐姐的照片吗？ Do you have your sisters’ pictures?
-  - ✗ 我也有两个姐姐，没有妹妹。 I also have two older sisters; I don’t have any younger sisters. (from d37.3)
+  - ✗ 我没有姐姐，有一个妹妹。你呢？ I do not have older sisters; I have one younger sister. How about you? (from d8.2)
 - **李**: 有。…. 这是我大姐，这是我二姐。 (Yǒu.…. Zhè shì wǒ dà jiě, zhè shì wǒ èr jiě.) Yes. (Taking out a couple of pictures) This is my eldest sister, and this is my second eldest sister.
   - ✓ 有。…. 这是我大姐，这是我二姐。 Yes. (Taking out a couple of pictures) This is my eldest sister, and this is my second eldest sister.
-  - ✗ 你有你姐姐的照片吗？ Do you have your sisters’ pictures? (from d37.4)
+  - ✗ 是吗？那你姐姐有两个男朋友。 Is that so? Then your sister has two boyfriends. (from d47.6)
 - **王**: 什么？这是你大姐？她是我哥哥的女朋友。 (Shén me? Zhè shì nǐ dà jiě? Tā shì wǒ gē ge de nǚ péng you.) What? This is your eldest sister? She is my older brother’s girlfriend.
   - ✓ 什么？这是你大姐？她是我哥哥的女朋友。 What? This is your eldest sister? She is my older brother’s girlfriend.
-  - ✗ 有。…. 这是我大姐，这是我二姐。 Yes. (Taking out a couple of pictures) This is my eldest sister, and this is my second eldest sister. (from d37.5)
+  - ✗ 有一张。……这是我，这是我女朋友。 I have one…… This is me; this is my girlfriend. (from d12.4)
 
 ### Dialogue 38 (episode 07, up to HSK 2)
 
@@ -427,16 +428,16 @@ _Wang is looking at a picture in a frame on Li’s desk._
 - **李**: 我爸爸是医生，我妈妈没有工作。 (Wǒ bà ba shì yī shēng, wǒ mā ma méi yǒu gōng zuò.) My father is a doctor. My mother does not have a job.
   - ✓ 我爸爸是医生，我妈妈没有工作。 My father is a doctor. My mother does not have a job.
   - ✓ 我爸爸是医生，妈妈没有工作。  (author's alternative)
-  - ✗ 你哥哥、姐姐做什么工作？ What do your older brothers and older sister do? (from d21.3)
+  - ✗ 他们都很好，谢谢。我爸妈也问你好。 They are both fine, thanks. My parents send their regards to you, too. (from d7.2)
 - **王**: 是吗？我爸爸也是医生。 (Shì ma? Wǒ bà ba yě shì yī shēng.) Is that so? My father is also a doctor.
   - ✓ 是吗？我爸爸也是医生。 Is that so? My father is also a doctor.
-  - ✗ 我爸爸是医生，我妈妈没有工作。 My father is a doctor. My mother does not have a job. (from d38.2)
+  - ✗ 不是，那是我爸爸的车，我没有车。 No, that is my father’s car. I don’t have a car. (from d14.2)
 - **李**: 你妈妈有工作吗？ (Nǐ mā ma yǒu gōng zuò ma?) Does your mother have a job?
   - ✓ 你妈妈有工作吗？ Does your mother have a job?
-  - ✗ 是吗？我爸爸也是医生。 Is that so? My father is also a doctor. (from d38.3)
+  - ✗ 是，我是学生，你也是学生吗？ Yes, I am a student. Are you also a student? (from d15.2)
 - **王**: 有。她是北京大学的英文老师。 (Yǒu. Tā shì běi jīng dà xué de yīng wén lǎo shī.) Yes, she does. She is an English teacher at Beijing University.
   - ✓ 有。她是北京大学的英文老师。 Yes, she does. She is an English teacher at Beijing University.
-  - ✗ 你妈妈有工作吗？ Does your mother have a job? (from d38.4)
+  - ✗ 是吗？那你姐姐有两个男朋友。 Is that so? Then your sister has two boyfriends. (from d47.6)
 
 ### Dialogue 39 (episode 07, up to HSK 1)
 
@@ -453,18 +454,18 @@ _Wang is looking at a picture in a frame on Li’s desk._
 - **王**: 你有哥哥、弟弟吗？ (Nǐ yǒu gē ge, dì di ma?) Do you have brothers?
 - **李**: 我有两个哥哥，没有弟弟。 (Wǒ yǒu liǎng gè gē ge, méi yǒu dì di.) I have two older brothers, and no younger brothers.
   - ✓ 我有两个哥哥，没有弟弟。 I have two older brothers, and no younger brothers.
-  - ✗ 我有一个姐姐，没有妹妹。你有哥哥、弟弟吗？ I have one older sister; I don’t have younger sisters. Do you have brothers? (from d8.3)
+  - ✗ 我也没有哥哥，我有一个弟弟。 I don’t have older brothers, either. I have one younger brother. (from d8.5)
 - **王**: 你哥哥都是大学生吗？ (Nǐ gē ge dōu shì dà xué shēng ma?) Are your brothers both college students?
   - ✓ 你哥哥都是大学生吗？ Are your brothers both college students?
-  - ✗ 我有两个哥哥，没有弟弟。 I have two older brothers, and no younger brothers. (from d40.2)
+  - ✗ 我有一个姐姐，没有妹妹。你有哥哥、弟弟吗？ I have one older sister; I don’t have younger sisters. Do you have brothers? (from d8.3)
 - **李**: 我哥哥都是律师。 (Wǒ gē ge dōu shì lǜ shī.) My brothers are both lawyers.
   - ✓ 我哥哥都是律师。 My brothers are both lawyers.
-  - ✗ 你哥哥都是大学生吗？ Are your brothers both college students? (from d40.3)
+  - ✗ 是吗？那你姐姐有两个男朋友。 Is that so? Then your sister has two boyfriends. (from d47.6)
 - **王**: 是吗？我有两个弟弟，他们也都是律师。 (Shì ma? Wǒ yǒu liǎng gè dì di, tā men yě dōu shì lǜ shī.) Is that so? I have two younger brothers. Both of them are also lawyers.
   - ✓ 是吗？我有两个弟弟，他们也都是律师。 Is that so? I have two younger brothers. Both of them are also lawyers.
-  - ✗ 我哥哥都是律师。 My brothers are both lawyers. (from d40.4)
+  - ✗ 我的两个哥哥都是北京大学的学生；我姐姐是那儿的老师。 Both of my older brothers are students at Beijing University. My older sister is a teacher there. (from d21.4)
 
-### Dialogue 41 (episode 07, up to HSK 99)
+### Dialogue 41 (episode 07, has a word outside the HSK list)
 
 _Two college students are having a conversation._
 
@@ -474,73 +475,73 @@ _Two college students are having a conversation._
   - ✗ 我的两个哥哥都是北京大学的学生；我姐姐是那儿的老师。 Both of my older brothers are students at Beijing University. My older sister is a teacher there. (from d21.4)
 - **王**: 是吗？我也是德州大学的学生。你学什么？ (Shì ma? Wǒ yě shì dé zhōu dà xué de xué sheng. Nǐ xué shén me?) Is that so? I also go to UT. What do you study?
   - ✓ 是吗？我也是德州大学的学生。你学什么？ Is that so? I also go to UT. What do you study?
-  - ✗ 我是德州大学的学生。 I go to the University of Texas (UT). (from d41.2)
+  - ✗ 是，我妈妈的车也是美国车。你爸妈有车吗？ Yes. My mother’s car is also an American car. Do your parents have cars? (from d14.4)
 - **李**: 我学中文。你呢？ (Wǒ xué zhōng wén. Nǐ ne?) I study Chinese. How about you?
   - ✓ 我学中文。你呢？ I study Chinese. How about you?
   - ✗ 是，我是学生，你也是学生吗？ Yes, I am a student. Are you also a student? (from d15.2)
 - **王**: 我也学中文。你的中文老师姓什么？ (Wǒ yě xué zhōng wén. Nǐ de zhōng wén lǎo shī xìng shén me?) I study Chinese, too. What is your Chinese teacher’s last name?
   - ✓ 我也学中文。你的中文老师姓什么？ I study Chinese, too. What is your Chinese teacher’s last name?
-  - ✗ 我学中文。你呢？ I study Chinese. How about you? (from d41.4)
+  - ✗ 我没有姐姐，有一个妹妹。你呢？ I do not have older sisters; I have one younger sister. How about you? (from d8.2)
 
 ### Dialogue 43 (episode 08, up to HSK 4)
 
 - **张**: 你认识不认识王小姐？ (Nǐ rèn shi bù rèn shi wáng xiǎo jie?) Do you know Miss Wang?
 - **谢**: 王小姐？哪个王小姐？ (Wáng xiǎo jie? Nǎ gè wáng xiǎo jie?) Miss Wang? Which Miss Wang?
   - ✓ 王小姐？哪个王小姐？ Miss Wang? Which Miss Wang?
-  - ✗ 都是他的老同学，我想你不认识他们。 All were his old classmates. I don’t think you know them. (from d55.6)
+  - ✗ 我也叫你小王，好吗？ I will also call you Little Wang, OK? (from d25.6)
 
 ### Dialogue 45 (episode 08, up to HSK 3)
 
 - **李先生**: 这几个人是谁？ (Zhè jǐ gè rén shì shéi?) (Pointing at some people in a photo) Who are these people?
 - **王太太**: 这是我女儿，这两个是我儿子。 (Zhè shì wǒ nǚ ér, zhè liǎng gè shì wǒ ér zi.) This is my daughter, and these two are my sons.
   - ✓ 这是我女儿，这两个是我儿子。 This is my daughter, and these two are my sons.
-  - ✗ 是吗？这一课有几个生词？ Is that so? How many vocabulary words are there in this lesson? (from d66.3)
+  - ✗ 没有。我这几天都不忙。 Yes, I am. I am not busy these days. (from d42.4)
 - **李先生**: 你有三个孩子吗？ (Nǐ yǒu sān gè hái zi ma?) Do you have three children?
   - ✓ 你有三个孩子吗？ Do you have three children?
-  - ✗ 这是我女儿，这两个是我儿子。 This is my daughter, and these two are my sons. (from d45.2)
+  - ✗ 这两个呢？ What about these two? (from d65.5)
 
 ### Dialogue 46 (episode 09, up to HSK 1)
 
 - **女**: 你爱不爱我？ (Nǐ ài bù ài wǒ?) Do you love me?
 - **男**: 爱！ (Ài!) Yes,
   - ✓ 爱！ Yes,
-  - ✗ 我爸爸很忙，我妈妈不忙。你爸妈忙吗？ My father is busy; my mother is not. Are your parents busy? (from d3.4)
+  - ✗ 都是他的老同学，我想你不认识他们。 All were his old classmates. I don’t think you know them. (from d55.6)
 
 ### Dialogue 47 (episode 09, up to HSK 2)
 
 - **李**: 高先生，我姐姐在那儿。你们认识不认识？ (Gāo xiān sheng, wǒ jiě jie zài nàr. Nǐ men rèn shi bù rèn shi?) Mr. Gao, my older sister is over there. Do you (plural) know each other?
 - **高**: 我认识她，可是她不认识我。 (Wǒ rèn shi tā, kě shì tā bù rèn shi wǒ.) I know her, but she does not know me.
   - ✓ 我认识她，可是她不认识我。 I know her, but she does not know me.
-  - ✗ 不是，她是我姐姐。 No, she is my older sister. (from d12.2)
+  - ✗ 不是，那是我姐姐的女儿。 No, that is my older sister’s daughter. (from d32.4)
 
 ### Dialogue 49 (episode 10, up to HSK 1)
 
 - **李**: 小高，你去哪儿？ (Xiǎo gāo, nǐ qù nǎr?) Where are you going, Little Gao?
 - **高**: 我去我女朋友家。 (Wǒ qù wǒ nǚ péng you jiā.) I am going to my girlfriend’s house.
   - ✓ 我去我女朋友家。 I am going to my girlfriend’s house.
-  - ✗ 那你的车在哪儿？ Then where is your car? (from d19.3)
+  - ✗ 对！你和你女朋友去吧！ No, I don’t. Why don’t you go with your girlfriend. (from d56.19)
 - **李**: 你去那儿做什么？ (Nǐ qù nàr zuò shén me?) Why are you going there?
   - ✓ 你去那儿做什么？ Why are you going there?
-  - ✗ 我去我女朋友家。 I am going to my girlfriend’s house. (from d49.2)
+  - ✗ 你为什么请朋友去你女朋友家？ Why do you invite them to your girlfriend’s house? (from d51.6)
 - **高**: 我去那儿吃晚饭。今天她请几个朋友吃饭。 (Wǒ qù nàr chī wǎn fàn. Jīn tiān tā qǐng jǐ gè péng you chī fàn.) I am going there to have dinner. She has invited a few friends for dinner today.
   - ✓ 我去那儿吃晚饭。今天她请几个朋友吃饭。 I am going there to have dinner. She has invited a few friends for dinner today.
-  - ✗ 你去那儿做什么？ Why are you going there? (from d49.3)
+  - ✗ 对！你和你女朋友去吧！ No, I don’t. Why don’t you go with your girlfriend. (from d56.19)
 
 ### Dialogue 50 (episode 10, up to HSK 2)
 
 - **男**: 你喜欢看外国电影还是中国电影？ (Nǐ xǐ huan kàn wài guó diàn yǐng hái shi zhōng guó diàn yǐng?) Do you like (to see) foreign movies or Chinese movies?
 - **女**: 我都喜欢，可是我很忙，所以不常看电影。 (Wǒ dōu xǐ huan, kě shì wǒ hěn máng, suǒ yǐ bù cháng kàn diàn yǐng.) I like both, but I am busy, so I don’t often see movies.
   - ✓ 我都喜欢，可是我很忙，所以不常看电影。 I like both, but I am busy, so I don’t often see movies.
-  - ✗ 是中国电影还是外国电影？ Are they Chinese movies or foreign movies? (from d64.2)
+  - ✗ 太好了！我跟我妹妹都很喜欢吃日本菜。 Great! Both me and my sister like to eat Japanese food very much. (from d46.13)
 - **男**: 这个周末有一个外国电影，这个电影很好看，我们去看，怎么样？我请客。 (Zhè gè zhōu mò yǒu yī gè wài guó diàn yǐng, zhè gè diàn yǐng hěn hǎo kàn, wǒ men qù kàn, zěn me yàng? Wǒ qǐng kè.) There is a foreign movie this weekend. This movie is good. How about if we go see it? It will be my treat.
   - ✓ 这个周末有一个外国电影，这个电影很好看，我们去看，怎么样？我请客。 There is a foreign movie this weekend. This movie is good. How about if we go see it? It will be my treat.
-  - ✗ 我都喜欢，可是我很忙，所以不常看电影。 I like both, but I am busy, so I don’t often see movies. (from d50.2)
+  - ✗ 我喜欢做饭，所以周末我常请朋友去我女朋友家吃饭。 I enjoy cooking, so I often invite friends to my girlfriend’s house for dinner on weekends. (from d51.5)
 - **女**: 是吗？谢谢。星期六还是星期天？是哪国电影？ (Shì ma? Xiè xie. Xīng qī liù hái shi xīng qī tiān? Shì nǎ guó diàn yǐng?) Is that so? Thank you. Saturday or Sunday? What country movie is it?
   - ✓ 是吗？谢谢。星期六还是星期天？是哪国电影？ Is that so? Thank you. Saturday or Sunday? What country movie is it?
-  - ✗ 这个周末有一个外国电影，这个电影很好看，我们去看，怎么样？我请客。 There is a foreign movie this weekend. This movie is good. How about if we go see it? It will be my treat. (from d50.3)
+  - ✗ 我有一个姐姐，没有妹妹。你有哥哥、弟弟吗？ I have one older sister; I don’t have younger sisters. Do you have brothers? (from d8.3)
 - **男**: 星期六晚上。是一个日本电影。 (Xīng qī liù wǎn shang. Shì yī gè rì běn diàn yǐng.) Saturday evening. It’s a
   - ✓ 星期六晚上。是一个日本电影。 Saturday evening. It’s a
-  - ✗ 是吗？谢谢。星期六还是星期天？是哪国电影？ Is that so? Thank you. Saturday or Sunday? What country movie is it? (from d50.4)
+  - ✗ 今天是星期六，她周末不工作。 Today is Saturday, and she does not work on the weekend. (from d49.8)
 
 ### Dialogue 51 (episode 10, up to HSK 2)
 
@@ -548,36 +549,36 @@ _Two college students are having a conversation._
 - **谢**: 我有的时候工作，有的时候看书。 (Wǒ yǒu de shí hou gōng zuò, yǒu de shí hou kàn shū.) Sometimes I work; and sometimes
   - ✓ 我有的时候工作，有的时候看书。 Sometimes I work; and sometimes
   - ✓ 有的时候工作，有的时候看书。  (author's alternative)
-  - ✗ 你哥哥、姐姐做什么工作？ What do your older brothers and older sister do? (from d21.3)
+  - ✗ 是吗？那你姐姐有两个男朋友。 Is that so? Then your sister has two boyfriends. (from d47.6)
 
-### Dialogue 57 (episode 15, up to HSK 99)
+### Dialogue 57 (episode 15, up to HSK 5)
 
 _Ring, Ring_
 
 - **A**: 喂？ (Wèi?) Hello?
 - **B**: 请问高大中在不在？ (Qǐng wèn gāo dà zhōng zài bù zài?) May I speak to Dazhong Gao?
   - ✓ 请问高大中在不在？ May I speak to Dazhong Gao?
-  - ✗ 我很好。 I am fine. (from d2.2)
+  - ✗ 她很好。你妈妈呢？ She is fine. How about your mother? (from d4.2)
 - **A**: 请等一下，我去看一下他在不在家……大中，电话。 (Qǐng děng yī xià, wǒ qù kàn yī xià tā zài bù zài jiā…… dà zhōng, diàn huà.) Please wait for a moment. I will go take a look (to see) if he is home …. Dazhong, phonecall.
   - ✓ 请等一下，我去看一下他在不在家……大中，电话。 Please wait for a moment. I will go take a look (to see) if he is home …. Dazhong, phonecall.
-  - ✗ 请问高大中在不在？ May I speak to Dazhong Gao? (from d57.2)
+  - ✗ 不对！这是“太”字。这三个字，你都不认识。 Wrong! This is character “t]ai.” You know none of these three characters. (from d65.9)
 - **C**: 好。是谁？ (Hǎo. Shì shéi?) OK! Who is it?
   - ✓ 好。是谁？ OK! Who is it?
-  - ✗ 你们在这儿坐一下吧。我去一下洗手间。 Why don’t you sit here for a while. I will quickly run (go) to the bathroom. (from d54.11)
+  - ✗ 对！你可以不可以帮我练习一下我那天要跟她爸妈说什么？ That’s correct! Could you help me practice a little bit what I will say to her parents that day? (from d59.8)
 
 ### Dialogue 61 (episode 17, up to HSK 1)
 
 - **A**: 你这个星期有几个考试？ (Nǐ zhè gè xīng qī yǒu jǐ gè kǎo shì?) How many tests do you have this week?
 - **B**: 有两个。我昨天考了一个，今天考了一个。 (Yǒu liǎng gè. Wǒ zuó tiān kǎo le yī gè, jīn tiān kǎo le yī gè.) I had two. I took one yesterday and I took one today.
   - ✓ 有两个。我昨天考了一个，今天考了一个。 I had two. I took one yesterday and I took one today.
-  - ✗ 是吗？你有几个哥哥？ Is that so? How many older brothers do you have? (from d17.5)
+  - ✗ 不对！这是“太”字。这三个字，你都不认识。 Wrong! This is character “t]ai.” You know none of these three characters. (from d65.9)
 
 ### Dialogue 62 (episode 18, up to HSK 3)
 
 - **A**: 那个人是谁？ (Nà gè rén shì shéi?) Who is that person?
 - **B**: 哪个人？那里有两个人。 (Nǎ gè rén? Nà li yǒu liǎng gè rén.) Which person? There are two people over there. Male or female?
   - ✓ 哪个人？那里有两个人。 Which person? There are two people over there. Male or female?
-  - ✗ 这八个人是谁？我认识他们吗？ Who were these eight people? Do I know them? (from d55.5)
+  - ✗ 不是，那是我姐姐的女儿。 No, that is my older sister’s daughter. (from d32.4)
 
 ### Dialogue 64 (episode 18, up to HSK 7)
 
@@ -587,49 +588,49 @@ _Ring, Ring_
   - ✗ 你们想看哪个电影？ Which movie do you have in mind? (=Which movie do you want to see?) (from d56.15)
 - **A**: 两个都是外国电影。一个是法文的；一个是日文的。 (Liǎng gè dōu shì wài guó diàn yǐng. Yī gè shì fǎ wén de; yī gè shì rì wén de.) Both are foreign movies. One is in French; one is in Japanese.
   - ✓ 两个都是外国电影。一个是法文的；一个是日文的。 Both are foreign movies. One is in French; one is in Japanese.
-  - ✗ 是中国电影还是外国电影？ Are they Chinese movies or foreign movies? (from d64.2)
+  - ✗ 他爸爸是美国人，他妈妈是中国人。 His father is an American; his mother is (from d31.4)
 
 ### Dialogue 65 (episode 18, up to HSK 1)
 
 - **A**: 这三个字，你认识几个？ (Zhè sān gè zì, nǐ rèn shi jǐ gè?) Of these three characters, how many do you know?
 - **B**: 我认识一个。 (Wǒ rèn shi yī gè.) I know one.
   - ✓ 我认识一个。 I know one.
-  - ✗ 不对！这是“太”字。这三个字，你都不认识。 Wrong! This is character “t]ai.” You know none of these three characters. (from d65.9)
+  - ✗ 这是我爸爸，这是我妈妈，这三个是我哥哥。 This is my father; this is my mother; these three are my older brothers. (from d34.2)
 - **A**: 是吗？你认识哪一个？ (Shì ma? Nǐ rèn shi nǎ yī gè?) Is that so? Which one do you know?
   - ✓ 是吗？你认识哪一个？ Is that so? Which one do you know?
   - ✓ 是吗？你认识哪个？  (author's alternative)
-  - ✗ 对！我认识一个高小姐。 That’s correct! I know a (from d58.4)
+  - ✗ 我没有姐姐，有一个妹妹。你呢？ I do not have older sisters; I have one younger sister. How about you? (from d8.2)
 - **B**: 我认识这一个。 (Wǒ rèn shi zhè yī gè.) I know this one.
   - ✓ 我认识这一个。 I know this one.
   - ✓ 我认识这个。  (author's alternative)
-  - ✗ 是吗？你认识哪一个？ Is that so? Which one do you know? (from d65.3)
+  - ✗ 是吗？那你姐姐有两个男朋友。 Is that so? Then your sister has two boyfriends. (from d47.6)
 - **A**: 这两个呢？ (Zhè liǎng gè ne?) What about these two?
   - ✓ 这两个呢？ What about these two?
-  - ✗ 我认识这一个。 I know this one. (from d65.4)
+  - ✗ 是吗？这一课有几个生词？ Is that so? How many vocabulary words are there in this lesson? (from d66.3)
 - **B**: 这两个我都不认识。 (Zhè liǎng gè wǒ dōu bù rèn shi.) I know neither of them.
   - ✓ 这两个我都不认识。 I know neither of them.
   - ✓ 我都不认识。  (author's alternative)
-  - ✗ 这两个呢？ What about these two? (from d65.5)
+  - ✗ 这是我女儿，这两个是我儿子。 This is my daughter, and these two are my sons. (from d45.2)
 - **A**: 这是什么字？ (Zhè shì shén me zì?) (Pointing at the character B knows) What character is this?
   - ✓ 这是什么字？ (Pointing at the character B knows) What character is this?
-  - ✗ 这两个我都不认识。 I know neither of them. (from d65.6)
+  - ✗ 有，我有两个姐姐、一个妹妹。你呢？ Yes, I have two older sisters and one younger sister. How about you? (from d37.2)
 - **B**: 是“大”字。 (Shì" dà" zì.) It is character “d]a.”
   - ✓ 是“大”字。 It is character “d]a.”
-  - ✗ 这是什么字？ (Pointing at the character B knows) What character is this? (from d65.7)
+  - ✗ 这是我姐姐。 This is my older sister. (from d32.2)
 - **A**: 不对！这是“太”字。这三个字，你都不认识。 (Bù duì! Zhè shì" tài" zì. Zhè sān gè zì, nǐ dōu bù rèn shi.) Wrong! This is character “t]ai.” You know none of these three characters.
   - ✓ 不对！这是“太”字。这三个字，你都不认识。 Wrong! This is character “t]ai.” You know none of these three characters.
-  - ✗ 是“大”字。 It is character “d]a.” (from d65.8)
+  - ✗ 他是我哥哥的老师，他女朋友也是我哥哥的老师。 He is my older brother’s teacher. His girlfriend is also my older brother’s teacher. (from d13.4)
 
 ### Dialogue 66 (episode 18, up to HSK 7)
 
 - **A**: 你觉得学语法难还是写汉字难？ (Nǐ jué de xué yǔ fǎ nán hái shi xiě hàn zì nán?) Do you think learning grammar is harder or writing Chinese characters is harder?
 - **B**: 很难说。第八课的语法很容易，可是生词很多，有的很难。 (Hěn nán shuō. Dì bā kè de yǔ fǎ hěn róng yì, kě shì shēng cí hěn duō, yǒu de hěn nán.) Hard to say. Grammar in (=of) Lesson 8 is easy, but there are many vocabulary words. Some are hard.
   - ✓ 很难说。第八课的语法很容易，可是生词很多，有的很难。 Hard to say. Grammar in (=of) Lesson 8 is easy, but there are many vocabulary words. Some are hard.
-  - ✗ 我学中文。你呢？ I study Chinese. How about you? (from d41.4)
+  - ✗ 对。中文语法好难，所以老师在教语法的时候，大家都一边听，一边录音。 That’s right. Chinese grammar is so difficult, so when the teacher is teaching grammar, everybody listens and records at the same time. (from d70.12)
 - **A**: 是吗？这一课有几个生词？ (Shì ma? Zhè yī kè yǒu jǐ gè shēng cí?) Is that so? How many vocabulary words are there in this lesson?
   - ✓ 是吗？这一课有几个生词？ Is that so? How many vocabulary words are there in this lesson?
   - ✓ 是吗？这课有几个生词？  (author's alternative)
-  - ✗ 我都喜欢，可是我很忙，所以不常看电影。 I like both, but I am busy, so I don’t often see movies. (from d50.2)
+  - ✗ 你的朋友都很喜欢你，对不对？ All your friends like you very much, right? (from d51.8)
 
 ### Dialogue 70 (episode 20, up to HSK 5)
 
@@ -639,13 +640,13 @@ _Ring, Ring_
   - ✗ 不是，那是我爸爸的车，我没有车。 No, that is my father’s car. I don’t have a car. (from d14.2)
 - **妈**: 他在做什么？ (Tā zài zuò shén me?) What is he doing?
   - ✓ 他在做什么？ What is he doing?
-  - ✗ 他已经回来了。 He has already come back. (from d70.2)
+  - ✗ 他做什么工作？ What (kind of) work does he do? (from d18.5)
 - **中**: 他在客厅看电视。 (Tā zài kè tīng kàn diàn shì.) He is watching TV in the living room.
   - ✓ 他在客厅看电视。 He is watching TV in the living room.
-  - ✗ 他在做什么？ What is he doing? (from d70.3)
+  - ✗ 请等一下，我去看一下他在不在家……大中，电话。 Please wait for a moment. I will go take a look (to see) if he is home …. Dazhong, phonecall. (from d57.3)
 - **妈**: 我也有工作，为什么回家以后他在看电视可是我在做饭？ (Wǒ yě yǒu gōng zuò, wèi shén me huí jiā yǐ hòu tā zài kàn diàn shì kě shì wǒ zài zuò fàn?) I have a job, too. Why is it that he is watching TV but I am cooking after coming home?
   - ✓ 我也有工作，为什么回家以后他在看电视可是我在做饭？ I have a job, too. Why is it that he is watching TV but I am cooking after coming home?
-  - ✗ 他在做什么？ What is he doing? (from d70.3)
+  - ✗ 那我和我女朋友看了电影以后想来你家找你，可以吗？ Then my girlfriend and I would like to come to your house to see you after the movie, is it OK? (from d56.20)
 
 ## Lines left out
 
