@@ -1,18 +1,19 @@
 # Audio check
 
-11608 clips. 26 could not be confirmed by speech recognition, so the app does not play them and uses the phone's own voice for those words instead. 879 came back as a same-sounding word, which counts as a pass.
+11824 clips. 27 could not be confirmed by speech recognition, so the app does not play them and uses the phone's own voice for those words instead. 887 came back as a same-sounding word, which counts as a pass.
 
 ## Not confirmed (not played in the app)
 
 - 实惠 (shí huì), female voice: heard "协会" (282925dca3_f.mp3)
 - 实惠 (shí huì), male voice: heard "学会" (282925dca3_m.mp3)
-- 晒 (shài), male voice: heard "单" (4c89711c54_m.mp3)
 - 近 (jìn), male voice: heard "静" (589d6e60af_m.mp3)
-- 尽 (jìn), male voice: heard "静" (61d16f9ae1_m.mp3)
 - 紧 (jǐn), female voice: heard "警" (83c8d4c6be_f.mp3)
 - 仅 (jǐn), female voice: heard "警" (85885f4c80_f.mp3)
 - 仅 (jǐn), male voice: heard "警" (85885f4c80_m.mp3)
 - 尺 (chǐ), male voice: heard "鞋" (94e9c639b1_m.mp3)
+- 在那儿！那儿有一辆日本车，那是我的车。 (Zài nàr! Nàr yǒu yī liàng rì běn chē, nà shì wǒ de chē.), male voice: heard "在哪哪有一辆日本车那是我的车" (conv-d19.4_m.mp3)
+- 有二十八天。你为什么问我这个？ (Yǒu èr shí bā tiān. Nǐ wèi shén me wèn wǒ zhè gè?), female voice: heard "有28天你为什么问我这个" (conv-d48.4_f.mp3)
+- 有二十八天。你为什么问我这个？ (Yǒu èr shí bā tiān. Nǐ wèi shén me wèn wǒ zhè gè?), male voice: heard "有28天你为什么问我这个" (conv-d48.4_m.mp3)
 - 我儿子十岁了。 (Wǒ ér zi shí suì le.), female voice: heard "我儿子10岁了" (t10029668_f.mp3)
 - 我儿子十岁了。 (Wǒ ér zi shí suì le.), male voice: heard "我儿子10岁了" (t10029668_m.mp3)
 - 现在是一点五十分。 (Xiàn zài shì yī diǎn wǔ shí fēn.), female voice: heard "现在是1点50分" (t13994928_f.mp3)
@@ -393,6 +394,7 @@
 - 照 (zhào), male voice: heard "赵" (60c711e8b2_m.mp3)
 - 制订 (zhì dìng), male voice: heard "界定" (614eb84706_m.mp3)
 - 尽 (jìn), female voice: heard "静" (61d16f9ae1_f.mp3)
+- 尽 (jìn), male voice: heard "静" (61d16f9ae1_m.mp3)
 - 渴 (kě), female voice: heard "可" (61eb4852c5_f.mp3)
 - 渴 (kě), male voice: heard "可" (61eb4852c5_m.mp3)
 - 屋 (wū), male voice: heard "无" (622d37d9c0_m.mp3)
@@ -726,6 +728,13 @@
 - 事 (shì), male voice: heard "去" (cf54bb1733_m.mp3)
 - 针 (zhēn), female voice: heard "真" (cf92b0a0ff_f.mp3)
 - 针 (zhēn), male voice: heard "gin" (cf92b0a0ff_m.mp3)
+- 那你的车在哪儿？ (Nà nǐ de chē zài nǎr?), male voice: heard "那你的车在哪" (conv-d19.3_m.mp3)
+- 她今天不忙吗？ (Tā jīn tiān bù máng ma?), female voice: heard "他今天不忙吗" (conv-d49.7_f.mp3)
+- 今天是星期六，她周末不工作。 (Jīn tiān shì xīng qī liù, tā zhōu mò bù gōng zuò.), female voice: heard "今天是星期六他周末不工作" (conv-d49.8_f.mp3)
+- 今天是星期六，她周末不工作。 (Jīn tiān shì xīng qī liù, tā zhōu mò bù gōng zuò.), male voice: heard "今天是星期六他周末不工作" (conv-d49.8_m.mp3)
+- 对！你可以不可以帮我练习一下我那天要跟她爸妈说什么？ (Duì! Nǐ kě yǐ bù kě yǐ bāng wǒ liàn xí yī xià wǒ nà tiān yào gēn tā bà mā shuō shén me?), male voice: heard "你可以不可以帮我练习一下我那天要跟他爸妈说什么" (conv-d59.8_m.mp3)
+- 不对！这是“太”字。这三个字，你都不认识。 (Bù duì! Zhè shì" tài" zì. Zhè sān gè zì, nǐ dōu bù rèn shi.), female voice: heard "不对这是太子这三个字你都不认识" (conv-d65.9_f.mp3)
+- 不对！这是“太”字。这三个字，你都不认识。 (Bù duì! Zhè shì" tài" zì. Zhè sān gè zì, nǐ dōu bù rèn shi.), male voice: heard "不对这是太子这三个字你都不认识" (conv-d65.9_m.mp3)
 - 主角 (zhǔ jué), female voice: heard "猪叫" (d0003d03e1_f.mp3)
 - 被 (bèi), female voice: heard "背" (d0fcb91385_f.mp3)
 - 被 (bèi), male voice: heard "背" (d0fcb91385_m.mp3)
