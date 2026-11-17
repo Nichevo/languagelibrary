@@ -45,6 +45,9 @@ DIR = ROOT / "tools" / "sources" / "coerll"
 OUT_JSON = DIR / "scenes.json"
 OUT_REPORT = ROOT / "tools" / "dialogues_report.md"
 LIBRARY = ROOT / "app" / "assets" / "data" / "library.json"
+# The scenes that have been checked in English, and what the app reads.
+APPROVED = DIR / "approved.tsv"
+OUT_APP = ROOT / "app" / "assets" / "data" / "conversations.json"
 # Replies a person checked and marked "doesn't fit" on the scene check page:
 # turn line, reply line, and why. They are never offered as right replies there.
 REJECTED = DIR / "rejected.tsv"
@@ -218,6 +221,7 @@ def check_line(text: str, reader: st.Reader, levels: dict[str, int]) -> dict:
     pinyin, numbered = st._pinyin_text(tokens)
     lv = {w: level_of(w, levels) for w in words}
     return {"ok": True, "why": "", "pinyin": pinyin, "pinyinNumbered": numbered, "words": words,
+            "pronunciation": st._pronunciation(tokens),
             "hsk": max(lv.values(), default=1), "beyond": [w for w in words if lv[w] > 2]}
 
 
@@ -264,7 +268,8 @@ def check_all(dialogues: list[dict], reader: st.Reader, t2s, levels) -> None:
             for a in alts:
                 c = check_line(a, reader, levels)
                 if c["ok"]:
-                    ln["alts"].append({"zh": a, "pinyin": c["pinyin"], "pinyinNumbered": c["pinyinNumbered"]})
+                    ln["alts"].append({"zh": a, "pinyin": c["pinyin"], "pinyinNumbered": c["pinyinNumbered"],
+                                       "pronunciation": c["pronunciation"]})
 
 
 # ---------------------------------------------------------------- the web
@@ -380,6 +385,7 @@ def fill_from_tatoeba(turns: dict, lines: dict, index: list[dict]) -> None:
         if cands:
             t = min(cands, key=lambda t: (len(t["zh"]), int(t["id"])))
             turn["right"].append({"tatoeba": t["id"], "zh": t["zh"], "en": t["en"], "pinyin": t["pinyin"],
+                                  "pinyinNumbered": t.get("pinyinNumbered", ""), "pronunciation": t.get("pronunciation"),
                                   "credit": t["credit"], "next": turn["right"][0]["next"]})
             turn["wrong"] = turn["wrong"][:1]
 
@@ -420,6 +426,80 @@ def build_output(dialogues: list[dict], turns: dict) -> dict:
         "lines": {ln["id"]: {k: ln.get(k) for k in keep} for d in dialogues for ln in d["lines"]},
         "turns": turns,
         "scenes": scenes,
+    }
+
+
+def load_approved(path: Path = APPROVED) -> list[str]:
+    if not path.exists():
+        return []
+    rows = [ln.split("\t") for ln in path.read_text(encoding="utf-8").splitlines()[1:] if ln.strip()]
+    return [r[0] for r in rows]
+
+
+def _entry(eid: str, zh: str, en: str, c: dict, source: str) -> dict:
+    """The same shape as a phrasebook sentence in library.json, so the app can
+    play it, show its pinyin and check it with Say it."""
+    return {"id": eid, "kind": "sentence", "simplified": zh, "traditional": "", "pinyin": c["pinyin"],
+            "pinyinNumbered": c["pinyinNumbered"], "meanings": [en], "classifiers": [], "hsk": None,
+            "frequency": None, "topics": ["conversations"], "pronunciation": c["pronunciation"],
+            "polyphonic": False, "notes": [], "sources": [source], "related": []}
+
+
+def build_app(dialogues: list[dict], turns: dict, out: dict, approved: list[str]) -> dict:
+    """The checked scenes for the app: every line, reply and wrong reply as an
+    entry, which line comes next, and the three choices at each of your turns.
+    A right reply from another dialogue carries on in that dialogue when that
+    scene is checked too; otherwise both right replies lead to the same line."""
+    lines = {ln["id"]: ln for d in dialogues for ln in d["lines"]}
+    scenes = [s for s in out["scenes"] if s["id"] in set(approved)]
+    nxt = {}
+    for s in scenes:
+        for a, b in zip(s["lines"], s["lines"][1:] + [None]):
+            nxt[a] = b
+    entries: dict[str, dict] = {}
+
+    def line_entry(lid: str) -> str:
+        ln = lines[lid]
+        d = lid[1:].split(".")[0]
+        eid = f"conv-{lid}"
+        entries.setdefault(eid, _entry(eid, ln["zh"], ln["en"], ln, f"Chinese Dialogues Podcast, dialogue {d}. {CREDIT}"))
+        return eid
+
+    app_turns = {}
+    for s in scenes:
+        for lid in s["lines"]:
+            line_entry(lid)
+        for lid in s["lines"][1:]:
+            t = turns.get(lid)
+            if not t:
+                continue
+            right = []
+            for i, r in enumerate(t["right"]):
+                if "tatoeba" in r:
+                    eid = f"conv-t{r['tatoeba']}"
+                    entries.setdefault(eid, _entry(eid, r["zh"], r["en"], r, "; ".join(r["credit"])))
+                    then = nxt[lid]
+                elif r.get("alt"):
+                    eid = f"conv-{lid}-alt{i}"
+                    alt = next(a for a in lines[r["line"]]["alts"] if a["zh"] == r["zh"])
+                    entries.setdefault(eid, _entry(eid, r["zh"], lines[r["line"]]["en"], alt,
+                                                   entries[line_entry(lid)]["sources"][0]))
+                    then = nxt[lid]
+                else:
+                    eid = line_entry(r["line"])
+                    then = nxt.get(r["line"]) if r["line"] in nxt else nxt[lid]
+                    if then is None:
+                        then = nxt[lid]
+                right.append({"entry": eid, "then": then})
+            wrong = [line_entry(w) for w in t["wrong"]]
+            app_turns[lid] = {"right": right, "wrong": wrong}
+    return {
+        "source": CREDIT,
+        "entries": list(entries.values()),
+        "scenes": [{"id": s["id"], "title": lines[s["lines"][0]]["en"], "hsk": s["hsk"], "lines": s["lines"]}
+                   for s in scenes],
+        "next": nxt,
+        "turns": app_turns,
     }
 
 
@@ -508,6 +588,11 @@ def main(argv=None):
     out = build_output(dialogues, turns)
     OUT_JSON.write_text(json.dumps(out, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
     write_report(dialogues, turns, out)
+    approved = load_approved()
+    if approved:
+        app = build_app(dialogues, turns, out, approved)
+        OUT_APP.write_text(json.dumps(app, ensure_ascii=False, separators=(",", ":")) + "\n", encoding="utf-8")
+        print(f"{len(app['scenes'])} checked scenes, {len(app['entries'])} lines -> {OUT_APP.relative_to(ROOT)}")
     print(f"{len(dialogues)} dialogues, {len(out['scenes'])} scenes, {len(turns)} reply turns -> {OUT_REPORT.relative_to(ROOT)}")
 
 

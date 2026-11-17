@@ -32,6 +32,14 @@ class AboutScreen extends StatelessWidget {
           'number and who wrote it. Licence: https://creativecommons.org/licenses/by/2.0/fr/',
     ),
     (
+      'Chinese Dialogues Podcast',
+      'Wen-Hua Teng, COERLL, The University of Texas at Austin, Creative Commons Attribution 3.0 (CC BY 3.0)',
+      'https://coerll.utexas.edu/coerll/oer/chinese-dialogues-podcast/',
+      'The conversations on Practice > Conversations. Lines are copied from the transcripts; which '
+          'replies are offered at each turn is worked out by this app, and every scene was checked '
+          'in English before it went in.',
+    ),
+    (
       'WordNet',
       'Copyright Princeton University, WordNet licence',
       'https://wordnet.princeton.edu/',

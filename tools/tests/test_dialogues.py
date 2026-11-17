@@ -168,6 +168,24 @@ class CheckTest(unittest.TestCase):
         self.assertEqual([s["id"] for s in out["scenes"]], ["d2", "d9"])
         self.assertEqual(out["scenes"][1]["lines"], ["d9.1", "d9.2"])
 
+    def test_app_export(self):
+        turns = dg.build_web(self.ds)
+        out = dg.build_output(self.ds, turns)
+        app = dg.build_app(self.ds, turns, out, ["d2"])
+        self.assertEqual([s["id"] for s in app["scenes"]], ["d2"])
+        self.assertEqual(app["next"]["d2.1"], "d2.2")
+        self.assertIsNone(app["next"]["d2.4"])
+        ids = {e["id"] for e in app["entries"]}
+        t = app["turns"]["d2.4"]
+        self.assertEqual(t["right"][0], {"entry": "conv-d2.4", "then": None})
+        # 我很忙 comes from dialogue 9, which isn't checked, so it leads where 我不忙 does.
+        self.assertEqual(t["right"][1]["then"], None)
+        for r in t["right"]:
+            self.assertIn(r["entry"], ids)
+        e = next(e for e in app["entries"] if e["id"] == "conv-d2.1")
+        self.assertEqual(e["kind"], "sentence")
+        self.assertEqual([s["hanzi"] for s in e["pronunciation"]["syllables"]], ["你", "好", "吗"])
+
     def test_rejected_reply(self):
         turns = dg.build_web(self.ds, {("d2.4", "d9.2")})
         self.assertEqual([r["zh"] for r in turns["d2.4"]["right"]], ["我不忙。"])
