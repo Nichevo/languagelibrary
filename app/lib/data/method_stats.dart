@@ -17,6 +17,7 @@ const methodLabels = {
   'tones': 'Hear it, pick the tone',
   'build': 'Build the sentence',
   'speak': 'Say it',
+  'talk': 'Conversations',
 };
 
 /// How one practice method has gone.

@@ -3,12 +3,15 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 
 import '../data/conversations.dart';
+import '../data/talk.dart';
 import '../models/entry.dart';
 import '../speech/heard.dart';
 import '../speech/speech_service.dart';
 import '../speech/tone_shape.dart';
+import '../srs/scheduler.dart';
 import 'common.dart';
 import 'say_it_screen.dart';
+import 'talk_review.dart';
 import 'wide.dart';
 
 const conversationSourceNote = 'Conversations from the Chinese Dialogues Podcast by Wen-Hua Teng, COERLL, '
@@ -30,12 +33,15 @@ class _ConversationsScreenState extends State<ConversationsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final conv = AppScope.of(context).library.conversations;
+    final scope = AppScope.of(context);
+    final conv = scope.library.conversations;
     final theme = Theme.of(context);
     return Scaffold(
       appBar: AppBar(title: const Text('Conversations')),
       body: Readable(
-        child: ListView(
+        child: ListenableBuilder(
+          listenable: scope.store,
+          builder: (context, _) => ListView(
           padding: const EdgeInsets.fromLTRB(16, 8, 16, 32),
           children: [
             SwitchListTile(
@@ -59,9 +65,10 @@ class _ConversationsScreenState extends State<ConversationsScreen> {
               Card(
                 margin: const EdgeInsets.only(bottom: 8),
                 child: ListTile(
+                  leading: _SceneMark(runsOf(scope.store.talkRuns, s.id)),
                   title: Text(s.title),
                   subtitle: Text('${conv.line(s.lines.first)?.simplified ?? ''}\n'
-                      '${s.lines.length} lines · HSK ${s.hsk}'),
+                      '${_sceneNote(runsOf(scope.store.talkRuns, s.id), s)}'),
                   isThreeLine: true,
                   trailing: const Icon(Icons.chevron_right),
                   onTap: () => Navigator.of(context).push(MaterialPageRoute(
@@ -80,8 +87,38 @@ class _ConversationsScreenState extends State<ConversationsScreen> {
             Text(conversationSourceNote, style: theme.textTheme.bodySmall?.copyWith(color: theme.colorScheme.outline)),
           ],
         ),
+        ),
       ),
     );
+  }
+
+  /// "New", or how the last go went and whether it's due again.
+  static String _sceneNote(List<TalkRun> runs, Scene s) {
+    if (runs.isEmpty) return 'New · ${s.lines.length} lines · HSK ${s.hsk}';
+    final last = runs.last;
+    final parts = <String>[
+      if (last.choices.isNotEmpty) 'Last: ${last.firstTime}/${last.choices.length} right',
+      if (last.spokenTurns.isNotEmpty) '${last.saidWell}/${last.spokenTurns.length} said well',
+      if (!last.finished) 'stopped early',
+      if (!reviewDue(last).isAfter(DateTime.now())) 'Review due',
+    ];
+    return parts.isEmpty ? 'Done ${runs.length}×' : parts.join(' · ');
+  }
+}
+
+/// A coloured dot for how the last go at a scene went, or an outline when new.
+class _SceneMark extends StatelessWidget {
+  const _SceneMark(this.runs);
+  final List<TalkRun> runs;
+
+  @override
+  Widget build(BuildContext context) {
+    final scheme = Theme.of(context).colorScheme;
+    if (runs.isEmpty) {
+      return Tooltip(message: 'New', child: Icon(Icons.circle_outlined, size: 18, color: scheme.outline));
+    }
+    final m = runs.last.mark;
+    return Tooltip(message: markLabel(m), child: Icon(Icons.circle, size: 18, color: markColor(m, scheme)));
   }
 }
 
@@ -147,9 +184,12 @@ class _ConversationScreenState extends State<ConversationScreen> {
   Timer? _limit;
   String? _error;
 
-  // For the end of the scene.
-  int _turns = 0, _firstTime = 0, _saidWell = 0, _spoken = 0;
-  bool _missedThisTurn = false;
+  // For the review at the end.
+  final List<TalkTurn> _log = [];
+  DateTime _startedAt = DateTime.now(), _turnStartedAt = DateTime.now();
+  int _wrongPicks = 0, _peeks = 0;
+  TalkRun? _run;
+  List<TalkRun> _earlier = const [];
 
   Conversations get _conv => AppScope.of(context).library.conversations;
 
@@ -202,7 +242,8 @@ class _ConversationScreenState extends State<ConversationScreen> {
     _ruledOut.clear();
     _picked = null;
     _wrongNote = null;
-    _missedThisTurn = false;
+    _wrongPicks = 0;
+    _turnStartedAt = DateTime.now();
     _resetSpeech();
     _phase = _Phase.choosing;
     // Your very first line as the first speaker: there's nothing to choose.
@@ -222,7 +263,7 @@ class _ConversationScreenState extends State<ConversationScreen> {
   void _pick(int i) {
     final c = _choices[i];
     if (!c.right) {
-      _missedThisTurn = true;
+      _wrongPicks++;
       _ruledOut.add(i);
       final question = _said.isEmpty ? null : _said.last.entry;
       _wrongNote = 'Good Chinese, but it doesn\'t answer. It says “${c.entry.meanings.first}”'
@@ -259,15 +300,7 @@ class _ConversationScreenState extends State<ConversationScreen> {
 
   void _carryOn() {
     final p = _picked!;
-    // Your opening line as the first speaker isn't a choice, so it isn't counted.
-    if (_choices.length > 1) {
-      _turns++;
-      if (!_missedThisTurn) _firstTime++;
-    }
-    if (!widget.chooseOnly && _tries > 0) {
-      _spoken++;
-      if (_check?.allRight ?? false) _saidWell++;
-    }
+    _logTurn(p);
     final note = widget.chooseOnly
         ? null
         : _tries == 0
@@ -287,15 +320,83 @@ class _ConversationScreenState extends State<ConversationScreen> {
     _scrollDown();
   }
 
-  void _finish() {
+  /// Keeps what happened at this turn, and counts the reply toward the daily
+  /// goal and Progress.
+  void _logTurn(ReplyChoice p) {
+    final check = _check;
+    final choice = _choices.length > 1;
+    _log.add(TalkTurn(
+      line: _turn ?? '',
+      picked: p.entry.id,
+      wrongPicks: _wrongPicks,
+      tries: _tries,
+      saidWell: check?.allRight ?? false,
+      heardRight: check == null ? 0 : check.syllables.where((s) => s.heard == Heard.right).length,
+      heardOf: check?.syllables.length ?? 0,
+      slips: check == null ? const [] : slipsOf(check),
+      choice: choice,
+    ));
+    // Your opening line as the first speaker isn't a choice, so it isn't counted.
+    if (choice) {
+      final now = DateTime.now();
+      unawaited(AppScope.of(context).store.logAnswer(
+          _wrongPicks == 0 ? Rating.good : Rating.again, now.difference(_turnStartedAt), now,
+          method: 'talk', id: p.entry.id));
+    }
+  }
+
+  /// Ends the scene (or stops it early) and shows the review.
+  void _finish({bool stopped = false}) {
     _phase = _Phase.done;
     _turn = null;
-    _scrollDown();
+    final store = AppScope.of(context).store;
+    final now = DateTime.now();
+    final run = TalkRun(
+      at: now,
+      scene: widget.scene.id,
+      seconds: now.difference(_startedAt).inSeconds,
+      finished: !stopped,
+      turns: List.of(_log),
+      youStart: widget.youStart,
+      chooseOnly: widget.chooseOnly,
+      englishPeeks: _peeks,
+    );
+    _earlier = runsOf(store.talkRuns, widget.scene.id);
+    _run = run;
+    if (run.turns.isNotEmpty) unawaited(store.logTalkRun(run));
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (_scroll.hasClients) _scroll.jumpTo(0);
+    });
+  }
+
+  void _again() => setState(() {
+        _said.clear();
+        _log.clear();
+        _peeks = 0;
+        _run = null;
+        _startedAt = DateTime.now();
+        _start();
+      });
+
+  /// Asked when you leave in the middle of a scene with turns done.
+  Future<void> _askStop() async {
+    final stop = await showDialog<bool>(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text('Stop this scene?'),
+        content: const Text('You\'ll see how it went so far.'),
+        actions: [
+          TextButton(onPressed: () => Navigator.of(context).pop(false), child: const Text('Keep going')),
+          FilledButton(onPressed: () => Navigator.of(context).pop(true), child: const Text('Stop and review')),
+        ],
+      ),
+    );
+    if (stop == true && mounted) setState(() => _finish(stopped: true));
   }
 
   void _scrollDown() {
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      if (_scroll.hasClients) {
+      if (_scroll.hasClients && _phase != _Phase.done) {
         _scroll.animateTo(_scroll.position.maxScrollExtent,
             duration: const Duration(milliseconds: 250), curve: Curves.easeOut);
       }
@@ -358,6 +459,7 @@ class _ConversationScreenState extends State<ConversationScreen> {
       final tones = await loadCharTones();
       if (!mounted) return;
       final check = checkHeard(_picked!.entry, result.transcript.text, tones);
+      _logWords(_picked!.entry.id, check);
       setState(() {
         _tries++;
         _check = check;
@@ -375,34 +477,58 @@ class _ConversationScreenState extends State<ConversationScreen> {
     }
   }
 
+  /// Each library word in the line counts as a Say it try for that word.
+  void _logWords(String entryId, WordCheck check) {
+    final store = AppScope.of(context).store;
+    final now = DateTime.now();
+    var i = 0;
+    for (final (hanzi, id) in _conv.words[entryId] ?? const <(String, String?)>[]) {
+      final n = _hanCount(hanzi);
+      final part = check.syllables.skip(i).take(n).toList();
+      i += n;
+      if (id == null || part.length < n || n == 0) continue;
+      unawaited(store.logSpeakTry(id, part.every((s) => s.heard == Heard.right), now));
+    }
+  }
+
+  static final _han = RegExp(r'[㐀-鿿]');
+  static int _hanCount(String s) => _han.allMatches(s).length;
+
   @override
   Widget build(BuildContext context) {
     final scene = widget.scene;
-    return Scaffold(
-      appBar: AppBar(title: Text(scene.title, overflow: TextOverflow.ellipsis)),
+    final midway = _phase != _Phase.done && _log.isNotEmpty;
+    return PopScope(
+      canPop: !midway,
+      onPopInvokedWithResult: (didPop, _) {
+        if (!didPop) _askStop();
+      },
+      child: Scaffold(
+      appBar: AppBar(title: Text(scene.title, overflow: TextOverflow.ellipsis), actions: [
+        if (midway) TextButton(onPressed: _askStop, child: const Text('Stop')),
+      ]),
       body: Readable(
         child: ListView(
           controller: _scroll,
           padding: const EdgeInsets.fromLTRB(16, 12, 16, 32),
           children: [
-            for (final s in _said) _Bubble(s, onPlay: () => _play(s.entry, female: !s.mine)),
+            // At the end the review takes the whole screen, so it can't be missed
+            // below the conversation.
+            if (_phase != _Phase.done)
+            for (final s in _said)
+              _Bubble(s, onPlay: () => _play(s.entry, female: !s.mine), onEnglish: () => _peeks++),
             if (_phase == _Phase.choosing && _turn != null) ..._choosing(context),
             if (_phase == _Phase.saying && _picked != null) ..._saying(context),
-            if (_phase == _Phase.done) _Done(
-              turns: _turns,
-              firstTime: _firstTime,
-              saidWell: _saidWell,
-              spoken: _spoken,
-              chooseOnly: widget.chooseOnly,
-              onAgain: () => setState(() {
-                _said.clear();
-                _turns = _firstTime = _saidWell = _spoken = 0;
-                _start();
-              }),
-            ),
+            if (_phase == _Phase.done && _run != null) ...[
+              const SizedBox(height: 8),
+              Text(_run!.finished ? 'End of the conversation' : 'Stopped early',
+                  textAlign: TextAlign.center, style: Theme.of(context).textTheme.titleMedium),
+              TalkReview(run: _run!, earlier: _earlier, onAgain: _again),
+            ],
           ],
         ),
       ),
+    ),
     );
   }
 
@@ -546,9 +672,9 @@ class _ConversationScreenState extends State<ConversationScreen> {
 }
 
 class _Bubble extends StatelessWidget {
-  const _Bubble(this.said, {required this.onPlay});
+  const _Bubble(this.said, {required this.onPlay, required this.onEnglish});
   final _Said said;
-  final VoidCallback onPlay;
+  final VoidCallback onPlay, onEnglish;
 
   @override
   Widget build(BuildContext context) {
@@ -570,7 +696,7 @@ class _Bubble extends StatelessWidget {
                 children: [
                   HanziText(said.entry, style: theme.textTheme.titleLarge),
                   PinyinText(said.entry, style: theme.textTheme.bodyMedium),
-                  _English(said.entry.meanings.first),
+                  _English(said.entry.meanings.first, onShown: onEnglish),
                   if (said.note != null)
                     Padding(
                       padding: const EdgeInsets.only(top: 4),
@@ -588,8 +714,9 @@ class _Bubble extends StatelessWidget {
 
 /// English stays hidden until tapped, so you have to understand the Chinese.
 class _English extends StatefulWidget {
-  const _English(this.text);
+  const _English(this.text, {required this.onShown});
   final String text;
+  final VoidCallback onShown;
 
   @override
   State<_English> createState() => _EnglishState();
@@ -607,7 +734,10 @@ class _EnglishState extends State<_English> {
             alignment: Alignment.centerLeft,
             child: TextButton(
               style: TextButton.styleFrom(padding: EdgeInsets.zero, minimumSize: const Size(36, 28)),
-              onPressed: () => setState(() => _shown = true),
+              onPressed: () {
+                widget.onShown();
+                setState(() => _shown = true);
+              },
               child: const Text('EN'),
             ),
           );
@@ -642,46 +772,6 @@ class _ChoiceCard extends StatelessWidget {
             ],
           ),
           trailing: IconButton(tooltip: 'Play', icon: const Icon(Icons.volume_up_outlined), onPressed: onPlay),
-        ),
-      ),
-    );
-  }
-}
-
-/// A short summary for now; the full review comes in the next step.
-class _Done extends StatelessWidget {
-  const _Done(
-      {required this.turns,
-      required this.firstTime,
-      required this.saidWell,
-      required this.spoken,
-      required this.chooseOnly,
-      required this.onAgain});
-  final int turns, firstTime, saidWell, spoken;
-  final bool chooseOnly;
-  final VoidCallback onAgain;
-
-  @override
-  Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    return Card(
-      margin: const EdgeInsets.only(top: 12),
-      child: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text('End of the conversation', style: theme.textTheme.titleMedium),
-            const SizedBox(height: 8),
-            if (turns > 0) Text('Right reply first time: $firstTime of $turns'),
-            if (!chooseOnly && spoken > 0) Text('Said well: $saidWell of $spoken'),
-            const SizedBox(height: 12),
-            Row(children: [
-              OutlinedButton(onPressed: onAgain, child: const Text('Again')),
-              const SizedBox(width: 8),
-              FilledButton(onPressed: () => Navigator.of(context).pop(), child: const Text('Done')),
-            ]),
-          ],
         ),
       ),
     );

@@ -6,6 +6,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:language_library/audio/speaker.dart';
 import 'package:language_library/data/conversations.dart';
 import 'package:language_library/data/library.dart';
+import 'package:language_library/data/talk.dart';
 import 'package:language_library/data/user_store.dart';
 import 'package:language_library/device/device.dart';
 import 'package:language_library/speech/pitch.dart';
@@ -93,13 +94,60 @@ void main() {
     });
   });
 
+  group('a go at a scene', () {
+    TalkRun run({int wrong = 0, bool said = true}) => TalkRun(
+          at: DateTime(2026, 11, 17, 9),
+          scene: 'd2',
+          seconds: 75,
+          finished: true,
+          englishPeeks: 2,
+          turns: [
+            const TalkTurn(line: 'd2.1', picked: 'conv-d2.1', tries: 1, saidWell: true, heardRight: 3, heardOf: 3, choice: false),
+            TalkTurn(line: 'd2.2', picked: 'conv-d2.2', wrongPicks: wrong, tries: 2, saidWell: said,
+                heardRight: said ? 3 : 2, heardOf: 3, slips: said ? const [] : const ['好>号']),
+          ],
+        );
+
+    test('reads back what it wrote', () {
+      final r = run(wrong: 1, said: false);
+      final back = TalkRun.fromJson(jsonDecode(jsonEncode(r.toJson())) as Map);
+      expect(back.key, r.key);
+      expect(back.turns.last.slips, ['好>号']);
+      expect(back.turns.first.choice, isFalse);
+      expect(back.englishPeeks, 2);
+      expect(back.choices, hasLength(1));
+      expect(back.triesPerReply, 1.5);
+    });
+
+    test('marks: green when right and said well, red when missed', () {
+      expect(run().mark, TalkMark.good);
+      expect(run(wrong: 1).mark, TalkMark.poor);
+      expect(run(said: false).mark, TalkMark.middling);
+      expect(reviewDue(run(wrong: 1)), DateTime(2026, 11, 19, 9));
+    });
+
+    test('goes from both devices are kept once each when syncing', () async {
+      SharedPreferences.setMockInitialValues({});
+      final phone = await UserStore.open();
+      final ipad = await UserStore.open();
+      await phone.logTalkRun(run());
+      await ipad.logTalkRun(TalkRun.fromJson(run(wrong: 1).toJson()..['at'] = DateTime(2026, 11, 18).millisecondsSinceEpoch));
+      Map<String, dynamic> dataOf(UserStore s) => UserStore.backupData(s.exportBackup(DateTime(2026, 11, 18)));
+      await ipad.mergeFrom(dataOf(phone));
+      await ipad.mergeFrom(dataOf(phone));
+      expect(ipad.talkRuns.map((r) => r.at.day), [17, 18]);
+    });
+  });
+
   group('a conversation', () {
     late Library lib;
     setUp(() => lib = loadLibraryWithConversations());
 
+    late UserStore store;
+
     Future<void> open(WidgetTester tester, {bool youStart = false, bool chooseOnly = false, String heard = ''}) async {
       SharedPreferences.setMockInitialValues({});
-      final store = await UserStore.open();
+      store = await UserStore.open();
       final scene = lib.conversations.scenes.firstWhere((s) => s.id == 'd2');
       await tester.pumpWidget(AppScope(
         library: lib,
@@ -149,6 +197,25 @@ void main() {
       await tester.pumpAndSettle();
       expect(find.text('said well first try'), findsOneWidget);
       expect(find.text('你忙吗？'), findsWidgets);
+      // The reply counts toward the daily goal; the words in it count as Say it tries.
+      expect(store.reviews.where((r) => r.method == 'talk'), hasLength(1));
+      expect(store.speakTries, isNotEmpty);
+    });
+
+    testWidgets('stopping part way asks, then shows the review and saves the go', (tester) async {
+      await open(tester, chooseOnly: true);
+      await tester.tap(choice('我很好。'));
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('Stop'));
+      await tester.pumpAndSettle();
+      expect(find.text('Stop this scene?'), findsOneWidget);
+      await tester.tap(find.text('Stop and review'));
+      await tester.pumpAndSettle();
+      expect(find.text('Stopped early'), findsOneWidget);
+      expect(find.text('How it went'), findsOneWidget);
+      expect(store.talkRuns, hasLength(1));
+      expect(store.talkRuns.single.finished, isFalse);
+      expect(store.talkRuns.single.turns.single.picked, 'conv-d2.2');
     });
 
     testWidgets('choose only: no mic, and the scene runs to the end', (tester) async {
@@ -171,7 +238,38 @@ void main() {
         expect(tapped || tiles.isEmpty, isTrue);
       }
       expect(find.text('End of the conversation'), findsOneWidget);
+      expect(find.text('How it went'), findsOneWidget);
+      expect(find.text('TURN BY TURN'), findsOneWidget);
       expect(find.byIcon(Icons.mic), findsNothing);
+      expect(store.talkRuns.single.finished, isTrue);
+      expect(store.talkRuns.single.mark, TalkMark.good);
+    });
+
+    testWidgets('the scene list marks scenes you have done and shows new ones', (tester) async {
+      SharedPreferences.setMockInitialValues({});
+      store = await UserStore.open();
+      await store.logTalkRun(TalkRun(
+        at: DateTime.now(),
+        scene: 'd2',
+        seconds: 40,
+        finished: true,
+        chooseOnly: true,
+        turns: const [
+          TalkTurn(line: 'd2.2', picked: 'conv-d2.2', wrongPicks: 1),
+          TalkTurn(line: 'd2.4', picked: 'conv-d2.4', wrongPicks: 2),
+        ],
+      ));
+      await tester.pumpWidget(AppScope(
+        library: lib,
+        store: store,
+        speaker: Speaker(lib),
+        device: NoDevice(),
+        child: const MaterialApp(home: ConversationsScreen(autoPlay: false)),
+      ));
+      await tester.pumpAndSettle();
+      expect(find.textContaining('Last: 0/2 right'), findsOneWidget);
+      expect(find.byTooltip('Needs another go'), findsOneWidget);
+      expect(find.byTooltip('New'), findsWidgets);
     });
 
     testWidgets('you start: your first line comes with nothing to choose', (tester) async {

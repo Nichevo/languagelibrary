@@ -7,6 +7,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../models/entry.dart';
 import '../models/journey_week.dart';
 import '../srs/scheduler.dart';
+import 'talk.dart';
 
 /// Everything the learner changes: stars, custom lists, flashcard progress,
 /// reported problems and settings. Stored on the phone only.
@@ -134,6 +135,10 @@ class UserStore extends ChangeNotifier {
   final List<SpeakTry> speakTries = [];
   static const maxSpeakTries = 20000;
 
+  /// Every conversation, finished or stopped early, oldest first.
+  final List<TalkRun> talkRuns = [];
+  static const maxTalkRuns = 3000;
+
   /// Day ('2026-11-05') -> how the starred cards stood at the end of that day.
   final Map<String, Snapshot> snapshots = {};
 
@@ -166,6 +171,7 @@ class UserStore extends ChangeNotifier {
     difficulty.clear();
     reviews.clear();
     speakTries.clear();
+    talkRuns.clear();
     snapshots.clear();
     firstKnown.clear();
     stamps.clear();
@@ -224,6 +230,9 @@ class UserStore extends ChangeNotifier {
     for (final t in j['speakTries'] as List? ?? const []) {
       speakTries.add(SpeakTry.fromJson(t as List));
     }
+    for (final t in j['talkRuns'] as List? ?? const []) {
+      talkRuns.add(TalkRun.fromJson(t as Map));
+    }
     (j['snapshots'] as Map? ?? const {}).forEach((k, v) => snapshots[k as String] = Snapshot.fromJson(v as List));
     (j['firstKnown'] as Map? ?? const {}).forEach(
         (k, v) => firstKnown[k as String] = DateTime.fromMillisecondsSinceEpoch((v as int) * 1000));
@@ -268,6 +277,7 @@ class UserStore extends ChangeNotifier {
         'statsPeriod': statsPeriod,
         'reviews': [for (final r in reviews) r.toJson()],
         'speakTries': [for (final t in speakTries) t.toJson()],
+        'talkRuns': [for (final t in talkRuns) t.toJson()],
         'snapshots': snapshots.map((k, v) => MapEntry(k, v.toJson())),
         'firstKnown': firstKnown.map((k, v) => MapEntry(k, v.millisecondsSinceEpoch ~/ 1000)),
         'stamps': stamps,
@@ -304,6 +314,9 @@ class UserStore extends ChangeNotifier {
       }
       for (final t in data['speakTries'] as List? ?? const []) {
         SpeakTry.fromJson(t as List);
+      }
+      for (final t in data['talkRuns'] as List? ?? const []) {
+        TalkRun.fromJson(t as Map);
       }
       (data['snapshots'] as Map? ?? const {}).forEach((k, v) => Snapshot.fromJson(v as List));
       (data['stamps'] as Map? ?? const {}).forEach((k, v) => (k as String, v as num));
@@ -458,6 +471,21 @@ class UserStore extends ChangeNotifier {
       if (speakTries.length > maxSpeakTries) speakTries.removeRange(0, speakTries.length - maxSpeakTries);
     }
 
+    // Every conversation from both, once each, in time order.
+    final seenRuns = {for (final r in talkRuns) r.key};
+    var runsAdded = 0;
+    for (final t in data['talkRuns'] as List? ?? const []) {
+      final run = TalkRun.fromJson(t as Map);
+      if (seenRuns.add(run.key)) {
+        talkRuns.add(run);
+        runsAdded++;
+      }
+    }
+    if (runsAdded > 0) {
+      mergeSort(talkRuns, compare: (a, b) => a.at.compareTo(b.at));
+      if (talkRuns.length > maxTalkRuns) talkRuns.removeRange(0, talkRuns.length - maxTalkRuns);
+    }
+
     // Day-by-day counts this device doesn't have, and the earliest date each card became familiar.
     (data['snapshots'] as Map? ?? const {})
         .forEach((k, v) => snapshots.putIfAbsent(k as String, () => Snapshot.fromJson(v as List)));
@@ -590,6 +618,13 @@ class UserStore extends ChangeNotifier {
   Future<void> logAnswer(Rating rating, Duration spent, DateTime now, {required String method, String? id}) {
     reviews.add(Review(now, spent > maxSpent ? maxSpent : spent, rating, false, method: method, id: id));
     if (reviews.length > maxReviews) reviews.removeRange(0, reviews.length - maxReviews);
+    return _save();
+  }
+
+  /// Keeps one conversation: its review, the scene's mark and Progress use it.
+  Future<void> logTalkRun(TalkRun run) {
+    talkRuns.add(run);
+    if (talkRuns.length > maxTalkRuns) talkRuns.removeRange(0, talkRuns.length - maxTalkRuns);
     return _save();
   }
 
