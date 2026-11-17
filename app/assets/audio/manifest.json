@@ -37082,15 +37082,15 @@
   },
   "4c89711c54_m": {
    "file": "4c89711c54_m.mp3",
-   "bytes": 5184,
+   "bytes": 5856,
    "heard": "单",
    "also": [
+    "Hi",
     "shein",
     "shine",
-    "Hi",
-    "善"
+    "晒"
    ],
-   "check": "mismatch"
+   "check": "exact"
   },
   "f86b046fab_f": {
    "file": "f86b046fab_f.mp3",
@@ -100742,15 +100742,15 @@
   },
   "61d16f9ae1_m": {
    "file": "61d16f9ae1_m.mp3",
-   "bytes": 3552,
+   "bytes": 5184,
    "heard": "静",
    "also": [
     "靖",
     "净",
-    "婧",
-    "镜"
+    "进",
+    "婧"
    ],
-   "check": "mismatch"
+   "check": "sounds-same"
   },
   "c5bd60b0c2_f": {
    "file": "c5bd60b0c2_f.mp3",
@@ -102104,6 +102104,2154 @@
     "吗",
     "麻",
     "玛"
+   ],
+   "check": "exact"
+  },
+  "conv-d1.1_f": {
+   "file": "conv-d1.1_f.mp3",
+   "bytes": 4416,
+   "heard": "你好",
+   "also": [],
+   "check": "exact"
+  },
+  "conv-d1.1_m": {
+   "file": "conv-d1.1_m.mp3",
+   "bytes": 4032,
+   "heard": "你好",
+   "also": [],
+   "check": "exact"
+  },
+  "conv-d1.2_f": {
+   "file": "conv-d1.2_f.mp3",
+   "bytes": 4224,
+   "heard": "你好",
+   "also": [],
+   "check": "exact"
+  },
+  "conv-d1.2_m": {
+   "file": "conv-d1.2_m.mp3",
+   "bytes": 4032,
+   "heard": "你好",
+   "also": [],
+   "check": "exact"
+  },
+  "conv-d7.2_f": {
+   "file": "conv-d7.2_f.mp3",
+   "bytes": 17184,
+   "heard": "他们都很好谢谢我爸妈也问你好",
+   "also": [
+    "它们都很好谢谢我爸妈也问你好",
+    "她们都很好谢谢我爸妈也问你好",
+    "他们都很好谢谢我爸妈叶问你好",
+    "它们都很好谢谢我爸妈叶问你好"
+   ],
+   "check": "exact"
+  },
+  "conv-d7.2_m": {
+   "file": "conv-d7.2_m.mp3",
+   "bytes": 19872,
+   "heard": "他们都很好谢谢我爸妈也问你好",
+   "also": [
+    "它们都很好谢谢我爸妈也问你好",
+    "她们都很好谢谢我爸妈也问你好"
+   ],
+   "check": "exact"
+  },
+  "conv-d2.2_f": {
+   "file": "conv-d2.2_f.mp3",
+   "bytes": 5664,
+   "heard": "我很好",
+   "also": [],
+   "check": "exact"
+  },
+  "conv-d2.2_m": {
+   "file": "conv-d2.2_m.mp3",
+   "bytes": 5184,
+   "heard": "我很好",
+   "also": [],
+   "check": "exact"
+  },
+  "conv-d2.1_f": {
+   "file": "conv-d2.1_f.mp3",
+   "bytes": 6144,
+   "heard": "你好吗",
+   "also": [],
+   "check": "exact"
+  },
+  "conv-d2.1_m": {
+   "file": "conv-d2.1_m.mp3",
+   "bytes": 4992,
+   "heard": "你好吗",
+   "also": [],
+   "check": "exact"
+  },
+  "conv-d2.3_f": {
+   "file": "conv-d2.3_f.mp3",
+   "bytes": 6144,
+   "heard": "你忙吗",
+   "also": [],
+   "check": "exact"
+  },
+  "conv-d2.3_m": {
+   "file": "conv-d2.3_m.mp3",
+   "bytes": 5184,
+   "heard": "你忙吗",
+   "also": [],
+   "check": "exact"
+  },
+  "conv-d2.4_f": {
+   "file": "conv-d2.4_f.mp3",
+   "bytes": 6816,
+   "heard": "我不忙",
+   "also": [],
+   "check": "exact"
+  },
+  "conv-d2.4_m": {
+   "file": "conv-d2.4_m.mp3",
+   "bytes": 5184,
+   "heard": "我不忙",
+   "also": [],
+   "check": "exact"
+  },
+  "conv-d38.3_f": {
+   "file": "conv-d38.3_f.mp3",
+   "bytes": 12384,
+   "heard": "是吗我爸爸也是医生",
+   "also": [
+    "是吗我爸爸也是一生",
+    "是吗我爸爸也是一声",
+    "是吗我爸爸也是一升",
+    "是吗我爸爸也是1生"
+   ],
+   "check": "exact"
+  },
+  "conv-d38.3_m": {
+   "file": "conv-d38.3_m.mp3",
+   "bytes": 11616,
+   "heard": "是吗我爸爸也是医生",
+   "also": [
+    "是吗我爸爸也是一生",
+    "是吗我爸爸也是一声",
+    "是吗我爸爸也是一升",
+    "是吗我爸爸也是1生"
+   ],
+   "check": "exact"
+  },
+  "conv-d5.2_f": {
+   "file": "conv-d5.2_f.mp3",
+   "bytes": 13632,
+   "heard": "他们都很好你哥哥弟弟呢",
+   "also": [
+    "它们都很好你哥哥弟弟呢",
+    "她们都很好你哥哥弟弟呢",
+    "他们都很好你哥哥的的呢",
+    "他们都很好你哥哥弟弟那"
+   ],
+   "check": "exact"
+  },
+  "conv-d5.2_m": {
+   "file": "conv-d5.2_m.mp3",
+   "bytes": 13824,
+   "heard": "他们都很好你哥哥弟弟呢",
+   "also": [
+    "它们都很好你哥哥弟弟呢",
+    "她们都很好你哥哥弟弟呢",
+    "他们都很好你哥哥的的呢",
+    "他们都很好你哥哥弟弟那"
+   ],
+   "check": "exact"
+  },
+  "conv-d48.3_f": {
+   "file": "conv-d48.3_f.mp3",
+   "bytes": 17856,
+   "heard": "好那我问你今年2月有几天",
+   "also": [
+    "好那我问你今年二月有几天",
+    "好啊那我问你今年2月有几天",
+    "好啊那我问你今年二月有几天"
+   ],
+   "check": "exact"
+  },
+  "conv-d48.3_m": {
+   "file": "conv-d48.3_m.mp3",
+   "bytes": 17184,
+   "heard": "好那我问你今年2月有几天",
+   "also": [
+    "哦那我问你今年2月有几天",
+    "好那我问你今年二月有几天",
+    "哦那我问你今年二月有几天",
+    "好啊那我问你今年2月有几天"
+   ],
+   "check": "exact"
+  },
+  "conv-d3.5_f": {
+   "file": "conv-d3.5_f.mp3",
+   "bytes": 6624,
+   "heard": "他们都不忙",
+   "also": [
+    "她们都不忙",
+    "它们都不忙",
+    "他们都不茫"
+   ],
+   "check": "exact"
+  },
+  "conv-d3.5_m": {
+   "file": "conv-d3.5_m.mp3",
+   "bytes": 7584,
+   "heard": "他们都不忙",
+   "also": [
+    "她们都不忙",
+    "它们都不忙",
+    "他们都不茫"
+   ],
+   "check": "exact"
+  },
+  "conv-d5.5_f": {
+   "file": "conv-d5.5_f.mp3",
+   "bytes": 8064,
+   "heard": "他们都很忙",
+   "also": [
+    "它们都很忙",
+    "她们都很忙"
+   ],
+   "check": "exact"
+  },
+  "conv-d5.5_m": {
+   "file": "conv-d5.5_m.mp3",
+   "bytes": 6144,
+   "heard": "他们都很忙",
+   "also": [
+    "它们都很忙",
+    "她们都很忙"
+   ],
+   "check": "exact"
+  },
+  "conv-d3.1_f": {
+   "file": "conv-d3.1_f.mp3",
+   "bytes": 9504,
+   "heard": "你爸爸妈妈好吗",
+   "also": [
+    "你爸爸爸妈妈好吗"
+   ],
+   "check": "exact"
+  },
+  "conv-d3.1_m": {
+   "file": "conv-d3.1_m.mp3",
+   "bytes": 8352,
+   "heard": "你爸爸妈妈好吗",
+   "also": [
+    "你爸爸爸妈妈好吗"
+   ],
+   "check": "exact"
+  },
+  "conv-d3.2_f": {
+   "file": "conv-d3.2_f.mp3",
+   "bytes": 6816,
+   "heard": "他们都很好",
+   "also": [
+    "它们都很好",
+    "她们都很好"
+   ],
+   "check": "exact"
+  },
+  "conv-d3.2_m": {
+   "file": "conv-d3.2_m.mp3",
+   "bytes": 7392,
+   "heard": "他们都很好",
+   "also": [
+    "它们都很好",
+    "她们都很好"
+   ],
+   "check": "exact"
+  },
+  "conv-d3.3_f": {
+   "file": "conv-d3.3_f.mp3",
+   "bytes": 6336,
+   "heard": "他们忙吗",
+   "also": [
+    "她们忙吗",
+    "他们盲吗",
+    "它们忙吗",
+    "他们氓吗"
+   ],
+   "check": "exact"
+  },
+  "conv-d3.3_m": {
+   "file": "conv-d3.3_m.mp3",
+   "bytes": 6432,
+   "heard": "他们忙吗",
+   "also": [
+    "她们忙吗",
+    "他们盲吗",
+    "它们忙吗",
+    "他们氓吗"
+   ],
+   "check": "exact"
+  },
+  "conv-d3.4_f": {
+   "file": "conv-d3.4_f.mp3",
+   "bytes": 18912,
+   "heard": "我爸爸很忙我妈妈不忙你爸妈忙吗",
+   "also": [
+    "我爸爸很忙我妈妈不忙你爸妈妈吗",
+    "我爸爸很忙我妈妈不盲你爸妈忙吗",
+    "我爸爸很忙我妈妈不忙你吧妈忙吗",
+    "我爸爸很忙我妈妈不忙你把妈忙吗"
+   ],
+   "check": "exact"
+  },
+  "conv-d3.4_m": {
+   "file": "conv-d3.4_m.mp3",
+   "bytes": 17664,
+   "heard": "我爸爸很忙我妈妈不忙你爸妈忙吗",
+   "also": [
+    "我爸爸很忙我妈妈不忙你爸爸忙吗",
+    "我爸爸很忙哦妈妈不忙你爸妈忙吗",
+    "我爸爸很忙我妈妈不盲你爸妈忙吗",
+    "我爸爸很忙我妈妈不忙你爸妈妈吗"
+   ],
+   "check": "exact"
+  },
+  "conv-d38.2_f": {
+   "file": "conv-d38.2_f.mp3",
+   "bytes": 13056,
+   "heard": "我爸爸是医生我妈妈没有工作",
+   "also": [
+    "我爸爸是一声我妈妈没有工作"
+   ],
+   "check": "exact"
+  },
+  "conv-d38.2_m": {
+   "file": "conv-d38.2_m.mp3",
+   "bytes": 14304,
+   "heard": "我爸爸是医生我妈妈没有工作",
+   "also": [
+    "我爸爸是一声我妈妈没有工作"
+   ],
+   "check": "exact"
+  },
+  "conv-d51.8_f": {
+   "file": "conv-d51.8_f.mp3",
+   "bytes": 13056,
+   "heard": "你的朋友都很喜欢你对不对",
+   "also": [],
+   "check": "exact"
+  },
+  "conv-d51.8_m": {
+   "file": "conv-d51.8_m.mp3",
+   "bytes": 10272,
+   "heard": "你的朋友都很喜欢你对不对",
+   "also": [],
+   "check": "exact"
+  },
+  "conv-d54.7_f": {
+   "file": "conv-d54.7_f.mp3",
+   "bytes": 8064,
+   "heard": "好有什么事",
+   "also": [
+    "好啊有什么事",
+    "哈有什么事",
+    "还有什么事",
+    "好有什么是"
+   ],
+   "check": "exact"
+  },
+  "conv-d54.7_m": {
+   "file": "conv-d54.7_m.mp3",
+   "bytes": 8832,
+   "heard": "好有什么事",
+   "also": [
+    "好有什么是",
+    "好有什么市",
+    "好友什么事",
+    "炮友什么事"
+   ],
+   "check": "exact"
+  },
+  "conv-d49.7_f": {
+   "file": "conv-d49.7_f.mp3",
+   "bytes": 6912,
+   "heard": "他今天不忙吗",
+   "also": [
+    "他今天不盲吗"
+   ],
+   "check": "sounds-same"
+  },
+  "conv-d49.7_m": {
+   "file": "conv-d49.7_m.mp3",
+   "bytes": 6816,
+   "heard": "他今天不忙吗",
+   "also": [
+    "她今天不忙吗",
+    "它今天不忙吗",
+    "他今天不盲吗"
+   ],
+   "check": "exact"
+  },
+  "conv-d33.6_f": {
+   "file": "conv-d33.6_f.mp3",
+   "bytes": 11904,
+   "heard": "不是那是我爸爸的姐姐",
+   "also": [
+    "不去那是我爸爸的姐姐",
+    "不似那是我爸爸的姐姐",
+    "不是那时我爸爸的姐姐"
+   ],
+   "check": "exact"
+  },
+  "conv-d33.6_m": {
+   "file": "conv-d33.6_m.mp3",
+   "bytes": 11712,
+   "heard": "不是那是我爸爸的姐姐",
+   "also": [
+    "不似那是我爸爸的姐姐",
+    "不是哪是我爸爸的姐姐"
+   ],
+   "check": "exact"
+  },
+  "conv-d4.1_f": {
+   "file": "conv-d4.1_f.mp3",
+   "bytes": 6144,
+   "heard": "你妈妈好吗",
+   "also": [],
+   "check": "exact"
+  },
+  "conv-d4.1_m": {
+   "file": "conv-d4.1_m.mp3",
+   "bytes": 6144,
+   "heard": "你妈妈好吗",
+   "also": [],
+   "check": "exact"
+  },
+  "conv-d4.2_f": {
+   "file": "conv-d4.2_f.mp3",
+   "bytes": 11904,
+   "heard": "他很好你妈妈呢",
+   "also": [
+    "她很好你妈妈呢",
+    "他很好你妈妈那",
+    "它很好你妈妈呢",
+    "啊很好你妈妈呢"
+   ],
+   "check": "exact"
+  },
+  "conv-d4.2_m": {
+   "file": "conv-d4.2_m.mp3",
+   "bytes": 10464,
+   "heard": "他很好你妈妈呢",
+   "also": [
+    "她很好你妈妈呢",
+    "他很好你妈妈那",
+    "它很好你妈妈呢",
+    "啊很好你妈妈呢"
+   ],
+   "check": "exact"
+  },
+  "conv-d4.3_f": {
+   "file": "conv-d4.3_f.mp3",
+   "bytes": 5664,
+   "heard": "他也很好",
+   "also": [
+    "她也很好",
+    "它也很好"
+   ],
+   "check": "exact"
+  },
+  "conv-d4.3_m": {
+   "file": "conv-d4.3_m.mp3",
+   "bytes": 5664,
+   "heard": "他也很好",
+   "also": [
+    "她也很好",
+    "它也很好"
+   ],
+   "check": "exact"
+  },
+  "conv-d16.3_f": {
+   "file": "conv-d16.3_f.mp3",
+   "bytes": 7104,
+   "heard": "你妈妈没有车吗",
+   "also": [],
+   "check": "exact"
+  },
+  "conv-d16.3_m": {
+   "file": "conv-d16.3_m.mp3",
+   "bytes": 7104,
+   "heard": "你妈妈没有车吗",
+   "also": [],
+   "check": "exact"
+  },
+  "conv-d38.4_f": {
+   "file": "conv-d38.4_f.mp3",
+   "bytes": 7776,
+   "heard": "你妈妈有工作吗",
+   "also": [],
+   "check": "exact"
+  },
+  "conv-d38.4_m": {
+   "file": "conv-d38.4_m.mp3",
+   "bytes": 8832,
+   "heard": "你妈妈有工作吗",
+   "also": [],
+   "check": "exact"
+  },
+  "conv-d5.3_f": {
+   "file": "conv-d5.3_f.mp3",
+   "bytes": 7776,
+   "heard": "他们也都很好",
+   "also": [
+    "它们也都很好",
+    "她们也都很好"
+   ],
+   "check": "exact"
+  },
+  "conv-d5.3_m": {
+   "file": "conv-d5.3_m.mp3",
+   "bytes": 6336,
+   "heard": "他们也都很好",
+   "also": [
+    "它们也都很好",
+    "她们也都很好"
+   ],
+   "check": "exact"
+  },
+  "conv-d5.1_f": {
+   "file": "conv-d5.1_f.mp3",
+   "bytes": 8544,
+   "heard": "你哥哥弟弟好吗",
+   "also": [],
+   "check": "exact"
+  },
+  "conv-d5.1_m": {
+   "file": "conv-d5.1_m.mp3",
+   "bytes": 7296,
+   "heard": "你哥哥弟弟好吗",
+   "also": [
+    "李哥哥弟弟好吗"
+   ],
+   "check": "exact"
+  },
+  "conv-d5.4_f": {
+   "file": "conv-d5.4_f.mp3",
+   "bytes": 7104,
+   "heard": "他们忙吗",
+   "also": [
+    "她们忙吗",
+    "他们盲吗",
+    "它们忙吗",
+    "他们氓吗"
+   ],
+   "check": "exact"
+  },
+  "conv-d5.4_m": {
+   "file": "conv-d5.4_m.mp3",
+   "bytes": 5952,
+   "heard": "他们忙吗",
+   "also": [
+    "她们忙吗",
+    "他们盲吗",
+    "它们忙吗",
+    "他们氓吗"
+   ],
+   "check": "exact"
+  },
+  "conv-d17.5_f": {
+   "file": "conv-d17.5_f.mp3",
+   "bytes": 9984,
+   "heard": "是吗你有几个哥哥",
+   "also": [
+    "是吗你有几个咯咯",
+    "是吗你有几个格格",
+    "是吗你有几个歌歌"
+   ],
+   "check": "exact"
+  },
+  "conv-d17.5_m": {
+   "file": "conv-d17.5_m.mp3",
+   "bytes": 10944,
+   "heard": "是吗你有几个哥哥",
+   "also": [
+    "去吗你有几个哥哥",
+    "洗吗你有几个哥哥",
+    "西吗你有几个哥哥",
+    "喜吗你有几个哥哥"
+   ],
+   "check": "exact"
+  },
+  "conv-d40.3_f": {
+   "file": "conv-d40.3_f.mp3",
+   "bytes": 10272,
+   "heard": "你哥哥都是大学生吗",
+   "also": [
+    "你哥哥都市大学生吗"
+   ],
+   "check": "exact"
+  },
+  "conv-d40.3_m": {
+   "file": "conv-d40.3_m.mp3",
+   "bytes": 10464,
+   "heard": "你哥哥都是大学生吗",
+   "also": [
+    "你哥哥都市大学生吗"
+   ],
+   "check": "exact"
+  },
+  "conv-d55.6_f": {
+   "file": "conv-d55.6_f.mp3",
+   "bytes": 15456,
+   "heard": "都是他的老同学我想你不认识他们",
+   "also": [
+    "都是她的老同学我想你不认识他们",
+    "都是他的老同学我想你不认识它们",
+    "都是他的老同学我想你不认识她们",
+    "都是它的老同学我想你不认识他们"
+   ],
+   "check": "exact"
+  },
+  "conv-d55.6_m": {
+   "file": "conv-d55.6_m.mp3",
+   "bytes": 15936,
+   "heard": "都是他的老同学我想你不认识他们",
+   "also": [
+    "都是她的老同学我想你不认识他们",
+    "都是他的老同学我想你不认识它们",
+    "都是他的老同学我想你不认识她们",
+    "都是它的老同学我想你不认识他们"
+   ],
+   "check": "exact"
+  },
+  "conv-d32.3_f": {
+   "file": "conv-d32.3_f.mp3",
+   "bytes": 7584,
+   "heard": "这也是你姐姐吗",
+   "also": [],
+   "check": "exact"
+  },
+  "conv-d32.3_m": {
+   "file": "conv-d32.3_m.mp3",
+   "bytes": 8064,
+   "heard": "这也是你姐姐吗",
+   "also": [],
+   "check": "exact"
+  },
+  "conv-d7.1_f": {
+   "file": "conv-d7.1_f.mp3",
+   "bytes": 6624,
+   "heard": "你爸妈好吗",
+   "also": [
+    "你把妈好吗",
+    "你爸妈妈好吗"
+   ],
+   "check": "exact"
+  },
+  "conv-d7.1_m": {
+   "file": "conv-d7.1_m.mp3",
+   "bytes": 5184,
+   "heard": "你爸妈好吗",
+   "also": [
+    "你把妈好吗",
+    "你爸妈妈好吗"
+   ],
+   "check": "exact"
+  },
+  "conv-d7.3_f": {
+   "file": "conv-d7.3_f.mp3",
+   "bytes": 6144,
+   "heard": "请你谢谢他们",
+   "also": [
+    "请你谢谢它们",
+    "请你解解他们",
+    "请你谢谢她们",
+    "请你解解它们"
+   ],
+   "check": "exact"
+  },
+  "conv-d7.3_m": {
+   "file": "conv-d7.3_m.mp3",
+   "bytes": 7104,
+   "heard": "请你谢谢他们",
+   "also": [
+    "请你谢谢它们",
+    "请你解解他们",
+    "请你谢谢她们",
+    "景你谢谢他们"
+   ],
+   "check": "exact"
+  },
+  "conv-d52.22_f": {
+   "file": "conv-d52.22_f.mp3",
+   "bytes": 21504,
+   "heard": "太好了我妹妹和我也都很爱吃日本菜",
+   "also": [
+    "太好了我妹妹和我我也都很爱吃日本菜"
+   ],
+   "check": "exact"
+  },
+  "conv-d52.22_m": {
+   "file": "conv-d52.22_m.mp3",
+   "bytes": 17952,
+   "heard": "太好了我妹妹和我也都很爱吃日本菜",
+   "also": [
+    "太好了我妹妹和我我也都很爱吃日本菜"
+   ],
+   "check": "exact"
+  },
+  "conv-d46.13_f": {
+   "file": "conv-d46.13_f.mp3",
+   "bytes": 15936,
+   "heard": "太好了我跟我妹妹都很喜欢吃日本菜",
+   "also": [],
+   "check": "exact"
+  },
+  "conv-d46.13_m": {
+   "file": "conv-d46.13_m.mp3",
+   "bytes": 18432,
+   "heard": "太好了我跟我妹妹都很喜欢吃日本菜",
+   "also": [
+    "快好了我跟我妹妹都很喜欢吃日本菜"
+   ],
+   "check": "exact"
+  },
+  "conv-d15.1_f": {
+   "file": "conv-d15.1_f.mp3",
+   "bytes": 6144,
+   "heard": "你是学生吗",
+   "also": [],
+   "check": "exact"
+  },
+  "conv-d15.1_m": {
+   "file": "conv-d15.1_m.mp3",
+   "bytes": 7392,
+   "heard": "你是学生吗",
+   "also": [],
+   "check": "exact"
+  },
+  "conv-d15.2_f": {
+   "file": "conv-d15.2_f.mp3",
+   "bytes": 17184,
+   "heard": "是我是学生你也是学生吗",
+   "also": [
+    "我是我是学生你也是学生吗",
+    "是我市学生你也是学生吗"
+   ],
+   "check": "exact"
+  },
+  "conv-d15.2_m": {
+   "file": "conv-d15.2_m.mp3",
+   "bytes": 13824,
+   "heard": "是我是学生你也是学生吗",
+   "also": [
+    "是我市学生你也是学生吗",
+    "雪我是学生你也是学生吗",
+    "谢我是学生你也是学生吗",
+    "写我是学生你也是学生吗"
+   ],
+   "check": "exact"
+  },
+  "conv-d20.5_f": {
+   "file": "conv-d20.5_f.mp3",
+   "bytes": 9792,
+   "heard": "你男朋友是外国人吗",
+   "also": [],
+   "check": "exact"
+  },
+  "conv-d20.5_m": {
+   "file": "conv-d20.5_m.mp3",
+   "bytes": 10944,
+   "heard": "你男朋友是外国人吗",
+   "also": [],
+   "check": "exact"
+  },
+  "conv-d19.1_f": {
+   "file": "conv-d19.1_f.mp3",
+   "bytes": 12384,
+   "heard": "这儿有两辆车哪辆是你的",
+   "also": [
+    "这有两辆车哪辆是你的",
+    "家有两辆车哪辆是你的",
+    "只有两辆车哪辆是你的",
+    "这儿有两辆车哪量是你的"
+   ],
+   "check": "exact"
+  },
+  "conv-d19.1_m": {
+   "file": "conv-d19.1_m.mp3",
+   "bytes": 12384,
+   "heard": "这有两辆车哪辆是你的",
+   "also": [
+    "这有两辆车哪量是你的",
+    "这有两辆车那辆是你的",
+    "这儿有两辆车哪辆是你的",
+    "这有两辆车哪辆视你的"
+   ],
+   "check": "exact"
+  },
+  "conv-d19.2_f": {
+   "file": "conv-d19.2_f.mp3",
+   "bytes": 17664,
+   "heard": "那两辆车都不是我的我的车是日本车",
+   "also": [
+    "南两辆车都不是我的我的车是日本车",
+    "那俩辆车都不是我的我的车是日本车",
+    "内两辆车都不是我的我的车是日本车"
+   ],
+   "check": "exact"
+  },
+  "conv-d19.2_m": {
+   "file": "conv-d19.2_m.mp3",
+   "bytes": 18336,
+   "heard": "那两辆车都不是我的我的车是日本车",
+   "also": [
+    "来两辆车都不是我的我的车是日本车",
+    "哪两辆车都不是我的我的车是日本车",
+    "两辆车都不是我的我的车是日本车",
+    "了两辆车都不是我的我的车是日本车"
+   ],
+   "check": "exact"
+  },
+  "conv-d19.3_f": {
+   "file": "conv-d19.3_f.mp3",
+   "bytes": 7872,
+   "heard": "那你的车在哪",
+   "also": [
+    "那你的车在哪儿"
+   ],
+   "check": "exact"
+  },
+  "conv-d19.3_m": {
+   "file": "conv-d19.3_m.mp3",
+   "bytes": 6912,
+   "heard": "那你的车在哪",
+   "also": [],
+   "check": "sounds-same"
+  },
+  "conv-d19.4_f": {
+   "file": "conv-d19.4_f.mp3",
+   "bytes": 19872,
+   "heard": "在哪哪儿有一辆日本车那是我的车",
+   "also": [
+    "在那那儿有一辆日本车那是我的车",
+    "在那那有一辆日本车那是我的车",
+    "在哪哪有一辆日本车那是我的车",
+    "在那儿那儿有一辆日本车那是我的车"
+   ],
+   "check": "exact"
+  },
+  "conv-d19.4_m": {
+   "file": "conv-d19.4_m.mp3",
+   "bytes": 17376,
+   "heard": "在哪哪有一辆日本车那是我的车",
+   "also": [
+    "在哪那有一辆日本车那是我的车",
+    "在哪哪有一辆日本车哪是我的车",
+    "在哪哪有1辆日本车那是我的车",
+    "在哪呐有一辆日本车那是我的车"
+   ],
+   "check": "mismatch"
+  },
+  "conv-d14.2_f": {
+   "file": "conv-d14.2_f.mp3",
+   "bytes": 14784,
+   "heard": "不是那是我爸爸的车我没有车",
+   "also": [
+    "不似那是我爸爸的车我没有车"
+   ],
+   "check": "exact"
+  },
+  "conv-d14.2_m": {
+   "file": "conv-d14.2_m.mp3",
+   "bytes": 13344,
+   "heard": "不是那是我爸爸的车我没有车",
+   "also": [
+    "不似那是我爸爸的车我没有车",
+    "不是哪是我爸爸的车我没有车"
+   ],
+   "check": "exact"
+  },
+  "conv-d16.5_f": {
+   "file": "conv-d16.5_f.mp3",
+   "bytes": 9504,
+   "heard": "你的车是哪国车",
+   "also": [],
+   "check": "exact"
+  },
+  "conv-d16.5_m": {
+   "file": "conv-d16.5_m.mp3",
+   "bytes": 8352,
+   "heard": "你的车是哪国车",
+   "also": [],
+   "check": "exact"
+  },
+  "conv-d59.8_f": {
+   "file": "conv-d59.8_f.mp3",
+   "bytes": 24384,
+   "heard": "对你可以不可以帮我练习一下我那天要跟他爸妈说什么",
+   "also": [
+    "对你可以不可以帮我练习一下我哪天要跟他爸妈说什么",
+    "对你可以不可以帮我练习一下我那天要跟她爸妈说什么",
+    "对你可以不可以帮我练习下我那天要跟他爸妈说什么",
+    "对你可以不可以帮我练习一下我那天要跟他爸妈妈说什么"
+   ],
+   "check": "exact"
+  },
+  "conv-d59.8_m": {
+   "file": "conv-d59.8_m.mp3",
+   "bytes": 22752,
+   "heard": "你可以不可以帮我练习一下我那天要跟他爸妈说什么",
+   "also": [
+    "对你可以不可以帮我练习一下我那天要跟他爸妈说什么",
+    "你可以不可以帮我练习一下我哪天要跟他爸妈说什么",
+    "那你可以不可以帮我练习一下我那天要跟他爸妈说什么",
+    "该你可以不可以帮我练习一下我那天要跟他爸妈说什么"
+   ],
+   "check": "sounds-same"
+  },
+  "conv-d29.1_f": {
+   "file": "conv-d29.1_f.mp3",
+   "bytes": 13824,
+   "heard": "先生请问你是中国人吗",
+   "also": [],
+   "check": "exact"
+  },
+  "conv-d29.1_m": {
+   "file": "conv-d29.1_m.mp3",
+   "bytes": 11712,
+   "heard": "先生请问你是中国人吗",
+   "also": [],
+   "check": "exact"
+  },
+  "conv-d29.2_f": {
+   "file": "conv-d29.2_f.mp3",
+   "bytes": 8544,
+   "heard": "我不是中国人",
+   "also": [],
+   "check": "exact"
+  },
+  "conv-d29.2_m": {
+   "file": "conv-d29.2_m.mp3",
+   "bytes": 6816,
+   "heard": "我不是中国人",
+   "also": [],
+   "check": "exact"
+  },
+  "conv-d29.3_f": {
+   "file": "conv-d29.3_f.mp3",
+   "bytes": 6144,
+   "heard": "你的朋友呢",
+   "also": [
+    "你的朋友那"
+   ],
+   "check": "exact"
+  },
+  "conv-d29.3_m": {
+   "file": "conv-d29.3_m.mp3",
+   "bytes": 5664,
+   "heard": "你的朋友呢",
+   "also": [
+    "你的朋友那"
+   ],
+   "check": "exact"
+  },
+  "conv-d29.4_f": {
+   "file": "conv-d29.4_f.mp3",
+   "bytes": 9696,
+   "heard": "他也不是中国人",
+   "also": [
+    "它也不是中国人",
+    "她也不是中国人"
+   ],
+   "check": "exact"
+  },
+  "conv-d29.4_m": {
+   "file": "conv-d29.4_m.mp3",
+   "bytes": 7872,
+   "heard": "他也不是中国人",
+   "also": [
+    "它也不是中国人",
+    "她也不是中国人"
+   ],
+   "check": "exact"
+  },
+  "conv-d65.9_f": {
+   "file": "conv-d65.9_f.mp3",
+   "bytes": 19584,
+   "heard": "不对这是太子这三个字你都不认识",
+   "also": [
+    "部队这是太子这三个字你都不认识",
+    "不对这事太子这三个字你都不认识",
+    "不对这是太子这三个子你都不认识",
+    "部队这事太子这三个字你都不认识"
+   ],
+   "check": "sounds-same"
+  },
+  "conv-d65.9_m": {
+   "file": "conv-d65.9_m.mp3",
+   "bytes": 19776,
+   "heard": "不对这是太子这三个字你都不认识",
+   "also": [
+    "部队这是太子这三个字你都不认识",
+    "不对就是太子这三个字你都不认识",
+    "不对这事太子这三个字你都不认识",
+    "不对着是太子这三个字你都不认识"
+   ],
+   "check": "sounds-same"
+  },
+  "conv-d30.2_f": {
+   "file": "conv-d30.2_f.mp3",
+   "bytes": 10944,
+   "heard": "是你也是中国学生吗",
+   "also": [
+    "去你也是中国学生吗",
+    "视你也是中国学生吗",
+    "事你也是中国学生吗",
+    "许你也是中国学生吗"
+   ],
+   "check": "exact"
+  },
+  "conv-d30.2_m": {
+   "file": "conv-d30.2_m.mp3",
+   "bytes": 9792,
+   "heard": "去你也是中国学生吗",
+   "also": [
+    "是你也是中国学生吗",
+    "许你也是中国学生吗",
+    "虚拟也是中国学生吗",
+    "视你也是中国学生吗"
+   ],
+   "check": "exact"
+  },
+  "conv-d30.1_f": {
+   "file": "conv-d30.1_f.mp3",
+   "bytes": 10272,
+   "heard": "请问你是中国学生吗",
+   "also": [],
+   "check": "exact"
+  },
+  "conv-d30.1_m": {
+   "file": "conv-d30.1_m.mp3",
+   "bytes": 9024,
+   "heard": "请问你是中国学生吗",
+   "also": [],
+   "check": "exact"
+  },
+  "conv-d32.1_f": {
+   "file": "conv-d32.1_f.mp3",
+   "bytes": 6144,
+   "heard": "这是谁",
+   "also": [],
+   "check": "exact"
+  },
+  "conv-d32.1_m": {
+   "file": "conv-d32.1_m.mp3",
+   "bytes": 4224,
+   "heard": "这是谁",
+   "also": [],
+   "check": "exact"
+  },
+  "conv-d32.2_f": {
+   "file": "conv-d32.2_f.mp3",
+   "bytes": 6144,
+   "heard": "这是我姐姐",
+   "also": [
+    "这事我姐姐",
+    "这是我解解",
+    "这使我姐姐"
+   ],
+   "check": "exact"
+  },
+  "conv-d32.2_m": {
+   "file": "conv-d32.2_m.mp3",
+   "bytes": 6624,
+   "heard": "这是我姐姐",
+   "also": [
+    "这事我姐姐",
+    "这是我解解"
+   ],
+   "check": "exact"
+  },
+  "conv-d32.4_f": {
+   "file": "conv-d32.4_f.mp3",
+   "bytes": 11712,
+   "heard": "不是那是我姐姐的女儿",
+   "also": [
+    "不似那是我姐姐的女儿",
+    "不是那时我姐姐的女儿"
+   ],
+   "check": "exact"
+  },
+  "conv-d32.4_m": {
+   "file": "conv-d32.4_m.mp3",
+   "bytes": 11424,
+   "heard": "不是那是我姐姐的女儿",
+   "also": [
+    "不似那是我姐姐的女儿",
+    "不是哪是我姐姐的女儿",
+    "不是那时我姐姐的女儿"
+   ],
+   "check": "exact"
+  },
+  "conv-d32.5_f": {
+   "file": "conv-d32.5_f.mp3",
+   "bytes": 6816,
+   "heard": "你姐姐有儿子吗",
+   "also": [
+    "你解解有儿子吗"
+   ],
+   "check": "exact"
+  },
+  "conv-d32.5_m": {
+   "file": "conv-d32.5_m.mp3",
+   "bytes": 8544,
+   "heard": "你姐姐有儿子吗",
+   "also": [
+    "米姐姐有儿子吗",
+    "你姐姐幼儿子吗",
+    "你解解有儿子吗",
+    "李姐姐有儿子吗"
+   ],
+   "check": "exact"
+  },
+  "conv-d36.2_f": {
+   "file": "conv-d36.2_f.mp3",
+   "bytes": 8736,
+   "heard": "这是我家人的照片",
+   "also": [
+    "这事我家人的照片"
+   ],
+   "check": "exact"
+  },
+  "conv-d36.2_m": {
+   "file": "conv-d36.2_m.mp3",
+   "bytes": 8736,
+   "heard": "这是我家人的照片",
+   "also": [
+    "这事我家人的照片"
+   ],
+   "check": "exact"
+  },
+  "conv-d31.2_f": {
+   "file": "conv-d31.2_f.mp3",
+   "bytes": 10944,
+   "heard": "这是我男朋友的照片",
+   "also": [],
+   "check": "exact"
+  },
+  "conv-d31.2_m": {
+   "file": "conv-d31.2_m.mp3",
+   "bytes": 10944,
+   "heard": "这是我男朋友的照片",
+   "also": [],
+   "check": "exact"
+  },
+  "conv-d33.5_f": {
+   "file": "conv-d33.5_f.mp3",
+   "bytes": 8352,
+   "heard": "这是你妈妈吗",
+   "also": [
+    "就是你妈妈吗",
+    "这事你妈妈吗"
+   ],
+   "check": "exact"
+  },
+  "conv-d33.5_m": {
+   "file": "conv-d33.5_m.mp3",
+   "bytes": 7104,
+   "heard": "这是你妈妈妈",
+   "also": [
+    "这是你妈妈吗",
+    "这事你妈妈妈",
+    "这时你妈妈妈"
+   ],
+   "check": "exact"
+  },
+  "conv-d39.2_f": {
+   "file": "conv-d39.2_f.mp3",
+   "bytes": 12576,
+   "heard": "不是我是学生你呢",
+   "also": [
+    "不是我是学生你那",
+    "不是我我是学生你呢",
+    "不是我我是学生你那"
+   ],
+   "check": "exact"
+  },
+  "conv-d39.2_m": {
+   "file": "conv-d39.2_m.mp3",
+   "bytes": 12864,
+   "heard": "不是我是学生你呢",
+   "also": [
+    "不是我是学生你那",
+    "不是我我是学生你呢",
+    "不是我我是学生你那"
+   ],
+   "check": "exact"
+  },
+  "conv-d59.15_f": {
+   "file": "conv-d59.15_f.mp3",
+   "bytes": 21984,
+   "heard": "你女朋友有一个漂亮的妹妹你可以不可以给我介绍他妹妹",
+   "also": [
+    "你女朋友有一个漂亮的妹妹你可以不可以给我介绍她妹妹",
+    "你女朋友有一个漂亮的妹妹你可以不可以给我介绍他妹妹妹",
+    "你女朋友有一个漂亮的妹妹你可以不可以给我介绍它妹妹",
+    "女女朋友有一个漂亮的妹妹你可以不可以给我介绍他妹妹"
+   ],
+   "check": "exact"
+  },
+  "conv-d59.15_m": {
+   "file": "conv-d59.15_m.mp3",
+   "bytes": 20544,
+   "heard": "你女朋友有一个漂亮的妹妹你可以不可以给我介绍他妹妹",
+   "also": [
+    "你女朋友有一个漂亮的妹妹你可以不可以给我介绍她妹妹",
+    "你女朋友有一个漂亮的妹妹你可以不可以给我介绍他妹妹妹",
+    "你女朋友有一个漂亮的妹妹你可以不可以给我介绍它妹妹",
+    "你女朋友有一个漂亮的妹妹你可以不可以给我介绍个妹妹"
+   ],
+   "check": "exact"
+  },
+  "conv-d38.1_f": {
+   "file": "conv-d38.1_f.mp3",
+   "bytes": 8352,
+   "heard": "你爸妈做什么工作",
+   "also": [
+    "你爸爸做什么工作",
+    "你帮我做什么工作",
+    "你帮他做什么工作",
+    "你帮妈做什么工作"
+   ],
+   "check": "exact"
+  },
+  "conv-d38.1_m": {
+   "file": "conv-d38.1_m.mp3",
+   "bytes": 8832,
+   "heard": "你爸妈做什么工作",
+   "also": [
+    "你爸吗做什么工作",
+    "你把吗做什么工作",
+    "你吧吗做什么工作",
+    "倪爸妈做什么工作"
+   ],
+   "check": "exact"
+  },
+  "conv-d38.5_f": {
+   "file": "conv-d38.5_f.mp3",
+   "bytes": 14304,
+   "heard": "有他是北京大学的英文老师",
+   "also": [
+    "有她是北京大学的英文老师",
+    "有它是北京大学的英文老师",
+    "友他是北京大学的英文老师",
+    "有踏是北京大学的英文老师"
+   ],
+   "check": "exact"
+  },
+  "conv-d38.5_m": {
+   "file": "conv-d38.5_m.mp3",
+   "bytes": 18912,
+   "heard": "有他是北京大学的英文老师",
+   "also": [
+    "有她是北京大学的英文老师",
+    "有它是北京大学的英文老师",
+    "要他是北京大学的英文老师",
+    "由他是北京大学的英文老师"
+   ],
+   "check": "exact"
+  },
+  "conv-d38.2-alt1_f": {
+   "file": "conv-d38.2-alt1_f.mp3",
+   "bytes": 12672,
+   "heard": "我爸爸是医生妈妈没有工作",
+   "also": [
+    "我爸爸是一声妈妈没有工作",
+    "我爸爸是一生妈妈没有工作",
+    "我爸爸示一声妈妈没有工作"
+   ],
+   "check": "exact"
+  },
+  "conv-d38.2-alt1_m": {
+   "file": "conv-d38.2-alt1_m.mp3",
+   "bytes": 12864,
+   "heard": "我爸爸是医生妈妈没有工作",
+   "also": [
+    "我爸爸是一声妈妈没有工作",
+    "我爸爸是一生妈妈没有工作",
+    "我爸爸示一声妈妈没有工作"
+   ],
+   "check": "exact"
+  },
+  "conv-d8.5_f": {
+   "file": "conv-d8.5_f.mp3",
+   "bytes": 13536,
+   "heard": "我也没有哥哥我有一个弟弟",
+   "also": [
+    "我也没有哥哥没有一个弟弟",
+    "我也没有哥哥也有一个弟弟",
+    "我也没有哥哥我有一个DD",
+    "我也没有个歌我有一个弟弟"
+   ],
+   "check": "exact"
+  },
+  "conv-d8.5_m": {
+   "file": "conv-d8.5_m.mp3",
+   "bytes": 11232,
+   "heard": "我也没有哥哥我有一个弟弟",
+   "also": [
+    "我也没有哥哥我有一个DD",
+    "我也没有哥哥我有一个地的",
+    "我也没有哥哥我有一个地地",
+    "我也没有咯咯我有一个弟弟"
+   ],
+   "check": "exact"
+  },
+  "conv-d16.2_f": {
+   "file": "conv-d16.2_f.mp3",
+   "bytes": 19296,
+   "heard": "亮亮我爸爸有一辆我也有一辆",
+   "also": [
+    "两辆我爸爸有一辆我也有一辆",
+    "亮亮我爸爸有一亮我也有一辆",
+    "凉凉我爸爸有一辆我也有一辆",
+    "两量我爸爸有一辆我也有一辆"
+   ],
+   "check": "exact"
+  },
+  "conv-d16.2_m": {
+   "file": "conv-d16.2_m.mp3",
+   "bytes": 17952,
+   "heard": "凉凉我爸爸有一辆我也有一辆",
+   "also": [
+    "两辆我爸爸有一辆我也有一辆",
+    "量量我爸爸有一辆我也有一辆",
+    "两量我爸爸有一辆我也有一辆",
+    "凉凉我爸爸有一亮我也有一辆"
+   ],
+   "check": "exact"
+  },
+  "conv-d39.1_f": {
+   "file": "conv-d39.1_f.mp3",
+   "bytes": 13536,
+   "heard": "请问你是这个大学的老师吗",
+   "also": [],
+   "check": "exact"
+  },
+  "conv-d39.1_m": {
+   "file": "conv-d39.1_m.mp3",
+   "bytes": 11136,
+   "heard": "请问你是这个大学的老师吗",
+   "also": [
+    "请问你试着各大学的老师吗"
+   ],
+   "check": "exact"
+  },
+  "conv-d39.3_f": {
+   "file": "conv-d39.3_f.mp3",
+   "bytes": 14016,
+   "heard": "我也是学生你叫什么名字",
+   "also": [
+    "我也是学生你叫什么名子"
+   ],
+   "check": "exact"
+  },
+  "conv-d39.3_m": {
+   "file": "conv-d39.3_m.mp3",
+   "bytes": 16512,
+   "heard": "我也是学生你叫什么名字",
+   "also": [
+    "我也是学生你叫什么名子"
+   ],
+   "check": "exact"
+  },
+  "conv-d12.3_f": {
+   "file": "conv-d12.3_f.mp3",
+   "bytes": 12096,
+   "heard": "你有你女朋友的照片吗",
+   "also": [
+    "你有女女朋友的照片吗"
+   ],
+   "check": "exact"
+  },
+  "conv-d12.3_m": {
+   "file": "conv-d12.3_m.mp3",
+   "bytes": 10944,
+   "heard": "你有你女朋友的照片吗",
+   "also": [
+    "没有你女朋友的照片吗",
+    "你又你女朋友的照片吗",
+    "你用你女朋友的照片吗",
+    "你有女女朋友的照片吗"
+   ],
+   "check": "exact"
+  },
+  "conv-d44.1_f": {
+   "file": "conv-d44.1_f.mp3",
+   "bytes": 8832,
+   "heard": "你的生日是哪一天",
+   "also": [],
+   "check": "exact"
+  },
+  "conv-d44.1_m": {
+   "file": "conv-d44.1_m.mp3",
+   "bytes": 8064,
+   "heard": "你的生日是哪一天",
+   "also": [],
+   "check": "exact"
+  },
+  "conv-d44.2_f": {
+   "file": "conv-d44.2_f.mp3",
+   "bytes": 6144,
+   "heard": "7月16号",
+   "also": [
+    "七月16号",
+    "七月十六号",
+    "7月十六号",
+    "柒月16号"
+   ],
+   "check": "exact"
+  },
+  "conv-d44.2_m": {
+   "file": "conv-d44.2_m.mp3",
+   "bytes": 6816,
+   "heard": "7月16号",
+   "also": [
+    "七月16号",
+    "七月十六号",
+    "几月16号",
+    "7月十六号"
+   ],
+   "check": "exact"
+  },
+  "conv-d44.2-alt1_f": {
+   "file": "conv-d44.2-alt1_f.mp3",
+   "bytes": 6144,
+   "heard": "7月16",
+   "also": [
+    "七月16",
+    "七月十六",
+    "7月16日",
+    "7月十六"
+   ],
+   "check": "exact"
+  },
+  "conv-d44.2-alt1_m": {
+   "file": "conv-d44.2-alt1_m.mp3",
+   "bytes": 5856,
+   "heard": "7月16",
+   "also": [
+    "七月16",
+    "七月十六",
+    "11月16",
+    "7月十六"
+   ],
+   "check": "exact"
+  },
+  "conv-d48.5_f": {
+   "file": "conv-d48.5_f.mp3",
+   "bytes": 13152,
+   "heard": "因为我的生日是2月29号",
+   "also": [
+    "因为我的生日是二月29号",
+    "因为我的生日是二月二十九号"
+   ],
+   "check": "exact"
+  },
+  "conv-d48.5_m": {
+   "file": "conv-d48.5_m.mp3",
+   "bytes": 13632,
+   "heard": "因为我的生日是2月29号",
+   "also": [
+    "因为我的生日是二月29号",
+    "因为我的生日是二月二十九号"
+   ],
+   "check": "exact"
+  },
+  "conv-d46.1_f": {
+   "file": "conv-d46.1_f.mp3",
+   "bytes": 5952,
+   "heard": "你爱不爱我",
+   "also": [],
+   "check": "exact"
+  },
+  "conv-d46.1_m": {
+   "file": "conv-d46.1_m.mp3",
+   "bytes": 5664,
+   "heard": "你爱不爱我",
+   "also": [],
+   "check": "exact"
+  },
+  "conv-d46.2_f": {
+   "file": "conv-d46.2_f.mp3",
+   "bytes": 4032,
+   "heard": "爱",
+   "also": [
+    "唉",
+    "i",
+    "AI",
+    "爱爱"
+   ],
+   "check": "exact"
+  },
+  "conv-d46.2_m": {
+   "file": "conv-d46.2_m.mp3",
+   "bytes": 3264,
+   "heard": "爱",
+   "also": [
+    "唉",
+    "i",
+    "AI",
+    "爱爱"
+   ],
+   "check": "exact"
+  },
+  "conv-d12.2_f": {
+   "file": "conv-d12.2_f.mp3",
+   "bytes": 8544,
+   "heard": "不是他是我姐姐",
+   "also": [
+    "不是她是我姐姐",
+    "不是它是我姐姐"
+   ],
+   "check": "exact"
+  },
+  "conv-d12.2_m": {
+   "file": "conv-d12.2_m.mp3",
+   "bytes": 11136,
+   "heard": "不是他是我姐姐",
+   "also": [
+    "不是她是我姐姐",
+    "不是它是我姐姐"
+   ],
+   "check": "exact"
+  },
+  "conv-d50.1_f": {
+   "file": "conv-d50.1_f.mp3",
+   "bytes": 14112,
+   "heard": "你喜欢看外国电影还是中国电影",
+   "also": [],
+   "check": "exact"
+  },
+  "conv-d50.1_m": {
+   "file": "conv-d50.1_m.mp3",
+   "bytes": 16416,
+   "heard": "你喜欢看外国电影还是中国电影",
+   "also": [],
+   "check": "exact"
+  },
+  "conv-d50.2_f": {
+   "file": "conv-d50.2_f.mp3",
+   "bytes": 18336,
+   "heard": "我都喜欢可是我很忙所以不常看电影",
+   "also": [
+    "我都喜欢可是我很忙所以部长看电影",
+    "我都喜欢可是我很忙所以不长看电影",
+    "我都喜欢可是我很忙所以不单看电影",
+    "我都喜欢可是我很忙所以补偿看电影"
+   ],
+   "check": "exact"
+  },
+  "conv-d50.2_m": {
+   "file": "conv-d50.2_m.mp3",
+   "bytes": 17472,
+   "heard": "我都喜欢可是我很忙所以不常看电影",
+   "also": [
+    "我都喜欢可是我很忙所以不长看电影",
+    "我都喜欢可是我很忙所以补偿看电影",
+    "我都喜欢可是我很忙所以不场看电影",
+    "我都喜欢可是我很忙所以不尝看电影"
+   ],
+   "check": "exact"
+  },
+  "conv-d50.3_f": {
+   "file": "conv-d50.3_f.mp3",
+   "bytes": 30432,
+   "heard": "这个周末有一个外国电影这个电影很好看我们去看怎么样我请客",
+   "also": [
+    "这个洲没有一个外国电影这个电影很好看我们去看怎么样我请客",
+    "这个州没有一个外国电影这个电影很好看我们去看怎么样我请客",
+    "这个周没有一个外国电影这个电影很好看我们去看怎么样我请客"
+   ],
+   "check": "exact"
+  },
+  "conv-d50.3_m": {
+   "file": "conv-d50.3_m.mp3",
+   "bytes": 33984,
+   "heard": "这个周末有一个外国电影这个电影很好看我们去看怎么样我请客",
+   "also": [
+    "这个周末有一个外国电影这个电影很好看我们去看怎么样啊请客",
+    "这个洲没有一个外国电影这个电影很好看我们去看怎么样我请客",
+    "这个周末我有一个外国电影这个电影很好看我们去看怎么样我请客",
+    "这个州没有一个外国电影这个电影很好看我们去看怎么样我请客"
+   ],
+   "check": "exact"
+  },
+  "conv-d50.4_f": {
+   "file": "conv-d50.4_f.mp3",
+   "bytes": 26784,
+   "heard": "是吗谢谢星期六还是星期天是哪国电影",
+   "also": [
+    "是吗谢谢星期六还是星期天去哪国电影",
+    "去吗谢谢星期六还是星期天是哪国电影",
+    "去吗谢谢星期六还是星期天去哪国电影"
+   ],
+   "check": "exact"
+  },
+  "conv-d50.4_m": {
+   "file": "conv-d50.4_m.mp3",
+   "bytes": 24576,
+   "heard": "是吗谢谢星期六还是星期天是哪国电影",
+   "also": [],
+   "check": "exact"
+  },
+  "conv-d50.5_f": {
+   "file": "conv-d50.5_f.mp3",
+   "bytes": 17664,
+   "heard": "星期六晚上是一个日本电影",
+   "also": [
+    "星期六晚上市一个日本电影"
+   ],
+   "check": "exact"
+  },
+  "conv-d50.5_m": {
+   "file": "conv-d50.5_m.mp3",
+   "bytes": 16032,
+   "heard": "星期六晚上是一个日本电影",
+   "also": [
+    "星期六晚上吃一个日本电影",
+    "星期六晚上市一个日本电影"
+   ],
+   "check": "exact"
+  },
+  "conv-d42.4_f": {
+   "file": "conv-d42.4_f.mp3",
+   "bytes": 14304,
+   "heard": "没有我这几天都不忙",
+   "also": [
+    "没有我这几天都不茫"
+   ],
+   "check": "exact"
+  },
+  "conv-d42.4_m": {
+   "file": "conv-d42.4_m.mp3",
+   "bytes": 12096,
+   "heard": "没有我这几天都不忙",
+   "also": [
+    "没有我这几天都不茫"
+   ],
+   "check": "exact"
+  },
+  "conv-d37.2_f": {
+   "file": "conv-d37.2_f.mp3",
+   "bytes": 18144,
+   "heard": "有我有两个姐姐一个妹妹你呢",
+   "also": [
+    "有我有两个姐姐一个妹妹你那",
+    "有我有两个解解一个妹妹你呢",
+    "有我有两个解解一个妹妹你那"
+   ],
+   "check": "exact"
+  },
+  "conv-d37.2_m": {
+   "file": "conv-d37.2_m.mp3",
+   "bytes": 16416,
+   "heard": "有我有两个姐姐一个妹妹你呢",
+   "also": [
+    "有不有两个姐姐一个妹妹你呢",
+    "有没有两个姐姐一个妹妹你呢",
+    "有我有两个姐姐一个妹妹你那",
+    "有不有两个姐姐一个妹妹你那"
+   ],
+   "check": "exact"
+  },
+  "conv-d48.4_f": {
+   "file": "conv-d48.4_f.mp3",
+   "bytes": 15072,
+   "heard": "有28天你为什么问我这个",
+   "also": [
+    "有28天呢为什么问我这个"
+   ],
+   "check": "mismatch"
+  },
+  "conv-d48.4_m": {
+   "file": "conv-d48.4_m.mp3",
+   "bytes": 13536,
+   "heard": "有28天你为什么问我这个",
+   "also": [
+    "有28天呢为什么问我这个"
+   ],
+   "check": "mismatch"
+  },
+  "conv-d18.6_f": {
+   "file": "conv-d18.6_f.mp3",
+   "bytes": 11424,
+   "heard": "他还是个大学生没有工作",
+   "also": [
+    "她还是个大学生没有工作",
+    "它还是个大学生没有工作",
+    "他还是各大学生没有工作",
+    "它还是各大学生没有工作"
+   ],
+   "check": "exact"
+  },
+  "conv-d18.6_m": {
+   "file": "conv-d18.6_m.mp3",
+   "bytes": 12576,
+   "heard": "他还是个大学生没有工作",
+   "also": [
+    "她还是个大学生没有工作",
+    "它还是个大学生没有工作",
+    "他还是各大学生没有工作",
+    "它还是各大学生没有工作"
+   ],
+   "check": "exact"
+  },
+  "conv-d51.1_f": {
+   "file": "conv-d51.1_f.mp3",
+   "bytes": 8544,
+   "heard": "你周末常做什么",
+   "also": [
+    "你周末场做什么",
+    "你周末长做什么",
+    "你周末场坐什么",
+    "你周末偿做什么"
+   ],
+   "check": "exact"
+  },
+  "conv-d51.1_m": {
+   "file": "conv-d51.1_m.mp3",
+   "bytes": 8256,
+   "heard": "你周末常做什么",
+   "also": [
+    "你周末场做什么",
+    "你周末长做什么",
+    "你周末乘坐什么",
+    "你周末床做什么"
+   ],
+   "check": "exact"
+  },
+  "conv-d51.2_f": {
+   "file": "conv-d51.2_f.mp3",
+   "bytes": 16224,
+   "heard": "我有的时候工作有的时候看书",
+   "also": [
+    "所有的时候工作有的时候看书",
+    "我有的时候工作有的时候看叔",
+    "所有的时候工作有的时候看叔"
+   ],
+   "check": "exact"
+  },
+  "conv-d51.2_m": {
+   "file": "conv-d51.2_m.mp3",
+   "bytes": 15456,
+   "heard": "我有的时候工作有的时候看书",
+   "also": [
+    "我有的时候工作已有的时候看书",
+    "我有的时候工作有的时候看叔",
+    "我有的时候工作已有的时候看叔"
+   ],
+   "check": "exact"
+  },
+  "conv-d51.2-alt1_f": {
+   "file": "conv-d51.2-alt1_f.mp3",
+   "bytes": 14016,
+   "heard": "有的时候工作有的时候看书",
+   "also": [
+    "有的时候工作有的时候看出",
+    "有的时候工作有的时候看叔"
+   ],
+   "check": "exact"
+  },
+  "conv-d51.2-alt1_m": {
+   "file": "conv-d51.2-alt1_m.mp3",
+   "bytes": 14304,
+   "heard": "有的时候工作有的时候看书",
+   "also": [
+    "有的时候工作已有的时候看书",
+    "有的时候工作有的时候看叔",
+    "有的时候工作已有的时候看叔"
+   ],
+   "check": "exact"
+  },
+  "conv-d49.8_f": {
+   "file": "conv-d49.8_f.mp3",
+   "bytes": 12864,
+   "heard": "今天是星期六他周末不工作",
+   "also": [
+    "今天是星期六他周末部工作",
+    "今天是星期六它周末不工作",
+    "今天是星期六他州莫不工作",
+    "今天是星期六他周末步工作"
+   ],
+   "check": "sounds-same"
+  },
+  "conv-d49.8_m": {
+   "file": "conv-d49.8_m.mp3",
+   "bytes": 14016,
+   "heard": "今天是星期六他周末不工作",
+   "also": [
+    "今天是星期六它周末不工作",
+    "今天是星期六他州莫不工作",
+    "今天是星期六他周末部工作",
+    "今天是星期六他州万不工作"
+   ],
+   "check": "sounds-same"
+  },
+  "conv-d61.1_f": {
+   "file": "conv-d61.1_f.mp3",
+   "bytes": 11424,
+   "heard": "你这个星期有几个考试",
+   "also": [
+    "你这个星期一有几个考试",
+    "你这个星期有几格考试"
+   ],
+   "check": "exact"
+  },
+  "conv-d61.1_m": {
+   "file": "conv-d61.1_m.mp3",
+   "bytes": 10176,
+   "heard": "你这个星期有几个考试",
+   "also": [
+    "你这个星期一有几个考试",
+    "你这个星期有几格考试"
+   ],
+   "check": "exact"
+  },
+  "conv-d61.2_f": {
+   "file": "conv-d61.2_f.mp3",
+   "bytes": 21312,
+   "heard": "有两个我昨天考了一个今天考了一个",
+   "also": [
+    "有两个我昨天烤了一个今天考了一个",
+    "有俩个我昨天考了一个今天考了一个",
+    "由两个我昨天考了一个今天考了一个",
+    "有俩个我昨天烤了一个今天考了一个"
+   ],
+   "check": "exact"
+  },
+  "conv-d61.2_m": {
+   "file": "conv-d61.2_m.mp3",
+   "bytes": 18432,
+   "heard": "有两个我昨天考了一个今天考了一个",
+   "also": [
+    "有两个我昨天考了一个今天搞了一个",
+    "有两个我昨天烤了一个今天考了一个",
+    "有两个我昨天烤了一个今天搞了一个",
+    "有俩个我昨天考了一个今天考了一个"
+   ],
+   "check": "exact"
+  },
+  "conv-d65.1_f": {
+   "file": "conv-d65.1_f.mp3",
+   "bytes": 12672,
+   "heard": "这三个字你认识几个",
+   "also": [
+    "这三个子你认识几个",
+    "这三个自你认识几个"
+   ],
+   "check": "exact"
+  },
+  "conv-d65.1_m": {
+   "file": "conv-d65.1_m.mp3",
+   "bytes": 10272,
+   "heard": "这三个字你认识几个",
+   "also": [
+    "这三个子你认识几个",
+    "解三个字你认识几个",
+    "给三个字你认识几个",
+    "有三个字你认识几个"
+   ],
+   "check": "exact"
+  },
+  "conv-d65.2_f": {
+   "file": "conv-d65.2_f.mp3",
+   "bytes": 6144,
+   "heard": "我认识一个",
+   "also": [
+    "我认识一格"
+   ],
+   "check": "exact"
+  },
+  "conv-d65.2_m": {
+   "file": "conv-d65.2_m.mp3",
+   "bytes": 6432,
+   "heard": "我认识一个",
+   "also": [
+    "我认识一格"
+   ],
+   "check": "exact"
+  },
+  "conv-d65.3_f": {
+   "file": "conv-d65.3_f.mp3",
+   "bytes": 10944,
+   "heard": "是吗你认识哪一个",
+   "also": [
+    "是吗你认是哪一个",
+    "事吗你认识哪一个"
+   ],
+   "check": "exact"
+  },
+  "conv-d65.3_m": {
+   "file": "conv-d65.3_m.mp3",
+   "bytes": 10752,
+   "heard": "是吗你认识哪一个",
+   "also": [
+    "是吗你认是哪一个",
+    "事吗你认识哪一个",
+    "使吗你认识哪一个",
+    "屎吗你认识哪一个"
+   ],
+   "check": "exact"
+  },
+  "conv-d65.4_f": {
+   "file": "conv-d65.4_f.mp3",
+   "bytes": 6912,
+   "heard": "我认识这一个",
+   "also": [
+    "不认识这一个",
+    "我认识这一格",
+    "我认是这一个",
+    "我认识这1个"
+   ],
+   "check": "exact"
+  },
+  "conv-d65.4_m": {
+   "file": "conv-d65.4_m.mp3",
+   "bytes": 6816,
+   "heard": "我认识这一个",
+   "also": [
+    "我认识这一格",
+    "我认是这一个",
+    "我认识这1个",
+    "我任是这一个"
+   ],
+   "check": "exact"
+  },
+  "conv-d65.5_f": {
+   "file": "conv-d65.5_f.mp3",
+   "bytes": 7104,
+   "heard": "这两个呢",
+   "also": [
+    "这俩个呢",
+    "这两个那"
+   ],
+   "check": "exact"
+  },
+  "conv-d65.5_m": {
+   "file": "conv-d65.5_m.mp3",
+   "bytes": 5184,
+   "heard": "这两个呢",
+   "also": [
+    "这俩个呢",
+    "这两个那"
+   ],
+   "check": "exact"
+  },
+  "conv-d65.6_f": {
+   "file": "conv-d65.6_f.mp3",
+   "bytes": 9216,
+   "heard": "这两个我都不认识",
+   "also": [
+    "这俩个我都不认识"
+   ],
+   "check": "exact"
+  },
+  "conv-d65.6_m": {
+   "file": "conv-d65.6_m.mp3",
+   "bytes": 8352,
+   "heard": "这两个我都不认识",
+   "also": [
+    "这俩个我都不认识"
+   ],
+   "check": "exact"
+  },
+  "conv-d65.7_f": {
+   "file": "conv-d65.7_f.mp3",
+   "bytes": 5856,
+   "heard": "这是什么字",
+   "also": [
+    "这是什么子"
+   ],
+   "check": "exact"
+  },
+  "conv-d65.7_m": {
+   "file": "conv-d65.7_m.mp3",
+   "bytes": 6144,
+   "heard": "这是什么字",
+   "also": [
+    "这是什么子",
+    "就是什么字"
+   ],
+   "check": "exact"
+  },
+  "conv-d65.8_f": {
+   "file": "conv-d65.8_f.mp3",
+   "bytes": 5952,
+   "heard": "是大字",
+   "also": [
+    "是大智",
+    "是大自",
+    "去大字",
+    "巨大子"
+   ],
+   "check": "exact"
+  },
+  "conv-d65.8_m": {
+   "file": "conv-d65.8_m.mp3",
+   "bytes": 6912,
+   "heard": "写大字",
+   "also": [
+    "是大字",
+    "写大自",
+    "许大字",
+    "使大字"
+   ],
+   "check": "exact"
+  },
+  "conv-d34.2_f": {
+   "file": "conv-d34.2_f.mp3",
+   "bytes": 19584,
+   "heard": "这是我爸爸这是我妈妈这三个是我哥哥",
+   "also": [
+    "这是我爸爸就是我妈妈这三个是我哥哥",
+    "这是我爸爸这是我妈妈家三个是我哥哥",
+    "只是我爸爸这是我妈妈这三个是我哥哥",
+    "就是我爸爸这是我妈妈这三个是我哥哥"
+   ],
+   "check": "exact"
+  },
+  "conv-d34.2_m": {
+   "file": "conv-d34.2_m.mp3",
+   "bytes": 18144,
+   "heard": "这是我爸爸这是我妈妈这三个是我哥哥",
+   "also": [
+    "这是我爸爸就是我妈妈这三个是我哥哥",
+    "这是我爸爸这是我妈妈的三个是我哥哥",
+    "这是我爸爸这是我妈妈第3个是我哥哥",
+    "就是我爸爸这是我妈妈这三个是我哥哥"
+   ],
+   "check": "exact"
+  },
+  "conv-d65.3-alt1_f": {
+   "file": "conv-d65.3-alt1_f.mp3",
+   "bytes": 8256,
+   "heard": "是吗你认识哪个",
+   "also": [
+    "去吗你认识哪个",
+    "是吗你认是哪个",
+    "事吗你认识哪个"
+   ],
+   "check": "exact"
+  },
+  "conv-d65.3-alt1_m": {
+   "file": "conv-d65.3-alt1_m.mp3",
+   "bytes": 11616,
+   "heard": "去吗你认识哪个",
+   "also": [
+    "是吗你认识哪个",
+    "洗吗你认识哪个",
+    "旭吗你认识哪个",
+    "西吗你认识哪个"
+   ],
+   "check": "exact"
+  },
+  "conv-d8.2_f": {
+   "file": "conv-d8.2_f.mp3",
+   "bytes": 14976,
+   "heard": "我没有姐姐有一个妹妹你呢",
+   "also": [
+    "我没有姐姐有一个妹妹你那",
+    "我没有解决有一个妹妹你呢",
+    "我没有解决有一个妹妹你那"
+   ],
+   "check": "exact"
+  },
+  "conv-d8.2_m": {
+   "file": "conv-d8.2_m.mp3",
+   "bytes": 16416,
+   "heard": "我没有姐姐有一个妹妹你呢",
+   "also": [
+    "我没有姐姐有一个妹妹你那"
+   ],
+   "check": "exact"
+  },
+  "conv-d65.4-alt1_f": {
+   "file": "conv-d65.4-alt1_f.mp3",
+   "bytes": 5472,
+   "heard": "我认识这个",
+   "also": [
+    "我认是这个",
+    "我任是这个"
+   ],
+   "check": "exact"
+  },
+  "conv-d65.4-alt1_m": {
+   "file": "conv-d65.4-alt1_m.mp3",
+   "bytes": 6144,
+   "heard": "我认识这个",
+   "also": [
+    "我认是这个",
+    "我任是这个"
+   ],
+   "check": "exact"
+  },
+  "conv-d66.3_f": {
+   "file": "conv-d66.3_f.mp3",
+   "bytes": 13056,
+   "heard": "是吗这一课有几个生词",
+   "also": [
+    "是吗这一刻有几个生词",
+    "是吗这一克有几个生词",
+    "是吗这一客有几个生词",
+    "是吗这一可有几个生词"
+   ],
+   "check": "exact"
+  },
+  "conv-d66.3_m": {
+   "file": "conv-d66.3_m.mp3",
+   "bytes": 13056,
+   "heard": "是吗这一课有几个生词",
+   "also": [
+    "是吗这一刻有几个生词",
+    "是吗这一克有几个生词",
+    "去吗这一课有几个生词",
+    "是吗这一颗有几个生词"
+   ],
+   "check": "exact"
+  },
+  "conv-d65.6-alt1_f": {
+   "file": "conv-d65.6-alt1_f.mp3",
+   "bytes": 7392,
+   "heard": "我都不认识",
+   "also": [],
+   "check": "exact"
+  },
+  "conv-d65.6-alt1_m": {
+   "file": "conv-d65.6-alt1_m.mp3",
+   "bytes": 6144,
+   "heard": "我都不认识",
+   "also": [],
+   "check": "exact"
+  },
+  "conv-d45.2_f": {
+   "file": "conv-d45.2_f.mp3",
+   "bytes": 12384,
+   "heard": "这是我女儿这两个是我儿子",
+   "also": [
+    "这是我女儿这俩个是我儿子",
+    "这事我女儿这两个是我儿子",
+    "这是我女儿这两个事我儿子",
+    "这事我女儿这两个事我儿子"
+   ],
+   "check": "exact"
+  },
+  "conv-d45.2_m": {
+   "file": "conv-d45.2_m.mp3",
+   "bytes": 13056,
+   "heard": "这是我女儿这两个是我儿子",
+   "also": [
+    "就是我女儿这两个是我儿子",
+    "皆是我女儿这两个是我儿子",
+    "结识我女儿这两个是我儿子",
+    "接受我女儿这两个是我儿子"
    ],
    "check": "exact"
   }
