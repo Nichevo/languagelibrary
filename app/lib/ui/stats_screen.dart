@@ -11,6 +11,7 @@ import '../srs/scheduler.dart';
 import 'common.dart';
 import 'word_web.dart';
 import 'settings_screen.dart';
+import 'talk_progress.dart';
 import 'practice_screen.dart';
 import 'wide.dart';
 
@@ -516,6 +517,10 @@ class StatsView extends StatelessWidget {
             ],
           ]);
         }(),
+        if (store.talkRuns.isNotEmpty)
+          section('Your conversations', note: 'Practice > Conversations', [
+            TalkProgress(runs: store.talkRuns, conv: library.conversations, now: now),
+          ]),
         section('Your own scores', note: 'Easy / OK / Hard on word pages', [
           for (final d in Difficulty.values)
             _Legend(
