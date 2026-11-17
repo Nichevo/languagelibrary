@@ -45,13 +45,19 @@ DIR = ROOT / "tools" / "sources" / "coerll"
 OUT_JSON = DIR / "scenes.json"
 OUT_REPORT = ROOT / "tools" / "dialogues_report.md"
 LIBRARY = ROOT / "app" / "assets" / "data" / "library.json"
+# Replies a person checked and marked "doesn't fit" on the scene check page:
+# turn line, reply line, and why. They are never offered as right replies there.
+REJECTED = DIR / "rejected.tsv"
 CREDIT = ("Chinese Dialogues Podcast by Wen-Hua Teng, COERLL (The Center for Open Educational Resources "
           "and Language Learning), The University of Texas at Austin. CC BY 3.0.")
 
 _SECTION = re.compile(r"(?:Chinese\s+Podcast\s+)?Episode\s*#?\s*(\d+)\s*\((Simplified|Traditional|English)[^)]*\)", re.I)
 _DIALOGUE = re.compile(r"Dialogues?\s*#\s*(\d+)", re.I)
 _ZH_LABEL = re.compile(r"^\s*([^:：\s][^:：]{0,15}?)\s*[:：]\s*(.*)$")
-_EN_LABEL = re.compile(r"(?:(?<=^)|(?<=[\s)\]!?.]))([A-Z][\w.'’]*(?: [\w.'’]+){0,2}?):\s")
+# A speaker label: "A:", "Wang:", "Mr. Wang:", "New employee:". Only a title may
+# carry a full stop, so the end of a sentence ("...a Japanese car. A:") is not
+# swallowed into the label.
+_EN_LABEL = re.compile(r"(?:(?<=^)|(?<=[\s)\]!?.]))((?:(?:Mr|Mrs|Ms|Dr)\. )?[A-Z][\w'’]*(?: [\w'’]+){0,2}?):\s")
 _ALT = re.compile(r"[（(]\s*(?:or|=)\s*([^()（）]*?)\s*[）)]")
 _OPTIONAL = re.compile(r"[（(]\s*([一-鿿]{1,3})\s*[）)]")
 _LATIN = re.compile(r"[A-Za-z0-9]")
@@ -222,6 +228,25 @@ def level_of(word: str, levels: dict[str, int]) -> int:
     return max((levels.get(c, 99) for c in word), default=99)
 
 
+# Capitalised English words that are also pinyin but are not invented names.
+_NOT_NAMES = {"beijing", "you", "he", "she", "ma", "men"}
+
+
+def names_in(line: dict) -> list[str]:
+    """Invented names in a line, found by matching the English against the line's
+    own pinyin: "Guiyi" in the English and gui4 yi1 in the Chinese means 贵一 is a
+    name here, not "expensive one". Single characters such as 王 and 高 are real
+    words too, so the word check alone can't catch them."""
+    syl = re.findall(r"[a-zü:]+", re.sub(r"\d", "", line.get("pinyinNumbered", "").lower()))
+    combos = {"".join(syl[i:i + k]) for k in (1, 2, 3) for i in range(len(syl))}
+    found = []
+    for m in re.finditer(r"\b([A-Z][a-z]+)(?:[’']s)?\b", line.get("en", "")):
+        w = m.group(1).lower()
+        if w in combos and w not in _NOT_NAMES:
+            found.append(m.group(1))
+    return found
+
+
 def check_all(dialogues: list[dict], reader: st.Reader, t2s, levels) -> None:
     for d in dialogues:
         for ln in d["lines"]:
@@ -233,6 +258,8 @@ def check_all(dialogues: list[dict], reader: st.Reader, t2s, levels) -> None:
                 ln.update(ok=False, why=agree)
             if ln["ok"] and not ln["en"]:
                 ln.update(ok=False, why="no English line to match it")
+            if ln["ok"] and names_in(ln):
+                ln.update(ok=False, why="has a name: " + ", ".join(dict.fromkeys(names_in(ln))))
             ln["alts"] = []
             for a in alts:
                 c = check_line(a, reader, levels)
@@ -263,7 +290,14 @@ def echoes(prompt: str, reply: str) -> bool:
     return False
 
 
-def build_web(dialogues: list[dict]) -> dict:
+def load_rejected(path: Path = REJECTED) -> set[tuple[str, str]]:
+    if not path.exists():
+        return set()
+    rows = [ln.split("\t") for ln in path.read_text(encoding="utf-8").splitlines()[1:] if ln.strip()]
+    return {(r[0], r[1]) for r in rows if len(r) >= 2}
+
+
+def build_web(dialogues: list[dict], rejected: set[tuple[str, str]] = frozenset()) -> dict:
     """Right and wrong replies for every line that answers the line before it."""
     lines = {ln["id"]: ln for d in dialogues for ln in d["lines"]}
     by_prompt: dict[str, list[str]] = defaultdict(list)
@@ -290,7 +324,8 @@ def build_web(dialogues: list[dict]) -> dict:
             right = [{"line": ln["id"], "zh": ln["zh"], "next": next_ok(ln["id"])}]
             for a in ln["alts"]:
                 right.append({"line": ln["id"], "zh": a["zh"], "alt": True, "next": next_ok(ln["id"])})
-            others = [o for o in by_prompt[key] if o != ln["id"] and lines[o]["zh"] not in {r["zh"] for r in right}]
+            others = [o for o in by_prompt[key] if o != ln["id"] and (ln["id"], o) not in rejected
+                      and lines[o]["zh"] not in {r["zh"] for r in right}]
             others.sort(key=lambda o: (next_ok(o) is None, _order(o)))
             for o in others[: max(0, 2 - len(right))]:
                 right.append({"line": o, "zh": lines[o]["zh"], "next": next_ok(o), "branch": next_ok(o) != next_ok(ln["id"])})
@@ -465,7 +500,7 @@ def main(argv=None):
     reader = st.Reader(cedict, library, hsk)
     levels = word_levels(library, hsk)
     check_all(dialogues, reader, trad_to_simp(cedict), levels)
-    turns = build_web(dialogues)
+    turns = build_web(dialogues, load_rejected())
     pairs = st.load_pairs()
     if pairs:
         fill_from_tatoeba(turns, {ln["id"]: ln for d in dialogues for ln in d["lines"]},

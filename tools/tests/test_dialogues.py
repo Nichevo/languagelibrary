@@ -168,6 +168,10 @@ class CheckTest(unittest.TestCase):
         self.assertEqual([s["id"] for s in out["scenes"]], ["d2", "d9"])
         self.assertEqual(out["scenes"][1]["lines"], ["d9.1", "d9.2"])
 
+    def test_rejected_reply(self):
+        turns = dg.build_web(self.ds, {("d2.4", "d9.2")})
+        self.assertEqual([r["zh"] for r in turns["d2.4"]["right"]], ["我不忙。"])
+
     def test_tatoeba_second_reply(self):
         turns = dg.build_web(self.ds)
         index = [{"zh": "我很好，谢谢。", "en": "I'm fine, thanks.", "id": "1", "hsk": 1, "pinyin": "", "credit": []},
@@ -182,6 +186,17 @@ class CheckTest(unittest.TestCase):
         self.assertTrue(dg.echoes("他们都很好。", "他们都很好。你哥哥、弟弟呢？"))
         self.assertFalse(dg.echoes("你忙吗？", "我不忙。"))
         self.assertFalse(dg.echoes("你好！", "我很好。"))
+
+    def test_names(self):
+        ln = {"pinyinNumbered": "wo3 xing4 wang2 jiao4 wang2 gui4 yi1", "en": "My last name is Wang; my name is Guiyi Wang."}
+        self.assertEqual(dg.names_in(ln), ["Wang", "Guiyi", "Wang"])
+        self.assertEqual(dg.names_in({"pinyinNumbered": "wo3 hen3 hao3", "en": "I am fine."}), [])
+        self.assertEqual(dg.names_in({"pinyinNumbered": "you3", "en": "You have one."}), [])
+
+    def test_english_label_keeps_sentence_end(self):
+        _, turns = dg.english_turns("A: Which is yours? B: My car is a Japanese car. A: Then where is it? Mr. Wang: Here.")
+        self.assertEqual([t["text"] for t in turns], ["Which is yours?", "My car is a Japanese car.", "Then where is it?", "Here."])
+        self.assertEqual(turns[3]["speaker"], "Mr. Wang")
 
     def test_prompt_key(self):
         self.assertEqual(dg.prompt_key("请问你贵姓？"), dg.prompt_key("你贵姓?"))

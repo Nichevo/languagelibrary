@@ -12,6 +12,7 @@ on:
       - tools/fetch_dialogues.py
       - tools/dialogues.py
       - tools/sources/coerll/files.tsv
+      - tools/sources/coerll/rejected.tsv
       - .github/workflows/fetch-dialogues.yml
 
 permissions:
