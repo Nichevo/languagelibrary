@@ -27,7 +27,8 @@ class Scene {
 /// The checked scenes, built by `python -m tools.dialogues` into
 /// assets/data/conversations.json.
 class Conversations {
-  Conversations({this.entries = const {}, this.scenes = const [], this.next = const {}, this.turns = const {}});
+  Conversations(
+      {this.entries = const {}, this.scenes = const [], this.next = const {}, this.turns = const {}, this.words = const {}});
 
   /// Every line as an entry, by entry id (conv-d2.1).
   final Map<String, Entry> entries;
@@ -39,7 +40,18 @@ class Conversations {
   /// Line id -> the right and wrong replies offered in its place.
   final Map<String, ({List<(String, String?)> right, List<String> wrong})> turns;
 
+  /// Entry id -> the words of that line in order, with their library entry
+  /// ids where the library has the word (for Say it's word list).
+  final Map<String, List<(String, String?)>> words;
+
   static final empty = Conversations();
+
+  Scene? scene(String id) {
+    for (final s in scenes) {
+      if (s.id == id) return s;
+    }
+    return null;
+  }
 
   bool get isEmpty => scenes.isEmpty;
 
@@ -75,6 +87,12 @@ class Conversations {
     };
     return Conversations(
       entries: entries,
+      words: {
+        for (final e in j['entries'] as List)
+          (e['id'] as String): [
+            for (final w in (e['words'] as List?) ?? const []) ((w as List)[0] as String, w[1] as String?)
+          ],
+      },
       scenes: [
         for (final s in j['scenes'] as List)
           Scene(s['id'] as String, s['title'] as String, s['hsk'] as int, List<String>.from(s['lines'] as List)),

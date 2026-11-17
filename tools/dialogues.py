@@ -221,8 +221,20 @@ def check_line(text: str, reader: st.Reader, levels: dict[str, int]) -> dict:
     pinyin, numbered = st._pinyin_text(tokens)
     lv = {w: level_of(w, levels) for w in words}
     return {"ok": True, "why": "", "pinyin": pinyin, "pinyinNumbered": numbered, "words": words,
-            "pronunciation": st._pronunciation(tokens),
+            "pronunciation": st._pronunciation(tokens), "wordIds": _word_ids(tokens, reader),
             "hsk": max(lv.values(), default=1), "beyond": [w for w in words if lv[w] > 2]}
+
+
+def _word_ids(tokens, reader: st.Reader) -> list[list]:
+    """Each word of the line in order, with its library entry id where there is
+    one, so a slip in a conversation can count for that word in Say it."""
+    out = []
+    for w, n in tokens:
+        if n is None:
+            continue
+        ids = [e["id"] for e in reader.entry_for.get(w, []) if st._norm(e["pinyinNumbered"]) == n]
+        out.append([w, ids[0] if ids else None])
+    return out
 
 
 def level_of(word: str, levels: dict[str, int]) -> int:
@@ -269,7 +281,7 @@ def check_all(dialogues: list[dict], reader: st.Reader, t2s, levels) -> None:
                 c = check_line(a, reader, levels)
                 if c["ok"]:
                     ln["alts"].append({"zh": a, "pinyin": c["pinyin"], "pinyinNumbered": c["pinyinNumbered"],
-                                       "pronunciation": c["pronunciation"]})
+                                       "pronunciation": c["pronunciation"], "wordIds": c["wordIds"]})
 
 
 # ---------------------------------------------------------------- the web
@@ -386,6 +398,7 @@ def fill_from_tatoeba(turns: dict, lines: dict, index: list[dict]) -> None:
             t = min(cands, key=lambda t: (len(t["zh"]), int(t["id"])))
             turn["right"].append({"tatoeba": t["id"], "zh": t["zh"], "en": t["en"], "pinyin": t["pinyin"],
                                   "pinyinNumbered": t.get("pinyinNumbered", ""), "pronunciation": t.get("pronunciation"),
+                                  "wordIds": t.get("wordIds", []),
                                   "credit": t["credit"], "next": turn["right"][0]["next"]})
             turn["wrong"] = turn["wrong"][:1]
 
@@ -442,7 +455,8 @@ def _entry(eid: str, zh: str, en: str, c: dict, source: str) -> dict:
     return {"id": eid, "kind": "sentence", "simplified": zh, "traditional": "", "pinyin": c["pinyin"],
             "pinyinNumbered": c["pinyinNumbered"], "meanings": [en], "classifiers": [], "hsk": None,
             "frequency": None, "topics": ["conversations"], "pronunciation": c["pronunciation"],
-            "polyphonic": False, "notes": [], "sources": [source], "related": []}
+            "polyphonic": False, "notes": [], "sources": [source], "related": [],
+            "words": c.get("wordIds", [])}
 
 
 def build_app(dialogues: list[dict], turns: dict, out: dict, approved: list[str]) -> dict:
