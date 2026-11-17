@@ -253,11 +253,14 @@ def _hanzi(text: str) -> str:
 
 
 def echoes(prompt: str, reply: str) -> bool:
-    """True when most of the reply's characters already appear in the prompt."""
-    p, r = _hanzi(prompt), _hanzi(reply)
-    if not r:
-        return False
-    return sum(1 for ch in r if ch in p) / len(r) >= 0.6
+    """True when the reply, or one sentence of it, mostly repeats the prompt
+    (他们都很好。你哥哥、弟弟呢？ after 他们都很好。)."""
+    p = _hanzi(prompt)
+    parts = [_hanzi(x) for x in re.split(r"[。！？!?，,；;]", reply)] + [_hanzi(reply)]
+    for r in parts:
+        if len(r) >= 2 and sum(1 for ch in r if ch in p) / len(r) >= 0.6:
+            return True
+    return False
 
 
 def build_web(dialogues: list[dict]) -> dict:
