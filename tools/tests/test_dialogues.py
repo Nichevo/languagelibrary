@@ -154,12 +154,22 @@ class CheckTest(unittest.TestCase):
         t = turns["d2.4"]
         self.assertEqual([r["zh"] for r in t["right"]], ["我不忙。", "我很忙。"])
         self.assertEqual(t["right"][1]["line"], "d9.2")
-        self.assertIsNotNone(t["wrong"])
-        self.assertNotIn(self.lines[t["wrong"]]["zh"], {"我不忙。", "我很忙。"})
+        # Wrong replies come from another dialogue and answer a different question.
+        self.assertIsNone(t["wrong"])
+        t9 = turns["d9.2"]
+        self.assertEqual([r["zh"] for r in t9["right"]], ["我很忙。", "我忙。"])
+        self.assertEqual(t9["wrong"], "d2.2")
         out = dg.build_output(self.ds, turns)
         # 谢 on its own is only a family name here, so 我姓谢 can't be checked and dialogue 6 has one usable line.
         self.assertEqual([s["id"] for s in out["scenes"]], ["d2", "d9"])
         self.assertEqual(out["scenes"][1]["lines"], ["d9.1", "d9.2"])
+
+    def test_tatoeba_second_reply(self):
+        turns = dg.build_web(self.ds)
+        index = [{"zh": "我很好，谢谢。", "en": "I'm fine, thanks.", "id": "1", "hsk": 1, "pinyin": "", "credit": []},
+                 {"zh": "我很好看。", "en": "I'm good-looking.", "id": "2", "hsk": 1, "pinyin": "", "credit": []}]
+        dg.fill_from_tatoeba(turns, self.lines, index)
+        self.assertEqual([r["zh"] for r in turns["d2.2"]["right"]], ["我很好。", "我很好，谢谢。"])
 
     def test_prompt_key(self):
         self.assertEqual(dg.prompt_key("请问你贵姓？"), dg.prompt_key("你贵姓?"))

@@ -210,9 +210,16 @@ def check_line(text: str, reader: st.Reader, levels: dict[str, int]) -> dict:
         return {"ok": False, "why": why}
     words = [w for w, n in tokens if n is not None]
     pinyin, numbered = st._pinyin_text(tokens)
+    lv = {w: level_of(w, levels) for w in words}
     return {"ok": True, "why": "", "pinyin": pinyin, "pinyinNumbered": numbered, "words": words,
-            "hsk": max((levels.get(w, 99) for w in words), default=1),
-            "beyond": [w for w in words if levels.get(w, 99) > 2]}
+            "hsk": max(lv.values(), default=1), "beyond": [w for w in words if lv[w] > 2]}
+
+
+def level_of(word: str, levels: dict[str, int]) -> int:
+    """HSK level of a word; a set phrase such as 你好 that isn't on the list takes its hardest character's."""
+    if word in levels:
+        return levels[word]
+    return max((levels.get(c, 99) for c in word), default=99)
 
 
 def check_all(dialogues: list[dict], reader: st.Reader, t2s, levels) -> None:
@@ -274,12 +281,56 @@ def build_web(dialogues: list[dict]) -> dict:
                 right.append({"line": o, "zh": lines[o]["zh"], "next": next_ok(o), "branch": next_ok(o) != next_ok(ln["id"])})
             right = right[:2]
             pwords = set(prompt.get("words", []))
+            asks = is_question(ln["zh"])
             wrong = [w for w in pool if prompt_key(lines[lines[w]["prompt"]]["zh"]) != key
+                     and _order(w)[0] != d["num"]
+                     and is_question(lines[w]["zh"]) == asks
                      and lines[w]["zh"] not in {r["zh"] for r in right}
                      and lines[w]["hsk"] <= max(ln["hsk"], 2)]
-            wrong.sort(key=lambda w: (-len(pwords & set(lines[w]["words"])), _order(w)))
+            size = len(ln["zh"])
+            # Most plausible first: shares words with the line before, and is about as long as the right reply.
+            wrong.sort(key=lambda w: (-len(pwords & set(lines[w]["words"])), abs(len(lines[w]["zh"]) - size) // 4, _order(w)))
             turns[ln["id"]] = {"prompt": prompt["id"], "right": right, "wrong": wrong[0] if wrong else None}
     return turns
+
+
+def tatoeba_index(pairs: list[dict], reader: st.Reader, levels: dict[str, int]) -> list[dict]:
+    out = []
+    for p in pairs:
+        c = check_line(p["cmn"], reader, levels)
+        if c["ok"]:
+            out.append({**c, "zh": p["cmn"], "en": p["eng"], "credit": st.credit(p), "id": p["cmn_id"]})
+    return out
+
+
+def fill_from_tatoeba(turns: dict, lines: dict, index: list[dict]) -> None:
+    """A second right reply where the dialogues have none: a Tatoeba sentence that
+    is the same reply with a short addition after a comma, such as 我很好。 ->
+    我很好，谢谢。 Looser matches (sharing words) turned out to change the meaning
+    too often, so they are not used."""
+    by_text = defaultdict(list)
+    for t in index:
+        head = re.split(r"[，,]", t["zh"], maxsplit=1)
+        if len(head) == 2 and head[1].strip():
+            by_text[head[0]].append(t)
+    for lid, turn in turns.items():
+        if len(turn["right"]) >= 2:
+            continue
+        ln = lines[lid]
+        core = ln["zh"].rstrip("。！？!?.")
+        if "，" in core or "," in core:
+            continue
+        cands = [t for t in by_text.get(core, []) if is_question(t["zh"]) == is_question(ln["zh"])
+                 and t["hsk"] <= max(ln["hsk"], 2) and sum(map(is_hanzi, t["zh"])) <= sum(map(is_hanzi, core)) + 4
+                 and t["zh"] not in {r["zh"] for r in turn["right"]}]
+        if cands:
+            t = min(cands, key=lambda t: (len(t["zh"]), int(t["id"])))
+            turn["right"].append({"tatoeba": t["id"], "zh": t["zh"], "en": t["en"], "pinyin": t["pinyin"],
+                                  "credit": t["credit"], "next": turn["right"][0]["next"]})
+
+
+def is_question(text: str) -> bool:
+    return text.rstrip()[-1:] in "？?"
 
 
 def _order(lid: str) -> tuple[int, int]:
@@ -339,7 +390,8 @@ def write_report(dialogues: list[dict], turns: dict, out: dict, path: Path = OUT
          f"- Dialogues where every line passes: {len(full)}, of which {len(easy)} use only HSK 1-2 words",
          f"- Scenes (a dialogue's usable lines from the start, 2 or more): {len(out['scenes'])}",
          f"- Reply turns: {len(turns)}; with two right replies: {len(two)}; with a branch into another dialogue: {len(branches)}",
-         f"- Reply turns still needing a second right reply (from Tatoeba later): {len(turns) - len(two)}",
+         f"- Second right replies taken from Tatoeba: {sum(1 for t in turns.values() for o in t['right'] if 'tatoeba' in o)}",
+         f"- Reply turns with only one right reply: {len(turns) - len(two)}",
          "", "Why lines were left out:", ""]
     r += [f"- {k}: {v}" for k, v in sorted(why.items(), key=lambda kv: -kv[1])]
     problems = [d for d in dialogues if d["problems"]]
@@ -353,7 +405,8 @@ def write_report(dialogues: list[dict], turns: dict, out: dict, path: Path = OUT
     r += ["", "## Scenes to check", "",
           "For each reply turn: does each ✓ reply answer the line before it, and does the ✗ reply not answer it?", ""]
     for s in out["scenes"]:
-        r += [f"### Dialogue {s['dialogue']} (episode {s['episode']}, up to HSK {s['hsk']})", ""]
+        level = f"up to HSK {s['hsk']}" if s["hsk"] < 99 else "has a word outside the HSK list"
+        r += [f"### Dialogue {s['dialogue']} (episode {s['episode']}, {level})", ""]
         if s["note"]:
             r += [f"_{s['note']}_", ""]
         for lid in s["lines"]:
@@ -362,6 +415,9 @@ def write_report(dialogues: list[dict], turns: dict, out: dict, path: Path = OUT
             t = turns.get(lid)
             if t:
                 for opt in t["right"]:
+                    if "tatoeba" in opt:
+                        r.append(f"  - ✓ {opt['zh']} {opt['en']} (Tatoeba #{opt['tatoeba']}, check this one)")
+                        continue
                     src = lines[opt["line"]]
                     tag = " (author's alternative)" if opt.get("alt") else ("" if opt["line"] == lid else f" (from {opt['line']}, then carries on there)" if opt.get("branch") else f" (from {opt['line']})")
                     r.append(f"  - ✓ {opt['zh']} {src['en'] if not opt.get('alt') else ''}{tag}")
@@ -387,8 +443,13 @@ def main(argv=None):
     hsk = bd.load_hsk(args.hsk)
     library = [e for e in json.loads(LIBRARY.read_text(encoding="utf-8"))["entries"]]
     reader = st.Reader(cedict, library, hsk)
-    check_all(dialogues, reader, trad_to_simp(cedict), word_levels(library, hsk))
+    levels = word_levels(library, hsk)
+    check_all(dialogues, reader, trad_to_simp(cedict), levels)
     turns = build_web(dialogues)
+    pairs = st.load_pairs()
+    if pairs:
+        fill_from_tatoeba(turns, {ln["id"]: ln for d in dialogues for ln in d["lines"]},
+                          tatoeba_index(pairs, reader, levels))
     out = build_output(dialogues, turns)
     OUT_JSON.write_text(json.dumps(out, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
     write_report(dialogues, turns, out)
