@@ -65,6 +65,16 @@ character, made by `tools/char_tones.py`), which Say it uses to name what the re
   YIN method) and drawn as it is; the app does not mark tones right or wrong from
   it, because on our own voice clips that kind of automatic verdict was wrong too
   often. Recordings stay on the device.
+- [Chinese Dialogues Podcast](https://coerll.utexas.edu/coerll/oer/chinese-dialogues-podcast/)
+  by Wen-Hua Teng, published by COERLL (The Center for Open Educational Resources
+  and Language Learning), The University of Texas at Austin, licensed
+  [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/). Its 70 beginner
+  dialogues are the base of the conversation practice scenes (being built; not in
+  the app yet). `tools/fetch_dialogues.py` copies the transcripts' text by machine
+  into `tools/sources/coerll/`; `tools/dialogues.py` keeps a line only when its
+  simplified and traditional versions agree and every word passes the same
+  pinyin check as the Tatoeba sentences. Which lines answer which, and which reply
+  is the wrong one, are ours and are checked in English before use.
 - Character families are worked out by the app: every library entry that uses
   the character. Nothing is added by hand.
 

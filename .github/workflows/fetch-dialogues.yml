@@ -1,0 +1,49 @@
+name: Fetch dialogues
+
+# Downloads the Chinese Dialogues Podcast transcripts (COERLL, CC BY 3.0) from
+# Google Drive, which is blocked on some build machines, turns them into text,
+# builds the draft conversation scenes and their review report, and commits
+# tools/sources/coerll/ and tools/dialogues_report.md to the branch it ran on.
+on:
+  workflow_dispatch:
+  push:
+    branches: [claude/project-thread-klfq0n, dialogues]
+    paths:
+      - tools/fetch_dialogues.py
+      - tools/dialogues.py
+      - tools/sources/coerll/files.tsv
+      - .github/workflows/fetch-dialogues.yml
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    # Commits the transcripts and scenes back to the branch. No pull request
+    # trigger, so this only runs for manual runs and pushes to those branches.
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: "3.12"
+      - run: sudo apt-get install -y --no-install-recommends poppler-utils
+      - run: python -m unittest tools.tests.test_dialogues -v
+      - run: python -m tools.fetch_dialogues
+      - run: python -m tools.dialogues
+      - name: Commit the transcripts and scenes
+        # Runs even if building the scenes failed, so the transcripts can be looked at.
+        if: ${{ !cancelled() }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add tools/sources/coerll
+          if [ -f tools/dialogues_report.md ]; then git add tools/dialogues_report.md; fi
+          git diff --cached --quiet || git commit -m "Update dialogue transcripts and scenes"
+          git push
