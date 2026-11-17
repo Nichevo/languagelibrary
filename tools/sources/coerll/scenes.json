@@ -2342,7 +2342,121 @@
     {
      "zh": "我爸爸是医生，妈妈没有工作。",
      "pinyin": "Wǒ bà ba shì yī shēng, mā ma méi yǒu gōng zuò.",
-     "pinyinNumbered": "wo3 ba4 ba5 shi4 yi1 sheng1 ma1 ma5 mei2 you3 gong1 zuo4"
+     "pinyinNumbered": "wo3 ba4 ba5 shi4 yi1 sheng1 ma1 ma5 mei2 you3 gong1 zuo4",
+     "pronunciation": {
+      "syllables": [
+       {
+        "hanzi": "我",
+        "pinyin": "wǒ",
+        "initial": "w",
+        "final": "o",
+        "tone": 3,
+        "toneName": "3rd tone: low dip",
+        "spokenTone": 3
+       },
+       {
+        "hanzi": "爸",
+        "pinyin": "bà",
+        "initial": "b",
+        "final": "a",
+        "tone": 4,
+        "toneName": "4th tone: sharp fall",
+        "spokenTone": 4
+       },
+       {
+        "hanzi": "爸",
+        "pinyin": "ba",
+        "initial": "b",
+        "final": "a",
+        "tone": 5,
+        "toneName": "neutral tone: light and short",
+        "spokenTone": 5
+       },
+       {
+        "hanzi": "是",
+        "pinyin": "shì",
+        "initial": "sh",
+        "final": "i",
+        "tone": 4,
+        "toneName": "4th tone: sharp fall",
+        "spokenTone": 4
+       },
+       {
+        "hanzi": "医",
+        "pinyin": "yī",
+        "initial": "y",
+        "final": "i",
+        "tone": 1,
+        "toneName": "1st tone: high and level",
+        "spokenTone": 1
+       },
+       {
+        "hanzi": "生",
+        "pinyin": "shēng",
+        "initial": "sh",
+        "final": "eng",
+        "tone": 1,
+        "toneName": "1st tone: high and level",
+        "spokenTone": 1
+       },
+       {
+        "hanzi": "妈",
+        "pinyin": "mā",
+        "initial": "m",
+        "final": "a",
+        "tone": 1,
+        "toneName": "1st tone: high and level",
+        "spokenTone": 1
+       },
+       {
+        "hanzi": "妈",
+        "pinyin": "ma",
+        "initial": "m",
+        "final": "a",
+        "tone": 5,
+        "toneName": "neutral tone: light and short",
+        "spokenTone": 5
+       },
+       {
+        "hanzi": "没",
+        "pinyin": "méi",
+        "initial": "m",
+        "final": "ei",
+        "tone": 2,
+        "toneName": "2nd tone: rising",
+        "spokenTone": 2
+       },
+       {
+        "hanzi": "有",
+        "pinyin": "yǒu",
+        "initial": "y",
+        "final": "ou",
+        "tone": 3,
+        "toneName": "3rd tone: low dip",
+        "spokenTone": 3
+       },
+       {
+        "hanzi": "工",
+        "pinyin": "gōng",
+        "initial": "g",
+        "final": "ong",
+        "tone": 1,
+        "toneName": "1st tone: high and level",
+        "spokenTone": 1
+       },
+       {
+        "hanzi": "作",
+        "pinyin": "zuò",
+        "initial": "z",
+        "final": "uo",
+        "tone": 4,
+        "toneName": "4th tone: sharp fall",
+        "spokenTone": 4
+       }
+      ],
+      "spoken": null,
+      "notes": []
+     }
     }
    ],
    "ok": true,
@@ -2780,7 +2894,76 @@
     {
      "zh": "你的生日是哪天？",
      "pinyin": "Nǐ de shēng rì shì nǎ tiān?",
-     "pinyinNumbered": "ni3 de5 sheng1 ri4 shi4 na3 tian1"
+     "pinyinNumbered": "ni3 de5 sheng1 ri4 shi4 na3 tian1",
+     "pronunciation": {
+      "syllables": [
+       {
+        "hanzi": "你",
+        "pinyin": "nǐ",
+        "initial": "n",
+        "final": "i",
+        "tone": 3,
+        "toneName": "3rd tone: low dip",
+        "spokenTone": 3
+       },
+       {
+        "hanzi": "的",
+        "pinyin": "de",
+        "initial": "d",
+        "final": "e",
+        "tone": 5,
+        "toneName": "neutral tone: light and short",
+        "spokenTone": 5
+       },
+       {
+        "hanzi": "生",
+        "pinyin": "shēng",
+        "initial": "sh",
+        "final": "eng",
+        "tone": 1,
+        "toneName": "1st tone: high and level",
+        "spokenTone": 1
+       },
+       {
+        "hanzi": "日",
+        "pinyin": "rì",
+        "initial": "r",
+        "final": "i",
+        "tone": 4,
+        "toneName": "4th tone: sharp fall",
+        "spokenTone": 4
+       },
+       {
+        "hanzi": "是",
+        "pinyin": "shì",
+        "initial": "sh",
+        "final": "i",
+        "tone": 4,
+        "toneName": "4th tone: sharp fall",
+        "spokenTone": 4
+       },
+       {
+        "hanzi": "哪",
+        "pinyin": "nǎ",
+        "initial": "n",
+        "final": "a",
+        "tone": 3,
+        "toneName": "3rd tone: low dip",
+        "spokenTone": 3
+       },
+       {
+        "hanzi": "天",
+        "pinyin": "tiān",
+        "initial": "t",
+        "final": "ian",
+        "tone": 1,
+        "toneName": "1st tone: high and level",
+        "spokenTone": 1
+       }
+      ],
+      "spoken": null,
+      "notes": []
+     }
     }
    ],
    "ok": true,
@@ -2798,7 +2981,49 @@
     {
      "zh": "七月十六。",
      "pinyin": "Qī yuè shí liù.",
-     "pinyinNumbered": "qi1 yue4 shi2 liu4"
+     "pinyinNumbered": "qi1 yue4 shi2 liu4",
+     "pronunciation": {
+      "syllables": [
+       {
+        "hanzi": "七",
+        "pinyin": "qī",
+        "initial": "q",
+        "final": "i",
+        "tone": 1,
+        "toneName": "1st tone: high and level",
+        "spokenTone": 1
+       },
+       {
+        "hanzi": "月",
+        "pinyin": "yuè",
+        "initial": "y",
+        "final": "ue",
+        "tone": 4,
+        "toneName": "4th tone: sharp fall",
+        "spokenTone": 4
+       },
+       {
+        "hanzi": "十",
+        "pinyin": "shí",
+        "initial": "sh",
+        "final": "i",
+        "tone": 2,
+        "toneName": "2nd tone: rising",
+        "spokenTone": 2
+       },
+       {
+        "hanzi": "六",
+        "pinyin": "liù",
+        "initial": "l",
+        "final": "iu",
+        "tone": 4,
+        "toneName": "4th tone: sharp fall",
+        "spokenTone": 4
+       }
+      ],
+      "spoken": null,
+      "notes": []
+     }
     }
    ],
    "ok": true,
@@ -3392,7 +3617,69 @@
     {
      "zh": "我认不认识她？",
      "pinyin": "Wǒ rèn bù rèn shi tā?",
-     "pinyinNumbered": "wo3 ren4 bu4 ren4 shi5 ta1"
+     "pinyinNumbered": "wo3 ren4 bu4 ren4 shi5 ta1",
+     "pronunciation": {
+      "syllables": [
+       {
+        "hanzi": "我",
+        "pinyin": "wǒ",
+        "initial": "w",
+        "final": "o",
+        "tone": 3,
+        "toneName": "3rd tone: low dip",
+        "spokenTone": 3
+       },
+       {
+        "hanzi": "认",
+        "pinyin": "rèn",
+        "initial": "r",
+        "final": "en",
+        "tone": 4,
+        "toneName": "4th tone: sharp fall",
+        "spokenTone": 4
+       },
+       {
+        "hanzi": "不",
+        "pinyin": "bù",
+        "initial": "b",
+        "final": "u",
+        "tone": 4,
+        "toneName": "4th tone: sharp fall",
+        "spokenTone": 2
+       },
+       {
+        "hanzi": "认",
+        "pinyin": "rèn",
+        "initial": "r",
+        "final": "en",
+        "tone": 4,
+        "toneName": "4th tone: sharp fall",
+        "spokenTone": 4
+       },
+       {
+        "hanzi": "识",
+        "pinyin": "shi",
+        "initial": "sh",
+        "final": "i",
+        "tone": 5,
+        "toneName": "neutral tone: light and short",
+        "spokenTone": 5
+       },
+       {
+        "hanzi": "她",
+        "pinyin": "tā",
+        "initial": "t",
+        "final": "a",
+        "tone": 1,
+        "toneName": "1st tone: high and level",
+        "spokenTone": 1
+       }
+      ],
+      "spoken": "Wǒ rèn bú rèn shi tā?",
+      "notes": [
+       "不 changes to bú before a 4th tone"
+      ]
+     }
     }
    ],
    "ok": true,
@@ -3578,7 +3865,121 @@
     {
      "zh": "有的时候工作，有的时候看书。",
      "pinyin": "Yǒu de shí hou gōng zuò, yǒu de shí hou kàn shū.",
-     "pinyinNumbered": "you3 de5 shi2 hou5 gong1 zuo4 you3 de5 shi2 hou5 kan4 shu1"
+     "pinyinNumbered": "you3 de5 shi2 hou5 gong1 zuo4 you3 de5 shi2 hou5 kan4 shu1",
+     "pronunciation": {
+      "syllables": [
+       {
+        "hanzi": "有",
+        "pinyin": "yǒu",
+        "initial": "y",
+        "final": "ou",
+        "tone": 3,
+        "toneName": "3rd tone: low dip",
+        "spokenTone": 3
+       },
+       {
+        "hanzi": "的",
+        "pinyin": "de",
+        "initial": "d",
+        "final": "e",
+        "tone": 5,
+        "toneName": "neutral tone: light and short",
+        "spokenTone": 5
+       },
+       {
+        "hanzi": "时",
+        "pinyin": "shí",
+        "initial": "sh",
+        "final": "i",
+        "tone": 2,
+        "toneName": "2nd tone: rising",
+        "spokenTone": 2
+       },
+       {
+        "hanzi": "候",
+        "pinyin": "hou",
+        "initial": "h",
+        "final": "ou",
+        "tone": 5,
+        "toneName": "neutral tone: light and short",
+        "spokenTone": 5
+       },
+       {
+        "hanzi": "工",
+        "pinyin": "gōng",
+        "initial": "g",
+        "final": "ong",
+        "tone": 1,
+        "toneName": "1st tone: high and level",
+        "spokenTone": 1
+       },
+       {
+        "hanzi": "作",
+        "pinyin": "zuò",
+        "initial": "z",
+        "final": "uo",
+        "tone": 4,
+        "toneName": "4th tone: sharp fall",
+        "spokenTone": 4
+       },
+       {
+        "hanzi": "有",
+        "pinyin": "yǒu",
+        "initial": "y",
+        "final": "ou",
+        "tone": 3,
+        "toneName": "3rd tone: low dip",
+        "spokenTone": 3
+       },
+       {
+        "hanzi": "的",
+        "pinyin": "de",
+        "initial": "d",
+        "final": "e",
+        "tone": 5,
+        "toneName": "neutral tone: light and short",
+        "spokenTone": 5
+       },
+       {
+        "hanzi": "时",
+        "pinyin": "shí",
+        "initial": "sh",
+        "final": "i",
+        "tone": 2,
+        "toneName": "2nd tone: rising",
+        "spokenTone": 2
+       },
+       {
+        "hanzi": "候",
+        "pinyin": "hou",
+        "initial": "h",
+        "final": "ou",
+        "tone": 5,
+        "toneName": "neutral tone: light and short",
+        "spokenTone": 5
+       },
+       {
+        "hanzi": "看",
+        "pinyin": "kàn",
+        "initial": "k",
+        "final": "an",
+        "tone": 4,
+        "toneName": "4th tone: sharp fall",
+        "spokenTone": 4
+       },
+       {
+        "hanzi": "书",
+        "pinyin": "shū",
+        "initial": "sh",
+        "final": "u",
+        "tone": 1,
+        "toneName": "1st tone: high and level",
+        "spokenTone": 1
+       }
+      ],
+      "spoken": null,
+      "notes": []
+     }
     }
    ],
    "ok": true,
@@ -3728,7 +4129,166 @@
     {
      "zh": "你妈妈在国外？那你家有你、你爸爸，还有谁？",
      "pinyin": "Nǐ mā ma zài guó wài? Nà nǐ jiā yǒu nǐ, nǐ bà ba, hái yǒu shéi?",
-     "pinyinNumbered": "ni3 ma1 ma5 zai4 guo2 wai4 na4 ni3 jia1 you3 ni3 ni3 ba4 ba5 hai2 you3 shei2"
+     "pinyinNumbered": "ni3 ma1 ma5 zai4 guo2 wai4 na4 ni3 jia1 you3 ni3 ni3 ba4 ba5 hai2 you3 shei2",
+     "pronunciation": {
+      "syllables": [
+       {
+        "hanzi": "你",
+        "pinyin": "nǐ",
+        "initial": "n",
+        "final": "i",
+        "tone": 3,
+        "toneName": "3rd tone: low dip",
+        "spokenTone": 3
+       },
+       {
+        "hanzi": "妈",
+        "pinyin": "mā",
+        "initial": "m",
+        "final": "a",
+        "tone": 1,
+        "toneName": "1st tone: high and level",
+        "spokenTone": 1
+       },
+       {
+        "hanzi": "妈",
+        "pinyin": "ma",
+        "initial": "m",
+        "final": "a",
+        "tone": 5,
+        "toneName": "neutral tone: light and short",
+        "spokenTone": 5
+       },
+       {
+        "hanzi": "在",
+        "pinyin": "zài",
+        "initial": "z",
+        "final": "ai",
+        "tone": 4,
+        "toneName": "4th tone: sharp fall",
+        "spokenTone": 4
+       },
+       {
+        "hanzi": "国",
+        "pinyin": "guó",
+        "initial": "g",
+        "final": "uo",
+        "tone": 2,
+        "toneName": "2nd tone: rising",
+        "spokenTone": 2
+       },
+       {
+        "hanzi": "外",
+        "pinyin": "wài",
+        "initial": "w",
+        "final": "ai",
+        "tone": 4,
+        "toneName": "4th tone: sharp fall",
+        "spokenTone": 4
+       },
+       {
+        "hanzi": "那",
+        "pinyin": "nà",
+        "initial": "n",
+        "final": "a",
+        "tone": 4,
+        "toneName": "4th tone: sharp fall",
+        "spokenTone": 4
+       },
+       {
+        "hanzi": "你",
+        "pinyin": "nǐ",
+        "initial": "n",
+        "final": "i",
+        "tone": 3,
+        "toneName": "3rd tone: low dip",
+        "spokenTone": 3
+       },
+       {
+        "hanzi": "家",
+        "pinyin": "jiā",
+        "initial": "j",
+        "final": "ia",
+        "tone": 1,
+        "toneName": "1st tone: high and level",
+        "spokenTone": 1
+       },
+       {
+        "hanzi": "有",
+        "pinyin": "yǒu",
+        "initial": "y",
+        "final": "ou",
+        "tone": 3,
+        "toneName": "3rd tone: low dip",
+        "spokenTone": 3
+       },
+       {
+        "hanzi": "你",
+        "pinyin": "nǐ",
+        "initial": "n",
+        "final": "i",
+        "tone": 3,
+        "toneName": "3rd tone: low dip",
+        "spokenTone": 3
+       },
+       {
+        "hanzi": "你",
+        "pinyin": "nǐ",
+        "initial": "n",
+        "final": "i",
+        "tone": 3,
+        "toneName": "3rd tone: low dip",
+        "spokenTone": 3
+       },
+       {
+        "hanzi": "爸",
+        "pinyin": "bà",
+        "initial": "b",
+        "final": "a",
+        "tone": 4,
+        "toneName": "4th tone: sharp fall",
+        "spokenTone": 4
+       },
+       {
+        "hanzi": "爸",
+        "pinyin": "ba",
+        "initial": "b",
+        "final": "a",
+        "tone": 5,
+        "toneName": "neutral tone: light and short",
+        "spokenTone": 5
+       },
+       {
+        "hanzi": "还",
+        "pinyin": "hái",
+        "initial": "h",
+        "final": "ai",
+        "tone": 2,
+        "toneName": "2nd tone: rising",
+        "spokenTone": 2
+       },
+       {
+        "hanzi": "有",
+        "pinyin": "yǒu",
+        "initial": "y",
+        "final": "ou",
+        "tone": 3,
+        "toneName": "3rd tone: low dip",
+        "spokenTone": 3
+       },
+       {
+        "hanzi": "谁",
+        "pinyin": "shéi",
+        "initial": "sh",
+        "final": "ei",
+        "tone": 2,
+        "toneName": "2nd tone: rising",
+        "spokenTone": 2
+       }
+      ],
+      "spoken": null,
+      "notes": []
+     }
     }
    ],
    "ok": true,
@@ -3758,7 +4318,94 @@
     {
      "zh": "是吗？她多大？好不好看？",
      "pinyin": "Shì ma? Tā duō dà? Hǎo bù hǎo kàn?",
-     "pinyinNumbered": "shi4 ma5 ta1 duo1 da4 hao3 bu4 hao3 kan4"
+     "pinyinNumbered": "shi4 ma5 ta1 duo1 da4 hao3 bu4 hao3 kan4",
+     "pronunciation": {
+      "syllables": [
+       {
+        "hanzi": "是",
+        "pinyin": "shì",
+        "initial": "sh",
+        "final": "i",
+        "tone": 4,
+        "toneName": "4th tone: sharp fall",
+        "spokenTone": 4
+       },
+       {
+        "hanzi": "吗",
+        "pinyin": "ma",
+        "initial": "m",
+        "final": "a",
+        "tone": 5,
+        "toneName": "neutral tone: light and short",
+        "spokenTone": 5
+       },
+       {
+        "hanzi": "她",
+        "pinyin": "tā",
+        "initial": "t",
+        "final": "a",
+        "tone": 1,
+        "toneName": "1st tone: high and level",
+        "spokenTone": 1
+       },
+       {
+        "hanzi": "多",
+        "pinyin": "duō",
+        "initial": "d",
+        "final": "uo",
+        "tone": 1,
+        "toneName": "1st tone: high and level",
+        "spokenTone": 1
+       },
+       {
+        "hanzi": "大",
+        "pinyin": "dà",
+        "initial": "d",
+        "final": "a",
+        "tone": 4,
+        "toneName": "4th tone: sharp fall",
+        "spokenTone": 4
+       },
+       {
+        "hanzi": "好",
+        "pinyin": "hǎo",
+        "initial": "h",
+        "final": "ao",
+        "tone": 3,
+        "toneName": "3rd tone: low dip",
+        "spokenTone": 3
+       },
+       {
+        "hanzi": "不",
+        "pinyin": "bù",
+        "initial": "b",
+        "final": "u",
+        "tone": 4,
+        "toneName": "4th tone: sharp fall",
+        "spokenTone": 4
+       },
+       {
+        "hanzi": "好",
+        "pinyin": "hǎo",
+        "initial": "h",
+        "final": "ao",
+        "tone": 3,
+        "toneName": "3rd tone: low dip",
+        "spokenTone": 3
+       },
+       {
+        "hanzi": "看",
+        "pinyin": "kàn",
+        "initial": "k",
+        "final": "an",
+        "tone": 4,
+        "toneName": "4th tone: sharp fall",
+        "spokenTone": 4
+       }
+      ],
+      "spoken": null,
+      "notes": []
+     }
     }
    ],
    "ok": true,
@@ -3848,7 +4495,274 @@
     {
      "zh": "对，她有时候周末也很忙。可是这星期六是她生日，那天我想请她去吃饭。",
      "pinyin": "Duì, tā yǒu shí hou zhōu mò yě hěn máng. Kě shì zhè xīng qī liù shì tā shēng rì, nà tiān wǒ xiǎng qǐng tā qù chī fàn.",
-     "pinyinNumbered": "dui4 ta1 you3 shi2 hou5 zhou1 mo4 ye3 hen3 mang2 ke3 shi4 zhe4 xing1 qi1 liu4 shi4 ta1 sheng1 ri4 na4 tian1 wo3 xiang3 qing3 ta1 qu4 chi1 fan4"
+     "pinyinNumbered": "dui4 ta1 you3 shi2 hou5 zhou1 mo4 ye3 hen3 mang2 ke3 shi4 zhe4 xing1 qi1 liu4 shi4 ta1 sheng1 ri4 na4 tian1 wo3 xiang3 qing3 ta1 qu4 chi1 fan4",
+     "pronunciation": {
+      "syllables": [
+       {
+        "hanzi": "对",
+        "pinyin": "duì",
+        "initial": "d",
+        "final": "ui",
+        "tone": 4,
+        "toneName": "4th tone: sharp fall",
+        "spokenTone": 4
+       },
+       {
+        "hanzi": "她",
+        "pinyin": "tā",
+        "initial": "t",
+        "final": "a",
+        "tone": 1,
+        "toneName": "1st tone: high and level",
+        "spokenTone": 1
+       },
+       {
+        "hanzi": "有",
+        "pinyin": "yǒu",
+        "initial": "y",
+        "final": "ou",
+        "tone": 3,
+        "toneName": "3rd tone: low dip",
+        "spokenTone": 3
+       },
+       {
+        "hanzi": "时",
+        "pinyin": "shí",
+        "initial": "sh",
+        "final": "i",
+        "tone": 2,
+        "toneName": "2nd tone: rising",
+        "spokenTone": 2
+       },
+       {
+        "hanzi": "候",
+        "pinyin": "hou",
+        "initial": "h",
+        "final": "ou",
+        "tone": 5,
+        "toneName": "neutral tone: light and short",
+        "spokenTone": 5
+       },
+       {
+        "hanzi": "周",
+        "pinyin": "zhōu",
+        "initial": "zh",
+        "final": "ou",
+        "tone": 1,
+        "toneName": "1st tone: high and level",
+        "spokenTone": 1
+       },
+       {
+        "hanzi": "末",
+        "pinyin": "mò",
+        "initial": "m",
+        "final": "o",
+        "tone": 4,
+        "toneName": "4th tone: sharp fall",
+        "spokenTone": 4
+       },
+       {
+        "hanzi": "也",
+        "pinyin": "yě",
+        "initial": "y",
+        "final": "e",
+        "tone": 3,
+        "toneName": "3rd tone: low dip",
+        "spokenTone": 3
+       },
+       {
+        "hanzi": "很",
+        "pinyin": "hěn",
+        "initial": "h",
+        "final": "en",
+        "tone": 3,
+        "toneName": "3rd tone: low dip",
+        "spokenTone": 3
+       },
+       {
+        "hanzi": "忙",
+        "pinyin": "máng",
+        "initial": "m",
+        "final": "ang",
+        "tone": 2,
+        "toneName": "2nd tone: rising",
+        "spokenTone": 2
+       },
+       {
+        "hanzi": "可",
+        "pinyin": "kě",
+        "initial": "k",
+        "final": "e",
+        "tone": 3,
+        "toneName": "3rd tone: low dip",
+        "spokenTone": 3
+       },
+       {
+        "hanzi": "是",
+        "pinyin": "shì",
+        "initial": "sh",
+        "final": "i",
+        "tone": 4,
+        "toneName": "4th tone: sharp fall",
+        "spokenTone": 4
+       },
+       {
+        "hanzi": "这",
+        "pinyin": "zhè",
+        "initial": "zh",
+        "final": "e",
+        "tone": 4,
+        "toneName": "4th tone: sharp fall",
+        "spokenTone": 4
+       },
+       {
+        "hanzi": "星",
+        "pinyin": "xīng",
+        "initial": "x",
+        "final": "ing",
+        "tone": 1,
+        "toneName": "1st tone: high and level",
+        "spokenTone": 1
+       },
+       {
+        "hanzi": "期",
+        "pinyin": "qī",
+        "initial": "q",
+        "final": "i",
+        "tone": 1,
+        "toneName": "1st tone: high and level",
+        "spokenTone": 1
+       },
+       {
+        "hanzi": "六",
+        "pinyin": "liù",
+        "initial": "l",
+        "final": "iu",
+        "tone": 4,
+        "toneName": "4th tone: sharp fall",
+        "spokenTone": 4
+       },
+       {
+        "hanzi": "是",
+        "pinyin": "shì",
+        "initial": "sh",
+        "final": "i",
+        "tone": 4,
+        "toneName": "4th tone: sharp fall",
+        "spokenTone": 4
+       },
+       {
+        "hanzi": "她",
+        "pinyin": "tā",
+        "initial": "t",
+        "final": "a",
+        "tone": 1,
+        "toneName": "1st tone: high and level",
+        "spokenTone": 1
+       },
+       {
+        "hanzi": "生",
+        "pinyin": "shēng",
+        "initial": "sh",
+        "final": "eng",
+        "tone": 1,
+        "toneName": "1st tone: high and level",
+        "spokenTone": 1
+       },
+       {
+        "hanzi": "日",
+        "pinyin": "rì",
+        "initial": "r",
+        "final": "i",
+        "tone": 4,
+        "toneName": "4th tone: sharp fall",
+        "spokenTone": 4
+       },
+       {
+        "hanzi": "那",
+        "pinyin": "nà",
+        "initial": "n",
+        "final": "a",
+        "tone": 4,
+        "toneName": "4th tone: sharp fall",
+        "spokenTone": 4
+       },
+       {
+        "hanzi": "天",
+        "pinyin": "tiān",
+        "initial": "t",
+        "final": "ian",
+        "tone": 1,
+        "toneName": "1st tone: high and level",
+        "spokenTone": 1
+       },
+       {
+        "hanzi": "我",
+        "pinyin": "wǒ",
+        "initial": "w",
+        "final": "o",
+        "tone": 3,
+        "toneName": "3rd tone: low dip",
+        "spokenTone": 3
+       },
+       {
+        "hanzi": "想",
+        "pinyin": "xiǎng",
+        "initial": "x",
+        "final": "iang",
+        "tone": 3,
+        "toneName": "3rd tone: low dip",
+        "spokenTone": 3
+       },
+       {
+        "hanzi": "请",
+        "pinyin": "qǐng",
+        "initial": "q",
+        "final": "ing",
+        "tone": 3,
+        "toneName": "3rd tone: low dip",
+        "spokenTone": 3
+       },
+       {
+        "hanzi": "她",
+        "pinyin": "tā",
+        "initial": "t",
+        "final": "a",
+        "tone": 1,
+        "toneName": "1st tone: high and level",
+        "spokenTone": 1
+       },
+       {
+        "hanzi": "去",
+        "pinyin": "qù",
+        "initial": "q",
+        "final": "u",
+        "tone": 4,
+        "toneName": "4th tone: sharp fall",
+        "spokenTone": 4
+       },
+       {
+        "hanzi": "吃",
+        "pinyin": "chī",
+        "initial": "ch",
+        "final": "i",
+        "tone": 1,
+        "toneName": "1st tone: high and level",
+        "spokenTone": 1
+       },
+       {
+        "hanzi": "饭",
+        "pinyin": "fàn",
+        "initial": "f",
+        "final": "an",
+        "tone": 4,
+        "toneName": "4th tone: sharp fall",
+        "spokenTone": 4
+       }
+      ],
+      "spoken": null,
+      "notes": []
+     }
     }
    ],
    "ok": true,
@@ -3902,7 +4816,148 @@
     {
      "zh": "我想她都喜欢，可是我不想吃美国菜。",
      "pinyin": "Wǒ xiǎng tā dōu xǐ huan, kě shì wǒ bù xiǎng chī měi guó cài.",
-     "pinyinNumbered": "wo3 xiang3 ta1 dou1 xi3 huan5 ke3 shi4 wo3 bu4 xiang3 chi1 mei3 guo2 cai4"
+     "pinyinNumbered": "wo3 xiang3 ta1 dou1 xi3 huan5 ke3 shi4 wo3 bu4 xiang3 chi1 mei3 guo2 cai4",
+     "pronunciation": {
+      "syllables": [
+       {
+        "hanzi": "我",
+        "pinyin": "wǒ",
+        "initial": "w",
+        "final": "o",
+        "tone": 3,
+        "toneName": "3rd tone: low dip",
+        "spokenTone": 3
+       },
+       {
+        "hanzi": "想",
+        "pinyin": "xiǎng",
+        "initial": "x",
+        "final": "iang",
+        "tone": 3,
+        "toneName": "3rd tone: low dip",
+        "spokenTone": 3
+       },
+       {
+        "hanzi": "她",
+        "pinyin": "tā",
+        "initial": "t",
+        "final": "a",
+        "tone": 1,
+        "toneName": "1st tone: high and level",
+        "spokenTone": 1
+       },
+       {
+        "hanzi": "都",
+        "pinyin": "dōu",
+        "initial": "d",
+        "final": "ou",
+        "tone": 1,
+        "toneName": "1st tone: high and level",
+        "spokenTone": 1
+       },
+       {
+        "hanzi": "喜",
+        "pinyin": "xǐ",
+        "initial": "x",
+        "final": "i",
+        "tone": 3,
+        "toneName": "3rd tone: low dip",
+        "spokenTone": 3
+       },
+       {
+        "hanzi": "欢",
+        "pinyin": "huan",
+        "initial": "h",
+        "final": "uan",
+        "tone": 5,
+        "toneName": "neutral tone: light and short",
+        "spokenTone": 5
+       },
+       {
+        "hanzi": "可",
+        "pinyin": "kě",
+        "initial": "k",
+        "final": "e",
+        "tone": 3,
+        "toneName": "3rd tone: low dip",
+        "spokenTone": 3
+       },
+       {
+        "hanzi": "是",
+        "pinyin": "shì",
+        "initial": "sh",
+        "final": "i",
+        "tone": 4,
+        "toneName": "4th tone: sharp fall",
+        "spokenTone": 4
+       },
+       {
+        "hanzi": "我",
+        "pinyin": "wǒ",
+        "initial": "w",
+        "final": "o",
+        "tone": 3,
+        "toneName": "3rd tone: low dip",
+        "spokenTone": 3
+       },
+       {
+        "hanzi": "不",
+        "pinyin": "bù",
+        "initial": "b",
+        "final": "u",
+        "tone": 4,
+        "toneName": "4th tone: sharp fall",
+        "spokenTone": 4
+       },
+       {
+        "hanzi": "想",
+        "pinyin": "xiǎng",
+        "initial": "x",
+        "final": "iang",
+        "tone": 3,
+        "toneName": "3rd tone: low dip",
+        "spokenTone": 3
+       },
+       {
+        "hanzi": "吃",
+        "pinyin": "chī",
+        "initial": "ch",
+        "final": "i",
+        "tone": 1,
+        "toneName": "1st tone: high and level",
+        "spokenTone": 1
+       },
+       {
+        "hanzi": "美",
+        "pinyin": "měi",
+        "initial": "m",
+        "final": "ei",
+        "tone": 3,
+        "toneName": "3rd tone: low dip",
+        "spokenTone": 3
+       },
+       {
+        "hanzi": "国",
+        "pinyin": "guó",
+        "initial": "g",
+        "final": "uo",
+        "tone": 2,
+        "toneName": "2nd tone: rising",
+        "spokenTone": 2
+       },
+       {
+        "hanzi": "菜",
+        "pinyin": "cài",
+        "initial": "c",
+        "final": "ai",
+        "tone": 4,
+        "toneName": "4th tone: sharp fall",
+        "spokenTone": 4
+       }
+      ],
+      "spoken": null,
+      "notes": []
+     }
     }
    ],
    "ok": true,
@@ -3944,7 +4999,355 @@
     {
      "zh": "可是我不想吃中国菜，我这两星期常吃中国菜。我们吃日本菜，你觉得怎么样？我很爱吃日本菜。",
      "pinyin": "Kě shì wǒ bù xiǎng chī zhōng guó cài, wǒ zhè liǎng xīng qī cháng chī zhōng guó cài. Wǒ men chī rì běn cài, nǐ jué de zěn me yàng? Wǒ hěn ài chī rì běn cài.",
-     "pinyinNumbered": "ke3 shi4 wo3 bu4 xiang3 chi1 zhong1 guo2 cai4 wo3 zhe4 liang3 xing1 qi1 chang2 chi1 zhong1 guo2 cai4 wo3 men5 chi1 ri4 ben3 cai4 ni3 jue2 de5 zen3 me5 yang4 wo3 hen3 ai4 chi1 ri4 ben3 cai4"
+     "pinyinNumbered": "ke3 shi4 wo3 bu4 xiang3 chi1 zhong1 guo2 cai4 wo3 zhe4 liang3 xing1 qi1 chang2 chi1 zhong1 guo2 cai4 wo3 men5 chi1 ri4 ben3 cai4 ni3 jue2 de5 zen3 me5 yang4 wo3 hen3 ai4 chi1 ri4 ben3 cai4",
+     "pronunciation": {
+      "syllables": [
+       {
+        "hanzi": "可",
+        "pinyin": "kě",
+        "initial": "k",
+        "final": "e",
+        "tone": 3,
+        "toneName": "3rd tone: low dip",
+        "spokenTone": 3
+       },
+       {
+        "hanzi": "是",
+        "pinyin": "shì",
+        "initial": "sh",
+        "final": "i",
+        "tone": 4,
+        "toneName": "4th tone: sharp fall",
+        "spokenTone": 4
+       },
+       {
+        "hanzi": "我",
+        "pinyin": "wǒ",
+        "initial": "w",
+        "final": "o",
+        "tone": 3,
+        "toneName": "3rd tone: low dip",
+        "spokenTone": 3
+       },
+       {
+        "hanzi": "不",
+        "pinyin": "bù",
+        "initial": "b",
+        "final": "u",
+        "tone": 4,
+        "toneName": "4th tone: sharp fall",
+        "spokenTone": 4
+       },
+       {
+        "hanzi": "想",
+        "pinyin": "xiǎng",
+        "initial": "x",
+        "final": "iang",
+        "tone": 3,
+        "toneName": "3rd tone: low dip",
+        "spokenTone": 3
+       },
+       {
+        "hanzi": "吃",
+        "pinyin": "chī",
+        "initial": "ch",
+        "final": "i",
+        "tone": 1,
+        "toneName": "1st tone: high and level",
+        "spokenTone": 1
+       },
+       {
+        "hanzi": "中",
+        "pinyin": "zhōng",
+        "initial": "zh",
+        "final": "ong",
+        "tone": 1,
+        "toneName": "1st tone: high and level",
+        "spokenTone": 1
+       },
+       {
+        "hanzi": "国",
+        "pinyin": "guó",
+        "initial": "g",
+        "final": "uo",
+        "tone": 2,
+        "toneName": "2nd tone: rising",
+        "spokenTone": 2
+       },
+       {
+        "hanzi": "菜",
+        "pinyin": "cài",
+        "initial": "c",
+        "final": "ai",
+        "tone": 4,
+        "toneName": "4th tone: sharp fall",
+        "spokenTone": 4
+       },
+       {
+        "hanzi": "我",
+        "pinyin": "wǒ",
+        "initial": "w",
+        "final": "o",
+        "tone": 3,
+        "toneName": "3rd tone: low dip",
+        "spokenTone": 3
+       },
+       {
+        "hanzi": "这",
+        "pinyin": "zhè",
+        "initial": "zh",
+        "final": "e",
+        "tone": 4,
+        "toneName": "4th tone: sharp fall",
+        "spokenTone": 4
+       },
+       {
+        "hanzi": "两",
+        "pinyin": "liǎng",
+        "initial": "l",
+        "final": "iang",
+        "tone": 3,
+        "toneName": "3rd tone: low dip",
+        "spokenTone": 3
+       },
+       {
+        "hanzi": "星",
+        "pinyin": "xīng",
+        "initial": "x",
+        "final": "ing",
+        "tone": 1,
+        "toneName": "1st tone: high and level",
+        "spokenTone": 1
+       },
+       {
+        "hanzi": "期",
+        "pinyin": "qī",
+        "initial": "q",
+        "final": "i",
+        "tone": 1,
+        "toneName": "1st tone: high and level",
+        "spokenTone": 1
+       },
+       {
+        "hanzi": "常",
+        "pinyin": "cháng",
+        "initial": "ch",
+        "final": "ang",
+        "tone": 2,
+        "toneName": "2nd tone: rising",
+        "spokenTone": 2
+       },
+       {
+        "hanzi": "吃",
+        "pinyin": "chī",
+        "initial": "ch",
+        "final": "i",
+        "tone": 1,
+        "toneName": "1st tone: high and level",
+        "spokenTone": 1
+       },
+       {
+        "hanzi": "中",
+        "pinyin": "zhōng",
+        "initial": "zh",
+        "final": "ong",
+        "tone": 1,
+        "toneName": "1st tone: high and level",
+        "spokenTone": 1
+       },
+       {
+        "hanzi": "国",
+        "pinyin": "guó",
+        "initial": "g",
+        "final": "uo",
+        "tone": 2,
+        "toneName": "2nd tone: rising",
+        "spokenTone": 2
+       },
+       {
+        "hanzi": "菜",
+        "pinyin": "cài",
+        "initial": "c",
+        "final": "ai",
+        "tone": 4,
+        "toneName": "4th tone: sharp fall",
+        "spokenTone": 4
+       },
+       {
+        "hanzi": "我",
+        "pinyin": "wǒ",
+        "initial": "w",
+        "final": "o",
+        "tone": 3,
+        "toneName": "3rd tone: low dip",
+        "spokenTone": 3
+       },
+       {
+        "hanzi": "们",
+        "pinyin": "men",
+        "initial": "m",
+        "final": "en",
+        "tone": 5,
+        "toneName": "neutral tone: light and short",
+        "spokenTone": 5
+       },
+       {
+        "hanzi": "吃",
+        "pinyin": "chī",
+        "initial": "ch",
+        "final": "i",
+        "tone": 1,
+        "toneName": "1st tone: high and level",
+        "spokenTone": 1
+       },
+       {
+        "hanzi": "日",
+        "pinyin": "rì",
+        "initial": "r",
+        "final": "i",
+        "tone": 4,
+        "toneName": "4th tone: sharp fall",
+        "spokenTone": 4
+       },
+       {
+        "hanzi": "本",
+        "pinyin": "běn",
+        "initial": "b",
+        "final": "en",
+        "tone": 3,
+        "toneName": "3rd tone: low dip",
+        "spokenTone": 3
+       },
+       {
+        "hanzi": "菜",
+        "pinyin": "cài",
+        "initial": "c",
+        "final": "ai",
+        "tone": 4,
+        "toneName": "4th tone: sharp fall",
+        "spokenTone": 4
+       },
+       {
+        "hanzi": "你",
+        "pinyin": "nǐ",
+        "initial": "n",
+        "final": "i",
+        "tone": 3,
+        "toneName": "3rd tone: low dip",
+        "spokenTone": 3
+       },
+       {
+        "hanzi": "觉",
+        "pinyin": "jué",
+        "initial": "j",
+        "final": "ue",
+        "tone": 2,
+        "toneName": "2nd tone: rising",
+        "spokenTone": 2
+       },
+       {
+        "hanzi": "得",
+        "pinyin": "de",
+        "initial": "d",
+        "final": "e",
+        "tone": 5,
+        "toneName": "neutral tone: light and short",
+        "spokenTone": 5
+       },
+       {
+        "hanzi": "怎",
+        "pinyin": "zěn",
+        "initial": "z",
+        "final": "en",
+        "tone": 3,
+        "toneName": "3rd tone: low dip",
+        "spokenTone": 3
+       },
+       {
+        "hanzi": "么",
+        "pinyin": "me",
+        "initial": "m",
+        "final": "e",
+        "tone": 5,
+        "toneName": "neutral tone: light and short",
+        "spokenTone": 5
+       },
+       {
+        "hanzi": "样",
+        "pinyin": "yàng",
+        "initial": "y",
+        "final": "ang",
+        "tone": 4,
+        "toneName": "4th tone: sharp fall",
+        "spokenTone": 4
+       },
+       {
+        "hanzi": "我",
+        "pinyin": "wǒ",
+        "initial": "w",
+        "final": "o",
+        "tone": 3,
+        "toneName": "3rd tone: low dip",
+        "spokenTone": 3
+       },
+       {
+        "hanzi": "很",
+        "pinyin": "hěn",
+        "initial": "h",
+        "final": "en",
+        "tone": 3,
+        "toneName": "3rd tone: low dip",
+        "spokenTone": 3
+       },
+       {
+        "hanzi": "爱",
+        "pinyin": "ài",
+        "initial": "",
+        "final": "ai",
+        "tone": 4,
+        "toneName": "4th tone: sharp fall",
+        "spokenTone": 4
+       },
+       {
+        "hanzi": "吃",
+        "pinyin": "chī",
+        "initial": "ch",
+        "final": "i",
+        "tone": 1,
+        "toneName": "1st tone: high and level",
+        "spokenTone": 1
+       },
+       {
+        "hanzi": "日",
+        "pinyin": "rì",
+        "initial": "r",
+        "final": "i",
+        "tone": 4,
+        "toneName": "4th tone: sharp fall",
+        "spokenTone": 4
+       },
+       {
+        "hanzi": "本",
+        "pinyin": "běn",
+        "initial": "b",
+        "final": "en",
+        "tone": 3,
+        "toneName": "3rd tone: low dip",
+        "spokenTone": 3
+       },
+       {
+        "hanzi": "菜",
+        "pinyin": "cài",
+        "initial": "c",
+        "final": "ai",
+        "tone": 4,
+        "toneName": "4th tone: sharp fall",
+        "spokenTone": 4
+       }
+      ],
+      "spoken": null,
+      "notes": []
+     }
     }
    ],
    "ok": true,
@@ -4094,7 +5497,141 @@
     {
      "zh": "我们的咖啡不错，你喝咖啡，好不好？",
      "pinyin": "Wǒ men de kā fēi bù cuò, nǐ hē kā fēi, hǎo bù hǎo?",
-     "pinyinNumbered": "wo3 men5 de5 ka1 fei1 bu4 cuo4 ni3 he1 ka1 fei1 hao3 bu4 hao3"
+     "pinyinNumbered": "wo3 men5 de5 ka1 fei1 bu4 cuo4 ni3 he1 ka1 fei1 hao3 bu4 hao3",
+     "pronunciation": {
+      "syllables": [
+       {
+        "hanzi": "我",
+        "pinyin": "wǒ",
+        "initial": "w",
+        "final": "o",
+        "tone": 3,
+        "toneName": "3rd tone: low dip",
+        "spokenTone": 3
+       },
+       {
+        "hanzi": "们",
+        "pinyin": "men",
+        "initial": "m",
+        "final": "en",
+        "tone": 5,
+        "toneName": "neutral tone: light and short",
+        "spokenTone": 5
+       },
+       {
+        "hanzi": "的",
+        "pinyin": "de",
+        "initial": "d",
+        "final": "e",
+        "tone": 5,
+        "toneName": "neutral tone: light and short",
+        "spokenTone": 5
+       },
+       {
+        "hanzi": "咖",
+        "pinyin": "kā",
+        "initial": "k",
+        "final": "a",
+        "tone": 1,
+        "toneName": "1st tone: high and level",
+        "spokenTone": 1
+       },
+       {
+        "hanzi": "啡",
+        "pinyin": "fēi",
+        "initial": "f",
+        "final": "ei",
+        "tone": 1,
+        "toneName": "1st tone: high and level",
+        "spokenTone": 1
+       },
+       {
+        "hanzi": "不",
+        "pinyin": "bù",
+        "initial": "b",
+        "final": "u",
+        "tone": 4,
+        "toneName": "4th tone: sharp fall",
+        "spokenTone": 2
+       },
+       {
+        "hanzi": "错",
+        "pinyin": "cuò",
+        "initial": "c",
+        "final": "uo",
+        "tone": 4,
+        "toneName": "4th tone: sharp fall",
+        "spokenTone": 4
+       },
+       {
+        "hanzi": "你",
+        "pinyin": "nǐ",
+        "initial": "n",
+        "final": "i",
+        "tone": 3,
+        "toneName": "3rd tone: low dip",
+        "spokenTone": 3
+       },
+       {
+        "hanzi": "喝",
+        "pinyin": "hē",
+        "initial": "h",
+        "final": "e",
+        "tone": 1,
+        "toneName": "1st tone: high and level",
+        "spokenTone": 1
+       },
+       {
+        "hanzi": "咖",
+        "pinyin": "kā",
+        "initial": "k",
+        "final": "a",
+        "tone": 1,
+        "toneName": "1st tone: high and level",
+        "spokenTone": 1
+       },
+       {
+        "hanzi": "啡",
+        "pinyin": "fēi",
+        "initial": "f",
+        "final": "ei",
+        "tone": 1,
+        "toneName": "1st tone: high and level",
+        "spokenTone": 1
+       },
+       {
+        "hanzi": "好",
+        "pinyin": "hǎo",
+        "initial": "h",
+        "final": "ao",
+        "tone": 3,
+        "toneName": "3rd tone: low dip",
+        "spokenTone": 3
+       },
+       {
+        "hanzi": "不",
+        "pinyin": "bù",
+        "initial": "b",
+        "final": "u",
+        "tone": 4,
+        "toneName": "4th tone: sharp fall",
+        "spokenTone": 4
+       },
+       {
+        "hanzi": "好",
+        "pinyin": "hǎo",
+        "initial": "h",
+        "final": "ao",
+        "tone": 3,
+        "toneName": "3rd tone: low dip",
+        "spokenTone": 3
+       }
+      ],
+      "spoken": "Wǒ men de kā fēi bú cuò, nǐ hē kā fēi, hǎo bù hǎo?",
+      "notes": [
+       "不 changes to bú before a 4th tone"
+      ]
+     }
     }
    ],
    "ok": true,
@@ -4196,7 +5733,177 @@
     {
      "zh": "今天我想十点半睡觉，所以现在不想喝咖啡。",
      "pinyin": "Jīn tiān wǒ xiǎng shí diǎn bàn shuì jiào, suǒ yǐ xiàn zài bù xiǎng hē kā fēi.",
-     "pinyinNumbered": "jin1 tian1 wo3 xiang3 shi2 dian3 ban4 shui4 jiao4 suo3 yi3 xian4 zai4 bu4 xiang3 he1 ka1 fei1"
+     "pinyinNumbered": "jin1 tian1 wo3 xiang3 shi2 dian3 ban4 shui4 jiao4 suo3 yi3 xian4 zai4 bu4 xiang3 he1 ka1 fei1",
+     "pronunciation": {
+      "syllables": [
+       {
+        "hanzi": "今",
+        "pinyin": "jīn",
+        "initial": "j",
+        "final": "in",
+        "tone": 1,
+        "toneName": "1st tone: high and level",
+        "spokenTone": 1
+       },
+       {
+        "hanzi": "天",
+        "pinyin": "tiān",
+        "initial": "t",
+        "final": "ian",
+        "tone": 1,
+        "toneName": "1st tone: high and level",
+        "spokenTone": 1
+       },
+       {
+        "hanzi": "我",
+        "pinyin": "wǒ",
+        "initial": "w",
+        "final": "o",
+        "tone": 3,
+        "toneName": "3rd tone: low dip",
+        "spokenTone": 3
+       },
+       {
+        "hanzi": "想",
+        "pinyin": "xiǎng",
+        "initial": "x",
+        "final": "iang",
+        "tone": 3,
+        "toneName": "3rd tone: low dip",
+        "spokenTone": 3
+       },
+       {
+        "hanzi": "十",
+        "pinyin": "shí",
+        "initial": "sh",
+        "final": "i",
+        "tone": 2,
+        "toneName": "2nd tone: rising",
+        "spokenTone": 2
+       },
+       {
+        "hanzi": "点",
+        "pinyin": "diǎn",
+        "initial": "d",
+        "final": "ian",
+        "tone": 3,
+        "toneName": "3rd tone: low dip",
+        "spokenTone": 3
+       },
+       {
+        "hanzi": "半",
+        "pinyin": "bàn",
+        "initial": "b",
+        "final": "an",
+        "tone": 4,
+        "toneName": "4th tone: sharp fall",
+        "spokenTone": 4
+       },
+       {
+        "hanzi": "睡",
+        "pinyin": "shuì",
+        "initial": "sh",
+        "final": "ui",
+        "tone": 4,
+        "toneName": "4th tone: sharp fall",
+        "spokenTone": 4
+       },
+       {
+        "hanzi": "觉",
+        "pinyin": "jiào",
+        "initial": "j",
+        "final": "iao",
+        "tone": 4,
+        "toneName": "4th tone: sharp fall",
+        "spokenTone": 4
+       },
+       {
+        "hanzi": "所",
+        "pinyin": "suǒ",
+        "initial": "s",
+        "final": "uo",
+        "tone": 3,
+        "toneName": "3rd tone: low dip",
+        "spokenTone": 2
+       },
+       {
+        "hanzi": "以",
+        "pinyin": "yǐ",
+        "initial": "y",
+        "final": "i",
+        "tone": 3,
+        "toneName": "3rd tone: low dip",
+        "spokenTone": 3
+       },
+       {
+        "hanzi": "现",
+        "pinyin": "xiàn",
+        "initial": "x",
+        "final": "ian",
+        "tone": 4,
+        "toneName": "4th tone: sharp fall",
+        "spokenTone": 4
+       },
+       {
+        "hanzi": "在",
+        "pinyin": "zài",
+        "initial": "z",
+        "final": "ai",
+        "tone": 4,
+        "toneName": "4th tone: sharp fall",
+        "spokenTone": 4
+       },
+       {
+        "hanzi": "不",
+        "pinyin": "bù",
+        "initial": "b",
+        "final": "u",
+        "tone": 4,
+        "toneName": "4th tone: sharp fall",
+        "spokenTone": 4
+       },
+       {
+        "hanzi": "想",
+        "pinyin": "xiǎng",
+        "initial": "x",
+        "final": "iang",
+        "tone": 3,
+        "toneName": "3rd tone: low dip",
+        "spokenTone": 3
+       },
+       {
+        "hanzi": "喝",
+        "pinyin": "hē",
+        "initial": "h",
+        "final": "e",
+        "tone": 1,
+        "toneName": "1st tone: high and level",
+        "spokenTone": 1
+       },
+       {
+        "hanzi": "咖",
+        "pinyin": "kā",
+        "initial": "k",
+        "final": "a",
+        "tone": 1,
+        "toneName": "1st tone: high and level",
+        "spokenTone": 1
+       },
+       {
+        "hanzi": "啡",
+        "pinyin": "fēi",
+        "initial": "f",
+        "final": "ei",
+        "tone": 1,
+        "toneName": "1st tone: high and level",
+        "spokenTone": 1
+       }
+      ],
+      "spoken": "Jīn tiān wǒ xiǎng shí diǎn bàn shuì jiào, suó yǐ xiàn zài bù xiǎng hē kā fēi.",
+      "notes": [
+       "Two 3rd tones in a row: the first is said as a 2nd tone"
+      ]
+     }
     }
    ],
    "ok": true,
@@ -4214,7 +5921,187 @@
     {
      "zh": "你看！那儿有一个漂亮的女孩子。你认不认识她?",
      "pinyin": "Nǐ kàn! Nàr yǒu yī gè piào liang de nǚ hái zi. Nǐ rèn bù rèn shi tā?",
-     "pinyinNumbered": "ni3 kan4 na4 r5 you3 yi1 ge4 piao4 liang5 de5 nü3 hai2 zi5 ni3 ren4 bu4 ren4 shi5 ta1"
+     "pinyinNumbered": "ni3 kan4 na4 r5 you3 yi1 ge4 piao4 liang5 de5 nü3 hai2 zi5 ni3 ren4 bu4 ren4 shi5 ta1",
+     "pronunciation": {
+      "syllables": [
+       {
+        "hanzi": "你",
+        "pinyin": "nǐ",
+        "initial": "n",
+        "final": "i",
+        "tone": 3,
+        "toneName": "3rd tone: low dip",
+        "spokenTone": 3
+       },
+       {
+        "hanzi": "看",
+        "pinyin": "kàn",
+        "initial": "k",
+        "final": "an",
+        "tone": 4,
+        "toneName": "4th tone: sharp fall",
+        "spokenTone": 4
+       },
+       {
+        "hanzi": "那",
+        "pinyin": "nà",
+        "initial": "n",
+        "final": "a",
+        "tone": 4,
+        "toneName": "4th tone: sharp fall",
+        "spokenTone": 4
+       },
+       {
+        "hanzi": "儿",
+        "pinyin": "r",
+        "initial": "",
+        "final": "r",
+        "tone": 5,
+        "toneName": "neutral tone: light and short",
+        "spokenTone": 5
+       },
+       {
+        "hanzi": "有",
+        "pinyin": "yǒu",
+        "initial": "y",
+        "final": "ou",
+        "tone": 3,
+        "toneName": "3rd tone: low dip",
+        "spokenTone": 3
+       },
+       {
+        "hanzi": "一",
+        "pinyin": "yī",
+        "initial": "y",
+        "final": "i",
+        "tone": 1,
+        "toneName": "1st tone: high and level",
+        "spokenTone": 2
+       },
+       {
+        "hanzi": "个",
+        "pinyin": "gè",
+        "initial": "g",
+        "final": "e",
+        "tone": 4,
+        "toneName": "4th tone: sharp fall",
+        "spokenTone": 4
+       },
+       {
+        "hanzi": "漂",
+        "pinyin": "piào",
+        "initial": "p",
+        "final": "iao",
+        "tone": 4,
+        "toneName": "4th tone: sharp fall",
+        "spokenTone": 4
+       },
+       {
+        "hanzi": "亮",
+        "pinyin": "liang",
+        "initial": "l",
+        "final": "iang",
+        "tone": 5,
+        "toneName": "neutral tone: light and short",
+        "spokenTone": 5
+       },
+       {
+        "hanzi": "的",
+        "pinyin": "de",
+        "initial": "d",
+        "final": "e",
+        "tone": 5,
+        "toneName": "neutral tone: light and short",
+        "spokenTone": 5
+       },
+       {
+        "hanzi": "女",
+        "pinyin": "nǚ",
+        "initial": "n",
+        "final": "ü",
+        "tone": 3,
+        "toneName": "3rd tone: low dip",
+        "spokenTone": 3
+       },
+       {
+        "hanzi": "孩",
+        "pinyin": "hái",
+        "initial": "h",
+        "final": "ai",
+        "tone": 2,
+        "toneName": "2nd tone: rising",
+        "spokenTone": 2
+       },
+       {
+        "hanzi": "子",
+        "pinyin": "zi",
+        "initial": "z",
+        "final": "i",
+        "tone": 5,
+        "toneName": "neutral tone: light and short",
+        "spokenTone": 5
+       },
+       {
+        "hanzi": "你",
+        "pinyin": "nǐ",
+        "initial": "n",
+        "final": "i",
+        "tone": 3,
+        "toneName": "3rd tone: low dip",
+        "spokenTone": 3
+       },
+       {
+        "hanzi": "认",
+        "pinyin": "rèn",
+        "initial": "r",
+        "final": "en",
+        "tone": 4,
+        "toneName": "4th tone: sharp fall",
+        "spokenTone": 4
+       },
+       {
+        "hanzi": "不",
+        "pinyin": "bù",
+        "initial": "b",
+        "final": "u",
+        "tone": 4,
+        "toneName": "4th tone: sharp fall",
+        "spokenTone": 2
+       },
+       {
+        "hanzi": "认",
+        "pinyin": "rèn",
+        "initial": "r",
+        "final": "en",
+        "tone": 4,
+        "toneName": "4th tone: sharp fall",
+        "spokenTone": 4
+       },
+       {
+        "hanzi": "识",
+        "pinyin": "shi",
+        "initial": "sh",
+        "final": "i",
+        "tone": 5,
+        "toneName": "neutral tone: light and short",
+        "spokenTone": 5
+       },
+       {
+        "hanzi": "她",
+        "pinyin": "tā",
+        "initial": "t",
+        "final": "a",
+        "tone": 1,
+        "toneName": "1st tone: high and level",
+        "spokenTone": 1
+       }
+      ],
+      "spoken": "Nǐ kàn! Nàr yǒu yí gè piào liang de nǚ hái zi. Nǐ rèn bú rèn shi tā?",
+      "notes": [
+       "一 changes to yí before a 4th tone",
+       "不 changes to bú before a 4th tone"
+      ]
+     }
     }
    ],
    "ok": true,
@@ -4352,7 +6239,49 @@
     {
      "zh": "你去了吗？",
      "pinyin": "Nǐ qù le ma?",
-     "pinyinNumbered": "ni3 qu4 le5 ma5"
+     "pinyinNumbered": "ni3 qu4 le5 ma5",
+     "pronunciation": {
+      "syllables": [
+       {
+        "hanzi": "你",
+        "pinyin": "nǐ",
+        "initial": "n",
+        "final": "i",
+        "tone": 3,
+        "toneName": "3rd tone: low dip",
+        "spokenTone": 3
+       },
+       {
+        "hanzi": "去",
+        "pinyin": "qù",
+        "initial": "q",
+        "final": "u",
+        "tone": 4,
+        "toneName": "4th tone: sharp fall",
+        "spokenTone": 4
+       },
+       {
+        "hanzi": "了",
+        "pinyin": "le",
+        "initial": "l",
+        "final": "e",
+        "tone": 5,
+        "toneName": "neutral tone: light and short",
+        "spokenTone": 5
+       },
+       {
+        "hanzi": "吗",
+        "pinyin": "ma",
+        "initial": "m",
+        "final": "a",
+        "tone": 5,
+        "toneName": "neutral tone: light and short",
+        "spokenTone": 5
+       }
+      ],
+      "spoken": null,
+      "notes": []
+     }
     }
    ],
    "ok": false,
@@ -4382,7 +6311,103 @@
     {
      "zh": "好不好玩？他请了几个人？",
      "pinyin": "Hǎo bù hǎo wán? Tā qǐng le jǐ gè rén?",
-     "pinyinNumbered": "hao3 bu4 hao3 wan2 ta1 qing3 le5 ji3 ge4 ren2"
+     "pinyinNumbered": "hao3 bu4 hao3 wan2 ta1 qing3 le5 ji3 ge4 ren2",
+     "pronunciation": {
+      "syllables": [
+       {
+        "hanzi": "好",
+        "pinyin": "hǎo",
+        "initial": "h",
+        "final": "ao",
+        "tone": 3,
+        "toneName": "3rd tone: low dip",
+        "spokenTone": 3
+       },
+       {
+        "hanzi": "不",
+        "pinyin": "bù",
+        "initial": "b",
+        "final": "u",
+        "tone": 4,
+        "toneName": "4th tone: sharp fall",
+        "spokenTone": 4
+       },
+       {
+        "hanzi": "好",
+        "pinyin": "hǎo",
+        "initial": "h",
+        "final": "ao",
+        "tone": 3,
+        "toneName": "3rd tone: low dip",
+        "spokenTone": 3
+       },
+       {
+        "hanzi": "玩",
+        "pinyin": "wán",
+        "initial": "w",
+        "final": "an",
+        "tone": 2,
+        "toneName": "2nd tone: rising",
+        "spokenTone": 2
+       },
+       {
+        "hanzi": "他",
+        "pinyin": "tā",
+        "initial": "t",
+        "final": "a",
+        "tone": 1,
+        "toneName": "1st tone: high and level",
+        "spokenTone": 1
+       },
+       {
+        "hanzi": "请",
+        "pinyin": "qǐng",
+        "initial": "q",
+        "final": "ing",
+        "tone": 3,
+        "toneName": "3rd tone: low dip",
+        "spokenTone": 3
+       },
+       {
+        "hanzi": "了",
+        "pinyin": "le",
+        "initial": "l",
+        "final": "e",
+        "tone": 5,
+        "toneName": "neutral tone: light and short",
+        "spokenTone": 5
+       },
+       {
+        "hanzi": "几",
+        "pinyin": "jǐ",
+        "initial": "j",
+        "final": "i",
+        "tone": 3,
+        "toneName": "3rd tone: low dip",
+        "spokenTone": 3
+       },
+       {
+        "hanzi": "个",
+        "pinyin": "gè",
+        "initial": "g",
+        "final": "e",
+        "tone": 4,
+        "toneName": "4th tone: sharp fall",
+        "spokenTone": 4
+       },
+       {
+        "hanzi": "人",
+        "pinyin": "rén",
+        "initial": "r",
+        "final": "en",
+        "tone": 2,
+        "toneName": "2nd tone: rising",
+        "spokenTone": 2
+       }
+      ],
+      "spoken": null,
+      "notes": []
+     }
     }
    ],
    "ok": true,
@@ -4400,7 +6425,85 @@
     {
      "zh": "好玩！他请了八个人。",
      "pinyin": "Hǎo wán! Tā qǐng le bā gè rén.",
-     "pinyinNumbered": "hao3 wan2 ta1 qing3 le5 ba1 ge4 ren2"
+     "pinyinNumbered": "hao3 wan2 ta1 qing3 le5 ba1 ge4 ren2",
+     "pronunciation": {
+      "syllables": [
+       {
+        "hanzi": "好",
+        "pinyin": "hǎo",
+        "initial": "h",
+        "final": "ao",
+        "tone": 3,
+        "toneName": "3rd tone: low dip",
+        "spokenTone": 3
+       },
+       {
+        "hanzi": "玩",
+        "pinyin": "wán",
+        "initial": "w",
+        "final": "an",
+        "tone": 2,
+        "toneName": "2nd tone: rising",
+        "spokenTone": 2
+       },
+       {
+        "hanzi": "他",
+        "pinyin": "tā",
+        "initial": "t",
+        "final": "a",
+        "tone": 1,
+        "toneName": "1st tone: high and level",
+        "spokenTone": 1
+       },
+       {
+        "hanzi": "请",
+        "pinyin": "qǐng",
+        "initial": "q",
+        "final": "ing",
+        "tone": 3,
+        "toneName": "3rd tone: low dip",
+        "spokenTone": 3
+       },
+       {
+        "hanzi": "了",
+        "pinyin": "le",
+        "initial": "l",
+        "final": "e",
+        "tone": 5,
+        "toneName": "neutral tone: light and short",
+        "spokenTone": 5
+       },
+       {
+        "hanzi": "八",
+        "pinyin": "bā",
+        "initial": "b",
+        "final": "a",
+        "tone": 1,
+        "toneName": "1st tone: high and level",
+        "spokenTone": 1
+       },
+       {
+        "hanzi": "个",
+        "pinyin": "gè",
+        "initial": "g",
+        "final": "e",
+        "tone": 4,
+        "toneName": "4th tone: sharp fall",
+        "spokenTone": 4
+       },
+       {
+        "hanzi": "人",
+        "pinyin": "rén",
+        "initial": "r",
+        "final": "en",
+        "tone": 2,
+        "toneName": "2nd tone: rising",
+        "spokenTone": 2
+       }
+      ],
+      "spoken": null,
+      "notes": []
+     }
     }
    ],
    "ok": true,
@@ -4418,12 +6521,125 @@
     {
      "zh": "哪八个人？",
      "pinyin": "Nǎ bā gè rén?",
-     "pinyinNumbered": "na3 ba1 ge4 ren2"
+     "pinyinNumbered": "na3 ba1 ge4 ren2",
+     "pronunciation": {
+      "syllables": [
+       {
+        "hanzi": "哪",
+        "pinyin": "nǎ",
+        "initial": "n",
+        "final": "a",
+        "tone": 3,
+        "toneName": "3rd tone: low dip",
+        "spokenTone": 3
+       },
+       {
+        "hanzi": "八",
+        "pinyin": "bā",
+        "initial": "b",
+        "final": "a",
+        "tone": 1,
+        "toneName": "1st tone: high and level",
+        "spokenTone": 1
+       },
+       {
+        "hanzi": "个",
+        "pinyin": "gè",
+        "initial": "g",
+        "final": "e",
+        "tone": 4,
+        "toneName": "4th tone: sharp fall",
+        "spokenTone": 4
+       },
+       {
+        "hanzi": "人",
+        "pinyin": "rén",
+        "initial": "r",
+        "final": "en",
+        "tone": 2,
+        "toneName": "2nd tone: rising",
+        "spokenTone": 2
+       }
+      ],
+      "spoken": null,
+      "notes": []
+     }
     },
     {
      "zh": "我认不认识他们?",
      "pinyin": "Wǒ rèn bù rèn shi tā men?",
-     "pinyinNumbered": "wo3 ren4 bu4 ren4 shi5 ta1 men5"
+     "pinyinNumbered": "wo3 ren4 bu4 ren4 shi5 ta1 men5",
+     "pronunciation": {
+      "syllables": [
+       {
+        "hanzi": "我",
+        "pinyin": "wǒ",
+        "initial": "w",
+        "final": "o",
+        "tone": 3,
+        "toneName": "3rd tone: low dip",
+        "spokenTone": 3
+       },
+       {
+        "hanzi": "认",
+        "pinyin": "rèn",
+        "initial": "r",
+        "final": "en",
+        "tone": 4,
+        "toneName": "4th tone: sharp fall",
+        "spokenTone": 4
+       },
+       {
+        "hanzi": "不",
+        "pinyin": "bù",
+        "initial": "b",
+        "final": "u",
+        "tone": 4,
+        "toneName": "4th tone: sharp fall",
+        "spokenTone": 2
+       },
+       {
+        "hanzi": "认",
+        "pinyin": "rèn",
+        "initial": "r",
+        "final": "en",
+        "tone": 4,
+        "toneName": "4th tone: sharp fall",
+        "spokenTone": 4
+       },
+       {
+        "hanzi": "识",
+        "pinyin": "shi",
+        "initial": "sh",
+        "final": "i",
+        "tone": 5,
+        "toneName": "neutral tone: light and short",
+        "spokenTone": 5
+       },
+       {
+        "hanzi": "他",
+        "pinyin": "tā",
+        "initial": "t",
+        "final": "a",
+        "tone": 1,
+        "toneName": "1st tone: high and level",
+        "spokenTone": 1
+       },
+       {
+        "hanzi": "们",
+        "pinyin": "men",
+        "initial": "m",
+        "final": "en",
+        "tone": 5,
+        "toneName": "neutral tone: light and short",
+        "spokenTone": 5
+       }
+      ],
+      "spoken": "Wǒ rèn bú rèn shi tā men?",
+      "notes": [
+       "不 changes to bú before a 4th tone"
+      ]
+     }
     }
    ],
    "ok": true,
@@ -4573,7 +6789,121 @@
     {
      "zh": "你喝啤酒了吗？你喝啤酒没有？",
      "pinyin": "Nǐ hē pí jiǔ le ma? Nǐ hē pí jiǔ méi yǒu?",
-     "pinyinNumbered": "ni3 he1 pi2 jiu3 le5 ma5 ni3 he1 pi2 jiu3 mei2 you3"
+     "pinyinNumbered": "ni3 he1 pi2 jiu3 le5 ma5 ni3 he1 pi2 jiu3 mei2 you3",
+     "pronunciation": {
+      "syllables": [
+       {
+        "hanzi": "你",
+        "pinyin": "nǐ",
+        "initial": "n",
+        "final": "i",
+        "tone": 3,
+        "toneName": "3rd tone: low dip",
+        "spokenTone": 3
+       },
+       {
+        "hanzi": "喝",
+        "pinyin": "hē",
+        "initial": "h",
+        "final": "e",
+        "tone": 1,
+        "toneName": "1st tone: high and level",
+        "spokenTone": 1
+       },
+       {
+        "hanzi": "啤",
+        "pinyin": "pí",
+        "initial": "p",
+        "final": "i",
+        "tone": 2,
+        "toneName": "2nd tone: rising",
+        "spokenTone": 2
+       },
+       {
+        "hanzi": "酒",
+        "pinyin": "jiǔ",
+        "initial": "j",
+        "final": "iu",
+        "tone": 3,
+        "toneName": "3rd tone: low dip",
+        "spokenTone": 3
+       },
+       {
+        "hanzi": "了",
+        "pinyin": "le",
+        "initial": "l",
+        "final": "e",
+        "tone": 5,
+        "toneName": "neutral tone: light and short",
+        "spokenTone": 5
+       },
+       {
+        "hanzi": "吗",
+        "pinyin": "ma",
+        "initial": "m",
+        "final": "a",
+        "tone": 5,
+        "toneName": "neutral tone: light and short",
+        "spokenTone": 5
+       },
+       {
+        "hanzi": "你",
+        "pinyin": "nǐ",
+        "initial": "n",
+        "final": "i",
+        "tone": 3,
+        "toneName": "3rd tone: low dip",
+        "spokenTone": 3
+       },
+       {
+        "hanzi": "喝",
+        "pinyin": "hē",
+        "initial": "h",
+        "final": "e",
+        "tone": 1,
+        "toneName": "1st tone: high and level",
+        "spokenTone": 1
+       },
+       {
+        "hanzi": "啤",
+        "pinyin": "pí",
+        "initial": "p",
+        "final": "i",
+        "tone": 2,
+        "toneName": "2nd tone: rising",
+        "spokenTone": 2
+       },
+       {
+        "hanzi": "酒",
+        "pinyin": "jiǔ",
+        "initial": "j",
+        "final": "iu",
+        "tone": 3,
+        "toneName": "3rd tone: low dip",
+        "spokenTone": 3
+       },
+       {
+        "hanzi": "没",
+        "pinyin": "méi",
+        "initial": "m",
+        "final": "ei",
+        "tone": 2,
+        "toneName": "2nd tone: rising",
+        "spokenTone": 2
+       },
+       {
+        "hanzi": "有",
+        "pinyin": "yǒu",
+        "initial": "y",
+        "final": "ou",
+        "tone": 3,
+        "toneName": "3rd tone: low dip",
+        "spokenTone": 3
+       }
+      ],
+      "spoken": null,
+      "notes": []
+     }
     }
    ],
    "ok": true,
@@ -4603,7 +6933,121 @@
     {
      "zh": "你们跳舞了吗？你们跳舞没有？",
      "pinyin": "Nǐ men tiào wǔ le ma? Nǐ men tiào wǔ méi yǒu?",
-     "pinyinNumbered": "ni3 men5 tiao4 wu3 le5 ma5 ni3 men5 tiao4 wu3 mei2 you3"
+     "pinyinNumbered": "ni3 men5 tiao4 wu3 le5 ma5 ni3 men5 tiao4 wu3 mei2 you3",
+     "pronunciation": {
+      "syllables": [
+       {
+        "hanzi": "你",
+        "pinyin": "nǐ",
+        "initial": "n",
+        "final": "i",
+        "tone": 3,
+        "toneName": "3rd tone: low dip",
+        "spokenTone": 3
+       },
+       {
+        "hanzi": "们",
+        "pinyin": "men",
+        "initial": "m",
+        "final": "en",
+        "tone": 5,
+        "toneName": "neutral tone: light and short",
+        "spokenTone": 5
+       },
+       {
+        "hanzi": "跳",
+        "pinyin": "tiào",
+        "initial": "t",
+        "final": "iao",
+        "tone": 4,
+        "toneName": "4th tone: sharp fall",
+        "spokenTone": 4
+       },
+       {
+        "hanzi": "舞",
+        "pinyin": "wǔ",
+        "initial": "w",
+        "final": "u",
+        "tone": 3,
+        "toneName": "3rd tone: low dip",
+        "spokenTone": 3
+       },
+       {
+        "hanzi": "了",
+        "pinyin": "le",
+        "initial": "l",
+        "final": "e",
+        "tone": 5,
+        "toneName": "neutral tone: light and short",
+        "spokenTone": 5
+       },
+       {
+        "hanzi": "吗",
+        "pinyin": "ma",
+        "initial": "m",
+        "final": "a",
+        "tone": 5,
+        "toneName": "neutral tone: light and short",
+        "spokenTone": 5
+       },
+       {
+        "hanzi": "你",
+        "pinyin": "nǐ",
+        "initial": "n",
+        "final": "i",
+        "tone": 3,
+        "toneName": "3rd tone: low dip",
+        "spokenTone": 3
+       },
+       {
+        "hanzi": "们",
+        "pinyin": "men",
+        "initial": "m",
+        "final": "en",
+        "tone": 5,
+        "toneName": "neutral tone: light and short",
+        "spokenTone": 5
+       },
+       {
+        "hanzi": "跳",
+        "pinyin": "tiào",
+        "initial": "t",
+        "final": "iao",
+        "tone": 4,
+        "toneName": "4th tone: sharp fall",
+        "spokenTone": 4
+       },
+       {
+        "hanzi": "舞",
+        "pinyin": "wǔ",
+        "initial": "w",
+        "final": "u",
+        "tone": 3,
+        "toneName": "3rd tone: low dip",
+        "spokenTone": 3
+       },
+       {
+        "hanzi": "没",
+        "pinyin": "méi",
+        "initial": "m",
+        "final": "ei",
+        "tone": 2,
+        "toneName": "2nd tone: rising",
+        "spokenTone": 2
+       },
+       {
+        "hanzi": "有",
+        "pinyin": "yǒu",
+        "initial": "y",
+        "final": "ou",
+        "tone": 3,
+        "toneName": "3rd tone: low dip",
+        "spokenTone": 3
+       }
+      ],
+      "spoken": null,
+      "notes": []
+     }
     }
    ],
    "ok": true,
@@ -4717,7 +7161,42 @@
     {
      "zh": "在不在？",
      "pinyin": "Zài bù zài?",
-     "pinyinNumbered": "zai4 bu4 zai4"
+     "pinyinNumbered": "zai4 bu4 zai4",
+     "pronunciation": {
+      "syllables": [
+       {
+        "hanzi": "在",
+        "pinyin": "zài",
+        "initial": "z",
+        "final": "ai",
+        "tone": 4,
+        "toneName": "4th tone: sharp fall",
+        "spokenTone": 4
+       },
+       {
+        "hanzi": "不",
+        "pinyin": "bù",
+        "initial": "b",
+        "final": "u",
+        "tone": 4,
+        "toneName": "4th tone: sharp fall",
+        "spokenTone": 2
+       },
+       {
+        "hanzi": "在",
+        "pinyin": "zài",
+        "initial": "z",
+        "final": "ai",
+        "tone": 4,
+        "toneName": "4th tone: sharp fall",
+        "spokenTone": 4
+       }
+      ],
+      "spoken": "Zài bú zài?",
+      "notes": [
+       "不 changes to bú before a 4th tone"
+      ]
+     }
     }
    ],
    "ok": false,
@@ -4819,7 +7298,166 @@
     {
      "zh": "考试以后，你要做什么？想不想去喝杯咖啡？",
      "pinyin": "Kǎo shì yǐ hòu, nǐ yào zuò shén me? Xiǎng bù xiǎng qù hē bēi kā fēi?",
-     "pinyinNumbered": "kao3 shi4 yi3 hou4 ni3 yao4 zuo4 shen2 me5 xiang3 bu4 xiang3 qu4 he1 bei1 ka1 fei1"
+     "pinyinNumbered": "kao3 shi4 yi3 hou4 ni3 yao4 zuo4 shen2 me5 xiang3 bu4 xiang3 qu4 he1 bei1 ka1 fei1",
+     "pronunciation": {
+      "syllables": [
+       {
+        "hanzi": "考",
+        "pinyin": "kǎo",
+        "initial": "k",
+        "final": "ao",
+        "tone": 3,
+        "toneName": "3rd tone: low dip",
+        "spokenTone": 3
+       },
+       {
+        "hanzi": "试",
+        "pinyin": "shì",
+        "initial": "sh",
+        "final": "i",
+        "tone": 4,
+        "toneName": "4th tone: sharp fall",
+        "spokenTone": 4
+       },
+       {
+        "hanzi": "以",
+        "pinyin": "yǐ",
+        "initial": "y",
+        "final": "i",
+        "tone": 3,
+        "toneName": "3rd tone: low dip",
+        "spokenTone": 3
+       },
+       {
+        "hanzi": "后",
+        "pinyin": "hòu",
+        "initial": "h",
+        "final": "ou",
+        "tone": 4,
+        "toneName": "4th tone: sharp fall",
+        "spokenTone": 4
+       },
+       {
+        "hanzi": "你",
+        "pinyin": "nǐ",
+        "initial": "n",
+        "final": "i",
+        "tone": 3,
+        "toneName": "3rd tone: low dip",
+        "spokenTone": 3
+       },
+       {
+        "hanzi": "要",
+        "pinyin": "yào",
+        "initial": "y",
+        "final": "ao",
+        "tone": 4,
+        "toneName": "4th tone: sharp fall",
+        "spokenTone": 4
+       },
+       {
+        "hanzi": "做",
+        "pinyin": "zuò",
+        "initial": "z",
+        "final": "uo",
+        "tone": 4,
+        "toneName": "4th tone: sharp fall",
+        "spokenTone": 4
+       },
+       {
+        "hanzi": "什",
+        "pinyin": "shén",
+        "initial": "sh",
+        "final": "en",
+        "tone": 2,
+        "toneName": "2nd tone: rising",
+        "spokenTone": 2
+       },
+       {
+        "hanzi": "么",
+        "pinyin": "me",
+        "initial": "m",
+        "final": "e",
+        "tone": 5,
+        "toneName": "neutral tone: light and short",
+        "spokenTone": 5
+       },
+       {
+        "hanzi": "想",
+        "pinyin": "xiǎng",
+        "initial": "x",
+        "final": "iang",
+        "tone": 3,
+        "toneName": "3rd tone: low dip",
+        "spokenTone": 3
+       },
+       {
+        "hanzi": "不",
+        "pinyin": "bù",
+        "initial": "b",
+        "final": "u",
+        "tone": 4,
+        "toneName": "4th tone: sharp fall",
+        "spokenTone": 4
+       },
+       {
+        "hanzi": "想",
+        "pinyin": "xiǎng",
+        "initial": "x",
+        "final": "iang",
+        "tone": 3,
+        "toneName": "3rd tone: low dip",
+        "spokenTone": 3
+       },
+       {
+        "hanzi": "去",
+        "pinyin": "qù",
+        "initial": "q",
+        "final": "u",
+        "tone": 4,
+        "toneName": "4th tone: sharp fall",
+        "spokenTone": 4
+       },
+       {
+        "hanzi": "喝",
+        "pinyin": "hē",
+        "initial": "h",
+        "final": "e",
+        "tone": 1,
+        "toneName": "1st tone: high and level",
+        "spokenTone": 1
+       },
+       {
+        "hanzi": "杯",
+        "pinyin": "bēi",
+        "initial": "b",
+        "final": "ei",
+        "tone": 1,
+        "toneName": "1st tone: high and level",
+        "spokenTone": 1
+       },
+       {
+        "hanzi": "咖",
+        "pinyin": "kā",
+        "initial": "k",
+        "final": "a",
+        "tone": 1,
+        "toneName": "1st tone: high and level",
+        "spokenTone": 1
+       },
+       {
+        "hanzi": "啡",
+        "pinyin": "fēi",
+        "initial": "f",
+        "final": "ei",
+        "tone": 1,
+        "toneName": "1st tone: high and level",
+        "spokenTone": 1
+       }
+      ],
+      "spoken": null,
+      "notes": []
+     }
     }
    ],
    "ok": true,
@@ -4945,7 +7583,204 @@
     {
      "zh": "那我和我女朋友看电影以后想来你家找你，可以吗？",
      "pinyin": "Nà wǒ hé wǒ nǚ péng you kàn diàn yǐng yǐ hòu xiǎng lái nǐ jiā zhǎo nǐ, kě yǐ ma?",
-     "pinyinNumbered": "na4 wo3 he2 wo3 nü3 peng2 you5 kan4 dian4 ying3 yi3 hou4 xiang3 lai2 ni3 jia1 zhao3 ni3 ke3 yi3 ma5"
+     "pinyinNumbered": "na4 wo3 he2 wo3 nü3 peng2 you5 kan4 dian4 ying3 yi3 hou4 xiang3 lai2 ni3 jia1 zhao3 ni3 ke3 yi3 ma5",
+     "pronunciation": {
+      "syllables": [
+       {
+        "hanzi": "那",
+        "pinyin": "nà",
+        "initial": "n",
+        "final": "a",
+        "tone": 4,
+        "toneName": "4th tone: sharp fall",
+        "spokenTone": 4
+       },
+       {
+        "hanzi": "我",
+        "pinyin": "wǒ",
+        "initial": "w",
+        "final": "o",
+        "tone": 3,
+        "toneName": "3rd tone: low dip",
+        "spokenTone": 3
+       },
+       {
+        "hanzi": "和",
+        "pinyin": "hé",
+        "initial": "h",
+        "final": "e",
+        "tone": 2,
+        "toneName": "2nd tone: rising",
+        "spokenTone": 2
+       },
+       {
+        "hanzi": "我",
+        "pinyin": "wǒ",
+        "initial": "w",
+        "final": "o",
+        "tone": 3,
+        "toneName": "3rd tone: low dip",
+        "spokenTone": 3
+       },
+       {
+        "hanzi": "女",
+        "pinyin": "nǚ",
+        "initial": "n",
+        "final": "ü",
+        "tone": 3,
+        "toneName": "3rd tone: low dip",
+        "spokenTone": 3
+       },
+       {
+        "hanzi": "朋",
+        "pinyin": "péng",
+        "initial": "p",
+        "final": "eng",
+        "tone": 2,
+        "toneName": "2nd tone: rising",
+        "spokenTone": 2
+       },
+       {
+        "hanzi": "友",
+        "pinyin": "you",
+        "initial": "y",
+        "final": "ou",
+        "tone": 5,
+        "toneName": "neutral tone: light and short",
+        "spokenTone": 5
+       },
+       {
+        "hanzi": "看",
+        "pinyin": "kàn",
+        "initial": "k",
+        "final": "an",
+        "tone": 4,
+        "toneName": "4th tone: sharp fall",
+        "spokenTone": 4
+       },
+       {
+        "hanzi": "电",
+        "pinyin": "diàn",
+        "initial": "d",
+        "final": "ian",
+        "tone": 4,
+        "toneName": "4th tone: sharp fall",
+        "spokenTone": 4
+       },
+       {
+        "hanzi": "影",
+        "pinyin": "yǐng",
+        "initial": "y",
+        "final": "ing",
+        "tone": 3,
+        "toneName": "3rd tone: low dip",
+        "spokenTone": 3
+       },
+       {
+        "hanzi": "以",
+        "pinyin": "yǐ",
+        "initial": "y",
+        "final": "i",
+        "tone": 3,
+        "toneName": "3rd tone: low dip",
+        "spokenTone": 3
+       },
+       {
+        "hanzi": "后",
+        "pinyin": "hòu",
+        "initial": "h",
+        "final": "ou",
+        "tone": 4,
+        "toneName": "4th tone: sharp fall",
+        "spokenTone": 4
+       },
+       {
+        "hanzi": "想",
+        "pinyin": "xiǎng",
+        "initial": "x",
+        "final": "iang",
+        "tone": 3,
+        "toneName": "3rd tone: low dip",
+        "spokenTone": 3
+       },
+       {
+        "hanzi": "来",
+        "pinyin": "lái",
+        "initial": "l",
+        "final": "ai",
+        "tone": 2,
+        "toneName": "2nd tone: rising",
+        "spokenTone": 2
+       },
+       {
+        "hanzi": "你",
+        "pinyin": "nǐ",
+        "initial": "n",
+        "final": "i",
+        "tone": 3,
+        "toneName": "3rd tone: low dip",
+        "spokenTone": 3
+       },
+       {
+        "hanzi": "家",
+        "pinyin": "jiā",
+        "initial": "j",
+        "final": "ia",
+        "tone": 1,
+        "toneName": "1st tone: high and level",
+        "spokenTone": 1
+       },
+       {
+        "hanzi": "找",
+        "pinyin": "zhǎo",
+        "initial": "zh",
+        "final": "ao",
+        "tone": 3,
+        "toneName": "3rd tone: low dip",
+        "spokenTone": 3
+       },
+       {
+        "hanzi": "你",
+        "pinyin": "nǐ",
+        "initial": "n",
+        "final": "i",
+        "tone": 3,
+        "toneName": "3rd tone: low dip",
+        "spokenTone": 3
+       },
+       {
+        "hanzi": "可",
+        "pinyin": "kě",
+        "initial": "k",
+        "final": "e",
+        "tone": 3,
+        "toneName": "3rd tone: low dip",
+        "spokenTone": 2
+       },
+       {
+        "hanzi": "以",
+        "pinyin": "yǐ",
+        "initial": "y",
+        "final": "i",
+        "tone": 3,
+        "toneName": "3rd tone: low dip",
+        "spokenTone": 3
+       },
+       {
+        "hanzi": "吗",
+        "pinyin": "ma",
+        "initial": "m",
+        "final": "a",
+        "tone": 5,
+        "toneName": "neutral tone: light and short",
+        "spokenTone": 5
+       }
+      ],
+      "spoken": "Nà wǒ hé wǒ nǚ péng you kàn diàn yǐng yǐ hòu xiǎng lái nǐ jiā zhǎo nǐ, ké yǐ ma?",
+      "notes": [
+       "Two 3rd tones in a row: the first is said as a 2nd tone"
+      ]
+     }
     }
    ],
    "ok": true,
@@ -5227,7 +8062,222 @@
     {
      "zh": "好，谢谢！我现在就给她打一个电话，请她跟我去喝杯咖啡。",
      "pinyin": "Hǎo, xiè xie! Wǒ xiàn zài jiù gěi tā dǎ yī gè diàn huà, qǐng tā gēn wǒ qù hē bēi kā fēi.",
-     "pinyinNumbered": "hao3 xie4 xie5 wo3 xian4 zai4 jiu4 gei3 ta1 da3 yi1 ge4 dian4 hua4 qing3 ta1 gen1 wo3 qu4 he1 bei1 ka1 fei1"
+     "pinyinNumbered": "hao3 xie4 xie5 wo3 xian4 zai4 jiu4 gei3 ta1 da3 yi1 ge4 dian4 hua4 qing3 ta1 gen1 wo3 qu4 he1 bei1 ka1 fei1",
+     "pronunciation": {
+      "syllables": [
+       {
+        "hanzi": "好",
+        "pinyin": "hǎo",
+        "initial": "h",
+        "final": "ao",
+        "tone": 3,
+        "toneName": "3rd tone: low dip",
+        "spokenTone": 3
+       },
+       {
+        "hanzi": "谢",
+        "pinyin": "xiè",
+        "initial": "x",
+        "final": "ie",
+        "tone": 4,
+        "toneName": "4th tone: sharp fall",
+        "spokenTone": 4
+       },
+       {
+        "hanzi": "谢",
+        "pinyin": "xie",
+        "initial": "x",
+        "final": "ie",
+        "tone": 5,
+        "toneName": "neutral tone: light and short",
+        "spokenTone": 5
+       },
+       {
+        "hanzi": "我",
+        "pinyin": "wǒ",
+        "initial": "w",
+        "final": "o",
+        "tone": 3,
+        "toneName": "3rd tone: low dip",
+        "spokenTone": 3
+       },
+       {
+        "hanzi": "现",
+        "pinyin": "xiàn",
+        "initial": "x",
+        "final": "ian",
+        "tone": 4,
+        "toneName": "4th tone: sharp fall",
+        "spokenTone": 4
+       },
+       {
+        "hanzi": "在",
+        "pinyin": "zài",
+        "initial": "z",
+        "final": "ai",
+        "tone": 4,
+        "toneName": "4th tone: sharp fall",
+        "spokenTone": 4
+       },
+       {
+        "hanzi": "就",
+        "pinyin": "jiù",
+        "initial": "j",
+        "final": "iu",
+        "tone": 4,
+        "toneName": "4th tone: sharp fall",
+        "spokenTone": 4
+       },
+       {
+        "hanzi": "给",
+        "pinyin": "gěi",
+        "initial": "g",
+        "final": "ei",
+        "tone": 3,
+        "toneName": "3rd tone: low dip",
+        "spokenTone": 3
+       },
+       {
+        "hanzi": "她",
+        "pinyin": "tā",
+        "initial": "t",
+        "final": "a",
+        "tone": 1,
+        "toneName": "1st tone: high and level",
+        "spokenTone": 1
+       },
+       {
+        "hanzi": "打",
+        "pinyin": "dǎ",
+        "initial": "d",
+        "final": "a",
+        "tone": 3,
+        "toneName": "3rd tone: low dip",
+        "spokenTone": 3
+       },
+       {
+        "hanzi": "一",
+        "pinyin": "yī",
+        "initial": "y",
+        "final": "i",
+        "tone": 1,
+        "toneName": "1st tone: high and level",
+        "spokenTone": 2
+       },
+       {
+        "hanzi": "个",
+        "pinyin": "gè",
+        "initial": "g",
+        "final": "e",
+        "tone": 4,
+        "toneName": "4th tone: sharp fall",
+        "spokenTone": 4
+       },
+       {
+        "hanzi": "电",
+        "pinyin": "diàn",
+        "initial": "d",
+        "final": "ian",
+        "tone": 4,
+        "toneName": "4th tone: sharp fall",
+        "spokenTone": 4
+       },
+       {
+        "hanzi": "话",
+        "pinyin": "huà",
+        "initial": "h",
+        "final": "ua",
+        "tone": 4,
+        "toneName": "4th tone: sharp fall",
+        "spokenTone": 4
+       },
+       {
+        "hanzi": "请",
+        "pinyin": "qǐng",
+        "initial": "q",
+        "final": "ing",
+        "tone": 3,
+        "toneName": "3rd tone: low dip",
+        "spokenTone": 3
+       },
+       {
+        "hanzi": "她",
+        "pinyin": "tā",
+        "initial": "t",
+        "final": "a",
+        "tone": 1,
+        "toneName": "1st tone: high and level",
+        "spokenTone": 1
+       },
+       {
+        "hanzi": "跟",
+        "pinyin": "gēn",
+        "initial": "g",
+        "final": "en",
+        "tone": 1,
+        "toneName": "1st tone: high and level",
+        "spokenTone": 1
+       },
+       {
+        "hanzi": "我",
+        "pinyin": "wǒ",
+        "initial": "w",
+        "final": "o",
+        "tone": 3,
+        "toneName": "3rd tone: low dip",
+        "spokenTone": 3
+       },
+       {
+        "hanzi": "去",
+        "pinyin": "qù",
+        "initial": "q",
+        "final": "u",
+        "tone": 4,
+        "toneName": "4th tone: sharp fall",
+        "spokenTone": 4
+       },
+       {
+        "hanzi": "喝",
+        "pinyin": "hē",
+        "initial": "h",
+        "final": "e",
+        "tone": 1,
+        "toneName": "1st tone: high and level",
+        "spokenTone": 1
+       },
+       {
+        "hanzi": "杯",
+        "pinyin": "bēi",
+        "initial": "b",
+        "final": "ei",
+        "tone": 1,
+        "toneName": "1st tone: high and level",
+        "spokenTone": 1
+       },
+       {
+        "hanzi": "咖",
+        "pinyin": "kā",
+        "initial": "k",
+        "final": "a",
+        "tone": 1,
+        "toneName": "1st tone: high and level",
+        "spokenTone": 1
+       },
+       {
+        "hanzi": "啡",
+        "pinyin": "fēi",
+        "initial": "f",
+        "final": "ei",
+        "tone": 1,
+        "toneName": "1st tone: high and level",
+        "spokenTone": 1
+       }
+      ],
+      "spoken": "Hǎo, xiè xie! Wǒ xiàn zài jiù gěi tā dǎ yí gè diàn huà, qǐng tā gēn wǒ qù hē bēi kā fēi.",
+      "notes": [
+       "一 changes to yí before a 4th tone"
+      ]
+     }
     }
    ],
    "ok": true,
@@ -5341,7 +8391,94 @@
     {
      "zh": "太好了！她的电话几号？",
      "pinyin": "Tài hǎo le! Tā de diàn huà jǐ hào?",
-     "pinyinNumbered": "tai4 hao3 le5 ta1 de5 dian4 hua4 ji3 hao4"
+     "pinyinNumbered": "tai4 hao3 le5 ta1 de5 dian4 hua4 ji3 hao4",
+     "pronunciation": {
+      "syllables": [
+       {
+        "hanzi": "太",
+        "pinyin": "tài",
+        "initial": "t",
+        "final": "ai",
+        "tone": 4,
+        "toneName": "4th tone: sharp fall",
+        "spokenTone": 4
+       },
+       {
+        "hanzi": "好",
+        "pinyin": "hǎo",
+        "initial": "h",
+        "final": "ao",
+        "tone": 3,
+        "toneName": "3rd tone: low dip",
+        "spokenTone": 3
+       },
+       {
+        "hanzi": "了",
+        "pinyin": "le",
+        "initial": "l",
+        "final": "e",
+        "tone": 5,
+        "toneName": "neutral tone: light and short",
+        "spokenTone": 5
+       },
+       {
+        "hanzi": "她",
+        "pinyin": "tā",
+        "initial": "t",
+        "final": "a",
+        "tone": 1,
+        "toneName": "1st tone: high and level",
+        "spokenTone": 1
+       },
+       {
+        "hanzi": "的",
+        "pinyin": "de",
+        "initial": "d",
+        "final": "e",
+        "tone": 5,
+        "toneName": "neutral tone: light and short",
+        "spokenTone": 5
+       },
+       {
+        "hanzi": "电",
+        "pinyin": "diàn",
+        "initial": "d",
+        "final": "ian",
+        "tone": 4,
+        "toneName": "4th tone: sharp fall",
+        "spokenTone": 4
+       },
+       {
+        "hanzi": "话",
+        "pinyin": "huà",
+        "initial": "h",
+        "final": "ua",
+        "tone": 4,
+        "toneName": "4th tone: sharp fall",
+        "spokenTone": 4
+       },
+       {
+        "hanzi": "几",
+        "pinyin": "jǐ",
+        "initial": "j",
+        "final": "i",
+        "tone": 3,
+        "toneName": "3rd tone: low dip",
+        "spokenTone": 3
+       },
+       {
+        "hanzi": "号",
+        "pinyin": "hào",
+        "initial": "h",
+        "final": "ao",
+        "tone": 4,
+        "toneName": "4th tone: sharp fall",
+        "spokenTone": 4
+       }
+      ],
+      "spoken": null,
+      "notes": []
+     }
     }
    ],
    "ok": true,
@@ -5515,7 +8652,223 @@
     {
      "zh": "对！你可不可以帮我练习一下我那天要跟她爸妈说什么？",
      "pinyin": "Duì! Nǐ kě bù kě yǐ bāng wǒ liàn xí yī xià wǒ nà tiān yào gēn tā bà mā shuō shén me?",
-     "pinyinNumbered": "dui4 ni3 ke3 bu4 ke3 yi3 bang1 wo3 lian4 xi2 yi1 xia4 wo3 na4 tian1 yao4 gen1 ta1 ba4 ma1 shuo1 shen2 me5"
+     "pinyinNumbered": "dui4 ni3 ke3 bu4 ke3 yi3 bang1 wo3 lian4 xi2 yi1 xia4 wo3 na4 tian1 yao4 gen1 ta1 ba4 ma1 shuo1 shen2 me5",
+     "pronunciation": {
+      "syllables": [
+       {
+        "hanzi": "对",
+        "pinyin": "duì",
+        "initial": "d",
+        "final": "ui",
+        "tone": 4,
+        "toneName": "4th tone: sharp fall",
+        "spokenTone": 4
+       },
+       {
+        "hanzi": "你",
+        "pinyin": "nǐ",
+        "initial": "n",
+        "final": "i",
+        "tone": 3,
+        "toneName": "3rd tone: low dip",
+        "spokenTone": 3
+       },
+       {
+        "hanzi": "可",
+        "pinyin": "kě",
+        "initial": "k",
+        "final": "e",
+        "tone": 3,
+        "toneName": "3rd tone: low dip",
+        "spokenTone": 3
+       },
+       {
+        "hanzi": "不",
+        "pinyin": "bù",
+        "initial": "b",
+        "final": "u",
+        "tone": 4,
+        "toneName": "4th tone: sharp fall",
+        "spokenTone": 4
+       },
+       {
+        "hanzi": "可",
+        "pinyin": "kě",
+        "initial": "k",
+        "final": "e",
+        "tone": 3,
+        "toneName": "3rd tone: low dip",
+        "spokenTone": 2
+       },
+       {
+        "hanzi": "以",
+        "pinyin": "yǐ",
+        "initial": "y",
+        "final": "i",
+        "tone": 3,
+        "toneName": "3rd tone: low dip",
+        "spokenTone": 3
+       },
+       {
+        "hanzi": "帮",
+        "pinyin": "bāng",
+        "initial": "b",
+        "final": "ang",
+        "tone": 1,
+        "toneName": "1st tone: high and level",
+        "spokenTone": 1
+       },
+       {
+        "hanzi": "我",
+        "pinyin": "wǒ",
+        "initial": "w",
+        "final": "o",
+        "tone": 3,
+        "toneName": "3rd tone: low dip",
+        "spokenTone": 3
+       },
+       {
+        "hanzi": "练",
+        "pinyin": "liàn",
+        "initial": "l",
+        "final": "ian",
+        "tone": 4,
+        "toneName": "4th tone: sharp fall",
+        "spokenTone": 4
+       },
+       {
+        "hanzi": "习",
+        "pinyin": "xí",
+        "initial": "x",
+        "final": "i",
+        "tone": 2,
+        "toneName": "2nd tone: rising",
+        "spokenTone": 2
+       },
+       {
+        "hanzi": "一",
+        "pinyin": "yī",
+        "initial": "y",
+        "final": "i",
+        "tone": 1,
+        "toneName": "1st tone: high and level",
+        "spokenTone": 2
+       },
+       {
+        "hanzi": "下",
+        "pinyin": "xià",
+        "initial": "x",
+        "final": "ia",
+        "tone": 4,
+        "toneName": "4th tone: sharp fall",
+        "spokenTone": 4
+       },
+       {
+        "hanzi": "我",
+        "pinyin": "wǒ",
+        "initial": "w",
+        "final": "o",
+        "tone": 3,
+        "toneName": "3rd tone: low dip",
+        "spokenTone": 3
+       },
+       {
+        "hanzi": "那",
+        "pinyin": "nà",
+        "initial": "n",
+        "final": "a",
+        "tone": 4,
+        "toneName": "4th tone: sharp fall",
+        "spokenTone": 4
+       },
+       {
+        "hanzi": "天",
+        "pinyin": "tiān",
+        "initial": "t",
+        "final": "ian",
+        "tone": 1,
+        "toneName": "1st tone: high and level",
+        "spokenTone": 1
+       },
+       {
+        "hanzi": "要",
+        "pinyin": "yào",
+        "initial": "y",
+        "final": "ao",
+        "tone": 4,
+        "toneName": "4th tone: sharp fall",
+        "spokenTone": 4
+       },
+       {
+        "hanzi": "跟",
+        "pinyin": "gēn",
+        "initial": "g",
+        "final": "en",
+        "tone": 1,
+        "toneName": "1st tone: high and level",
+        "spokenTone": 1
+       },
+       {
+        "hanzi": "她",
+        "pinyin": "tā",
+        "initial": "t",
+        "final": "a",
+        "tone": 1,
+        "toneName": "1st tone: high and level",
+        "spokenTone": 1
+       },
+       {
+        "hanzi": "爸",
+        "pinyin": "bà",
+        "initial": "b",
+        "final": "a",
+        "tone": 4,
+        "toneName": "4th tone: sharp fall",
+        "spokenTone": 4
+       },
+       {
+        "hanzi": "妈",
+        "pinyin": "mā",
+        "initial": "m",
+        "final": "a",
+        "tone": 1,
+        "toneName": "1st tone: high and level",
+        "spokenTone": 1
+       },
+       {
+        "hanzi": "说",
+        "pinyin": "shuō",
+        "initial": "sh",
+        "final": "uo",
+        "tone": 1,
+        "toneName": "1st tone: high and level",
+        "spokenTone": 1
+       },
+       {
+        "hanzi": "什",
+        "pinyin": "shén",
+        "initial": "sh",
+        "final": "en",
+        "tone": 2,
+        "toneName": "2nd tone: rising",
+        "spokenTone": 2
+       },
+       {
+        "hanzi": "么",
+        "pinyin": "me",
+        "initial": "m",
+        "final": "e",
+        "tone": 5,
+        "toneName": "neutral tone: light and short",
+        "spokenTone": 5
+       }
+      ],
+      "spoken": "Duì! Nǐ kě bù ké yǐ bāng wǒ liàn xí yí xià wǒ nà tiān yào gēn tā bà mā shuō shén me?",
+      "notes": [
+       "Two 3rd tones in a row: the first is said as a 2nd tone",
+       "一 changes to yí before a 4th tone"
+      ]
+     }
     }
    ],
    "ok": true,
@@ -5605,7 +8958,232 @@
     {
      "zh": "你女朋友有一个漂亮的妹妹，你可不可以给我介绍她妹妹？",
      "pinyin": "Nǐ nǚ péng you yǒu yī gè piào liang de mèi mei, nǐ kě bù kě yǐ gěi wǒ jiè shào tā mèi mei?",
-     "pinyinNumbered": "ni3 nü3 peng2 you5 you3 yi1 ge4 piao4 liang5 de5 mei4 mei5 ni3 ke3 bu4 ke3 yi3 gei3 wo3 jie4 shao4 ta1 mei4 mei5"
+     "pinyinNumbered": "ni3 nü3 peng2 you5 you3 yi1 ge4 piao4 liang5 de5 mei4 mei5 ni3 ke3 bu4 ke3 yi3 gei3 wo3 jie4 shao4 ta1 mei4 mei5",
+     "pronunciation": {
+      "syllables": [
+       {
+        "hanzi": "你",
+        "pinyin": "nǐ",
+        "initial": "n",
+        "final": "i",
+        "tone": 3,
+        "toneName": "3rd tone: low dip",
+        "spokenTone": 3
+       },
+       {
+        "hanzi": "女",
+        "pinyin": "nǚ",
+        "initial": "n",
+        "final": "ü",
+        "tone": 3,
+        "toneName": "3rd tone: low dip",
+        "spokenTone": 3
+       },
+       {
+        "hanzi": "朋",
+        "pinyin": "péng",
+        "initial": "p",
+        "final": "eng",
+        "tone": 2,
+        "toneName": "2nd tone: rising",
+        "spokenTone": 2
+       },
+       {
+        "hanzi": "友",
+        "pinyin": "you",
+        "initial": "y",
+        "final": "ou",
+        "tone": 5,
+        "toneName": "neutral tone: light and short",
+        "spokenTone": 5
+       },
+       {
+        "hanzi": "有",
+        "pinyin": "yǒu",
+        "initial": "y",
+        "final": "ou",
+        "tone": 3,
+        "toneName": "3rd tone: low dip",
+        "spokenTone": 3
+       },
+       {
+        "hanzi": "一",
+        "pinyin": "yī",
+        "initial": "y",
+        "final": "i",
+        "tone": 1,
+        "toneName": "1st tone: high and level",
+        "spokenTone": 2
+       },
+       {
+        "hanzi": "个",
+        "pinyin": "gè",
+        "initial": "g",
+        "final": "e",
+        "tone": 4,
+        "toneName": "4th tone: sharp fall",
+        "spokenTone": 4
+       },
+       {
+        "hanzi": "漂",
+        "pinyin": "piào",
+        "initial": "p",
+        "final": "iao",
+        "tone": 4,
+        "toneName": "4th tone: sharp fall",
+        "spokenTone": 4
+       },
+       {
+        "hanzi": "亮",
+        "pinyin": "liang",
+        "initial": "l",
+        "final": "iang",
+        "tone": 5,
+        "toneName": "neutral tone: light and short",
+        "spokenTone": 5
+       },
+       {
+        "hanzi": "的",
+        "pinyin": "de",
+        "initial": "d",
+        "final": "e",
+        "tone": 5,
+        "toneName": "neutral tone: light and short",
+        "spokenTone": 5
+       },
+       {
+        "hanzi": "妹",
+        "pinyin": "mèi",
+        "initial": "m",
+        "final": "ei",
+        "tone": 4,
+        "toneName": "4th tone: sharp fall",
+        "spokenTone": 4
+       },
+       {
+        "hanzi": "妹",
+        "pinyin": "mei",
+        "initial": "m",
+        "final": "ei",
+        "tone": 5,
+        "toneName": "neutral tone: light and short",
+        "spokenTone": 5
+       },
+       {
+        "hanzi": "你",
+        "pinyin": "nǐ",
+        "initial": "n",
+        "final": "i",
+        "tone": 3,
+        "toneName": "3rd tone: low dip",
+        "spokenTone": 3
+       },
+       {
+        "hanzi": "可",
+        "pinyin": "kě",
+        "initial": "k",
+        "final": "e",
+        "tone": 3,
+        "toneName": "3rd tone: low dip",
+        "spokenTone": 3
+       },
+       {
+        "hanzi": "不",
+        "pinyin": "bù",
+        "initial": "b",
+        "final": "u",
+        "tone": 4,
+        "toneName": "4th tone: sharp fall",
+        "spokenTone": 4
+       },
+       {
+        "hanzi": "可",
+        "pinyin": "kě",
+        "initial": "k",
+        "final": "e",
+        "tone": 3,
+        "toneName": "3rd tone: low dip",
+        "spokenTone": 2
+       },
+       {
+        "hanzi": "以",
+        "pinyin": "yǐ",
+        "initial": "y",
+        "final": "i",
+        "tone": 3,
+        "toneName": "3rd tone: low dip",
+        "spokenTone": 3
+       },
+       {
+        "hanzi": "给",
+        "pinyin": "gěi",
+        "initial": "g",
+        "final": "ei",
+        "tone": 3,
+        "toneName": "3rd tone: low dip",
+        "spokenTone": 3
+       },
+       {
+        "hanzi": "我",
+        "pinyin": "wǒ",
+        "initial": "w",
+        "final": "o",
+        "tone": 3,
+        "toneName": "3rd tone: low dip",
+        "spokenTone": 3
+       },
+       {
+        "hanzi": "介",
+        "pinyin": "jiè",
+        "initial": "j",
+        "final": "ie",
+        "tone": 4,
+        "toneName": "4th tone: sharp fall",
+        "spokenTone": 4
+       },
+       {
+        "hanzi": "绍",
+        "pinyin": "shào",
+        "initial": "sh",
+        "final": "ao",
+        "tone": 4,
+        "toneName": "4th tone: sharp fall",
+        "spokenTone": 4
+       },
+       {
+        "hanzi": "她",
+        "pinyin": "tā",
+        "initial": "t",
+        "final": "a",
+        "tone": 1,
+        "toneName": "1st tone: high and level",
+        "spokenTone": 1
+       },
+       {
+        "hanzi": "妹",
+        "pinyin": "mèi",
+        "initial": "m",
+        "final": "ei",
+        "tone": 4,
+        "toneName": "4th tone: sharp fall",
+        "spokenTone": 4
+       },
+       {
+        "hanzi": "妹",
+        "pinyin": "mei",
+        "initial": "m",
+        "final": "ei",
+        "tone": 5,
+        "toneName": "neutral tone: light and short",
+        "spokenTone": 5
+       }
+      ],
+      "spoken": "Nǐ nǚ péng you yǒu yí gè piào liang de mèi mei, nǐ kě bù ké yǐ gěi wǒ jiè shào tā mèi mei?",
+      "notes": [
+       "Two 3rd tones in a row: the first is said as a 2nd tone",
+       "一 changes to yí before a 4th tone"
+      ]
+     }
     }
    ],
    "ok": true,
@@ -6019,7 +9597,76 @@
     {
      "zh": "是吗？你认识哪个？",
      "pinyin": "Shì ma? Nǐ rèn shi nǎ gè?",
-     "pinyinNumbered": "shi4 ma5 ni3 ren4 shi5 na3 ge4"
+     "pinyinNumbered": "shi4 ma5 ni3 ren4 shi5 na3 ge4",
+     "pronunciation": {
+      "syllables": [
+       {
+        "hanzi": "是",
+        "pinyin": "shì",
+        "initial": "sh",
+        "final": "i",
+        "tone": 4,
+        "toneName": "4th tone: sharp fall",
+        "spokenTone": 4
+       },
+       {
+        "hanzi": "吗",
+        "pinyin": "ma",
+        "initial": "m",
+        "final": "a",
+        "tone": 5,
+        "toneName": "neutral tone: light and short",
+        "spokenTone": 5
+       },
+       {
+        "hanzi": "你",
+        "pinyin": "nǐ",
+        "initial": "n",
+        "final": "i",
+        "tone": 3,
+        "toneName": "3rd tone: low dip",
+        "spokenTone": 3
+       },
+       {
+        "hanzi": "认",
+        "pinyin": "rèn",
+        "initial": "r",
+        "final": "en",
+        "tone": 4,
+        "toneName": "4th tone: sharp fall",
+        "spokenTone": 4
+       },
+       {
+        "hanzi": "识",
+        "pinyin": "shi",
+        "initial": "sh",
+        "final": "i",
+        "tone": 5,
+        "toneName": "neutral tone: light and short",
+        "spokenTone": 5
+       },
+       {
+        "hanzi": "哪",
+        "pinyin": "nǎ",
+        "initial": "n",
+        "final": "a",
+        "tone": 3,
+        "toneName": "3rd tone: low dip",
+        "spokenTone": 3
+       },
+       {
+        "hanzi": "个",
+        "pinyin": "gè",
+        "initial": "g",
+        "final": "e",
+        "tone": 4,
+        "toneName": "4th tone: sharp fall",
+        "spokenTone": 4
+       }
+      ],
+      "spoken": null,
+      "notes": []
+     }
     }
    ],
    "ok": true,
@@ -6037,7 +9684,58 @@
     {
      "zh": "我认识这个。",
      "pinyin": "Wǒ rèn shi zhè gè.",
-     "pinyinNumbered": "wo3 ren4 shi5 zhe4 ge4"
+     "pinyinNumbered": "wo3 ren4 shi5 zhe4 ge4",
+     "pronunciation": {
+      "syllables": [
+       {
+        "hanzi": "我",
+        "pinyin": "wǒ",
+        "initial": "w",
+        "final": "o",
+        "tone": 3,
+        "toneName": "3rd tone: low dip",
+        "spokenTone": 3
+       },
+       {
+        "hanzi": "认",
+        "pinyin": "rèn",
+        "initial": "r",
+        "final": "en",
+        "tone": 4,
+        "toneName": "4th tone: sharp fall",
+        "spokenTone": 4
+       },
+       {
+        "hanzi": "识",
+        "pinyin": "shi",
+        "initial": "sh",
+        "final": "i",
+        "tone": 5,
+        "toneName": "neutral tone: light and short",
+        "spokenTone": 5
+       },
+       {
+        "hanzi": "这",
+        "pinyin": "zhè",
+        "initial": "zh",
+        "final": "e",
+        "tone": 4,
+        "toneName": "4th tone: sharp fall",
+        "spokenTone": 4
+       },
+       {
+        "hanzi": "个",
+        "pinyin": "gè",
+        "initial": "g",
+        "final": "e",
+        "tone": 4,
+        "toneName": "4th tone: sharp fall",
+        "spokenTone": 4
+       }
+      ],
+      "spoken": null,
+      "notes": []
+     }
     }
    ],
    "ok": true,
@@ -6067,7 +9765,60 @@
     {
      "zh": "我都不认识。",
      "pinyin": "Wǒ dōu bù rèn shi.",
-     "pinyinNumbered": "wo3 dou1 bu4 ren4 shi5"
+     "pinyinNumbered": "wo3 dou1 bu4 ren4 shi5",
+     "pronunciation": {
+      "syllables": [
+       {
+        "hanzi": "我",
+        "pinyin": "wǒ",
+        "initial": "w",
+        "final": "o",
+        "tone": 3,
+        "toneName": "3rd tone: low dip",
+        "spokenTone": 3
+       },
+       {
+        "hanzi": "都",
+        "pinyin": "dōu",
+        "initial": "d",
+        "final": "ou",
+        "tone": 1,
+        "toneName": "1st tone: high and level",
+        "spokenTone": 1
+       },
+       {
+        "hanzi": "不",
+        "pinyin": "bù",
+        "initial": "b",
+        "final": "u",
+        "tone": 4,
+        "toneName": "4th tone: sharp fall",
+        "spokenTone": 2
+       },
+       {
+        "hanzi": "认",
+        "pinyin": "rèn",
+        "initial": "r",
+        "final": "en",
+        "tone": 4,
+        "toneName": "4th tone: sharp fall",
+        "spokenTone": 4
+       },
+       {
+        "hanzi": "识",
+        "pinyin": "shi",
+        "initial": "sh",
+        "final": "i",
+        "tone": 5,
+        "toneName": "neutral tone: light and short",
+        "spokenTone": 5
+       }
+      ],
+      "spoken": "Wǒ dōu bú rèn shi.",
+      "notes": [
+       "不 changes to bú before a 4th tone"
+      ]
+     }
     }
    ],
    "ok": true,
@@ -6145,7 +9896,94 @@
     {
      "zh": "是吗？这课有几个生词？",
      "pinyin": "Shì ma? Zhè kè yǒu jǐ gè shēng cí?",
-     "pinyinNumbered": "shi4 ma5 zhe4 ke4 you3 ji3 ge4 sheng1 ci2"
+     "pinyinNumbered": "shi4 ma5 zhe4 ke4 you3 ji3 ge4 sheng1 ci2",
+     "pronunciation": {
+      "syllables": [
+       {
+        "hanzi": "是",
+        "pinyin": "shì",
+        "initial": "sh",
+        "final": "i",
+        "tone": 4,
+        "toneName": "4th tone: sharp fall",
+        "spokenTone": 4
+       },
+       {
+        "hanzi": "吗",
+        "pinyin": "ma",
+        "initial": "m",
+        "final": "a",
+        "tone": 5,
+        "toneName": "neutral tone: light and short",
+        "spokenTone": 5
+       },
+       {
+        "hanzi": "这",
+        "pinyin": "zhè",
+        "initial": "zh",
+        "final": "e",
+        "tone": 4,
+        "toneName": "4th tone: sharp fall",
+        "spokenTone": 4
+       },
+       {
+        "hanzi": "课",
+        "pinyin": "kè",
+        "initial": "k",
+        "final": "e",
+        "tone": 4,
+        "toneName": "4th tone: sharp fall",
+        "spokenTone": 4
+       },
+       {
+        "hanzi": "有",
+        "pinyin": "yǒu",
+        "initial": "y",
+        "final": "ou",
+        "tone": 3,
+        "toneName": "3rd tone: low dip",
+        "spokenTone": 3
+       },
+       {
+        "hanzi": "几",
+        "pinyin": "jǐ",
+        "initial": "j",
+        "final": "i",
+        "tone": 3,
+        "toneName": "3rd tone: low dip",
+        "spokenTone": 3
+       },
+       {
+        "hanzi": "个",
+        "pinyin": "gè",
+        "initial": "g",
+        "final": "e",
+        "tone": 4,
+        "toneName": "4th tone: sharp fall",
+        "spokenTone": 4
+       },
+       {
+        "hanzi": "生",
+        "pinyin": "shēng",
+        "initial": "sh",
+        "final": "eng",
+        "tone": 1,
+        "toneName": "1st tone: high and level",
+        "spokenTone": 1
+       },
+       {
+        "hanzi": "词",
+        "pinyin": "cí",
+        "initial": "c",
+        "final": "i",
+        "tone": 2,
+        "toneName": "2nd tone: rising",
+        "spokenTone": 2
+       }
+      ],
+      "spoken": null,
+      "notes": []
+     }
     }
    ],
    "ok": true,
