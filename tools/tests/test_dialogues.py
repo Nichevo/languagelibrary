@@ -155,10 +155,14 @@ class CheckTest(unittest.TestCase):
         self.assertEqual([r["zh"] for r in t["right"]], ["我不忙。", "我很忙。"])
         self.assertEqual(t["right"][1]["line"], "d9.2")
         # Wrong replies come from another dialogue and answer a different question.
-        self.assertIsNone(t["wrong"])
+        self.assertEqual(t["wrong"], [])
         t9 = turns["d9.2"]
         self.assertEqual([r["zh"] for r in t9["right"]], ["我很忙。", "我忙。"])
-        self.assertEqual(t9["wrong"], "d2.2")
+        self.assertEqual(t9["wrong"], ["d2.2"])
+        # Only one right reply: two wrong ones, so there are still three choices.
+        t1 = turns["d2.2"]
+        self.assertEqual(len(t1["right"]), 1)
+        self.assertLessEqual(len(t1["wrong"]), 2)
         out = dg.build_output(self.ds, turns)
         # 谢 on its own is only a family name here, so 我姓谢 can't be checked and dialogue 6 has one usable line.
         self.assertEqual([s["id"] for s in out["scenes"]], ["d2", "d9"])
@@ -170,6 +174,7 @@ class CheckTest(unittest.TestCase):
                  {"zh": "我很好看。", "en": "I'm good-looking.", "id": "2", "hsk": 1, "pinyin": "", "credit": []}]
         dg.fill_from_tatoeba(turns, self.lines, index)
         self.assertEqual([r["zh"] for r in turns["d2.2"]["right"]], ["我很好。", "我很好，谢谢。"])
+        self.assertLessEqual(len(turns["d2.2"]["wrong"]), 1)
 
     def test_prompt_key(self):
         self.assertEqual(dg.prompt_key("请问你贵姓？"), dg.prompt_key("你贵姓?"))

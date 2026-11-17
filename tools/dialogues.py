@@ -290,7 +290,8 @@ def build_web(dialogues: list[dict]) -> dict:
             size = len(ln["zh"])
             # Most plausible first: shares words with the line before, and is about as long as the right reply.
             wrong.sort(key=lambda w: (-len(pwords & set(lines[w]["words"])), abs(len(lines[w]["zh"]) - size) // 4, _order(w)))
-            turns[ln["id"]] = {"prompt": prompt["id"], "right": right, "wrong": wrong[0] if wrong else None}
+            # Two wrong replies wherever there is only one right one, so every turn offers three.
+            turns[ln["id"]] = {"prompt": prompt["id"], "right": right, "wrong": wrong[:3 - len(right)]}
     return turns
 
 
@@ -327,6 +328,7 @@ def fill_from_tatoeba(turns: dict, lines: dict, index: list[dict]) -> None:
             t = min(cands, key=lambda t: (len(t["zh"]), int(t["id"])))
             turn["right"].append({"tatoeba": t["id"], "zh": t["zh"], "en": t["en"], "pinyin": t["pinyin"],
                                   "credit": t["credit"], "next": turn["right"][0]["next"]})
+            turn["wrong"] = turn["wrong"][:1]
 
 
 def is_question(text: str) -> bool:
@@ -421,8 +423,8 @@ def write_report(dialogues: list[dict], turns: dict, out: dict, path: Path = OUT
                     src = lines[opt["line"]]
                     tag = " (author's alternative)" if opt.get("alt") else ("" if opt["line"] == lid else f" (from {opt['line']}, then carries on there)" if opt.get("branch") else f" (from {opt['line']})")
                     r.append(f"  - ✓ {opt['zh']} {src['en'] if not opt.get('alt') else ''}{tag}")
-                if t["wrong"]:
-                    w = lines[t["wrong"]]
+                for wid in t["wrong"]:
+                    w = lines[wid]
                     r.append(f"  - ✗ {w['zh']} {w['en']} (from {w['id']})")
         r.append("")
     left = [ln for ln in all_lines if not ln["ok"]]
