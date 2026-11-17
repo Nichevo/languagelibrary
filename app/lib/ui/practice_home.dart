@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../data/today.dart';
 import '../srs/scheduler.dart';
 import 'common.dart';
+import 'conversation_screen.dart';
 import 'drill_screen.dart';
 import 'journey_screens.dart';
 import 'pairs_practice.dart';
@@ -143,6 +144,8 @@ final practiceTypes = <PracticeType>[
   PracticeType('tones', 'Tricky sounds', 'Hear it, pick the tone', Icons.hearing, () => const ToneQuizScreen()),
   PracticeType('order', 'Pairs & scales', 'Order and opposites', Icons.swap_vert, () => const PairsPracticeScreen()),
   PracticeType('speak', 'Say it', 'Speak and see what it heard', Icons.mic_none, () => const SayItScreen()),
+  PracticeType('talk', 'Conversations', 'Pick a reply and say it', Icons.forum_outlined,
+      () => const ConversationsScreen()),
 ];
 
 PracticeType practiceType(String method) => practiceTypes.firstWhere((t) => t.method == method);

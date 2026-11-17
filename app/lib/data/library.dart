@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/services.dart';
 
 import '../models/entry.dart';
+import 'conversations.dart';
 
 /// One word on a scale, with the meaning that puts it there.
 class ScaleItem {
@@ -66,14 +67,19 @@ class SentencePattern {
 }
 
 class Library {
-  Library(this.entries, {Map<String, String>? audioFiles, this.scales = const [], this.patterns = const []})
+  Library(this.entries,
+      {Map<String, String>? audioFiles, this.scales = const [], this.patterns = const [], Conversations? conversations})
       : audioFiles = audioFiles ?? const {},
+        conversations = conversations ?? Conversations.empty,
         byId = {for (final e in entries) e.id: e};
 
   final List<Entry> entries;
   final Map<String, Entry> byId;
   final List<Scale> scales;
   final List<SentencePattern> patterns;
+
+  /// The checked conversation scenes (Practice > Conversations).
+  final Conversations conversations;
 
   /// The patterns that use sentence [e] as an example.
   List<SentencePattern> patternsFor(Entry e) =>
@@ -122,7 +128,7 @@ class Library {
   static const patternsFilter = 'patterns';
 
   /// The library from the parsed library.json.
-  factory Library.fromJson(Map<String, dynamic> data, {Map<String, String>? audioFiles}) {
+  factory Library.fromJson(Map<String, dynamic> data, {Map<String, String>? audioFiles, Conversations? conversations}) {
     final entries = [
       for (final e in data['entries'] as List) Entry.fromJson(e as Map<String, dynamic>),
     ];
@@ -143,7 +149,7 @@ class Library {
             if (byId[x['id']] case final e?) PatternExample(e, chunks(x['zh'] as List), chunks(x['en'] as List)),
         ]),
     ];
-    return Library(entries, audioFiles: audioFiles, scales: scales, patterns: patterns);
+    return Library(entries, audioFiles: audioFiles, scales: scales, patterns: patterns, conversations: conversations);
   }
 
   static Future<Library> load([AssetBundle? bundle]) async {
@@ -164,7 +170,7 @@ class Library {
     } catch (_) {
       // No studio audio made yet: the app falls back to the phone's own voice.
     }
-    return Library.fromJson(data, audioFiles: audio);
+    return Library.fromJson(data, audioFiles: audio, conversations: await Conversations.load(b));
   }
 
   String? audioFor(Entry e, {required bool female}) => audioFiles['${e.id}_${female ? 'f' : 'm'}'];

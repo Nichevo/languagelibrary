@@ -526,6 +526,10 @@ def main(argv=None):
 
     use_set(args.set)
     entries = json.loads(LIBRARY.read_text(encoding="utf-8"))["entries"]
+    # The checked conversation lines share the app's clips and manifest.
+    conversations = LIBRARY.parent / "conversations.json"
+    if conversations.exists():
+        entries += json.loads(conversations.read_text(encoding="utf-8"))["entries"]
     if args.char_readings is not None:
         from tools.build_data import load_cedict
         print(f"{write_char_readings(load_cedict(args.char_readings or None))} characters written.")
