@@ -14,6 +14,7 @@ import 'package:language_library/speech/recognizer.dart';
 import 'package:language_library/speech/speech_service.dart';
 import 'package:language_library/ui/common.dart';
 import 'package:language_library/ui/conversation_screen.dart';
+import 'package:language_library/ui/talk_progress.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'say_it_test.dart' show glide, wavOf;
@@ -137,6 +138,34 @@ void main() {
       await ipad.mergeFrom(dataOf(phone));
       expect(ipad.talkRuns.map((r) => r.at.day), [17, 18]);
     });
+  });
+
+  testWidgets('Progress lists the scenes you tried, when they are due, and the slips', (tester) async {
+    final now = DateTime(2026, 11, 17, 12);
+    TalkRun go(String scene, int daysAgo, {int wrong = 0, List<String> slips = const []}) => TalkRun(
+          at: now.subtract(Duration(days: daysAgo)),
+          scene: scene,
+          seconds: 60,
+          finished: true,
+          turns: [
+            TalkTurn(line: '$scene.2', picked: 'conv-$scene.2', wrongPicks: wrong, tries: 1, saidWell: slips.isEmpty, slips: slips),
+          ],
+        );
+    await tester.pumpWidget(MaterialApp(
+      home: Scaffold(
+        body: SingleChildScrollView(
+          child: TalkProgress(
+            runs: [go('d2', 9, wrong: 1, slips: ['好>号']), go('d3', 1)],
+            conv: conv,
+            now: now,
+          ),
+        ),
+      ),
+    ));
+    expect(find.text('2 of ${conv.scenes.length} scenes tried'), findsOneWidget);
+    expect(find.text('Review due'), findsOneWidget);
+    expect(find.text('Again in 9 days'), findsOneWidget);
+    expect(find.text('好 heard as 号'), findsOneWidget);
   });
 
   group('a conversation', () {
