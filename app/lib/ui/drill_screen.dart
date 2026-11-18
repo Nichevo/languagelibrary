@@ -101,13 +101,43 @@ List<Entry> pinyinDistractors(Entry target, List<Entry> pool, int count, Random 
 }
 
 class DrillScreen extends StatefulWidget {
-  const DrillScreen({super.key, required this.drill, this.list, this.random});
+  const DrillScreen(
+      {super.key,
+      required this.drill,
+      this.list,
+      this.random,
+      this.ids,
+      this.kind,
+      this.kinds,
+      this.title,
+      this.stepBar,
+      this.onWordDone,
+      this.nextLabel});
 
   final Drill drill;
 
   /// Custom list, or null for all starred words.
   final String? list;
   final Random? random;
+
+  /// These words, all of them, instead of a list: a step of a week day. A
+  /// word answered wrong comes back at the end, up to twice.
+  final List<String>? ids;
+
+  /// Ask only this kind, or each word's kind in [kinds] (by method name, see
+  /// `mixedKinds`), instead of the kind picked in Settings.
+  final Choice? kind;
+  final Map<String, String>? kinds;
+  final String? title;
+
+  /// Shown under the title, like the steps of a week day.
+  final PreferredSizeWidget? stepBar;
+
+  /// Called when a word is answered right (or after its last try).
+  final void Function(String id)? onWordDone;
+
+  /// With [ids]: the button at the end, which closes the screen.
+  final String? nextLabel;
 
   @override
   State<DrillScreen> createState() => _DrillScreenState();
@@ -134,10 +164,10 @@ class _DrillScreenState extends State<DrillScreen> {
     if (_queue != null) return;
     final scope = AppScope.of(context);
     final words = [
-      for (final id in scope.store.idsIn(widget.list))
+      for (final id in widget.ids ?? scope.store.idsIn(widget.list))
         if (scope.library.byId[id] case final e? when !e.isSentence) e,
     ]..shuffle(_rnd);
-    final size = scope.store.sessionSize;
+    final size = widget.ids != null ? 0 : scope.store.sessionSize;
     _queue = size > 0 && words.length > size ? words.sublist(0, size) : words;
     _next(first: true);
   }
@@ -162,7 +192,11 @@ class _DrillScreenState extends State<DrillScreen> {
     if (widget.drill == Drill.listen) {
       final scale = scaleToOrder(scope.library, target);
       final kinds = [...Choice.pickable, if (scale != null) Choice.order];
-      _kind = Choice.fromSetting(scope.store.choiceKind) ?? kinds[_rnd.nextInt(kinds.length)];
+      final given = widget.kinds?[target.id];
+      _kind = given != null
+          ? (Choice.values.asNameMap()[given] ?? Choice.meaning)
+          : widget.kind ?? Choice.fromSetting(scope.store.choiceKind) ?? kinds[_rnd.nextInt(kinds.length)];
+      if (_kind == Choice.order && scale == null) _kind = Choice.meaning;
       if (_kind == Choice.order) {
         _scale = scale;
         return;
@@ -172,7 +206,7 @@ class _DrillScreenState extends State<DrillScreen> {
         _options = [target, ...pinyinDistractors(target, shown, 3, _rnd)]..shuffle(_rnd);
       } else {
         // Other words from the same list first, then from the library.
-        final own = [for (final id in scope.store.idsIn(widget.list)) ?scope.library.byId[id]];
+        final own = [for (final id in widget.ids ?? scope.store.idsIn(widget.list)) ?scope.library.byId[id]];
         var others = distractors(target, own, 3, _rnd);
         if (others.length < 3) {
           final taken = {for (final o in others) o.id};
@@ -193,29 +227,53 @@ class _DrillScreenState extends State<DrillScreen> {
     scope.speaker.play(_queue!.first, female: scope.store.femaleVoice, slow: slow ?? scope.store.slowAudio);
   }
 
+  /// Wrong answers so far, by word, in a week-day step.
+  final Map<String, int> _misses = {};
+
   void _answer(bool right) {
     final now = DateTime.now();
+    final target = _queue!.first;
     AppScope.of(context).store.logAnswer(right ? Rating.good : Rating.again, now.difference(_shownAt), now,
-        method: widget.drill == Drill.type ? 'type' : _kind.name, id: _queue!.first.id);
+        method: widget.drill == Drill.type ? 'type' : _kind.name, id: target.id);
     _done++;
     if (right) _right++;
+    if (widget.ids != null && !right && (_misses[target.id] = (_misses[target.id] ?? 0) + 1) <= 2) {
+      // Comes back at the end of the round (the first copy goes on Next).
+      _queue!.add(target);
+    } else {
+      widget.onWordDone?.call(target.id);
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final queue = _queue!;
-    final title = widget.drill == Drill.listen ? 'Multiple choice' : 'Type the pinyin';
+    final title = widget.title ?? (widget.drill == Drill.listen ? 'Multiple choice' : 'Type the pinyin');
     return Scaffold(
-      appBar: AppBar(title: Text(title)),
+      appBar: AppBar(title: Text(title), bottom: widget.stepBar),
       body: Readable(child: queue.isEmpty
           ? Center(
               child: Padding(
                 padding: const EdgeInsets.all(32),
-                child: Text(
-                  _done == 0 ? 'Nothing to practise yet. Star some words first.' : 'All done: $_right of $_done right.',
-                  style: theme.textTheme.titleMedium,
-                  textAlign: TextAlign.center,
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Text(
+                      _done == 0
+                          ? (widget.ids != null ? 'Nothing to practise here.' : 'Nothing to practise yet. Star some words first.')
+                          : 'All done: $_right of $_done right.',
+                      style: theme.textTheme.titleMedium,
+                      textAlign: TextAlign.center,
+                    ),
+                    if (widget.ids != null) ...[
+                      const SizedBox(height: 20),
+                      FilledButton(
+                        onPressed: () => Navigator.of(context).pop(true),
+                        child: Text(widget.nextLabel ?? 'Done'),
+                      ),
+                    ],
+                  ],
                 ),
               ),
             )

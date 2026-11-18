@@ -8,6 +8,7 @@ import '../data/library.dart';
 import '../data/say_it.dart';
 import '../data/today.dart';
 import '../data/user_store.dart';
+import '../data/week_steps.dart';
 import '../models/entry.dart';
 import '../models/journey_week.dart';
 import 'common.dart';
@@ -17,6 +18,7 @@ import 'patterns_screen.dart';
 import 'practice_home.dart';
 import 'practice_screen.dart';
 import 'say_it_screen.dart';
+import 'week_day_screen.dart';
 import 'wide.dart';
 import 'word_web.dart';
 
@@ -32,11 +34,16 @@ void openDay(BuildContext context, JourneyWeek week, int day) {
   final scope = AppScope.of(context);
   final plan = dayPlan(week, day, skillTitle: _skillTitle(week.skill));
   final lib = scope.library;
+  if (plan.kind == DayKind.meet) scope.store.starAll(plan.ids);
+  final steps = daySteps(scope.store, week, day, DateTime.now());
+  if (steps != null) {
+    Navigator.of(context).push(MaterialPageRoute(builder: (_) => WeekDayScreen(week: week, day: day, steps: steps)));
+    return;
+  }
   Widget screen;
   switch (plan.kind) {
     case DayKind.meet:
-      // Met words are starred, so their cards come back for review.
-      scope.store.starAll(plan.ids);
+      // Met words are starred (above), so their cards come back for review.
       screen = PracticeScreen(ids: plan.ids, includeNotDue: true);
     case DayKind.practise:
       screen = PracticeScreen(ids: plan.ids, includeNotDue: true);
@@ -133,6 +140,8 @@ class WeekCard extends StatelessWidget {
     }
     final day = dayIndex(week, now);
     final plan = dayPlan(week, day, skillTitle: _skillTitle(week.skill));
+    final steps = daySteps(store, week, day, now);
+    final nextStep = steps == null ? null : nextStepIndex(store, week, day, steps, now);
     final number = store.weeks.indexOf(week) + 1;
     final metSet = metIn(store, week);
     final met = metSet.length;
@@ -203,8 +212,12 @@ class WeekCard extends StatelessWidget {
                   const SizedBox(height: 8),
                   Text.rich(TextSpan(children: [
                     TextSpan(text: '${_days[day]}: ', style: const TextStyle(fontWeight: FontWeight.bold)),
-                    TextSpan(text: '${plan.title}. ${plan.detail}.'),
+                    TextSpan(text: steps == null ? '${plan.title}. ${plan.detail}.' : plan.title),
                   ])),
+                  if (steps != null) ...[
+                    const SizedBox(height: 4),
+                    StepList(week: week, day: day, steps: steps, dense: true),
+                  ],
                   if (progress != null) ...[
                     const SizedBox(height: 6),
                     LinearProgressIndicator(value: (progress.at / aim).clamp(0, 1).toDouble()),
@@ -220,7 +233,13 @@ class WeekCard extends StatelessWidget {
                     width: double.infinity,
                     child: FilledButton.tonalIcon(
                       icon: const Icon(Icons.play_arrow),
-                      label: Text(progress == null || progress.at == 0
+                      label: Text(steps != null
+                          ? (nextStep == null
+                              ? 'Done today: go again'
+                              : nextStep == 0 && stepDone(store, week, day, 0, steps[0], now).isEmpty
+                                  ? 'Start: ${steps[0].kind.title}'
+                                  : 'Carry on: step ${nextStep + 1} of ${steps.length}')
+                          : progress == null || progress.at == 0
                           ? plan.title
                           : progress.at >= progress.queue.length
                               ? '${plan.title}: all done, start again'
@@ -238,7 +257,9 @@ class WeekCard extends StatelessWidget {
                         onPressed: () {
                           AppScope.of(context).store.starAll(unmet);
                           Navigator.of(context).push(MaterialPageRoute(
-                              builder: (_) => PracticeScreen(ids: unmet, includeNotDue: true)));
+                              builder: (_) => store.weekMix
+                                  ? MeetScreen(ids: unmet)
+                                  : PracticeScreen(ids: unmet, includeNotDue: true)));
                         },
                       ),
                     ),
@@ -362,6 +383,7 @@ class WeekScreen extends StatelessWidget {
                       for (var i = 0; i < 7; i++)
                         () {
                           final p = dayPlan(week, i, skillTitle: _skillTitle(week.skill));
+                          final steps = daySteps(store, week, i, now);
                           final done = i < today && perDay[i].$2 >= store.dailyGoal;
                           return ListTile(
                             dense: true,
@@ -370,7 +392,7 @@ class WeekScreen extends StatelessWidget {
                               color: theme.colorScheme.primary,
                             ),
                             title: Text('${_days[i]}  ${p.title}', style: TextStyle(fontWeight: i == today ? FontWeight.bold : null)),
-                            subtitle: Text(p.detail),
+                            subtitle: Text(steps == null ? p.detail : steps.map((s) => s.kind.short).join(' · ')),
                             onTap: () => openDay(context, week, i),
                           );
                         }(),
@@ -677,6 +699,14 @@ class RecapScreen extends StatelessWidget {
                 stat('Sentences understood', '${sentences.right} of ${sentences.said}',
                     'by the recogniser, a guide. Under 40% makes next week\'s easier, over 80% harder'),
               ]),
+            if (methodResults(store, week) case final results when results.length >= 2)
+              Padding(
+                padding: const EdgeInsets.fromLTRB(4, 8, 4, 0),
+                child: Text(
+                    'Went best: ${methodLabel(results.first.$1)} (${percent(results.first)}% right). '
+                    'Needs work: ${methodLabel(results.last.$1)} (${percent(results.last)}% right).',
+                    style: theme.textTheme.bodyMedium),
+              ),
             if (sum.found.isNotEmpty)
               Padding(
                 padding: const EdgeInsets.fromLTRB(4, 8, 4, 0),
@@ -935,6 +965,13 @@ class JourneySettings extends StatelessWidget {
         ),
         SwitchListTile(
           contentPadding: EdgeInsets.zero,
+          title: const Text('Mix practice types into week days'),
+          subtitle: const Text('Meet, see, hear and say the week\'s words. Off: mostly flashcards, as before'),
+          value: store.weekMix,
+          onChanged: store.setWeekMix,
+        ),
+        SwitchListTile(
+          contentPadding: EdgeInsets.zero,
           title: const Text('New colour at each milestone'),
           subtitle: const Text('Off keeps the usual blue'),
           value: store.milestoneColours,
@@ -1060,3 +1097,20 @@ class ConnectionsCard extends StatelessWidget {
     );
   }
 }
+
+int percent((String, int, int) r) => (100 * r.$2 / r.$3).round();
+
+/// What a logged practice method is called on screen.
+String methodLabel(String method) => switch (method) {
+      'cards' => 'Flashcards',
+      'listen' => 'Hear it, pick the word',
+      'meaning' => 'See it, pick the meaning',
+      'reverse' => 'See the meaning, pick the word',
+      'pinyin' => 'See it, pick the pinyin',
+      'type' => 'Type the pinyin',
+      'order' => 'Pairs & scales',
+      'speak' => 'Say it',
+      'tones' => 'Tricky sounds',
+      'build' => 'Build the sentence',
+      _ => method,
+    };
