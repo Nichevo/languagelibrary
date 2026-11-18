@@ -7,6 +7,7 @@ import '../data/key_sounds.dart';
 import '../models/entry.dart';
 import '../srs/scheduler.dart';
 import 'common.dart';
+import 'say_both_screen.dart';
 import 'sounds_screen.dart';
 import 'wide.dart';
 
@@ -35,10 +36,12 @@ class KeySoundsHome extends StatelessWidget {
           builder: (context, _) {
             final scores = contrastScores(store.soundTries);
             final trouble = troubleSounds(store.soundTries);
+            final slips = slipCounts(store.saySlips, DateTime.now().subtract(const Duration(days: 7)));
             return ListView(
               padding: const EdgeInsets.all(12),
               children: [
                 _TroubleCard(trouble: trouble, scores: scores, keySounds: ks),
+                if (slips.isNotEmpty) _SlipsCard(slips: slips, keySounds: ks),
                 Padding(
                   padding: const EdgeInsets.fromLTRB(4, 16, 4, 6),
                   child: Text('All groups', style: theme.textTheme.titleMedium),
@@ -116,6 +119,39 @@ class _TroubleCard extends StatelessWidget {
                 child: const Text('Practise my trouble sounds'),
               ),
             ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+/// Sounds the recogniser heard the other way when you spoke, this week.
+class _SlipsCard extends StatelessWidget {
+  const _SlipsCard({required this.slips, required this.keySounds});
+  final List<MapEntry<String, int>> slips;
+  final KeySounds keySounds;
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    return Card(
+      child: Padding(
+        padding: const EdgeInsets.all(14),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text('When you speak', style: theme.textTheme.titleMedium),
+            Text('Say it and Say both heard the other word of a pair, this week', style: theme.textTheme.bodySmall),
+            const SizedBox(height: 6),
+            for (final MapEntry(:key, :value) in slips.take(4))
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 2),
+                child: Row(children: [
+                  Expanded(child: Text(keySounds.contrast(key)?.label ?? key)),
+                  Text(value == 1 ? 'once' : '$value times', style: theme.textTheme.bodySmall),
+                ]),
+              ),
           ],
         ),
       ),
@@ -549,6 +585,14 @@ class _SoundQuizScreenState extends State<SoundQuizScreen> {
                       ),
                     ),
                   ]),
+                  const SizedBox(height: 8),
+                  OutlinedButton.icon(
+                    icon: const Icon(Icons.mic_none),
+                    label: const Text('Say both'),
+                    style: right ? null : OutlinedButton.styleFrom(side: BorderSide(color: theme.colorScheme.primary, width: 2)),
+                    onPressed: () => Navigator.of(context)
+                        .push(MaterialPageRoute(builder: (_) => SayBothScreen(pair: q.pair))),
+                  ),
                   if (!right && group != null)
                     Padding(
                       padding: const EdgeInsets.only(top: 12),
@@ -649,6 +693,14 @@ class _SoundQuizScreenState extends State<SoundQuizScreen> {
             ]),
           ),
         ),
+        for (final MapEntry(:key, :value) in slipCounts(AppScope.of(context).store.saySlips,
+            DateTime.now().subtract(const Duration(days: 7))))
+          if (byContrast.containsKey(key))
+            Padding(
+              padding: const EdgeInsets.fromLTRB(4, 0, 4, 8),
+              child: Text('Also: when you spoke this week, ${_ks.contrast(key)?.label ?? key} was heard the other way '
+                  '${value == 1 ? 'once' : '$value times'}.', style: theme.textTheme.bodySmall),
+            ),
         if (missed.isNotEmpty)
           Card(
             child: Column(
@@ -684,6 +736,107 @@ class _SoundQuizScreenState extends State<SoundQuizScreen> {
           Expanded(child: FilledButton(onPressed: _again, child: const Text('10 more'))),
         ]),
       ],
+    );
+  }
+}
+
+/// Progress: how hearing and saying the key sounds is going.
+class KeySoundsProgress extends StatelessWidget {
+  const KeySoundsProgress({super.key, required this.now});
+  final DateTime now;
+
+  @override
+  Widget build(BuildContext context) {
+    final scope = AppScope.of(context);
+    final ks = scope.library.keySounds;
+    final store = scope.store;
+    final theme = Theme.of(context);
+    final scores = contrastScores(store.soundTries);
+    final trouble = troubleSounds(store.soundTries);
+    final slips = slipCounts(store.saySlips, now.subtract(const Duration(days: 7)));
+    final groups = [
+      for (final g in ks.groups)
+        () {
+          var r = 0, t = 0;
+          for (final c in g.contrasts) {
+            r += scores[c.id]?.right ?? 0;
+            t += scores[c.id]?.total ?? 0;
+          }
+          return (g, r, t);
+        }(),
+    ];
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        for (final (g, r, t) in groups)
+          if (t > 0) _ScoreRow(label: g.title, score: ContrastScore(r, t, 0)),
+        const SizedBox(height: 6),
+        Text('Trouble when listening', style: theme.textTheme.titleSmall),
+        Text(trouble.isEmpty ? 'None right now.' : trouble.map((c) => ks.contrast(c)?.label ?? c).join(', '),
+            style: theme.textTheme.bodyMedium),
+        const SizedBox(height: 6),
+        Text('Heard the other way when you spoke, this week', style: theme.textTheme.titleSmall),
+        Text(
+            slips.isEmpty
+                ? 'None this week.'
+                : slips.take(5).map((e) => '${ks.contrast(e.key)?.label ?? e.key} (${e.value})').join(', '),
+            style: theme.textTheme.bodyMedium),
+        if (trouble.isNotEmpty) ...[
+          const SizedBox(height: 8),
+          Align(
+            alignment: Alignment.centerLeft,
+            child: FilledButton.icon(
+              icon: const Icon(Icons.hearing),
+              label: const Text('Practise my trouble sounds'),
+              onPressed: () => Navigator.of(context)
+                  .push(MaterialPageRoute(builder: (_) => SoundQuizScreen(trouble: trouble, troubleOnly: true))),
+            ),
+          ),
+        ],
+      ],
+    );
+  }
+}
+
+/// Word page: the words this one is easily mixed up with, one sound apart.
+class SoundsLikeCard extends StatelessWidget {
+  const SoundsLikeCard(this.entry, {super.key});
+  final Entry entry;
+
+  @override
+  Widget build(BuildContext context) {
+    final scope = AppScope.of(context);
+    final pairs = pairsFor(entry, scope.library, scope.store.shows);
+    if (pairs.isEmpty) return const SizedBox.shrink();
+    final theme = Theme.of(context);
+    final ks = scope.library.keySounds;
+    return Padding(
+      padding: const EdgeInsets.only(top: 20),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text('Sounds like', style: theme.textTheme.titleSmall),
+          const SizedBox(height: 4),
+          Text('One sound apart, so easy to mix up. Tap to hear both.', style: theme.textTheme.bodySmall),
+          const SizedBox(height: 6),
+          Wrap(
+            spacing: 6,
+            runSpacing: 4,
+            children: [
+              for (final p in pairs.take(8))
+                ActionChip(
+                  label: Text('${p.b.simplified} ${p.b.pinyin} · ${ks.contrast(p.pair.contrast)?.label ?? ''}'),
+                  onPressed: () async {
+                    final female = scope.store.femaleVoice;
+                    await scope.speaker.play(p.a, female: female);
+                    await Future<void>.delayed(const Duration(milliseconds: 500));
+                    await scope.speaker.play(p.b, female: female);
+                  },
+                ),
+            ],
+          ),
+        ],
+      ),
     );
   }
 }

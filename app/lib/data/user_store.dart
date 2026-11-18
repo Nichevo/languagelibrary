@@ -149,6 +149,9 @@ class UserStore extends ChangeNotifier {
   final List<SoundTry> soundTries = [];
   static const maxSoundTries = 20000;
 
+  /// Say it tries heard as the other word of a sound pair, oldest first.
+  final List<SaySlip> saySlips = [];
+
   /// Every conversation, finished or stopped early, oldest first.
   final List<TalkRun> talkRuns = [];
   static const maxTalkRuns = 3000;
@@ -186,6 +189,7 @@ class UserStore extends ChangeNotifier {
     reviews.clear();
     speakTries.clear();
     soundTries.clear();
+    saySlips.clear();
     talkRuns.clear();
     snapshots.clear();
     firstKnown.clear();
@@ -251,6 +255,9 @@ class UserStore extends ChangeNotifier {
     for (final t in j['soundTries'] as List? ?? const []) {
       soundTries.add(SoundTry.fromJson(t as List));
     }
+    for (final t in j['saySlips'] as List? ?? const []) {
+      saySlips.add(SaySlip.fromJson(t as List));
+    }
     for (final t in j['talkRuns'] as List? ?? const []) {
       talkRuns.add(TalkRun.fromJson(t as Map));
     }
@@ -301,6 +308,7 @@ class UserStore extends ChangeNotifier {
         'reviews': [for (final r in reviews) r.toJson()],
         'speakTries': [for (final t in speakTries) t.toJson()],
         'soundTries': [for (final t in soundTries) t.toJson()],
+        'saySlips': [for (final t in saySlips) t.toJson()],
         'talkRuns': [for (final t in talkRuns) t.toJson()],
         'snapshots': snapshots.map((k, v) => MapEntry(k, v.toJson())),
         'firstKnown': firstKnown.map((k, v) => MapEntry(k, v.millisecondsSinceEpoch ~/ 1000)),
@@ -341,6 +349,9 @@ class UserStore extends ChangeNotifier {
       }
       for (final t in data['soundTries'] as List? ?? const []) {
         SoundTry.fromJson(t as List);
+      }
+      for (final t in data['saySlips'] as List? ?? const []) {
+        SaySlip.fromJson(t as List);
       }
       for (final t in data['talkRuns'] as List? ?? const []) {
         TalkRun.fromJson(t as Map);
@@ -513,6 +524,21 @@ class UserStore extends ChangeNotifier {
       if (soundTries.length > maxSoundTries) soundTries.removeRange(0, soundTries.length - maxSoundTries);
     }
 
+    // Every Say it slip from both, once each, in time order.
+    final seenSlips = {for (final t in saySlips) jsonEncode(t.toJson())};
+    var slipsAdded = 0;
+    for (final t in data['saySlips'] as List? ?? const []) {
+      final sl = SaySlip.fromJson(t as List);
+      if (seenSlips.add(jsonEncode(sl.toJson()))) {
+        saySlips.add(sl);
+        slipsAdded++;
+      }
+    }
+    if (slipsAdded > 0) {
+      mergeSort(saySlips, compare: (a, b) => a.at.compareTo(b.at));
+      if (saySlips.length > maxSoundTries) saySlips.removeRange(0, saySlips.length - maxSoundTries);
+    }
+
     // Every conversation from both, once each, in time order.
     final seenRuns = {for (final r in talkRuns) r.key};
     var runsAdded = 0;
@@ -674,6 +700,13 @@ class UserStore extends ChangeNotifier {
   Future<void> logSoundTry(SoundTry t) {
     soundTries.add(t);
     if (soundTries.length > maxSoundTries) soundTries.removeRange(0, soundTries.length - maxSoundTries);
+    return _save();
+  }
+
+  /// Records a Say it or Say both try heard as the other word of a pair.
+  Future<void> logSaySlip(SaySlip s) {
+    saySlips.add(s);
+    if (saySlips.length > maxSoundTries) saySlips.removeRange(0, saySlips.length - maxSoundTries);
     return _save();
   }
 

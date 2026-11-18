@@ -11,6 +11,7 @@ import '../srs/scheduler.dart';
 import 'common.dart';
 import 'word_web.dart';
 import 'settings_screen.dart';
+import 'key_sounds_screen.dart';
 import 'talk_progress.dart';
 import 'practice_screen.dart';
 import 'wide.dart';
@@ -517,6 +518,8 @@ class StatsView extends StatelessWidget {
             ],
           ]);
         }(),
+        if (store.soundTries.isNotEmpty || store.saySlips.isNotEmpty)
+          section('Your trouble sounds', note: 'Practice > Key sounds', [KeySoundsProgress(now: now)]),
         if (store.talkRuns.isNotEmpty)
           section('Your conversations', note: 'Practice > Conversations', [
             TalkProgress(runs: store.talkRuns, conv: library.conversations, now: now),

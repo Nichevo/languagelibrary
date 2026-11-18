@@ -8,6 +8,10 @@ import 'package:language_library/data/key_sounds.dart';
 import 'package:language_library/data/library.dart';
 import 'package:language_library/data/user_store.dart';
 import 'package:language_library/main.dart';
+import 'package:language_library/speech/pitch.dart';
+import 'package:language_library/speech/recognizer.dart';
+import 'package:language_library/speech/speech_service.dart';
+import 'package:language_library/ui/say_both_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 Library loadWithSounds() {
@@ -87,6 +91,79 @@ void main() {
     expect(ipad.soundTries.single.right, isFalse);
   });
 
+  final tones = <String, List<String>>{'四': ['si4'], '是': ['shi4'], '事': ['shi4'], '八': ['ba1'], '拔': ['ba2'], '绿': ['lu4', 'lü4']};
+
+  test('which side the recogniser heard', () {
+    expect(heardSide('四', 'shi4', 'si4', 'initial', tones), 'b');
+    expect(heardSide('事', 'shi4', 'si4', 'initial', tones), 'a', reason: 'same sound, another character');
+    expect(heardSide('八', 'ba1', 'ba2', 'tone', tones), 'a');
+    expect(heardSide('', 'shi4', 'si4', 'initial', tones), isNull);
+    expect(heardSide('绿', 'lü4', 'lu4', 'final', tones), isNull, reason: '绿 reads both ways');
+  });
+
+  test('a Say it slip names its contrast', () {
+    final shi = lib.entries.firstWhere((e) => e.simplified == '是' && e.syllables.length == 1);
+    expect(slipContrast(shi, '四', lib, tones), 'hiss:sh/s');
+    expect(slipContrast(shi, '是', lib, tones), isNull);
+    expect(pairsFor(shi, lib, (_) => true).any((p) => p.b.simplified == '四' && p.a.id == shi.id), isTrue);
+  });
+
+  test('say slips are saved and merged', () async {
+    SharedPreferences.setMockInitialValues({});
+    final phone = await UserStore.open();
+    await phone.logSaySlip(SaySlip(DateTime(2026, 11, 19, 9), 'hiss:sh/s', 'x', '四'));
+    SharedPreferences.setMockInitialValues({});
+    final ipad = await UserStore.open();
+    await ipad.mergeFrom(UserStore.backupData(phone.exportBackup(DateTime(2026, 11, 19))));
+    await ipad.mergeFrom(UserStore.backupData(phone.exportBackup(DateTime(2026, 11, 19))));
+    expect(ipad.saySlips.single.heard, '四');
+    expect(slipCounts(ipad.saySlips, DateTime(2026, 11, 18)).single.value, 1);
+  });
+
+  testWidgets('Say both: heard the other word, logged as a slip', (tester) async {
+    SharedPreferences.setMockInitialValues({});
+    final store = await UserStore.open();
+    tester.view.physicalSize = const Size(800, 2400);
+    tester.view.devicePixelRatio = 1;
+    addTearDown(tester.view.reset);
+    final pair = lib.keySounds.shown(lib, (_) => true, contrast: 'hiss:sh/s').firstWhere((p) => p.a.simplified == '是');
+    final checker = _Checker('四');
+    await tester.pumpWidget(appForTest(lib, store));
+    await tester.pumpAndSettle();
+    final nav = tester.state<NavigatorState>(find.byType(Navigator).first);
+    nav.push(MaterialPageRoute(builder: (_) => SayBothScreen(pair: pair, recorder: _Recorder(), checker: checker)));
+    await tester.pumpAndSettle();
+    final mic = find.byIcon(Icons.mic).first;
+    final g = await tester.startGesture(tester.getCenter(mic));
+    await tester.pump();
+    await tester.runAsync(() => Future<void>.delayed(const Duration(milliseconds: 450)));
+    await g.up();
+    // Let the (real) asset loading finish.
+    for (var i = 0; i < 20 && find.byType(CircularProgressIndicator).evaluate().isNotEmpty || i == 0; i++) {
+      await tester.runAsync(() => Future<void>.delayed(const Duration(milliseconds: 100)));
+      await tester.pump();
+    }
+    await tester.pumpAndSettle();
+    expect(find.textContaining('Sounded closer to 四'), findsOneWidget);
+    expect(store.saySlips.single.contrast, 'hiss:sh/s');
+  });
+
+  testWidgets('a word page shows what it sounds like', (tester) async {
+    SharedPreferences.setMockInitialValues({});
+    final store = await UserStore.open();
+    tester.view.physicalSize = const Size(800, 2400);
+    tester.view.devicePixelRatio = 1;
+    addTearDown(tester.view.reset);
+    await tester.pumpWidget(appForTest(lib, store));
+    await tester.pumpAndSettle();
+    await tester.enterText(find.byType(TextField), 'four');
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('四').first);
+    await tester.pumpAndSettle();
+    await tester.scrollUntilVisible(find.text('Sounds like'), 200, scrollable: find.byType(Scrollable).last);
+    expect(find.textContaining('是 shì · sh / s'), findsOneWidget);
+  });
+
   testWidgets('Practice > Key sounds > a group > one round', (tester) async {
     SharedPreferences.setMockInitialValues({});
     final store = await UserStore.open();
@@ -113,4 +190,22 @@ void main() {
     expect(find.text('Hear both'), findsOneWidget);
     expect(find.text('Next'), findsOneWidget);
   });
+}
+
+class _Recorder implements Recorder {
+  @override
+  Future<bool> allowed() async => true;
+  @override
+  Future<void> start() async {}
+  @override
+  Future<String?> stop() async => 'fake.wav';
+  @override
+  Future<void> dispose() async {}
+}
+
+class _Checker implements SpeechChecker {
+  _Checker(this.text);
+  String text;
+  @override
+  Future<SpeechResult> analyse(String wavPath) async => SpeechResult(Transcript(text, null), PitchTrack(const []));
 }
