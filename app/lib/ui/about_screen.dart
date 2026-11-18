@@ -47,6 +47,13 @@ class AboutScreen extends StatelessWidget {
           'opposites in WordNet.',
     ),
     (
+      'Wikipedia: Standard Chinese phonology',
+      'Wikipedia contributors, Creative Commons BY-SA 4.0',
+      'https://en.wikipedia.org/wiki/Standard_Chinese_phonology',
+      'The "how to tell them apart" tips in Practice > Key sounds are our short summaries of the article. '
+          'The sound pairs themselves are words from the library.',
+    ),
+    (
       'Chinese Grammar Wiki',
       'AllSet Learning, Creative Commons BY-NC-SA',
       'https://resources.allsetlearning.com/chinese/grammar/',

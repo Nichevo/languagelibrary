@@ -30,7 +30,8 @@ flashcards with spaced repetition.
 
 ```
 app/                 Flutter app
-  assets/data/       library.json (built by tools/build_data.py), char_tones.tsv (tools/char_tones.py)
+  assets/data/       library.json (built by tools/build_data.py), char_tones.tsv (tools/char_tones.py),
+                     sound_pairs.json (tools/sound_pairs.py)
   assets/audio/      voice clips + manifest.json (made by tools/generate_audio.py),
                      pitch_refs.json (each clip's pitch line, tools/pitch_refs.py)
   assets/licenses/   full license texts (tools/fetch_licenses.py)
@@ -137,6 +138,16 @@ After rebuilding, refresh the readings Say it uses to name what it heard:
 
 ```
 python3 -m tools.char_tones
+```
+
+Refresh the Key sounds pairs (library words that differ in one sound) and their
+report, `tools/sound_pairs_report.md`. `--heard-test` also plays every pair's clips
+to the Say it recogniser (needs `pip install sherpa-onnx` and ffmpeg) to decide
+which groups may show what it heard:
+
+```
+python3 -m tools.sound_pairs
+python3 -m tools.sound_pairs --heard-test
 ```
 
 After new voice clips, work out their pitch lines (the dotted guide on the Say it

@@ -1,0 +1,331 @@
+{
+ "tones:2/3": {
+  "right": 99,
+  "wrong": 19,
+  "neither": 86,
+  "misses": [
+   "才 cái (f) → (nothing)",
+   "踩 cǎi (f) → 菜",
+   "踩 cǎi (m) → 才",
+   "词 cí (f) → 此",
+   "词 cí (m) → 此",
+   "此 cǐ (f) → 四"
+  ]
+ },
+ "tones:1/2": {
+  "right": 139,
+  "wrong": 11,
+  "neither": 58,
+  "misses": [
+   "拔 bá (f) → 八",
+   "拔 bá (m) → 八",
+   "才 cái (f) → (nothing)",
+   "插 chā (f) → 叉",
+   "插 chā (m) → 叉",
+   "茶 chá (m) → (nothing)"
+  ]
+ },
+ "tones:1/4": {
+  "right": 237,
+  "wrong": 14,
+  "neither": 101,
+  "misses": [
+   "按 àn (m) → 但",
+   "帮 bāng (m) → 当",
+   "杯 bēi (f) → unk>",
+   "杯 bēi (m) → 喂",
+   "逼 bī (f) → unk>",
+   "逼 bī (m) → (nothing)"
+  ]
+ },
+ "tones:3/4": {
+  "right": 210,
+  "wrong": 55,
+  "neither": 111,
+  "misses": [
+   "矮 ǎi (f) → 爱",
+   "矮 ǎi (m) → (nothing)",
+   "败 bài (f) → 苜",
+   "版 bǎn (f) → 半",
+   "饱 bǎo (f) → 报",
+   "北 běi (f) → 被"
+  ]
+ },
+ "tones:2/4": {
+  "right": 216,
+  "wrong": 6,
+  "neither": 94,
+  "misses": [
+   "二 èr (m) → (nothing)",
+   "拔 bá (f) → 八",
+   "拔 bá (m) → 八",
+   "败 bài (f) → 苜",
+   "才 cái (f) → (nothing)",
+   "词 cí (f) → 此"
+  ]
+ },
+ "tones:1/3": {
+  "right": 143,
+  "wrong": 25,
+  "neither": 96,
+  "misses": [
+   "版 bǎn (f) → 半",
+   "饱 bǎo (f) → 报",
+   "杯 bēi (f) → unk>",
+   "杯 bēi (m) → 喂",
+   "北 běi (f) → 被",
+   "北 běi (m) → 被"
+  ]
+ },
+ "hiss:sh/s": {
+  "right": 25,
+  "wrong": 0,
+  "neither": 7,
+  "misses": [
+   "傻 shǎ (m) → 是",
+   "洒 sǎ (f) → 撨",
+   "洒 sǎ (m) → (nothing)",
+   "死 sǐ (m) → 此",
+   "搜 sōu (f) → 苏",
+   "搜 sōu (m) → 所"
+  ]
+ },
+ "hiss:zh/z": {
+  "right": 35,
+  "wrong": 0,
+  "neither": 13,
+  "misses": [
+   "摘 zhāi (f) → 斘",
+   "摘 zhāi (m) → 斘",
+   "糟 zāo (f) → 遟",
+   "糟 zāo (m) → 走",
+   "造 zào (f) → (nothing)",
+   "紫 zǐ (m) → 四"
+  ]
+ },
+ "hiss:ch/c": {
+  "right": 22,
+  "wrong": 0,
+  "neither": 6,
+  "misses": [
+   "擦 cā (f) → (nothing)",
+   "吵 chǎo (f) → (nothing)",
+   "吵 chǎo (m) → (nothing)",
+   "迟 chí (m) → 时",
+   "粗 cū (m) → 租",
+   "纯 chún (f) → 甇"
+  ]
+ },
+ "hiss:j/zh": {
+  "right": 15,
+  "wrong": 0,
+  "neither": 1,
+  "misses": [
+   "治 zhì (m) → 是"
+  ]
+ },
+ "hiss:q/ch": {
+  "right": 6,
+  "wrong": 0,
+  "neither": 2,
+  "misses": [
+   "吃 chī (m) → 是",
+   "迟 chí (m) → 时"
+  ]
+ },
+ "hiss:x/sh": {
+  "right": 10,
+  "wrong": 1,
+  "neither": 1,
+  "misses": [
+   "西 xī (m) → 是",
+   "细 xì (m) → 谢"
+  ]
+ },
+ "puff:b/p": {
+  "right": 25,
+  "wrong": 0,
+  "neither": 15,
+  "misses": [
+   "爬 pá (m) → 他",
+   "败 bài (f) → 苜",
+   "派 pài (f) → 太",
+   "判 pàn (f) → (nothing)",
+   "判 pàn (m) → (nothing)",
+   "逼 bī (f) → unk>"
+  ]
+ },
+ "puff:d/t": {
+  "right": 54,
+  "wrong": 0,
+  "neither": 22,
+  "misses": [
+   "踏 tà (f) → 怕",
+   "带 dài (m) → 但",
+   "躺 tǎng (m) → (nothing)",
+   "到 dào (m) → 当",
+   "套 tào (m) → 炮",
+   "低 dī (m) → (nothing)"
+  ]
+ },
+ "puff:g/k": {
+  "right": 43,
+  "wrong": 0,
+  "neither": 13,
+  "misses": [
+   "搞 gǎo (f) → 到",
+   "个 gè (m) → unk>",
+   "口 kǒu (f) → 靠",
+   "扣 kòu (m) → (nothing)",
+   "古 gǔ (f) → (nothing)",
+   "苦 kǔ (f) → (nothing)"
+  ]
+ },
+ "puff:z/c": {
+  "right": 22,
+  "wrong": 2,
+  "neither": 8,
+  "misses": [
+   "紫 zǐ (m) → 四",
+   "此 cǐ (f) → 四",
+   "此 cǐ (m) → 四",
+   "字 zì (f) → 四",
+   "字 zì (m) → 四",
+   "次 cì (f) → 四"
+  ]
+ },
+ "puff:zh/ch": {
+  "right": 27,
+  "wrong": 0,
+  "neither": 9,
+  "misses": [
+   "摘 zhāi (f) → 斘",
+   "摘 zhāi (m) → 斘",
+   "账 zhàng (f) → (nothing)",
+   "唱 chàng (f) → (nothing)",
+   "吵 chǎo (f) → (nothing)",
+   "吵 chǎo (m) → (nothing)"
+  ]
+ },
+ "puff:j/q": {
+  "right": 36,
+  "wrong": 1,
+  "neither": 11,
+  "misses": [
+   "起 qǐ (m) → 且",
+   "气 qì (m) → (nothing)",
+   "肩 jiān (f) → (nothing)",
+   "肩 jiān (m) → 傸",
+   "欠 qiàn (f) → 剑",
+   "江 jiāng (m) → 将"
+  ]
+ },
+ "u:ü/i": {
+  "right": 36,
+  "wrong": 0,
+  "neither": 4,
+  "misses": [
+   "句 jù (m) → 借",
+   "绿 lǜ (f) → (nothing)",
+   "起 qǐ (m) → 且",
+   "气 qì (m) → (nothing)"
+  ]
+ },
+ "u:ü/u": {
+  "right": 2,
+  "wrong": 0,
+  "neither": 2,
+  "misses": [
+   "绿 lǜ (f) → (nothing)",
+   "绿 lǜ (m) → 绿"
+  ]
+ },
+ "u:üe/ie": {
+  "right": 11,
+  "wrong": 0,
+  "neither": 1,
+  "misses": [
+   "学 xué (m) → 是"
+  ]
+ },
+ "u:üan/ian": {
+  "right": 11,
+  "wrong": 0,
+  "neither": 9,
+  "misses": [
+   "肩 jiān (f) → (nothing)",
+   "肩 jiān (m) → 傸",
+   "劝 quàn (f) → 卷",
+   "劝 quàn (m) → 却",
+   "欠 qiàn (f) → 剑",
+   "悬 xuán (m) → (nothing)"
+  ]
+ },
+ "u:ün/in": {
+  "right": 7,
+  "wrong": 0,
+  "neither": 5,
+  "misses": [
+   "琴 qín (f) → 情",
+   "琴 qín (m) → (nothing)",
+   "云 yún (m) → (nothing)",
+   "印 yìn (f) → (nothing)",
+   "印 yìn (m) → (nothing)"
+  ]
+ },
+ "nng:an/ang": {
+  "right": 57,
+  "wrong": 0,
+  "neither": 7,
+  "misses": [
+   "帮 bāng (m) → 当",
+   "刚 gāng (m) → (nothing)",
+   "糖 táng (m) → 唖",
+   "忘 wàng (f) → (nothing)",
+   "盐 yán (m) → (nothing)",
+   "站 zhàn (m) → 这"
+  ]
+ },
+ "nng:en/eng": {
+  "right": 17,
+  "wrong": 0,
+  "neither": 3,
+  "misses": [
+   "沉 chén (m) → (nothing)",
+   "仍 réng (f) → (nothing)",
+   "仍 réng (m) → (nothing)"
+  ]
+ },
+ "nng:in/ing": {
+  "right": 17,
+  "wrong": 3,
+  "neither": 4,
+  "misses": [
+   "进 jìn (m) → 竟",
+   "静 jìng (m) → (nothing)",
+   "琴 qín (f) → 情",
+   "琴 qín (m) → (nothing)",
+   "信 xìn (m) → 姓",
+   "印 yìn (f) → (nothing)"
+  ]
+ },
+ "nng:ian/iang": {
+  "right": 32,
+  "wrong": 0,
+  "neither": 8,
+  "misses": [
+   "肩 jiān (f) → (nothing)",
+   "肩 jiān (m) → 傸",
+   "墙 qiáng (m) → (nothing)",
+   "香 xiāng (f) → (nothing)",
+   "显 xiǎn (m) → (nothing)",
+   "想 xiǎng (f) → (nothing)"
+  ]
+ },
+ "nng:uan/uang": {
+  "right": 12,
+  "wrong": 0,
+  "neither": 0,
+  "misses": []
+ }
+}
