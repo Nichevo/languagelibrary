@@ -14,7 +14,7 @@ const methodLabels = {
   'widgetWhich': 'Widget: which one is it?',
   'widgetPinyin': 'Widget: pick the pinyin',
   'widgetOpposite': 'Widget: what\'s the opposite?',
-  'tones': 'Hear it, pick the tone',
+  'tones': 'Key sounds: hear it, pick it',
   'build': 'Build the sentence',
   'speak': 'Say it',
   'talk': 'Conversations',

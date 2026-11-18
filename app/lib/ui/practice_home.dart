@@ -6,12 +6,12 @@ import 'common.dart';
 import 'conversation_screen.dart';
 import 'drill_screen.dart';
 import 'journey_screens.dart';
+import 'key_sounds_screen.dart';
 import 'pairs_practice.dart';
 import 'patterns_screen.dart';
 import 'practice_screen.dart';
 import 'say_it_screen.dart';
 import 'settings_screen.dart';
-import 'sounds_screen.dart';
 import 'wide.dart';
 
 class PracticeHome extends StatelessWidget {
@@ -141,7 +141,7 @@ class PracticeType {
 final practiceTypes = <PracticeType>[
   PracticeType('build', 'Build the sentence', 'Chinese word order', Icons.view_week_outlined,
       () => const BuildSentenceScreen()),
-  PracticeType('tones', 'Tricky sounds', 'Hear it, pick the tone', Icons.hearing, () => const ToneQuizScreen()),
+  PracticeType('tones', 'Key sounds', 'Hear the difference', Icons.hearing, () => const KeySoundsHome()),
   PracticeType('order', 'Pairs & scales', 'Order and opposites', Icons.swap_vert, () => const PairsPracticeScreen()),
   PracticeType('speak', 'Say it', 'Speak and see what it heard', Icons.mic_none, () => const SayItScreen()),
   PracticeType('talk', 'Conversations', 'Pick a reply and say it', Icons.forum_outlined,

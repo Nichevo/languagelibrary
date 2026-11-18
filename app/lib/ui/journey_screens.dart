@@ -752,7 +752,7 @@ class MilestoneScreen extends StatelessWidget {
   final int milestone;
 
   static const _ready = [
-    'Tricky sounds and Say it suit short words like these.',
+    'Key sounds and Say it suit short words like these.',
     'Build the sentence and Pairs & scales have enough of your words to work with.',
     'Phrasebook sentences open up: try the Sentences days and Almost readable.',
     'Longer sentences: Say it with sentences, and the Characters path.',
@@ -1110,7 +1110,7 @@ String methodLabel(String method) => switch (method) {
       'type' => 'Type the pinyin',
       'order' => 'Pairs & scales',
       'speak' => 'Say it',
-      'tones' => 'Tricky sounds',
+      'tones' => 'Key sounds',
       'build' => 'Build the sentence',
       _ => method,
     };

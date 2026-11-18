@@ -7,6 +7,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../models/entry.dart';
 import '../models/journey_week.dart';
 import '../srs/scheduler.dart';
+import 'key_sounds.dart';
 import 'talk.dart';
 
 /// Everything the learner changes: stars, custom lists, flashcard progress,
@@ -144,6 +145,10 @@ class UserStore extends ChangeNotifier {
   final List<SpeakTry> speakTries = [];
   static const maxSpeakTries = 20000;
 
+  /// Every Key sounds answer, oldest first: which sounds are trouble.
+  final List<SoundTry> soundTries = [];
+  static const maxSoundTries = 20000;
+
   /// Every conversation, finished or stopped early, oldest first.
   final List<TalkRun> talkRuns = [];
   static const maxTalkRuns = 3000;
@@ -180,6 +185,7 @@ class UserStore extends ChangeNotifier {
     difficulty.clear();
     reviews.clear();
     speakTries.clear();
+    soundTries.clear();
     talkRuns.clear();
     snapshots.clear();
     firstKnown.clear();
@@ -242,6 +248,9 @@ class UserStore extends ChangeNotifier {
     for (final t in j['speakTries'] as List? ?? const []) {
       speakTries.add(SpeakTry.fromJson(t as List));
     }
+    for (final t in j['soundTries'] as List? ?? const []) {
+      soundTries.add(SoundTry.fromJson(t as List));
+    }
     for (final t in j['talkRuns'] as List? ?? const []) {
       talkRuns.add(TalkRun.fromJson(t as Map));
     }
@@ -291,6 +300,7 @@ class UserStore extends ChangeNotifier {
         'statsPeriod': statsPeriod,
         'reviews': [for (final r in reviews) r.toJson()],
         'speakTries': [for (final t in speakTries) t.toJson()],
+        'soundTries': [for (final t in soundTries) t.toJson()],
         'talkRuns': [for (final t in talkRuns) t.toJson()],
         'snapshots': snapshots.map((k, v) => MapEntry(k, v.toJson())),
         'firstKnown': firstKnown.map((k, v) => MapEntry(k, v.millisecondsSinceEpoch ~/ 1000)),
@@ -328,6 +338,9 @@ class UserStore extends ChangeNotifier {
       }
       for (final t in data['speakTries'] as List? ?? const []) {
         SpeakTry.fromJson(t as List);
+      }
+      for (final t in data['soundTries'] as List? ?? const []) {
+        SoundTry.fromJson(t as List);
       }
       for (final t in data['talkRuns'] as List? ?? const []) {
         TalkRun.fromJson(t as Map);
@@ -485,6 +498,21 @@ class UserStore extends ChangeNotifier {
       if (speakTries.length > maxSpeakTries) speakTries.removeRange(0, speakTries.length - maxSpeakTries);
     }
 
+    // Every Key sounds answer from both, once each, in time order.
+    final seenSounds = {for (final t in soundTries) jsonEncode(t.toJson())};
+    var soundsAdded = 0;
+    for (final t in data['soundTries'] as List? ?? const []) {
+      final tr = SoundTry.fromJson(t as List);
+      if (seenSounds.add(jsonEncode(tr.toJson()))) {
+        soundTries.add(tr);
+        soundsAdded++;
+      }
+    }
+    if (soundsAdded > 0) {
+      mergeSort(soundTries, compare: (a, b) => a.at.compareTo(b.at));
+      if (soundTries.length > maxSoundTries) soundTries.removeRange(0, soundTries.length - maxSoundTries);
+    }
+
     // Every conversation from both, once each, in time order.
     final seenRuns = {for (final r in talkRuns) r.key};
     var runsAdded = 0;
@@ -639,6 +667,13 @@ class UserStore extends ChangeNotifier {
   Future<void> logTalkRun(TalkRun run) {
     talkRuns.add(run);
     if (talkRuns.length > maxTalkRuns) talkRuns.removeRange(0, talkRuns.length - maxTalkRuns);
+    return _save();
+  }
+
+  /// Records one Key sounds answer.
+  Future<void> logSoundTry(SoundTry t) {
+    soundTries.add(t);
+    if (soundTries.length > maxSoundTries) soundTries.removeRange(0, soundTries.length - maxSoundTries);
     return _save();
   }
 
