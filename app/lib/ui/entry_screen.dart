@@ -9,6 +9,7 @@ import 'say_it_screen.dart';
 import 'scales_screen.dart';
 import 'sounds_screen.dart';
 import 'families_screen.dart';
+import 'key_sounds_screen.dart';
 import 'patterns_screen.dart';
 import '../data/sounds.dart';
 import 'wide.dart';
@@ -203,6 +204,7 @@ class EntryScreen extends StatelessWidget {
                 const SizedBox(height: 6),
                 ToneSetCard(ts, marked: entry),
               ]),
+            SoundsLikeCard(entry),
             if (related.isNotEmpty)
               section('Related words and phrases', [
                 Text(entry.isSentence ? 'Words in this sentence. Tap one to open it, or star it here.' : 'Tap one to open it, or star it here.',

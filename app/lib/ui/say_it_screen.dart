@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:just_audio/just_audio.dart';
 
 import '../data/daily.dart';
+import '../data/key_sounds.dart';
 import '../data/say_it.dart';
 import '../srs/scheduler.dart';
 import '../models/entry.dart';
@@ -204,6 +205,13 @@ class _SayItScreenState extends State<SayItScreen> {
           scope.library.audioFor(e, female: !scope.store.femaleVoice);
       final check = checkHeard(e, result.transcript.text, tones);
       _log(e, check);
+      if (!check.allRight) {
+        // Heard as the other word of a sound pair: saying trouble for Key sounds.
+        final slip = slipContrast(e, result.transcript.text, scope.library, tones.byChar);
+        if (slip != null) {
+          unawaited(scope.store.logSaySlip(SaySlip(DateTime.now(), slip, e.id, check.text.isEmpty ? '' : check.text[0])));
+        }
+      }
       setState(() {
         _tryNote = _triesSoFar(e, check);
         _recording = path;

@@ -236,3 +236,76 @@ List<SoundQuestion> soundQuestions(List<ShownPair> pool, Random rnd, {int count 
   }
   return (start, endA);
 }
+
+/// Which side of a pair the recogniser's first character reads as: 'a', 'b',
+/// or null when it reads as neither (or it wrote nothing). [aNumbered] and
+/// [bNumbered] are numbered pinyin ("shi4"). For tone pairs the tone must
+/// match; otherwise the sound alone decides, since the pair shares its tone.
+/// The same rule as tools/sound_pairs.py, which tested it on the clips.
+String? heardSide(String transcript, String aNumbered, String bNumbered, String kind, Map<String, List<String>> readingsByChar) {
+  final m = RegExp(r'[㐀-鿿]').firstMatch(transcript);
+  if (m == null) return null;
+  var readings = (readingsByChar[m.group(0)] ?? const <String>[]).toSet();
+  var a = aNumbered.toLowerCase(), b = bNumbered.toLowerCase();
+  if (kind != 'tone') {
+    String bare(String r) => r.substring(0, r.length - 1);
+    readings = readings.map(bare).toSet();
+    a = bare(a);
+    b = bare(b);
+  }
+  final inA = readings.contains(a), inB = readings.contains(b);
+  if (inA && !inB) return 'a';
+  if (inB && !inA) return 'b';
+  return null;
+}
+
+/// A Say it try where the recogniser wrote a word one sound away from the
+/// one meant (四 sì for 是 shì): kept per contrast as saying trouble, apart
+/// from what you hear.
+class SaySlip {
+  const SaySlip(this.at, this.contrast, this.meant, this.heard);
+  final DateTime at;
+  final String contrast;
+
+  /// The word id meant, and the character the recogniser wrote.
+  final String meant, heard;
+
+  List<Object> toJson() => [at.millisecondsSinceEpoch, contrast, meant, heard];
+
+  factory SaySlip.fromJson(List j) =>
+      SaySlip(DateTime.fromMillisecondsSinceEpoch((j[0] as num).toInt()), j[1] as String, j[2] as String, j[3] as String);
+}
+
+/// The contrast a Say it try slipped on, if what was heard reads as the
+/// other word of one of [e]'s pairs. Only single-syllable words.
+String? slipContrast(Entry e, String transcript, Library lib, Map<String, List<String>> readingsByChar) {
+  if (e.syllables.length != 1) return null;
+  for (final p in lib.keySounds.pairs) {
+    final mine = p.aIds.contains(e.id) ? 'a' : (p.bIds.contains(e.id) ? 'b' : null);
+    if (mine == null) continue;
+    final a = lib.byId[p.aIds.first], b = lib.byId[p.bIds.first];
+    if (a == null || b == null) continue;
+    final kind = lib.keySounds.group(groupOf(p.contrast))?.kind ?? 'tone';
+    final side = heardSide(transcript, a.pinyinNumbered, b.pinyinNumbered, kind, readingsByChar);
+    if (side != null && side != mine) return p.contrast;
+  }
+  return null;
+}
+
+/// Slips per contrast since [since], most first.
+List<MapEntry<String, int>> slipCounts(List<SaySlip> slips, DateTime since) {
+  final n = <String, int>{};
+  for (final s in slips) {
+    if (!s.at.isBefore(since)) n[s.contrast] = (n[s.contrast] ?? 0) + 1;
+  }
+  return n.entries.toList()..sort((a, b) => b.value.compareTo(a.value));
+}
+
+/// [e]'s sound pairs that can be shown, with [e] always on side a.
+List<ShownPair> pairsFor(Entry e, Library lib, bool Function(Entry) shows) => [
+      for (final p in lib.keySounds.shown(lib, (x) => x.id == e.id || shows(x)))
+        if (p.a.id == e.id)
+          p
+        else if (p.b.id == e.id)
+          ShownPair(p.pair, p.b, p.a),
+    ];
