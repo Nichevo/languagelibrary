@@ -117,6 +117,15 @@ class UserStore extends ChangeNotifier {
   /// today's places are kept.
   final Map<String, String> sayItPlaces = {};
 
+  /// Week days mix practice types (meet, hear, see, say) instead of mostly
+  /// flashcards. See data/week_steps.dart.
+  bool weekMix = true;
+
+  /// The words done today in each step of a mixed week day, keyed like
+  /// '2026-11-18|2026-11-16|2|0' (today, week start, day, step). Only today's
+  /// are kept.
+  final Map<String, List<String>> weekSteps = {};
+
   /// Whether [e] belongs to the content switched on in Settings. The curated
   /// everyday phrases and starred words always show.
   bool shows(Entry e) {
@@ -221,6 +230,9 @@ class UserStore extends ChangeNotifier {
     sayItPlaces
       ..clear()
       ..addAll(Map<String, String>.from(j['sayItPlaces'] as Map? ?? const {}));
+    weekMix = j['weekMix'] as bool? ?? true;
+    weekSteps.clear();
+    (j['weekSteps'] as Map? ?? const {}).forEach((k, v) => weekSteps[k as String] = List<String>.from(v as List));
     choiceKind = j['choiceKind'] as String? ?? choiceKind;
     widgetAnswersUpTo = j['widgetAnswersUpTo'] as int? ?? 0;
     statsPeriod = j['statsPeriod'] as String? ?? statsPeriod;
@@ -272,6 +284,8 @@ class UserStore extends ChangeNotifier {
         'recapPending': recapPending,
         'milestoneSeen': milestoneSeen,
         'sayItPlaces': sayItPlaces,
+        'weekMix': weekMix,
+        'weekSteps': weekSteps,
         'choiceKind': choiceKind,
         'widgetAnswersUpTo': widgetAnswersUpTo,
         'statsPeriod': statsPeriod,
@@ -730,6 +744,22 @@ class UserStore extends ChangeNotifier {
 
   Future<void> setReviewEvery(int v) {
     reviewEvery = v;
+    return _save();
+  }
+
+  Future<void> setWeekMix(bool v) {
+    weekMix = v;
+    return _save();
+  }
+
+  /// Marks [id] done in the week-day step saved under [key] (see `stepKey`),
+  /// forgetting other days' steps.
+  Future<void> markStepDone(String key, String id) {
+    final day = key.split('|').first;
+    weekSteps.removeWhere((k, _) => !k.startsWith('$day|'));
+    final done = weekSteps[key] ??= [];
+    if (done.contains(id)) return Future.value();
+    done.add(id);
     return _save();
   }
 

@@ -101,7 +101,16 @@ List<PracticeCard> buildQueue({
 }
 
 class PracticeScreen extends StatefulWidget {
-  const PracticeScreen({super.key, this.list, this.level, this.includeNotDue = false, this.ids});
+  const PracticeScreen(
+      {super.key,
+      this.list,
+      this.level,
+      this.includeNotDue = false,
+      this.ids,
+      this.title,
+      this.stepBar,
+      this.onWordDone,
+      this.nextLabel});
 
   /// Custom list to practise, or null for all starred words.
   final String? list;
@@ -112,6 +121,14 @@ class PracticeScreen extends StatefulWidget {
 
   /// These words, instead of a list.
   final List<String>? ids;
+
+  /// For a step of a week day: its title, its step bar under the title, a
+  /// call when both of a word's cards are through, and the button at the end.
+  /// With [onWordDone] every card of the words comes up, however many.
+  final String? title;
+  final PreferredSizeWidget? stepBar;
+  final void Function(String id)? onWordDone;
+  final String? nextLabel;
 
   @override
   State<PracticeScreen> createState() => _PracticeScreenState();
@@ -151,13 +168,15 @@ class _PracticeScreenState extends State<PracticeScreen> {
             (widget.level == null || scope.store.difficulty[id] == widget.level))
           scope.library.byId[id]!,
     ];
-    final size = scope.store.sessionSize;
+    final step = widget.onWordDone != null;
+    final size = step ? 0 : scope.store.sessionSize;
     _queue = buildQueue(
       entries: entries,
       store: scope.store,
       now: DateTime.now(),
       includeNotDue: widget.includeNotDue,
       limit: size,
+      maxNew: step ? 1000 : 20,
       // About one related word for every five cards.
       related: scope.store.mixRelated ? max(1, (size == 0 ? entries.length * 2 : size) ~/ 5) : 0,
       library: scope.library.byId,
@@ -179,6 +198,9 @@ class _PracticeScreenState extends State<PracticeScreen> {
       _queue!.insert(_queue!.length < 3 ? _queue!.length : 3, card);
     } else {
       _done++;
+      if (card.relatedTo == null && !_queue!.any((c) => c.entry.id == card.entry.id)) {
+        widget.onWordDone?.call(card.entry.id);
+      }
     }
     setState(() => _revealed = false);
   }
@@ -192,7 +214,8 @@ class _PracticeScreenState extends State<PracticeScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Practice'),
+        title: Text(widget.title ?? 'Practice'),
+        bottom: widget.stepBar,
         actions: [
           PopupMenuButton<String>(
             tooltip: 'Card front',
@@ -213,10 +236,24 @@ class _PracticeScreenState extends State<PracticeScreen> {
           ? Center(
               child: Padding(
                 padding: const EdgeInsets.all(32),
-                child: Text(
-                  _done == 0 ? 'Nothing to practise yet. Star some words first.' : 'All done: $_done cards reviewed.',
-                  style: theme.textTheme.titleMedium,
-                  textAlign: TextAlign.center,
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Text(
+                      _done == 0
+                          ? (widget.onWordDone != null ? 'No cards to go over here.' : 'Nothing to practise yet. Star some words first.')
+                          : 'All done: $_done cards reviewed.',
+                      style: theme.textTheme.titleMedium,
+                      textAlign: TextAlign.center,
+                    ),
+                    if (widget.onWordDone != null) ...[
+                      const SizedBox(height: 20),
+                      FilledButton(
+                        onPressed: () => Navigator.of(context).pop(true),
+                        child: Text(widget.nextLabel ?? 'Done'),
+                      ),
+                    ],
+                  ],
                 ),
               ),
             )

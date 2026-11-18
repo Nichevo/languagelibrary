@@ -29,6 +29,7 @@ class SayItScreen extends StatefulWidget {
       this.entries,
       this.sentences = false,
       this.carryOn = false,
+      this.stepBar,
       this.recorder,
       this.checker,
       this.random});
@@ -40,6 +41,9 @@ class SayItScreen extends StatefulWidget {
   /// count as done, so leaving and coming back carries on where you were.
   final bool carryOn;
   final bool sentences;
+
+  /// Shown under the title, like the steps of a week day.
+  final PreferredSizeWidget? stepBar;
   final Recorder? recorder;
   final SpeechChecker? checker;
   final Random? random;
@@ -318,7 +322,7 @@ class _SayItScreenState extends State<SayItScreen> {
             Center(child: Padding(padding: const EdgeInsets.only(right: 16), child: Text('${_at + 1} / ${queue.length}'))),
         ],
         bottom: single
-            ? null
+            ? widget.stepBar
             : PreferredSize(
                 preferredSize: const Size.fromHeight(52),
                 child: Padding(
