@@ -44,12 +44,18 @@ void main() {
     await tester.pumpAndSettle();
     await tester.tap(find.text('Check'));
     await tester.pumpAndSettle();
-    // A wrong check gives a hint and waits; nothing is logged until it ends.
+    // A wrong check gives a hint. Unless that hint left one word to place
+    // (which finishes it), the question waits: nothing logged, no Next yet.
     expect(find.text('Hint 1'), findsOneWidget);
-    expect(find.text('Next'), findsNothing);
-    await tester.tap(find.text('Show answer'));
-    await tester.pumpAndSettle();
+    if (find.text('Show answer').evaluate().isNotEmpty) {
+      expect(find.text('Next'), findsNothing);
+      await tester.tap(find.text('Show answer'));
+      await tester.pumpAndSettle();
+    }
     expect(store.reviews.last.method, 'order');
+    // The finished answer stays on screen, marked place by place, until Next.
+    expect(find.textContaining(RegExp('Here is the order.|In order, with')), findsOneWidget);
+    expect(find.byIcon(Icons.check_circle), findsWidgets);
     await tester.tap(find.text('Next'));
     await tester.pumpAndSettle();
     expect(find.text('Pick the opposite'), findsOneWidget);

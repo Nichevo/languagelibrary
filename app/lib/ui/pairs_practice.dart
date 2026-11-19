@@ -73,6 +73,9 @@ class _PairsPracticeScreenState extends State<PairsPracticeScreen> {
   late final Random _rnd = widget.random ?? Random();
   List<PairsQuestion>? _queue;
   int _done = 0, _right = 0;
+
+  /// Counts questions shown, so each one gets a fresh widget only on Next.
+  int _shown = 0;
   bool _answered = false;
   Entry? _picked;
   DateTime _shownAt = DateTime.now();
@@ -100,6 +103,7 @@ class _PairsPracticeScreenState extends State<PairsPracticeScreen> {
 
   void _next() => setState(() {
         _queue!.removeAt(0);
+        _shown++;
         _answered = false;
         _picked = null;
         _shownAt = DateTime.now();
@@ -136,7 +140,7 @@ class _PairsPracticeScreenState extends State<PairsPracticeScreen> {
                       children: [
                         switch (queue.first) {
                           OrderItem(:final scale) => OrderQuestion(
-                              key: ValueKey('order-${scale.name}-$_done'),
+                              key: ValueKey('order-${scale.name}-$_shown'),
                               scale: scale,
                               items: scale.items,
                               random: _rnd,
