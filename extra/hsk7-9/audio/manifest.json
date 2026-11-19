@@ -89868,15 +89868,15 @@
   },
   "38947c0f2d_f": {
    "file": "38947c0f2d_f.mp3",
-   "bytes": 4224,
-   "heard": "雪欢",
+   "bytes": 6144,
+   "heard": "许焕",
    "also": [
-    "喜欢",
-    "雪花",
-    "许欢",
-    "血欢"
+    "使唤",
+    "许换",
+    "虚幻",
+    "雪花"
    ],
-   "check": "mismatch"
+   "check": "exact"
   },
   "38947c0f2d_m": {
    "file": "38947c0f2d_m.mp3",
@@ -112744,15 +112744,15 @@
   },
   "4f8dbddb96_m": {
    "file": "4f8dbddb96_m.mp3",
-   "bytes": 4224,
-   "heard": "没赚",
+   "bytes": 5472,
+   "heard": "没准",
    "also": [
-    "没传",
-    "没撞",
-    "梅庄",
-    "美妆"
+    "没准儿",
+    "没赚",
+    "美妆",
+    "没传"
    ],
-   "check": "mismatch"
+   "check": "exact"
   },
   "f8a1c8beaa_f": {
    "file": "f8a1c8beaa_f.mp3",
