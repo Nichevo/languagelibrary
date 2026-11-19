@@ -44,6 +44,11 @@ void main() {
     await tester.pumpAndSettle();
     await tester.tap(find.text('Check'));
     await tester.pumpAndSettle();
+    // A wrong check gives a hint and waits; nothing is logged until it ends.
+    expect(find.text('Hint 1'), findsOneWidget);
+    expect(find.text('Next'), findsNothing);
+    await tester.tap(find.text('Show answer'));
+    await tester.pumpAndSettle();
     expect(store.reviews.last.method, 'order');
     await tester.tap(find.text('Next'));
     await tester.pumpAndSettle();

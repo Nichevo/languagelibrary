@@ -180,11 +180,17 @@ void main() {
       expect(find.text('Drag the words from cold to hot'), findsOneWidget);
       expect(find.byType(ReorderableListView), findsOneWidget);
       // Checking straight away: shuffledScale never starts in the right order.
+      // A wrong check does not end the question: it gives one hint.
       await tester.tap(find.text('Check'));
       await tester.pumpAndSettle();
+      expect(result, isNull);
+      expect(find.text('Hint 1'), findsOneWidget);
+      expect(find.text('Check again'), findsOneWidget);
+      // Showing the answer ends it, marked wrong, naming the right words.
+      await tester.tap(find.text('Show answer'));
+      await tester.pumpAndSettle();
       expect(result, isFalse);
-      expect(find.textContaining('Not quite.'), findsOneWidget);
-      // Wrong places are marked and name the right word, with pinyin and English.
+      expect(find.textContaining('Here is the order.'), findsOneWidget);
       final wrong = tester.widgetList(find.byIcon(Icons.cancel)).length;
       expect(wrong, greaterThan(0));
       expect(find.text('Should be'), findsNWidgets(wrong));
@@ -193,6 +199,83 @@ void main() {
         expect(find.text(i.entry.pinyin), findsWidgets);
         expect(find.text(i.short), findsWidgets);
       }
+    });
+
+    testWidgets('each wrong check keeps the right places and gives one hint', (tester) async {
+      SharedPreferences.setMockInitialValues({});
+      final store = await UserStore.open();
+      final t = named('Days'); // 5 words
+      final items = t.items;
+      bool? result;
+      await tester.pumpWidget(
+        AppScope(
+          library: lib,
+          store: store,
+          speaker: Speaker(lib),
+          device: NoDevice(),
+          child: MaterialApp(
+            home: Scaffold(
+              body: ListView(
+                children: [OrderQuestion(scale: t, items: items, random: Random(2), onChecked: (r) => result = r)],
+              ),
+            ),
+          ),
+        ),
+      );
+      await tester.pumpAndSettle();
+      Future<void> tapWord(int n) async {
+        await tester.ensureVisible(find.widgetWithText(OutlinedButton, items[n].entry.simplified));
+        await tester.tap(find.widgetWithText(OutlinedButton, items[n].entry.simplified));
+        await tester.pump();
+      }
+
+      Future<void> check(String label) async {
+        await tester.ensureVisible(find.text(label));
+        await tester.tap(find.text(label));
+        await tester.pumpAndSettle();
+      }
+
+      // Right at the far end, back to front everywhere else: 明天 今天 昨天 前天 后天.
+      for (final n in [3, 2, 1, 0, 4]) {
+        await tapWord(n);
+      }
+      await check('Check');
+      expect(result, isNull);
+      // 后天 was right and stays, green with its English; hint 1 puts 前天 first.
+      expect(find.text(items[4].short), findsWidgets);
+      expect(find.text('Hint 1'), findsOneWidget);
+      expect(find.textContaining('so it goes first.'), findsOneWidget);
+      expect(find.text(items[0].short), findsWidgets);
+      expect(find.text('2 of 5 in place. Tap the other 3 into order and check again.'), findsOneWidget);
+      // The kept words can't be tapped again; the other three can.
+      expect(tester.widget<OutlinedButton>(find.widgetWithText(OutlinedButton, items[0].entry.simplified)).onPressed, isNull);
+      expect(tester.widget<OutlinedButton>(find.widgetWithText(OutlinedButton, items[4].entry.simplified)).onPressed, isNull);
+      // Wrong again: 明天 今天 昨天 into places 2-4. Place 3 (今天) is right.
+      for (final n in [3, 2, 1]) {
+        await tapWord(n);
+      }
+      await check('Check again');
+      // 今天 kept, hint 2 puts 昨天 in place 2, leaving one word: done.
+      expect(find.text('Hint 2'), findsOneWidget);
+      expect(find.textContaining('so it goes in place 2.'), findsOneWidget);
+      expect(result, isFalse);
+      expect(find.text('In order, with 2 hints. Tap a word to hear it.'), findsOneWidget);
+      expect(find.byIcon(Icons.check_circle), findsNWidgets(5));
+    });
+
+    test('hint places read naturally', () {
+      expect(scalePlace(0, 5), 'first');
+      expect(scalePlace(2, 5), 'in place 3');
+      expect(scalePlace(4, 5), 'last');
+    });
+
+    test('kept words stay in their places when others move', () {
+      final items = named('Days').items;
+      final moved = [items[4], items[3], items[2], items[1], items[0]];
+      final pinned = pinLocked(items, {0, 2}, moved);
+      expect(pinned[0], items[0]);
+      expect(pinned[2], items[2]);
+      expect([pinned[1], pinned[3], pinned[4]], [items[4], items[3], items[1]]);
     });
   });
 }
