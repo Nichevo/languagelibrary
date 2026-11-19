@@ -1,13 +1,11 @@
 # Audio check
 
-10922 clips. 11 could not be confirmed by speech recognition, so the app does not play them and uses the phone's own voice for those words instead. 501 came back as a same-sounding word, which counts as a pass.
+10922 clips. 9 could not be confirmed by speech recognition, so the app does not play them and uses the phone's own voice for those words instead. 501 came back as a same-sounding word, which counts as a pass.
 
 ## Not confirmed (not played in the app)
 
 - 身心 (shēn xīn), male voice: heard "宣兴" (19470fc388_m.mp3)
 - 遂心 (suì xīn), male voice: heard "岁星" (2bfbfc11aa_m.mp3)
-- 使唤 (shǐ huan), female voice: heard "雪欢" (38947c0f2d_f.mp3)
-- 没准儿 (méi zhǔnr), male voice: heard "没赚" (4f8dbddb96_m.mp3)
 - 动弹 (dòng tan), male voice: heard "动态" (552156ed27_m.mp3)
 - 腥 (xīng), female voice: heard "新" (66fa141226_f.mp3)
 - 灰心 (huī xīn), male voice: heard "归星" (70256ba737_m.mp3)
