@@ -411,8 +411,32 @@ List<ScaleItem> shuffledScale(List<ScaleItem> items, Random rnd) {
   }
 }
 
+/// Where place [p] (from 0) of [count] is, for hints: "first", "in place 3",
+/// "last". The question already says which end is first.
+String scalePlace(int p, int count) => p == 0
+    ? 'first'
+    : p == count - 1
+        ? 'last'
+        : 'in place ${p + 1}';
+
+/// [arranged] with the words of the [locked] places moved back to their right
+/// places; the other words keep their order around them.
+List<ScaleItem> pinLocked(List<ScaleItem> items, Set<int> locked, List<ScaleItem> arranged) {
+  final lockedItems = {for (final p in locked) items[p]};
+  final rest = [for (final i in arranged) if (!lockedItems.contains(i)) i];
+  return [for (var n = 0; n < items.length; n++) locked.contains(n) ? items[n] : rest.removeAt(0)];
+}
+
+/// One hint given after a wrong check: [item] belongs in place [place].
+typedef OrderHint = ({ScaleItem item, int place});
+
 /// "Put the words in order from cold to hot": tap each word in turn, or drag
 /// them into order (the learner's choice, remembered), then check.
+///
+/// A wrong check teaches instead of ending the question: every word already
+/// in its right place turns green, stays put and shows its pinyin and
+/// English, and one more word is moved to its place with a hint saying what
+/// it means. Check again, as often as needed, or show the answer.
 class OrderQuestion extends StatefulWidget {
   const OrderQuestion({super.key, required this.scale, required this.items, required this.random, this.onChecked});
 
@@ -422,7 +446,8 @@ class OrderQuestion extends StatefulWidget {
   final List<ScaleItem> items;
   final Random random;
 
-  /// Called once, when the answer is checked.
+  /// Called once, when the question is finished (in order, or the answer
+  /// shown): right only when it was in order on the first check.
   final void Function(bool right)? onChecked;
 
   @override
@@ -430,40 +455,104 @@ class OrderQuestion extends StatefulWidget {
 }
 
 class _OrderQuestionState extends State<OrderQuestion> {
-  late List<ScaleItem> _pool = shuffledScale(widget.items, widget.random);
-  final List<ScaleItem> _picked = [];
-  bool _checked = false;
+  late List<ScaleItem> _pool;
+
+  /// Tap mode: the word put in each place so far.
+  late List<ScaleItem?> _slots;
 
   /// Drag mode: the words in their current order.
-  late List<ScaleItem> _dragged = [..._pool];
+  late List<ScaleItem> _dragged;
+
+  /// Places found right by a check or a hint: green and fixed.
+  final Set<int> _locked = {};
+  final List<OrderHint> _hints = [];
+  int _checks = 0;
+  bool _finished = false, _gaveUp = false;
+
+  /// Once finished: the words shown in each place.
+  List<ScaleItem?> _final = const [];
+
+  @override
+  void initState() {
+    super.initState();
+    _reset();
+  }
+
+  void _reset() {
+    _pool = shuffledScale(widget.items, widget.random);
+    _slots = List.filled(widget.items.length, null);
+    _dragged = [..._pool];
+    _locked.clear();
+    _hints.clear();
+    _checks = 0;
+    _finished = _gaveUp = false;
+  }
 
   @override
   void didUpdateWidget(OrderQuestion old) {
     super.didUpdateWidget(old);
-    if (old.scale != widget.scale || old.items.length != widget.items.length) {
-      _pool = shuffledScale(widget.items, widget.random);
-      _dragged = [..._pool];
-      _picked.clear();
-      _checked = false;
-    }
+    if (old.scale != widget.scale || old.items.length != widget.items.length) _reset();
   }
 
-  void _tap(ScaleItem i) {
-    if (_checked || _picked.contains(i)) return;
-    setState(() => _picked.add(i));
+  bool get _drag => AppScope.of(context).store.orderByDrag;
+
+  /// The current answer, place by place.
+  List<ScaleItem?> get _current => _drag ? _dragged : _slots;
+
+  /// Empties the places not yet found right (tap mode), and puts the found
+  /// words back in their places (drag mode).
+  void _clearOpen() {
+    final items = widget.items;
+    _slots = [for (var n = 0; n < items.length; n++) _locked.contains(n) ? items[n] : null];
+    _dragged = pinLocked(items, _locked, _drag ? _dragged : _pool);
+  }
+
+  void _play(ScaleItem i) {
     final scope = AppScope.of(context);
     scope.speaker.play(i.entry, female: scope.store.femaleVoice, slow: scope.store.slowAudio);
   }
 
+  void _tap(ScaleItem i) {
+    if (_finished || _slots.contains(i)) return;
+    final open = _slots.indexOf(null);
+    if (open < 0) return;
+    setState(() => _slots[open] = i);
+    _play(i);
+  }
+
   void _check() {
-    if (AppScope.of(context).store.orderByDrag) {
-      _picked
-        ..clear()
-        ..addAll(_dragged);
+    final items = widget.items;
+    final current = _current;
+    _checks++;
+    for (var n = 0; n < items.length; n++) {
+      if (current[n] == items[n]) _locked.add(n);
     }
-    final right = inScaleOrder(widget.items, [for (final i in _picked) i.entry.id]);
-    setState(() => _checked = true);
-    widget.onChecked?.call(right);
+    if (_locked.length < items.length) {
+      // One hint: the first place still wrong, from the start of the scale.
+      final p = [for (var n = 0; n < items.length; n++) n].firstWhere((n) => !_locked.contains(n));
+      _locked.add(p);
+      _hints.add((item: items[p], place: p));
+      // With one word left there is nothing left to work out.
+      if (_locked.length >= items.length - 1) _locked.addAll([for (var n = 0; n < items.length; n++) n]);
+    }
+    if (_locked.length == items.length) {
+      _final = [...items];
+      _finish();
+    } else {
+      setState(_clearOpen);
+    }
+  }
+
+  void _showAnswer() {
+    // Keep the words where they are now, to compare with the right ones.
+    _final = [..._current];
+    _gaveUp = true;
+    _finish();
+  }
+
+  void _finish() {
+    setState(() => _finished = true);
+    widget.onChecked?.call(_checks == 1 && _hints.isEmpty && !_gaveUp);
   }
 
   @override
@@ -474,8 +563,10 @@ class _OrderQuestionState extends State<OrderQuestion> {
     final bad = dark ? const Color(0xFF5D2B2B) : const Color(0xFFFFDAD6);
     final items = widget.items;
     final store = AppScope.of(context).store;
-    final drag = store.orderByDrag && !_checked;
-    final right = _checked && inScaleOrder(items, [for (final i in _picked) i.entry.id]);
+    final drag = store.orderByDrag && !_finished;
+    final tapFull = !_slots.contains(null);
+    final open = items.length - _locked.length;
+    Widget lockedRow(int n) => OrderResultRow(position: n + 1, yours: items[n], answer: items[n], good: good, bad: bad);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
@@ -486,7 +577,7 @@ class _OrderQuestionState extends State<OrderQuestion> {
           style: theme.textTheme.titleMedium,
           textAlign: TextAlign.center,
         ),
-        if (!_checked) ...[
+        if (!_finished) ...[
           const SizedBox(height: 8),
           Center(
             child: SegmentedButton<bool>(
@@ -497,11 +588,11 @@ class _OrderQuestionState extends State<OrderQuestion> {
               ],
               selected: {store.orderByDrag},
               onSelectionChanged: (s) {
-                setState(() {
-                  _picked.clear();
-                  _dragged = [..._pool];
-                });
                 store.setOrderByDrag(s.first);
+                setState(() {
+                  _slots = [for (var n = 0; n < items.length; n++) _locked.contains(n) ? items[n] : null];
+                  _dragged = pinLocked(items, _locked, _pool);
+                });
               },
             ),
           ),
@@ -512,44 +603,52 @@ class _OrderQuestionState extends State<OrderQuestion> {
             shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(),
             buildDefaultDragHandles: false,
-            onReorderItem: (from, to) => setState(() => _dragged.insert(to, _dragged.removeAt(from))),
+            onReorderItem: (from, to) => setState(() {
+              _dragged.insert(to, _dragged.removeAt(from));
+              _dragged = pinLocked(items, _locked, _dragged);
+            }),
             children: [
               for (final (n, i) in _dragged.indexed)
-                Card(
-                  key: ValueKey(i.entry.id),
-                  margin: const EdgeInsets.symmetric(vertical: 3),
-                  child: ReorderableDragStartListener(
-                    index: n,
-                    child: ListTile(
-                      leading: Text('${n + 1}', style: theme.textTheme.bodySmall),
-                      title: Text(i.entry.simplified, style: theme.textTheme.headlineSmall),
-                      trailing: const Icon(Icons.drag_indicator),
-                      onTap: () {
-                        final scope = AppScope.of(context);
-                        scope.speaker.play(i.entry, female: store.femaleVoice, slow: store.slowAudio);
-                      },
+                if (_locked.contains(n))
+                  KeyedSubtree(key: ValueKey(i.entry.id), child: lockedRow(n))
+                else
+                  Card(
+                    key: ValueKey(i.entry.id),
+                    margin: const EdgeInsets.symmetric(vertical: 3),
+                    child: ReorderableDragStartListener(
+                      index: n,
+                      child: ListTile(
+                        leading: Text('${n + 1}', style: theme.textTheme.bodySmall),
+                        title: Text(i.entry.simplified, style: theme.textTheme.headlineSmall),
+                        trailing: const Icon(Icons.drag_indicator),
+                        onTap: () => _play(i),
+                      ),
                     ),
                   ),
-                ),
             ],
           )
         else
           for (var n = 0; n < items.length; n++)
             Builder(
               builder: (context) {
-                final i = n < _picked.length ? _picked[n] : null;
-                if (_checked) return OrderResultRow(position: n + 1, yours: i, answer: items[n], good: good, bad: bad);
+                if (_finished) {
+                  return OrderResultRow(position: n + 1, yours: _final[n], answer: items[n], good: good, bad: bad);
+                }
+                final i = _slots[n];
+                if (_locked.contains(n)) return lockedRow(n);
                 return Card(
                   margin: const EdgeInsets.symmetric(vertical: 3),
                   child: ListTile(
                     dense: true,
                     leading: Text('${n + 1}', style: theme.textTheme.bodySmall),
                     title: Text(i?.entry.simplified ?? '', style: theme.textTheme.titleLarge),
+                    // Tap a placed word to take it back out.
+                    onTap: i == null ? null : () => setState(() => _slots[n] = null),
                   ),
                 );
               },
             ),
-        if (!drag) ...[
+        if (!drag && !_finished) ...[
           const SizedBox(height: 16),
           Wrap(
             alignment: WrapAlignment.center,
@@ -559,38 +658,96 @@ class _OrderQuestionState extends State<OrderQuestion> {
               for (final i in _pool)
                 OutlinedButton(
                   style: OutlinedButton.styleFrom(minimumSize: const Size(96, 56)),
-                  onPressed: _checked || _picked.contains(i) ? null : () => _tap(i),
+                  onPressed: _slots.contains(i) ? null : () => _tap(i),
                   child: Text(i.entry.simplified, style: theme.textTheme.headlineSmall),
                 ),
             ],
           ),
         ],
+        if (_hints.isNotEmpty) ...[
+          const SizedBox(height: 16),
+          for (final (n, h) in _hints.indexed)
+            OrderHintCard(number: n + 1, hint: h, place: scalePlace(h.place, items.length)),
+        ],
         const SizedBox(height: 16),
-        if (!_checked)
+        if (!_finished) ...[
+          if (_checks > 0)
+            Padding(
+              padding: const EdgeInsets.only(bottom: 8),
+              child: Text(
+                '${_locked.length} of ${items.length} in place. '
+                '${drag ? 'Move' : 'Tap'} the other $open into order and check again.',
+                style: theme.textTheme.bodyMedium,
+                textAlign: TextAlign.center,
+              ),
+            ),
           Row(
             children: [
               Expanded(
-                child: OutlinedButton(
-                  onPressed: drag || _picked.isEmpty ? null : () => setState(_picked.clear),
-                  child: const Text('Start again'),
-                ),
+                child: _checks > 0
+                    ? OutlinedButton(onPressed: _showAnswer, child: const Text('Show answer'))
+                    : OutlinedButton(
+                        onPressed: drag || !_slots.any((s) => s != null) ? null : () => setState(_clearOpen),
+                        child: const Text('Start again'),
+                      ),
               ),
               const SizedBox(width: 12),
               Expanded(
                 child: FilledButton(
-                  onPressed: drag || _picked.length == items.length ? _check : null,
-                  child: const Text('Check'),
+                  onPressed: drag || tapFull ? _check : null,
+                  child: Text(_checks == 0 ? 'Check' : 'Check again'),
                 ),
               ),
             ],
-          )
-        else
+          ),
+        ] else
           Text(
-            right ? 'All in order!' : 'Not quite. Each red place shows the word that belongs there. Tap a word to hear it.',
+            _gaveUp
+                ? 'Here is the order. Each red place shows the word that belongs there. Tap a word to hear it.'
+                : _checks == 1 && _hints.isEmpty
+                    ? 'All in order!'
+                    : 'In order, with ${_hints.length} ${_hints.length == 1 ? 'hint' : 'hints'}. Tap a word to hear it.',
             style: theme.textTheme.titleMedium,
             textAlign: TextAlign.center,
           ),
       ],
+    );
+  }
+}
+
+/// A hint after a wrong check: the word, its pinyin and English (from the
+/// library), and the place it goes.
+class OrderHintCard extends StatelessWidget {
+  const OrderHintCard({super.key, required this.number, required this.hint, required this.place});
+
+  final int number;
+  final OrderHint hint;
+
+  /// Where it goes, as words: "first", "in place 3".
+  final String place;
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final scope = AppScope.of(context);
+    final i = hint.item;
+    return Card(
+      margin: const EdgeInsets.symmetric(vertical: 3),
+      color: theme.colorScheme.secondaryContainer,
+      child: ListTile(
+        leading: const Icon(Icons.lightbulb_outline),
+        title: Text('Hint $number', style: theme.textTheme.labelLarge),
+        subtitle: Wrap(
+          crossAxisAlignment: WrapCrossAlignment.center,
+          spacing: 6,
+          children: [
+            Text(i.entry.simplified, style: theme.textTheme.titleLarge),
+            Text(i.entry.pinyin, style: theme.textTheme.bodyLarge?.copyWith(color: theme.colorScheme.primary)),
+            Text('means "${i.short}", so it goes $place.', style: theme.textTheme.bodyLarge),
+          ],
+        ),
+        onTap: () => scope.speaker.play(i.entry, female: scope.store.femaleVoice, slow: scope.store.slowAudio),
+      ),
     );
   }
 }
