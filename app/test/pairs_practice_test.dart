@@ -50,6 +50,9 @@ void main() {
     await tester.tap(find.text('Show answer'));
     await tester.pumpAndSettle();
     expect(store.reviews.last.method, 'order');
+    // The finished answer stays on screen, with English, until Next.
+    expect(find.textContaining('Here is the order.'), findsOneWidget);
+    expect(find.text('Should be'), findsWidgets);
     await tester.tap(find.text('Next'));
     await tester.pumpAndSettle();
     expect(find.text('Pick the opposite'), findsOneWidget);
