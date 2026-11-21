@@ -9,6 +9,7 @@ import '../data/method_stats.dart';
 import '../data/user_store.dart';
 import '../srs/scheduler.dart';
 import 'common.dart';
+import 'adapt_widgets.dart';
 import 'word_web.dart';
 import 'settings_screen.dart';
 import 'key_sounds_screen.dart';
@@ -114,6 +115,7 @@ class StatsView extends StatelessWidget {
       padding: const EdgeInsets.only(bottom: 24),
       children: [
         const JourneySummaryCard(),
+        const LearningRateCard(),
         Padding(
           padding: const EdgeInsets.fromLTRB(16, 12, 16, 0),
           child: Wrap(

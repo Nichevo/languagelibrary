@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 
+import '../data/adapt.dart';
 import '../data/daily.dart';
 import '../data/journey.dart';
 import '../data/library.dart';
@@ -17,6 +18,7 @@ import 'entry_tile.dart';
 import 'patterns_screen.dart';
 import 'practice_home.dart';
 import 'practice_screen.dart';
+import 'adapt_widgets.dart';
 import 'say_it_screen.dart';
 import 'week_day_screen.dart';
 import 'wide.dart';
@@ -65,7 +67,8 @@ Widget skillScreen(Library lib, JourneyWeek week) {
   final words = [for (final id in week.words) ?lib.byId[id]];
   switch (week.skill) {
     case 'speak':
-      return SayItScreen(entries: words, carryOn: true);
+      // Say it is hard work: never more than [hardCap] words a day.
+      return SayItScreen(entries: words.take(hardCap).toList(), carryOn: true);
     case 'build':
       final p = lib.patterns.where((p) => p.id == week.pattern).firstOrNull;
       return BuildSentenceScreen(only: p);
@@ -178,7 +181,7 @@ class WeekCard extends StatelessWidget {
                   ),
                   Text(week.title, style: theme.textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold)),
                   Text(week.why, style: theme.textTheme.bodySmall),
-                  if (week.levelNote case final note?)
+                  for (final note in [?week.levelNote, ...?week.adapt?.notes])
                     Padding(
                       padding: const EdgeInsets.only(top: 2),
                       child: Text(note, style: theme.textTheme.bodySmall?.copyWith(fontStyle: FontStyle.italic)),
@@ -357,7 +360,7 @@ class WeekScreen extends StatelessWidget {
                     children: [
                       Text(week.title, style: theme.textTheme.headlineSmall),
                       Text(week.why),
-                      if (week.levelNote case final note?)
+                      for (final note in [?week.levelNote, ...?week.adapt?.notes])
                         Padding(
                           padding: const EdgeInsets.only(top: 4),
                           child: Text(note, style: theme.textTheme.bodySmall?.copyWith(fontStyle: FontStyle.italic)),
@@ -392,7 +395,9 @@ class WeekScreen extends StatelessWidget {
                               color: theme.colorScheme.primary,
                             ),
                             title: Text('${_days[i]}  ${p.title}', style: TextStyle(fontWeight: i == today ? FontWeight.bold : null)),
-                            subtitle: Text(steps == null ? p.detail : steps.map((s) => s.kind.short).join(' · ')),
+                            subtitle: Text(steps == null
+                                ? p.detail
+                                : steps.map((s) => s.extra == null ? s.kind.short : '${s.kind.short} (extra)').join(' · ')),
                             onTap: () => openDay(context, week, i),
                           );
                         }(),
@@ -642,7 +647,10 @@ class RecapScreen extends StatelessWidget {
   final bool finished;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context) =>
+      ListenableBuilder(listenable: AppScope.of(context).store, builder: (context, _) => _build(context));
+
+  Widget _build(BuildContext context) {
     final scope = AppScope.of(context);
     final store = scope.store;
     final lib = scope.library;
@@ -714,6 +722,7 @@ class RecapScreen extends StatelessWidget {
                   for (final id in sum.found.take(12)) Chip(label: Text(lib.byId[id]!.simplified), visualDensity: VisualDensity.compact),
                 ]),
               ),
+            NextWeekPanel(week: week, nextStart: nextStart, finished: finished),
             const SizedBox(height: 16),
             Text(finished ? 'This week' : 'Pick next week', style: theme.textTheme.titleMedium),
             Text(
@@ -948,6 +957,44 @@ class JourneySettings extends StatelessWidget {
             ],
           ),
         ),
+        SwitchListTile(
+          contentPadding: EdgeInsets.zero,
+          title: const Text('Adjust to how I\'m doing'),
+          subtitle: Text(store.adaptOn
+              ? 'Small steps each week, with the reason on the recap.'
+                  '${store.weeks.lastOrNull?.adapt?.pace == null ? '' : ' Now ${store.weeks.last.adapt!.pace} new words a week'}'
+              : 'Off: the same new words every week, and the usual practice'),
+          value: store.adaptOn,
+          onChanged: store.setAdaptOn,
+        ),
+        if (store.adaptOn) ...[
+          ListTile(
+            contentPadding: EdgeInsets.zero,
+            title: const Text('Never fewer than'),
+            trailing: DropdownButton<int>(
+              value: store.paceMin,
+              onChanged: (v) => store.setPaceLimits(least: v),
+              items: [for (final n in {4, 6, 8, 10, 15, store.paceMin}.toList()..sort()) DropdownMenuItem(value: n, child: Text('$n words'))],
+            ),
+          ),
+          ListTile(
+            contentPadding: EdgeInsets.zero,
+            title: const Text('Never more than'),
+            trailing: DropdownButton<int>(
+              value: store.paceMax,
+              onChanged: (v) => store.setPaceLimits(most: v),
+              items: [for (final n in {20, 25, 30, 40, 50, store.paceMax}.toList()..sort()) DropdownMenuItem(value: n, child: Text('$n words'))],
+            ),
+          ),
+          SwitchListTile(
+            contentPadding: EdgeInsets.zero,
+            title: const Text('Ask how the week felt'),
+            subtitle: const Text('On the week recap. Your answer counts more than the numbers'),
+            value: store.askFeel,
+            onChanged: store.setAskFeel,
+          ),
+          Text('Choosing new words a week yourself starts the adjusting again from there.', style: theme.textTheme.bodySmall),
+        ],
         ListTile(
           contentPadding: EdgeInsets.zero,
           title: const Text('Review week'),

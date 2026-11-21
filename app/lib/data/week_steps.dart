@@ -1,5 +1,6 @@
 import '../models/journey_week.dart';
 import '../srs/scheduler.dart';
+import 'adapt.dart';
 import 'daily.dart';
 import 'journey.dart';
 import 'say_it.dart';
@@ -23,10 +24,23 @@ enum StepKind {
 
 /// One step of a mixed week day: a short round over [ids].
 class DayStep {
-  const DayStep(this.kind, this.ids);
+  const DayStep(this.kind, this.ids, {this.extra});
   final StepKind kind;
   final List<String> ids;
+
+  /// Why the step was added to the usual day, for example "needs more",
+  /// when last week's results added it (see data/adapt.dart).
+  final String? extra;
 }
+
+/// The step kind for a practice type group (see `typeGroups`).
+StepKind groupStep(String group) => switch (group) {
+      'meaning' => StepKind.meaning,
+      'listen' => StepKind.listen,
+      'recall' => StepKind.recall,
+      'type' => StepKind.type,
+      _ => StepKind.sayIt,
+    };
 
 /// Multiple-choice question kinds, as logged (see `Choice` in drill_screen.dart).
 const choiceMethods = ['listen', 'meaning', 'reverse', 'pinyin'];
@@ -51,27 +65,65 @@ List<DayStep>? daySteps(UserStore store, JourneyWeek week, int day, DateTime now
   if (week.isReview) {
     return [DayStep(StepKind.mixed, w), DayStep(StepKind.dueCards, w)];
   }
+  final a = week.adapt;
+  int level(String g) => a?.typeLevel(g) ?? 0;
+  // A type that's easy for the learner gets a shorter round: every other word.
+  List<String> round(String g, List<String> ids) =>
+      level(g) == 1 && ids.length > 3 ? [for (final (i, id) in ids.indexed) if (i.isEven) id] : ids;
+  // Say it is hard work, so it never grows with the number of words.
+  List<String> say(List<String> ids) => ids.take(hardCap).toList();
   return switch (day) {
     0 => [
       DayStep(StepKind.meet, plan.ids),
-      DayStep(StepKind.meaning, plan.ids),
-      DayStep(StepKind.listen, plan.ids),
-      DayStep(StepKind.sayIt, plan.ids),
+      DayStep(StepKind.meaning, round('meaning', plan.ids)),
+      DayStep(StepKind.listen, round('listen', plan.ids)),
+      DayStep(StepKind.sayIt, say(plan.ids)),
     ],
     1 => [
       DayStep(StepKind.meet, plan.ids),
-      DayStep(StepKind.meaning, plan.ids),
+      DayStep(StepKind.meaning, round('meaning', plan.ids)),
       // Monday's words come back to be heard again.
-      DayStep(StepKind.listen, [...plan.ids, ...w.sublist(0, half)]),
-      DayStep(StepKind.sayIt, plan.ids),
+      DayStep(StepKind.listen, round('listen', [...plan.ids, ...w.sublist(0, half)])),
+      DayStep(StepKind.sayIt, say(plan.ids)),
     ],
-    2 => [DayStep(StepKind.cards, w), DayStep(StepKind.recall, w)],
+    2 => [
+      DayStep(StepKind.cards, w),
+      DayStep(StepKind.recall, round('recall', w)),
+      ...extraSteps(store, week, now),
+    ],
     _ => [
       DayStep(StepKind.mixed, w),
-      DayStep(StepKind.type, mostMissed(store, week, now, typeStepWords)),
+      DayStep(StepKind.type, mostMissed(store, week, now, level('type') == 1 ? hardCap ~/ 2 : typeStepWords)),
       DayStep(StepKind.dueCards, w),
     ],
   };
+}
+
+/// Wednesday's extra rounds from last week's results: a short round of the
+/// most missed words for each type that needs more, then the type after one
+/// that's easy. At most two, and at most one of them a hard practice.
+List<DayStep> extraSteps(UserStore store, JourneyWeek week, DateTime now) {
+  final a = week.adapt;
+  if (a == null || a.types.isEmpty) return const [];
+  final wanted = <(String, String)>[
+    for (final g in typeGroups)
+      if (a.typeLevel(g) == -1) (g, 'needs more'),
+    for (final (i, g) in typeGroups.indexed)
+      if (a.typeLevel(g) == 1 && i + 1 < typeGroups.length && a.typeLevel(typeGroups[i + 1]) != -1)
+        (typeGroups[i + 1], 'new for you'),
+  ];
+  final words = mostMissed(store, week, now, extraWords);
+  final out = <DayStep>[];
+  var hard = false;
+  for (final (g, why) in wanted) {
+    // Wednesday already picks the word or the pinyin.
+    if (out.length >= 2 || (g == 'recall' && why != 'needs more') || out.any((s) => s.kind == groupStep(g))) continue;
+    final isHard = g == 'type' || g == 'speak';
+    if (isHard && hard) continue;
+    hard |= isHard;
+    out.add(DayStep(groupStep(g), words, extra: why));
+  }
+  return out;
 }
 
 /// Answers on [week]'s words from the start of the week up to the start of
@@ -116,7 +168,15 @@ Map<String, String> mixedKinds(
   final answers = _weekAnswers(store, week, now);
   final out = <String, String>{};
   for (final (i, id) in ids.indexed) {
-    final kinds = [...choiceMethods, if (canOrder?.call(id) ?? false) 'order'];
+    // Kinds that were easy last week only come up for words they tripped on.
+    final easy = {
+      for (final k in choiceMethods)
+        if (week.adapt?.typeLevel(groupOf(k)!) == 1) k,
+    };
+    final all = [...choiceMethods, if (canOrder?.call(id) ?? false) 'order'];
+    final missedEasy = (answers[id] ?? const <Review>[]).any((r) => easy.contains(r.method) && !r.right);
+    final rest = [for (final k in all) if (!easy.contains(k)) k];
+    final kinds = missedEasy || rest.isEmpty ? all : rest;
     final wrong = {for (final k in kinds) k: 0};
     final used = {for (final k in kinds) k: 0};
     for (final r in answers[id] ?? const <Review>[]) {
