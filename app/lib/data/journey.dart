@@ -4,6 +4,7 @@ import 'package:flutter/painting.dart' show Color;
 
 import '../models/entry.dart';
 import '../models/journey_week.dart';
+import 'adapt.dart';
 import 'daily.dart';
 import 'families.dart';
 import 'library.dart';
@@ -288,11 +289,31 @@ String nextPath(UserStore store) {
 
 /// Plans a week starting [start] along [path], or null when that path has
 /// nothing left to offer. [seed] makes a connections week grow from that word.
-/// The week's Sentences level comes from how last week's sentences went.
+/// The week's Sentences level and its new words and practice types come from
+/// how last week went (see data/adapt.dart).
 JourneyWeek? planWeek(Library lib, UserStore store, DateTime start, String path,
     {String? seed, String? char, Connections? conn}) {
-  final w = _planWeek(lib, store, start, path, seed: seed, char: char, conn: conn);
-  return w == null ? null : withSentenceLevel(lib, store, w);
+  final adapt = adaptFor(store, start);
+  final w = _planWeek(lib, store, start, path, seed: seed, char: char, conn: conn, paceFor: adapt?.pace);
+  return w == null ? null : withSentenceLevel(lib, store, w).copyWith(adapt: () => adapt);
+}
+
+/// [week] adjusted afresh to how the week before it went: a week picked
+/// before last week was over gets the latest adjustments, keeping at most the
+/// new number of words.
+JourneyWeek withAdjustments(Library lib, UserStore store, JourneyWeek week) {
+  final adapt = adaptFor(store, week.start);
+  final words = adapt != null && week.words.length > adapt.pace ? week.words.sublist(0, adapt.pace) : null;
+  return withSentenceLevel(lib, store, week).copyWith(adapt: () => adapt, words: words);
+}
+
+/// Plans the picked next week again, for example after the recap's "how did
+/// it feel?" changed how many words it gets.
+Future<void> replanNext(Library lib, UserStore store) async {
+  final nw = store.nextWeek;
+  if (nw == null) return;
+  final again = planWeek(lib, store, nw.start, nw.path, seed: nw.seed, char: nw.char);
+  if (again != null) await store.setNextWeek(again);
 }
 
 /// [week] with its Sentences level worked out afresh from the week before it.
@@ -302,9 +323,9 @@ JourneyWeek withSentenceLevel(Library lib, UserStore store, JourneyWeek week) {
 }
 
 JourneyWeek? _planWeek(Library lib, UserStore store, DateTime start, String path,
-    {String? seed, String? char, Connections? conn}) {
+    {String? seed, String? char, Connections? conn, int? paceFor}) {
   final c = conn ?? Connections(lib, store);
-  final pace = store.journeyPace;
+  final pace = paceFor ?? store.journeyPace;
   final skill = leastUsedSkill(store, start);
   final used = {for (final w in store.weeks) ...w.words};
   final recent = store.weeks.length > 6 ? store.weeks.sublist(store.weeks.length - 6) : store.weeks;
@@ -468,7 +489,7 @@ Future<bool> ensureWeek(Library lib, UserStore store, DateTime now) async {
       : weekOptions(lib, store, start, count: 1).firstOrNull;
   if (chosen == null) return false;
   // A week picked early may have been planned before last week was over.
-  final week = withSentenceLevel(lib, store, chosen);
+  final week = withAdjustments(lib, store, chosen);
   final last = store.weeks.lastOrNull;
   await store.startWeek(week, recapOf: last != null && picked == null ? dayKey(last.start) : null);
   return true;
@@ -527,7 +548,8 @@ List<Entry>? sayItListFor(Library lib, JourneyWeek week, DayKind kind) => switch
           final ss = sentencesFor(lib, week.words, limit: sentencesInWeek, level: week.level);
           return ss.isEmpty ? null : ss;
         }(),
-      DayKind.skill when week.skill == 'speak' => [for (final id in week.words) ?lib.byId[id]],
+      // Say it is hard work: never more than [hardCap] words a day.
+      DayKind.skill when week.skill == 'speak' => [for (final id in week.words.take(hardCap)) ?lib.byId[id]],
       _ => null,
     };
 

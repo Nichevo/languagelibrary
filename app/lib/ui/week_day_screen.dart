@@ -321,7 +321,7 @@ class StepList extends StatelessWidget {
                     const SizedBox(width: 8),
                     Expanded(
                       child: Text(
-                        s.kind.title,
+                        s.extra == null ? s.kind.title : '${s.kind.title} · ${s.extra}',
                         style: theme.textTheme.bodyMedium?.copyWith(fontWeight: i == next ? FontWeight.bold : null),
                       ),
                     ),
@@ -335,7 +335,7 @@ class StepList extends StatelessWidget {
               child: ListTile(
                 leading: icon,
                 title: Text(s.kind.title, style: TextStyle(fontWeight: i == next ? FontWeight.bold : null)),
-                subtitle: Text(count),
+                subtitle: Text(s.extra == null ? count : '$count · extra round: ${s.extra}'),
                 trailing: Icon(stepIcon(s.kind)),
                 onTap: onTap == null ? null : () => onTap!(i),
               ),

@@ -91,8 +91,20 @@ class UserStore extends ChangeNotifier {
   /// 'sentences' and 'hsk'. Weeks take turns between the ones switched on.
   final Set<String> journeyPaths = {'connections', 'topics'};
 
-  /// New words a week.
+  /// New words a week, or where adjusting starts from when [adaptOn].
   int journeyPace = 20;
+
+  /// When [journeyPace] was last chosen: adjusting starts again from it.
+  DateTime? paceSetAt;
+
+  /// Each week's new words and practice types move a small step from how the
+  /// week before went (see data/adapt.dart), within [paceMin] to [paceMax].
+  bool adaptOn = true;
+  int paceMin = 6;
+  int paceMax = 40;
+
+  /// The week recap asks how the week felt.
+  bool askFeel = true;
 
   /// Every this many weeks is a review week with no new words; 0 for never.
   int reviewEvery = 4;
@@ -228,6 +240,11 @@ class UserStore extends ChangeNotifier {
         ..addAll(l.cast<String>());
     }
     journeyPace = j['journeyPace'] as int? ?? journeyPace;
+    paceSetAt = j['paceSetAt'] == null ? null : DateTime.fromMillisecondsSinceEpoch(j['paceSetAt'] as int);
+    adaptOn = j['adaptOn'] as bool? ?? adaptOn;
+    paceMin = j['paceMin'] as int? ?? paceMin;
+    paceMax = j['paceMax'] as int? ?? paceMax;
+    askFeel = j['askFeel'] as bool? ?? askFeel;
     reviewEvery = j['reviewEvery'] as int? ?? reviewEvery;
     milestoneColours = j['milestoneColours'] as bool? ?? milestoneColours;
     weeks.clear();
@@ -293,6 +310,11 @@ class UserStore extends ChangeNotifier {
         'journeyAsked': journeyAsked,
         'journeyPaths': (journeyPaths.toList()..sort()),
         'journeyPace': journeyPace,
+        'paceSetAt': paceSetAt?.millisecondsSinceEpoch,
+        'adaptOn': adaptOn,
+        'paceMin': paceMin,
+        'paceMax': paceMax,
+        'askFeel': askFeel,
         'reviewEvery': reviewEvery,
         'milestoneColours': milestoneColours,
         'weeks': [for (final w in weeks) w.toJson()],
@@ -805,8 +827,45 @@ class UserStore extends ChangeNotifier {
     return _save();
   }
 
+  /// Chooses the new words a week; adjusting starts again from here.
   Future<void> setJourneyPace(int v) {
     journeyPace = v;
+    paceSetAt = DateTime.now();
+    return _save();
+  }
+
+  Future<void> setAdaptOn(bool v) {
+    adaptOn = v;
+    return _save();
+  }
+
+  Future<void> setPaceLimits({int? least, int? most}) {
+    paceMin = least ?? paceMin;
+    paceMax = most ?? paceMax;
+    if (paceMin > paceMax) least != null ? paceMax = paceMin : paceMin = paceMax;
+    return _save();
+  }
+
+  Future<void> setAskFeel(bool v) {
+    askFeel = v;
+    return _save();
+  }
+
+  /// Saves how the week starting [start] felt: 'much', 'right', 'little' or null.
+  Future<void> setWeekFeel(DateTime start, String? feel) {
+    for (final w in weeks) {
+      if (w.start == start) w.feel = feel;
+    }
+    _stamp('journey');
+    return _save();
+  }
+
+  /// Keeps the week starting [start]'s settings for the week after it.
+  Future<void> setKeepNext(DateTime start, bool keep) {
+    for (final w in weeks) {
+      if (w.start == start) w.keepNext = keep;
+    }
+    _stamp('journey');
     return _save();
   }
 
