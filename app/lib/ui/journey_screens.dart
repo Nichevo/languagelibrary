@@ -700,7 +700,7 @@ class RecapScreen extends StatelessWidget {
             ]),
             Row(children: [
               stat('Answers', '${sum.answers}', 'on ${sum.days} ${sum.days == 1 ? 'day' : 'days'}'),
-              stat('Right', '${sum.percentRight}%'),
+              stat('Right', sum.checked == 0 ? '–' : '${sum.percentRight}%', 'checked by the app'),
             ]),
             if (sentences.said > 0)
               Row(children: [
@@ -714,6 +714,14 @@ class RecapScreen extends StatelessWidget {
                     'Went best: ${methodLabel(results.first.$1)} (${percent(results.first)}% right). '
                     'Needs work: ${methodLabel(results.last.$1)} (${percent(results.last)}% right).',
                     style: theme.textTheme.bodyMedium),
+              ),
+            if (flashcardResults(store, week) case (final remembered, final cards) when cards > 0)
+              Padding(
+                padding: const EdgeInsets.fromLTRB(4, 6, 4, 0),
+                child: Text(
+                    'Flashcards: you marked $remembered of $cards as remembered (Again counts as not). '
+                    'Your own marks, so they are kept apart from the scores above.',
+                    style: theme.textTheme.bodySmall),
               ),
             if (sum.found.isNotEmpty)
               Padding(

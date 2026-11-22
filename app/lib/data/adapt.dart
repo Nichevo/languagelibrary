@@ -69,7 +69,8 @@ class WeekCheck {
     required this.groups,
   });
 
-  /// Right answers and all answers on the easier and middle practices.
+  /// Right answers and all answers on the easier and middle practices the app
+  /// checks (flashcards, marked by the learner, are left out).
   final int right, answers;
 
   /// Days with any practice on the week's words.

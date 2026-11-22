@@ -642,29 +642,44 @@ int _hanCount(String s) => s.runes.where((r) => r >= 0x3400 && r <= 0x9fff).leng
 
 /// How a week went.
 class WeekSummary {
-  WeekSummary({required this.met, required this.planned, required this.found, required this.answers, required this.right, required this.days});
-  final int met, planned, answers, right, days;
+  WeekSummary({
+    required this.met,
+    required this.planned,
+    required this.found,
+    required this.answers,
+    required this.checked,
+    required this.right,
+    required this.days,
+  });
+
+  /// [answers] counts every answer, flashcards too. [right] is out of
+  /// [checked]: the answers the app checked (flashcards are marked by the
+  /// learner, so they are left out).
+  final int met, planned, answers, checked, right, days;
   final List<String> found;
-  int get percentRight => answers == 0 ? 0 : (100 * right / answers).round();
+  int get percentRight => checked == 0 ? 0 : (100 * right / checked).round();
 }
 
 WeekSummary summarise(Library lib, UserStore store, JourneyWeek week, DateTime now) {
   final end = DateTime(week.start.year, week.start.month, week.start.day + 7);
   final to = now.isBefore(end) ? now.add(const Duration(seconds: 1)) : end;
   final met = metIn(store, week).length;
-  var answers = 0, right = 0;
+  var answers = 0, checked = 0, right = 0;
   final days = <int>{};
   for (final r in store.reviews) {
     if (r.at.isBefore(week.start) || !r.at.isBefore(to)) continue;
     answers++;
-    if (r.right) right++;
     days.add(dayNumber(r.at));
+    if (r.method == 'cards') continue;
+    checked++;
+    if (r.right) right++;
   }
   return WeekSummary(
     met: met,
     planned: week.words.length,
     found: foundBetween(lib, store, week.start, to, except: week.words.toSet()),
     answers: answers,
+    checked: checked,
     right: right,
     days: days.length,
   );
