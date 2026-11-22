@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:language_library/data/adapt.dart';
+import 'package:language_library/data/journey.dart';
 import 'package:language_library/data/user_store.dart';
 import 'package:language_library/data/week_steps.dart';
 import 'package:language_library/main.dart';
@@ -114,6 +116,33 @@ void main() {
     final r = methodResults(store, week);
     expect([for (final x in r) x.$1], ['listen', 'pinyin'], reason: 'type has too few answers');
     expect(r.last.$2, 2);
+  });
+
+  test('flashcards are kept apart from the checked scores, first looks and Again do not count as remembered', () async {
+    final store = await fresh();
+    final week = weekOf(words);
+    final wed = DateTime(2026, 11, 18, 9), thu = DateTime(2026, 11, 19, 9);
+    const sched = Scheduler();
+    Future<void> card(String id, Rating rating, DateTime at) =>
+        store.recordReview(id, Direction.zhToEn, sched.review(store.card(id, Direction.zhToEn), rating, at), rating, Duration.zero, at);
+    for (var i = 0; i < 6; i++) {
+      // First looks at new words, marked Good: learning, not remembering.
+      await card(words[i], Rating.good, wed);
+      await store.logAnswer(i < 3 ? Rating.good : Rating.again, Duration.zero, wed, method: 'meaning', id: words[i]);
+    }
+    for (var i = 0; i < 6; i++) {
+      await card(words[i], i < 4 ? Rating.good : Rating.again, thu);
+    }
+    final r = methodResults(store, week, atLeast: 1);
+    expect([for (final x in r) x.$1], ['meaning'], reason: 'flashcards are not compared with checked answers');
+    expect(flashcardResults(store, week), (4, 6));
+    final check = checkWeek(store, week, DateTime(2026, 11, 23));
+    expect(check.answers, 6);
+    expect(check.percent, 50, reason: 'self-marked flashcards do not lift the % right');
+    final sum = summarise(lib, store, week, DateTime(2026, 11, 23));
+    expect(sum.answers, 18);
+    expect(sum.checked, 6);
+    expect(sum.percentRight, 50);
   });
 
   testWidgets('Monday: meet the words, then pick their meaning, then hear them', (tester) async {

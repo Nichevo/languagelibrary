@@ -248,13 +248,19 @@ int? nextStepIndex(UserStore store, JourneyWeek week, int day, List<DayStep> ste
 
 /// How each practice type went on [week]'s words during the week, best first:
 /// (method, right, answered). Only types answered at least [atLeast] times.
+///
+/// Flashcards are left out: the learner marks them themselves (and the first
+/// look at a new word is not a test), so they are not comparable with the
+/// answers the app checks. See [flashcardResults].
 List<(String, int, int)> methodResults(UserStore store, JourneyWeek week, {int atLeast = 5}) {
   final words = week.words.toSet();
   final end = DateTime(week.start.year, week.start.month, week.start.day + 7);
   final right = <String, int>{}, total = <String, int>{};
   for (final r in store.reviews) {
     final id = r.id;
-    if (id == null || !words.contains(id) || r.at.isBefore(week.start) || !r.at.isBefore(end)) continue;
+    if (id == null || r.method == 'cards' || !words.contains(id) || r.at.isBefore(week.start) || !r.at.isBefore(end)) {
+      continue;
+    }
     final m = r.method == 'opposite' ? 'order' : r.method;
     total[m] = (total[m] ?? 0) + 1;
     if (r.right) right[m] = (right[m] ?? 0) + 1;
@@ -270,4 +276,21 @@ List<(String, int, int)> methodResults(UserStore store, JourneyWeek week, {int a
   ];
   out.sort((a, b) => (b.$2 / b.$3).compareTo(a.$2 / a.$3));
   return out;
+}
+
+/// Flashcards on [week]'s words during the week, by the learner's own marks:
+/// (remembered, answered). Only cards seen before count: the first look at a
+/// new word is learning it, not remembering it. Again is not remembered.
+(int, int) flashcardResults(UserStore store, JourneyWeek week) {
+  final words = week.words.toSet();
+  final end = DateTime(week.start.year, week.start.month, week.start.day + 7);
+  var right = 0, total = 0;
+  for (final r in store.reviews) {
+    final id = r.id;
+    if (id == null || r.method != 'cards' || r.isNew || !words.contains(id)) continue;
+    if (r.at.isBefore(week.start) || !r.at.isBefore(end)) continue;
+    total++;
+    if (r.right) right++;
+  }
+  return (right, total);
 }
