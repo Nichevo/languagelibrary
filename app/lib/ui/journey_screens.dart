@@ -9,6 +9,7 @@ import '../data/library.dart';
 import '../data/say_it.dart';
 import '../data/today.dart';
 import '../data/user_store.dart';
+import '../data/week_score.dart';
 import '../data/week_steps.dart';
 import '../models/entry.dart';
 import '../models/journey_week.dart';
@@ -20,6 +21,7 @@ import 'practice_home.dart';
 import 'practice_screen.dart';
 import 'adapt_widgets.dart';
 import 'say_it_screen.dart';
+import 'week_check.dart';
 import 'week_day_screen.dart';
 import 'wide.dart';
 import 'word_web.dart';
@@ -131,6 +133,9 @@ class WeekCard extends StatelessWidget {
         if (store.weeks.where((w) => dayKey(w.start) == key).firstOrNull case final last?)
           _Banner(Icons.history, 'Last week\'s recap: ${last.title}',
               () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => RecapScreen(week: last, finished: true)))),
+      for (final w in checkBacksDue(store, now))
+        _Banner(Icons.replay, 'Check-back ready: ${w.title}',
+            () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => WeekScoreScreen(week: w)))),
     ];
     if (week == null) {
       return Column(children: [
@@ -693,6 +698,11 @@ class RecapScreen extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 4),
               child: Text(week.title, style: theme.textTheme.headlineSmall),
             ),
+            WeekCheckCard(week: week),
+            for (final w in checkBacksDue(store, now)) CheckBackCard(week: w),
+            // A check-back taken in the last week stays to show how it went.
+            for (final w in store.weeks)
+              if (w.held?.backAt case final at? when now.difference(at).inDays < 7) CheckBackCard(week: w),
             const SizedBox(height: 8),
             Row(children: [
               stat('Planned words met', '${sum.met}', 'of ${sum.planned}'),

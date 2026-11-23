@@ -112,7 +112,8 @@ class DrillScreen extends StatefulWidget {
       this.title,
       this.stepBar,
       this.onWordDone,
-      this.nextLabel});
+      this.nextLabel,
+      this.onCheck});
 
   final Drill drill;
 
@@ -138,6 +139,11 @@ class DrillScreen extends StatefulWidget {
 
   /// With [ids]: the button at the end, which closes the screen.
   final String? nextLabel;
+
+  /// A check (the week's score, see data/week_score.dart): each word is asked
+  /// once, in order, and its answer goes here instead of into the practice
+  /// statistics.
+  final void Function(String id, bool right)? onCheck;
 
   @override
   State<DrillScreen> createState() => _DrillScreenState();
@@ -166,7 +172,9 @@ class _DrillScreenState extends State<DrillScreen> {
     final words = [
       for (final id in widget.ids ?? scope.store.idsIn(widget.list))
         if (scope.library.byId[id] case final e? when !e.isSentence) e,
-    ]..shuffle(_rnd);
+    ];
+    // A check asks its words in the order given, so the kinds take turns.
+    if (widget.onCheck == null) words.shuffle(_rnd);
     final size = widget.ids != null ? 0 : scope.store.sessionSize;
     _queue = size > 0 && words.length > size ? words.sublist(0, size) : words;
     _next(first: true);
@@ -233,6 +241,12 @@ class _DrillScreenState extends State<DrillScreen> {
   void _answer(bool right) {
     final now = DateTime.now();
     final target = _queue!.first;
+    if (widget.onCheck case final check?) {
+      _done++;
+      if (right) _right++;
+      check(target.id, right);
+      return;
+    }
     AppScope.of(context).store.logAnswer(right ? Rating.good : Rating.again, now.difference(_shownAt), now,
         method: widget.drill == Drill.type ? 'type' : _kind.name, id: target.id);
     _done++;

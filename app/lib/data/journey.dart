@@ -10,6 +10,7 @@ import 'families.dart';
 import 'library.dart';
 import 'today.dart';
 import 'user_store.dart';
+import 'week_score.dart';
 
 // The learning journey: weeks that grow out of the words the learner already
 // has, by following the links the library data already holds (shared
@@ -343,7 +344,15 @@ JourneyWeek? _planWeek(Library lib, UserStore store, DateTime start, String path
         if (id == null || r.at.isBefore(since) || r.right) continue;
         if (lib.byId[id] case final e? when !e.isSentence) misses[id] = (misses[id] ?? 0) + 1;
       }
-      final words = (misses.keys.toList()..sort((a, b) => misses[b]!.compareTo(misses[a]!))).take(pace).toList();
+      // Words that slipped at a check-back in the last five weeks go first.
+      final slipped = [
+        for (final id in cycleBackWords(store, start, days: 35, count: null))
+          if (lib.byId[id] case final e? when !e.isSentence) id,
+      ];
+      final words = [
+        ...slipped,
+        ...(misses.keys.toList()..sort((a, b) => misses[b]!.compareTo(misses[a]!))).where((id) => !slipped.contains(id)),
+      ].take(pace).toList();
       for (final w in recent.reversed) {
         for (final id in w.words) {
           if (words.length >= pace) break;

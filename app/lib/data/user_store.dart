@@ -897,6 +897,16 @@ class UserStore extends ChangeNotifier {
     return _save();
   }
 
+  /// Saves the held word set, and how it did, for the week starting [start]
+  /// (see data/week_score.dart).
+  Future<void> setHeld(DateTime start, HeldCheck held) {
+    for (final w in weeks) {
+      if (w.start == start) w.held = held;
+    }
+    _stamp('journey');
+    return _save();
+  }
+
   /// Keeps the week starting [start]'s settings for the week after it.
   Future<void> setKeepNext(DateTime start, bool keep) {
     for (final w in weeks) {

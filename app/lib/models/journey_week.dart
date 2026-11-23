@@ -17,6 +17,7 @@ class JourneyWeek {
     this.adapt,
     this.feel,
     this.keepNext = false,
+    this.held,
   });
 
   /// Midnight on the Monday the week starts.
@@ -64,6 +65,11 @@ class JourneyWeek {
   /// the suggested changes.
   bool keepNext;
 
+  /// The words held for the week's score: what they got when first met, at
+  /// the Sunday check and at the check-back five weeks later (see
+  /// data/week_score.dart). Null until the first check is taken.
+  HeldCheck? held;
+
   bool get isReview => path == 'review';
 
   JourneyWeek copyWith({DateTime? start, int? level, String? Function()? levelNote, WeekAdapt? Function()? adapt, List<String>? words}) => JourneyWeek(
@@ -82,6 +88,7 @@ class JourneyWeek {
         adapt: adapt != null ? adapt() : this.adapt,
         feel: feel,
         keepNext: keepNext,
+        held: held,
       );
 
   Map<String, dynamic> toJson() => {
@@ -100,6 +107,7 @@ class JourneyWeek {
         'adapt': ?adapt?.toJson(),
         'feel': ?feel,
         if (keepNext) 'keepNext': true,
+        'held': ?held?.toJson(),
       };
 
   factory JourneyWeek.fromJson(Map<String, dynamic> j) {
@@ -120,6 +128,7 @@ class JourneyWeek {
       adapt: j['adapt'] == null ? null : WeekAdapt.fromJson(j['adapt'] as Map<String, dynamic>),
       feel: j['feel'] as String?,
       keepNext: j['keepNext'] as bool? ?? false,
+      held: j['held'] == null ? null : HeldCheck.fromJson(j['held'] as Map<String, dynamic>),
     );
   }
 }
@@ -168,4 +177,61 @@ class WeekAdapt {
         types: {for (final MapEntry(:key, :value) in (j['types'] as Map? ?? const {}).entries) key as String: (value as num).toInt()},
         notes: List<String>.from(j['notes'] as List? ?? const []),
       );
+}
+
+/// A week's held word set and how it did each time it was checked. The same
+/// words are asked the same kind of question each time, so the numbers
+/// compare like for like.
+class HeldCheck {
+  HeldCheck({required this.kinds, this.first = const {}, this.sunday, this.sundayAt, this.back, this.backAt});
+
+  /// The held words, in order, each with its question kind: 'meaning' (see
+  /// it, pick the meaning) or 'listen' (hear it, pick the word).
+  final Map<String, String> kinds;
+
+  /// Right or wrong the first time each word was asked that kind of question
+  /// in its week, just after meeting it. Words never asked are left out.
+  final Map<String, bool> first;
+
+  /// The Sunday check, by word, and when it was taken. Null until taken.
+  final Map<String, bool>? sunday;
+  final DateTime? sundayAt;
+
+  /// The check-back five weeks later, by word, and when it was taken.
+  final Map<String, bool>? back;
+  final DateTime? backAt;
+
+  HeldCheck copyWith({Map<String, bool>? sunday, DateTime? sundayAt, Map<String, bool>? back, DateTime? backAt}) => HeldCheck(
+        kinds: kinds,
+        first: first,
+        sunday: sunday ?? this.sunday,
+        sundayAt: sundayAt ?? this.sundayAt,
+        back: back ?? this.back,
+        backAt: backAt ?? this.backAt,
+      );
+
+  static Map<String, int> _bits(Map<String, bool> m) => {for (final MapEntry(:key, :value) in m.entries) key: value ? 1 : 0};
+  static Map<String, bool> _unbits(Object? m) =>
+      {for (final MapEntry(:key, :value) in (m as Map? ?? const {}).entries) key as String: value == 1 || value == true};
+
+  Map<String, dynamic> toJson() => {
+        'kinds': kinds,
+        if (first.isNotEmpty) 'first': _bits(first),
+        if (sunday != null) 'sunday': _bits(sunday!),
+        if (sundayAt != null) 'sundayAt': sundayAt!.millisecondsSinceEpoch ~/ 1000,
+        if (back != null) 'back': _bits(back!),
+        if (backAt != null) 'backAt': backAt!.millisecondsSinceEpoch ~/ 1000,
+      };
+
+  factory HeldCheck.fromJson(Map<String, dynamic> j) {
+    DateTime? at(Object? v) => v == null ? null : DateTime.fromMillisecondsSinceEpoch((v as num).toInt() * 1000);
+    return HeldCheck(
+      kinds: {for (final MapEntry(:key, :value) in (j['kinds'] as Map).entries) key as String: value as String},
+      first: _unbits(j['first']),
+      sunday: j['sunday'] == null ? null : _unbits(j['sunday']),
+      sundayAt: at(j['sundayAt']),
+      back: j['back'] == null ? null : _unbits(j['back']),
+      backAt: at(j['backAt']),
+    );
+  }
 }
