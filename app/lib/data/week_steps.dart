@@ -5,6 +5,7 @@ import 'daily.dart';
 import 'journey.dart';
 import 'say_it.dart';
 import 'user_store.dart';
+import 'week_score.dart';
 
 /// The kinds of step a mixed week day is made of. [short] labels the step bar.
 enum StepKind {
@@ -62,8 +63,12 @@ List<DayStep>? daySteps(UserStore store, JourneyWeek week, int day, DateTime now
   final w = week.words;
   if (w.isEmpty) return null;
   final half = (w.length + 1) ~/ 2;
+  // Words that slipped at a recent check-back come round again, in a short
+  // round of their own after the mixed one (see data/week_score.dart).
+  final back = [for (final id in cycleBackWords(store, now)) if (!w.contains(id)) id];
+  final cycle = [if (back.isNotEmpty) DayStep(StepKind.mixed, back, extra: 'slipped at a check-back')];
   if (week.isReview) {
-    return [DayStep(StepKind.mixed, w), DayStep(StepKind.dueCards, w)];
+    return [DayStep(StepKind.mixed, w), ...cycle, DayStep(StepKind.dueCards, w)];
   }
   final a = week.adapt;
   int level(String g) => a?.typeLevel(g) ?? 0;
@@ -93,6 +98,7 @@ List<DayStep>? daySteps(UserStore store, JourneyWeek week, int day, DateTime now
     ],
     _ => [
       DayStep(StepKind.mixed, w),
+      ...cycle,
       DayStep(StepKind.type, mostMissed(store, week, now, level('type') == 1 ? hardCap ~/ 2 : typeStepWords)),
       DayStep(StepKind.dueCards, w),
     ],

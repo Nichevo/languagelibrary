@@ -15,6 +15,7 @@ import 'settings_screen.dart';
 import 'key_sounds_screen.dart';
 import 'talk_progress.dart';
 import 'practice_screen.dart';
+import 'week_check.dart';
 import 'wide.dart';
 
 /// The Progress tab: time spent, how well cards are known, and how that changes.
@@ -116,6 +117,7 @@ class StatsView extends StatelessWidget {
       children: [
         const JourneySummaryCard(),
         const LearningRateCard(),
+        const StickCard(),
         Padding(
           padding: const EdgeInsets.fromLTRB(16, 12, 16, 0),
           child: Wrap(
