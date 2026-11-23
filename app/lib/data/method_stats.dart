@@ -94,7 +94,8 @@ Map<String, int> rightInARow(List<Review> reviews) {
   final run = <String, int>{};
   for (final r in reviews) {
     final id = r.id;
-    if (id == null) continue;
+    // A flashcard's first look isn't an answer: the word was only just shown.
+    if (id == null || r.isNew) continue;
     run[id] = r.right ? (run[id] ?? 0) + 1 : 0;
   }
   return run;

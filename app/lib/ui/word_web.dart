@@ -37,7 +37,9 @@ class JourneySummaryCard extends StatelessWidget {
                 height: 44,
                 alignment: Alignment.center,
                 decoration: BoxDecoration(color: colour, borderRadius: BorderRadius.circular(8)),
-                child: Text('$m', style: theme.textTheme.titleLarge?.copyWith(color: Colors.white)),
+                child: m == 0
+                    ? const Icon(Icons.eco_outlined, color: Colors.white)
+                    : Text('$m', style: theme.textTheme.titleLarge?.copyWith(color: Colors.white)),
               ),
               const SizedBox(width: 12),
               Expanded(

@@ -17,7 +17,9 @@ import 'user_store.dart';
 // sentence patterns). Nothing here invents language facts; every suggestion
 // carries the reasons it was picked.
 
-/// Milestones: words known (flashcards back in a week or more), whatever the source.
+/// Milestones: words known, whatever the source. A word is known when one of
+/// its flashcards comes back in a week or more, or it was answered right 3 times
+/// in a row on 2 days or more, whichever way it was practised.
 const milestones = [150, 400, 900, 1800, 3000, 5000];
 const milestoneNames = ['First sounds', 'Getting by', 'Small talk', 'Daily life', 'Telling stories', 'Reading freely'];
 

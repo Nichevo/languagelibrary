@@ -70,6 +70,31 @@ void main() {
     expect(runs, {'a': 1, 'b': 2, 'c': 0});
   });
 
+  test('right in a row: a flashcard\'s first look is not an answer', () {
+    final runs = rightInARow([
+      r('cards', 'a', true, isNew: true),
+      r('meaning', 'a', true),
+      r('listen', 'a', true),
+    ]);
+    expect(runs, {'a': 2});
+  });
+
+  test('known from practice: 3 right in a row on 2 days or more, any practice', () {
+    Review at(int day, String id, bool right, {bool isNew = false, String method = 'meaning'}) =>
+        Review(DateTime(2026, 11, day, 10), Duration.zero, right ? Rating.good : Rating.again, isNew, method: method, id: id);
+    final known = UserStore.knownFromPractice([
+      // a: right 3 times on one day only, then once more the next day.
+      at(1, 'a', true), at(1, 'a', true), at(1, 'a', true), at(2, 'a', true),
+      // b: a miss in between starts again.
+      at(1, 'b', true), at(1, 'b', true), at(2, 'b', false), at(2, 'b', true), at(3, 'b', true),
+      // c: the first flashcard look doesn't count.
+      at(1, 'c', true, isNew: true, method: 'cards'), at(1, 'c', true), at(2, 'c', true),
+      // d: once known it stays known.
+      at(1, 'd', true), at(2, 'd', true), at(3, 'd', true), at(4, 'd', false),
+    ]);
+    expect(known, {'a': DateTime(2026, 11, 2, 10), 'd': DateTime(2026, 11, 3, 10)});
+  });
+
   test('answers by week and method, oldest week first', () {
     final today = DateTime(2026, 11, 9);
     Review at(DateTime t, String method, bool right) =>
