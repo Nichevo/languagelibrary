@@ -174,8 +174,40 @@ class UserStore extends ChangeNotifier {
   /// When each card first became familiar (back in a week or more), by card
   /// key. Cards that were already familiar before this was recorded have
   /// [unknownDate].
+  /// Words known from practice of any kind (see [knownFromPractice]) are
+  /// here too, keyed 'id:practice'.
   final Map<String, DateTime> firstKnown = {};
   static final unknownDate = DateTime.fromMillisecondsSinceEpoch(0);
+
+  /// Answers right in a row, on at least [knownDays] different days, that make
+  /// a word known whichever way it was practised.
+  static const knownRun = 3, knownDays = 2;
+
+  /// When each word first became known from its answers: right [knownRun]
+  /// times in a row (a miss starts again), on [knownDays] days or more. A
+  /// flashcard's first look isn't an answer, so it doesn't count.
+  static Map<String, DateTime> knownFromPractice(Iterable<Review> reviews) {
+    final run = <String, int>{};
+    final days = <String, Set<int>>{};
+    final out = <String, DateTime>{};
+    for (final r in reviews) {
+      final id = r.id;
+      if (id == null || out.containsKey(id) || r.isNew) continue;
+      if (!r.right) {
+        run.remove(id);
+        days.remove(id);
+        continue;
+      }
+      run[id] = (run[id] ?? 0) + 1;
+      final d = (days[id] ??= {})..add(DateTime.utc(r.at.year, r.at.month, r.at.day).millisecondsSinceEpoch ~/ 86400000);
+      if (run[id]! >= knownRun && d.length >= knownDays) out[id] = r.at;
+    }
+    return out;
+  }
+
+  void _notePracticeKnown() {
+    knownFromPractice(reviews).forEach((id, at) => firstKnown.putIfAbsent('$id:practice', () => at));
+  }
 
   /// When each starred word, list, card, score and report last changed on this
   /// device or one it synced with (milliseconds since 1970), keyed like
@@ -285,6 +317,7 @@ class UserStore extends ChangeNotifier {
     cards.forEach((k, c) {
       if (CardStatus.of(c).index >= CardStatus.familiar.index) firstKnown.putIfAbsent(k, () => unknownDate);
     });
+    _notePracticeKnown();
   }
 
   Map<String, dynamic> _toJson() => {
@@ -514,6 +547,7 @@ class UserStore extends ChangeNotifier {
     if (answersAdded > 0) {
       mergeSort(reviews, compare: (a, b) => a.at.compareTo(b.at));
       if (reviews.length > maxReviews) reviews.removeRange(0, reviews.length - maxReviews);
+      _notePracticeKnown();
     }
 
     // Every Say it try from both, once each, in time order.
@@ -700,6 +734,7 @@ class UserStore extends ChangeNotifier {
     if (CardStatus.of(state).index >= CardStatus.familiar.index) firstKnown.putIfAbsent(cardKey(id, d), () => now);
     reviews.add(Review(now, spent > maxSpent ? maxSpent : spent, rating, isNew, id: id));
     if (reviews.length > maxReviews) reviews.removeRange(0, reviews.length - maxReviews);
+    _notePracticeKnown();
     return _save();
   }
 
@@ -708,6 +743,7 @@ class UserStore extends ChangeNotifier {
   Future<void> logAnswer(Rating rating, Duration spent, DateTime now, {required String method, String? id}) {
     reviews.add(Review(now, spent > maxSpent ? maxSpent : spent, rating, false, method: method, id: id));
     if (reviews.length > maxReviews) reviews.removeRange(0, reviews.length - maxReviews);
+    _notePracticeKnown();
     return _save();
   }
 
@@ -758,6 +794,7 @@ class UserStore extends ChangeNotifier {
     }
     if (reviews.length > maxReviews) reviews.removeRange(0, reviews.length - maxReviews);
     widgetAnswersUpTo = fresh.last.at;
+    _notePracticeKnown();
     await _save();
     return fresh.length;
   }

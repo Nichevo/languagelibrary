@@ -165,39 +165,57 @@ class LearningRateCard extends StatelessWidget {
     final shown = weeks.length > 12 ? weeks.sublist(weeks.length - 12) : weeks;
     final latest = weeks.last.adapt!;
     final most = shown.map((w) => w.adapt!.pace).reduce(max);
+    const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
     return Card(
       margin: const EdgeInsets.fromLTRB(12, 8, 12, 4),
-      child: Padding(
+      clipBehavior: Clip.antiAlias,
+      child: InkWell(
+        onTap: () => _explain(context, latest.pace),
+        child: Padding(
         padding: const EdgeInsets.all(14),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('Your learning rate', style: theme.textTheme.titleMedium),
+            Row(
+              children: [
+                Expanded(child: Text('Your learning rate', style: theme.textTheme.titleMedium)),
+                Icon(Icons.info_outline, size: 18, color: theme.colorScheme.onSurfaceVariant),
+              ],
+            ),
             Text('New words a week, adjusted to how each week went', style: theme.textTheme.bodySmall),
             const SizedBox(height: 10),
+            // One narrow bar a week, oldest on the left, so a single week
+            // reads as a chart and not as a button.
             SizedBox(
-              height: 72,
+              height: 88,
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   for (final (i, w) in shown.indexed)
-                    Expanded(
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 2),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            Text('${w.adapt!.pace}', style: theme.textTheme.labelSmall),
-                            Container(
-                              height: 48 * w.adapt!.pace / most,
-                              decoration: BoxDecoration(
-                                color: i == shown.length - 1 ? theme.colorScheme.primary : theme.colorScheme.primary.withValues(alpha: 0.45),
-                                borderRadius: const BorderRadius.vertical(top: Radius.circular(3)),
-                              ),
+                    Flexible(
+                      child: SizedBox(
+                      width: 40,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          Text('${w.adapt!.pace}', style: theme.textTheme.labelSmall),
+                          Container(
+                            width: 22,
+                            height: 48 * w.adapt!.pace / most,
+                            decoration: BoxDecoration(
+                              color: i == shown.length - 1 ? theme.colorScheme.primary : theme.colorScheme.primary.withValues(alpha: 0.45),
+                              borderRadius: const BorderRadius.vertical(top: Radius.circular(3)),
                             ),
-                          ],
-                        ),
+                          ),
+                          const SizedBox(height: 2),
+                          FittedBox(
+                            fit: BoxFit.scaleDown,
+                            child: Text('${w.start.day} ${months[w.start.month - 1]}',
+                                style: theme.textTheme.labelSmall?.copyWith(color: theme.colorScheme.onSurfaceVariant)),
+                          ),
+                        ],
                       ),
+                    ),
                     ),
                 ],
               ),
@@ -217,7 +235,41 @@ class LearningRateCard extends StatelessWidget {
               ),
           ],
         ),
+        ),
       ),
     );
   }
+
+  void _explain(BuildContext context, int pace) => showModalBottomSheet<void>(
+        context: context,
+        showDragHandle: true,
+        builder: (context) {
+          final theme = Theme.of(context);
+          return SafeArea(
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text('Your learning rate', style: theme.textTheme.titleLarge),
+                  const SizedBox(height: 8),
+                  Text('Each bar is one week: how many new words that week brought in. The date under it is the '
+                      'Monday the week started. A new bar appears each week.'),
+                  const SizedBox(height: 8),
+                  Text('When a new week starts, the app looks at how the last one went. After a good week it can '
+                      'add a word or two, and after a hard one, or with lots of cards still due, it takes some away. '
+                      'Right now it is $pace new words a week.'),
+                  const SizedBox(height: 8),
+                  Text('The labels show how each kind of practice is going: "Easy for you" gets a shorter round, '
+                      '"Needs more" gets an extra short round, and "Working on it" stays as usual.'),
+                  const SizedBox(height: 8),
+                  Text('You can change the number, or turn adjusting off, in Settings > Learning journey.',
+                      style: theme.textTheme.bodySmall),
+                ],
+              ),
+            ),
+          );
+        },
+      );
 }

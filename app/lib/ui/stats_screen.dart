@@ -417,8 +417,8 @@ class StatsView extends StatelessWidget {
               w.isEmpty ? 0.0 : w.fold(Duration.zero, (t, r) => t + r.spent).inMilliseconds / 1000 / w.length,
           ];
           final learned = List.filled(weeks.length, 0.0);
-          for (final at in store.firstKnown.values) {
-            if (at != UserStore.unknownDate) {
+          for (final MapEntry(key: k, value: at) in store.firstKnown.entries) {
+            if (at != UserStore.unknownDate && !k.endsWith(':practice')) {
               if (period.indexOf(at, today) case final w?) learned[w]++;
             }
           }
